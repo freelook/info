@@ -14,7 +14,7 @@
     border-color:#78FA89;
 }
 
-#lightbulb {
+.lightbulb {
 	font-size: 100px;
 	display: block;
 	text-align: center;
@@ -71,7 +71,7 @@ h1 {
 .carousel .item {
 	color: #444;
 	background: #f4f4f4;
-	box-shadow: 0px 0px 3px rgba(0,0,0,0.5);
+	box-shadow: 3px rgba(0,0,0,0.5);
 }
 
 

@@ -71,14 +71,14 @@ module.exports = function(grunt) {
 					mangle: false
 				},
 				files: {
-					'public/dist/application.min.js': 'public/dist/application.js'
+					'app/dist/application.min.js': 'app/dist/application.js'
 				}
 			}
 		},
 		cssmin: {
 			combine: {
 				files: {
-					'public/dist/application.min.css': '<%= applicationCSSFiles %>'
+					'app/dist/application.min.css': '<%= applicationCSSFiles %>'
 				}
 			}
 		},
