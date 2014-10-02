@@ -13,33 +13,33 @@ module.exports = {
 	assets: {
 		lib: {
 			css: [
-				'public/lib/bootstrap/dist/css/bootstrap.css',
-				'public/lib/bootstrap/dist/css/bootstrap-theme.css',
+				'app/lib/bootstrap/dist/css/bootstrap.css',
+				'app/lib/bootstrap/dist/css/bootstrap-theme.css',
 			],
 			js: [
-				'public/lib/angular/angular.js',
-				'public/lib/angular-resource/angular-resource.js', 
-				'public/lib/angular-cookies/angular-cookies.js', 
-				'public/lib/angular-animate/angular-animate.js', 
-				'public/lib/angular-touch/angular-touch.js', 
-				'public/lib/angular-sanitize/angular-sanitize.js', 
-				'public/lib/angular-ui-router/release/angular-ui-router.js',
-				'public/lib/angular-ui-utils/ui-utils.js',
-				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js'
+				'app/lib/angular/angular.js',
+				'app/lib/angular-resource/angular-resource.js',
+				'app/lib/angular-cookies/angular-cookies.js',
+				'app/lib/angular-animate/angular-animate.js',
+				'app/lib/angular-touch/angular-touch.js',
+				'app/lib/angular-sanitize/angular-sanitize.js',
+				'app/lib/angular-ui-router/release/angular-ui-router.js',
+				'app/lib/angular-ui-utils/ui-utils.js',
+				'app/lib/angular-bootstrap/ui-bootstrap-tpls.js'
 			]
 		},
 		css: [
-			'public/modules/**/css/*.css'
+			'app/modules/**/css/*.css'
 		],
 		js: [
-			'public/config.js',
-			'public/application.js',
-			'public/modules/*/*.js',
-			'public/modules/*/*[!tests]*/*.js'
+			'app/config.js',
+			'app/application.js',
+			'app/modules/*/*.js',
+			'app/modules/*/*[!tests]*/*.js'
 		],
 		tests: [
-			'public/lib/angular-mocks/angular-mocks.js',
-			'public/modules/*/tests/*.js'
+			'app/lib/angular-mocks/angular-mocks.js',
+			'app/modules/*/tests/*.js'
 		]
 	}
 };
