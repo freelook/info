@@ -1,5 +1,35 @@
 {% extends 'layout.server.view.html' %}
 
 {% block content %}
-	<section data-ui-view></section>
+	<!-- Navbars -->
+      <div class="navbar navbar-app navbar-absolute-top">
+        <div class="navbar-brand navbar-brand-center" yield-to="title">
+          <span>Mobile Angular UI</span>
+        </div>
+        <div class="btn-group pull-left">
+          <div ng-click="toggle('leftSidebar')" class="btn btn-navbar sidebar-toggle">
+            <i class="fa fa-bars"></i> Menu
+          </div>
+        </div>
+        <div class="btn-group pull-right" yield-to="navbarAction">
+          <div ng-click="toggle('rightSidebar')" class="btn btn-navbar">
+            <i class="fa fa-comment"></i> Chat
+          </div>
+        </div>
+      </div>
+
+      <div class="navbar navbar-app navbar-absolute-bottom">
+        <div class="btn-group justified">
+
+        </div>
+      </div>
+
+      <!-- App Body -->
+      <div class="app-body" ng-class="{loading: loading}">
+        <div ng-show="loading" class="app-content-loading">
+          <i class="fa fa-spinner fa-spin loading-spinner"></i>
+        </div>
+
+        <ng-view class="app-content" ng-hide="loading"></ng-view>
+      </div>
 {% endblock %}

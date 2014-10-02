@@ -13,19 +13,19 @@ module.exports = {
 	assets: {
 		lib: {
 			css: [
-				'app/lib/bootstrap/dist/css/bootstrap.css',
-				'app/lib/bootstrap/dist/css/bootstrap-theme.css'
+				'app/lib/mobile-angular-ui/dist/css/mobile-angular-ui-base.css',
+				'app/lib/mobile-angular-ui/dist/css/mobile-angular-ui-hover.css'
 			],
 			js: [
 				'app/lib/angular/angular.js',
+				'app/lib/angular-route/angular-route.js',
+				'app/lib/angular-touch/angular-touch.js',
+				'app/lib/mobile-angular-ui/dist/js/mobile-angular-ui.js',
+
 				'app/lib/angular-resource/angular-resource.js',
 				'app/lib/angular-cookies/angular-cookies.js',
 				'app/lib/angular-animate/angular-animate.js',
-				'app/lib/angular-touch/angular-touch.js',
-				'app/lib/angular-sanitize/angular-sanitize.js',
-				'app/lib/angular-ui-router/release/angular-ui-router.js',
-				'app/lib/angular-ui-utils/ui-utils.js',
-				'app/lib/angular-bootstrap/ui-bootstrap-tpls.js'
+				'app/lib/angular-sanitize/angular-sanitize.js'
 			]
 		},
 		css: [

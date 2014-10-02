@@ -5,19 +5,19 @@ module.exports = {
 	assets: {
 		lib: {
 			css: [
-				'app/lib/bootstrap/dist/css/bootstrap.min.css',
-				'app/lib/bootstrap/dist/css/bootstrap-theme.min.css'
+				'app/lib/mobile-angular-ui/dist/css/mobile-angular-ui-base.min.css',
+				'app/lib/mobile-angular-ui/dist/css/mobile-angular-ui-hover.min.css'
 			],
 			js: [
 				'app/lib/angular/angular.min.js',
-				'app/lib/angular-resource/angular-resource.js',
-				'app/lib/angular-cookies/angular-cookies.js',
-				'app/lib/angular-animate/angular-animate.js',
-				'app/lib/angular-touch/angular-touch.js',
-				'app/lib/angular-sanitize/angular-sanitize.js',
-				'app/lib/angular-ui-router/release/angular-ui-router.min.js',
-				'app/lib/angular-ui-utils/ui-utils.min.js',
-				'app/lib/angular-bootstrap/ui-bootstrap-tpls.min.js'
+				'app/lib/angular-route/angular-route.min.js',
+				'app/lib/angular-touch/angular-touch.min.js',
+				'app/lib/mobile-angular-ui/dist/js/mobile-angular-ui.min.js',
+
+				'app/lib/angular-resource/angular-resource.min.js',
+				'app/lib/angular-cookies/angular-cookies.min.js',
+				'app/lib/angular-animate/angular-animate.min.js',
+				'app/lib/angular-sanitize/angular-sanitize.min.js'
 			]
 		},
 		css: 'app/dist/application.min.css',
