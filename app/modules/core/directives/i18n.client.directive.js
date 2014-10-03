@@ -1,16 +1,16 @@
 'use strict';
 angular
     .module('core')
-    .directive('i18n', ['localize', function (localize) {
+    .directive('i18n', function (Localize) {
         var i18nDirective = {
             restrict: 'EA',
             updateText: function (ele, input, placeholder) {
                 var result;
                 return result = void 0,
                         'i18n-placeholder' === input ?
-                            (result = localize.getLocalizedString(placeholder), ele.attr('placeholder', result))
+                            (result = Localize.getLocalizedString(placeholder), ele.attr('placeholder', result))
                             : input.length >= 1 ?
-                            (result = localize.getLocalizedString(input), ele.text(result))
+                            (result = Localize.getLocalizedString(input), ele.text(result))
                             : void 0;
             },
             link: function (scope, ele, attrs) {
@@ -21,4 +21,4 @@ angular
                 });
             }};
         return i18nDirective;
-    }]);
+    });
