@@ -8,3 +8,7 @@ exports.index = function(req, res) {
 		user: req.user || null
 	});
 };
+
+exports.i18n = function(req, res) {
+    res.send();
+};

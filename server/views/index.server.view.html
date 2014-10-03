@@ -3,17 +3,17 @@
 {% block content %}
 	<!-- Navbars -->
       <div class="navbar navbar-app navbar-absolute-top">
-        <div class="navbar-brand navbar-brand-center" yield-to="title">
-          <span data-i18n="Freelook info"></span>
+        <div class="navbar-brand navbar-brand-center upper-text" yield-to="title">
+          <span data-i18n="freelook"></span>
         </div>
         <div class="btn-group pull-left">
-          <div ng-click="toggle('leftSidebar')" class="btn btn-navbar sidebar-toggle">
-            <i class="fa fa-bars"></i> <span data-i18n="Menu"></span>
+          <div ng-click="toggle('left-sidebar')" class="btn btn-navbar sidebar-toggle">
+              <i class="fa fa-bars"></i> <span data-i18n="Menu"></span>
           </div>
         </div>
         <div class="btn-group pull-right" yield-to="navbarAction">
-          <div ng-click="toggle('rightSidebar')" class="btn btn-navbar">
-            <i class="fa fa-comment"></i> <span data-i18n="Chat"></span>
+          <div ng-click="toggle('right-sidebar')" class="btn btn-navbar">
+             <span data-i18n="Info"></span> <i class="fa fa-comment"></i>
           </div>
         </div>
       </div>

@@ -29,10 +29,10 @@
 
 <body class="ng-cloak" ng-controller="MainController">
 <!-- Sidebars -->
-<nav ng-include="'/modules/core/views/sideBarLeft.client.view.html'" class="sidebar sidebar-left" toggleable parent-active-class="sidebar-left-in" id="leftSidebar"></nav>
+<nav ng-include="'/modules/core/views/sidebar-left.client.view.html'" class="sidebar sidebar-left" toggleable parent-active-class="sidebar-left-in" id="left-sidebar"></nav>
 
-<nav ng-include="'/modules/core/views/sideBarRight.client.view.html'" class="sidebar sidebar-right" toggleable parent-active-class="sidebar-right-in" id="rightSidebar"></nav>
-	<!--<header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header> -->
+<nav ng-include="'/modules/core/views/sidebar-right.client.view.html'" class="sidebar sidebar-right" toggleable parent-active-class="sidebar-right-in" id="right-sidebar"></nav>
+
 	<section class="app">
 		{% block content %}{% endblock %}
 	</section>

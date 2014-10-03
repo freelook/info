@@ -1,6 +1,6 @@
 'use strict';
 angular
-    .module('utils')
+    .module('core')
     .directive('i18n', ['localize', function (localize) {
         var i18nDirective = {
             restrict: 'EA',

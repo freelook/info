@@ -1,6 +1,6 @@
 'use strict';
 angular
-    .module('utils')
+    .module('core')
     .controller('LangController', ['$scope', 'localize', function ($scope, localize) {
         return $scope.lang = 'English', $scope.setLang = function (lang) {
             switch (lang) {

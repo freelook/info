@@ -1,0 +1,20 @@
+<div class="scrollable">
+  <div class="scrollable-content">
+    <div id="langMenu" class="dropdown" data-ng-controller="LangController" active-class="open" toggleable>
+        <span class="dropdown-toggle btn btn-default" toggle target="langMenu">
+            {{lang}}
+        </span>
+        <ul class="dropdown-menu panel-default">
+            <li data-ng-show="lang !== 'English' " data-ng-click="setLang('English')" toggle="off" bubble target="langMenu">
+                <span>English</span>
+            </li>
+            <li data-ng-show="lang !== 'Русский язык' " data-ng-click="setLang('Русский язык')" toggle="off" bubble target="langMenu">
+                <span>Русский язык</span>
+            </li>
+        </ul>
+    </div>
+    <div class="list-group" toggle="off" bubble target="right-sidebar">
+
+    </div>
+  </div>
+</div>
