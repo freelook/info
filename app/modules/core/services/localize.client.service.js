@@ -28,7 +28,7 @@ angular
                 },
                 getLocalizedString: function (value) {
                     var result;
-                    return result = void 0, localize.dictionary && value ? ( result = '' === localize.dictionary[value] ? value : localize.dictionary[value]) : result = value, result;
+                    return result = void 0, localize.dictionary && value ? ( result = !localize.dictionary[value] ? value : localize.dictionary[value]) : result = value, result;
                 }};
             return localize;
         });
