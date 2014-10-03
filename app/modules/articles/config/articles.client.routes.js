@@ -19,5 +19,4 @@ angular
 			when('/articles/:articleId/edit', {
 				templateUrl: 'modules/articles/views/edit-article.client.view.html'
 			});
-	}
-);
+	});
