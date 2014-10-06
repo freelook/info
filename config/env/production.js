@@ -14,7 +14,8 @@ module.exports = {
                 'app/lib/angular-resource/angular-resource.min.js',
                 'app/lib/angular-cookies/angular-cookies.min.js',
                 'app/lib/angular-animate/angular-animate.min.js',
-                'app/lib/angular-sanitize/angular-sanitize.min.js'
+                'app/lib/angular-sanitize/angular-sanitize.min.js',
+                '//vk.com/js/api/openapi.js?115'
             ]
         },
         css: 'app/dist/application.min.css',
