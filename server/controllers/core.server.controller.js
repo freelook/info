@@ -3,12 +3,12 @@
 /**
  * Module dependencies.
  */
-exports.index = function(req, res) {
-	res.render('index', {
-		user: req.user || null
-	});
-};
+var config = require('../../config/config');
 
-exports.i18n = function(req, res) {
-    res.send();
+exports.index = function (req, res) {
+    var _date = config.date || (new Date()).getTime();
+    res.render('index', {
+        user: req.user || null,
+        date: _date
+    });
 };

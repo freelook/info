@@ -40,5 +40,6 @@ module.exports = {
             'app/lib/angular-mocks/angular-mocks.js',
             'app/modules/*/tests/*.js'
         ]
-    }
+    },
+    date: ''
 };

@@ -2,6 +2,7 @@
 angular
     .module('core')
     .run(
-    function (Localize) {
+    function (Localize, VK) {
         Localize.initLocalizedResources();
+        VK.init();
     });
