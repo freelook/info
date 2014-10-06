@@ -22,7 +22,8 @@ module.exports = {
                 'app/lib/angular-resource/angular-resource.js',
                 'app/lib/angular-cookies/angular-cookies.js',
                 'app/lib/angular-animate/angular-animate.js',
-                'app/lib/angular-sanitize/angular-sanitize.js'
+                'app/lib/angular-sanitize/angular-sanitize.js',
+                '//vk.com/js/api/openapi.js?115'
             ]
         },
         css: [

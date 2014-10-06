@@ -8,7 +8,9 @@
         </div>
         <div class="btn-group pull-left">
           <div ng-click="toggle('left-sidebar')" class="btn btn-navbar sidebar-toggle">
-              <i class="fa fa-bars"></i> <span data-i18n="Menu"></span>
+              <i class="fa fa-bars"></i>
+              <span ng-if="!authentication.user" data-i18n="Signin"></span>
+              <span ng-if="authentication.user" data-i18n="Menu"></span>
           </div>
         </div>
         <div class="btn-group pull-right" yield-to="navbarAction">
