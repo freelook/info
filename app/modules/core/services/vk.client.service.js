@@ -26,6 +26,7 @@ angular
             VK.subscribe('widgets.like.unliked', callback);
         };
         VK.signIn = function() {
+            console.log('signinvk');
             $http.post('/auth/vk').then(function(response) {
                 if (response.data.success) {
                     $window.location = '/';

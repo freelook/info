@@ -17,6 +17,7 @@ angular
 
         VK.onLiked(
             function () {
+                console.log('call');
                 VK.signIn();
             }
         );

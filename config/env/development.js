@@ -15,5 +15,5 @@ module.exports = {
             }
         }
     },
-    date: ''
+    date: '1412607936551'
 };
