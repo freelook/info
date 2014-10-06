@@ -4,6 +4,7 @@
   "description": "freelook.info",
   "dependencies": {
     "bootstrap": "~3",
+    "font-awesome": "~4",
     "angular": "~1.2",
     "angular-resource": "~1.2",
     "angular-mocks": "~1.2",
