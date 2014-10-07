@@ -16,7 +16,7 @@ module.exports = {
         }
     },
     vk: {
-        date: '1412678113173',
+        date: '1412680232781',
         url: 'freelookinfo.herokuapp.com'
     }
 };

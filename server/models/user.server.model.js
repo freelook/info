@@ -26,7 +26,11 @@ var validateLocalStrategyPassword = function (password) {
  */
 var UserSchema = new Schema({
     vk: {
-        type: Object
+        type: Object,
+        uid : {
+            type: String,
+            unique: ''
+        }
     },
     firstName: {
         type: String,
@@ -40,10 +44,10 @@ var UserSchema = new Schema({
         default: ''
         //validate: [validateLocalStrategyProperty, 'Please fill in your last name']
     },
-    displayName: {
-        type: String,
-        trim: true
-    },
+//    displayName: {
+//        type: String,
+//        trim: true
+//    },
     email: {
         type: String,
         trim: true,
@@ -51,12 +55,12 @@ var UserSchema = new Schema({
         //validate: [validateLocalStrategyProperty, 'Please fill in your email'],
         match: [/.+\@.+\..+/, 'Please fill a valid email address']
     },
-//    username: {
-//        type: String,
-//        unique: 'testing error message',
-//        required: 'Please fill in a username',
-//        trim: true
-//    },
+    username: {
+        type: String,
+        unique: 'testing error message',
+        required: 'Please fill in a username',
+        trim: true
+    },
     provider: {
         type: String,
         required: 'Provider is required'

@@ -4,14 +4,16 @@
 angular
     .module('users')
     .factory('Authentication',
-    function () {
-        var _this = this;
-
-        _this._data = {
-            user: window.user,
-            date: window.date || (new Date()).getTime()
+    function ($window) {
+        var Authentication = {
+            user: $window.user,
+            date: $window.date || (new Date()).getTime(),
+            setUser: function(user) {
+                $window.user = user;
+                Authentication.user = user;
+            }
         };
 
-        return _this._data;
+        return Authentication;
     }
 );

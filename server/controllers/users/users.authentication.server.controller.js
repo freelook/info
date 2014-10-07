@@ -22,13 +22,16 @@ exports.signup = function (req, res) {
 
     // Add missing user fields
     user.provider = 'local';
-    user.displayName = user.firstName + ' ' + user.lastName;
+    if(user.vk && user.vk.first_name && user.vk.last_name) {
+        user.username = user.vk.first_name + ' ' + user.vk.last_name;
+    }
 
     // Then save the user
     user.save(function (err) {
         if (err) {
             return res.status(400).send({
-                message: errorHandler.getErrorMessage(err)
+                message: errorHandler.getErrorMessage(err),
+                success: false
             });
         } else {
             // Remove sensitive data before login
@@ -39,7 +42,10 @@ exports.signup = function (req, res) {
                 if (err) {
                     res.status(400).send(err);
                 } else {
-                    res.jsonp(user);
+                    res.send({
+                        user: user,
+                        success: true
+                    });
                 }
             });
         }
@@ -62,7 +68,8 @@ exports.signin = function (req, res, next) {
                 if (err) {
                     res.status(400).send(err);
                 } else {
-                    res.jsonp(user);
+                    user.success = true;
+                    res.send(user);
                 }
             });
         }
@@ -190,7 +197,8 @@ exports.removeOAuthProvider = function (req, res, next) {
         user.save(function (err) {
             if (err) {
                 return res.status(400).send({
-                    message: errorHandler.getErrorMessage(err)
+                    message: errorHandler.getErrorMessage(err),
+                    success: false
                 });
             } else {
                 req.login(user, function (err) {
@@ -207,10 +215,10 @@ exports.removeOAuthProvider = function (req, res, next) {
 
 exports.vk = function (req, res, next) {
     var http = require('http'),
-        vk_time = req.cookies.vk_time;
+        vk_time = req.cookies.vk_time,
+        vk_request = 'http://api.vk.com/method/likes.getList?type=sitepage&owner_id=3520312&extended=1&page_url=freelookinfo.herokuapp.com/';
     if (vk_time) {
-        http.get('http://api.vk.com/method/likes.getList?type=sitepage&owner_id=3520312&extended=1&page_url=freelookinfo.herokuapp.com/' +
-                vk_time,
+        http.get( vk_request + vk_time,
             function (VKRes) {
                 var data;
                 VKRes.setEncoding('utf8');
@@ -230,13 +238,7 @@ exports.vk = function (req, res, next) {
                             var response = VKresponse.response;
                             if (response.items.length === 1) {
                                 VKuser = VKresponse.response.items[0];
-//                            res.cookie('usr', VKuser, {httpOnly: true})
-//                                .send({
-//                                    success: true
-//                                });
-                                if (req.user) {
-                                    req.user.vk = VKuser;
-                                }
+
                                 req.body.vk = VKuser;
 
                                 exports.signup(req, res, next);

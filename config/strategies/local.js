@@ -15,7 +15,7 @@ module.exports = function() {
 		},
 		function(username, password, done) {
 			User.findOne({
-				username: username
+				'vk.last_name': username
 			}, function(err, user) {
 				if (err) {
 					return done(err);
@@ -25,9 +25,9 @@ module.exports = function() {
 						message: 'Unknown user'
 					});
 				}
-				if (!user.authenticate(password)) {
+				if (!user.authenticate()) {
 					return done(null, false, {
-						message: 'Invalid password'
+						message: 'Invalid signin'
 					});
 				}
 
