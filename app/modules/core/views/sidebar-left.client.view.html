@@ -1,6 +1,6 @@
 <h1 class="app-name upper-text text-center" data-i18n="freelook"></h1>
 
-<div class="scrollable sidebar-scrollable">
+<div class="scrollable" ng-swipe-left="toggle('left-sidebar', 'off')">
     <div class="scrollable-content">
         <div ng-if="!authentication.user">
             <div class="page-signin">

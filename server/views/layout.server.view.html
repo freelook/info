@@ -15,7 +15,7 @@
 	<meta name="description" content="{{description}}">
 
 	<!-- Fav Icon -->
-	<link href="/modules/core/img/brand/favicon.png" rel="shortcut icon" type="image/x-icon">
+	<link href="/modules/core/img/brand/favicon.ico" rel="shortcut icon" type="image/x-icon">
 
 	<!--Application CSS Files-->
 	{% for cssFile in cssFiles %}<link rel="stylesheet" href="{{cssFile}}">
@@ -33,7 +33,9 @@
 
 <nav ng-include="'/modules/core/views/sidebar-right.client.view.html'" class="sidebar sidebar-right" toggleable parent-active-class="sidebar-right-in" id="right-sidebar"></nav>
 
-	<section class="app">
+	<section class="app"
+             ng-swipe-left="toggle('right-sidebar', 'off');toggle('left-sidebar', 'off');"
+             ng-swipe-right="toggle('right-sidebar', 'off');toggle('left-sidebar', 'off');">
 		{% block content %}{% endblock %}
 	</section>
 
@@ -45,7 +47,7 @@
 
 	<!--Application JavaScript Files-->
 	{% for jsFile in jsFiles %}<script src="{{jsFile}}"></script>
-	{% endfor %} 
+	{% endfor %}
 
 	{% if process.env.NODE_ENV === 'development' %}
 	<!--Livereload script rendered -->
