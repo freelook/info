@@ -206,59 +206,62 @@ exports.removeOAuthProvider = function (req, res, next) {
 };
 
 exports.vk = function (req, res, next) {
-    var http = require('http');
-    http.get('http://api.vk.com/method/likes.getList?type=sitepage&owner_id=3520312&extended=1&page_url=' +
-            req.query.time,
-        function (VKRes) {
-            var data;
-            VKRes.setEncoding('utf8');
-            res.setHeader('Content-Type', 'text/plain;charset=utf-8');
-            VKRes.on('data', function (d) {
-                if (data) {
-                    data += d;
-                } else {
-                    data = d;
-                }
-            });
-            VKRes.on('end', function () {
-                try {
-                    var VKuser,
-                        VKresponse = JSON.parse(data);
-                    if (VKresponse && VKresponse.response) {
-                        var response = VKresponse.response;
-                        if (response.items.length === 1) {
-                            VKuser = VKresponse.response.items[0];
+    var http = require('http'),
+        vk_time = req.cookies.vk_time;
+    if (vk_time) {
+        http.get('http://api.vk.com/method/likes.getList?type=sitepage&owner_id=3520312&extended=1&page_url=freelookinfo.herokuapp.com/' +
+                vk_time,
+            function (VKRes) {
+                var data;
+                VKRes.setEncoding('utf8');
+                res.setHeader('Content-Type', 'text/plain;charset=utf-8');
+                VKRes.on('data', function (d) {
+                    if (data) {
+                        data += d;
+                    } else {
+                        data = d;
+                    }
+                });
+                VKRes.on('end', function () {
+                    try {
+                        var VKuser,
+                            VKresponse = JSON.parse(data);
+                        if (VKresponse && VKresponse.response) {
+                            var response = VKresponse.response;
+                            if (response.items.length === 1) {
+                                VKuser = VKresponse.response.items[0];
 //                            res.cookie('usr', VKuser, {httpOnly: true})
 //                                .send({
 //                                    success: true
 //                                });
-                            if(req.user){
-                                req.user.vk = VKuser;
-                            }
-                            req.body.vk = VKuser;
+                                if (req.user) {
+                                    req.user.vk = VKuser;
+                                }
+                                req.body.vk = VKuser;
 
-                            exports.signup(req, res, next);
+                                exports.signup(req, res, next);
+                            } else {
+                                res.send({
+                                    success: false
+                                });
+                            }
                         } else {
                             res.send({
                                 success: false
                             });
                         }
-                    } else {
+                    } catch (err) {
                         res.send({
                             success: false
                         });
+                        console.log(err);
                     }
-                } catch (err) {
-                    res.send({
-                        success: false
-                    });
-                    console.log(err);
-                }
+                });
+            }).on('error', function (err) {
+                res.send({
+                    success: false
+                });
+                console.log('Got error: ' + err.message);
             });
-        }).on('error', function (err) {
-            res.send({
-                success: false
-            });
-            console.log('Got error: ' + err.message);
-        });
+    }
 };

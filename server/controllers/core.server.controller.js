@@ -5,9 +5,11 @@
  */
 var config = require('../../config/config');
 
-exports.index = function (req, res) {
-    var _date = config.date || (new Date()).getTime();
-    res.render('index', {
+exports.index = function (req, res, next) {
+    var _date = config.vk.date || (new Date()).getTime();
+    res
+        .cookie('vk_time', _date, {httpOnly: true})
+        .render('index', {
         user: req.user || null,
         date: _date
     });

@@ -6,7 +6,7 @@ angular
     var VK = {};
         VK.init = function() {
             if($window.VK && $window.VK.Widgets) {
-                var loc = 'http://freelook.info:/' + Authentication.date;
+                var loc = $location.host()+ '/' + Authentication.date;
                 console.dir(loc);
                 $window.VK.init({apiId: 3520312, onlyWidgets: true});
                 $window.VK.Widgets.Like('vk_signin', {type: 'vertical', verb: 1, height: 24, pageUrl: loc});

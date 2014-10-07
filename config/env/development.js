@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-    db: 'mongodb://localhost/freelook-dev',
+    db: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://localhost/freelook-dev',
     app: {
         title: 'freelook - Development Environment'
     },
@@ -15,5 +15,8 @@ module.exports = {
             }
         }
     },
-    date: '1412607936551'
+    vk: {
+        date: '1412678113173',
+        url: 'freelookinfo.herokuapp.com'
+    }
 };
