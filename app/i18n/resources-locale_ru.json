@@ -1,7 +1,8 @@
 {
     "freelook": "freelook",
-    "Menu": "Меню",
     "Info": "Инфо",
-    "What do you want": "Чего вы хотите",
-    "Signin": "Вход"
+    "Start": "Пуск",
+    "What do you want now ?": "Чего вы хотите сейчас ?",
+    "Look": "Смотреть",
+    "Show": "Показать"
 }

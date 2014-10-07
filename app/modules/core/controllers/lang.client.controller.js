@@ -2,20 +2,18 @@
 angular
     .module('core')
     .controller('LangController', function ($scope, Localize, LocalStorage) {
-        if (LocalStorage.getLocale() === 'en') {
-            $scope.lang = 'English';
+        if (LocalStorage.getLocale() === 'ru') {
+            $scope.lang = 'ru';
         } else {
-            $scope.lang = 'Русский язык';
+            $scope.lang = 'en';
         }
-        $scope.setLang = function (lang) {
-            switch (lang) {
-                case'Русский язык':
+        $scope.setLang = function () {
+            switch ($scope.lang) {
+                case 'ru':
                     Localize.setLanguage('RU-RU');
                     break;
                 default:
                     Localize.setLanguage('EN-US');
             }
-            $scope.lang = lang;
-            return $scope.lang;
         };
     });

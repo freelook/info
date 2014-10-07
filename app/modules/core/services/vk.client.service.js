@@ -16,7 +16,7 @@ angular
 
         VK.subscribe = function (event, callback) {
             if ($window.VK && $window.VK.Observer && $window.VK.Observer.subscribe) {
-                $window.VK.Observer.subscribe('event', callback);
+                $window.VK.Observer.subscribe(event, callback);
             }
         };
         VK.onLiked = function(callback) {

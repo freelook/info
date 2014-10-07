@@ -1866,7 +1866,7 @@ body {
   font-size: 14px;
   line-height: 1.42857143;
   color: #333333;
-  background-color: #ffffff;
+  background-color: #f1f2f3;
 }
 input,
 button,
@@ -1912,7 +1912,7 @@ img {
 .img-thumbnail {
   padding: 4px;
   line-height: 1.42857143;
-  background-color: #ffffff;
+  background-color: #f1f2f3;
   border: 1px solid #dddddd;
   border-radius: 4px;
   -webkit-transition: all 0.2s ease-in-out;
@@ -3060,7 +3060,7 @@ th {
   border-top: 2px solid #dddddd;
 }
 .table .table {
-  background-color: #ffffff;
+  background-color: #f1f2f3;
 }
 .table-condensed > thead > tr > th,
 .table-condensed > tbody > tr > th,
@@ -4602,7 +4602,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus {
   color: #555555;
-  background-color: #ffffff;
+  background-color: #f1f2f3;
   border: 1px solid #dddddd;
   border-bottom-color: transparent;
   cursor: default;
@@ -4648,7 +4648,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .nav-tabs.nav-justified > .active > a,
   .nav-tabs.nav-justified > .active > a:hover,
   .nav-tabs.nav-justified > .active > a:focus {
-    border-bottom-color: #ffffff;
+    border-bottom-color: #f1f2f3;
   }
 }
 .nav-pills > li {
@@ -4716,7 +4716,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .nav-tabs-justified > .active > a,
   .nav-tabs-justified > .active > a:hover,
   .nav-tabs-justified > .active > a:focus {
-    border-bottom-color: #ffffff;
+    border-bottom-color: #f1f2f3;
   }
 }
 .tab-content > .tab-pane {
@@ -5400,7 +5400,7 @@ a.list-group-item.active > .badge,
   padding: 4px;
   margin-bottom: 20px;
   line-height: 1.42857143;
-  background-color: #ffffff;
+  background-color: #f1f2f3;
   border: 1px solid #dddddd;
   border-radius: 4px;
   -webkit-transition: all 0.2s ease-in-out;
@@ -7332,7 +7332,7 @@ a.list-group-item .icon.pull-right {
   z-index: 10;
 }
 .section {
-  background: #ffffff;
+  background: #f1f2f3;
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -7479,7 +7479,7 @@ textarea.ng-invalid {
 .panel {
   -webkit-box-shadow: none;
   box-shadow: none;
-  background: #ffffff;
+  background: #f1f2f3;
 }
 .panel-group .panel + .panel {
   margin-top: -1px;
@@ -7739,4 +7739,106 @@ body {
 }
 .app-name {
   background: #674e9e;
+}
+.app-search {
+  margin-top: 10px;
+  background: #f1f2f3 !important;
+}
+.section {
+  background: #f1f2f3;
+}
+.space {
+  display: inline;
+  padding: 5px;
+}
+.page-signin .signin-body {
+  border-top: 1px solid #f6f7f8;
+  padding: 20px 10px;
+}
+.page-signin .form-container {
+  margin: 10px auto;
+}
+.page-signin .line-thru {
+  margin: 1em 0;
+  display: block;
+  font-size: .875em;
+  font-weight: bold;
+  margin-bottom: 1em;
+  position: relative;
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+}
+.page-signin .line-thru:before {
+  width: 50px;
+  height: 10px;
+  background-color: #ebebeb;
+  content: '';
+  margin: -5px 0 0 -20px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  z-index: -1;
+}
+.page-signin .line-thru:after {
+  width: 100%;
+  border-bottom: 1px solid #d6d8db;
+  content: '';
+  display: block;
+  position: absolute;
+  top: 49%;
+  z-index: -2;
+}
+.btn-twitter-round {
+  display: inline-block;
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  line-height: 45px;
+  text-align: center;
+  vertical-align: middle;
+  color: white;
+  background-color: #00c7f7;
+  border-color: #00c7f7;
+}
+.btn-twitter-round:hover {
+  color: white;
+  background-color: #00a6ce;
+  border-color: #0096ba;
+}
+.btn-facebook-round,
+.btn-vk-round {
+  display: inline-block;
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  line-height: 45px;
+  text-align: center;
+  vertical-align: middle;
+  color: white;
+  background-color: #335397;
+  border-color: #335397;
+}
+.btn-facebook-round:hover,
+.btn-vk-round:hover {
+  color: white;
+  background-color: #294279;
+  border-color: #243a69;
+}
+.btn-google-plus-round {
+  display: inline-block;
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  line-height: 45px;
+  text-align: center;
+  vertical-align: middle;
+  color: white;
+  background-color: #dd4a38;
+  border-color: #dd4a38;
+}
+.btn-google-plus-round:hover {
+  color: white;
+  background-color: #ca3522;
+  border-color: #b8301f;
 }

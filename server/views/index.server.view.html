@@ -1,37 +1,39 @@
 {% extends 'layout.server.view.html' %}
 
 {% block content %}
-	<!-- Navbars -->
-      <div class="navbar navbar-app navbar-absolute-top">
-        <div class="navbar-brand navbar-brand-center upper-text" yield-to="title">
-          <span data-i18n="freelook"></span>
+<!-- Navbars -->
+<div class="navbar navbar-app navbar-absolute-top">
+    <div class="navbar-brand navbar-brand-center upper-text" yield-to="title">
+        <span data-i18n="Freelook"></span>
+    </div>
+    <div class="btn-group pull-left">
+        <div ng-click="toggle('left-sidebar')" class="btn btn-navbar sidebar-toggle">
+            <i class="fa fa-bars"></i>
+            <span data-i18n="Start"></span>
         </div>
-        <div class="btn-group pull-left">
-          <div ng-click="toggle('left-sidebar')" class="btn btn-navbar sidebar-toggle">
-              <i class="fa fa-bars"></i>
-              <span ng-if="!authentication.user" data-i18n="Signin"></span>
-              <span ng-if="authentication.user" data-i18n="Menu"></span>
-          </div>
+    </div>
+    <div class="btn-group pull-right" yield-to="navbarAction">
+        <div ng-click="toggle('right-sidebar')" class="btn btn-navbar">
+            <span data-i18n="Info"></span> <i class="fa fa-exclamation-circle fa-navbar"></i>
         </div>
-        <div class="btn-group pull-right" yield-to="navbarAction">
-          <div ng-click="toggle('right-sidebar')" class="btn btn-navbar">
-             <span data-i18n="Info"></span> <i class="fa fa-comment"></i>
-          </div>
-        </div>
-      </div>
+    </div>
+</div>
 
-      <div class="navbar navbar-app navbar-absolute-bottom">
-        <div class="btn-group justified">
+<div class="navbar navbar-app navbar-absolute-bottom">
+    <div class="btn btn-navbar pull-right">
+        <select data-ng-controller="LangController" data-ng-model="lang" data-ng-change="setLang()">
+            <option ng-selected="lang === 'ru'">ru</option>
+            <option ng-selected="lang === 'en'">en</option>
+        </select>
+    </div>
+</div>
 
-        </div>
-      </div>
+<!-- App Body -->
+<div class="app-body" ng-class="{loading: loading}">
+    <div ng-show="loading" class="app-content-loading">
+        <i class="fa fa-spinner fa-spin loading-spinner"></i>
+    </div>
 
-      <!-- App Body -->
-      <div class="app-body" ng-class="{loading: loading}">
-        <div ng-show="loading" class="app-content-loading">
-          <i class="fa fa-spinner fa-spin loading-spinner"></i>
-        </div>
-
-        <ng-view class="app-content" ng-hide="loading"></ng-view>
-      </div>
+    <ng-view class="app-content" ng-hide="loading"></ng-view>
+</div>
 {% endblock %}
