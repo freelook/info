@@ -22,7 +22,4 @@ angular
             }
         );
 
-        console.dir($rootScope.toggle);
-
-
     });

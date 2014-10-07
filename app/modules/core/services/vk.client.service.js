@@ -6,8 +6,8 @@ angular
     var VK = {};
         VK.init = function() {
             if($window.VK && $window.VK.Widgets) {
-                var loc = $location.absUrl() + Authentication.date;
-                console.dir(Authentication.date);
+                var loc = 'http://freelook.info:/' + Authentication.date;
+                console.dir(loc);
                 $window.VK.init({apiId: 3520312, onlyWidgets: true});
                 $window.VK.Widgets.Like('vk_signin', {type: 'vertical', verb: 1, height: 24, pageUrl: loc});
                 $window.VK.Widgets.Post('vk_post', -50609732, 124, 'hWNjwJubCJ69XFWPH_s0GcVXSnI');
@@ -28,6 +28,7 @@ angular
         VK.signIn = function() {
             console.log('signinvk');
             $http.post('/auth/vk').then(function(response) {
+                console.dir(response);
                 if (response.data.success) {
                     $window.location = '/';
                 } else {
