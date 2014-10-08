@@ -3,10 +3,12 @@
 angular
     .module('core')
     .controller('HomeController',
-    function ($scope, Authentication) {
-        // This provides Authentication context.
-        $scope.authentication = Authentication;
+    function ($rootScope, $routeParams, $scope, VK ) {
+        $rootScope.action = $routeParams.action;
+
+        console.dir($routeParams);
     });
+
 
 angular.module('core').directive('carouselExampleItem', function ($rootScope, $swipe) {
     return function (scope, element, attrs) {

@@ -21,7 +21,7 @@
 
 <div class="navbar navbar-app navbar-absolute-bottom">
     <div class="btn btn-navbar pull-left">
-    <i class="fa fa-2x fa-question-circle fl-color"></i>
+        <i class="fa fa-2x fa-question-circle fl-color"></i>
     </div>
     <div class="btn btn-navbar pull-right">
         <select data-ng-controller="LangController" data-ng-model="lang" data-ng-change="setLang()">
@@ -37,6 +37,39 @@
         <i class="fa fa-spinner fa-spin loading-spinner"></i>
     </div>
 
-    <ng-view class="app-content" ng-hide="loading"></ng-view>
+    <section class="app-content" ng-hide="loading">
+
+        <div class="scrollable">
+            <div class="scrollable-content">
+                <div class="section container-fluid">
+                    <div class="btn-group justified nav-tabs">
+                        <a class="btn btn-default upper-text" data-ng-class="{active: action === 'look'}"
+                           data-i18n="Look" data-ng-click="go({action:'look'})"></a>
+                        <a class="btn btn-default upper-text" data-ng-class="{active: action === 'show'}"
+                           data-i18n="Show" data-ng-click="go({action:'show'})"></a>
+                    </div>
+
+                </div>
+
+                <div class="section container-fluid">
+                    <ul class="nav nav-tabs">
+                        <li><a href="#Tab1" toggle="on" data-ng-click="go({social:'vk'})" data-ng-class="{active: social === 'vk'}">VK</a></li>
+                        <li><a href="#Tab2" toggle="on" data-ng-click="go({social:'facebook'})" data-ng-class="{active: social === 'facebook'}">Facebook</a></li>
+                        <li><a href="#Tab3" toggle="on" data-ng-click="go({social:'google'})" data-ng-class="{active: social === 'google'}">Google</a></li>
+                    </ul>
+
+                    <input type="search" class="form-control app-search" placeholder="What do you want now ?"
+                           data-i18n="i18n-placeholder">
+                </div>
+
+                <div class="section container-fluid">
+                    <ng-view></ng-view>
+                </div>
+
+
+            </div>
+        </div>
+
+    </section>
 </div>
 {% endblock %}
