@@ -4,7 +4,7 @@ angular
     .module('core')
     .controller('HomeController',
     function ($rootScope, $routeParams, $scope, VK ) {
-        $rootScope.action = $routeParams.action;
+        $rootScope.route = $routeParams;
 
         console.dir($routeParams);
     });

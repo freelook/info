@@ -43,9 +43,9 @@
             <div class="scrollable-content">
                 <div class="section container-fluid">
                     <div class="btn-group justified nav-tabs">
-                        <a class="btn btn-default upper-text" data-ng-class="{active: action === 'look'}"
+                        <a class="btn btn-default upper-text" data-ng-class="{active: route.action === 'look'}"
                            data-i18n="Look" data-ng-click="go({action:'look'})"></a>
-                        <a class="btn btn-default upper-text" data-ng-class="{active: action === 'show'}"
+                        <a class="btn btn-default upper-text" data-ng-class="{active: route.action === 'show'}"
                            data-i18n="Show" data-ng-click="go({action:'show'})"></a>
                     </div>
 
@@ -53,9 +53,9 @@
 
                 <div class="section container-fluid">
                     <ul class="nav nav-tabs">
-                        <li><a href="#Tab1" toggle="on" data-ng-click="go({social:'vk'})" data-ng-class="{active: social === 'vk'}">VK</a></li>
-                        <li><a href="#Tab2" toggle="on" data-ng-click="go({social:'facebook'})" data-ng-class="{active: social === 'facebook'}">Facebook</a></li>
-                        <li><a href="#Tab3" toggle="on" data-ng-click="go({social:'google'})" data-ng-class="{active: social === 'google'}">Google</a></li>
+                        <li data-ng-class="{active: route.social === 'vk'}"><a data-ng-click="go({social:'vk'})">VK</a></li>
+                        <li data-ng-class="{active: route.social === 'facebook'}"><a data-ng-click="go({social:'facebook'})">Facebook</a></li>
+                        <li data-ng-class="{active: route.social === 'google'}"><a  data-ng-click="go({social:'google'})">Google</a></li>
                     </ul>
 
                     <input type="search" class="form-control app-search" placeholder="What do you want now ?"
