@@ -3,7 +3,7 @@
 // Init the application configuration module for AngularJS application
 var ApplicationConfiguration = (function() {
 	// Init module configuration options
-	var applicationModuleName = 'freelook';
+	var applicationModuleName = 'app';
 	var applicationModuleVendorDependencies = [
 		'ngResource',
 		'ngCookies',

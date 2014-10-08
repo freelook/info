@@ -1,6 +1,9 @@
 'use strict';
 
 module.exports = function (grunt) {
+
+    var config = require('./config/config');
+
     // Unified Watch Object
     var watchFiles = {
         serverViews: ['server/views/**/*.*'],
@@ -8,7 +11,9 @@ module.exports = function (grunt) {
         clientViews: ['app/modules/**/views/**/*.html'],
         clientJS: ['app/js/*.js', 'app/modules/**/*.js'],
         clientCSS: ['app/modules/**/*.css'],
-        mochaTests: ['server/tests/**/*.js']
+        mochaTests: ['server/tests/**/*.js'],
+        vendors: config.assets.lib.vendors,
+        jsBuildFiles: config.assets.js
     };
 
     // Project Configuration
@@ -30,6 +35,7 @@ module.exports = function (grunt) {
             },
             clientViews: {
                 files: watchFiles.clientViews,
+                tasks: ['ngtemplates'],
                 options: {
                     livereload: true
                 }
@@ -81,14 +87,15 @@ module.exports = function (grunt) {
                     mangle: false
                 },
                 files: {
-                    'app/dist/application.min.js': 'app/dist/application.js'
+                    'app/generated/application.min.js': 'app/generated/application.js',
+                    'app/generated/vendor.min.js': 'app/generated/vendor.js'
                 }
             }
         },
         cssmin: {
             combine: {
                 files: {
-                    'app/dist/application.min.css': '<%= applicationCSSFiles %>'
+                    'app/dist/freelook.min.css': '<%= applicationCSSFiles %>'
                 }
             }
         },
@@ -116,9 +123,30 @@ module.exports = function (grunt) {
             }
         },
         ngAnnotate: {
-            production: {
+            development: {
                 files: {
-                    'app/dist/application.js': '<%= applicationJavaScriptFiles %>'
+                    'app/generated/application.js': watchFiles.jsBuildFiles,
+                    'app/generated/vendor.js': watchFiles.vendors
+                }
+            }
+        },
+        ngtemplates: {
+            app: {
+                src: watchFiles.clientViews[0],
+                dest: 'app/generated/template.js',
+                options: {
+                    base: './app',
+                    htmlmin: {
+                        collapseWhitespace: true,
+                        removeComments: true
+                    }
+                }
+            }
+        },
+        concat: {
+            js: {
+                files: {
+                    'app/dist/freelook.min.js': ['app/generated/vendor.min.js', 'app/generated/application.min.js']
                 }
             }
         },
@@ -157,9 +185,6 @@ module.exports = function (grunt) {
     // A Task for loading the configuration object
     grunt.task.registerTask('loadConfig', 'Task that loads the config into a grunt option.', function () {
         var init = require('./config/init')();
-        var config = require('./config/config');
-
-        grunt.config.set('applicationJavaScriptFiles', config.assets.js);
         grunt.config.set('applicationCSSFiles', config.assets.css);
     });
 
@@ -173,7 +198,7 @@ module.exports = function (grunt) {
     grunt.registerTask('lint', ['jshint', 'csslint']);
 
     // Build task(s).
-    grunt.registerTask('build', ['lint', 'loadConfig', 'ngAnnotate', 'uglify', 'cssmin']);
+    grunt.registerTask('build', ['lint', 'loadConfig', 'ngtemplates', 'ngAnnotate', 'uglify', 'cssmin', 'concat']);
 
     // Test task.
     grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit']);

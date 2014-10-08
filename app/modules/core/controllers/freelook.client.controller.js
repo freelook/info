@@ -2,7 +2,7 @@
 
 angular
     .module('core')
-    .controller('MainController',
+    .controller('FreeLookController',
     function ($rootScope, $scope, VK, Authentication) {
 
         $rootScope.$on('$routeChangeStart', function () {

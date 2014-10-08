@@ -5,21 +5,22 @@ module.exports = {
     assets: {
         lib: {
             css: [],
-            js: [
+            vendors: [
                 'app/lib/angular/angular.min.js',
                 'app/lib/angular-route/angular-route.min.js',
                 'app/lib/angular-touch/angular-touch.min.js',
                 'app/lib/mobile-angular-ui/dist/js/mobile-angular-ui.min.js',
-
                 'app/lib/angular-resource/angular-resource.min.js',
                 'app/lib/angular-cookies/angular-cookies.min.js',
                 'app/lib/angular-animate/angular-animate.min.js',
-                'app/lib/angular-sanitize/angular-sanitize.min.js',
+                'app/lib/angular-sanitize/angular-sanitize.min.js'
+            ],
+            js: [
                 '//vk.com/js/api/openapi.js?115'
             ]
         },
-        css: 'app/dist/application.min.css',
-        js: 'app/dist/application.min.js'
+        css: ['app/dist/freelook.min.css'],
+        js: ['app/dist/freelook.min.js']
     },
     mailer: {
         from: process.env.MAILER_FROM || 'MAILER_FROM',
@@ -31,7 +32,7 @@ module.exports = {
             }
         }
     },
-    vk : {
+    vk: {
         date: '',
         url: 'freelookinfo.herokuapp.com'
     }
