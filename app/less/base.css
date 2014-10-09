@@ -7859,3 +7859,9 @@ img.img50_50 {
 .center {
   text-align: center;
 }
+.mg-top-10 {
+  margin-top: 10px;
+}
+.rad-50 {
+  border-radius: 50%;
+}
