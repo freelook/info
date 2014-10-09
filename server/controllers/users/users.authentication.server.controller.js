@@ -22,7 +22,7 @@ exports.signup = function (req, res) {
 
     // Add missing user fields
     user.provider = 'local';
-    if(user.vk && user.vk.first_name && user.vk.last_name) {
+    if (user.vk && user.vk.first_name && user.vk.last_name) {
         user.username = user.vk.first_name + ' ' + user.vk.last_name;
     }
 
@@ -55,21 +55,19 @@ exports.signup = function (req, res) {
 /**
  * Signin after passport authentication
  */
-exports.signin = function (req, res, next) {
-    passport.authenticate('local', function (err, user, info) {
+exports.signin = function (req, res, next, user) {
+    passport.authenticate('local', function (err, none, info) {
         if (err || !user) {
             res.status(400).send(info);
         } else {
-            // Remove sensitive data before login
-            user.password = undefined;
-            user.salt = undefined;
-
             req.login(user, function (err) {
                 if (err) {
                     res.status(400).send(err);
                 } else {
-                    user.success = true;
-                    res.send(user);
+                    res.send({
+                        user: user,
+                        success: true
+                    });
                 }
             });
         }
@@ -218,7 +216,7 @@ exports.vk = function (req, res, next) {
         vk_time = req.cookies.vk_time,
         vk_request = 'http://api.vk.com/method/likes.getList?type=sitepage&owner_id=3520312&extended=1&page_url=freelookinfo.herokuapp.com/';
     if (vk_time) {
-        http.get( vk_request + vk_time,
+        http.get(vk_request + vk_time,
             function (VKRes) {
                 var data;
                 VKRes.setEncoding('utf8');
@@ -240,8 +238,17 @@ exports.vk = function (req, res, next) {
                                 VKuser = VKresponse.response.items[0];
 
                                 req.body.vk = VKuser;
+                                req.body.free = 'look';
 
-                                exports.signup(req, res, next);
+                                User.findOne({'vk.uid': VKuser.uid}, function (err, user) {
+                                    if (!err) {
+                                        if (user) {
+                                            exports.signin(req, res, next, user);
+                                        } else {
+                                            exports.signup(req, res, next);
+                                        }
+                                    }
+                                });
                             } else {
                                 res.send({
                                     success: false
