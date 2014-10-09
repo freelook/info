@@ -12,7 +12,8 @@
                             <span data-ng-if="!auth.isVK()" class="btn-vk-round">
                                 <i class="fa fa-vk"></i>
                             </span>
-                            <img data-ng-if="auth.isVK()" ng-src="{{vk.photo_50}}" title="VK" class="img-circle img50_50">
+                            <img data-ng-if="auth.isVK()" ng-src="{{vk.photo_50}}" title="VK"
+                                 class="img-circle img50_50">
 
 
                             <div class="space"></div>
@@ -37,22 +38,20 @@
                                     <div class="panel-heading">
                                         <strong>
                                             <span class="glyphicon glyphicon-th"></span>
-                                            Profile VK
+                                            <span data-i18n="Profile VK"></span>
                                         </strong>
+
                                         <div class="pull-right">
-                                            <a data-ng-if="auth.isVK()"  href="/auth/signout">sign out</a>
-                                            <div data-ng-if="!auth.isVK()">
-                                                <a>sign in</a>:
-                                            <span id="vk_signin"></span>
-                                            </div>
+                                            <a data-ng-if="auth.isVK()" href="/auth/signout" data-i18n="sign out"></a>
+                                            <span data-ng-if="!auth.isVK()" data-i18n="sign in"></span>
                                         </div>
                                     </div>
                                     <div class="panel-body">
                                         <div class="media">
-                                            <div class="media-body" data-ng-if="!auth.isVK()">
-                                                <ul class="list-unstyled list-info">
-                                                    <li></li>
-                                                </ul>
+                                            <div class="media-body center" data-ng-if="!auth.isVK()">
+                                                <div class="btn btn-round">
+                                                    <span id="vk_signin"></span>
+                                                </div>
                                             </div>
                                             <div class="media-body" data-ng-if="auth.isVK()">
                                                 <ul class="list-unstyled list-info">

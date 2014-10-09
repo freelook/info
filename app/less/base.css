@@ -7732,6 +7732,9 @@ form .panel-body {
 .fl-color {
   color: #674e9e;
 }
+.fl-font {
+  background: #674e9e;
+}
 .upper-text {
   text-transform: uppercase;
 }
@@ -7843,4 +7846,19 @@ form .panel-body {
 img.img50_50 {
   width: 50px;
   height: 50px;
+}
+.center {
+  text-align: center;
+}
+.btn-round {
+  border-color: #dddddd;
+  display: inline-block;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  line-height: 100px;
+  text-align: center;
+  vertical-align: middle;
+  color: white;
+  background-color: #ebebeb;
 }
