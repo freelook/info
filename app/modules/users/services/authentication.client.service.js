@@ -11,6 +11,9 @@ angular
             setUser: function(user) {
                 $window.user = user;
                 Authentication.user = user;
+            },
+            isVK: function() {
+                return Authentication.user && Authentication.user.vk;
             }
         };
 

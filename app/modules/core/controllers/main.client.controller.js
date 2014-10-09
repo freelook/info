@@ -2,7 +2,7 @@
 
 angular
     .module('core')
-    .controller('HomeController',
+    .controller('MainController',
     function ($rootScope, $routeParams, $scope, VK ) {
         $rootScope.route = $routeParams;
 

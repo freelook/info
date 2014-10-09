@@ -3,16 +3,17 @@ angular
     .module('core')
     .factory('LocalStorage',
     function ($window) {
-        var LOCALE_KEY = 'locale';
+        var LOCALE_KEY = 'locale',
+            VK_KEY = 'vk';
 
         function _getItem(key, defaultValue) {
             var localStorageValue = JSON.parse($window.localStorage.getItem(key));
 
-            if (defaultValue === undefined) {
+            if (!defaultValue) {
                 defaultValue = null;
             }
 
-            return (localStorageValue !== null) ? localStorageValue : defaultValue;
+            return (localStorageValue) ? localStorageValue : defaultValue;
         }
 
         function _setItem(key, value) {
@@ -32,8 +33,18 @@ angular
             _setItem(LOCALE_KEY, lang);
         }
 
+        function getVK() {
+            return _getItem(VK_KEY);
+        }
+
+        function setVK(vk) {
+            _setItem(VK_KEY, vk);
+        }
+
         return {
             getLocale: getLocale,
-            setLocale: setLocale
+            setLocale: setLocale,
+            getVK: getVK,
+            setVK: setVK
         };
     });

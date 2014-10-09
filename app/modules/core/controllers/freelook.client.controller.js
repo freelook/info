@@ -17,7 +17,7 @@ angular
             $route.updateParams(params);
         };
 
-        $scope.authentication = Authentication;
+        $rootScope.auth = Authentication;
 
         VK.onLiked(
             function () {

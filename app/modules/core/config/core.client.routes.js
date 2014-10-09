@@ -11,12 +11,8 @@ angular
         // Home state routing
         $routeProvider.
             when('/:action', {
-                templateUrl: 'modules/core/views/home.client.view.html',
-                controller: 'HomeController'
-            }).
-            when('/:action/:social', {
-                templateUrl: 'modules/core/views/home.client.view.html',
-                controller: 'HomeController'
+                templateUrl: 'modules/core/views/main.client.view.html',
+                controller: 'MainController'
             });
     }
 );

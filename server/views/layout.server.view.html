@@ -29,13 +29,13 @@
 
 <body class="ng-cloak" ng-controller="FreeLookController">
 <!-- Sidebars -->
-<nav ng-include="'modules/core/views/sidebar-left.client.view.html'" class="sidebar sidebar-left" toggleable parent-active-class="sidebar-left-in" id="left-sidebar"></nav>
+<nav ng-include="'modules/core/views/start.client.view.html'" class="sidebar sidebar-left" toggleable parent-active-class="sidebar-left-in" id="start"></nav>
 
-<nav ng-include="'modules/core/views/sidebar-right.client.view.html'" class="sidebar sidebar-right" toggleable parent-active-class="sidebar-right-in" id="right-sidebar"></nav>
+<nav ng-include="'modules/core/views/info.client.view.html'" class="sidebar sidebar-right" toggleable parent-active-class="sidebar-right-in" id="info"></nav>
 
 	<section class="app"
-             ng-swipe-left="toggle('right-sidebar', 'off');toggle('left-sidebar', 'off');"
-             ng-swipe-right="toggle('right-sidebar', 'off');toggle('left-sidebar', 'off');">
+             ng-swipe-left="toggle('info', 'off');toggle('start', 'off');"
+             ng-swipe-right="toggle('info', 'off');toggle('start', 'off');">
 		{% block content %}{% endblock %}
 	</section>
 

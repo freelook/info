@@ -1,15 +1,19 @@
 <h1 class="app-name upper-text text-center" data-i18n="freelook"></h1>
 
-<div class="scrollable" ng-swipe-left="toggle('left-sidebar', 'off')">
+<div class="scrollable" ng-swipe-left="toggle('start', 'off')" data-ng-controller="StartController">
     <div class="scrollable-content">
-        <div ng-if="!authentication.user">
+        <div>
             <div class="page-signin">
 
                 <div class="signin-body">
                     <div class="form-container">
 
                         <section class="text-center">
-                            <span class="btn-vk-round"><i class="fa fa-vk"></i></span>
+                            <span data-ng-if="!auth.isVK()" class="btn-vk-round">
+                                <i class="fa fa-vk"></i>
+                            </span>
+                            <img data-ng-if="auth.isVK()" ng-src="{{vk.photo_50}}" title="VK" class="img-circle img50_50">
+
 
                             <div class="space"></div>
                             <span class="btn-facebook-round"><i class="fa fa-facebook"></i></span>
@@ -27,8 +31,48 @@
                         <span class="line-thru upper-text" data-i18n="Info"></span>
 
                         <section>
-                            <span id="vk_signin"></span>
+                            <div>
 
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <strong>
+                                            <span class="glyphicon glyphicon-th"></span>
+                                            Profile VK
+                                        </strong>
+                                        <div class="pull-right">
+                                            <a data-ng-if="auth.isVK()"  href="/auth/signout">sign out</a>
+                                            <div data-ng-if="!auth.isVK()">
+                                                <a>sign in</a>:
+                                            <span id="vk_signin"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="media">
+                                            <div class="media-body" data-ng-if="!auth.isVK()">
+                                                <ul class="list-unstyled list-info">
+                                                    <li></li>
+                                                </ul>
+                                            </div>
+                                            <div class="media-body" data-ng-if="auth.isVK()">
+                                                <ul class="list-unstyled list-info">
+                                                    <li>
+                                                        <span class="icon glyphicon glyphicon-user"></span>
+                                                        <label>User name</label>
+                                                        {{vk.first_name + ' ' + vk.last_name}}
+                                                    </li>
+
+                                                    <li>
+                                                        <span class="icon glyphicon glyphicon-globe"></span>
+                                                        <label>UID</label>
+                                                        {{vk.uid}}
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </section>
 
 
@@ -38,7 +82,7 @@
         </div>
 
 
-        <div ng-if="authentication.user" class="panel-group" id="accordion">
+        <div ng-if="false" class="panel-group" id="accordion">
             <div class="panel panel-default">
                 <div class="panel-heading" toggle target="collapseOne">
                     <h4 class="panel-title">

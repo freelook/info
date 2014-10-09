@@ -7789,10 +7789,10 @@ form .panel-body {
 }
 .btn-twitter-round {
   display: inline-block;
-  height: 45px;
-  width: 45px;
+  height: 50px;
+  width: 50px;
   border-radius: 50%;
-  line-height: 45px;
+  line-height: 50px;
   text-align: center;
   vertical-align: middle;
   color: white;
@@ -7807,10 +7807,10 @@ form .panel-body {
 .btn-facebook-round,
 .btn-vk-round {
   display: inline-block;
-  height: 45px;
-  width: 45px;
+  height: 50px;
+  width: 50px;
   border-radius: 50%;
-  line-height: 45px;
+  line-height: 50px;
   text-align: center;
   vertical-align: middle;
   color: white;
@@ -7825,10 +7825,10 @@ form .panel-body {
 }
 .btn-google-plus-round {
   display: inline-block;
-  height: 45px;
-  width: 45px;
+  height: 50px;
+  width: 50px;
   border-radius: 50%;
-  line-height: 45px;
+  line-height: 50px;
   text-align: center;
   vertical-align: middle;
   color: white;
@@ -7839,4 +7839,8 @@ form .panel-body {
   color: white;
   background-color: #ca3522;
   border-color: #b8301f;
+}
+img.img50_50 {
+  width: 50px;
+  height: 50px;
 }
