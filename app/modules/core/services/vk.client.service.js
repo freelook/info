@@ -49,7 +49,7 @@ angular
                     callBack = function (data) {
                         if (data) {
                             LocalStorage.setVK(data);
-                            $rootScope.vk = data;
+                            $rootScope.vk.user = data;
                         }
                     };
                 }
@@ -62,7 +62,7 @@ angular
             }
         };
         VK.user = function () {
-            return LocalStorage.getVK();
+            return LocalStorage.getVK() || VK.getSocialInfo();
         };
 
         VK.search = function (data, callBack) {
