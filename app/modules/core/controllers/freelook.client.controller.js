@@ -5,10 +5,6 @@ angular
     .controller('FreeLookController',
     function ($rootScope, $scope, $route, $location, $routeParams, VK, Google, Authentication) {
 
-        $rootScope.route = {};
-        $rootScope.vk = {};
-        $rootScope.google = {};
-
         $rootScope.$on('$routeChangeStart', function () {
             $rootScope.loading = true;
         });

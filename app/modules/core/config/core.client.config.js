@@ -2,7 +2,13 @@
 angular
     .module('core')
     .run(
-    function (Localize, VK) {
+    function ($rootScope, Localize, VK) {
+
+        // Init data
+        $rootScope.route = {};
+        $rootScope.vk = {};
+        $rootScope.google = {};
+
         Localize.initLocalizedResources();
         VK.init();
     });

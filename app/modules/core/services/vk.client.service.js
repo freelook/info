@@ -14,7 +14,7 @@ angular
                 }
                 $window.VK.Widgets.Post('vk_post', -50609732, 124, 'hWNjwJubCJ69XFWPH_s0GcVXSnI');
                 if (VK.user()) {
-                    $rootScope.vk = VK.user();
+                    $rootScope.vk.user = VK.user();
                 } else {
                     VK.getSocialInfo();
                 }

@@ -11,7 +11,7 @@
                         <section class="text-center">
                             <span data-ng-if="!auth.isVK()" class="btn-vk-round" data-ng-click="go({profile:'vk'})"><i
                                     class="fa fa-vk"></i></span>
-                            <img data-ng-if="auth.isVK()" ng-src="{{vk.photo_50}}" title="VK"
+                            <img data-ng-if="auth.isVK()" ng-src="{{vk.user.photo_50}}" title="VK"
                                  class="img-circle img50_50" data-ng-click="go({profile:'vk'})">
 
                             <div class="space"></div>
@@ -62,13 +62,13 @@
                                                     <li>
                                                         <span class="icon glyphicon glyphicon-user"></span>
                                                         <label>User name</label>
-                                                        {{vk.first_name + ' ' + vk.last_name}}
+                                                        {{vk.user.first_name + ' ' + vk.user.last_name}}
                                                     </li>
 
                                                     <li>
                                                         <span class="icon glyphicon glyphicon-globe"></span>
                                                         <label>UID</label>
-                                                        {{vk.uid}}
+                                                        {{vk.user.uid}}
                                                     </li>
                                                 </ul>
                                             </div>

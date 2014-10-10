@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* FONT PATH
  * -------------------------- */
 @font-face {
@@ -7728,6 +7729,18 @@ form .panel-body {
     -webkit-transform: translate3d(-688px, 0, 0);
     transform: translate3d(-688px, 0, 0);
   }
+}
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak,
+.ng-hide {
+  display: none !important;
+}
+ng\:form {
+  display: block;
 }
 .fl-color {
   color: #674e9e;
