@@ -53,7 +53,7 @@
                                         <div class="media">
                                             <div class="media-body center" data-ng-if="!auth.isVK()">
                                                 <div class="btn btn-signin">
-                                                    <div id="vk_signin" class="auto"></div>
+                                                    <div id="vk_signin" data-ng-show="route.profile === 'vk'" class="auto"></div>
                                                     <div class="auto" data-ng-show="route.profile !== 'vk'" data-i18n="soon"></div>
                                                 </div>
                                             </div>
