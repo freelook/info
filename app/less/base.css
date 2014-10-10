@@ -7848,15 +7848,17 @@ img.img50_50 {
   height: 50px;
 }
 .btn-signin {
-  border-color: #dddddd;
-  background-color: #ebebeb;
-  display: inline-block;
   height: 130px;
   width: 130px;
-  border-radius: 50%;
   line-height: 130px;
+  border-color: #dddddd;
+  background-color: #ebebeb;
   text-align: center;
   vertical-align: middle;
+  border-radius: 50%;
+}
+.auto {
+  margin: auto;
 }
 .center {
   text-align: center;

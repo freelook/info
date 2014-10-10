@@ -1,6 +1,6 @@
 <h1 class="app-name upper-text text-center" data-i18n="freelook"></h1>
 
-<div class="scrollable" ng-swipe-left="toggle('start', 'off')" data-ng-controller="StartController">
+<div class="scrollable" data-ng-controller="StartController">
     <div class="scrollable-content">
         <div>
             <div class="page-signin">
@@ -9,20 +9,26 @@
                     <div class="form-container">
 
                         <section class="text-center">
-                            <span data-ng-if="!auth.isVK()" class="btn-vk-round" data-ng-click="go({profile:'vk'})"><i class="fa fa-vk"></i></span>
-                            <img data-ng-if="auth.isVK()" ng-src="{{vk.photo_50}}" title="VK" class="img-circle img50_50" data-ng-click="go({profile:'vk'})">
+                            <span data-ng-if="!auth.isVK()" class="btn-vk-round" data-ng-click="go({profile:'vk'})"><i
+                                    class="fa fa-vk"></i></span>
+                            <img data-ng-if="auth.isVK()" ng-src="{{vk.photo_50}}" title="VK"
+                                 class="img-circle img50_50" data-ng-click="go({profile:'vk'})">
 
                             <div class="space"></div>
-                            <span class="btn-facebook-round" data-ng-click="go({profile:'facebook'})"><i class="fa fa-facebook"></i></span>
+                            <span class="btn-facebook-round" data-ng-click="go({profile:'facebook'})"><i
+                                    class="fa fa-facebook"></i></span>
 
                             <div class="space"></div>
-                            <span class="btn-twitter-round" data-ng-click="go({profile:'twitter'})"><i class="fa fa-twitter"></i></span>
+                            <span class="btn-twitter-round" data-ng-click="go({profile:'twitter'})"><i
+                                    class="fa fa-twitter"></i></span>
 
                             <div class="space"></div>
-                            <span class="btn-google-plus-round" data-ng-click="go({profile:'google'})"><i class="fa fa-google-plus"></i></span>
+                            <span class="btn-google-plus-round" data-ng-click="go({profile:'google'})"><i
+                                    class="fa fa-google-plus"></i></span>
 
                             <div class="space"></div>
-                            <span class="btn-google-plus-round" data-ng-click="go({profile:'instagram'})"><i class="fa fa-instagram"></i></span>
+                            <span class="btn-google-plus-round" data-ng-click="go({profile:'instagram'})"><i
+                                    class="fa fa-instagram"></i></span>
                         </section>
 
                         <span class="line-thru upper-text" data-i18n="Info"></span>
@@ -44,29 +50,29 @@
                                     </div>
                                     <div class="panel-body">
 
-                                            <div class="media">
-                                                <div class="media-body center" data-ng-if="!auth.isVK()">
-                                                    <div class="btn btn-signin">
-                                                        <div data-ng-show="route.profile === 'vk'" id="vk_signin"></div>
-                                                        <div data-ng-show="route.profile !== 'vk'" data-i18n="soon"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="media-body" data-ng-if="auth.isVK()">
-                                                    <ul class="list-unstyled list-info">
-                                                        <li>
-                                                            <span class="icon glyphicon glyphicon-user"></span>
-                                                            <label>User name</label>
-                                                            {{vk.first_name + ' ' + vk.last_name}}
-                                                        </li>
-
-                                                        <li>
-                                                            <span class="icon glyphicon glyphicon-globe"></span>
-                                                            <label>UID</label>
-                                                            {{vk.uid}}
-                                                        </li>
-                                                    </ul>
+                                        <div class="media">
+                                            <div class="media-body center" data-ng-if="!auth.isVK()">
+                                                <div class="btn btn-signin">
+                                                    <div id="vk_signin" class="auto"></div>
+                                                    <div class="auto" data-ng-show="route.profile !== 'vk'" data-i18n="soon"></div>
                                                 </div>
                                             </div>
+                                            <div class="media-body" data-ng-if="auth.isVK()">
+                                                <ul class="list-unstyled list-info">
+                                                    <li>
+                                                        <span class="icon glyphicon glyphicon-user"></span>
+                                                        <label>User name</label>
+                                                        {{vk.first_name + ' ' + vk.last_name}}
+                                                    </li>
+
+                                                    <li>
+                                                        <span class="icon glyphicon glyphicon-globe"></span>
+                                                        <label>UID</label>
+                                                        {{vk.uid}}
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
 
                                     </div>
                                 </div>
