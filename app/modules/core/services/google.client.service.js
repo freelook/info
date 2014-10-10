@@ -14,7 +14,7 @@ angular
                 });
             }
 
-        }
+        };
 
         return Google;
 
