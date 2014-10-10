@@ -198,7 +198,11 @@ module.exports = function (grunt) {
     grunt.registerTask('lint', ['jshint', 'csslint']);
 
     // Build task(s).
-    grunt.registerTask('build', ['lint', 'loadConfig', 'ngtemplates', 'ngAnnotate', 'uglify', 'cssmin', 'concat']);
+    if(process.env.NODE_ENV === 'development') {
+        grunt.registerTask('build', ['lint', 'loadConfig', 'ngtemplates', 'ngAnnotate', 'uglify', 'cssmin', 'concat']);
+    } else {
+        grunt.registerTask('build', ['lint', 'loadConfig', 'ngtemplates', 'uglify', 'cssmin', 'concat']);
+    }
 
     // Test task.
     grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit']);
