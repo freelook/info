@@ -3,7 +3,11 @@
 angular
     .module('core')
     .controller('FreeLookController',
-    function ($rootScope, $scope, $route, $location, $routeParams, VK, Authentication) {
+    function ($rootScope, $scope, $route, $location, $routeParams, VK, Google, Authentication) {
+
+        $rootScope.route = {};
+        $rootScope.vk = {};
+        $rootScope.google = {};
 
         $rootScope.$on('$routeChangeStart', function () {
             $rootScope.loading = true;
@@ -13,17 +17,28 @@ angular
             $rootScope.loading = false;
         });
 
-        $rootScope.go = function(params) {
+        $rootScope.go = function (params) {
             $route.updateParams(params);
         };
 
         $rootScope.do = function (input) {
             $route.updateParams({input: input});
-            VK.search(input, function(data){
-                $rootScope.vk = {
-                    data: data
-                };
-            });
+            switch ($rootScope.route.social) {
+                case 'vk':
+                    VK.search(input, function (data) {
+                        $rootScope.vk = {
+                            data: data
+                        };
+                    });
+                    break;
+                case 'google':
+                    Google.search(input, function (data) {
+                        $rootScope.google = {
+                            data: data
+                        };
+                    });
+                    break;
+            }
         };
 
         $rootScope.auth = Authentication;

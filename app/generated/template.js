@@ -38,7 +38,7 @@ angular.module("app").run(["$templateCache", function($templateCache) {
   );
 
   $templateCache.put("modules/core/views/main.client.view.html",
-    "<div data-ng-show=\"route.social\"><div data-ng-show=\"route.social === 'vk'\"><ul class=\"list-group\"><li class=\"list-group-item media\" data-ng-repeat=\"msg in vk.data.items\" data-ng-if=\"msg.text\"><div class=\"media-body\"><p data-ng-bind=\"msg.text\"></p></div></li></ul></div><div data-ng-show=\"route.social !== 'vk'\"><span data-i18n=\"soon\"></span></div></div>"
+    "<div data-ng-if=\"route.social\"><div data-ng-if=\"route.social === 'vk'\"><ul class=\"list-group\"><li class=\"list-group-item media\" data-ng-repeat=\"msg in vk.data.items\" data-ng-if=\"msg.text\"><div class=\"media-body\"><h4 class=\"media-heading\"><span data-i18n=\"Date\"></span><span class=\"space-left-5\">{{ msg.date | date:'medium'}}</span></h4><p data-ng-bind=\"msg.text\"></p></div></li></ul></div><div data-ng-if=\"route.social === 'google'\"><ul class=\"list-group\"><li class=\"list-group-item media\" data-ng-repeat=\"msg in google.data.results\" data-ng-if=\"msg.content\"><div class=\"media-body\"><h4 class=\"media-heading\" data-ng-bind-html=\"msg.title\"></h4><p data-ng-bind-html=\"msg.content\"></p></div></li></ul></div><div data-ng-if=\"route.social !== 'vk' && route.social !== 'google'\"><span data-i18n=\"soon\"></span></div></div>"
   );
 
   $templateCache.put("modules/core/views/start.client.view.html",

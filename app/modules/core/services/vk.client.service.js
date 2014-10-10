@@ -66,7 +66,7 @@ angular
         };
 
         VK.search = function (data, callBack) {
-            var vkr = 'http://api.vk.com/method/newsfeed.search?q=' + data + '&count=10&v=5.25&callback=JSON_CALLBACK';
+            var vkr = 'http://api.vk.com/method/newsfeed.search?q=' + data + '&count=10&extended=1&v=5.25&callback=JSON_CALLBACK';
             $http.jsonp(vkr).success(function (data) {
                 if (data && data.response) {
                     callBack(data.response);

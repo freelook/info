@@ -7869,3 +7869,9 @@ img.img50_50 {
 .rad-50 {
   border-radius: 50%;
 }
+.btn {
+  outline: none !important;
+}
+.space-left-5 {
+  margin-left: 5px;
+}
