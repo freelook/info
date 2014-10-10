@@ -6,7 +6,10 @@ angular
     function ($rootScope, $routeParams, $scope, VK ) {
         $rootScope.route = $routeParams;
 
-        console.dir($routeParams);
+        if($routeParams.input) {
+            $rootScope.do($routeParams.input);
+        }
+
     });
 
 

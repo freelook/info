@@ -61,15 +61,15 @@
                                 data-ng-click="go({social:'google'})">Google</a></li>
                     </ul>
                     <div data-ng-controller="InputController">
-                        <form name="freelook" data-ng-submit="do(freelook)">
+                        <form name="freelook" data-ng-submit="submit(freelook)">
                             <div class="form-group">
                                 <div class="col-xs-9 col-sm-11 col-md-11 col-lg-11">
-                            <input ng-model="freelook.input" type="search" name="data"
+                            <input ng-model="route.input" type="search" name="data"
                                    class="form-control app-search" placeholder="What do you want now ?"
                                    data-i18n="i18n-placeholder">
                                     </div>
                                 <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
-                                    <button type="submit" class="btn btn-primary mg-top-10 rad-50" data-ng-disabled="!freelook.input" class="btn btn-primary" data-i18n="GO"></button>
+                                    <button type="submit" class="btn btn-primary mg-top-10 rad-50" data-ng-disabled="!route.input" class="btn btn-primary" data-i18n="GO"></button>
                                 </div>
                             </div>
                         </form>

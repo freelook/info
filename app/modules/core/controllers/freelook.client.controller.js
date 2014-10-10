@@ -13,8 +13,17 @@ angular
             $rootScope.loading = false;
         });
 
-        $scope.go = function(params) {
+        $rootScope.go = function(params) {
             $route.updateParams(params);
+        };
+
+        $rootScope.do = function (input) {
+            $route.updateParams({input: input});
+            VK.search(input, function(data){
+                $rootScope.vk = {
+                    data: data
+                };
+            });
         };
 
         $rootScope.auth = Authentication;

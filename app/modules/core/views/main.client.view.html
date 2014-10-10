@@ -1,1 +1,14 @@
-<div id="vk_post"></div>
+<div data-ng-show="route.social">
+    <div data-ng-show="route.social === 'vk'">
+        <ul class="list-group">
+            <li class="list-group-item media" data-ng-repeat="msg in vk.data.items" data-ng-if="msg.text">
+                <div class="media-body">
+                    <p data-ng-bind="msg.text"></p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div data-ng-show="route.social !== 'vk'">
+        <span data-i18n="soon"></span>
+    </div>
+</div>
