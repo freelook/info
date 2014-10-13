@@ -1,33 +1,39 @@
 'use strict';
 
 // Init the application configuration module for AngularJS application
-var ApplicationConfiguration = (function() {
-	// Init module configuration options
-	var applicationModuleName = 'app';
-	var applicationModuleVendorDependencies = [
-		'ngResource',
-		'ngCookies',
-		'ngAnimate',
-		'ngRoute',
-		'ngTouch',
-		'ngSanitize',
-		'mobile-angular-ui'
-	];
+var ApplicationConfiguration = (function () {
+    // Init module configuration options
+    var applicationModuleName = 'app';
+    var applicationModuleVendorDependencies = [
+        'ngResource',
+        'ngCookies',
+        'ngAnimate',
+        'ngRoute',
+        'ngTouch',
+        'ngSanitize',
+        'mobile-angular-ui',
+        'toaster'
+    ];
 
-	// Add a new vertical module
-	var registerModule = function(moduleName, dependencies) {
-		// Create angular module
-		angular.module(moduleName, dependencies || []);
+    // Add a new vertical module
+    var registerModule = function (moduleName, dependencies) {
+        // Create angular module
+        angular.module(moduleName, dependencies || []);
 
-		// Add the module to the AngularJS configuration file
-		angular.module(applicationModuleName).requires.push(moduleName);
-	};
+        // Add the module to the AngularJS configuration file
+        addModule(moduleName);
+    };
 
-	return {
-		applicationModuleName: applicationModuleName,
-		applicationModuleVendorDependencies: applicationModuleVendorDependencies,
-		registerModule: registerModule
-	};
+    var addModule = function(moduleName){
+        angular.module(applicationModuleName).requires.push(moduleName);
+    };
+
+    return {
+        applicationModuleName: applicationModuleName,
+        applicationModuleVendorDependencies: applicationModuleVendorDependencies,
+        registerModule: registerModule,
+        addModule: addModule
+    };
 })();
 'use strict';
 
@@ -182,6 +188,11 @@ angular
         Localize.initLocalizedResources();
         VK.init();
     }]);
+
+'use strict';
+angular
+    .module('core')
+    .constant('key', 'value');
 
 'use strict';
 
@@ -626,7 +637,8 @@ angular.module('core').service('Menus', [
 angular
     .module('core')
     .factory('VK',
-    ["$window", "$location", "$http", "$rootScope", "Authentication", "LocalStorage", function ($window, $location, $http, $rootScope, Authentication, LocalStorage) {
+    ["$window", "$location", "$http", "$rootScope", "Authentication", "LocalStorage", "toaster", function ($window, $location, $http, $rootScope, Authentication, LocalStorage, toaster) {
+        // TODO use constant!
         var VK = {};
         VK.init = function () {
             if ($window.VK && $window.VK.Widgets) {
@@ -659,12 +671,20 @@ angular
         };
         VK.signIn = function () {
             $http.post('/auth/vk').then(function (response) {
-                if (response.data.success && response.data.user) {
-                    Authentication.setUser(response.data.user);
-                    VK.getSocialInfo();
+                var usr = response.data.user;
+                if (response.data.success) {
+                    if (usr) {
+                        Authentication.setUser(usr);
+                        VK.getSocialInfo();
+                        toaster.pop('success', 'Wellcome', usr.username);
+                    }
                 } else {
-                    console.log('error');
+                    console.log(response);
+                    toaster.pop('error', 'Sorry error', response.data.message || response.statusText || ':(');
                 }
+            }).catch(function(response) {
+                console.log(response);
+                toaster.pop('error', 'Sorry error', response.statusText || ':(');
             });
         };
         VK.getSocialInfo = function (callBack) {

@@ -5,16 +5,6 @@ module.exports = {
     assets: {
         lib: {
             css: [],
-            vendors: [
-                'app/lib/angular/angular.min.js',
-                'app/lib/angular-route/angular-route.min.js',
-                'app/lib/angular-touch/angular-touch.min.js',
-                'app/lib/angular-resource/angular-resource.min.js',
-                'app/lib/angular-cookies/angular-cookies.min.js',
-                'app/lib/angular-animate/angular-animate.min.js',
-                'app/lib/angular-sanitize/angular-sanitize.min.js',
-                'app/lib/mobile-angular-ui/dist/js/mobile-angular-ui.min.js'
-            ],
             js: [
                 '//vk.com/js/api/openapi.js?115'
             ]

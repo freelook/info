@@ -251,16 +251,19 @@ exports.vk = function (req, res, next) {
                                 });
                             } else {
                                 res.send({
+                                    message: errorHandler.getErrorMessage(),
                                     success: false
                                 });
                             }
                         } else {
                             res.send({
+                                message: errorHandler.getErrorMessage(),
                                 success: false
                             });
                         }
                     } catch (err) {
                         res.send({
+                            message: errorHandler.getErrorMessage(err),
                             success: false
                         });
                         console.log(err);
@@ -268,6 +271,7 @@ exports.vk = function (req, res, next) {
                 });
             }).on('error', function (err) {
                 res.send({
+                    message: errorHandler.getErrorMessage(err),
                     success: false
                 });
                 console.log('Got error: ' + err.message);

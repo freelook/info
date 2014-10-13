@@ -2,7 +2,8 @@
 angular
     .module('core')
     .factory('VK',
-    function ($window, $location, $http, $rootScope, Authentication, LocalStorage) {
+    function ($window, $location, $http, $rootScope, Authentication, LocalStorage, toaster) {
+        // TODO use constant!
         var VK = {};
         VK.init = function () {
             if ($window.VK && $window.VK.Widgets) {
@@ -35,12 +36,20 @@ angular
         };
         VK.signIn = function () {
             $http.post('/auth/vk').then(function (response) {
-                if (response.data.success && response.data.user) {
-                    Authentication.setUser(response.data.user);
-                    VK.getSocialInfo();
+                var usr = response.data.user;
+                if (response.data.success) {
+                    if (usr) {
+                        Authentication.setUser(usr);
+                        VK.getSocialInfo();
+                        toaster.pop('success', 'Wellcome', usr.username);
+                    }
                 } else {
-                    console.log('error');
+                    console.log(response);
+                    toaster.pop('error', 'Sorry error', response.data.message || response.statusText || ':(');
                 }
+            }).catch(function(response) {
+                console.log(response);
+                toaster.pop('error', 'Sorry error', response.statusText || ':(');
             });
         };
         VK.getSocialInfo = function (callBack) {

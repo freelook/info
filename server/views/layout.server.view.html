@@ -39,6 +39,8 @@
 		{% block content %}{% endblock %}
 	</section>
 
+<div toaster-container toaster-options="{'position-class': 'toast-bottom-full-width'}"></div>
+
 	<!--Embedding The User Object-->
 	<script type="text/javascript">
 		var user = {{ user | json | safe }};

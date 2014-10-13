@@ -21,7 +21,8 @@ module.exports = {
                 'app/lib/angular-cookies/angular-cookies.min.js',
                 'app/lib/angular-animate/angular-animate.min.js',
                 'app/lib/angular-sanitize/angular-sanitize.min.js',
-                'app/lib/mobile-angular-ui/dist/js/mobile-angular-ui.min.js'
+                'app/lib/mobile-angular-ui/dist/js/mobile-angular-ui.min.js',
+                'app/lib/angularjs-toaster/toaster.js'
             ],
             js: [
                 'app/lib/angular/angular.js',
@@ -32,11 +33,13 @@ module.exports = {
                 'app/lib/angular-animate/angular-animate.js',
                 'app/lib/angular-sanitize/angular-sanitize.js',
                 'app/lib/mobile-angular-ui/dist/js/mobile-angular-ui.js',
+                'app/lib/angularjs-toaster/toaster.js',
                 '//vk.com/js/api/openapi.js?115'
             ]
         },
         css: [
             'app/modules/**/css/*.css',
+            'app/lib/angularjs-toaster/toaster.css',
             'app/less/base.css'
         ],
         js: [

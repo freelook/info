@@ -23,6 +23,12 @@
     <div class="btn btn-navbar pull-left" toggle="on" target="overlay">
         <i class="fa fa-2x fa-question-circle fl-color"></i>
     </div>
+    <div class="btn btn-navbar pull-right">
+        <select data-ng-controller="LangController" data-ng-model="lang" data-ng-change="setLang()">
+            <option ng-selected="lang === 'ru'">ru</option>
+            <option ng-selected="lang === 'en'">en</option>
+        </select>
+    </div>
     <div overlay="overlay">
         <h4 class="overlay-title">Help</h4>
         <p>
@@ -31,12 +37,6 @@
         <p toggle="off" bubble target="overlay">
             <span class="btn btn-primary">Ok</span>
         </p>
-    </div>
-    <div class="btn btn-navbar pull-right">
-        <select data-ng-controller="LangController" data-ng-model="lang" data-ng-change="setLang()">
-            <option ng-selected="lang === 'ru'">ru</option>
-            <option ng-selected="lang === 'en'">en</option>
-        </select>
     </div>
 </div>
 

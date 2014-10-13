@@ -344,3 +344,188 @@ if(!e)return e;for(var n,h=e,k=[],m,p;n=h.match(d);)m=n[0],n[2]==n[3]&&(m="mailt
 //# sourceMappingURL=angular-sanitize.min.js.map
 
 function FastClick(a,b){"use strict";function c(a,b){return function(){return a.apply(b,arguments)}}var d;if(b=b||{},this.trackingClick=!1,this.trackingClickStart=0,this.targetElement=null,this.touchStartX=0,this.touchStartY=0,this.lastTouchIdentifier=0,this.touchBoundary=b.touchBoundary||10,this.layer=a,this.tapDelay=b.tapDelay||200,!FastClick.notNeeded(a)){for(var e=["onMouse","onClick","onTouchStart","onTouchMove","onTouchEnd","onTouchCancel"],f=this,g=0,h=e.length;h>g;g++)f[e[g]]=c(f[e[g]],f);deviceIsAndroid&&(a.addEventListener("mouseover",this.onMouse,!0),a.addEventListener("mousedown",this.onMouse,!0),a.addEventListener("mouseup",this.onMouse,!0)),a.addEventListener("click",this.onClick,!0),a.addEventListener("touchstart",this.onTouchStart,!1),a.addEventListener("touchmove",this.onTouchMove,!1),a.addEventListener("touchend",this.onTouchEnd,!1),a.addEventListener("touchcancel",this.onTouchCancel,!1),Event.prototype.stopImmediatePropagation||(a.removeEventListener=function(b,c,d){var e=Node.prototype.removeEventListener;"click"===b?e.call(a,b,c.hijacked||c,d):e.call(a,b,c,d)},a.addEventListener=function(b,c,d){var e=Node.prototype.addEventListener;"click"===b?e.call(a,b,c.hijacked||(c.hijacked=function(a){a.propagationStopped||c(a)}),d):e.call(a,b,c,d)}),"function"==typeof a.onclick&&(d=a.onclick,a.addEventListener("click",function(a){d(a)},!1),a.onclick=null)}}!function(a){var b=a.document,c=b.documentElement,d="overthrow-enabled",e="ontouchmove"in b,f="WebkitOverflowScrolling"in c.style||"msOverflowStyle"in c.style||!e&&a.screen.width>800||function(){var b=a.navigator.userAgent,c=b.match(/AppleWebKit\/([0-9]+)/),d=c&&c[1],e=c&&d>=534;return b.match(/Android ([0-9]+)/)&&RegExp.$1>=3&&e||b.match(/ Version\/([0-9]+)/)&&RegExp.$1>=0&&a.blackberry&&e||b.indexOf("PlayBook")>-1&&e&&-1===!b.indexOf("Android 2")||b.match(/Firefox\/([0-9]+)/)&&RegExp.$1>=4||b.match(/wOSBrowser\/([0-9]+)/)&&RegExp.$1>=233&&e||b.match(/NokiaBrowser\/([0-9\.]+)/)&&7.3===parseFloat(RegExp.$1)&&c&&d>=533}();a.overthrow={},a.overthrow.enabledClassName=d,a.overthrow.addClass=function(){-1===c.className.indexOf(a.overthrow.enabledClassName)&&(c.className+=" "+a.overthrow.enabledClassName)},a.overthrow.removeClass=function(){c.className=c.className.replace(a.overthrow.enabledClassName,"")},a.overthrow.set=function(){f&&a.overthrow.addClass()},a.overthrow.canBeFilledWithPoly=e,a.overthrow.forget=function(){a.overthrow.removeClass()},a.overthrow.support=f?"native":"none"}(this),function(a){a.overthrow.set()}(this),function(a,b,c){if(b!==c){b.scrollIndicatorClassName="overthrow";var d=a.document,e=d.documentElement,f="native"===b.support,g=b.canBeFilledWithPoly,h=(b.configure,b.set),i=b.forget,j=b.scrollIndicatorClassName;b.closest=function(a,c){return!c&&a.className&&a.className.indexOf(j)>-1&&a||b.closest(a.parentNode)};var k=!1;b.set=function(){if(h(),!k&&!f&&g){a.overthrow.addClass(),k=!0,b.support="polyfilled",b.forget=function(){i(),k=!1,d.removeEventListener&&d.removeEventListener("touchstart",u,!1)};var j,l,m,n,o=[],p=[],q=function(){o=[],l=null},r=function(){p=[],m=null},s=function(a){n=j.querySelectorAll("textarea, input");for(var b=0,c=n.length;c>b;b++)n[b].style.pointerEvents=a},t=function(a,b){if(d.createEvent){var e,f=(!b||b===c)&&j.parentNode||j.touchchild||j;f!==j&&(e=d.createEvent("HTMLEvents"),e.initEvent("touchend",!0,!0),j.dispatchEvent(e),f.touchchild=j,j=f,f.dispatchEvent(a))}},u=function(a){if(b.intercept&&b.intercept(),q(),r(),j=b.closest(a.target),j&&j!==e&&!(a.touches.length>1)){s("none");var c=a,d=j.scrollTop,f=j.scrollLeft,g=j.offsetHeight,h=j.offsetWidth,i=a.touches[0].pageY,k=a.touches[0].pageX,n=j.scrollHeight,u=j.scrollWidth,v=function(a){var b=d+i-a.touches[0].pageY,e=f+k-a.touches[0].pageX,s=b>=(o.length?o[0]:0),v=e>=(p.length?p[0]:0);b>0&&n-g>b||e>0&&u-h>e?a.preventDefault():t(c),l&&s!==l&&q(),m&&v!==m&&r(),l=s,m=v,j.scrollTop=b,j.scrollLeft=e,o.unshift(b),p.unshift(e),o.length>3&&o.pop(),p.length>3&&p.pop()},w=function(){s("auto"),setTimeout(function(){s("none")},450),j.removeEventListener("touchmove",v,!1),j.removeEventListener("touchend",w,!1)};j.addEventListener("touchmove",v,!1),j.addEventListener("touchend",w,!1)}};d.addEventListener("touchstart",u,!1)}}}}(this,this.overthrow);var deviceIsAndroid=navigator.userAgent.indexOf("Android")>0,deviceIsIOS=/iP(ad|hone|od)/.test(navigator.userAgent),deviceIsIOS4=deviceIsIOS&&/OS 4_\d(_\d)?/.test(navigator.userAgent),deviceIsIOSWithBadTarget=deviceIsIOS&&/OS ([6-9]|\d{2})_\d/.test(navigator.userAgent),deviceIsBlackBerry10=navigator.userAgent.indexOf("BB10")>0;FastClick.prototype.needsClick=function(a){"use strict";switch(a.nodeName.toLowerCase()){case"button":case"select":case"textarea":if(a.disabled)return!0;break;case"input":if(deviceIsIOS&&"file"===a.type||a.disabled)return!0;break;case"label":case"video":return!0}return/\bneedsclick\b/.test(a.className)},FastClick.prototype.needsFocus=function(a){"use strict";switch(a.nodeName.toLowerCase()){case"textarea":return!0;case"select":return!deviceIsAndroid;case"input":switch(a.type){case"button":case"checkbox":case"file":case"image":case"radio":case"submit":return!1}return!a.disabled&&!a.readOnly;default:return/\bneedsfocus\b/.test(a.className)}},FastClick.prototype.sendClick=function(a,b){"use strict";var c,d;document.activeElement&&document.activeElement!==a&&document.activeElement.blur(),d=b.changedTouches[0],c=document.createEvent("MouseEvents"),c.initMouseEvent(this.determineEventType(a),!0,!0,window,1,d.screenX,d.screenY,d.clientX,d.clientY,!1,!1,!1,!1,0,null),c.forwardedTouchEvent=!0,a.dispatchEvent(c)},FastClick.prototype.determineEventType=function(a){"use strict";return deviceIsAndroid&&"select"===a.tagName.toLowerCase()?"mousedown":"click"},FastClick.prototype.focus=function(a){"use strict";var b;deviceIsIOS&&a.setSelectionRange&&0!==a.type.indexOf("date")&&"time"!==a.type?(b=a.value.length,a.setSelectionRange(b,b)):a.focus()},FastClick.prototype.updateScrollParent=function(a){"use strict";var b,c;if(b=a.fastClickScrollParent,!b||!b.contains(a)){c=a;do{if(c.scrollHeight>c.offsetHeight){b=c,a.fastClickScrollParent=c;break}c=c.parentElement}while(c)}b&&(b.fastClickLastScrollTop=b.scrollTop)},FastClick.prototype.getTargetElementFromEventTarget=function(a){"use strict";return a.nodeType===Node.TEXT_NODE?a.parentNode:a},FastClick.prototype.onTouchStart=function(a){"use strict";var b,c,d;if(a.targetTouches.length>1)return!0;if(b=this.getTargetElementFromEventTarget(a.target),c=a.targetTouches[0],deviceIsIOS){if(d=window.getSelection(),d.rangeCount&&!d.isCollapsed)return!0;if(!deviceIsIOS4){if(c.identifier&&c.identifier===this.lastTouchIdentifier)return a.preventDefault(),!1;this.lastTouchIdentifier=c.identifier,this.updateScrollParent(b)}}return this.trackingClick=!0,this.trackingClickStart=a.timeStamp,this.targetElement=b,this.touchStartX=c.pageX,this.touchStartY=c.pageY,a.timeStamp-this.lastClickTime<this.tapDelay&&a.preventDefault(),!0},FastClick.prototype.touchHasMoved=function(a){"use strict";var b=a.changedTouches[0],c=this.touchBoundary;return Math.abs(b.pageX-this.touchStartX)>c||Math.abs(b.pageY-this.touchStartY)>c?!0:!1},FastClick.prototype.onTouchMove=function(a){"use strict";return this.trackingClick?((this.targetElement!==this.getTargetElementFromEventTarget(a.target)||this.touchHasMoved(a))&&(this.trackingClick=!1,this.targetElement=null),!0):!0},FastClick.prototype.findControl=function(a){"use strict";return void 0!==a.control?a.control:a.htmlFor?document.getElementById(a.htmlFor):a.querySelector("button, input:not([type=hidden]), keygen, meter, output, progress, select, textarea")},FastClick.prototype.onTouchEnd=function(a){"use strict";var b,c,d,e,f,g=this.targetElement;if(!this.trackingClick)return!0;if(a.timeStamp-this.lastClickTime<this.tapDelay)return this.cancelNextClick=!0,!0;if(this.cancelNextClick=!1,this.lastClickTime=a.timeStamp,c=this.trackingClickStart,this.trackingClick=!1,this.trackingClickStart=0,deviceIsIOSWithBadTarget&&(f=a.changedTouches[0],g=document.elementFromPoint(f.pageX-window.pageXOffset,f.pageY-window.pageYOffset)||g,g.fastClickScrollParent=this.targetElement.fastClickScrollParent),d=g.tagName.toLowerCase(),"label"===d){if(b=this.findControl(g)){if(this.focus(g),deviceIsAndroid)return!1;g=b}}else if(this.needsFocus(g))return a.timeStamp-c>100||deviceIsIOS&&window.top!==window&&"input"===d?(this.targetElement=null,!1):(this.focus(g),this.sendClick(g,a),deviceIsIOS&&"select"===d||(this.targetElement=null,a.preventDefault()),!1);return deviceIsIOS&&!deviceIsIOS4&&(e=g.fastClickScrollParent,e&&e.fastClickLastScrollTop!==e.scrollTop)?!0:(this.needsClick(g)||(a.preventDefault(),this.sendClick(g,a)),!1)},FastClick.prototype.onTouchCancel=function(){"use strict";this.trackingClick=!1,this.targetElement=null},FastClick.prototype.onMouse=function(a){"use strict";return this.targetElement?a.forwardedTouchEvent?!0:a.cancelable&&(!this.needsClick(this.targetElement)||this.cancelNextClick)?(a.stopImmediatePropagation?a.stopImmediatePropagation():a.propagationStopped=!0,a.stopPropagation(),a.preventDefault(),!1):!0:!0},FastClick.prototype.onClick=function(a){"use strict";var b;return this.trackingClick?(this.targetElement=null,this.trackingClick=!1,!0):"submit"===a.target.type&&0===a.detail?!0:(b=this.onMouse(a),b||(this.targetElement=null),b)},FastClick.prototype.destroy=function(){"use strict";var a=this.layer;deviceIsAndroid&&(a.removeEventListener("mouseover",this.onMouse,!0),a.removeEventListener("mousedown",this.onMouse,!0),a.removeEventListener("mouseup",this.onMouse,!0)),a.removeEventListener("click",this.onClick,!0),a.removeEventListener("touchstart",this.onTouchStart,!1),a.removeEventListener("touchmove",this.onTouchMove,!1),a.removeEventListener("touchend",this.onTouchEnd,!1),a.removeEventListener("touchcancel",this.onTouchCancel,!1)},FastClick.notNeeded=function(a){"use strict";var b,c,d;if("undefined"==typeof window.ontouchstart)return!0;if(c=+(/Chrome\/([0-9]+)/.exec(navigator.userAgent)||[,0])[1]){if(!deviceIsAndroid)return!0;if(b=document.querySelector("meta[name=viewport]")){if(-1!==b.content.indexOf("user-scalable=no"))return!0;if(c>31&&document.documentElement.scrollWidth<=window.outerWidth)return!0}}if(deviceIsBlackBerry10&&(d=navigator.userAgent.match(/Version\/([0-9]*)\.([0-9]*)/),d[1]>=10&&d[2]>=3&&(b=document.querySelector("meta[name=viewport]")))){if(-1!==b.content.indexOf("user-scalable=no"))return!0;if(document.documentElement.scrollWidth<=window.outerWidth)return!0}return"none"===a.style.msTouchAction?!0:!1},FastClick.attach=function(a,b){"use strict";return new FastClick(a,b)},"function"==typeof define&&"object"==typeof define.amd&&define.amd?define(function(){"use strict";return FastClick}):"undefined"!=typeof module&&module.exports?(module.exports=FastClick.attach,module.exports.FastClick=FastClick):window.FastClick=FastClick,angular.module("mobile-angular-ui.active-links",[]).run(["$rootScope",function(a){return angular.forEach(["$locationChangeSuccess","$includeContentLoaded"],function(b){return a.$on(b,function(){var a;return a=window.location.href,angular.forEach(document.links,function(b){var c;return c=angular.element(b),b.href===a?c.addClass("active"):c.removeClass("active"),c=null}),a=null})})}]),angular.module("mobile-angular-ui.directives.capture",[]).run(["CaptureService","$rootScope",function(a,b){b.$on("$routeChangeStart",function(){a.resetAll()})}]).factory("CaptureService",["$compile",function(a){var b={};return{resetAll:function(){for(name in b)this.resetYielder(name)},resetYielder:function(a){var c=b[a];this.setContentFor(a,c.defaultContent,c.defaultScope)},putYielder:function(a,c,d,e){var f={};f.name=a,f.element=c,f.defaultContent=e||"",f.defaultScope=d,b[a]=f},getYielder:function(a){return b[a]},removeYielder:function(a){delete b[a]},setContentFor:function(c,d,e){var f=b[c];f&&(f.element.html(d),a(f.element.contents())(e))}}}]).directive("contentFor",["CaptureService",function(a){return{compile:function(b,c){var d=b.html();return null==c.duplicate&&b.html(""),function(b,c,e){a.setContentFor(e.contentFor,d,b),null==e.duplicate&&c.remove()}}}}]).directive("yieldTo",["$compile","CaptureService",function(a,b){return{link:function(a,c,d){b.putYielder(d.yieldTo,c,a,c.html()),c.contents().remove(),a.$on("$destroy",function(){b.removeYielder(d.yieldTo)})}}}]),angular.module("mobile-angular-ui.directives.carousel",[]).run(["$rootScope",function(a){a.carouselPrev=function(b){a.$emit("mobile-angular-ui.carousel.prev",b)},a.carouselNext=function(b){a.$emit("mobile-angular-ui.carousel.next",b)};var b=function(a){var b=angular.element(document.getElementById(a)),c=angular.element(b.children()[0]).children();return b=null,c},c=function(a){for(var b=-1,c=!1,d=0;d<a.length;d++)if(item=a[d],b+=1,angular.element(item).hasClass("active")){c=!0;break}return c?b:-1};a.$on("mobile-angular-ui.carousel.prev",function(a,d){var e=b(d),f=c(e),g=e.length-1;-1!==f&&angular.element(e[f]).removeClass("active"),0>=f?angular.element(e[g]).addClass("active"):angular.element(e[f-1]).addClass("active"),e=null,f=null,g=null}),a.$on("mobile-angular-ui.carousel.next",function(a,d){var e=b(d),f=c(e),g=e.length-1;-1!==f&&angular.element(e[f]).removeClass("active"),f===g?angular.element(e[0]).addClass("active"):angular.element(e[f+1]).addClass("active"),e=null,f=null,g=null})}]),angular.module("mobile-angular-ui.fastclick",[]).run(["$window","$document",function(a,b){a.addEventListener("load",function(){FastClick.attach(b[0].body)},!1)}]).directive("select",function(){return{replace:!1,restrict:"E",link:function(a,b){b.addClass("needsclick")}}}).directive("input",function(){return{replace:!1,restrict:"E",link:function(a,b){b.addClass("needsclick")}}}).directive("textarea",function(){return{replace:!1,restrict:"E",link:function(a,b){b.addClass("needsclick")}}}),angular.module("mobile-angular-ui.directives.forms",[]).directive("bsFormControl",function(){function a(a){for(var c="",d="",e=0;e<a.length;e++){var f=a[e];f in b?c+=f+" ":d+=f+" "}return{i:c.trim(),d:d.trim()}}for(var b={},c=["xs","sm","md","lg"],d=0;d<c.length;d++)for(var e=1;12>=e;e++)b["col-"+c[d]+"-"+e]=!0;return{replace:!0,require:"ngModel",link:function(b,c,d){null==d.labelClass&&(d.labelClass=""),null==d.id&&(d.id=d.ngModel.replace(".","_")+"_input"),("SELECT"==c[0].tagName||("INPUT"==c[0].tagName||"TEXTAREA"==c[0].tagName)&&"checkbox"!=d.type&&"radio"!=d.type)&&c.addClass("form-control");var e=angular.element('<label for="'+d.id+'" class="control-label">'+d.label+"</label>"),f=angular.element('<div class="form-group row"></div>'),g=angular.element('<div class="form-control-wrapper"></div>'),h=a(d.labelClass.split(/\s+/));""==h.i&&e.addClass("col-xs-12"),e.addClass(d.labelClass);var i=a(c[0].className.split(/\s+/));c.removeClass(i.i),g.addClass(i.i),""==i.i&&g.addClass("col-xs-12"),c.wrap(f).wrap(g),c.parent().parent().prepend(e),c.attr("id",d.id),e=f=g=h=i=null}}}).directive("switch",function(){return{restrict:"EA",replace:!0,scope:{model:"=ngModel",changeExpr:"@ngChange",disabled:"@"},template:"<div class='switch' ng-class='{active: model}'><div class='switch-handle'></div></div>",link:function(a,b,c){b.on("click tap",function(){null==c.disabled&&(a.model=!a.model,a.$apply(),null!=a.changeExpr&&a.$parent.$eval(a.changeExpr))}),b.addClass("switch-transition-enabled")}}}),angular.module("mobile-angular-ui.directives.navbars",[]).directive("navbarAbsoluteTop",function(){return{replace:!1,restrict:"C",link:function(a,b){b.parent().addClass("has-navbar-top")}}}).directive("navbarAbsoluteBottom",function(){return{replace:!1,restrict:"C",link:function(a,b){b.parent().addClass("has-navbar-bottom")}}}),angular.module("mobile-angular-ui.directives.overlay",[]).directive("overlay",["$compile",function(a){return{compile:function(b){var c=b.html();return function(b,d,e){var f="",g=c,h=e.overlay;if(null!=e["default"])var f="default='"+e["default"]+"'";var i='<div class="overlay" id="'+h+'" toggleable '+f+' parent-active-class="overlay-in" active-class="overlay-show">\n  <div class="overlay-inner">\n    <div class="overlay-background"></div>\n    <a href="#'+h+'" toggle="off" class="overlay-dismiss">\n      <i class="fa fa-times-circle-o"></i>\n    </a>\n    <div class="overlay-content">\n      <div class="overlay-body">\n        '+g+"\n      </div>\n    </div>\n  </div>\n</div>";d.remove();var j=angular.element(document.getElementById(h));j.length>0&&j.hasClass("overlay")&&j.remove(),g=angular.element(document.body),g.prepend(a(i)(b)),"active"===e["default"]&&g.addClass("overlay-in")}}}}]),angular.module("mobile-angular-ui.directives.panels",[]).directive("bsPanel",function(){return{restrict:"EA",replace:!0,scope:!1,transclude:!0,link:function(a,b){b.removeAttr("title")},template:function(a,b){var c="";return b.title&&(c='<div class="panel-heading">\n  <h2 class="panel-title">\n    '+b.title+"\n  </h2>\n</div>"),'<div class="panel">\n  '+c+'\n  <div class="panel-body">\n     <div ng-transclude></div>\n  </div>\n</div>'}}}),angular.module("mobile-angular-ui.pointer-events",[]).run(["$document",function(a){return angular.element(a).on("click tap",function(a){var b;return b=angular.element(a.target),b.hasClass("disabled")?(a.preventDefault(),a.stopPropagation(),b=null,!1):(b=null,!0)})}]),angular.module("mobile-angular-ui.scrollable",[]).directive("scrollableContent",[function(){return{replace:!1,restrict:"C",link:function(a,b){return"native"!==overthrow.support?(b.addClass("overthrow"),overthrow.forget(),overthrow.set()):void 0}}}]),angular.module("mobile-angular-ui.directives.sidebars",[]).directive("sidebar",["$document","$rootScope",function(a,b){return{replace:!1,restrict:"C",link:function(c,d,e){var f=!0;("false"==e.closeOnOuterClicks||"0"==e.closeOnOuterClicks)&&(f=!1),d.hasClass("sidebar-left")&&d.parent().addClass("has-sidebar-left"),d.hasClass("sidebar-right")&&d.parent().addClass("has-sidebar-right");var g=function(a,b){for(var c=a;c.length>0;){if(c[0]===b[0])return c=null,!0;c=c.parent()}return c=null,!1},h=function(a){return g(angular.element(a.target),d)?void 0:(b.toggle(e.id,"off"),a.preventDefault(),!1)},i=angular.noop();f&&(i=b.$on("mobile-angular-ui.toggle.toggled",function(b,c,d){c==e.id&&(d?setTimeout(function(){a.on("click tap",h)},300):a.unbind("click tap",h))})),c.$on("$destroy",function(){i(),a.unbind("click tap",h)})}}}]),angular.module("mobile-angular-ui.directives.toggle",[]).factory("ToggleHelper",["$rootScope",function(a){return{events:{toggle:"mobile-angular-ui.toggle.toggle",toggleByClass:"mobile-angular-ui.toggle.toggleByClass",togglerLinked:"mobile-angular-ui.toggle.linked",toggleableToggled:"mobile-angular-ui.toggle.toggled"},commands:{alternate:"toggle",activate:"on",deactivate:"off"},toggle:function(b,c){null==c&&(c="toggle"),a.$emit(this.events.toggle,b,c)},toggleByClass:function(b,c){null==c&&(c="toggle"),a.$emit(this.events.toggleByClass,b,c)},notifyToggleState:function(b,c,d){a.$emit(this.events.toggleableToggled,c.id,d,c.exclusionGroup)},toggleStateChanged:function(a,b,c){this.updateElemClasses(a,b,c),this.notifyToggleState(a,b,c)},applyCommand:function(a,b){switch(a){case this.commands.activate:return!0;case this.commands.deactivate:return!1;case this.commands.alternate:return!b}},updateElemClasses:function(a,b,c){if(c){b.activeClass&&a.addClass(b.activeClass),b.inactiveClass&&a.removeClass(b.inactiveClass);var d=a.parent();b.parentActiveClass&&d.addClass(b.parentActiveClass),b.parentInactiveClass&&d.removeClass(b.parentInactiveClass)}else{b.inactiveClass&&a.addClass(b.inactiveClass),b.activeClass&&a.removeClass(b.activeClass);var d=a.parent();b.parentInactiveClass&&d.addClass(b.parentInactiveClass),b.parentActiveClass&&d.removeClass(b.parentActiveClass)}}}}]).run(["$rootScope","ToggleHelper",function(a,b){a.toggle=function(a,c){null==c&&(c="toggle"),b.toggle(a,c)},a.toggleByClass=function(a,c){null==c&&(c="toggle"),b.toggleByClass(a,c)}}]).directive("toggle",["$rootScope","ToggleHelper",function(a,b){return{restrict:"A",link:function(c,d,e){var f=e.toggle||b.commands.alternate,g=e.target,h=e.targetClass,i="true"===e.bubble||"1"===e.bubble||1===e.bubble||""===e.bubble||"bubble"===e.bubble;if(!g&&e.href&&(g=e.href.slice(1)),!g&&!h)throw"'target' or 'target-class' attribute required with 'toggle'";d.on("click tap",function(a){var c=angular.element(a.target);return c.hasClass("disabled")?void 0:(null!=g&&b.toggle(g,f),null!=h&&b.toggleByClass(h,f),i?!0:(a.preventDefault(),!1))});var j=a.$on(b.events.toggleableToggled,function(a,c,f){c===g&&b.updateElemClasses(d,e,f)});null!=g&&a.$emit(b.events.togglerLinked,g),c.$on("$destroy",j)}}}]).directive("toggleable",["$rootScope","ToggleHelper",function(a,b){return{restrict:"A",link:function(c,d,e){var f=!1;if(e["default"]){switch(e["default"]){case"active":f=!0;break;case"inactive":f=!1}b.toggleStateChanged(d,e,f)}var g=a.$on(b.events.toggle,function(a,c,g){var h;c===e.id&&(h=f,f=b.applyCommand(g,h),h!==f&&b.toggleStateChanged(d,e,f))}),h=a.$on(b.events.toggleByClass,function(a,c,g){var h;d.hasClass(c)&&(h=f,f=b.applyCommand(g,h),h!==f&&b.toggleStateChanged(d,e,f))}),i=a.$on(b.events.toggleableToggled,function(a,c,g,h){g&&e.id!==c&&e.exclusionGroup===h&&null!=e.exclusionGroup&&(f=!1,b.toggleStateChanged(d,e,f))}),j=a.$on(b.events.togglerLinked,function(a,c){e.id===c&&b.notifyToggleState(d,e,f)});c.$on("$destroy",function(){g(),h(),i(),j()})}}}]),angular.module("mobile-angular-ui",["mobile-angular-ui.pointer-events","mobile-angular-ui.active-links","mobile-angular-ui.fastclick","mobile-angular-ui.scrollable","mobile-angular-ui.directives.toggle","mobile-angular-ui.directives.overlay","mobile-angular-ui.directives.forms","mobile-angular-ui.directives.panels","mobile-angular-ui.directives.capture","mobile-angular-ui.directives.sidebars","mobile-angular-ui.directives.navbars","mobile-angular-ui.directives.carousel"]);
+'use strict';
+
+/*
+ * AngularJS Toaster
+ * Version: 0.4.8
+ *
+ * Copyright 2013 Jiri Kavulak.  
+ * All Rights Reserved.  
+ * Use, reproduction, distribution, and modification of this code is subject to the terms and 
+ * conditions of the MIT license, available at http://www.opensource.org/licenses/mit-license.php
+ *
+ * Author: Jiri Kavulak
+ * Related to project of John Papa and Hans Fjällemark
+ */
+
+angular.module('toaster', ['ngAnimate'])
+.service('toaster', ['$rootScope', function ($rootScope) {
+    this.pop = function (type, title, body, timeout, bodyOutputType, clickHandler) {
+        this.toast = {
+            type: type,
+            title: title,
+            body: body,
+            timeout: timeout,
+            bodyOutputType: bodyOutputType,
+            clickHandler: clickHandler
+        };
+        $rootScope.$broadcast('toaster-newToast');
+    };
+
+    this.clear = function () {
+        $rootScope.$broadcast('toaster-clearToasts');
+    };
+}])
+.constant('toasterConfig', {
+    'limit': 0,                   // limits max number of toasts 
+    'tap-to-dismiss': true,
+    'close-button': false,
+    'newest-on-top': true,
+    //'fade-in': 1000,            // done in css
+    //'on-fade-in': undefined,    // not implemented
+    //'fade-out': 1000,           // done in css
+    // 'on-fade-out': undefined,  // not implemented
+    //'extended-time-out': 1000,    // not implemented
+    'time-out': 5000, // Set timeOut and extendedTimeout to 0 to make it sticky
+    'icon-classes': {
+        error: 'toast-error',
+        info: 'toast-info',
+        wait: 'toast-wait',
+        success: 'toast-success',
+        warning: 'toast-warning'
+    },
+    'body-output-type': '', // Options: '', 'trustedHtml', 'template'
+    'body-template': 'toasterBodyTmpl.html',
+    'icon-class': 'toast-info',
+    'position-class': 'toast-top-right',
+    'title-class': 'toast-title',
+    'message-class': 'toast-message'
+})
+.directive('toasterContainer', ['$compile', '$timeout', '$sce', 'toasterConfig', 'toaster',
+function ($compile, $timeout, $sce, toasterConfig, toaster) {
+    return {
+        replace: true,
+        restrict: 'EA',
+        scope: true, // creates an internal scope for this directive
+        link: function (scope, elm, attrs) {
+
+            var id = 0,
+                mergedConfig;
+
+            mergedConfig = angular.extend({}, toasterConfig, scope.$eval(attrs.toasterOptions));
+
+            scope.config = {
+                position: mergedConfig['position-class'],
+                title: mergedConfig['title-class'],
+                message: mergedConfig['message-class'],
+                tap: mergedConfig['tap-to-dismiss'],
+                closeButton: mergedConfig['close-button']
+            };
+
+            scope.configureTimer = function configureTimer(toast) {
+                var timeout = typeof (toast.timeout) == "number" ? toast.timeout : mergedConfig['time-out'];
+                if (timeout > 0)
+                    setTimeout(toast, timeout);
+            };
+
+            function addToast(toast) {
+                toast.type = mergedConfig['icon-classes'][toast.type];
+                if (!toast.type)
+                    toast.type = mergedConfig['icon-class'];
+
+                id++;
+                angular.extend(toast, { id: id });
+
+                // Set the toast.bodyOutputType to the default if it isn't set
+                toast.bodyOutputType = toast.bodyOutputType || mergedConfig['body-output-type'];
+                switch (toast.bodyOutputType) {
+                    case 'trustedHtml':
+                        toast.html = $sce.trustAsHtml(toast.body);
+                        break;
+                    case 'template':
+                        toast.bodyTemplate = toast.body || mergedConfig['body-template'];
+                        break;
+                }
+
+                scope.configureTimer(toast);
+
+                if (mergedConfig['newest-on-top'] === true) {
+                    scope.toasters.unshift(toast);
+                    if (mergedConfig['limit'] > 0 && scope.toasters.length > mergedConfig['limit']) {
+                        scope.toasters.pop();
+                    }
+                } else {
+                    scope.toasters.push(toast);
+                    if (mergedConfig['limit'] > 0 && scope.toasters.length > mergedConfig['limit']) {
+                        scope.toasters.shift();
+                    }
+                }
+            }
+
+            function setTimeout(toast, time) {
+                toast.timeout = $timeout(function () {
+                    scope.removeToast(toast.id);
+                }, time);
+            }
+
+            scope.toasters = [];
+            scope.$on('toaster-newToast', function () {
+                addToast(toaster.toast);
+            });
+
+            scope.$on('toaster-clearToasts', function () {
+                scope.toasters.splice(0, scope.toasters.length);
+            });
+        },
+        controller: ['$scope', '$element', '$attrs', function ($scope, $element, $attrs) {
+
+            $scope.stopTimer = function (toast) {
+                if (toast.timeout) {
+                    $timeout.cancel(toast.timeout);
+                    toast.timeout = null;
+                }
+            };
+
+            $scope.restartTimer = function (toast) {
+                if (!toast.timeout)
+                    $scope.configureTimer(toast);
+            };
+
+            $scope.removeToast = function (id) {
+                var i = 0;
+                for (i; i < $scope.toasters.length; i++) {
+                    if ($scope.toasters[i].id === id)
+                        break;
+                }
+                $scope.toasters.splice(i, 1);
+            };
+
+            $scope.click = function (toaster) {
+                if ($scope.config.tap === true) {
+                    if (toaster.clickHandler && angular.isFunction($scope.$parent.$eval(toaster.clickHandler))) {
+                        var result = $scope.$parent.$eval(toaster.clickHandler)(toaster);
+                        if (result === true)
+                            $scope.removeToast(toaster.id);
+                    } else {
+                        if (angular.isString(toaster.clickHandler))
+                            console.log("TOAST-NOTE: Your click handler is not inside a parent scope of toaster-container.");
+                        $scope.removeToast(toaster.id);
+                    }
+                }
+            };
+        }],
+        template:
+        '<div  id="toast-container" ng-class="config.position">' +
+            '<div ng-repeat="toaster in toasters" class="toast" ng-class="toaster.type" ng-click="click(toaster)" ng-mouseover="stopTimer(toaster)"  ng-mouseout="restartTimer(toaster)">' +
+              '<button class="toast-close-button" ng-show="config.closeButton">&times;</button>' +
+              '<div ng-class="config.title">{{toaster.title}}</div>' +
+              '<div ng-class="config.message" ng-switch on="toaster.bodyOutputType">' +
+                '<div ng-switch-when="trustedHtml" ng-bind-html="toaster.html"></div>' +
+                '<div ng-switch-when="template"><div ng-include="toaster.bodyTemplate"></div></div>' +
+                '<div ng-switch-default >{{toaster.body}}</div>' +
+              '</div>' +
+            '</div>' +
+        '</div>'
+    };
+}]);
