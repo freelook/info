@@ -9,13 +9,21 @@ var passport = require('passport'),
     config = require('../config'),
     users = require('../../server/controllers/users');
 
+//    VKStrategy.prototype.userProfile  = function(accessToken, done) {
+//        var profile = {};
+//        profile._json = {accessToken: accessToken};
+//        done(null, profile);
+//    };
+
+
 module.exports = function() {
     // Use vkontakte strategy
     passport.use(new VKStrategy({
             clientID: config.vkontakte.clientID,
             clientSecret: config.vkontakte.clientSecret,
             callbackURL: config.vkontakte.callbackURL,
-            passReqToCallback: true
+            passReqToCallback: true,
+            proxy: config.vkontakte.proxy
         },
         function(req, accessToken, refreshToken, profile, done) {
             // Set the provider data and include tokens

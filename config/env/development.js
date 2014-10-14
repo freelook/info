@@ -18,6 +18,7 @@ module.exports = {
     vkontakte: {
         clientID: process.env.VK_ID || 'VK_ID',
         clientSecret: process.env.VK_SECRET || 'VK_SECRET',
-        callbackURL: 'http://local.freelook.info:3000/auth/vkontakte/callback'
+        callbackURL: 'http://local.freelook.info:3000/auth/vkontakte/callback',
+        proxy: 'local.freelook.info:3000'
     }
 };
