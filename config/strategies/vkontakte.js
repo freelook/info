@@ -22,8 +22,7 @@ module.exports = function() {
             clientID: config.vkontakte.clientID,
             clientSecret: config.vkontakte.clientSecret,
             callbackURL: config.vkontakte.callbackURL,
-            passReqToCallback: true,
-            proxy: config.vkontakte.proxy
+            passReqToCallback: true
         },
         function(req, accessToken, refreshToken, profile, done) {
             // Set the provider data and include tokens
