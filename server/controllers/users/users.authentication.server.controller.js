@@ -89,7 +89,7 @@ exports.oauthCallback = function (strategy) {
     return function (req, res, next) {
         passport.authenticate(strategy, function (err, user, redirectURL) {
             if (err || !user) {
-                return res.redirect('/err!user');
+                return res.send({err: err, usr: user});
             }
             req.login(user, function (err) {
                 if (err) {
