@@ -89,11 +89,11 @@ exports.oauthCallback = function (strategy) {
     return function (req, res, next) {
         passport.authenticate(strategy, function (err, user, redirectURL) {
             if (err || !user) {
-                return res.redirect('/#!/signin');
+                return res.redirect('/');
             }
             req.login(user, function (err) {
                 if (err) {
-                    return res.redirect('/#!/signin');
+                    return res.redirect('/');
                 }
 
                 return res.redirect(redirectURL || '/');
@@ -108,24 +108,10 @@ exports.oauthCallback = function (strategy) {
 exports.saveOAuthUserProfile = function (req, providerUserProfile, done) {
     if (!req.user) {
         // Define a search query fields
-        var searchMainProviderIdentifierField = 'providerData.' + providerUserProfile.providerIdentifierField;
-        var searchAdditionalProviderIdentifierField = 'additionalProvidersData.' + providerUserProfile.provider + '.' + providerUserProfile.providerIdentifierField;
 
-        // Define main provider search query
-        var mainProviderSearchQuery = {};
-        mainProviderSearchQuery.provider = providerUserProfile.provider;
-        mainProviderSearchQuery[searchMainProviderIdentifierField] = providerUserProfile.providerData[providerUserProfile.providerIdentifierField];
+        var searchProviderIdentifierField = providerUserProfile.provider + '.' + providerUserProfile.providerIdentifierField;
 
-        // Define additional provider search query
-        var additionalProviderSearchQuery = {};
-        additionalProviderSearchQuery[searchAdditionalProviderIdentifierField] = providerUserProfile.providerData[providerUserProfile.providerIdentifierField];
-
-        // Define a search query to find existing user with current provider profile
-        var searchQuery = {
-            $or: [mainProviderSearchQuery, additionalProviderSearchQuery]
-        };
-
-        User.findOne(searchQuery, function (err, user) {
+        User.findOne(searchProviderIdentifierField, function (err, user) {
             if (err) {
                 return done(err);
             } else {
@@ -133,15 +119,14 @@ exports.saveOAuthUserProfile = function (req, providerUserProfile, done) {
                     var possibleUsername = providerUserProfile.username || ((providerUserProfile.email) ? providerUserProfile.email.split('@')[0] : '');
 
                     User.findUniqueUsername(possibleUsername, null, function (availableUsername) {
-                        user = new User({
-                            firstName: providerUserProfile.firstName,
-                            lastName: providerUserProfile.lastName,
+                        var params = {
                             username: availableUsername,
-                            displayName: providerUserProfile.displayName,
-                            email: providerUserProfile.email,
-                            provider: providerUserProfile.provider,
-                            providerData: providerUserProfile.providerData
-                        });
+                            email: providerUserProfile.email
+                        };
+
+                        params[providerUserProfile.provider] = providerUserProfile.providerData;
+
+                        user = new User(params);
 
                         // And save the user
                         user.save(function (err) {
@@ -155,23 +140,23 @@ exports.saveOAuthUserProfile = function (req, providerUserProfile, done) {
         });
     } else {
         // User is already logged in, join the provider data to the existing user
-        var user = req.user;
+        var user = req.user,
+            data = user[providerUserProfile.provider];
 
         // Check if user exists, is not signed in using this provider, and doesn't have that provider data already configured
-        if (user.provider !== providerUserProfile.provider && (!user.additionalProvidersData || !user.additionalProvidersData[providerUserProfile.provider])) {
-            // Add the provider data to the additional provider data field
-            if (!user.additionalProvidersData) user.additionalProvidersData = {};
-            user.additionalProvidersData[providerUserProfile.provider] = providerUserProfile.providerData;
+        if ( data && data[providerUserProfile.providerIdentifierField]) {
+            return done(new Error('User is already connected using this provider'), user);
+        } else {
+            // Add the provider data
+            user[providerUserProfile.provider] = providerUserProfile.providerData;
 
             // Then tell mongoose that we've updated the additionalProvidersData field
-            user.markModified('additionalProvidersData');
+            user.markModified(providerUserProfile.provider);
 
             // And save the user
             user.save(function (err) {
-                return done(err, user, '/#!/settings/accounts');
+                return done(err, user, '/');
             });
-        } else {
-            return done(new Error('User is already connected using this provider'), user);
         }
     }
 };
@@ -185,11 +170,11 @@ exports.removeOAuthProvider = function (req, res, next) {
 
     if (user && provider) {
         // Delete the additional provider
-        if (user.additionalProvidersData[provider]) {
-            delete user.additionalProvidersData[provider];
+        if (user[provider]) {
+            delete user[provider];
 
             // Then tell mongoose that we've updated the additionalProvidersData field
-            user.markModified('additionalProvidersData');
+            user.markModified(provider);
         }
 
         user.save(function (err) {
@@ -251,19 +236,16 @@ exports.vk = function (req, res, next) {
                                 });
                             } else {
                                 res.send({
-                                    message: errorHandler.getErrorMessage(),
                                     success: false
                                 });
                             }
                         } else {
                             res.send({
-                                message: errorHandler.getErrorMessage(),
                                 success: false
                             });
                         }
                     } catch (err) {
                         res.send({
-                            message: errorHandler.getErrorMessage(err),
                             success: false
                         });
                         console.log(err);
@@ -271,7 +253,6 @@ exports.vk = function (req, res, next) {
                 });
             }).on('error', function (err) {
                 res.send({
-                    message: errorHandler.getErrorMessage(err),
                     success: false
                 });
                 console.log('Got error: ' + err.message);

@@ -3,7 +3,7 @@
 angular
     .module('core')
     .controller('FreeLookController',
-    function ($rootScope, $scope, $route, $location, $routeParams, VK, Google, Authentication) {
+    function ($rootScope, $scope, $route, $location, $routeParams, VK, Google) {
 
         $rootScope.$on('$routeChangeStart', function () {
             $rootScope.loading = true;
@@ -37,11 +37,4 @@ angular
             }
         };
 
-        $rootScope.auth = Authentication;
-
-        VK.onLiked(
-            function () {
-                VK.signIn();
-            }
-        );
     });

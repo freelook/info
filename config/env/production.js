@@ -22,8 +22,9 @@ module.exports = {
             }
         }
     },
-    vk: {
-        date: '',
-        url: 'freelookinfo.herokuapp.com'
+    vkontakte: {
+        clientID: process.env.VK_ID || 'VK_ID',
+        clientSecret: process.env.VK_SECRET || 'VK_SECRET',
+        callbackURL: 'http://test.freelook.info/auth/vkontakte/callback'
     }
 };

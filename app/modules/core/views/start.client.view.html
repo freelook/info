@@ -9,9 +9,10 @@
                     <div class="form-container">
 
                         <section class="text-center">
-                            <span data-ng-if="!auth.isVK()" class="btn-vk-round" data-ng-click="go({profile:'vk'})"><i
-                                    class="fa fa-vk"></i></span>
-                            <img data-ng-if="auth.isVK()" ng-src="{{vk.user.photo_50}}" title="VK"
+                            <span data-ng-if="!auth.isVK()" class="btn-vk-round" data-ng-click="vk_oauth()">
+                                <i class="fa fa-vk"></i>
+                            </span>
+                            <img data-ng-if="auth.isVK()" ng-src="{{auth.user.vkontakte.photo}}" title="vkontakte"
                                  class="img-circle img50_50" data-ng-click="go({profile:'vk'})">
 
                             <div class="space"></div>
@@ -35,47 +36,49 @@
 
                         <section>
                             <div data-ng-show="!route.profile" id="vk_post"></div>
-                                <div class="panel panel-default" data-ng-show="route.profile">
-                                    <div class="panel-heading">
-                                        <strong>
-                                            <span class="glyphicon glyphicon-th"></span>
-                                            <span data-i18n="Profile_"></span><span>{{route.profile}}</span>
-                                        </strong>
+                            <div class="panel panel-default" data-ng-show="route.profile">
+                                <div class="panel-heading">
+                                    <strong>
+                                        <span class="glyphicon glyphicon-th"></span>
+                                        <span data-i18n="Profile_"></span><span>{{route.profile}}</span>
+                                    </strong>
 
-                                        <div class="pull-right">
-                                            <a data-ng-if="auth.isVK()" href="/auth/signout" data-i18n="sign out"></a>
-                                            <span data-ng-if="!auth.isVK()" data-i18n="sign in"></span>
-                                        </div>
-                                    </div>
-                                    <div class="panel-body">
-
-                                        <div class="media">
-                                            <div class="media-body center" data-ng-if="!auth.isVK()">
-
-                                                <div class="btn btn-signin">
-                                                    <div id="vk_signin" data-ng-show="route.profile === 'vk'" class="auto"></div>
-                                                    <div class="auto" data-ng-show="route.profile !== 'vk'" data-i18n="soon"></div>
-                                                </div>
-                                            </div>
-                                            <div class="media-body" data-ng-if="auth.isVK()">
-                                                <ul class="list-unstyled list-info">
-                                                    <li>
-                                                        <span class="icon glyphicon glyphicon-user"></span>
-                                                        <label>User name</label>
-                                                        {{vk.user.first_name + ' ' + vk.user.last_name}}
-                                                    </li>
-
-                                                    <li>
-                                                        <span class="icon glyphicon glyphicon-globe"></span>
-                                                        <label>UID</label>
-                                                        {{vk.user.uid}}
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-
+                                    <div class="pull-right">
+                                        <a data-ng-if="auth.isVK()" href="/auth/signout" data-i18n="sign out"></a>
+                                        <span data-ng-if="!auth.isVK()" data-i18n="sign in"></span>
                                     </div>
                                 </div>
+                                <div class="panel-body">
+
+                                    <div class="media">
+                                        <div class="media-body center" data-ng-if="!auth.isVK()">
+
+                                            <div class="btn btn-signin">
+                                                <div id="vk_signin" data-ng-show="route.profile === 'vk'"
+                                                     class="auto"></div>
+                                                <div class="auto" data-ng-show="route.profile !== 'vk'"
+                                                     data-i18n="soon"></div>
+                                            </div>
+                                        </div>
+                                        <div class="media-body" data-ng-if="auth.isVK()">
+                                            <ul class="list-unstyled list-info">
+                                                <li>
+                                                    <span class="icon glyphicon glyphicon-user"></span>
+                                                    <label>User name</label>
+                                                    {{auth.user.username}}
+                                                </li>
+
+                                                <li>
+                                                    <span class="icon glyphicon glyphicon-globe"></span>
+                                                    <label>ID</label>
+                                                    {{auth.user.vkontakte.id}}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
                         </section>
 
 
