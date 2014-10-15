@@ -13,6 +13,10 @@ angular
             when('/:action', {
                 templateUrl: 'modules/core/views/main.client.view.html',
                 controller: 'MainController'
+            })
+            .when('/oauth/vk', {
+                template: '',
+                controller: 'AuthController'
             });
     }
 );

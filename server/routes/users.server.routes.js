@@ -33,6 +33,11 @@ module.exports = function (app) {
         v: '5.25'
     }));
 
+    app.route('/vk').get(function(req, res, next) {
+console.log(req);
+        res.send({req: req});
+    });
+
 
 
     app.route('/auth/vkontakte/callback/').get(users.oauthCallback('vkontakte'));

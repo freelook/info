@@ -6,16 +6,20 @@ angular
     .factory('Authentication',
     function ($window, LocalStorage) {
         var Authentication = {
-            user: $window.user,
-            date: $window.date || (new Date()).getTime(),
-            setUser: function(user) {
-                $window.user = user;
-                Authentication.user = user;
-                //LocalStorage.setUser(user);
-
+            user:  {
+                vk : LocalStorage.getVK()
+            },
+            setVKUser: function(user) {
+                //$window.user.vk = user;
+                Authentication.user.vk = user;
+                LocalStorage.setVK(user);
+            },
+            clearVKUser: function() {
+                LocalStorage.setVK('');
+                Authentication.user.vk = '';
             },
             isVK: function() {
-                return Authentication.user && Authentication.user.vkontakte && Authentication.user.vkontakte.id;
+                return Authentication.user && Authentication.user.vk && Authentication.user.vk.user_id;
             }
         };
 

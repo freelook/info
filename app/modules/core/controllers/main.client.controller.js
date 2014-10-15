@@ -10,4 +10,5 @@ angular
             $rootScope.do($routeParams.input);
         }
 
+
     });

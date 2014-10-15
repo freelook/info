@@ -7,15 +7,37 @@ angular
         // TODO use constant!
 
         var VK = {};
+
         VK.init = function () {
             if ($window.VK && $window.VK.Widgets) {
-                var loc = $location.host() + '/' + Authentication.date;
                 $window.VK.init({apiId: 3520312, onlyWidgets: true});
-                if (!Authentication.isVK()) {
-                    $window.VK.Widgets.Like('vk_signin', {type: 'vertical', verb: 1, height: 24, pageUrl: loc});
-                }
                 $window.VK.Widgets.Post('vk_post', -50609732, 124, 'hWNjwJubCJ69XFWPH_s0GcVXSnI');
             }
+            if (Authentication.isVK()) {
+                $rootScope.user.vk = VK.user();
+            }
+        };
+
+        VK.getSocialInfo = function (callBack) {
+            if (!callBack) {
+                callBack = function (data) {
+                    if (data) {
+                        var value = angular.extend(LocalStorage.getVK(), data);
+                        Authentication.setVKUser(value);
+                    }
+                };
+            }
+            var vkr = 'http://api.vk.com/method/users.get?user_ids=' + Authentication.user.vk.user_id + '&fields=photo_50&callback=JSON_CALLBACK';
+            $http.jsonp(vkr).success(function (data) {
+                if (data) {
+                    callBack(data.response[0]);
+                }
+            });
+
+        };
+
+        VK.user = function () {
+            return LocalStorage.getVK();
         };
 
 
@@ -29,7 +51,9 @@ angular
         };
 
         VK.oauth = function () {
-           $window.location = '/auth/vkontakte';
+            var appId = '4588210';
+            var authURL = 'https://oauth.vk.com/authorize?client_id=' + appId + '&scope=wall,email&redirect_uri=http://local.freelook.info:3000/oauth/vk&display=popup&v=5.25&response_type=token';
+            $window.location = authURL;
         };
 
 

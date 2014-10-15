@@ -2,59 +2,64 @@
 <html>
 
 <head>
-	<title>{{title}}</title>
+    <base href="/">
+    <title>{{title}}</title>
 
-	<!-- General META -->
-	<meta charset="utf-8">
-	<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
+    <!-- General META -->
+    <meta charset="utf-8">
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
 
-	<!-- Semantic META -->
-	<meta name="keywords" content="{{keywords}}">
-	<meta name="description" content="{{description}}">
+    <!-- Semantic META -->
+    <meta name="keywords" content="{{keywords}}">
+    <meta name="description" content="{{description}}">
 
-	<!-- Fav Icon -->
-	<link href="/modules/core/img/brand/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <!-- Fav Icon -->
+    <link href="/modules/core/img/brand/favicon.ico" rel="shortcut icon" type="image/x-icon">
 
-	<!--Application CSS Files-->
-	{% for cssFile in cssFiles %}<link rel="stylesheet" href="{{cssFile}}">
-	{% endfor %}
+    <!--Application CSS Files-->
+    {% for cssFile in cssFiles %}
+    <link rel="stylesheet" href="{{'/' + cssFile}}">
+    {% endfor %}
 
-	<!-- HTML5 Shim -->
-	<!--[if lt IE 9]>
-		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
+    <!-- HTML5 Shim -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 </head>
 
 <body class="ng-cloak" ng-controller="FreeLookController">
 <!-- Sidebars -->
-<nav ng-include="'modules/core/views/start.client.view.html'" class="sidebar sidebar-left" toggleable parent-active-class="sidebar-left-in" id="start"></nav>
+<nav ng-include="'modules/core/views/start.client.view.html'" class="sidebar sidebar-left" toggleable
+     parent-active-class="sidebar-left-in" id="start"></nav>
 
-<nav ng-include="'modules/core/views/info.client.view.html'" class="sidebar sidebar-right" toggleable parent-active-class="sidebar-right-in" id="info"></nav>
+<nav ng-include="'modules/core/views/info.client.view.html'" class="sidebar sidebar-right" toggleable
+     parent-active-class="sidebar-right-in" id="info"></nav>
 
-	<section class="app"
-             ng-swipe-left="toggle('info', 'off');toggle('start', 'off');"
-             ng-swipe-right="toggle('info', 'off');toggle('start', 'off');">
-		{% block content %}{% endblock %}
-	</section>
+<section class="app"
+         ng-swipe-left="toggle('info', 'off');toggle('start', 'off');"
+         ng-swipe-right="toggle('info', 'off');toggle('start', 'off');">
+    {% block content %}{% endblock %}
+</section>
 
 <div toaster-container toaster-options="{'position-class': 'toast-bottom-full-width'}"></div>
 
-	<!--Embedding The User Object-->
-	<script type="text/javascript">
-		var user = {{ user | json | safe }};
-	</script>
+<!--Embedding The User Object-->
+<script type="text/javascript">
+    var user = {{user | json | safe}};
+</script>
 
-	<!--Application JavaScript Files-->
-	{% for jsFile in jsFiles %}<script src="{{jsFile}}"></script>
-	{% endfor %}
+<!--Application JavaScript Files-->
+{% for jsFile in jsFiles %}
+<script src="{{'/' + jsFile}}"></script>
+{% endfor %}
 
-	{% if process.env.NODE_ENV === 'development' %}
-	<!--Livereload script rendered -->
-	<script src="http://localhost:35729/livereload.js"></script>
+{% if process.env.NODE_ENV === 'development' %}
+<!--Livereload script rendered -->
+<script src="http://localhost:35729/livereload.js"></script>
 
-	{% endif %}
+{% endif %}
 </body>
 
 </html>

@@ -6,6 +6,7 @@ angular
 
         // Init data
         $rootScope.auth = Authentication;
+        $rootScope.user = {};
         $rootScope.route = {};
         $rootScope.vk = {};
         $rootScope.google = {};

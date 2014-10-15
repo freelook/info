@@ -12,7 +12,7 @@
                             <span data-ng-if="!auth.isVK()" class="btn-vk-round" data-ng-click="vk_oauth()">
                                 <i class="fa fa-vk"></i>
                             </span>
-                            <img data-ng-if="auth.isVK()" ng-src="{{auth.user.vkontakte.photo}}" title="vkontakte"
+                            <img data-ng-if="auth.isVK()" ng-src="{{auth.user.vk.photo_50}}" title="vkontakte"
                                  class="img-circle img50_50" data-ng-click="go({profile:'vk'})">
 
                             <div class="space"></div>
@@ -44,7 +44,7 @@
                                     </strong>
 
                                     <div class="pull-right">
-                                        <a data-ng-if="auth.isVK()" href="/auth/signout" data-i18n="sign out"></a>
+                                        <a data-ng-if="auth.isVK()" data-ng-click="clear()" data-i18n="sign out"></a>
                                         <span data-ng-if="!auth.isVK()" data-i18n="sign in"></span>
                                     </div>
                                 </div>
@@ -65,13 +65,13 @@
                                                 <li>
                                                     <span class="icon glyphicon glyphicon-user"></span>
                                                     <label>User name</label>
-                                                    {{auth.user.username}}
+                                                    {{auth.user.vk.email}}
                                                 </li>
 
                                                 <li>
                                                     <span class="icon glyphicon glyphicon-globe"></span>
                                                     <label>ID</label>
-                                                    {{auth.user.vkontakte.id}}
+                                                    {{auth.user.vk.user_id}}
                                                 </li>
                                             </ul>
                                         </div>
