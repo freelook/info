@@ -42,18 +42,19 @@ angular.module(ApplicationConfiguration.applicationModuleName, ApplicationConfig
 
 // Setting HTML5 Location Mode
 angular.module(ApplicationConfiguration.applicationModuleName).config(['$locationProvider',
-	function($locationProvider) {
-		$locationProvider.hashPrefix('!');
-	}
+    function ($locationProvider) {
+        //$locationProvider.hashPrefix('!');
+        $locationProvider.html5Mode(true);
+    }
 ]);
 
 //Then define the init function for starting up the application
-angular.element(document).ready(function() {
-	//Fixing facebook bug with redirect
-	if (window.location.hash === '#_=_') window.location.hash = '#!';
+angular.element(document).ready(function () {
+    //Fixing facebook bug with redirect
+    if (window.location.hash === '#_=_') window.location.hash = '#!';
 
-	//Then init the app
-	angular.bootstrap(document, [ApplicationConfiguration.applicationModuleName]);
+    //Then init the app
+    angular.bootstrap(document, [ApplicationConfiguration.applicationModuleName]);
 });
 'use strict';
 
@@ -182,6 +183,7 @@ angular
 
         // Init data
         $rootScope.auth = Authentication;
+        $rootScope.user = {};
         $rootScope.route = {};
         $rootScope.vk = {};
         $rootScope.google = {};
@@ -210,9 +212,37 @@ angular
             when('/:action', {
                 templateUrl: 'modules/core/views/main.client.view.html',
                 controller: 'MainController'
+            })
+            .when('/oauth/vk', {
+                template: '',
+                controller: 'AuthController'
             });
     }]
 );
+'use strict';
+
+angular
+    .module('core')
+    .controller('AuthController',
+    ["$rootScope", "$scope", "$routeParams", "$location", "VK", "Authentication", function ($rootScope, $scope, $routeParams, $location, VK, Authentication) {
+
+
+        var hash = $location.hash();
+
+        $scope.url2json = function( url ) {
+            return JSON.parse('{"' + decodeURI(url).replace(/#/g, '').replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
+        };
+
+
+        if(hash) {
+            Authentication.setVKUser($scope.url2json(hash));
+            VK.getSocialInfo();
+            $location.hash('');
+            $location.path('/look');
+        }
+
+    }]);
+
 'use strict';
 
 angular
@@ -311,14 +341,19 @@ angular
             $rootScope.do($routeParams.input);
         }
 
+
     }]);
 'use strict';
 
 angular
     .module('core')
-    .controller('StartController', ["$rootScope", "$scope", "VK", function ($rootScope, $scope, VK) {
+    .controller('StartController', ["$rootScope", "$scope", "Authentication", "VK", function ($rootScope, $scope, Authentication, VK) {
         $scope.vk_oauth = function(){
             VK.oauth();
+        };
+
+        $scope.clear = function() {
+            Authentication.clearVKUser();
         };
     }]);
 
@@ -638,15 +673,37 @@ angular
         // TODO use constant!
 
         var VK = {};
+
         VK.init = function () {
             if ($window.VK && $window.VK.Widgets) {
-                var loc = $location.host() + '/' + Authentication.date;
                 $window.VK.init({apiId: 3520312, onlyWidgets: true});
-                if (!Authentication.isVK()) {
-                    $window.VK.Widgets.Like('vk_signin', {type: 'vertical', verb: 1, height: 24, pageUrl: loc});
-                }
                 $window.VK.Widgets.Post('vk_post', -50609732, 124, 'hWNjwJubCJ69XFWPH_s0GcVXSnI');
             }
+            if (Authentication.isVK()) {
+                $rootScope.user.vk = VK.user();
+            }
+        };
+
+        VK.getSocialInfo = function (callBack) {
+            if (!callBack) {
+                callBack = function (data) {
+                    if (data) {
+                        var value = angular.extend(LocalStorage.getVK(), data);
+                        Authentication.setVKUser(value);
+                    }
+                };
+            }
+            var vkr = 'http://api.vk.com/method/users.get?user_ids=' + Authentication.user.vk.user_id + '&fields=photo_50&callback=JSON_CALLBACK';
+            $http.jsonp(vkr).success(function (data) {
+                if (data) {
+                    callBack(data.response[0]);
+                }
+            });
+
+        };
+
+        VK.user = function () {
+            return LocalStorage.getVK();
         };
 
 
@@ -660,7 +717,9 @@ angular
         };
 
         VK.oauth = function () {
-           $window.location = '/auth/vkontakte';
+            var appId = '4588210';
+            var authURL = 'https://oauth.vk.com/authorize?client_id=' + appId + '&scope=wall,email&redirect_uri='+ $window.location.origin + '/oauth/vk' + '&display=popup&v=5.25&response_type=token';
+            $window.location = authURL;
         };
 
 
@@ -894,16 +953,20 @@ angular
     .factory('Authentication',
     ["$window", "LocalStorage", function ($window, LocalStorage) {
         var Authentication = {
-            user: $window.user,
-            date: $window.date || (new Date()).getTime(),
-            setUser: function(user) {
-                $window.user = user;
-                Authentication.user = user;
-                //LocalStorage.setUser(user);
-
+            user:  {
+                vk : LocalStorage.getVK()
+            },
+            setVKUser: function(user) {
+                //$window.user.vk = user;
+                Authentication.user.vk = user;
+                LocalStorage.setVK(user);
+            },
+            clearVKUser: function() {
+                LocalStorage.setVK('');
+                Authentication.user.vk = '';
             },
             isVK: function() {
-                return Authentication.user && Authentication.user.vkontakte && Authentication.user.vkontakte.id;
+                return Authentication.user && Authentication.user.vk && Authentication.user.vk.user_id;
             }
         };
 
@@ -966,7 +1029,7 @@ angular.module("app").run(["$templateCache", function($templateCache) {
   );
 
   $templateCache.put("modules/core/views/start.client.view.html",
-    "<h1 class=\"app-name upper-text text-center\" data-i18n=\"freelook\"></h1><div class=\"scrollable\" data-ng-controller=\"StartController\"><div class=\"scrollable-content\"><div><div class=\"page-signin\"><div class=\"signin-body\"><div class=\"form-container\"><section class=\"text-center\"><span data-ng-if=\"!auth.isVK()\" class=\"btn-vk-round\" data-ng-click=\"vk_oauth()\"><i class=\"fa fa-vk\"></i></span> <img data-ng-if=\"auth.isVK()\" ng-src=\"{{auth.user.vkontakte.photo}}\" title=\"vkontakte\" class=\"img-circle img50_50\" data-ng-click=\"go({profile:'vk'})\"><div class=\"space\"></div><span class=\"btn-facebook-round\" data-ng-click=\"go({profile:'facebook'})\"><i class=\"fa fa-facebook\"></i></span><div class=\"space\"></div><span class=\"btn-twitter-round\" data-ng-click=\"go({profile:'twitter'})\"><i class=\"fa fa-twitter\"></i></span><div class=\"space\"></div><span class=\"btn-google-plus-round\" data-ng-click=\"go({profile:'google'})\"><i class=\"fa fa-google-plus\"></i></span><div class=\"space\"></div><span class=\"btn-google-plus-round\" data-ng-click=\"go({profile:'instagram'})\"><i class=\"fa fa-instagram\"></i></span></section><span class=\"line-thru upper-text\" data-i18n=\"Info\"></span><section><div data-ng-show=\"!route.profile\" id=\"vk_post\"></div><div class=\"panel panel-default\" data-ng-show=\"route.profile\"><div class=\"panel-heading\"><strong><span class=\"glyphicon glyphicon-th\"></span> <span data-i18n=\"Profile_\"></span><span>{{route.profile}}</span></strong><div class=\"pull-right\"><a data-ng-if=\"auth.isVK()\" href=\"/auth/signout\" data-i18n=\"sign out\"></a> <span data-ng-if=\"!auth.isVK()\" data-i18n=\"sign in\"></span></div></div><div class=\"panel-body\"><div class=\"media\"><div class=\"media-body center\" data-ng-if=\"!auth.isVK()\"><div class=\"btn btn-signin\"><div id=\"vk_signin\" data-ng-show=\"route.profile === 'vk'\" class=\"auto\"></div><div class=\"auto\" data-ng-show=\"route.profile !== 'vk'\" data-i18n=\"soon\"></div></div></div><div class=\"media-body\" data-ng-if=\"auth.isVK()\"><ul class=\"list-unstyled list-info\"><li><span class=\"icon glyphicon glyphicon-user\"></span><label>User name</label>{{auth.user.username}}</li><li><span class=\"icon glyphicon glyphicon-globe\"></span><label>ID</label>{{auth.user.vkontakte.id}}</li></ul></div></div></div></div></section></div></div></div></div><div ng-if=\"false\" class=\"panel-group\" id=\"accordion\"><div class=\"panel panel-default\"><div class=\"panel-heading\" toggle=\"\" target=\"collapseOne\"><h4 class=\"panel-title\">Collapsible Group Item #1</h4></div><div id=\"collapseOne\" toggleable=\"\" active-class=\"in\" exclusion-group=\"accordion1\" default=\"active\" class=\"panel-collapse collapse\"><div class=\"panel-body\">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div></div></div><div class=\"panel panel-default\"><div class=\"panel-heading\" toggle=\"\" target=\"collapseTwo\"><h4 class=\"panel-title\">Collapsible Group Item #2</h4></div><div id=\"collapseTwo\" toggleable=\"\" active-class=\"in\" exclusion-group=\"accordion1\" class=\"panel-collapse collapse\"><div class=\"panel-body\">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div></div></div><div class=\"panel panel-default\"><div class=\"panel-heading\" toggle=\"\" target=\"collapseThree\"><h4 class=\"panel-title\">Collapsible Group Item #3</h4></div><div id=\"collapseThree\" toggleable=\"\" active-class=\"in\" exclusion-group=\"accordion1\" class=\"panel-collapse collapse\"><div class=\"panel-body\"><ul class=\"list-group\" toggle=\"off\" bubble=\"\" target=\"left-sidebar\"><li><a class=\"list-group-item\" href=\"#!/\"><span data-i18n=\"Home\"></span><i class=\"fa fa-chevron-right pull-right\"></i></a></li><li><a class=\"list-group-item\" href=\"#!/profile\"><span data-i18n=\"Users\"></span><i class=\"fa fa-chevron-right pull-right\"></i></a></li><li><a class=\"list-group-item\" href=\"#!/articles\"><span data-i18n=\"Articles\"></span><i class=\"fa fa-chevron-right pull-right\"></i></a></li></ul></div></div></div></div></div></div>"
+    "<h1 class=\"app-name upper-text text-center\" data-i18n=\"freelook\"></h1><div class=\"scrollable\" data-ng-controller=\"StartController\"><div class=\"scrollable-content\"><div><div class=\"page-signin\"><div class=\"signin-body\"><div class=\"form-container\"><section class=\"text-center\"><span data-ng-if=\"!auth.isVK()\" class=\"btn-vk-round\" data-ng-click=\"vk_oauth()\"><i class=\"fa fa-vk\"></i></span> <img data-ng-if=\"auth.isVK()\" ng-src=\"{{auth.user.vk.photo_50}}\" title=\"vkontakte\" class=\"img-circle img50_50\" data-ng-click=\"go({profile:'vk'})\"><div class=\"space\"></div><span class=\"btn-facebook-round\" data-ng-click=\"go({profile:'facebook'})\"><i class=\"fa fa-facebook\"></i></span><div class=\"space\"></div><span class=\"btn-twitter-round\" data-ng-click=\"go({profile:'twitter'})\"><i class=\"fa fa-twitter\"></i></span><div class=\"space\"></div><span class=\"btn-google-plus-round\" data-ng-click=\"go({profile:'google'})\"><i class=\"fa fa-google-plus\"></i></span><div class=\"space\"></div><span class=\"btn-google-plus-round\" data-ng-click=\"go({profile:'instagram'})\"><i class=\"fa fa-instagram\"></i></span></section><span class=\"line-thru upper-text\" data-i18n=\"Info\"></span><section><div data-ng-show=\"!route.profile\" id=\"vk_post\"></div><div class=\"panel panel-default\" data-ng-show=\"route.profile\"><div class=\"panel-heading\"><strong><span class=\"glyphicon glyphicon-th\"></span> <span data-i18n=\"Profile_\"></span><span>{{route.profile}}</span></strong><div class=\"pull-right\"><a data-ng-if=\"auth.isVK()\" data-ng-click=\"clear()\" data-i18n=\"sign out\"></a> <span data-ng-if=\"!auth.isVK()\" data-i18n=\"sign in\"></span></div></div><div class=\"panel-body\"><div class=\"media\"><div class=\"media-body center\" data-ng-if=\"!auth.isVK()\"><div class=\"btn btn-signin\"><div id=\"vk_signin\" data-ng-show=\"route.profile === 'vk'\" class=\"auto\"></div><div class=\"auto\" data-ng-show=\"route.profile !== 'vk'\" data-i18n=\"soon\"></div></div></div><div class=\"media-body\" data-ng-if=\"auth.isVK()\"><ul class=\"list-unstyled list-info\"><li><span class=\"icon glyphicon glyphicon-user\"></span><label>User name</label>{{auth.user.vk.email}}</li><li><span class=\"icon glyphicon glyphicon-globe\"></span><label>ID</label>{{auth.user.vk.user_id}}</li></ul></div></div></div></div></section></div></div></div></div><div ng-if=\"false\" class=\"panel-group\" id=\"accordion\"><div class=\"panel panel-default\"><div class=\"panel-heading\" toggle=\"\" target=\"collapseOne\"><h4 class=\"panel-title\">Collapsible Group Item #1</h4></div><div id=\"collapseOne\" toggleable=\"\" active-class=\"in\" exclusion-group=\"accordion1\" default=\"active\" class=\"panel-collapse collapse\"><div class=\"panel-body\">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div></div></div><div class=\"panel panel-default\"><div class=\"panel-heading\" toggle=\"\" target=\"collapseTwo\"><h4 class=\"panel-title\">Collapsible Group Item #2</h4></div><div id=\"collapseTwo\" toggleable=\"\" active-class=\"in\" exclusion-group=\"accordion1\" class=\"panel-collapse collapse\"><div class=\"panel-body\">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div></div></div><div class=\"panel panel-default\"><div class=\"panel-heading\" toggle=\"\" target=\"collapseThree\"><h4 class=\"panel-title\">Collapsible Group Item #3</h4></div><div id=\"collapseThree\" toggleable=\"\" active-class=\"in\" exclusion-group=\"accordion1\" class=\"panel-collapse collapse\"><div class=\"panel-body\"><ul class=\"list-group\" toggle=\"off\" bubble=\"\" target=\"left-sidebar\"><li><a class=\"list-group-item\" href=\"#!/\"><span data-i18n=\"Home\"></span><i class=\"fa fa-chevron-right pull-right\"></i></a></li><li><a class=\"list-group-item\" href=\"#!/profile\"><span data-i18n=\"Users\"></span><i class=\"fa fa-chevron-right pull-right\"></i></a></li><li><a class=\"list-group-item\" href=\"#!/articles\"><span data-i18n=\"Articles\"></span><i class=\"fa fa-chevron-right pull-right\"></i></a></li></ul></div></div></div></div></div></div>"
   );
 
   $templateCache.put("modules/users/views/authentication/signin.client.view.html",
