@@ -3,7 +3,7 @@
 angular
     .module('core')
     .controller('FreeLookController',
-    function ($rootScope, $scope, $route, $location, $routeParams, VK, Google) {
+    function ($rootScope, $scope, $route, $location, $routeParams, VK, Google,FB) {
 
         $rootScope.$on('$routeChangeStart', function () {
             $rootScope.loading = true;
@@ -32,6 +32,13 @@ angular
                         $rootScope.google = {
                             data: data
                         };
+                    });
+                    break;
+                case 'facebook':
+                    FB.search(input, function(data){
+                        $rootScope.facebook = {
+                            data: data
+                        }
                     });
                     break;
             }
