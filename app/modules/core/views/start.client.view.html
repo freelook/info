@@ -16,8 +16,10 @@
                                  class="img-circle img50_50" data-ng-click="go({profile:'vk'})">
 
                             <div class="space"></div>
-                            <span class="btn-facebook-round" data-ng-click="go({profile:'facebook'})"><i
+                            <span data-ng-if="1" class="btn-facebook-round" data-ng-click="fb_oauth()"><i
                                     class="fa fa-facebook"></i></span>
+                            <!--<img data-ng-if="auth.isFB()" ng-src="{{auth.user.vk.photo_50}}" title="vkontakte"-->
+                                 <!--class="img-circle img50_50" data-ng-click="go({profile:'vk'})">-->
 
                             <div class="space"></div>
                             <span class="btn-twitter-round" data-ng-click="go({profile:'twitter'})"><i

@@ -7,7 +7,8 @@ angular
     function ($window, LocalStorage) {
         var Authentication = {
             user:  {
-                vk : LocalStorage.getVK()
+                vk : LocalStorage.getVK(),
+                fb: LocalStorage.getFB()
             },
             setVKUser: function(user) {
                 //$window.user.vk = user;
@@ -20,7 +21,19 @@ angular
             },
             isVK: function() {
                 return Authentication.user && Authentication.user.vk && Authentication.user.vk.user_id;
+            },
+            setFBUser:function(user){
+                Authentication.user.fb=user;
+                LocalStorage.setFB(user);
+            },
+            isFB: function(){
+                return Authentication.user && Authentication.user.fb;
+            },
+            clearFBUser: function(){
+                LocalStorage.setFB('');
+                Authentication.user.fb = '';
             }
+
         };
 
         return Authentication;

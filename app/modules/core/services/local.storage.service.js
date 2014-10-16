@@ -4,7 +4,8 @@ angular
     .factory('LocalStorage',
     function ($window) {
         var LOCALE_KEY = 'locale',
-            VK_KEY = 'vk';
+            VK_KEY = 'vk',
+            FB_KEY='fb';
 
         function _getItem(key, defaultValue) {
             var localStorageValue = JSON.parse($window.localStorage.getItem(key));
@@ -40,11 +41,18 @@ angular
         function setVK(vk) {
             _setItem(VK_KEY, vk);
         }
-
+        function getFB(){
+            return _getItem(FB_KEY);
+        }
+        function setFB(fb){
+            _setItem(FB_KEY,fb);
+        }
         return {
             getLocale: getLocale,
             setLocale: setLocale,
             getVK: getVK,
-            setVK: setVK
+            setVK: setVK,
+            getFB: getFB,
+            setFB: setFB
         };
     });
