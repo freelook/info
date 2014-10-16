@@ -9,7 +9,14 @@ angular
         $scope.fb_oauth = function () {
             FB.oauth();
         };
-        $scope.clear = function () {
-            Authentication.clearVKUser();
+        $scope.clear = function (profile) {
+            switch(profile) {
+                case 'vk':
+                    Authentication.clearVKUser();
+                    break;
+                case 'facebook':
+                    Authentication.clearFBUser();
+                    break;
+            }
         };
     });

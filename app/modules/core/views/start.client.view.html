@@ -20,7 +20,7 @@
                             <span data-ng-if="!auth.isFB()" class="btn-facebook-round" data-ng-click="fb_oauth()">
                                 <i class="fa fa-facebook"></i>
                             </span>
-                            <img data-ng-if="auth.isFB()" ng-src="{{auth.user.fb.source}}" title="facebook"
+                            <img data-ng-if="auth.isFB()" ng-src="{{auth.user.fb.url}}" title="facebook"
                                  class="img-circle img50_50" data-ng-click="go({profile:'facebook'})">
 
                             <div class="space"></div>
@@ -48,7 +48,8 @@
                                     </strong>
 
                                     <div class="pull-right">
-                                        <a data-ng-if="auth.isVK()" data-ng-click="clear()" data-i18n="sign out"></a>
+                                        <a data-ng-if="auth.isVK()" data-ng-click="clear(route.profile)"
+                                           data-i18n="sign out"></a>
                                         <span data-ng-if="!auth.isVK()" data-i18n="sign in"></span>
                                     </div>
                                 </div>
@@ -58,9 +59,8 @@
                                         <div class="media-body center" data-ng-if="!auth.isVK()">
 
                                             <div class="btn btn-signin">
-                                                <div id="vk_signin" data-ng-show="route.profile === 'vk'"
-                                                     class="auto"></div>
-                                                <div class="auto" data-ng-show="route.profile !== 'vk'"
+                                                <div class="auto"
+                                                     data-ng-show="route.profile !== 'vk' && route.profile !== 'facebook'"
                                                      data-i18n="soon"></div>
                                             </div>
                                         </div>
@@ -79,12 +79,13 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div class="media-body" data-ng-if="auth.isFB() && route.profile === 'facebook'">
+                                        <div class="media-body"
+                                             data-ng-if="auth.isFB() && route.profile === 'facebook'">
                                             <ul class="list-unstyled list-info">
                                                 <li>
                                                     <span class="icon glyphicon glyphicon-user"></span>
                                                     <label>User name</label>
-                                                    {{auth.user.fb.name}}
+                                                    {{auth.user.fb.email}}
                                                 </li>
 
                                                 <li>

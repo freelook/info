@@ -15,21 +15,41 @@ angular
             $window.location = authURL;
         };
 
+        FB.getAvatar = function() {
+            var fbr = 'https://graph.facebook.com/me/picture?&access_token=' + FB.getToken() + '&callback=JSON_CALLBACK';
+            $http.jsonp(fbr).success(function (r ) {
+                if (r && r.data) {
+                    FB.setSocialInfo(r.data);
+                }
+            });
+        };
+
+        FB.setSocialInfo = function(data) {
+                if (data) {
+                    var value = angular.extend(LocalStorage.getFB(), data);
+                    Authentication.setFBUser(value);
+                }
+        };
+
         FB.getSocialInfo = function (callBack) {
             if (!callBack) {
-                callBack = function (data) {
-                    if (data) {
-                        var value = angular.extend(LocalStorage.getFB(), data);
-                        Authentication.setFBUser(value);
-                    }
-                };
+                callBack = FB.setSocialInfo;
             }
-            var fbr = 'https://graph.facebook.com/me?fields=id,name&access_token=' + Authentication.user.fb.access_token + '&callback=JSON_CALLBACK';
+            var fbr = 'https://graph.facebook.com/me?&access_token=' + Authentication.user.fb.access_token + '&callback=JSON_CALLBACK';
             $http.jsonp(fbr).success(function (data) {
                 if (data) {
                     callBack(data);
+                    FB.getAvatar();
                 }
             });
+        };
+
+        FB.getToken = function() {
+            return Authentication.user.fb.access_token;
+        };
+
+        FB.getID = function() {
+            return Authentication.user.fb.id;
         };
 
         return FB;

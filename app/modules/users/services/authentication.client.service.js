@@ -6,32 +6,31 @@ angular
     .factory('Authentication',
     function ($window, LocalStorage) {
         var Authentication = {
-            user:  {
-                vk : LocalStorage.getVK(),
-                fb: LocalStorage.getFB()
+            user: {
+                vk: LocalStorage.getVK() || {},
+                fb: LocalStorage.getFB() || {}
             },
-            setVKUser: function(user) {
-                //$window.user.vk = user;
+            setVKUser: function (user) {
                 Authentication.user.vk = user;
                 LocalStorage.setVK(user);
             },
-            clearVKUser: function() {
-                LocalStorage.setVK('');
-                Authentication.user.vk = '';
+            clearVKUser: function () {
+                LocalStorage.setVK({});
+                Authentication.user.vk = {};
             },
-            isVK: function() {
+            isVK: function () {
                 return Authentication.user && Authentication.user.vk && Authentication.user.vk.user_id;
             },
-            setFBUser:function(user){
+            setFBUser: function (user) {
                 Authentication.user.fb = user;
                 LocalStorage.setFB(user);
             },
-            isFB: function(){
+            isFB: function () {
                 return Authentication.user && Authentication.user.fb && Authentication.user.fb.id;
             },
-            clearFBUser: function(){
-                LocalStorage.setFB('');
-                Authentication.user.fb = '';
+            clearFBUser: function () {
+                LocalStorage.setFB({});
+                Authentication.user.fb = {};
             }
 
         };
