@@ -213,9 +213,10 @@ angular
                 templateUrl: 'modules/core/views/main.client.view.html',
                 controller: 'MainController'
             })
-            .when('/oauth/vk', {
+            .when('/oauth/:social', {
                 template: '',
                 controller: 'AuthController'
+
             });
     }]
 );
@@ -224,21 +225,26 @@ angular
 angular
     .module('core')
     .controller('AuthController',
-    ["$rootScope", "$scope", "$routeParams", "$location", "VK", "Authentication", function ($rootScope, $scope, $routeParams, $location, VK, Authentication) {
-
-
+    ["$rootScope", "$scope", "$routeParams", "$location", "VK", "FB", "Authentication", function ($rootScope, $scope, $routeParams, $location, VK, FB, Authentication) {
         var hash = $location.hash();
-
-        $scope.url2json = function( url ) {
-            return JSON.parse('{"' + decodeURI(url).replace(/#/g, '').replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}');
+        $scope.url2json = function (url) {
+            return JSON.parse('{"' + decodeURI(url).replace(/#/g, '').replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}');
         };
-
-
-        if(hash) {
-            Authentication.setVKUser($scope.url2json(hash));
-            VK.getSocialInfo();
-            $location.hash('');
-            $location.path('/look');
+        if (hash) {
+            switch ($routeParams.social) {
+                case 'vk':
+                    Authentication.setVKUser($scope.url2json(hash));
+                    VK.getSocialInfo();
+                    $location.hash('');
+                    $location.path('/look');
+                    break;
+                case 'fb':
+                    Authentication.setFBUser($scope.url2json(hash));
+                    FB.getSocialInfo();
+                    $location.hash('');
+                    $location.path('/look');
+                    break;
+            }
         }
 
     }]);
@@ -347,12 +353,14 @@ angular
 
 angular
     .module('core')
-    .controller('StartController', ["$rootScope", "$scope", "Authentication", "VK", function ($rootScope, $scope, Authentication, VK) {
-        $scope.vk_oauth = function(){
+    .controller('StartController', ["$rootScope", "$scope", "Authentication", "VK", "FB", function ($rootScope, $scope, Authentication, VK, FB) {
+        $scope.vk_oauth = function () {
             VK.oauth();
         };
-
-        $scope.clear = function() {
+        $scope.fb_oauth = function () {
+            FB.oauth();
+        };
+        $scope.clear = function () {
             Authentication.clearVKUser();
         };
     }]);
@@ -394,6 +402,42 @@ angular
 'use strict';
 angular
     .module('core')
+    .factory('FB', ["$window", "$http", "LocalStorage", "Authentication", function ($window, $http, LocalStorage, Authentication) {
+        var FB = {},
+            appId = '846841298681206';
+
+        //login via Facebook
+        FB.user = function () {
+            return LocalStorage.getFB();
+        };
+
+        FB.oauth = function () {
+            var authURL = 'https://www.facebook.com/dialog/oauth?client_id=' + appId + '&display=popup&scope=email,user_likes&response_type=token&redirect_uri=' + $window.location.origin + '/oauth/fb/';
+            $window.location = authURL;
+        };
+
+        FB.getSocialInfo = function (callBack) {
+            if (!callBack) {
+                callBack = function (data) {
+                    if (data) {
+                        var value = angular.extend(LocalStorage.getFB(), data);
+                        Authentication.setFBUser(value);
+                    }
+                };
+            }
+            var fbr = 'https://graph.facebook.com/me?fields=id,name&access_token=' + Authentication.user.fb.access_token + '&callback=JSON_CALLBACK';
+            $http.jsonp(fbr).success(function (data) {
+                if (data) {
+                    callBack(data);
+                }
+            });
+        };
+
+        return FB;
+    }]);
+'use strict';
+angular
+    .module('core')
     .factory('Google', ["$http", function ($http) {
         var Google = {};
 
@@ -419,7 +463,8 @@ angular
     .factory('LocalStorage',
     ["$window", function ($window) {
         var LOCALE_KEY = 'locale',
-            VK_KEY = 'vk';
+            VK_KEY = 'vk',
+            FB_KEY='fb';
 
         function _getItem(key, defaultValue) {
             var localStorageValue = JSON.parse($window.localStorage.getItem(key));
@@ -455,12 +500,19 @@ angular
         function setVK(vk) {
             _setItem(VK_KEY, vk);
         }
-
+        function getFB(){
+            return _getItem(FB_KEY);
+        }
+        function setFB(fb){
+            _setItem(FB_KEY,fb);
+        }
         return {
             getLocale: getLocale,
             setLocale: setLocale,
             getVK: getVK,
-            setVK: setVK
+            setVK: setVK,
+            getFB: getFB,
+            setFB: setFB
         };
     }]);
 'use strict';
@@ -723,6 +775,7 @@ angular
         };
 
 
+
         return VK;
     }]
 );
@@ -954,7 +1007,8 @@ angular
     ["$window", "LocalStorage", function ($window, LocalStorage) {
         var Authentication = {
             user:  {
-                vk : LocalStorage.getVK()
+                vk : LocalStorage.getVK(),
+                fb: LocalStorage.getFB()
             },
             setVKUser: function(user) {
                 //$window.user.vk = user;
@@ -967,7 +1021,19 @@ angular
             },
             isVK: function() {
                 return Authentication.user && Authentication.user.vk && Authentication.user.vk.user_id;
+            },
+            setFBUser:function(user){
+                Authentication.user.fb = user;
+                LocalStorage.setFB(user);
+            },
+            isFB: function(){
+                return Authentication.user && Authentication.user.fb && Authentication.user.fb.id;
+            },
+            clearFBUser: function(){
+                LocalStorage.setFB('');
+                Authentication.user.fb = '';
             }
+
         };
 
         return Authentication;
@@ -1029,7 +1095,7 @@ angular.module("app").run(["$templateCache", function($templateCache) {
   );
 
   $templateCache.put("modules/core/views/start.client.view.html",
-    "<h1 class=\"app-name upper-text text-center\" data-i18n=\"freelook\"></h1><div class=\"scrollable\" data-ng-controller=\"StartController\"><div class=\"scrollable-content\"><div><div class=\"page-signin\"><div class=\"signin-body\"><div class=\"form-container\"><section class=\"text-center\"><span data-ng-if=\"!auth.isVK()\" class=\"btn-vk-round\" data-ng-click=\"vk_oauth()\"><i class=\"fa fa-vk\"></i></span> <img data-ng-if=\"auth.isVK()\" ng-src=\"{{auth.user.vk.photo_50}}\" title=\"vkontakte\" class=\"img-circle img50_50\" data-ng-click=\"go({profile:'vk'})\"><div class=\"space\"></div><span class=\"btn-facebook-round\" data-ng-click=\"go({profile:'facebook'})\"><i class=\"fa fa-facebook\"></i></span><div class=\"space\"></div><span class=\"btn-twitter-round\" data-ng-click=\"go({profile:'twitter'})\"><i class=\"fa fa-twitter\"></i></span><div class=\"space\"></div><span class=\"btn-google-plus-round\" data-ng-click=\"go({profile:'google'})\"><i class=\"fa fa-google-plus\"></i></span><div class=\"space\"></div><span class=\"btn-google-plus-round\" data-ng-click=\"go({profile:'instagram'})\"><i class=\"fa fa-instagram\"></i></span></section><span class=\"line-thru upper-text\" data-i18n=\"Info\"></span><section><div data-ng-show=\"!route.profile\" id=\"vk_post\"></div><div class=\"panel panel-default\" data-ng-show=\"route.profile\"><div class=\"panel-heading\"><strong><span class=\"glyphicon glyphicon-th\"></span> <span data-i18n=\"Profile_\"></span><span>{{route.profile}}</span></strong><div class=\"pull-right\"><a data-ng-if=\"auth.isVK()\" data-ng-click=\"clear()\" data-i18n=\"sign out\"></a> <span data-ng-if=\"!auth.isVK()\" data-i18n=\"sign in\"></span></div></div><div class=\"panel-body\"><div class=\"media\"><div class=\"media-body center\" data-ng-if=\"!auth.isVK()\"><div class=\"btn btn-signin\"><div id=\"vk_signin\" data-ng-show=\"route.profile === 'vk'\" class=\"auto\"></div><div class=\"auto\" data-ng-show=\"route.profile !== 'vk'\" data-i18n=\"soon\"></div></div></div><div class=\"media-body\" data-ng-if=\"auth.isVK()\"><ul class=\"list-unstyled list-info\"><li><span class=\"icon glyphicon glyphicon-user\"></span><label>User name</label>{{auth.user.vk.email}}</li><li><span class=\"icon glyphicon glyphicon-globe\"></span><label>ID</label>{{auth.user.vk.user_id}}</li></ul></div></div></div></div></section></div></div></div></div><div ng-if=\"false\" class=\"panel-group\" id=\"accordion\"><div class=\"panel panel-default\"><div class=\"panel-heading\" toggle=\"\" target=\"collapseOne\"><h4 class=\"panel-title\">Collapsible Group Item #1</h4></div><div id=\"collapseOne\" toggleable=\"\" active-class=\"in\" exclusion-group=\"accordion1\" default=\"active\" class=\"panel-collapse collapse\"><div class=\"panel-body\">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div></div></div><div class=\"panel panel-default\"><div class=\"panel-heading\" toggle=\"\" target=\"collapseTwo\"><h4 class=\"panel-title\">Collapsible Group Item #2</h4></div><div id=\"collapseTwo\" toggleable=\"\" active-class=\"in\" exclusion-group=\"accordion1\" class=\"panel-collapse collapse\"><div class=\"panel-body\">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div></div></div><div class=\"panel panel-default\"><div class=\"panel-heading\" toggle=\"\" target=\"collapseThree\"><h4 class=\"panel-title\">Collapsible Group Item #3</h4></div><div id=\"collapseThree\" toggleable=\"\" active-class=\"in\" exclusion-group=\"accordion1\" class=\"panel-collapse collapse\"><div class=\"panel-body\"><ul class=\"list-group\" toggle=\"off\" bubble=\"\" target=\"left-sidebar\"><li><a class=\"list-group-item\" href=\"#!/\"><span data-i18n=\"Home\"></span><i class=\"fa fa-chevron-right pull-right\"></i></a></li><li><a class=\"list-group-item\" href=\"#!/profile\"><span data-i18n=\"Users\"></span><i class=\"fa fa-chevron-right pull-right\"></i></a></li><li><a class=\"list-group-item\" href=\"#!/articles\"><span data-i18n=\"Articles\"></span><i class=\"fa fa-chevron-right pull-right\"></i></a></li></ul></div></div></div></div></div></div>"
+    "<h1 class=\"app-name upper-text text-center\" data-i18n=\"freelook\"></h1><div class=\"scrollable\" data-ng-controller=\"StartController\"><div class=\"scrollable-content\"><div><div class=\"page-signin\"><div class=\"signin-body\"><div class=\"form-container\"><section class=\"text-center\"><span data-ng-if=\"!auth.isVK()\" class=\"btn-vk-round\" data-ng-click=\"vk_oauth()\"><i class=\"fa fa-vk\"></i></span> <img data-ng-if=\"auth.isVK()\" ng-src=\"{{auth.user.vk.photo_50}}\" title=\"vkontakte\" class=\"img-circle img50_50\" data-ng-click=\"go({profile:'vk'})\"><div class=\"space\"></div><span data-ng-if=\"!auth.isFB()\" class=\"btn-facebook-round\" data-ng-click=\"fb_oauth()\"><i class=\"fa fa-facebook\"></i></span> <img data-ng-if=\"auth.isFB()\" ng-src=\"{{auth.user.fb.source}}\" title=\"facebook\" class=\"img-circle img50_50\" data-ng-click=\"go({profile:'facebook'})\"><div class=\"space\"></div><span class=\"btn-twitter-round\" data-ng-click=\"go({profile:'twitter'})\"><i class=\"fa fa-twitter\"></i></span><div class=\"space\"></div><span class=\"btn-google-plus-round\" data-ng-click=\"go({profile:'google'})\"><i class=\"fa fa-google-plus\"></i></span><div class=\"space\"></div><span class=\"btn-google-plus-round\" data-ng-click=\"go({profile:'instagram'})\"><i class=\"fa fa-instagram\"></i></span></section><span class=\"line-thru upper-text\" data-i18n=\"Info\"></span><section><div data-ng-show=\"!route.profile\" id=\"vk_post\"></div><div class=\"panel panel-default\" data-ng-show=\"route.profile\"><div class=\"panel-heading\"><strong><span class=\"glyphicon glyphicon-th\"></span> <span data-i18n=\"Profile_\"></span><span>{{route.profile}}</span></strong><div class=\"pull-right\"><a data-ng-if=\"auth.isVK()\" data-ng-click=\"clear()\" data-i18n=\"sign out\"></a> <span data-ng-if=\"!auth.isVK()\" data-i18n=\"sign in\"></span></div></div><div class=\"panel-body\"><div class=\"media\"><div class=\"media-body center\" data-ng-if=\"!auth.isVK()\"><div class=\"btn btn-signin\"><div id=\"vk_signin\" data-ng-show=\"route.profile === 'vk'\" class=\"auto\"></div><div class=\"auto\" data-ng-show=\"route.profile !== 'vk'\" data-i18n=\"soon\"></div></div></div><div class=\"media-body\" data-ng-if=\"auth.isVK() && route.profile === 'vk'\"><ul class=\"list-unstyled list-info\"><li><span class=\"icon glyphicon glyphicon-user\"></span><label>User name</label>{{auth.user.vk.email}}</li><li><span class=\"icon glyphicon glyphicon-globe\"></span><label>ID</label>{{auth.user.vk.user_id}}</li></ul></div><div class=\"media-body\" data-ng-if=\"auth.isFB() && route.profile === 'facebook'\"><ul class=\"list-unstyled list-info\"><li><span class=\"icon glyphicon glyphicon-user\"></span><label>User name</label>{{auth.user.fb.name}}</li><li><span class=\"icon glyphicon glyphicon-globe\"></span><label>ID</label>{{auth.user.fb.id}}</li></ul></div></div></div></div></section></div></div></div></div><div ng-if=\"false\" class=\"panel-group\" id=\"accordion\"><div class=\"panel panel-default\"><div class=\"panel-heading\" toggle=\"\" target=\"collapseOne\"><h4 class=\"panel-title\">Collapsible Group Item #1</h4></div><div id=\"collapseOne\" toggleable=\"\" active-class=\"in\" exclusion-group=\"accordion1\" default=\"active\" class=\"panel-collapse collapse\"><div class=\"panel-body\">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div></div></div><div class=\"panel panel-default\"><div class=\"panel-heading\" toggle=\"\" target=\"collapseTwo\"><h4 class=\"panel-title\">Collapsible Group Item #2</h4></div><div id=\"collapseTwo\" toggleable=\"\" active-class=\"in\" exclusion-group=\"accordion1\" class=\"panel-collapse collapse\"><div class=\"panel-body\">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div></div></div><div class=\"panel panel-default\"><div class=\"panel-heading\" toggle=\"\" target=\"collapseThree\"><h4 class=\"panel-title\">Collapsible Group Item #3</h4></div><div id=\"collapseThree\" toggleable=\"\" active-class=\"in\" exclusion-group=\"accordion1\" class=\"panel-collapse collapse\"><div class=\"panel-body\"><ul class=\"list-group\" toggle=\"off\" bubble=\"\" target=\"left-sidebar\"><li><a class=\"list-group-item\" href=\"#!/\"><span data-i18n=\"Home\"></span><i class=\"fa fa-chevron-right pull-right\"></i></a></li><li><a class=\"list-group-item\" href=\"#!/profile\"><span data-i18n=\"Users\"></span><i class=\"fa fa-chevron-right pull-right\"></i></a></li><li><a class=\"list-group-item\" href=\"#!/articles\"><span data-i18n=\"Articles\"></span><i class=\"fa fa-chevron-right pull-right\"></i></a></li></ul></div></div></div></div></div></div>"
   );
 
   $templateCache.put("modules/users/views/authentication/signin.client.view.html",

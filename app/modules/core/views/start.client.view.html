@@ -16,10 +16,12 @@
                                  class="img-circle img50_50" data-ng-click="go({profile:'vk'})">
 
                             <div class="space"></div>
-                            <span data-ng-if="1" class="btn-facebook-round" data-ng-click="fb_oauth()"><i
-                                    class="fa fa-facebook"></i></span>
-                            <!--<img data-ng-if="auth.isFB()" ng-src="{{auth.user.vk.photo_50}}" title="vkontakte"-->
-                                 <!--class="img-circle img50_50" data-ng-click="go({profile:'vk'})">-->
+
+                            <span data-ng-if="!auth.isFB()" class="btn-facebook-round" data-ng-click="fb_oauth()">
+                                <i class="fa fa-facebook"></i>
+                            </span>
+                            <img data-ng-if="auth.isFB()" ng-src="{{auth.user.fb.source}}" title="facebook"
+                                 class="img-circle img50_50" data-ng-click="go({profile:'facebook'})">
 
                             <div class="space"></div>
                             <span class="btn-twitter-round" data-ng-click="go({profile:'twitter'})"><i
@@ -62,7 +64,7 @@
                                                      data-i18n="soon"></div>
                                             </div>
                                         </div>
-                                        <div class="media-body" data-ng-if="auth.isVK()">
+                                        <div class="media-body" data-ng-if="auth.isVK() && route.profile === 'vk'">
                                             <ul class="list-unstyled list-info">
                                                 <li>
                                                     <span class="icon glyphicon glyphicon-user"></span>
@@ -74,6 +76,21 @@
                                                     <span class="icon glyphicon glyphicon-globe"></span>
                                                     <label>ID</label>
                                                     {{auth.user.vk.user_id}}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="media-body" data-ng-if="auth.isFB() && route.profile === 'facebook'">
+                                            <ul class="list-unstyled list-info">
+                                                <li>
+                                                    <span class="icon glyphicon glyphicon-user"></span>
+                                                    <label>User name</label>
+                                                    {{auth.user.fb.name}}
+                                                </li>
+
+                                                <li>
+                                                    <span class="icon glyphicon glyphicon-globe"></span>
+                                                    <label>ID</label>
+                                                    {{auth.user.fb.id}}
                                                 </li>
                                             </ul>
                                         </div>

@@ -18,6 +18,6 @@ angular
                 template: '',
                 controller: 'AuthController'
 
-            })
+            });
     }
 );

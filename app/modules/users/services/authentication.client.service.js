@@ -23,11 +23,11 @@ angular
                 return Authentication.user && Authentication.user.vk && Authentication.user.vk.user_id;
             },
             setFBUser:function(user){
-                Authentication.user.fb=user;
+                Authentication.user.fb = user;
                 LocalStorage.setFB(user);
             },
             isFB: function(){
-                return Authentication.user && Authentication.user.fb;
+                return Authentication.user && Authentication.user.fb && Authentication.user.fb.id;
             },
             clearFBUser: function(){
                 LocalStorage.setFB('');
