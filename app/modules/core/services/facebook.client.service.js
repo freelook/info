@@ -51,7 +51,7 @@ angular
         FB.getID = function() {
             return Authentication.user.fb.id;
         };
-        FB.search=function(callBack){
+        FB.search=function(input,callBack){
             var fbr='https://graph.facebook.com/me/feed?&access_token=' + Authentication.user.fb.access_token + '&callback=JSON_CALLBACK';
             $http.jsonp(fbr).success(function (data) {
                 if (data) {
