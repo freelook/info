@@ -2,7 +2,7 @@
 
 (function() {
 	// Articles Controller Spec
-	xdescribe('ArticlesController', function() {
+	describe('ArticlesController', function() {
 		// Initialize global variables
 		var ArticlesController,
 			scope,

@@ -43,8 +43,10 @@ angular.module(ApplicationConfiguration.applicationModuleName, ApplicationConfig
 // Setting HTML5 Location Mode
 angular.module(ApplicationConfiguration.applicationModuleName).config(['$locationProvider',
     function ($locationProvider) {
-        //$locationProvider.hashPrefix('!');
-        $locationProvider.html5Mode(true);
+        $locationProvider.html5Mode({
+            enabled: true,
+            requireBase: false
+        });
     }
 ]);
 
@@ -107,8 +109,8 @@ angular
 angular.
 	module('articles').
 	controller('ArticlesController',
-	["$scope", "$routeParams", "$location", "Authentication", "Articles", function ($scope, $routeParams, $location, Authentication, Articles) {
-		$scope.authentication = Authentication;
+	["$scope", "$routeParams", "$location", "Auth", "Articles", function ($scope, $routeParams, $location, Auth, Articles) {
+		$scope.authentication = Auth;
 
 		$scope.create = function () {
 			var article = new Articles({
@@ -179,11 +181,10 @@ angular.module('articles').factory('Articles', ['$resource',
 angular
     .module('core')
     .run(
-    ["$rootScope", "Localize", "VK", "Authentication", function ($rootScope, Localize, VK, Authentication) {
+    ["$rootScope", "Localize", "VK", "Auth", function ($rootScope, Localize, VK, Auth) {
 
         // Init data
-        $rootScope.auth = Authentication;
-        $rootScope.user = {};
+        $rootScope.auth = Auth;
         $rootScope.route = {};
         $rootScope.vk = {};
         $rootScope.google = {};
@@ -195,7 +196,14 @@ angular
 'use strict';
 angular
     .module('core')
-    .constant('key', 'value');
+    .constant('VKONTAKTE', 'vk')
+    .constant('FACEBOOK', 'facebook')
+    .constant('VK_APP_ID', '4588210')
+    .constant('FB_APP_ID', '846841298681206')
+
+
+
+;
 
 'use strict';
 
@@ -225,26 +233,17 @@ angular
 angular
     .module('core')
     .controller('AuthController',
-    ["$rootScope", "$scope", "$routeParams", "$location", "VK", "FB", "Authentication", function ($rootScope, $scope, $routeParams, $location, VK, FB, Authentication) {
-        var hash = $location.hash();
+    ["$rootScope", "$scope", "$routeParams", "$location", "Services", "Auth", function ($rootScope, $scope, $routeParams, $location, Services, Auth) {
+        var hash = $location.hash(),
+            social = $routeParams.social;
         $scope.url2json = function (url) {
             return JSON.parse('{"' + decodeURI(url).replace(/#/g, '').replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}');
         };
-        if (hash) {
-            switch ($routeParams.social) {
-                case 'vk':
-                    Authentication.setVKUser($scope.url2json(hash));
-                    VK.getSocialInfo();
-                    $location.hash('');
-                    $location.path('/look');
-                    break;
-                case 'fb':
-                    Authentication.setFBUser($scope.url2json(hash));
-                    FB.getSocialInfo();
-                    $location.hash('');
-                    $location.path('/look');
-                    break;
-            }
+        if (hash && social) {
+            Auth.setUser(social, $scope.url2json(hash));
+            Services[social].getSocialInfo();
+            $location.hash('');
+            $location.path('/look');
         }
 
     }]);
@@ -254,7 +253,7 @@ angular
 angular
     .module('core')
     .controller('FreeLookController',
-    ["$rootScope", "$scope", "$route", "$location", "$routeParams", "VK", "Google", function ($rootScope, $scope, $route, $location, $routeParams, VK, Google) {
+    ["$rootScope", "$scope", "$route", "$location", "$routeParams", "VK", "Google", "FB", function ($rootScope, $scope, $route, $location, $routeParams, VK, Google,FB) {
 
         $rootScope.$on('$routeChangeStart', function () {
             $rootScope.loading = true;
@@ -267,6 +266,8 @@ angular
         $rootScope.go = function (params) {
             $route.updateParams(params);
         };
+
+        $scope.loaded = true;
 
         $rootScope.do = function (input) {
             $route.updateParams({input: input});
@@ -285,6 +286,13 @@ angular
                         };
                     });
                     break;
+                case 'facebook':
+                    FB.search(input, function(data){
+                        $rootScope.facebook = {
+                            data: data
+                        };
+                    });
+                    break;
             }
         };
 
@@ -294,8 +302,8 @@ angular
 angular.
     module('core').
     controller('HeaderController',
-	["$scope", "Authentication", function($scope, Authentication) {
-		$scope.authentication = Authentication;
+	["$scope", "Auth", function($scope, Auth) {
+		$scope.authentication = Auth;
 
 		// Collapsing the menu after navigation
 		$scope.$on('$stateChangeSuccess', function() {
@@ -353,22 +361,13 @@ angular
 
 angular
     .module('core')
-    .controller('StartController', ["$rootScope", "$scope", "Authentication", "VK", "FB", function ($rootScope, $scope, Authentication, VK, FB) {
-        $scope.vk_oauth = function () {
-            VK.oauth();
-        };
-        $scope.fb_oauth = function () {
-            FB.oauth();
+    .controller('StartController', ["$rootScope", "$scope", "Auth", "Services", function ($rootScope, $scope, Auth, Services) {
+        $scope.oauth = function (socialName) {
+            var oauthURl = Services[socialName].getAuthURL();
+            Auth.oauth(oauthURl);
         };
         $scope.clear = function (profile) {
-            switch(profile) {
-                case 'vk':
-                    Authentication.clearVKUser();
-                    break;
-                case 'facebook':
-                    Authentication.clearFBUser();
-                    break;
-            }
+            Auth.clearUser(profile);
         };
     }]);
 
@@ -409,41 +408,34 @@ angular
 'use strict';
 angular
     .module('core')
-    .factory('FB', ["$window", "$http", "LocalStorage", "Authentication", function ($window, $http, LocalStorage, Authentication) {
-        var FB = {},
-            appId = '846841298681206';
+    .factory('FB', ["$window", "$http", "LocalStorage", "Auth", "FB_APP_ID", "FACEBOOK", function ($window, $http, LocalStorage, Auth, FB_APP_ID, FACEBOOK) {
+        var FB = {};
 
-        //login via Facebook
         FB.user = function () {
             return LocalStorage.getFB();
         };
 
-        FB.oauth = function () {
-            var authURL = 'https://www.facebook.com/dialog/oauth?client_id=' + appId + '&display=popup&scope=email,user_likes&response_type=token&redirect_uri=' + $window.location.origin + '/oauth/fb/';
-            $window.location = authURL;
-        };
-
-        FB.getAvatar = function() {
+        FB.getAvatar = function () {
             var fbr = 'https://graph.facebook.com/me/picture?&access_token=' + FB.getToken() + '&callback=JSON_CALLBACK';
-            $http.jsonp(fbr).success(function (r ) {
+            $http.jsonp(fbr).success(function (r) {
                 if (r && r.data) {
                     FB.setSocialInfo(r.data);
                 }
             });
         };
 
-        FB.setSocialInfo = function(data) {
-                if (data) {
-                    var value = angular.extend(LocalStorage.getFB(), data);
-                    Authentication.setFBUser(value);
-                }
+        FB.setSocialInfo = function (data) {
+            if (data) {
+                var value = angular.extend(LocalStorage.getUser(FACEBOOK), data);
+                Auth.setUser(FACEBOOK, value);
+            }
         };
 
         FB.getSocialInfo = function (callBack) {
             if (!callBack) {
                 callBack = FB.setSocialInfo;
             }
-            var fbr = 'https://graph.facebook.com/me?&access_token=' + Authentication.user.fb.access_token + '&callback=JSON_CALLBACK';
+            var fbr = 'https://graph.facebook.com/me?&access_token=' + FB.getToken() + '&callback=JSON_CALLBACK';
             $http.jsonp(fbr).success(function (data) {
                 if (data) {
                     callBack(data);
@@ -452,12 +444,25 @@ angular
             });
         };
 
-        FB.getToken = function() {
-            return Authentication.user.fb.access_token;
+        FB.getToken = function () {
+            return Auth.user.facebook.access_token;
         };
 
-        FB.getID = function() {
-            return Authentication.user.fb.id;
+        FB.getID = function () {
+            return Auth.user.facebook.id;
+        };
+
+        FB.search = function (input, callBack) {
+            var fbr = 'https://graph.facebook.com/me/feed?&access_token=' + FB.getToken() + '&callback=JSON_CALLBACK';
+            $http.jsonp(fbr).success(function (data) {
+                if (data) {
+                    callBack(data);
+                }
+            });
+        };
+
+        FB.getAuthURL = function () {
+            return 'https://www.facebook.com/dialog/oauth?client_id=' + FB_APP_ID + '&display=popup&scope=email,read_stream&response_type=token&redirect_uri=' + $window.location.origin + '/oauth/facebook/';
         };
 
         return FB;
@@ -468,8 +473,8 @@ angular
     .factory('Google', ["$http", function ($http) {
         var Google = {};
 
-        Google.search = function(data, callBack) {
-            if(data) {
+        Google.search = function (data, callBack) {
+            if (data) {
                 var gp = 'https://ajax.googleapis.com/ajax/services/search/web?v=1.0&q=' + data + '&callback=JSON_CALLBACK';
                 $http.jsonp(gp).success(function (data) {
                     if (data && data.responseData) {
@@ -489,9 +494,7 @@ angular
     .module('core')
     .factory('LocalStorage',
     ["$window", function ($window) {
-        var LOCALE_KEY = 'locale',
-            VK_KEY = 'vk',
-            FB_KEY='fb';
+        var LOCALE_KEY = 'locale';
 
         function _getItem(key, defaultValue) {
             var localStorageValue = JSON.parse($window.localStorage.getItem(key));
@@ -520,26 +523,19 @@ angular
             _setItem(LOCALE_KEY, lang);
         }
 
-        function getVK() {
-            return _getItem(VK_KEY);
+        function getUser(socialName) {
+            return _getItem(socialName);
         }
 
-        function setVK(vk) {
-            _setItem(VK_KEY, vk);
+        function setUser(socialName, user) {
+            _setItem(socialName, user);
         }
-        function getFB(){
-            return _getItem(FB_KEY);
-        }
-        function setFB(fb){
-            _setItem(FB_KEY,fb);
-        }
+
         return {
             getLocale: getLocale,
             setLocale: setLocale,
-            getVK: getVK,
-            setVK: setVK,
-            getFB: getFB,
-            setFB: setFB
+            getUser: getUser,
+            setUser: setUser
         };
     }]);
 'use strict';
@@ -746,33 +742,35 @@ angular.module('core').service('Menus', [
 'use strict';
 angular
     .module('core')
-    .factory('VK',
-    ["$window", "$location", "$http", "$rootScope", "Authentication", "LocalStorage", "toaster", function ($window, $location, $http, $rootScope, Authentication, LocalStorage, toaster) {
+    .factory('Services', ["VK", "FB", function (VK, FB) {
+        return {
+            vk: VK,
+            facebook: FB
+        };
+    }]);
 
-        // TODO use constant!
+'use strict';
+angular
+    .module('core')
+    .factory('VK',
+    ["$window", "$location", "$http", "$rootScope", "Auth", "LocalStorage", "toaster", "VK_APP_ID", "VKONTAKTE", function ($window, $location, $http, $rootScope, Auth, LocalStorage, toaster, VK_APP_ID, VKONTAKTE) {
+
 
         var VK = {};
 
         VK.init = function () {
-            if ($window.VK && $window.VK.Widgets) {
-                $window.VK.init({apiId: 3520312, onlyWidgets: true});
-                $window.VK.Widgets.Post('vk_post', -50609732, 124, 'hWNjwJubCJ69XFWPH_s0GcVXSnI');
-            }
-            if (Authentication.isVK()) {
-                $rootScope.user.vk = VK.user();
-            }
         };
 
         VK.getSocialInfo = function (callBack) {
             if (!callBack) {
                 callBack = function (data) {
                     if (data) {
-                        var value = angular.extend(LocalStorage.getVK(), data);
-                        Authentication.setVKUser(value);
+                        var value = angular.extend(LocalStorage.getUser(VKONTAKTE), data);
+                        Auth.setUser(VKONTAKTE, value);
                     }
                 };
             }
-            var vkr = 'http://api.vk.com/method/users.get?user_ids=' + Authentication.user.vk.user_id + '&fields=photo_50&callback=JSON_CALLBACK';
+            var vkr = 'http://api.vk.com/method/users.get?user_ids=' + Auth.user.vk.user_id + '&fields=photo_50&callback=JSON_CALLBACK';
             $http.jsonp(vkr).success(function (data) {
                 if (data) {
                     callBack(data.response[0]);
@@ -795,17 +793,12 @@ angular
             });
         };
 
-        VK.oauth = function () {
-            var appId = '4588210';
-            var authURL = 'https://oauth.vk.com/authorize?client_id=' + appId + '&scope=wall,email&redirect_uri='+ $window.location.origin + '/oauth/vk' + '&display=popup&v=5.25&response_type=token';
-            $window.location = authURL;
+        VK.getAuthURL = function () {
+            return 'https://oauth.vk.com/authorize?client_id=' + VK_APP_ID + '&scope=wall,email&redirect_uri=' + $window.location.origin + '/oauth/vk' + '&display=popup&v=5.25&response_type=token';
         };
 
-
-
         return VK;
-    }]
-);
+    }]);
 
 'use strict';
 
@@ -813,7 +806,7 @@ angular
 angular.module('users').config(['$httpProvider',
 	function($httpProvider) {
 		// Set the httpProvider "not authorized" interceptor
-		$httpProvider.interceptors.push(['$q', '$location', 'Authentication',
+		$httpProvider.interceptors.push(['$q', '$location', 'Auth',
 			function($q, $location, Authentication) {
 				return {
 					responseError: function(rejection) {
@@ -878,8 +871,8 @@ angular
 'use strict';
 
 angular.module('users').controller('AuthenticationController', ['$scope', '$http', '$location', 'Authentication',
-	function($scope, $http, $location, Authentication) {
-		$scope.authentication = Authentication;
+	function($scope, $http, $location, Auth) {
+		$scope.authentication = Auth;
 
 		// If user is signed in then redirect back home
 		if ($scope.authentication.user) $location.path('/');
@@ -912,8 +905,8 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 'use strict';
 
 angular.module('users').controller('PasswordController', ['$scope', '$stateParams', '$http', '$location', 'Authentication',
-	function($scope, $stateParams, $http, $location, Authentication) {
-		$scope.authentication = Authentication;
+	function($scope, $stateParams, $http, $location, Auth) {
+		$scope.authentication = Auth;
 
 		//If user is signed in then redirect back home
 		if ($scope.authentication.user) $location.path('/');
@@ -943,7 +936,7 @@ angular.module('users').controller('PasswordController', ['$scope', '$stateParam
 				$scope.passwordDetails = null;
 
 				// Attach user profile
-				Authentication.user = response;
+				Auth.user = response;
 
 				// And redirect to the index page
 				$location.path('/password/reset/success');
@@ -956,8 +949,8 @@ angular.module('users').controller('PasswordController', ['$scope', '$stateParam
 'use strict';
 
 angular.module('users').controller('SettingsController', ['$scope', '$http', '$location', 'Users', 'Authentication',
-	function($scope, $http, $location, Users, Authentication) {
-		$scope.user = Authentication.user;
+	function($scope, $http, $location, Users, Auth) {
+		$scope.user = Auth.user;
 
 		// If user is not signed in then redirect back home
 		if (!$scope.user) $location.path('/');
@@ -987,7 +980,7 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
 			}).success(function(response) {
 				// If successful show success message and clear form
 				$scope.success = true;
-				$scope.user = Authentication.user = response;
+				$scope.user = Auth.user = response;
 			}).error(function(response) {
 				$scope.error = response.message;
 			});
@@ -1001,7 +994,7 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
 	
 				user.$update(function(response) {
 					$scope.success = true;
-					Authentication.user = response;
+					Auth.user = response;
 				}, function(response) {
 					$scope.error = response.data.message;
 				});
@@ -1030,39 +1023,31 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
 // Authentication service for user variables
 angular
     .module('users')
-    .factory('Authentication',
-    ["$window", "LocalStorage", function ($window, LocalStorage) {
-        var Authentication = {
-            user: {
-                vk: LocalStorage.getVK() || {},
-                fb: LocalStorage.getFB() || {}
-            },
-            setVKUser: function (user) {
-                Authentication.user.vk = user;
-                LocalStorage.setVK(user);
-            },
-            clearVKUser: function () {
-                LocalStorage.setVK({});
-                Authentication.user.vk = {};
-            },
-            isVK: function () {
-                return Authentication.user && Authentication.user.vk && Authentication.user.vk.user_id;
-            },
-            setFBUser: function (user) {
-                Authentication.user.fb = user;
-                LocalStorage.setFB(user);
-            },
-            isFB: function () {
-                return Authentication.user && Authentication.user.fb && Authentication.user.fb.id;
-            },
-            clearFBUser: function () {
-                LocalStorage.setFB({});
-                Authentication.user.fb = {};
-            }
+    .factory('Auth',
+    ["$window", "LocalStorage", "VKONTAKTE", "FACEBOOK", function ($window, LocalStorage, VKONTAKTE, FACEBOOK) {
+        var Auth = {};
 
+        Auth.user = {
+            vk: LocalStorage.getUser(VKONTAKTE) || {},
+            facebook: LocalStorage.getUser(FACEBOOK) || {}
+        };
+        Auth.setUser = function (socialName, user) {
+            Auth.user[socialName] = user;
+            LocalStorage.setUser(socialName, user);
+        };
+        Auth.clearUser = function (socialName) {
+            LocalStorage.setUser(socialName, {});
+            Auth.user[socialName] = {};
+        };
+        Auth.isReadyFor = function (socialName, indexKey) {
+            return Auth.user && Auth.user[socialName] && !!Auth.user[socialName][indexKey || 'id'];
         };
 
-        return Authentication;
+        Auth.oauth = function (authURL) {
+            $window.location = authURL;
+        };
+
+        return Auth;
     }]
 );
 'use strict';
@@ -1121,7 +1106,9 @@ angular.module("app").run(["$templateCache", function($templateCache) {
   );
 
   $templateCache.put("modules/core/views/start.client.view.html",
-    "<h1 class=\"app-name upper-text text-center\" data-i18n=\"freelook\"></h1><div class=\"scrollable\" data-ng-controller=\"StartController\"><div class=\"scrollable-content\"><div><div class=\"page-signin\"><div class=\"signin-body\"><div class=\"form-container\"><section class=\"text-center\"><span data-ng-if=\"!auth.isVK()\" class=\"btn-vk-round\" data-ng-click=\"vk_oauth()\"><i class=\"fa fa-vk\"></i></span> <img data-ng-if=\"auth.isVK()\" ng-src=\"{{auth.user.vk.photo_50}}\" title=\"vkontakte\" class=\"img-circle img50_50\" data-ng-click=\"go({profile:'vk'})\"><div class=\"space\"></div><span data-ng-if=\"!auth.isFB()\" class=\"btn-facebook-round\" data-ng-click=\"fb_oauth()\"><i class=\"fa fa-facebook\"></i></span> <img data-ng-if=\"auth.isFB()\" ng-src=\"{{auth.user.fb.url}}\" title=\"facebook\" class=\"img-circle img50_50\" data-ng-click=\"go({profile:'facebook'})\"><div class=\"space\"></div><span class=\"btn-twitter-round\" data-ng-click=\"go({profile:'twitter'})\"><i class=\"fa fa-twitter\"></i></span><div class=\"space\"></div><span class=\"btn-google-plus-round\" data-ng-click=\"go({profile:'google'})\"><i class=\"fa fa-google-plus\"></i></span><div class=\"space\"></div><span class=\"btn-google-plus-round\" data-ng-click=\"go({profile:'instagram'})\"><i class=\"fa fa-instagram\"></i></span></section><span class=\"line-thru upper-text\" data-i18n=\"Info\"></span><section><div data-ng-show=\"!route.profile\" id=\"vk_post\"></div><div class=\"panel panel-default\" data-ng-show=\"route.profile\"><div class=\"panel-heading\"><strong><span class=\"glyphicon glyphicon-th\"></span> <span data-i18n=\"Profile_\"></span><span>{{route.profile}}</span></strong><div class=\"pull-right\"><a data-ng-if=\"auth.isVK()\" data-ng-click=\"clear(route.profile)\" data-i18n=\"sign out\"></a> <span data-ng-if=\"!auth.isVK()\" data-i18n=\"sign in\"></span></div></div><div class=\"panel-body\"><div class=\"media\"><div class=\"media-body center\" data-ng-if=\"!auth.isVK()\"><div class=\"btn btn-signin\"><div class=\"auto\" data-ng-show=\"route.profile !== 'vk' && route.profile !== 'facebook'\" data-i18n=\"soon\"></div></div></div><div class=\"media-body\" data-ng-if=\"auth.isVK() && route.profile === 'vk'\"><ul class=\"list-unstyled list-info\"><li><span class=\"icon glyphicon glyphicon-user\"></span><label>User name</label>{{auth.user.vk.email}}</li><li><span class=\"icon glyphicon glyphicon-globe\"></span><label>ID</label>{{auth.user.vk.user_id}}</li></ul></div><div class=\"media-body\" data-ng-if=\"auth.isFB() && route.profile === 'facebook'\"><ul class=\"list-unstyled list-info\"><li><span class=\"icon glyphicon glyphicon-user\"></span><label>User name</label>{{auth.user.fb.email}}</li><li><span class=\"icon glyphicon glyphicon-globe\"></span><label>ID</label>{{auth.user.fb.id}}</li></ul></div></div></div></div></section></div></div></div></div><div ng-if=\"false\" class=\"panel-group\" id=\"accordion\"><div class=\"panel panel-default\"><div class=\"panel-heading\" toggle=\"\" target=\"collapseOne\"><h4 class=\"panel-title\">Collapsible Group Item #1</h4></div><div id=\"collapseOne\" toggleable=\"\" active-class=\"in\" exclusion-group=\"accordion1\" default=\"active\" class=\"panel-collapse collapse\"><div class=\"panel-body\">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div></div></div><div class=\"panel panel-default\"><div class=\"panel-heading\" toggle=\"\" target=\"collapseTwo\"><h4 class=\"panel-title\">Collapsible Group Item #2</h4></div><div id=\"collapseTwo\" toggleable=\"\" active-class=\"in\" exclusion-group=\"accordion1\" class=\"panel-collapse collapse\"><div class=\"panel-body\">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div></div></div><div class=\"panel panel-default\"><div class=\"panel-heading\" toggle=\"\" target=\"collapseThree\"><h4 class=\"panel-title\">Collapsible Group Item #3</h4></div><div id=\"collapseThree\" toggleable=\"\" active-class=\"in\" exclusion-group=\"accordion1\" class=\"panel-collapse collapse\"><div class=\"panel-body\"><ul class=\"list-group\" toggle=\"off\" bubble=\"\" target=\"left-sidebar\"><li><a class=\"list-group-item\" href=\"#!/\"><span data-i18n=\"Home\"></span><i class=\"fa fa-chevron-right pull-right\"></i></a></li><li><a class=\"list-group-item\" href=\"#!/profile\"><span data-i18n=\"Users\"></span><i class=\"fa fa-chevron-right pull-right\"></i></a></li><li><a class=\"list-group-item\" href=\"#!/articles\"><span data-i18n=\"Articles\"></span><i class=\"fa fa-chevron-right pull-right\"></i></a></li></ul></div></div></div></div></div></div>"
+    "<h1 class=\"app-name upper-text text-center\" data-i18n=\"freelook\"></h1><div class=\"scrollable\" data-ng-controller=\"StartController\"><div class=\"scrollable-content\"><div><div class=\"page-signin\"><div class=\"signin-body\"><div class=\"form-container\"><section class=\"text-center\"><span data-ng-if=\"!auth.isReadyFor('vk', 'user_id')\" class=\"btn-vk-round\" data-ng-click=\"oauth('vk')\"><i class=\"fa fa-vk\"></i></span> <img data-ng-if=\"auth.isReadyFor('vk', 'user_id')\" ng-src=\"{{auth.user.vk.photo_50}}\" title=\"vkontakte\" class=\"img-circle img50_50\" data-ng-click=\"go({profile:'vk'})\"><div class=\"space\"></div><span data-ng-if=\"!auth.isReadyFor('facebook')\" class=\"btn-facebook-round\" data-ng-click=\"oauth('facebook')\"><i class=\"fa fa-facebook\"></i></span> <img data-ng-if=\"auth.isReadyFor('facebook')\" ng-src=\"{{auth.user.facebook.url}}\" title=\"facebook\" class=\"img-circle img50_50\" data-ng-click=\"go({profile:'facebook'})\"><div class=\"space\"></div><span class=\"btn-twitter-round\" data-ng-click=\"go({profile:'twitter'})\"><i class=\"fa fa-twitter\"></i></span><div class=\"space\"></div><span class=\"btn-google-plus-round\" data-ng-click=\"go({profile:'google'})\"><i class=\"fa fa-google-plus\"></i></span><div class=\"space\"></div><span class=\"btn-google-plus-round\" data-ng-click=\"go({profile:'instagram'})\"><i class=\"fa fa-instagram\"></i></span></section><span class=\"line-thru upper-text\" data-i18n=\"Info\"></span><section><div class=\"panel panel-default\" data-ng-show=\"route.profile\"><div class=\"panel-heading\"><strong><span class=\"glyphicon glyphicon-th\"></span> <span data-i18n=\"Profile_\"></span><span>{{route.profile}}</span></strong><div class=\"pull-right\"><a data-ng-if=\"auth.isReadyFor('vk', 'user_id') && route.profile === 'vk'\n" +
+    "                                        || auth.isReadyFor('facebook') && route.profile === 'facebook'\" data-ng-click=\"clear(route.profile)\" data-i18n=\"sign out\"></a> <span data-ng-if=\"!auth.isReadyFor('vk', 'user_id') && route.profile === 'vk'\n" +
+    "                                        || !auth.isReadyFor('facebook') && route.profile === 'facebook'\" data-i18n=\"sign in\"></span></div></div><div class=\"panel-body\"><div class=\"media\"><div class=\"media-body\" data-ng-if=\"auth.isReadyFor('vk', 'user_id') && route.profile === 'vk'\"><ul class=\"list-unstyled list-info\"><li><span class=\"icon glyphicon glyphicon-user\"></span><label>User name</label>{{auth.user.vk.email}}</li><li><span class=\"icon glyphicon glyphicon-globe\"></span><label>ID</label>{{auth.user.vk.user_id}}</li></ul></div><div class=\"media-body\" data-ng-if=\"auth.isReadyFor('facebook') && route.profile === 'facebook'\"><ul class=\"list-unstyled list-info\"><li><span class=\"icon glyphicon glyphicon-user\"></span><label>User name</label>{{auth.user.facebook.email}}</li><li><span class=\"icon glyphicon glyphicon-globe\"></span><label>ID</label>{{auth.user.facebook.id}}</li></ul></div></div></div></div></section></div></div></div></div><div ng-if=\"false\" class=\"panel-group\" id=\"accordion\"><div class=\"panel panel-default\"><div class=\"panel-heading\" toggle=\"\" target=\"collapseOne\"><h4 class=\"panel-title\">Collapsible Group Item #1</h4></div><div id=\"collapseOne\" toggleable=\"\" active-class=\"in\" exclusion-group=\"accordion1\" default=\"active\" class=\"panel-collapse collapse\"><div class=\"panel-body\">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div></div></div><div class=\"panel panel-default\"><div class=\"panel-heading\" toggle=\"\" target=\"collapseTwo\"><h4 class=\"panel-title\">Collapsible Group Item #2</h4></div><div id=\"collapseTwo\" toggleable=\"\" active-class=\"in\" exclusion-group=\"accordion1\" class=\"panel-collapse collapse\"><div class=\"panel-body\">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div></div></div><div class=\"panel panel-default\"><div class=\"panel-heading\" toggle=\"\" target=\"collapseThree\"><h4 class=\"panel-title\">Collapsible Group Item #3</h4></div><div id=\"collapseThree\" toggleable=\"\" active-class=\"in\" exclusion-group=\"accordion1\" class=\"panel-collapse collapse\"><div class=\"panel-body\"><ul class=\"list-group\" toggle=\"off\" bubble=\"\" target=\"left-sidebar\"><li><a class=\"list-group-item\" href=\"#!/\"><span data-i18n=\"Home\"></span><i class=\"fa fa-chevron-right pull-right\"></i></a></li><li><a class=\"list-group-item\" href=\"#!/profile\"><span data-i18n=\"Users\"></span><i class=\"fa fa-chevron-right pull-right\"></i></a></li><li><a class=\"list-group-item\" href=\"#!/articles\"><span data-i18n=\"Articles\"></span><i class=\"fa fa-chevron-right pull-right\"></i></a></li></ul></div></div></div></div></div></div>"
   );
 
   $templateCache.put("modules/users/views/authentication/signin.client.view.html",

@@ -16,7 +16,7 @@ angular
             LocalStorage.setUser(socialName, user);
         };
         Auth.clearUser = function (socialName) {
-            LocalStorage.setVK(socialName, {});
+            LocalStorage.setUser(socialName, {});
             Auth.user[socialName] = {};
         };
         Auth.isReadyFor = function (socialName, indexKey) {

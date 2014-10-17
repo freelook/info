@@ -2,7 +2,7 @@
 
 (function() {
 	// Authentication controller Spec
-	xdescribe('AuthenticationController', function() {
+	describe('AuthenticationController', function() {
 		// Initialize global variables
 		var AuthenticationController,
 			scope,
