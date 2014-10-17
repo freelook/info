@@ -4,7 +4,7 @@
 angular
     .module('users')
     .factory('Authentication',
-    function ($window, LocalStorage) {
+    function ($window, LocalStorage,$injector) {
         var Authentication = {
             user: {
                 vk: LocalStorage.getVK() || {},
@@ -31,10 +31,21 @@ angular
             clearFBUser: function () {
                 LocalStorage.setFB({});
                 Authentication.user.fb = {};
+            },
+            oauth: function(socialName){
+                switch (socialName) {
+                    case 'vk':
+                        $window.location=$injector.get('VK').getAuthURL();
+                        break;
+                    case 'fb':
+                        $window.location=$injector.get('FB').getAuthURL();
+                        break;
+                    default:
+                        break;
             }
 
-        };
-
+        }
+        }
         return Authentication;
     }
 );

@@ -9,7 +9,7 @@
                     <div class="form-container">
 
                         <section class="text-center">
-                            <span data-ng-if="!auth.isVK()" class="btn-vk-round" data-ng-click="vk_oauth()">
+                            <span data-ng-if="!auth.isVK()" class="btn-vk-round" data-ng-click="oauth('vk')">
                                 <i class="fa fa-vk"></i>
                             </span>
                             <img data-ng-if="auth.isVK()" ng-src="{{auth.user.vk.photo_50}}" title="vkontakte"
@@ -17,7 +17,7 @@
 
                             <div class="space"></div>
 
-                            <span data-ng-if="!auth.isFB()" class="btn-facebook-round" data-ng-click="fb_oauth()">
+                            <span data-ng-if="!auth.isFB()" class="btn-facebook-round" data-ng-click="oauth('fb')">
                                 <i class="fa fa-facebook"></i>
                             </span>
                             <img data-ng-if="auth.isFB()" ng-src="{{auth.user.fb.url}}" title="facebook"

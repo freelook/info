@@ -15,20 +15,20 @@ angular
             $window.location = authURL;
         };
 
-        FB.getAvatar = function() {
+        FB.getAvatar = function () {
             var fbr = 'https://graph.facebook.com/me/picture?&access_token=' + FB.getToken() + '&callback=JSON_CALLBACK';
-            $http.jsonp(fbr).success(function (r ) {
+            $http.jsonp(fbr).success(function (r) {
                 if (r && r.data) {
                     FB.setSocialInfo(r.data);
                 }
             });
         };
 
-        FB.setSocialInfo = function(data) {
-                if (data) {
-                    var value = angular.extend(LocalStorage.getFB(), data);
-                    Authentication.setFBUser(value);
-                }
+        FB.setSocialInfo = function (data) {
+            if (data) {
+                var value = angular.extend(LocalStorage.getFB(), data);
+                Authentication.setFBUser(value);
+            }
         };
 
         FB.getSocialInfo = function (callBack) {
@@ -44,20 +44,23 @@ angular
             });
         };
 
-        FB.getToken = function() {
+        FB.getToken = function () {
             return Authentication.user.fb.access_token;
         };
 
-        FB.getID = function() {
+        FB.getID = function () {
             return Authentication.user.fb.id;
         };
-        FB.search=function(input,callBack){
-            var fbr='https://graph.facebook.com/me/feed?&access_token=' + Authentication.user.fb.access_token + '&callback=JSON_CALLBACK';
+        FB.search = function (input, callBack) {
+            var fbr = 'https://graph.facebook.com/me/feed?&access_token=' + Authentication.user.fb.access_token + '&callback=JSON_CALLBACK';
             $http.jsonp(fbr).success(function (data) {
                 if (data) {
                     callBack(data);
                 }
             });
+        }
+        FB.getAuthURL = function () {
+            return 'https://www.facebook.com/dialog/oauth?client_id=' + appId + '&display=popup&scope=email,read_stream&response_type=token&redirect_uri=' + $window.location.origin + '/oauth/fb/';
         }
         return FB;
     });

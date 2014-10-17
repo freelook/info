@@ -6,7 +6,8 @@ angular
 
         // TODO use constant!
 
-        var VK = {};
+        var VK = {},
+            appId='4588210';
 
         VK.init = function () {
             if ($window.VK && $window.VK.Widgets) {
@@ -50,13 +51,9 @@ angular
             });
         };
 
-        VK.oauth = function () {
-            var appId = '4588210';
-            var authURL = 'https://oauth.vk.com/authorize?client_id=' + appId + '&scope=wall,email&redirect_uri='+ $window.location.origin + '/oauth/vk' + '&display=popup&v=5.25&response_type=token';
-            $window.location = authURL;
-        };
-
-
+        VK.getAuthURL=function(){
+            return 'https://oauth.vk.com/authorize?client_id=' + appId + '&scope=wall,email&redirect_uri='+ $window.location.origin + '/oauth/vk' + '&display=popup&v=5.25&response_type=token';
+        }
 
         return VK;
     }

@@ -10,19 +10,18 @@ angular
         };
         if (hash) {
             switch ($routeParams.social) {
+                //TODO case insensitive names of social factories+constants
                 case 'vk':
                     Authentication.setVKUser($scope.url2json(hash));
                     VK.getSocialInfo();
-                    $location.hash('');
-                    $location.path('/look');
                     break;
                 case 'fb':
                     Authentication.setFBUser($scope.url2json(hash));
                     FB.getSocialInfo();
-                    $location.hash('');
-                    $location.path('/look');
                     break;
             }
+            $location.hash('');
+            $location.path('/look');
         }
 
     });

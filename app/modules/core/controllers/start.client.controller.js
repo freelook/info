@@ -2,12 +2,9 @@
 
 angular
     .module('core')
-    .controller('StartController', function ($rootScope, $scope, Authentication, VK, FB) {
-        $scope.vk_oauth = function () {
-            VK.oauth();
-        };
-        $scope.fb_oauth = function () {
-            FB.oauth();
+    .controller('StartController', function ($rootScope, $scope, Authentication) {
+        $scope.oauth = function (socialName) {
+             Authentication.oauth(socialName);
         };
         $scope.clear = function (profile) {
             switch(profile) {
