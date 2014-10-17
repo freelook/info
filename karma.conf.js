@@ -12,12 +12,33 @@ module.exports = function (config) {
         frameworks: ['jasmine'],
 
         // List of files / patterns to load in the browser
-        files: applicationConfiguration.assets.lib.js.concat(applicationConfiguration.assets.js, applicationConfiguration.assets.tests),
+        files: [
+            // lib
+            'app/lib/angular/angular.js',
+            'app/lib/angular-route/angular-route.js',
+            'app/lib/angular-touch/angular-touch.js',
+            'app/lib/angular-resource/angular-resource.js',
+            'app/lib/angular-cookies/angular-cookies.js',
+            'app/lib/angular-animate/angular-animate.js',
+            'app/lib/angular-sanitize/angular-sanitize.js',
+            'app/lib/mobile-angular-ui/dist/js/mobile-angular-ui.js',
+            'app/lib/angularjs-toaster/toaster.js',
+
+            // js
+            'app/config.js',
+            'app/application.js',
+            'app/modules/*/*.js',
+            'app/modules/*/*[!tests]*/*.js',
+
+            // test
+            'app/lib/angular-mocks/angular-mocks.js',
+            'app/modules/*/tests/*.js'
+        ],
 
         // Test results reporter to use
         // Possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
         //reporters: ['progress'],
-        reporters: ['coverage'],
+        reporters: ['progress', 'coverage'],
         preprocessors: { 'app/modules/**/*.js': ['coverage']},
         coverageReporter: {
             dir: 'app/generated/coverage/'

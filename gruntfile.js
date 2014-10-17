@@ -197,6 +197,8 @@ module.exports = function (grunt) {
     // Lint task(s).
     grunt.registerTask('lint', ['jshint', 'csslint']);
 
+    grunt.registerTask('unit', ['karma:unit']);
+
     // Build task(s).
     if(process.env.NODE_ENV === 'development') {
         grunt.registerTask('build', ['lint', 'loadConfig', 'ngtemplates', 'ngAnnotate', 'uglify', 'cssmin', 'concat']);

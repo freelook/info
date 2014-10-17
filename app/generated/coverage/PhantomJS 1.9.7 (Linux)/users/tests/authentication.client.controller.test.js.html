@@ -199,16 +199,16 @@
     <h1>Code coverage report for <span class="entity">users/tests/authentication.client.controller.test.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">37.78% <small>(17 / 45)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">24.44% <small>(11 / 45)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
         Branches: <span class="metric">100% <small>(0 / 0)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Functions: <span class="metric">72.73% <small>(8 / 11)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">18.18% <small>(2 / 11)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">37.78% <small>(17 / 45)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">24.44% <small>(11 / 45)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
@@ -346,7 +346,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -383,7 +383,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -394,23 +394,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -425,7 +408,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -439,7 +439,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -454,7 +454,7 @@
 &nbsp;
 (function() {
 	// Authentication controller Spec
-	describe('AuthenticationController', function() {
+	xdescribe('AuthenticationController', function() {
 		// Initialize global variables
 		var AuthenticationController,
 			scope,
@@ -462,8 +462,8 @@
 			$stateParams,
 			$location;
 &nbsp;
-		beforeEach(function() {
-			jasmine.addMatchers({
+		beforeEach(<span class="fstat-no" title="function not covered" >function() {</span>
+<span class="cstat-no" title="statement not covered" >			jasmine.addMatchers({</span>
 				toEqualData: <span class="fstat-no" title="function not covered" >function(util, customEqualityTesters) {</span>
 <span class="cstat-no" title="statement not covered" >					return {</span>
 						compare: <span class="fstat-no" title="function not covered" >function(actual, expected) {</span>
@@ -498,9 +498,9 @@
 		}));
 &nbsp;
 &nbsp;
-		it('$scope.signin() should login with a correct user and password', function() {
+		it('$scope.signin() should login with a correct user and password', <span class="fstat-no" title="function not covered" >function() {</span>
 			// Test expected GET request
-			$httpBackend.when('POST', '/auth/signin').respond(200, 'Fred');
+<span class="cstat-no" title="statement not covered" >			$httpBackend.when('POST', '/auth/signin').respond(200, 'Fred');</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >			scope.signin();</span>
 <span class="cstat-no" title="statement not covered" >			$httpBackend.flush();</span>
@@ -510,9 +510,9 @@
 <span class="cstat-no" title="statement not covered" >			expect($location.url()).toEqual('/');</span>
 		});
 &nbsp;
-		it('$scope.signin() should fail to log in with nothing', function() {
+		it('$scope.signin() should fail to log in with nothing', <span class="fstat-no" title="function not covered" >function() {</span>
 			// Test expected POST request
-			$httpBackend.expectPOST('/auth/signin').respond(400, {
+<span class="cstat-no" title="statement not covered" >			$httpBackend.expectPOST('/auth/signin').respond(400, {</span>
 				'message': 'Missing credentials'
 			});
 &nbsp;
@@ -523,9 +523,9 @@
 <span class="cstat-no" title="statement not covered" >			expect(scope.error).toEqual('Missing credentials');</span>
 		});
 &nbsp;
-		it('$scope.signin() should fail to log in with wrong credentials', function() {
+		it('$scope.signin() should fail to log in with wrong credentials', <span class="fstat-no" title="function not covered" >function() {</span>
 			// Foo/Bar combo assumed to not exist
-			scope.authentication.user = 'Foo';
+<span class="cstat-no" title="statement not covered" >			scope.authentication.user = 'Foo';</span>
 <span class="cstat-no" title="statement not covered" >			scope.credentials = 'Bar';</span>
 &nbsp;
 			// Test expected POST request
@@ -540,9 +540,9 @@
 <span class="cstat-no" title="statement not covered" >			expect(scope.error).toEqual('Unknown user');</span>
 		});
 &nbsp;
-		it('$scope.signup() should register with correct data', function() {
+		it('$scope.signup() should register with correct data', <span class="fstat-no" title="function not covered" >function() {</span>
 			// Test expected GET request
-			scope.authentication.user = 'Fred';
+<span class="cstat-no" title="statement not covered" >			scope.authentication.user = 'Fred';</span>
 <span class="cstat-no" title="statement not covered" >			$httpBackend.when('POST', '/auth/signup').respond(200, 'Fred');</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >			scope.signup();</span>
@@ -554,9 +554,9 @@
 <span class="cstat-no" title="statement not covered" >			expect($location.url()).toBe('/');</span>
 		});
 &nbsp;
-		it('$scope.signup() should fail to register with duplicate Username', function() {
+		it('$scope.signup() should fail to register with duplicate Username', <span class="fstat-no" title="function not covered" >function() {</span>
 			// Test expected POST request
-			$httpBackend.when('POST', '/auth/signup').respond(400, {
+<span class="cstat-no" title="statement not covered" >			$httpBackend.when('POST', '/auth/signup').respond(400, {</span>
 				'message': 'Username already exists'
 			});
 &nbsp;
@@ -572,7 +572,7 @@
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Oct 16 2014 13:55:21 GMT+0300 (EEST)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Oct 17 2014 17:49:32 GMT+0300 (EEST)</div>
 </div>
 
 <script src="../../prettify.js"></script>

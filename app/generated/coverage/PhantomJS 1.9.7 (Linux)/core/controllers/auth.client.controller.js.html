@@ -199,16 +199,16 @@
     <h1>Code coverage report for <span class="entity">core/controllers/auth.client.controller.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">11.11% <small>(1 / 9)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">7.14% <small>(1 / 14)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Branches: <span class="metric">0% <small>(0 / 2)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">0% <small>(0 / 4)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
         Functions: <span class="metric">0% <small>(0 / 2)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">11.11% <small>(1 / 9)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">7.14% <small>(1 / 14)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
@@ -239,24 +239,32 @@
 21
 22
 23
-24</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+24
+25
+26
+27
+28</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -267,19 +275,23 @@
 angular
     .module('core')
     .controller('AuthController',
-<span class="fstat-no" title="function not covered" >    function ($rootScope, $scope, $routeParams, $location, VK, Authentication) {</span>
-&nbsp;
-&nbsp;
+<span class="fstat-no" title="function not covered" >    function ($rootScope, $scope, $routeParams, $location, VK, FB, Authentication) {</span>
 <span class="cstat-no" title="statement not covered" >        var hash = $location.hash();</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >        $scope.url2json = <span class="fstat-no" title="function not covered" >function( url ) {</span></span>
-<span class="cstat-no" title="statement not covered" >            return JSON.parse('{"' + decodeURI(url).replace(/#/g, '').replace(/"/g, '\\"').replace(/&amp;/g, '","').replace(/=/g,'":"') + '"}');</span>
+<span class="cstat-no" title="statement not covered" >        $scope.url2json = <span class="fstat-no" title="function not covered" >function (url) {</span></span>
+<span class="cstat-no" title="statement not covered" >            return JSON.parse('{"' + decodeURI(url).replace(/#/g, '').replace(/"/g, '\\"').replace(/&amp;/g, '","').replace(/=/g, '":"') + '"}');</span>
         };
-&nbsp;
-&nbsp;
-<span class="cstat-no" title="statement not covered" >        if(hash) {</span>
-<span class="cstat-no" title="statement not covered" >            Authentication.setVKUser($scope.url2json(hash));</span>
-<span class="cstat-no" title="statement not covered" >            VK.getSocialInfo();</span>
+<span class="cstat-no" title="statement not covered" >        if (hash) {</span>
+<span class="cstat-no" title="statement not covered" >            switch ($routeParams.social) {</span>
+                //TODO case insensitive names of social factories+constants
+                case 'vk':
+<span class="cstat-no" title="statement not covered" >                    Authentication.setVKUser($scope.url2json(hash));</span>
+<span class="cstat-no" title="statement not covered" >                    VK.getSocialInfo();</span>
+<span class="cstat-no" title="statement not covered" >                    break;</span>
+                case 'fb':
+<span class="cstat-no" title="statement not covered" >                    Authentication.setFBUser($scope.url2json(hash));</span>
+<span class="cstat-no" title="statement not covered" >                    FB.getSocialInfo();</span>
+<span class="cstat-no" title="statement not covered" >                    break;</span>
+            }
 <span class="cstat-no" title="statement not covered" >            $location.hash('');</span>
 <span class="cstat-no" title="statement not covered" >            $location.path('/look');</span>
         }
@@ -290,7 +302,7 @@ angular
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Oct 16 2014 13:55:21 GMT+0300 (EEST)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Oct 17 2014 17:49:32 GMT+0300 (EEST)</div>
 </div>
 
 <script src="../../prettify.js"></script>

@@ -17,6 +17,8 @@ angular
             $route.updateParams(params);
         };
 
+        $scope.loaded = true;
+
         $rootScope.do = function (input) {
             $route.updateParams({input: input});
             switch ($rootScope.route.social) {
@@ -38,7 +40,7 @@ angular
                     FB.search(input, function(data){
                         $rootScope.facebook = {
                             data: data
-                        }
+                        };
                     });
                     break;
             }

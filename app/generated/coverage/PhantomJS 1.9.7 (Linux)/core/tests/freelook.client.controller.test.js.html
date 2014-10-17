@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for core/tests/home.client.controller.test.js</title>
+    <title>Code coverage report for core/tests/freelook.client.controller.test.js</title>
     <meta charset="utf-8">
 
     <link rel="stylesheet" href="../../prettify.css">
@@ -195,24 +195,24 @@
     </style>
 </head>
 <body>
-<div class="header medium">
-    <h1>Code coverage report for <span class="entity">core/tests/home.client.controller.test.js</span></h1>
+<div class="header high">
+    <h1>Code coverage report for <span class="entity">core/tests/freelook.client.controller.test.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">66.67% <small>(6 / 9)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">100% <small>(10 / 10)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
         Branches: <span class="metric">100% <small>(0 / 0)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Functions: <span class="metric">50% <small>(2 / 4)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">100% <small>(3 / 3)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">66.67% <small>(6 / 9)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">100% <small>(10 / 10)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
-    <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">core/tests/</a> &#187; home.client.controller.test.js</div>
+    <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">core/tests/</a> &#187; freelook.client.controller.test.js</div>
 </div>
 <div class="body">
 <pre><table class="coverage">
@@ -239,8 +239,18 @@
 21
 22
 23
-24</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+24
+25</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -248,44 +258,37 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
 &nbsp;
-(function() {
-	xdescribe('HomeController', function() {
-		//Initialize global variables
-		var scope,
-			HomeController;
+describe('FreeLookController', function () {
+    //Initialize global variables
+    var scope, rootScope;
 &nbsp;
-		// Load the main application module
-		beforeEach(module(ApplicationConfiguration.applicationModuleName));
+    // Load the main application module
+    beforeEach(module('app'));
+    beforeEach(module('core'));
 &nbsp;
-		beforeEach(inject(<span class="fstat-no" title="function not covered" >function($controller, $rootScope) {</span>
-<span class="cstat-no" title="statement not covered" >			scope = $rootScope.$new();</span>
+    beforeEach(inject(function ($controller, $rootScope) {
+        scope = $rootScope.$new();
+        rootScope = $rootScope;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >			HomeController = $controller('HomeController', {</span>
-				$scope: scope
-			});
-		}));
+        $controller('FreeLookController', {
+            $rootScope: rootScope,
+            $scope: scope
+        });
 &nbsp;
-		it('should expose the authentication service', <span class="fstat-no" title="function not covered" >function() {</span>
-<span class="cstat-no" title="statement not covered" >			expect(scope.authentication).toBeTruthy();</span>
-		});
-	});
-})();</pre></td></tr>
+    }));
+&nbsp;
+    it('should loaded', function () {
+        expect(scope.loaded).toBeTruthy();
+    });
+});</pre></td></tr>
 </table></pre>
 
 </div>

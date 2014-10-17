@@ -195,20 +195,20 @@
     </style>
 </head>
 <body>
-<div class="header medium">
+<div class="header low">
     <h1>Code coverage report for <span class="entity">users/services/authentication.client.service.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">50% <small>(4 / 8)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">21.05% <small>(4 / 19)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Branches: <span class="metric">66.67% <small>(2 / 3)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">53.85% <small>(7 / 13)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Functions: <span class="metric">50% <small>(2 / 4)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">25% <small>(2 / 8)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">50% <small>(4 / 8)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">21.05% <small>(4 / 19)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
@@ -243,14 +243,37 @@
 25
 26
 27
-28</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -264,11 +287,34 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
 &nbsp;
@@ -276,25 +322,48 @@
 angular
     .module('users')
     .factory('Authentication',
-    function ($window, LocalStorage) {
+    function ($window, LocalStorage,$injector) {
         var Authentication = {
-            user:  {
-                vk : LocalStorage.getVK()
+            user: {
+                vk: LocalStorage.getVK() || {},
+                fb: LocalStorage.getFB() || {}
             },
-            setVKUser: <span class="fstat-no" title="function not covered" >function(user) {</span>
-                //$window.user.vk = user;
+            setVKUser: <span class="fstat-no" title="function not covered" >function (user) {</span>
 <span class="cstat-no" title="statement not covered" >                Authentication.user.vk = user;</span>
 <span class="cstat-no" title="statement not covered" >                LocalStorage.setVK(user);</span>
             },
-            clearVKUser: <span class="fstat-no" title="function not covered" >function() {</span>
-<span class="cstat-no" title="statement not covered" >                LocalStorage.setVK('');</span>
-<span class="cstat-no" title="statement not covered" >                Authentication.user.vk = '';</span>
+            clearVKUser: <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >                LocalStorage.setVK({});</span>
+<span class="cstat-no" title="statement not covered" >                Authentication.user.vk = {};</span>
             },
-            isVK: function() {
-                return Authentication.user &amp;&amp; Authentication.user.vk &amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >Authentication.user.vk.user_id;</span>
+            isVK: function () {
+                return Authentication.user &amp;&amp; Authentication.user.vk &amp;&amp; Authentication.user.vk.user_id;
+            },
+            setFBUser: <span class="fstat-no" title="function not covered" >function (user) {</span>
+<span class="cstat-no" title="statement not covered" >                Authentication.user.fb = user;</span>
+<span class="cstat-no" title="statement not covered" >                LocalStorage.setFB(user);</span>
+            },
+            isFB: <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >                return Authentication.user &amp;&amp; Authentication.user.fb &amp;&amp; Authentication.user.fb.id;</span>
+            },
+            clearFBUser: <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >                LocalStorage.setFB({});</span>
+<span class="cstat-no" title="statement not covered" >                Authentication.user.fb = {};</span>
+            },
+            oauth: <span class="fstat-no" title="function not covered" >function(socialName){</span>
+<span class="cstat-no" title="statement not covered" >                switch (socialName) {</span>
+                    case 'vk':
+<span class="cstat-no" title="statement not covered" >                        $window.location=$injector.get('VK').getAuthURL();</span>
+<span class="cstat-no" title="statement not covered" >                        break;</span>
+                    case 'fb':
+<span class="cstat-no" title="statement not covered" >                        $window.location=$injector.get('FB').getAuthURL();</span>
+<span class="cstat-no" title="statement not covered" >                        break;</span>
+                    default:
+<span class="cstat-no" title="statement not covered" >                        break;</span>
             }
-        };
 &nbsp;
+        }
+        }
         return Authentication;
     }
 );</pre></td></tr>
@@ -302,7 +371,7 @@ angular
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Oct 16 2014 13:55:21 GMT+0300 (EEST)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Oct 17 2014 17:49:32 GMT+0300 (EEST)</div>
 </div>
 
 <script src="../../prettify.js"></script>
