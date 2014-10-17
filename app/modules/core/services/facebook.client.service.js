@@ -11,7 +11,7 @@ angular
         };
 
         FB.oauth = function () {
-            var authURL = 'https://www.facebook.com/dialog/oauth?client_id=' + appId + '&display=popup&scope=email,user_likes&response_type=token&redirect_uri=' + $window.location.origin + '/oauth/fb/';
+            var authURL = 'https://www.facebook.com/dialog/oauth?client_id=' + appId + '&display=popup&scope=email,read_stream&response_type=token&redirect_uri=' + $window.location.origin + '/oauth/fb/';
             $window.location = authURL;
         };
 
@@ -51,6 +51,13 @@ angular
         FB.getID = function() {
             return Authentication.user.fb.id;
         };
-
+        FB.search=function(callBack){
+            var fbr='https://graph.facebook.com/me/feed?&access_token=' + Authentication.user.fb.access_token + '&callback=JSON_CALLBACK';
+            $http.jsonp(fbr).success(function (data) {
+                if (data) {
+                    callBack(data);
+                }
+            });
+        }
         return FB;
     });
