@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('users').controller('PasswordController', ['$scope', '$stateParams', '$http', '$location', 'Authentication',
-	function($scope, $stateParams, $http, $location, Authentication) {
-		$scope.authentication = Authentication;
+	function($scope, $stateParams, $http, $location, Auth) {
+		$scope.authentication = Auth;
 
 		//If user is signed in then redirect back home
 		if ($scope.authentication.user) $location.path('/');
@@ -32,7 +32,7 @@ angular.module('users').controller('PasswordController', ['$scope', '$stateParam
 				$scope.passwordDetails = null;
 
 				// Attach user profile
-				Authentication.user = response;
+				Auth.user = response;
 
 				// And redirect to the index page
 				$location.path('/password/reset/success');

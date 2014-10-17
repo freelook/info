@@ -2,18 +2,12 @@
 
 angular
     .module('core')
-    .controller('StartController', function ($rootScope, $scope, Authentication) {
+    .controller('StartController', function ($rootScope, $scope, Auth, Services) {
         $scope.oauth = function (socialName) {
-             Authentication.oauth(socialName);
+            var oauthURl = Services[socialName].getAuthURL();
+            Auth.oauth(oauthURl);
         };
         $scope.clear = function (profile) {
-            switch(profile) {
-                case 'vk':
-                    Authentication.clearVKUser();
-                    break;
-                case 'facebook':
-                    Authentication.clearFBUser();
-                    break;
-            }
+            Auth.clearUser(profile);
         };
     });

@@ -3,8 +3,8 @@
 angular.
 	module('articles').
 	controller('ArticlesController',
-	function ($scope, $routeParams, $location, Authentication, Articles) {
-		$scope.authentication = Authentication;
+	function ($scope, $routeParams, $location, Auth, Articles) {
+		$scope.authentication = Auth;
 
 		$scope.create = function () {
 			var article = new Articles({

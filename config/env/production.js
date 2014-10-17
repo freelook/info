@@ -5,9 +5,7 @@ module.exports = {
     assets: {
         lib: {
             css: [],
-            js: [
-                '//vk.com/js/api/openapi.js?115'
-            ]
+            js: []
         },
         css: ['app/dist/freelook.min.css'],
         js: ['app/dist/freelook.min.js']

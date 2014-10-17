@@ -1,18 +1,11 @@
 'use strict';
 angular
     .module('core')
-    .factory('FB', function ($window, $http, LocalStorage, Authentication) {
-        var FB = {},
-            appId = '846841298681206';
+    .factory('FB', function ($window, $http, LocalStorage, Auth, FB_APP_ID, FACEBOOK) {
+        var FB = {};
 
-        //login via Facebook
         FB.user = function () {
             return LocalStorage.getFB();
-        };
-
-        FB.oauth = function () {
-            var authURL = 'https://www.facebook.com/dialog/oauth?client_id=' + appId + '&display=popup&scope=email,read_stream&response_type=token&redirect_uri=' + $window.location.origin + '/oauth/fb/';
-            $window.location = authURL;
         };
 
         FB.getAvatar = function () {
@@ -26,8 +19,8 @@ angular
 
         FB.setSocialInfo = function (data) {
             if (data) {
-                var value = angular.extend(LocalStorage.getFB(), data);
-                Authentication.setFBUser(value);
+                var value = angular.extend(LocalStorage.getUser(FACEBOOK), data);
+                Auth.setUser(FACEBOOK, value);
             }
         };
 
@@ -35,7 +28,7 @@ angular
             if (!callBack) {
                 callBack = FB.setSocialInfo;
             }
-            var fbr = 'https://graph.facebook.com/me?&access_token=' + Authentication.user.fb.access_token + '&callback=JSON_CALLBACK';
+            var fbr = 'https://graph.facebook.com/me?&access_token=' + FB.getToken() + '&callback=JSON_CALLBACK';
             $http.jsonp(fbr).success(function (data) {
                 if (data) {
                     callBack(data);
@@ -45,22 +38,25 @@ angular
         };
 
         FB.getToken = function () {
-            return Authentication.user.fb.access_token;
+            return Auth.user.facebook.access_token;
         };
 
         FB.getID = function () {
-            return Authentication.user.fb.id;
+            return Auth.user.facebook.id;
         };
+
         FB.search = function (input, callBack) {
-            var fbr = 'https://graph.facebook.com/me/feed?&access_token=' + Authentication.user.fb.access_token + '&callback=JSON_CALLBACK';
+            var fbr = 'https://graph.facebook.com/me/feed?&access_token=' + FB.getToken() + '&callback=JSON_CALLBACK';
             $http.jsonp(fbr).success(function (data) {
                 if (data) {
                     callBack(data);
                 }
             });
-        }
+        };
+
         FB.getAuthURL = function () {
-            return 'https://www.facebook.com/dialog/oauth?client_id=' + appId + '&display=popup&scope=email,read_stream&response_type=token&redirect_uri=' + $window.location.origin + '/oauth/fb/';
-        }
+            return 'https://www.facebook.com/dialog/oauth?client_id=' + FB_APP_ID + '&display=popup&scope=email,read_stream&response_type=token&redirect_uri=' + $window.location.origin + '/oauth/facebook/';
+        };
+
         return FB;
     });

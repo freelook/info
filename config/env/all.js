@@ -33,8 +33,7 @@ module.exports = {
                 'app/lib/angular-animate/angular-animate.js',
                 'app/lib/angular-sanitize/angular-sanitize.js',
                 'app/lib/mobile-angular-ui/dist/js/mobile-angular-ui.js',
-                'app/lib/angularjs-toaster/toaster.js',
-                '//vk.com/js/api/openapi.js?115'
+                'app/lib/angularjs-toaster/toaster.js'
             ]
         },
         css: [

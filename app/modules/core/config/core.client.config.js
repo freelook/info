@@ -2,11 +2,10 @@
 angular
     .module('core')
     .run(
-    function ($rootScope, Localize, VK, Authentication) {
+    function ($rootScope, Localize, VK, Auth) {
 
         // Init data
-        $rootScope.auth = Authentication;
-        $rootScope.user = {};
+        $rootScope.auth = Auth;
         $rootScope.route = {};
         $rootScope.vk = {};
         $rootScope.google = {};

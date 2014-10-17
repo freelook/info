@@ -3,23 +3,15 @@
 angular
     .module('core')
     .controller('AuthController',
-    function ($rootScope, $scope, $routeParams, $location, VK, FB, Authentication) {
-        var hash = $location.hash();
+    function ($rootScope, $scope, $routeParams, $location, Services, Auth) {
+        var hash = $location.hash(),
+            social = $routeParams.social;
         $scope.url2json = function (url) {
             return JSON.parse('{"' + decodeURI(url).replace(/#/g, '').replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g, '":"') + '"}');
         };
-        if (hash) {
-            switch ($routeParams.social) {
-                //TODO case insensitive names of social factories+constants
-                case 'vk':
-                    Authentication.setVKUser($scope.url2json(hash));
-                    VK.getSocialInfo();
-                    break;
-                case 'fb':
-                    Authentication.setFBUser($scope.url2json(hash));
-                    FB.getSocialInfo();
-                    break;
-            }
+        if (hash && social) {
+            Auth.setUser(social, $scope.url2json(hash));
+            Services[social].getSocialInfo();
             $location.hash('');
             $location.path('/look');
         }
