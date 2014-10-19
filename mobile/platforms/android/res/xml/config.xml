@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="info.freelook" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <preference name="loglevel" value="DEBUG" />
+    <preference name="AndroidLaunchMode" value="singleTop" />
+    <feature name="App">
+        <param name="android-package" value="org.apache.cordova.App" />
+    </feature>
+    <access origin="*" />
+    <feature name="InAppBrowser">
+        <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+    </feature>
+    <name>Freelook</name>
+    <description>
+        Freelook at things.
+    </description>
+    <author email="freelook@mail.ua" href="http://freelook.info">
+        Freelook team
+    </author>
+    <content src="freelook.html" />
+</widget>

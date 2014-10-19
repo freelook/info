@@ -1,0 +1,3 @@
+# view AndroidManifest.xml #generated:6
+-keep class info.freelook.Freelook { <init>(...); }
+

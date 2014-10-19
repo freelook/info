@@ -1,0 +1,23 @@
+/home/freelook/projects/freelook/info/mobile/platforms/android/ant-build/classes.dex : \
+/home/freelook/projects/freelook/info/mobile/platforms/android/ant-build/classes/info/freelook/R$attr.class \
+/home/freelook/projects/freelook/info/mobile/platforms/android/ant-build/classes/info/freelook/R$xml.class \
+/home/freelook/projects/freelook/info/mobile/platforms/android/ant-build/classes/info/freelook/Freelook.class \
+/home/freelook/projects/freelook/info/mobile/platforms/android/ant-build/classes/info/freelook/BuildConfig.class \
+/home/freelook/projects/freelook/info/mobile/platforms/android/ant-build/classes/info/freelook/R$drawable.class \
+/home/freelook/projects/freelook/info/mobile/platforms/android/ant-build/classes/info/freelook/R$string.class \
+/home/freelook/projects/freelook/info/mobile/platforms/android/ant-build/classes/info/freelook/R.class \
+/home/freelook/projects/freelook/info/mobile/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowser$5$1.class \
+/home/freelook/projects/freelook/info/mobile/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowserDialog.class \
+/home/freelook/projects/freelook/info/mobile/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowser$5$4.class \
+/home/freelook/projects/freelook/info/mobile/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowser$4.class \
+/home/freelook/projects/freelook/info/mobile/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowser$5$3.class \
+/home/freelook/projects/freelook/info/mobile/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowser.class \
+/home/freelook/projects/freelook/info/mobile/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowser$5$2.class \
+/home/freelook/projects/freelook/info/mobile/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppChromeClient.class \
+/home/freelook/projects/freelook/info/mobile/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowser$3.class \
+/home/freelook/projects/freelook/info/mobile/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowser$4$1.class \
+/home/freelook/projects/freelook/info/mobile/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowser$5.class \
+/home/freelook/projects/freelook/info/mobile/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowser$2.class \
+/home/freelook/projects/freelook/info/mobile/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowser$InAppBrowserClient.class \
+/home/freelook/projects/freelook/info/mobile/platforms/android/ant-build/classes/org/apache/cordova/inappbrowser/InAppBrowser$1.class \
+/home/freelook/projects/freelook/info/mobile/platforms/android/ant-build/dexedLibs/classes-da15dd57aababbcf83fa5cf7e2891ee0.jar \
