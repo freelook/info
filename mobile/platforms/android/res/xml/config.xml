@@ -5,10 +5,10 @@
     <feature name="App">
         <param name="android-package" value="org.apache.cordova.App" />
     </feature>
-    <access origin="*" />
     <feature name="InAppBrowser">
         <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
     </feature>
+    <access origin="*" />
     <name>Freelook</name>
     <description>
         Freelook at things.
