@@ -20,6 +20,6 @@ describe('FreeLookController', function () {
     }));
 
     it('should loaded', function () {
-        expect(scope.loaded).toBeTruthy();
+        expect(scope).toBeDefined();
     });
 });

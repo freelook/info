@@ -9,7 +9,7 @@ module.exports = function (grunt) {
         serverViews: ['server/views/**/*.*'],
         serverJS: ['gruntfile.js', 'server.js', 'config/**/*.js', 'server/**/*.js'],
         clientViews: ['app/modules/**/views/**/*.html'],
-        clientJS: ['app/js/*.js', 'app/modules/**/*.js'],
+        clientJS: ['app/modules/**/*.js'],
         clientCSS: ['app/modules/**/*.css'],
         mochaTests: ['server/tests/**/*.js'],
         vendors: config.assets.lib.vendors,
@@ -170,7 +170,7 @@ module.exports = function (grunt) {
             }
         },
         karma: {
-            unit: {
+            coverage: {
                 configFile: 'karma.conf.js'
             }
         }
@@ -198,7 +198,7 @@ module.exports = function (grunt) {
     // Lint task(s).
     grunt.registerTask('lint', ['jshint', 'csslint']);
 
-    grunt.registerTask('unit', ['karma:unit']);
+    grunt.registerTask('coverage', ['karma:coverage']);
 
     // Build task(s).
     if(process.env.NODE_ENV === 'development') {
@@ -208,5 +208,5 @@ module.exports = function (grunt) {
     }
 
     // Test task.
-    grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit']);
+    grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:coverage']);
 };

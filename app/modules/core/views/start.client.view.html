@@ -9,18 +9,18 @@
                     <div class="form-container">
 
                         <section class="text-center">
-                            <span data-ng-if="!auth.isReadyFor('vk', 'user_id')" class="btn-vk-round" data-ng-click="oauth('vk')">
+                            <span data-ng-if="!auth.is('vk')" class="btn-vk-round" data-ng-click="oauth('vk')">
                                 <i class="fa fa-vk"></i>
                             </span>
-                            <img data-ng-if="auth.isReadyFor('vk', 'user_id')" ng-src="{{auth.user.vk.photo_50}}" title="vkontakte"
+                            <img data-ng-if="auth.is('vk')" ng-src="{{auth.user.vk.photo_50}}" title="vkontakte"
                                  class="img-circle img50_50" data-ng-click="go({profile:'vk'})">
 
                             <div class="space"></div>
 
-                            <span data-ng-if="!auth.isReadyFor('facebook')" class="btn-facebook-round" data-ng-click="oauth('facebook')">
+                            <span data-ng-if="!auth.is('facebook')" class="btn-facebook-round" data-ng-click="oauth('facebook')">
                                 <i class="fa fa-facebook"></i>
                             </span>
-                            <img data-ng-if="auth.isReadyFor('facebook')" ng-src="{{auth.user.facebook.url}}" title="facebook"
+                            <img data-ng-if="auth.is('facebook')" ng-src="{{auth.user.facebook.url}}" title="facebook"
                                  class="img-circle img50_50" data-ng-click="go({profile:'facebook'})">
 
                             <div class="space"></div>
@@ -47,17 +47,17 @@
                                     </strong>
 
                                     <div class="pull-right">
-                                        <a data-ng-if="auth.isReadyFor('vk', 'user_id') && route.profile === 'vk'
-                                        || auth.isReadyFor('facebook') && route.profile === 'facebook'" data-ng-click="clear(route.profile)"
+                                        <a data-ng-if="auth.is('vk') && route.profile === 'vk'
+                                        || auth.is('facebook') && route.profile === 'facebook'" data-ng-click="clear(route.profile)"
                                            data-i18n="sign out"></a>
-                                        <span data-ng-if="!auth.isReadyFor('vk', 'user_id') && route.profile === 'vk'
-                                        || !auth.isReadyFor('facebook') && route.profile === 'facebook'" data-i18n="sign in"></span>
+                                        <span data-ng-if="!auth.is('vk') && route.profile === 'vk'
+                                        || !auth.is('facebook') && route.profile === 'facebook'" data-i18n="sign in"></span>
                                     </div>
                                 </div>
                                 <div class="panel-body">
 
                                     <div class="media">
-                                        <div class="media-body" data-ng-if="auth.isReadyFor('vk', 'user_id') && route.profile === 'vk'">
+                                        <div class="media-body" data-ng-if="auth.is('vk') && route.profile === 'vk'">
                                             <ul class="list-unstyled list-info">
                                                 <li>
                                                     <span class="icon glyphicon glyphicon-user"></span>
@@ -73,7 +73,7 @@
                                             </ul>
                                         </div>
                                         <div class="media-body"
-                                             data-ng-if="auth.isReadyFor('facebook') && route.profile === 'facebook'">
+                                             data-ng-if="auth.is('facebook') && route.profile === 'facebook'">
                                             <ul class="list-unstyled list-info">
                                                 <li>
                                                     <span class="icon glyphicon glyphicon-user"></span>

@@ -4,12 +4,11 @@
 angular
     .module('users')
     .factory('Auth',
-    function ($window, LocalStorage, VKONTAKTE, FACEBOOK) {
+    function ($window, LocalStorage, Constants) {
         var Auth = {};
 
-        Auth.user = {
-            vk: LocalStorage.getUser(VKONTAKTE) || {},
-            facebook: LocalStorage.getUser(FACEBOOK) || {}
+        Auth.getUser = function(socialName) {
+            return LocalStorage.getUser(Constants[socialName].name) || {};
         };
         Auth.setUser = function (socialName, user) {
             Auth.user[socialName] = user;
@@ -19,12 +18,21 @@ angular
             LocalStorage.setUser(socialName, {});
             Auth.user[socialName] = {};
         };
-        Auth.isReadyFor = function (socialName, indexKey) {
-            return Auth.user && Auth.user[socialName] && !!Auth.user[socialName][indexKey || 'id'];
+        Auth.is = function (socialName) {
+            return !!Auth.getUID(socialName);
         };
 
         Auth.oauth = function (authURL) {
             $window.location = authURL;
+        };
+
+        Auth.getUID = function(socialName) {
+            return Auth.getUser(socialName)[Constants[socialName].uid];
+        };
+
+        Auth.user = {
+            vk:  Auth.getUser('vk'),
+            facebook: Auth.getUser('facebook')
         };
 
         return Auth;

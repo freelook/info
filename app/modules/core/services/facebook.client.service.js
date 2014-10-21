@@ -1,12 +1,8 @@
 'use strict';
 angular
     .module('core')
-    .factory('FB', function ($window, $http, LocalStorage, Auth, FB_APP_ID, FACEBOOK) {
+    .factory('FB', function ($window, $http, LocalStorage, Auth, FACEBOOK) {
         var FB = {};
-
-        FB.user = function () {
-            return LocalStorage.getFB();
-        };
 
         FB.getAvatar = function () {
             var fbr = 'https://graph.facebook.com/me/picture?&access_token=' + FB.getToken() + '&callback=JSON_CALLBACK';
@@ -19,8 +15,8 @@ angular
 
         FB.setSocialInfo = function (data) {
             if (data) {
-                var value = angular.extend(LocalStorage.getUser(FACEBOOK), data);
-                Auth.setUser(FACEBOOK, value);
+                var value = angular.extend(LocalStorage.getUser(FACEBOOK.name), data);
+                Auth.setUser(FACEBOOK.name, value);
             }
         };
 
@@ -38,11 +34,11 @@ angular
         };
 
         FB.getToken = function () {
-            return Auth.user.facebook.access_token;
+            return Auth.getUser(FACEBOOK.name).access_token;
         };
 
         FB.getID = function () {
-            return Auth.user.facebook.id;
+            return Auth.getUID(FACEBOOK.name);
         };
 
         FB.search = function (input, callBack) {
@@ -55,7 +51,7 @@ angular
         };
 
         FB.getAuthURL = function () {
-            return 'https://www.facebook.com/dialog/oauth?client_id=' + FB_APP_ID + '&display=popup&scope=email,read_stream&response_type=token&redirect_uri=' + $window.location.origin + '/oauth/facebook/';
+            return 'https://www.facebook.com/dialog/oauth?client_id=' + FACEBOOK.APP_ID + '&display=popup&scope=email,read_stream&response_type=token&redirect_uri=' + $window.location.origin + '/oauth/facebook/';
         };
 
         return FB;

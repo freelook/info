@@ -199,16 +199,16 @@
     <h1>Code coverage report for <span class="entity">core/services/facebook.client.service.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">33.33% <small>(12 / 36)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">33.33% <small>(11 / 33)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
         Branches: <span class="metric">0% <small>(0 / 12)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Functions: <span class="metric">7.69% <small>(1 / 13)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">8.33% <small>(1 / 12)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">33.33% <small>(12 / 36)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">33.33% <small>(11 / 33)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
@@ -277,24 +277,13 @@
 59
 60
 61
-62
-63
-64
-65
-66</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+62</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -334,33 +323,29 @@
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
 angular
     .module('core')
-    .factory('FB', function ($window, $http, LocalStorage, Authentication) {
-        var FB = {},
-            appId = '846841298681206';
+    .factory('FB', function ($window, $http, LocalStorage, Auth, FB_APP_ID, FACEBOOK) {
+        var FB = {};
 &nbsp;
-        //login via Facebook
         FB.user = <span class="fstat-no" title="function not covered" >function () {</span>
 <span class="cstat-no" title="statement not covered" >            return LocalStorage.getFB();</span>
-        };
-&nbsp;
-        FB.oauth = <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >            var authURL = 'https://www.facebook.com/dialog/oauth?client_id=' + appId + '&amp;display=popup&amp;scope=email,read_stream&amp;response_type=token&amp;redirect_uri=' + $window.location.origin + '/oauth/fb/';</span>
-<span class="cstat-no" title="statement not covered" >            $window.location = authURL;</span>
         };
 &nbsp;
         FB.getAvatar = <span class="fstat-no" title="function not covered" >function () {</span>
@@ -374,8 +359,8 @@ angular
 &nbsp;
         FB.setSocialInfo = <span class="fstat-no" title="function not covered" >function (data) {</span>
 <span class="cstat-no" title="statement not covered" >            if (data) {</span>
-<span class="cstat-no" title="statement not covered" >                var value = angular.extend(LocalStorage.getFB(), data);</span>
-<span class="cstat-no" title="statement not covered" >                Authentication.setFBUser(value);</span>
+<span class="cstat-no" title="statement not covered" >                var value = angular.extend(LocalStorage.getUser(FACEBOOK), data);</span>
+<span class="cstat-no" title="statement not covered" >                Auth.setUser(FACEBOOK, value);</span>
             }
         };
 &nbsp;
@@ -383,7 +368,7 @@ angular
 <span class="cstat-no" title="statement not covered" >            if (!callBack) {</span>
 <span class="cstat-no" title="statement not covered" >                callBack = FB.setSocialInfo;</span>
             }
-<span class="cstat-no" title="statement not covered" >            var fbr = 'https://graph.facebook.com/me?&amp;access_token=' + Authentication.user.fb.access_token + '&amp;callback=JSON_CALLBACK';</span>
+<span class="cstat-no" title="statement not covered" >            var fbr = 'https://graph.facebook.com/me?&amp;access_token=' + FB.getToken() + '&amp;callback=JSON_CALLBACK';</span>
 <span class="cstat-no" title="statement not covered" >            $http.jsonp(fbr).success(<span class="fstat-no" title="function not covered" >function (data) {</span></span>
 <span class="cstat-no" title="statement not covered" >                if (data) {</span>
 <span class="cstat-no" title="statement not covered" >                    callBack(data);</span>
@@ -393,30 +378,33 @@ angular
         };
 &nbsp;
         FB.getToken = <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >            return Authentication.user.fb.access_token;</span>
+<span class="cstat-no" title="statement not covered" >            return Auth.user.facebook.access_token;</span>
         };
 &nbsp;
         FB.getID = <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >            return Authentication.user.fb.id;</span>
+<span class="cstat-no" title="statement not covered" >            return Auth.user.facebook.id;</span>
         };
+&nbsp;
         FB.search = <span class="fstat-no" title="function not covered" >function (input, callBack) {</span>
-<span class="cstat-no" title="statement not covered" >            var fbr = 'https://graph.facebook.com/me/feed?&amp;access_token=' + Authentication.user.fb.access_token + '&amp;callback=JSON_CALLBACK';</span>
+<span class="cstat-no" title="statement not covered" >            var fbr = 'https://graph.facebook.com/me/feed?&amp;access_token=' + FB.getToken() + '&amp;callback=JSON_CALLBACK';</span>
 <span class="cstat-no" title="statement not covered" >            $http.jsonp(fbr).success(<span class="fstat-no" title="function not covered" >function (data) {</span></span>
 <span class="cstat-no" title="statement not covered" >                if (data) {</span>
 <span class="cstat-no" title="statement not covered" >                    callBack(data);</span>
                 }
             });
-        }
+        };
+&nbsp;
         FB.getAuthURL = <span class="fstat-no" title="function not covered" >function () {</span>
-<span class="cstat-no" title="statement not covered" >            return 'https://www.facebook.com/dialog/oauth?client_id=' + appId + '&amp;display=popup&amp;scope=email,read_stream&amp;response_type=token&amp;redirect_uri=' + $window.location.origin + '/oauth/fb/';</span>
-        }
+<span class="cstat-no" title="statement not covered" >            return 'https://www.facebook.com/dialog/oauth?client_id=' + FB_APP_ID + '&amp;display=popup&amp;scope=email,read_stream&amp;response_type=token&amp;redirect_uri=' + $window.location.origin + '/oauth/facebook/';</span>
+        };
+&nbsp;
         return FB;
     });</pre></td></tr>
 </table></pre>
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Oct 17 2014 17:49:32 GMT+0300 (EEST)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Oct 21 2014 16:15:12 GMT+0300 (EEST)</div>
 </div>
 
 <script src="../../prettify.js"></script>
