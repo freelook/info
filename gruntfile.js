@@ -206,7 +206,4 @@ module.exports = function (grunt) {
     } else {
         grunt.registerTask('build', ['lint', 'loadConfig', 'ngtemplates', 'uglify', 'cssmin', 'concat']);
     }
-
-    // Test task.
-    grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:coverage']);
 };
