@@ -7,6 +7,6 @@ services:
   - mongodb
 before_install:
   - npm i -g grunt-cli
-scripts
+script:
   - npm test
   - grunt coverage
