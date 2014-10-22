@@ -9,8 +9,7 @@
   },
   "scripts": {
     "start": "grunt",
-    "test": "./node_modules/.bin/testem",
-    "coverage": "grunt coverage",
+    "test": "grunt coverage",
     "postinstall": "bower install --config.interactive=false"
   },
   "dependencies": {
