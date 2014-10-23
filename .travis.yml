@@ -13,3 +13,4 @@ deploy:
   provider: heroku
   api_key: 6d224274-aa8c-4742-bfd0-f65baa4474a1
   app: freelookinfo
+  strategy: git

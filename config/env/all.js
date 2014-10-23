@@ -47,10 +47,6 @@ module.exports = {
             'app/modules/*/*.js',
             'app/modules/*/*[!tests]*/*.js',
             'app/generated/template.js'
-        ],
-        tests: [
-            'app/lib/angular-mocks/angular-mocks.js',
-            'app/modules/*/tests/*.js'
         ]
     },
     facebook: {

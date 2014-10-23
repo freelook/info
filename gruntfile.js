@@ -168,11 +168,6 @@ module.exports = function (grunt) {
                 reporter: 'spec',
                 require: 'server.js'
             }
-        },
-        karma: {
-            coverage: {
-                configFile: 'karma.conf.js'
-            }
         }
     });
 
@@ -198,7 +193,6 @@ module.exports = function (grunt) {
     // Lint task(s).
     grunt.registerTask('lint', ['jshint', 'csslint']);
 
-    grunt.registerTask('coverage', ['karma:coverage']);
 
     // Build task(s).
     switch (process.env.NODE_ENV) {
