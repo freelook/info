@@ -201,9 +201,12 @@ module.exports = function (grunt) {
     grunt.registerTask('coverage', ['karma:coverage']);
 
     // Build task(s).
-    if(process.env.NODE_ENV === 'development') {
-        grunt.registerTask('build', ['lint', 'loadConfig', 'ngtemplates', 'ngAnnotate', 'uglify', 'cssmin', 'concat']);
-    } else {
-        grunt.registerTask('build', ['lint', 'loadConfig', 'ngtemplates', 'uglify', 'cssmin', 'concat']);
+    switch (process.env.NODE_ENV) {
+        case 'development':
+        case 'test':
+            grunt.registerTask('build', ['lint', 'loadConfig', 'ngtemplates', 'ngAnnotate', 'uglify', 'cssmin', 'concat']);
+            break;
+        default:
+            grunt.registerTask('build', ['lint', 'loadConfig']);
     }
 };

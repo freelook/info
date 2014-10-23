@@ -1,5 +1,5 @@
 {
-    "framework": "jasmine",
+    "framework": "jasmine2",
     "src_files": [
 
         "app/lib/angular/angular.js",

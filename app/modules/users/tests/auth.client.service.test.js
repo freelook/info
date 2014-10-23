@@ -13,7 +13,7 @@
         beforeEach(inject(function(Auth, LocalStorage, Constants) {
             sut = Auth;
             constants = Constants;
-            mockGetUser = window.spyOn(LocalStorage, 'getUser').andReturn({});
+            mockGetUser = window.spyOn(LocalStorage, 'getUser').and.returnValue({});
         }));
 
         describe('Auth methods', function(){
@@ -30,7 +30,7 @@
                 var user = {};
                 user[constants.vk.uid] = '1';
                 sut.setUser(constants.vk.name, user);
-                mockGetUser.andReturn(user);
+                mockGetUser.and.returnValue(user);
                 expect(sut.is(constants.vk.name)).toBeTruthy();
             });
 
