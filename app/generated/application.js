@@ -755,7 +755,7 @@ angular.module("app").run(["$templateCache", function($templateCache) {
   );
 
   $templateCache.put("modules/core/views/info.client.view.html",
-    "<div class=\"scrollable\"><div class=\"scrollable-content\"><div class=\"list-group\" toggle=\"off\" bubble=\"\" target=\"right-sidebar\"></div></div></div>"
+    "<div class=\"scrollable\"><div class=\"scrollable-content\"><div class=\"list-group\" toggle=\"off\" bubble=\"\" target=\"right-sidebar\"></div></div></div><span>Hello travis</span>"
   );
 
   $templateCache.put("modules/core/views/main.client.view.html",
