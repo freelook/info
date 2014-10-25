@@ -30848,6 +30848,99 @@ angular.module('pascalprecht.translate').filter('translate', [
     return translateFilter;
   }
 ]);
+/*!
+ * angular-translate - v2.4.2 - 2014-10-21
+ * http://github.com/angular-translate/angular-translate
+ * Copyright (c) 2014 ; Licensed MIT
+ */
+angular.module('pascalprecht.translate').factory('$translateStaticFilesLoader', [
+  '$q',
+  '$http',
+  function ($q, $http) {
+    return function (options) {
+      if (!options || (!angular.isString(options.prefix) || !angular.isString(options.suffix))) {
+        throw new Error('Couldn\'t load static files, no prefix or suffix specified!');
+      }
+      var deferred = $q.defer();
+      $http(angular.extend({
+        url: [
+          options.prefix,
+          options.key,
+          options.suffix
+        ].join(''),
+        method: 'GET',
+        params: ''
+      }, options.$http)).success(function (data) {
+        deferred.resolve(data);
+      }).error(function (data) {
+        deferred.reject(options.key);
+      });
+      return deferred.promise;
+    };
+  }
+]);
+/*!
+ * angular-translate - v2.4.2 - 2014-10-21
+ * http://github.com/angular-translate/angular-translate
+ * Copyright (c) 2014 ; Licensed MIT
+ */
+angular.module('pascalprecht.translate').factory('$translateLocalStorage', [
+  '$window',
+  '$translateCookieStorage',
+  function ($window, $translateCookieStorage) {
+    var localStorageAdapter = function () {
+        var langKey;
+        return {
+          get: function (name) {
+            if (!langKey) {
+              langKey = $window.localStorage.getItem(name);
+            }
+            return langKey;
+          },
+          set: function (name, value) {
+            langKey = value;
+            $window.localStorage.setItem(name, value);
+          }
+        };
+      }();
+    var hasLocalStorageSupport = 'localStorage' in $window;
+    if (hasLocalStorageSupport) {
+      var testKey = 'pascalprecht.translate.storageTest';
+      try {
+        if ($window.localStorage !== null) {
+          $window.localStorage.setItem(testKey, 'foo');
+          $window.localStorage.removeItem(testKey);
+          hasLocalStorageSupport = true;
+        } else {
+          hasLocalStorageSupport = false;
+        }
+      } catch (e) {
+        hasLocalStorageSupport = false;
+      }
+    }
+    var $translateLocalStorage = hasLocalStorageSupport ? localStorageAdapter : $translateCookieStorage;
+    return $translateLocalStorage;
+  }
+]);
+/*!
+ * angular-translate - v2.4.2 - 2014-10-21
+ * http://github.com/angular-translate/angular-translate
+ * Copyright (c) 2014 ; Licensed MIT
+ */
+angular.module('pascalprecht.translate').factory('$translateCookieStorage', [
+  '$cookieStore',
+  function ($cookieStore) {
+    var $translateCookieStorage = {
+        get: function (name) {
+          return $cookieStore.get(name);
+        },
+        set: function (name, value) {
+          $cookieStore.put(name, value);
+        }
+      };
+    return $translateCookieStorage;
+  }
+]);
 /*! Overthrow. An overflow:auto polyfill for responsive design. (c) 2012: Scott Jehl, Filament Group, Inc. http://filamentgroup.github.com/Overthrow/license.txt */
 (function( w, undefined ){
 	

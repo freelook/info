@@ -55,8 +55,9 @@ angular.module(app.name).config(
             suffix: '.json'
         });
 
-        $translateProvider.preferredLanguage('en');
         $translateProvider.useLocalStorage();
+        $translateProvider.preferredLanguage('en');
+
     }]);
 
 //Then define the init function for starting up the application
@@ -123,7 +124,7 @@ angular
 angular
     .module('core')
     .run(
-    ["$rootScope", "Localize", "VK", "Auth", function ($rootScope, Localize, VK, Auth) {
+    ["$rootScope", "$translate", "LocalStorage", "VK", "Auth", function ($rootScope, $translate, LocalStorage, VK, Auth) {
 
         // Init data
         $rootScope.auth = Auth;
@@ -131,7 +132,7 @@ angular
         $rootScope.vk = {};
         $rootScope.google = {};
 
-        Localize.initLocalizedResources();
+        $translate.use(LocalStorage.getLocale());
         VK.init();
     }]);
 
@@ -255,20 +256,11 @@ angular
 'use strict';
 angular
     .module('core')
-    .controller('LangController', ["$scope", "Localize", "LocalStorage", function ($scope, Localize, LocalStorage) {
-        if (LocalStorage.getLocale() === 'ru') {
-            $scope.lang = 'ru';
-        } else {
-            $scope.lang = 'en';
-        }
+    .controller('LangController', ["$scope", "$translate", function ($scope, $translate) {
+
+        $scope.lang = $translate.use();
         $scope.setLang = function () {
-            switch ($scope.lang) {
-                case 'ru':
-                    Localize.setLanguage('RU-RU');
-                    break;
-                default:
-                    Localize.setLanguage('EN-US');
-            }
+            $translate.use($scope.lang);
         };
     }]);
 
@@ -298,31 +290,6 @@ angular
         $scope.clear = function (profile) {
             Auth.clearUser(profile);
         };
-    }]);
-
-'use strict';
-angular
-    .module('core')
-    .directive('i18n', ["Localize", function (Localize) {
-        var i18nDirective = {
-            restrict: 'EA',
-            updateText: function (ele, input, placeholder) {
-                var result;
-                return result = void 0,
-                        'i18n-placeholder' === input ?
-                            (result = Localize.getLocalizedString(placeholder), ele.attr('placeholder', result))
-                            : input.length >= 1 ?
-                            (result = Localize.getLocalizedString(input), ele.text(result))
-                            : void 0;
-            },
-            link: function (scope, ele, attrs) {
-                return scope.$on('localizeResourcesUpdated', function () {
-                    return i18nDirective.updateText(ele, attrs.i18n, attrs.placeholder);
-                }), attrs.$observe('i18n', function (value) {
-                    return i18nDirective.updateText(ele, value, attrs.placeholder);
-                });
-            }};
-        return i18nDirective;
     }]);
 
 'use strict';
@@ -361,7 +328,7 @@ angular
 
         FB.setSocialInfo = function (data) {
             if (data) {
-                var value = angular.extend(LocalStorage.getUser(FACEBOOK.name), data);
+                var value = angular.extend(Auth.getUser(FACEBOOK.name), data);
                 Auth.setUser(FACEBOOK.name, value);
             }
         };
@@ -369,12 +336,12 @@ angular
         FB.getSocialInfo = function (callBack) {
             if (!callBack) {
                 callBack = FB.setSocialInfo;
+                FB.getAvatar();
             }
             var fbr = 'https://graph.facebook.com/me?&access_token=' + FB.getToken() + '&callback=JSON_CALLBACK';
             $http.jsonp(fbr).success(function (data) {
                 if (data) {
                     callBack(data);
-                    FB.getAvatar();
                 }
             });
         };
@@ -429,10 +396,10 @@ angular
     .module('core')
     .factory('LocalStorage',
     ["$window", function ($window) {
-        var LOCALE_KEY = 'locale';
+        var LOCALE_KEY = 'NG_TRANSLATE_LANG_KEY';
 
         function _getItem(key, defaultValue) {
-            var localStorageValue = JSON.parse($window.localStorage.getItem(key));
+            var localStorageValue = $window.localStorage.getItem(key);
 
             if (!defaultValue) {
                 defaultValue = null;
@@ -442,7 +409,7 @@ angular
         }
 
         function _setItem(key, value) {
-            $window.localStorage.setItem(key, JSON.stringify(value));
+            $window.localStorage.setItem(key, value);
         }
 
         function getLocale() {
@@ -473,41 +440,6 @@ angular
             setUser: setUser
         };
     }]);
-'use strict';
-angular
-    .module('core')
-    .factory('Localize',
-        ["$http", "$rootScope", "$window", "LocalStorage", function ($http, $rootScope, $window, LocalStorage) {
-            var localize = {
-                language: 'en',
-                url: null,
-                resourceFileLoaded: !1,
-                successCallback: function (data) {
-                    return localize.dictionary = data, localize.resourceFileLoaded = !0, $rootScope.$broadcast('localizeResourcesUpdated');
-                },
-                setLanguage: function (value) {
-                    return LocalStorage.setLocale(value.toLowerCase().split('-')[0]), localize.initLocalizedResources();
-                },
-                setUrl: function (value) {
-                    return localize.url = value, localize.initLocalizedResources();
-                },
-                buildUrl: function () {
-                    return 'i18n/resources-locale_' + localize.language + '.json';
-                },
-                initLocalizedResources: function () {
-                    var url;
-                    localize.language = LocalStorage.getLocale();
-                    return url = localize.url || localize.buildUrl(), $http({method: 'GET', url: url, cache: !0}).success(localize.successCallback).error(function () {
-                        return $rootScope.$broadcast('localizeResourcesUpdated');
-                    });
-                },
-                getLocalizedString: function (value) {
-                    var result;
-                    return result = void 0, localize.dictionary && value ? ( result = !localize.dictionary[value] ? value : localize.dictionary[value]) : result = value, result;
-                }};
-            return localize;
-        }]);
-
 'use strict';
 angular
     .module('core')
@@ -762,17 +694,17 @@ angular.module("app").run(["$templateCache", function($templateCache) {
   );
 
   $templateCache.put("modules/core/views/info.client.view.html",
-    "<div class=\"scrollable\"><div class=\"scrollable-content\"><div class=\"list-group\" toggle=\"off\" bubble=\"\" target=\"right-sidebar\"></div></div></div><span>Hello travis</span>"
+    "<div class=\"scrollable\"><div class=\"scrollable-content\"><div class=\"list-group\" toggle=\"off\" bubble=\"\" target=\"right-sidebar\"></div></div></div><span></span>"
   );
 
   $templateCache.put("modules/core/views/main.client.view.html",
-    "<div data-ng-if=\"route.social\"><div data-ng-if=\"route.social === 'vk'\"><ul class=\"list-group\"><li class=\"list-group-item media\" data-ng-repeat=\"msg in vk.data.items\" data-ng-if=\"msg.text\"><div class=\"media-body\"><h4 class=\"media-heading\"><span data-i18n=\"Date\"></span><span class=\"space-left-5\">{{ msg.date | date:'medium'}}</span></h4><p data-ng-bind=\"msg.text\"></p></div></li></ul></div><div data-ng-if=\"route.social === 'google'\"><ul class=\"list-group\"><li class=\"list-group-item media\" data-ng-repeat=\"msg in google.data.results\" data-ng-if=\"msg.content\"><div class=\"media-body\"><h4 class=\"media-heading\" data-ng-bind-html=\"msg.title\"></h4><p data-ng-bind-html=\"msg.content\"></p></div></li></ul></div><div data-ng-if=\"route.social !== 'vk' && route.social !== 'google'\"><span data-i18n=\"soon\"></span></div></div>"
+    "<div data-ng-if=\"route.social\"><div data-ng-if=\"route.social === 'vk'\"><ul class=\"list-group\"><li class=\"list-group-item media\" data-ng-repeat=\"msg in vk.data.items\" data-ng-if=\"msg.text\"><div class=\"media-body\"><h4 class=\"media-heading\"><span data-translate=\"Date\"></span><span class=\"space-left-5\">{{ msg.date | date:'medium'}}</span></h4><p data-ng-bind=\"msg.text\"></p></div></li></ul></div><div data-ng-if=\"route.social === 'google'\"><ul class=\"list-group\"><li class=\"list-group-item media\" data-ng-repeat=\"msg in google.data.results\" data-ng-if=\"msg.content\"><div class=\"media-body\"><h4 class=\"media-heading\" data-ng-bind-html=\"msg.title\"></h4><p data-ng-bind-html=\"msg.content\"></p></div></li></ul></div><div data-ng-if=\"route.social !== 'vk' && route.social !== 'google'\"><span data-i18n=\"soon\"></span></div></div>"
   );
 
   $templateCache.put("modules/core/views/start.client.view.html",
-    "<h1 class=\"app-name upper-text text-center\" data-i18n=\"freelook\"></h1><div class=\"scrollable\" data-ng-controller=\"StartController\"><div class=\"scrollable-content\"><div><div class=\"page-signin\"><div class=\"signin-body\"><div class=\"form-container\"><section class=\"text-center\"><span data-ng-if=\"!auth.is('vk')\" class=\"btn-vk-round\" data-ng-click=\"oauth('vk')\"><i class=\"fa fa-vk\"></i></span> <img data-ng-if=\"auth.is('vk')\" ng-src=\"{{auth.user.vk.photo_50}}\" title=\"vkontakte\" class=\"img-circle img50_50\" data-ng-click=\"go({profile:'vk'})\"><div class=\"space\"></div><span data-ng-if=\"!auth.is('facebook')\" class=\"btn-facebook-round\" data-ng-click=\"oauth('facebook')\"><i class=\"fa fa-facebook\"></i></span> <img data-ng-if=\"auth.is('facebook')\" ng-src=\"{{auth.user.facebook.url}}\" title=\"facebook\" class=\"img-circle img50_50\" data-ng-click=\"go({profile:'facebook'})\"><div class=\"space\"></div><span class=\"btn-twitter-round\" data-ng-click=\"go({profile:'twitter'})\"><i class=\"fa fa-twitter\"></i></span><div class=\"space\"></div><span class=\"btn-google-plus-round\" data-ng-click=\"go({profile:'google'})\"><i class=\"fa fa-google-plus\"></i></span><div class=\"space\"></div><span class=\"btn-google-plus-round\" data-ng-click=\"go({profile:'instagram'})\"><i class=\"fa fa-instagram\"></i></span></section><span class=\"line-thru upper-text\" data-i18n=\"Info\"></span><section><div class=\"panel panel-default\" data-ng-show=\"route.profile\"><div class=\"panel-heading\"><strong><span class=\"glyphicon glyphicon-th\"></span> <span data-i18n=\"Profile_\"></span><span>{{route.profile}}</span></strong><div class=\"pull-right\"><a data-ng-if=\"auth.is('vk') && route.profile === 'vk'\n" +
-    "                                        || auth.is('facebook') && route.profile === 'facebook'\" data-ng-click=\"clear(route.profile)\" data-i18n=\"sign out\"></a> <span data-ng-if=\"!auth.is('vk') && route.profile === 'vk'\n" +
-    "                                        || !auth.is('facebook') && route.profile === 'facebook'\" data-i18n=\"sign in\"></span></div></div><div class=\"panel-body\"><div class=\"media\"><div class=\"media-body\" data-ng-if=\"auth.is('vk') && route.profile === 'vk'\"><ul class=\"list-unstyled list-info\"><li><span class=\"icon glyphicon glyphicon-user\"></span><label>User name</label>{{auth.user.vk.email}}</li><li><span class=\"icon glyphicon glyphicon-globe\"></span><label>ID</label>{{auth.user.vk.user_id}}</li></ul></div><div class=\"media-body\" data-ng-if=\"auth.is('facebook') && route.profile === 'facebook'\"><ul class=\"list-unstyled list-info\"><li><span class=\"icon glyphicon glyphicon-user\"></span><label>User name</label>{{auth.user.facebook.email}}</li><li><span class=\"icon glyphicon glyphicon-globe\"></span><label>ID</label>{{auth.user.facebook.id}}</li></ul></div></div></div></div></section></div></div></div></div><div ng-if=\"false\" class=\"panel-group\" id=\"accordion\"><div class=\"panel panel-default\"><div class=\"panel-heading\" toggle=\"\" target=\"collapseOne\"><h4 class=\"panel-title\">Collapsible Group Item #1</h4></div><div id=\"collapseOne\" toggleable=\"\" active-class=\"in\" exclusion-group=\"accordion1\" default=\"active\" class=\"panel-collapse collapse\"><div class=\"panel-body\">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div></div></div><div class=\"panel panel-default\"><div class=\"panel-heading\" toggle=\"\" target=\"collapseTwo\"><h4 class=\"panel-title\">Collapsible Group Item #2</h4></div><div id=\"collapseTwo\" toggleable=\"\" active-class=\"in\" exclusion-group=\"accordion1\" class=\"panel-collapse collapse\"><div class=\"panel-body\">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</div></div></div><div class=\"panel panel-default\"><div class=\"panel-heading\" toggle=\"\" target=\"collapseThree\"><h4 class=\"panel-title\">Collapsible Group Item #3</h4></div><div id=\"collapseThree\" toggleable=\"\" active-class=\"in\" exclusion-group=\"accordion1\" class=\"panel-collapse collapse\"><div class=\"panel-body\"><ul class=\"list-group\" toggle=\"off\" bubble=\"\" target=\"left-sidebar\"><li><a class=\"list-group-item\" href=\"#!/\"><span data-i18n=\"Home\"></span><i class=\"fa fa-chevron-right pull-right\"></i></a></li><li><a class=\"list-group-item\" href=\"#!/profile\"><span data-i18n=\"Users\"></span><i class=\"fa fa-chevron-right pull-right\"></i></a></li><li><a class=\"list-group-item\" href=\"#!/articles\"><span data-i18n=\"Articles\"></span><i class=\"fa fa-chevron-right pull-right\"></i></a></li></ul></div></div></div></div></div></div>"
+    "<h1 class=\"app-name upper-text text-center\" data-translate=\"freelook\"></h1><div class=\"scrollable\" data-ng-controller=\"StartController\"><div class=\"scrollable-content\"><div><div class=\"page-signin\"><div class=\"signin-body\"><div class=\"form-container\"><section class=\"text-center\"><span data-ng-if=\"!auth.is('vk')\" class=\"btn-vk-round\" data-ng-click=\"oauth('vk')\"><i class=\"fa fa-vk\"></i></span> <img data-ng-if=\"auth.is('vk')\" ng-src=\"{{auth.user.vk.photo_50}}\" title=\"vkontakte\" class=\"img-circle img50_50\" data-ng-click=\"go({profile:'vk'})\"><div class=\"space\"></div><span data-ng-if=\"!auth.is('facebook')\" class=\"btn-facebook-round\" data-ng-click=\"oauth('facebook')\"><i class=\"fa fa-facebook\"></i></span> <img data-ng-if=\"auth.is('facebook')\" ng-src=\"{{auth.user.facebook.url}}\" title=\"facebook\" class=\"img-circle img50_50\" data-ng-click=\"go({profile:'facebook'})\"><div class=\"space\"></div><span class=\"btn-twitter-round\" data-ng-click=\"go({profile:'twitter'})\"><i class=\"fa fa-twitter\"></i></span><div class=\"space\"></div><span class=\"btn-google-plus-round\" data-ng-click=\"go({profile:'google'})\"><i class=\"fa fa-google-plus\"></i></span><div class=\"space\"></div><span class=\"btn-google-plus-round\" data-ng-click=\"go({profile:'instagram'})\"><i class=\"fa fa-instagram\"></i></span></section><span class=\"line-thru upper-text\" data-translate=\"Info\"></span><section><div class=\"panel panel-default\" data-ng-show=\"route.profile\"><div class=\"panel-heading\"><strong><span class=\"glyphicon glyphicon-th\"></span> <span data-translate=\"Profile_\"></span><span>{{route.profile}}</span></strong><div class=\"pull-right\"><a data-ng-if=\"auth.is('vk') && route.profile === 'vk'\n" +
+    "                                        || auth.is('facebook') && route.profile === 'facebook'\" data-ng-click=\"clear(route.profile)\" data-translate=\"sign out\"></a> <span data-ng-if=\"!auth.is('vk') && route.profile === 'vk'\n" +
+    "                                        || !auth.is('facebook') && route.profile === 'facebook'\" data-translate=\"sign in\"></span></div></div><div class=\"panel-body\"><div class=\"media\"><div class=\"media-body\" data-ng-if=\"auth.is('vk') && route.profile === 'vk'\"><ul class=\"list-unstyled list-info\"><li><span class=\"icon glyphicon glyphicon-user\"></span><label>User name</label>{{auth.user.vk.email}}</li><li><span class=\"icon glyphicon glyphicon-globe\"></span><label>ID</label>{{auth.user.vk.user_id}}</li></ul></div><div class=\"media-body\" data-ng-if=\"auth.is('facebook') && route.profile === 'facebook'\"><ul class=\"list-unstyled list-info\"><li><span class=\"icon glyphicon glyphicon-user\"></span><label>User name</label>{{auth.user.facebook.email}}</li><li><span class=\"icon glyphicon glyphicon-globe\"></span><label>ID</label>{{auth.user.facebook.id}}</li></ul></div></div></div></div></section></div></div></div></div></div></div>"
   );
 
   $templateCache.put("modules/users/views/authentication/signin.client.view.html",
