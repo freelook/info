@@ -15,7 +15,7 @@ angular
 
         FB.setSocialInfo = function (data) {
             if (data) {
-                var value = angular.extend(LocalStorage.getUser(FACEBOOK.name), data);
+                var value = angular.extend(Auth.getUser(FACEBOOK.name), data);
                 Auth.setUser(FACEBOOK.name, value);
             }
         };
@@ -23,12 +23,12 @@ angular
         FB.getSocialInfo = function (callBack) {
             if (!callBack) {
                 callBack = FB.setSocialInfo;
+                FB.getAvatar();
             }
             var fbr = 'https://graph.facebook.com/me?&access_token=' + FB.getToken() + '&callback=JSON_CALLBACK';
             $http.jsonp(fbr).success(function (data) {
                 if (data) {
                     callBack(data);
-                    FB.getAvatar();
                 }
             });
         };
