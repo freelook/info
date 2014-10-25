@@ -9,6 +9,10 @@
         "app/lib/angular-cookies/angular-cookies.js",
         "app/lib/angular-animate/angular-animate.js",
         "app/lib/angular-sanitize/angular-sanitize.js",
+        "app/lib/angular-translate/angular-translate.js",
+        "app/lib/angular-translate-loader-static-files/angular-translate-loader-static-files.js",
+        "app/lib/angular-translate-storage-local/angular-translate-storage-local.js",
+        "app/lib/angular-translate-storage-cookie/angular-translate-storage-cookie.js",
         "app/lib/mobile-angular-ui/dist/js/mobile-angular-ui.js",
         "app/lib/angularjs-toaster/toaster.js",
 

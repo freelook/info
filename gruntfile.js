@@ -12,7 +12,7 @@ module.exports = function (grunt) {
         clientJS: ['app/modules/**/*.js'],
         clientCSS: ['app/modules/**/*.css'],
         mochaTests: ['server/tests/**/*.js'],
-        vendors: config.assets.lib.vendors,
+        vendors: config.assets.lib.js,
         jsBuildFiles: config.assets.js
     };
 

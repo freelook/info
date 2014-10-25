@@ -1,16 +1,17 @@
 'use strict';
 
 // Init the application configuration module for AngularJS application
-var ApplicationConfiguration = (function () {
+var app = (function () {
     // Init module configuration options
-    var applicationModuleName = 'app';
-    var applicationModuleVendorDependencies = [
+    var name = 'app';
+    var vendors = [
         'ngResource',
         'ngCookies',
         'ngAnimate',
         'ngRoute',
         'ngTouch',
         'ngSanitize',
+        'pascalprecht.translate',
         'mobile-angular-ui',
         'toaster'
     ];
@@ -25,12 +26,12 @@ var ApplicationConfiguration = (function () {
     };
 
     var addModule = function(moduleName){
-        angular.module(applicationModuleName).requires.push(moduleName);
+        angular.module(name).requires.push(moduleName);
     };
 
     return {
-        applicationModuleName: applicationModuleName,
-        applicationModuleVendorDependencies: applicationModuleVendorDependencies,
+        name: name,
+        vendors: vendors,
         registerModule: registerModule,
         addModule: addModule
     };

@@ -7,7 +7,7 @@
         var sut, mockLocalStorage, mockWindow, constants, mockGetUser;
 
         beforeEach(function () {
-            module(ApplicationConfiguration.applicationModuleName);
+            module(app.name);
         });
 
         beforeEach(inject(function(Auth, LocalStorage, Constants) {

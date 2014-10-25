@@ -13,17 +13,6 @@ module.exports = {
     assets: {
         lib: {
             css: [],
-            vendors: [
-                'app/lib/angular/angular.min.js',
-                'app/lib/angular-route/angular-route.min.js',
-                'app/lib/angular-touch/angular-touch.min.js',
-                'app/lib/angular-resource/angular-resource.min.js',
-                'app/lib/angular-cookies/angular-cookies.min.js',
-                'app/lib/angular-animate/angular-animate.min.js',
-                'app/lib/angular-sanitize/angular-sanitize.min.js',
-                'app/lib/mobile-angular-ui/dist/js/mobile-angular-ui.min.js',
-                'app/lib/angularjs-toaster/toaster.js'
-            ],
             js: [
                 'app/lib/angular/angular.js',
                 'app/lib/angular-route/angular-route.js',
@@ -32,6 +21,10 @@ module.exports = {
                 'app/lib/angular-cookies/angular-cookies.js',
                 'app/lib/angular-animate/angular-animate.js',
                 'app/lib/angular-sanitize/angular-sanitize.js',
+                'app/lib/angular-translate/angular-translate.js',
+                'app/lib/angular-translate-loader-static-files/angular-translate-loader-static-files.js',
+                'app/lib/angular-translate-storage-local/angular-translate-storage-local.js',
+                'app/lib/angular-translate-storage-cookie/angular-translate-storage-cookie.js',
                 'app/lib/mobile-angular-ui/dist/js/mobile-angular-ui.js',
                 'app/lib/angularjs-toaster/toaster.js'
             ]

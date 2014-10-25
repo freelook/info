@@ -5,8 +5,7 @@ describe('FreeLookController', function () {
     var scope, rootScope;
 
     // Load the main application module
-    beforeEach(module('app'));
-    beforeEach(module('core'));
+    beforeEach(module(app.name));
 
     beforeEach(inject(function ($controller, $rootScope) {
         scope = $rootScope.$new();

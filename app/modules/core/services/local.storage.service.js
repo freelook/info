@@ -3,10 +3,10 @@ angular
     .module('core')
     .factory('LocalStorage',
     function ($window) {
-        var LOCALE_KEY = 'locale';
+        var LOCALE_KEY = 'NG_TRANSLATE_LANG_KEY';
 
         function _getItem(key, defaultValue) {
-            var localStorageValue = JSON.parse($window.localStorage.getItem(key));
+            var localStorageValue = $window.localStorage.getItem(key);
 
             if (!defaultValue) {
                 defaultValue = null;
@@ -16,7 +16,7 @@ angular
         }
 
         function _setItem(key, value) {
-            $window.localStorage.setItem(key, JSON.stringify(value));
+            $window.localStorage.setItem(key, value);
         }
 
         function getLocale() {

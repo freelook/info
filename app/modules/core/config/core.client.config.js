@@ -2,7 +2,7 @@
 angular
     .module('core')
     .run(
-    function ($rootScope, Localize, VK, Auth) {
+    function ($rootScope, $translate, LocalStorage, VK, Auth) {
 
         // Init data
         $rootScope.auth = Auth;
@@ -10,6 +10,6 @@ angular
         $rootScope.vk = {};
         $rootScope.google = {};
 
-        Localize.initLocalizedResources();
+        $translate.use(LocalStorage.getLocale());
         VK.init();
     });

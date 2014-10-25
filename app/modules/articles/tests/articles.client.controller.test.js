@@ -8,7 +8,7 @@
             scope;
 
 
-        beforeEach(module(ApplicationConfiguration.applicationModuleName));
+        beforeEach(module(app.name));
 
 
         beforeEach(inject(function ($controller, $rootScope) {

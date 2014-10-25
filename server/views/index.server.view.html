@@ -4,17 +4,17 @@
 <!-- Navbars -->
 <div class="navbar navbar-app navbar-absolute-top">
     <div class="navbar-brand navbar-brand-center upper-text" yield-to="title">
-        <span data-i18n="Freelook"></span>
+        <span data-translate="Freelook"></span>
     </div>
     <div class="btn-group pull-left">
         <div ng-click="toggle('start')" class="btn btn-navbar sidebar-toggle">
             <i class="fa fa-bars"></i>
-            <span data-i18n="Start"></span>
+            <span data-translate="Start"></span>
         </div>
     </div>
     <div class="btn-group pull-right" yield-to="navbarAction">
         <div ng-click="toggle('info')" class="btn btn-navbar">
-            <span data-i18n="Info"></span> <i class="fa fa-exclamation-circle fa-navbar"></i>
+            <span data-translate="Info"></span> <i class="fa fa-exclamation-circle fa-navbar"></i>
         </div>
     </div>
 </div>
@@ -53,9 +53,9 @@
                 <div class="section container-fluid">
                     <div class="btn-group justified nav-tabs">
                         <a class="btn btn-default upper-text" data-ng-class="{active: route.action === 'look'}"
-                           data-i18n="Look" data-ng-click="go({action:'look'})"></a>
+                           data-translate="Look" data-ng-click="go({action:'look'})"></a>
                         <a class="btn btn-default upper-text" data-ng-class="{active: route.action === 'show'}"
-                           data-i18n="Show" data-ng-click="go({action:'show'})"></a>
+                           data-translate="Show" data-ng-click="go({action:'show'})"></a>
                     </div>
 
                 </div>
@@ -74,11 +74,10 @@
                             <div class="form-group">
                                 <div class="col-xs-9 col-sm-11 col-md-11 col-lg-11">
                             <input ng-model="route.input" type="search" name="data"
-                                   class="form-control app-search" placeholder="What do you want now ?"
-                                   data-i18n="i18n-placeholder">
+                                   class="form-control app-search" placeholder="{{bs}} 'What do you want now ?' | translate {{be}}">
                                     </div>
                                 <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
-                                    <button type="submit" class="btn btn-primary mg-top-10 rad-50" data-ng-disabled="!route.input" class="btn btn-primary" data-i18n="GO"></button>
+                                    <button type="submit" class="btn btn-primary mg-top-10 rad-50" data-ng-disabled="!route.input" class="btn btn-primary" data-translate="GO"></button>
                                 </div>
                             </div>
                         </form>
