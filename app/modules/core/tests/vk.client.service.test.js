@@ -11,7 +11,7 @@ describe('VK', function () {
         mockData,
         callbackToSpy;
     beforeEach(function () {
-        module(ApplicationConfiguration.applicationModuleName);
+        module(app.name);
     });
     beforeEach(inject(function (VK, $httpBackend, Auth) {
         sut = VK;

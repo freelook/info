@@ -13,7 +13,7 @@ describe('FB', function () {
         callbackToSpy;
 
     beforeEach(function () {
-        module(ApplicationConfiguration.applicationModuleName);
+        module(app.name);
     });
     beforeEach(inject(function ($httpBackend, Auth, FB, Constants) {
         sut = FB;
