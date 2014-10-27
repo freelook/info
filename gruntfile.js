@@ -4,6 +4,8 @@ module.exports = function (grunt) {
 
     var config = require('./config/config');
 
+    require('time-grunt')(grunt);
+
     // Unified Watch Object
     var watchFiles = {
         serverViews: ['server/views/**/*.*'],
@@ -155,11 +157,6 @@ module.exports = function (grunt) {
             debug: ['nodemon', 'watch', 'node-inspector'],
             options: {
                 logConcurrentOutput: true
-            }
-        },
-        env: {
-            test: {
-                NODE_ENV: 'test'
             }
         },
         mochaTest: {

@@ -1,0 +1,1 @@
+"use strict";chrome.runtime.onMessageExternal.addListener(function(){console.dir(arguments)});
