@@ -8,7 +8,7 @@
     <author email="freelook@mail.ua" href="http://freelook.info">
         Freelook team
     </author>
-    <content src="freelook.html"/>
+    <content src="index.html"/>
 
     <platform name="android">
         <access origin="*"/>
