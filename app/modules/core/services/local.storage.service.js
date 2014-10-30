@@ -5,8 +5,10 @@ angular
     function ($window) {
         var LOCALE_KEY = 'NG_TRANSLATE_LANG_KEY';
 
-        function _getItem(key, defaultValue) {
-            var localStorageValue = $window.localStorage.getItem(key);
+        function _getItem(key, defaultValue, noParse) {
+            var localStorageValue = noParse ?
+                $window.localStorage.getItem(key) :
+                JSON.parse($window.localStorage.getItem(key));
 
             if (!defaultValue) {
                 defaultValue = null;
@@ -15,8 +17,11 @@ angular
             return (localStorageValue) ? localStorageValue : defaultValue;
         }
 
-        function _setItem(key, value) {
-            $window.localStorage.setItem(key, value);
+        function _setItem(key, value, noParse) {
+            var localStorageValue = noParse ?
+                value :
+                JSON.stringify(value);
+            $window.localStorage.setItem(key, localStorageValue);
         }
 
         function getLocale() {
@@ -25,11 +30,11 @@ angular
                 lang = 'en';
             }
 
-            return _getItem(LOCALE_KEY, lang);
+            return _getItem(LOCALE_KEY, lang, true);
         }
 
         function setLocale(lang) {
-            _setItem(LOCALE_KEY, lang);
+            _setItem(LOCALE_KEY, lang, true);
         }
 
         function getUser(socialName) {
