@@ -7,11 +7,11 @@
 
                 <div class="signin-body">
                     <div class="form-container">
-                        <section class="text-center">
-                            <button onclick="chrome.webstore.install()" id="install-button">Add to Chrome</button>
+                        <section class="text-center" data-ng-if="!conf.ready()">
+                            <button data-ng-click="add()" id="install-button">Add to Chrome</button>
                         </section>
 
-                        <section class="text-center" ng-if="conf.ready()">
+                        <section class="text-center" data-ng-if="conf.ready()">
                             <span data-ng-if="!auth.is('vk')" class="btn-vk-round" data-ng-click="oauth('vk')">
                                 <i class="fa fa-vk"></i>
                             </span>

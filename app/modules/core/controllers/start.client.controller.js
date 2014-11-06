@@ -10,4 +10,11 @@ angular
         $scope.clear = function (profile) {
             Auth.clearUser(profile);
         };
+        $scope.add = function () {
+            var url = 'https://chrome.google.com/webstore/detail/dlliipgdjogiifieihjpfoccjnnmjild';
+            var callBack = function () {
+                console.dir(arguments);
+            };
+            window.chrome.webstore.install(url, callBack, callBack);
+        };
     });
