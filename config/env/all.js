@@ -55,7 +55,8 @@ module.exports = {
     google: {
         clientID: process.env.GOOGLE_ID || 'APP_ID',
         clientSecret: process.env.GOOGLE_SECRET || 'APP_SECRET',
-        callbackURL: 'http://localhost:3000/auth/google/callback'
+        callbackURL: 'http://localhost:3000/auth/google/callback',
+        EXT_ID: 'dlliipgdjogiifieihjpfoccjnnmjild'
     },
     linkedin: {
         clientID: process.env.LINKEDIN_ID || 'APP_ID',

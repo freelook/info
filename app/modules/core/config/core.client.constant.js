@@ -10,4 +10,10 @@ angular
         name: 'facebook',
         APP_ID: '846841298681206',
         uid: 'id'
+    })
+    .constant('GOOGLE', {
+        name: 'google',
+        EXT_ID: 'dlliipgdjogiifieihjpfoccjnnmjild',
+        APP_ID: '',
+        uid: 'id'
     });
