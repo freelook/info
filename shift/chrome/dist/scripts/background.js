@@ -1,1 +1,1 @@
-"use strict";chrome.runtime.onMessageExternal.addListener(function(){console.dir(arguments)});
+"use strict";var freelook;window.chrome.runtime.onMessageExternal.addListener(function(a,b,c){"init"===a.msg&&(freelook=b.tab,c({success:!0}))});

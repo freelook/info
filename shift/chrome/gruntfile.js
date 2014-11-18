@@ -49,8 +49,7 @@ module.exports = function (grunt) {
 
         // Empties folders to start fresh
         clean: {
-            chrome: {
-            },
+            chrome: {},
             dist: {
                 files: [
                     {
@@ -125,13 +124,11 @@ module.exports = function (grunt) {
 
         // Run some tasks in parallel to speed up build process
         concurrent: {
-            chrome: [
-            ],
+            chrome: [],
             dist: [
                 'imagemin'
             ],
-            test: [
-            ]
+            test: []
         },
 
         // Auto buildnumber, exclude debug files. smart builds that event pages
@@ -169,13 +166,6 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('debug', function () {
-        grunt.task.run([
-            'concurrent:chrome',
-            'connect:chrome'
-        ]);
-    });
-
     grunt.registerTask('build', [
         'clean:dist',
         'chromeManifest:dist',
@@ -186,6 +176,14 @@ module.exports = function (grunt) {
         'copy',
         'usemin',
         'compress'
+    ]);
+
+    grunt.registerTask('test', [
+        'clean:dist',
+        'chromeManifest:dist',
+        'concurrent:dist',
+        'concat',
+        'copy',
     ]);
 
     grunt.registerTask('default', [

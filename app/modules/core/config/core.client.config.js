@@ -13,4 +13,5 @@ angular
 
         $translate.use(LocalStorage.getLocale());
         VK.init();
+        Config.init();
     });

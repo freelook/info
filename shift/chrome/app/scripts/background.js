@@ -1,17 +1,12 @@
 'use strict';
 
+var freelook;
 
-chrome.runtime.onMessageExternal.addListener(function (msg, from) {
-    console.dir(arguments);
-    // TODO Work with from.tab.id
+window.chrome.runtime.onMessageExternal.addListener(function (data, from, response) {
+    if (data.msg === 'init') {
+        freelook = from.tab;
+        response({
+            success: true
+        });
+    }
 });
-
-
-// Client msg
-
-//function e() {
-//    var editorExtensionId = 'iglkihmilnabdfiplkamngaicaaabdgd';
-//
-//// Make a simple request:
-//    chrome.runtime.sendMessage(editorExtensionId, {oauth: 'vk'});
-//}

@@ -1,9 +1,10 @@
 'use strict';
 angular
     .module('core')
-    .factory('Constants', function (VKONTAKTE, FACEBOOK) {
+    .factory('Constants', function (VKONTAKTE, FACEBOOK, GOOGLE) {
         return {
             vk: VKONTAKTE,
-            facebook: FACEBOOK
+            facebook: FACEBOOK,
+            google: GOOGLE
         };
     });

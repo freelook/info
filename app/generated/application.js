@@ -135,6 +135,7 @@ angular
 
         $translate.use(LocalStorage.getLocale());
         VK.init();
+        Config.init();
     }]);
 
 'use strict';
@@ -289,7 +290,7 @@ angular
 
 angular
     .module('core')
-    .controller('StartController', ["$rootScope", "$scope", "Auth", "Services", function ($rootScope, $scope, Auth, Services) {
+    .controller('StartController', ["$rootScope", "$scope", "Auth", "Services", "Config", function ($rootScope, $scope, Auth, Services, Config) {
         $scope.oauth = function (socialName) {
             var oauthURl = Services[socialName].getAuthURL();
             Auth.oauth(oauthURl);
@@ -299,10 +300,7 @@ angular
         };
         $scope.add = function () {
             var url = 'https://chrome.google.com/webstore/detail/dlliipgdjogiifieihjpfoccjnnmjild';
-            var callBack = function () {
-                console.dir(arguments);
-            };
-            window.chrome.webstore.install(url, callBack, callBack);
+            Config.install(url);
         };
     }]);
 
@@ -318,24 +316,64 @@ angular
 'use strict';
 angular
     .module('core')
-    .factory('Config', ["Constants", function (Constants) {
+    .factory('Config', ["$timeout", "$rootScope", "Constants", "toaster", function ($timeout, $rootScope, Constants, toaster) {
+
+        var extensionInstalled = false;
+
+        function init() {
+            if (canUseExtension()) {
+                window.chrome.runtime.sendMessage(Constants.google.EXT_ID, {msg: 'init'}, function (data) {
+                    if (data) {
+                        extensionInstalled = data.success;
+                    }
+                });
+            }
+        }
+
+        function canUseExtension() {
+            return !!window.chrome && !!window.chrome.app && !!window.chrome.runtime;
+        }
+
+        function isExtensionInstalled() {
+            return extensionInstalled;
+        }
 
         function ready() {
-        return window.chrome && window.chrome.app && window.chrome.app.isInstalled;
+            return canUseExtension() && isExtensionInstalled();
+        }
+
+        function install(url) {
+
+            function successCallback() {
+                $timeout(function () {
+                    init();
+                }, 0);
+            }
+
+            function failureCallback() {
+                toaster.pop('error', 'Sorry error', ':(');
+            }
+
+            return window.chrome && window.chrome.webstore.install(url, successCallback, failureCallback);
         }
 
         return {
-            ready: ready
+            isExtensionInstalled: isExtensionInstalled,
+            canUseExtension: canUseExtension,
+            ready: ready,
+            init: init,
+            install: install
         };
     }]);
 
 'use strict';
 angular
     .module('core')
-    .factory('Constants', ["VKONTAKTE", "FACEBOOK", function (VKONTAKTE, FACEBOOK) {
+    .factory('Constants', ["VKONTAKTE", "FACEBOOK", "GOOGLE", function (VKONTAKTE, FACEBOOK, GOOGLE) {
         return {
             vk: VKONTAKTE,
-            facebook: FACEBOOK
+            facebook: FACEBOOK,
+            google: GOOGLE
         };
     }]);
 
@@ -735,7 +773,7 @@ angular.module("app").run(["$templateCache", function($templateCache) {
   );
 
   $templateCache.put("modules/core/views/start.client.view.html",
-    "<h1 class=\"app-name upper-text text-center\" data-translate=\"freelook\"></h1><div class=\"scrollable\" data-ng-controller=\"StartController\"><div class=\"scrollable-content\"><div><div class=\"page-signin\"><div class=\"signin-body\"><div class=\"form-container\"><section class=\"text-center\" data-ng-if=\"!conf.ready()\"><button data-ng-click=\"add()\" id=\"install-button\">Add to Chrome</button></section><section class=\"text-center\" data-ng-if=\"conf.ready()\"><span data-ng-if=\"!auth.is('vk')\" class=\"btn-vk-round\" data-ng-click=\"oauth('vk')\"><i class=\"fa fa-vk\"></i></span> <img data-ng-if=\"auth.is('vk')\" ng-src=\"{{auth.user.vk.photo_50}}\" title=\"vkontakte\" class=\"img-circle img50_50\" data-ng-click=\"go({profile:'vk'})\"><div class=\"space\"></div><span data-ng-if=\"!auth.is('facebook')\" class=\"btn-facebook-round\" data-ng-click=\"oauth('facebook')\"><i class=\"fa fa-facebook\"></i></span> <img data-ng-if=\"auth.is('facebook')\" ng-src=\"{{auth.user.facebook.url}}\" title=\"facebook\" class=\"img-circle img50_50\" data-ng-click=\"go({profile:'facebook'})\"><div class=\"space\"></div><span class=\"btn-twitter-round\" data-ng-click=\"go({profile:'twitter'})\"><i class=\"fa fa-twitter\"></i></span><div class=\"space\"></div><span class=\"btn-google-plus-round\" data-ng-click=\"go({profile:'google'})\"><i class=\"fa fa-google-plus\"></i></span><div class=\"space\"></div><span class=\"btn-google-plus-round\" data-ng-click=\"go({profile:'instagram'})\"><i class=\"fa fa-instagram\"></i></span></section><span class=\"line-thru upper-text\" data-translate=\"Info\"></span><section><div class=\"panel panel-default\" data-ng-show=\"route.profile\"><div class=\"panel-heading\"><strong><span class=\"glyphicon glyphicon-th\"></span> <span data-translate=\"Profile_\"></span><span>{{route.profile}}</span></strong><div class=\"pull-right\"><a data-ng-if=\"auth.is('vk') && route.profile === 'vk'\n" +
+    "<h1 class=\"app-name upper-text text-center\" data-translate=\"freelook\"></h1><div class=\"scrollable\" data-ng-controller=\"StartController\"><div class=\"scrollable-content\"><div><div class=\"page-signin\"><div class=\"signin-body\"><div class=\"form-container\"><section class=\"text-center\" data-ng-if=\"!conf.ready() \"><button data-ng-click=\"add()\" id=\"install-button\">Add to Chrome</button></section><section class=\"text-center\" data-ng-if=\"conf.ready()\"><span data-ng-if=\"!auth.is('vk')\" class=\"btn-vk-round\" data-ng-click=\"oauth('vk')\"><i class=\"fa fa-vk\"></i></span> <img data-ng-if=\"auth.is('vk')\" ng-src=\"{{auth.user.vk.photo_50}}\" title=\"vkontakte\" class=\"img-circle img50_50\" data-ng-click=\"go({profile:'vk'})\"><div class=\"space\"></div><span data-ng-if=\"!auth.is('facebook')\" class=\"btn-facebook-round\" data-ng-click=\"oauth('facebook')\"><i class=\"fa fa-facebook\"></i></span> <img data-ng-if=\"auth.is('facebook')\" ng-src=\"{{auth.user.facebook.url}}\" title=\"facebook\" class=\"img-circle img50_50\" data-ng-click=\"go({profile:'facebook'})\"><div class=\"space\"></div><span class=\"btn-twitter-round\" data-ng-click=\"go({profile:'twitter'})\"><i class=\"fa fa-twitter\"></i></span><div class=\"space\"></div><span class=\"btn-google-plus-round\" data-ng-click=\"go({profile:'google'})\"><i class=\"fa fa-google-plus\"></i></span><div class=\"space\"></div><span class=\"btn-google-plus-round\" data-ng-click=\"go({profile:'instagram'})\"><i class=\"fa fa-instagram\"></i></span></section><span class=\"line-thru upper-text\" data-translate=\"Info\"></span><section><div class=\"panel panel-default\" data-ng-show=\"route.profile\"><div class=\"panel-heading\"><strong><span class=\"glyphicon glyphicon-th\"></span> <span data-translate=\"Profile_\"></span><span>{{route.profile}}</span></strong><div class=\"pull-right\"><a data-ng-if=\"auth.is('vk') && route.profile === 'vk'\n" +
     "                                        || auth.is('facebook') && route.profile === 'facebook'\" data-ng-click=\"clear(route.profile)\" data-translate=\"sign out\"></a> <span data-ng-if=\"!auth.is('vk') && route.profile === 'vk'\n" +
     "                                        || !auth.is('facebook') && route.profile === 'facebook'\" data-translate=\"sign in\"></span></div></div><div class=\"panel-body\"><div class=\"media\"><div class=\"media-body\" data-ng-if=\"auth.is('vk') && route.profile === 'vk'\"><ul class=\"list-unstyled list-info\"><li><span class=\"icon glyphicon glyphicon-user\"></span><label>User name</label>{{auth.user.vk.email}}</li><li><span class=\"icon glyphicon glyphicon-globe\"></span><label>ID</label>{{auth.user.vk.user_id}}</li></ul></div><div class=\"media-body\" data-ng-if=\"auth.is('facebook') && route.profile === 'facebook'\"><ul class=\"list-unstyled list-info\"><li><span class=\"icon glyphicon glyphicon-user\"></span><label>User name</label>{{auth.user.facebook.email}}</li><li><span class=\"icon glyphicon glyphicon-globe\"></span><label>ID</label>{{auth.user.facebook.id}}</li></ul></div></div></div></div></section></div></div></div></div></div></div>"
   );
