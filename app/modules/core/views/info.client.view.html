@@ -1,7 +1,14 @@
-<div class="scrollable">
-  <div class="scrollable-content">
-    <div class="list-group" toggle="off" bubble target="right-sidebar">
-    </div>
-  </div>
-</div>
-<span></span>
+<md-sidenav class="md-sidenav-right" md-component-id="info">
+
+  <md-toolbar>
+    <h1 class="md-toolbar-tools" translate="Info"></h1>
+  </md-toolbar>
+
+  <md-content layout="column" layout-align="center center" layout-padding>
+    <select flex data-ng-controller="LangController" data-ng-model="lang" data-ng-change="setLang()">
+      <option ng-selected="lang === 'ru'">ru</option>
+      <option ng-selected="lang === 'en'">en</option>
+    </select>
+  </md-content>
+
+</md-sidenav>

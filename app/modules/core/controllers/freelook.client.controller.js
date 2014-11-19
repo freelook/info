@@ -3,7 +3,14 @@
 angular
     .module('core')
     .controller('FreeLookController',
-    function ($rootScope, $scope, $route, $location, $routeParams, VK, Google,FB) {
+    function ($rootScope, $scope, $route, $location, $routeParams, $mdSidenav, VK, Google,FB) {
+
+        $scope.toggleLeft = function() {
+            $mdSidenav('start').toggle();
+        };
+        $scope.toggleRight = function() {
+            $mdSidenav('info').toggle();
+        };
 
         $rootScope.$on('$routeChangeStart', function () {
             $rootScope.loading = true;

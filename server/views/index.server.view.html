@@ -1,97 +1,45 @@
 {% extends 'layout.server.view.html' %}
 
 {% block content %}
-<!-- Navbars -->
-<div class="navbar navbar-app navbar-absolute-top">
-    <div class="navbar-brand navbar-brand-center upper-text" yield-to="title">
-        <span data-translate="Freelook"></span>
-    </div>
-    <div class="btn-group pull-left">
-        <div ng-click="toggle('start')" class="btn btn-navbar sidebar-toggle">
-            <i class="fa fa-bars"></i>
-            <span data-translate="Start"></span>
-        </div>
-    </div>
-    <div class="btn-group pull-right" yield-to="navbarAction">
-        <div ng-click="toggle('info')" class="btn btn-navbar">
-            <span data-translate="Info"></span> <i class="fa fa-exclamation-circle fa-navbar"></i>
-        </div>
-    </div>
-</div>
+<md-content flex>
 
-<div class="navbar navbar-app navbar-absolute-bottom">
-    <div class="btn btn-navbar pull-left" toggle="on" target="overlay">
-        <i class="fa fa-2x fa-question-circle fl-color"></i>
-    </div>
-    <div class="btn btn-navbar pull-right">
-        <select data-ng-controller="LangController" data-ng-model="lang" data-ng-change="setLang()">
-            <option ng-selected="lang === 'ru'">ru</option>
-            <option ng-selected="lang === 'en'">en</option>
-        </select>
-    </div>
-    <div overlay="overlay">
-        <h4 class="overlay-title">Help</h4>
-        <p>
-            Will be soon..
-        </p>
-        <p toggle="off" bubble target="overlay">
-            <span class="btn btn-primary">Ok</span>
-        </p>
-    </div>
-</div>
+    <div layout="column" layout-fill layout-align="start">
+        <md-toolbar class="app-toolbar" md-theme="indigo" layout="row" layout-align="space-between">
 
-<!-- App Body -->
-<div class="app-body" ng-class="{loading: loading}">
-    <div ng-show="loading" class="app-content-loading">
-        <i class="fa fa-spinner fa-spin loading-spinner"></i>
-    </div>
-
-    <section class="app-content" ng-hide="loading">
-
-        <div class="scrollable">
-            <div class="scrollable-content">
-                <div class="section container-fluid">
-                    <div class="btn-group justified nav-tabs">
-                        <a class="btn btn-default upper-text" data-ng-class="{active: route.action === 'look'}"
-                           data-translate="Look" data-ng-click="go({action:'look'})"></a>
-                        <a class="btn btn-default upper-text" data-ng-class="{active: route.action === 'show'}"
-                           data-translate="Show" data-ng-click="go({action:'show'})"></a>
-                    </div>
-
-                </div>
-
-                <div class="section container-fluid">
-                    <ul class="nav nav-tabs">
-                        <li data-ng-class="{active: route.social === 'vk'}"><a data-ng-click="go({social:'vk'})">VK</a>
-                        </li>
-                        <li data-ng-class="{active: route.social === 'facebook'}"><a
-                                data-ng-click="go({social:'facebook'})">Facebook</a></li>
-                        <li data-ng-class="{active: route.social === 'google'}"><a
-                                data-ng-click="go({social:'google'})">Google</a></li>
-                    </ul>
-                    <div data-ng-controller="InputController">
-                        <form name="freelook" data-ng-submit="submit(freelook)">
-                            <div class="form-group">
-                                <div class="col-xs-9 col-sm-11 col-md-11 col-lg-11">
-                            <input ng-model="route.input" type="search" name="data"
-                                   class="form-control app-search" placeholder="{{bs}} 'What do you want now ?' | translate {{be}}">
-                                    </div>
-                                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
-                                    <button type="submit" class="btn btn-primary mg-top-10 rad-50" data-ng-disabled="!route.input" class="btn btn-primary" data-translate="GO"></button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="section container-fluid">
-                    <ng-view></ng-view>
-                </div>
-
-
+            <div>
+                <md-button ng-click="toggleLeft()" class="md-primary" aria-label hide-tablet-landscape hide-pc translate="Start"></md-button>
             </div>
-        </div>
 
-    </section>
-</div>
+
+            <div data-ng-controller="InputController">
+                <form name="freelook" ng-submit="submit(freelook)" layout="row" layout-align="center">
+                    <div>
+                        <md-text-float label="free look at things" ng-model="route.input" type="search"
+                                       name="data"></md-text-float>
+                    </div>
+                    <div layout="column" layout-align="center">
+                        <md-button class="md-primary" type="submit" ng-disabled="!route.input" translate="GO" aria-label></md-button>
+                    </div>
+                </form>
+            </div>
+
+
+            <div>
+                <md-button ng-click="toggleRight()" class="md-primary" aria-label translate="Info"></md-button>
+            </div>
+
+        </md-toolbar>
+
+        <md-tabs md-selected="route.social">
+            <md-tab label="vk" ng-click="go({social:'vk'})"></md-tab>
+            <md-tab label="facebook" ng-click="go({social:'facebook'})"></md-tab>
+            <md-tab label="google" ng-click="go({social:'google'})"></md-tab>
+        </md-tabs>
+
+
+        <ng-view layout="column" layout-align="start"></ng-view>
+
+    </div>
+
+</md-content>
 {% endblock %}

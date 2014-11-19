@@ -7,9 +7,8 @@ var app = (function () {
     var vendors = [
         'ngResource',
         'ngCookies',
-        'ngAnimate',
+        'ngMaterial',
         'ngRoute',
-        'ngTouch',
         'ngSanitize',
         'pascalprecht.translate',
         'mobile-angular-ui',

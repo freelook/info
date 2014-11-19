@@ -32,26 +32,21 @@
     <![endif]-->
 </head>
 
-<body class="ng-cloak" ng-controller="FreeLookController">
+<body ng-controller="FreeLookController" layout="row" layout-fill>
 <!-- Sidebars -->
-<nav ng-include="'modules/core/views/start.client.view.html'" class="sidebar sidebar-left" toggleable
-     parent-active-class="sidebar-left-in" id="start"></nav>
+<ng-include src="'modules/core/views/start.client.view.html'" ng-controller="StartController"></ng-include>
 
-<nav ng-include="'modules/core/views/info.client.view.html'" class="sidebar sidebar-right" toggleable
-     parent-active-class="sidebar-right-in" id="info"></nav>
-
-<section class="app"
-         ng-swipe-left="toggle('info', 'off');toggle('start', 'off');"
-         ng-swipe-right="toggle('info', 'off');toggle('start', 'off');">
+<section layout="column" layout-fill flex>
     {% block content %}{% endblock %}
 </section>
 
-<div toaster-container toaster-options="{'position-class': 'toast-bottom-full-width'}"></div>
+<ng-include src="'modules/core/views/info.client.view.html'" ng-controller="InfoController"></ng-include>
 
 <!--Embedding The User Object-->
 <script type="text/javascript">
     var user = {{user | json | safe}};
 </script>
+
 
 <!--Application JavaScript Files-->
 {% for jsFile in jsFiles %}

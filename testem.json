@@ -1,30 +1,29 @@
 {
-    "framework": "jasmine2",
-    "src_files": [
-
-        "app/lib/angular/angular.js",
-        "app/lib/angular-route/angular-route.js",
-        "app/lib/angular-touch/angular-touch.js",
-        "app/lib/angular-resource/angular-resource.js",
-        "app/lib/angular-cookies/angular-cookies.js",
-        "app/lib/angular-animate/angular-animate.js",
-        "app/lib/angular-sanitize/angular-sanitize.js",
-        "app/lib/angular-translate/angular-translate.js",
-        "app/lib/angular-translate-loader-static-files/angular-translate-loader-static-files.js",
-        "app/lib/angular-translate-storage-local/angular-translate-storage-local.js",
-        "app/lib/angular-translate-storage-cookie/angular-translate-storage-cookie.js",
-        "app/lib/mobile-angular-ui/dist/js/mobile-angular-ui.js",
-        "app/lib/angularjs-toaster/toaster.js",
-
-        "app/config.js",
-        "app/application.js",
-        "app/modules/*/*.js",
-        "app/modules/*/*[!tests]*/*.js",
-
-        "app/lib/angular-mocks/angular-mocks.js",
-        "app/modules/*/tests/*.js"
-
-    ],
-    "launch_in_dev" : ["PhantomJS"],
-    "launch_in_ci" : ["PhantomJS"]
+  "framework": "jasmine2",
+  "src_files": [
+    "app/lib/hammerjs/hammer.js",
+    "app/lib/angular/angular.js",
+    "app/lib/angular-route/angular-route.js",
+    "app/lib/angular-touch/angular-touch.js",
+    "app/lib/angular-resource/angular-resource.js",
+    "app/lib/angular-cookies/angular-cookies.js",
+    "app/lib/angular-aria/angular-aria.js",
+    "app/lib/angular-animate/angular-animate.js",
+    "app/lib/angular-sanitize/angular-sanitize.js",
+    "app/lib/angular-translate/angular-translate.js",
+    "app/lib/angular-translate-loader-static-files/angular-translate-loader-static-files.js",
+    "app/lib/angular-translate-storage-local/angular-translate-storage-local.js",
+    "app/lib/angular-translate-storage-cookie/angular-translate-storage-cookie.js",
+    "app/lib/angular-material/angular-material.js",
+    "app/lib/mobile-angular-ui/dist/js/mobile-angular-ui.js",
+    "app/lib/angularjs-toaster/toaster.js",
+    "app/config.js",
+    "app/application.js",
+    "app/modules/*/*.js",
+    "app/modules/*/*[!tests]*/*.js",
+    "app/lib/angular-mocks/angular-mocks.js",
+    "app/modules/*/tests/*.js"
+  ],
+  "launch_in_dev": ["PhantomJS"],
+  "launch_in_ci": ["PhantomJS"]
 }
