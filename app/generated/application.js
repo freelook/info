@@ -788,7 +788,7 @@ angular.module("app").run(["$templateCache", function($templateCache) {
   );
 
   $templateCache.put("modules/core/views/start.client.view.html",
-    "<md-sidenav class=\"md-sidenav-left\" md-component-id=\"start\" md-is-locked-open=\"$media('md')\"><md-toolbar><h1 class=\"md-toolbar-tools\" translate=\"Freelook\"></h1></md-toolbar><md-content layoyt=\"column\" layout-padding=\"\" layout-align=\"space-around\"><div ng-if=\"!conf.ready()\"><md-button flex=\"\" class=\"md-raised\" md-theme=\"indigo\" ng-click=\"add()\" id=\"install\">Add to Chrome</md-button></div><div ng-if=\"conf.ready()\"><md-button flex=\"\" class=\"md-fab md-primary\" ng-if=\"!auth.is('vk')\" ng-click=\"oauth('vk')\" aria-label=\"vk\">vk</md-button><img flex=\"\" class=\"face\" ng-if=\"auth.is('vk')\" ng-src=\"{{auth.user.vk.photo_50}}\" ng-click=\"go({profile:'vk'})\"></div></md-content></md-sidenav>"
+    "<md-sidenav class=\"md-sidenav-left\" md-component-id=\"start\" md-is-locked-open=\"$media('md')\"><md-toolbar><h1 class=\"md-toolbar-tools\" translate=\"Freelook\"></h1></md-toolbar><md-content layoyt=\"column\" layout-padding=\"\" layout-align=\"space-around\"><div ng-if=\"!conf.ready()\"><md-button flex=\"\" class=\"md-raised\" ng-click=\"add()\" id=\"install\">Add to Chrome</md-button></div><div ng-if=\"conf.ready()\"><md-button flex=\"\" class=\"md-fab md-primary\" ng-if=\"!auth.is('vk')\" ng-click=\"oauth('vk')\" aria-label=\"vk\">vk</md-button><img flex=\"\" class=\"face\" ng-if=\"auth.is('vk')\" ng-src=\"{{auth.user.vk.photo_50}}\" ng-click=\"go({profile:'vk'})\"></div></md-content></md-sidenav>"
   );
 
   $templateCache.put("modules/users/views/authentication/signin.client.view.html",

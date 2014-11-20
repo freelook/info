@@ -34,8 +34,7 @@ module.exports = {
         },
         css: [
             'app/modules/**/css/*.css',
-            'app/lib/angular-material/angular-material.css',
-            'app/lib/angular-material/themes/indigo-theme.css'
+            'app/lib/angular-material/angular-material.css'
         ],
         js: [
             'app/config.js',
