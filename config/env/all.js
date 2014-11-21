@@ -34,7 +34,8 @@ module.exports = {
         },
         css: [
             'app/modules/**/css/*.css',
-            'app/lib/angular-material/angular-material.css'
+            'app/lib/angular-material/angular-material.css',
+            'app/lib/angular-material/themes/deep-purple-theme.css'
         ],
         js: [
             'app/config.js',
