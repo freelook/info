@@ -1,11 +1,7 @@
-[![freelook.info Logo](https://avatars2.githubusercontent.com/u/7212860?v=2&s=40)](http://dev.freelook.info/)
 
-## freelook info
-
-##
-
+## [Free look at info](http://freelook.info)
+ 
 ## License
-(The MIT License)
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
