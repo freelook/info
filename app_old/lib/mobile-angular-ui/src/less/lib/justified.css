@@ -1,0 +1,9 @@
+.justified {
+  display: table;
+  width: 100%;
+}
+.justified > * {
+  display: table-cell;
+  width: 1%;
+  float: none !important;
+}

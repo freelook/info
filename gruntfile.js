@@ -195,7 +195,8 @@ module.exports = function (grunt) {
     switch (process.env.NODE_ENV) {
         case 'development':
         case 'test':
-            grunt.registerTask('build', ['lint', 'loadConfig', 'ngtemplates', 'ngAnnotate', 'uglify', 'cssmin', 'concat']);
+            //grunt.registerTask('build', ['lint', 'loadConfig', 'ngtemplates', 'ngAnnotate', 'uglify', 'cssmin', 'concat']);
+            grunt.registerTask('build', ['lint', 'loadConfig']);
             break;
         default:
             grunt.registerTask('build', ['lint', 'loadConfig']);
