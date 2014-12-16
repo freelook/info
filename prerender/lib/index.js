@@ -10,7 +10,7 @@ var cluster = require('cluster')
 // Starts either a server or client depending on whether this is a master or
 // worker cluster process
 exports = module.exports = function(options) {
-    var port = options.port || process.env.PORT || 3001;
+    var port = options.port || process.env.PORT || 3003;
 
     if(!options.phantomBasePort) {
         options.phantomBasePort = process.env.PHANTOM_CLUSTER_BASE_PORT || 12300;
