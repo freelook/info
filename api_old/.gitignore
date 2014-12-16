@@ -7,3 +7,5 @@ public/lib
 server/tests/coverage/
 .bower-*/
 .idea/
+.svn
+.git
