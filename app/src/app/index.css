@@ -4,6 +4,11 @@ html {
   font-family: 'Roboto Slab', serif;
 }
 
+md-toolbar.md-default-theme {
+  background: #fff;
+  color: #03a9f4;
+}
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;

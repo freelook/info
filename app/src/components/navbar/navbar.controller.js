@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('freelookinfo')
+angular.module('freelook.info')
   .controller('NavbarCtrl', function ($scope) {
     $scope.date = new Date();
   });

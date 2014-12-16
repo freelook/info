@@ -3,7 +3,7 @@
 describe('controllers', function(){
   var scope;
 
-  beforeEach(module('freelookinfo'));
+  beforeEach(module('freelook.info'));
 
   beforeEach(inject(function($rootScope) {
   	scope = $rootScope.$new();

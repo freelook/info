@@ -1,14 +1,18 @@
 'use strict';
 
-angular.module('freelookinfo', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngRoute', 'ngMaterial'])
-  .config(function ($routeProvider) {
+angular.module('freelook.info', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngRoute', 'ngMaterial'])
+  .config(function ($routeProvider, $locationProvider) {
+
+    // Setting hash prefix
+    $locationProvider.hashPrefix('!');
+
+    // Routes config
     $routeProvider
-      .when('/', {
-        templateUrl: 'app/main/main.html',
+      .when('/search/google', {
+        templateUrl: 'components/main/main.html',
         controller: 'MainCtrl'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/search/google'
       });
-  })
-;
+  });
