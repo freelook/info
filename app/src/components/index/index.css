@@ -15,3 +15,7 @@ md-toolbar.md-default-theme {
   color: #000;
   padding: 0.2em 0;
 }
+
+md-input-group.md-default-theme label {
+  text-align: center;
+}

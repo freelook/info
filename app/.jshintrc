@@ -30,6 +30,12 @@
     "beforeEach": false,
     "after": false,
     "afterEach": false,
-    "expect": false
+    "expect": false,
+    "jasmine": true,
+    "angular": true,
+    "app": true,
+    "chrome": true,
+    "window": true,
+    "spyOn": true
   }
 }

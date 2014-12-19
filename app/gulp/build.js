@@ -9,7 +9,7 @@ var $ = require('gulp-load-plugins')({
 gulp.task('injector:css', ['wiredep'], function () {
   return gulp.src('src/index.html')
     .pipe($.inject(gulp.src([
-        'src/{app,components}/**/*.css'
+        'src/components/**/*.css'
       ], {read: false}), {
       ignorePath: 'src',
       addRootSlash: false
@@ -18,7 +18,7 @@ gulp.task('injector:css', ['wiredep'], function () {
 });
 
 gulp.task('jshint', function () {
-  return gulp.src('src/{app,components}/**/*.js')
+  return gulp.src('src/components/**/*.js')
     .pipe($.jshint())
     .pipe($.jshint.reporter('jshint-stylish'));
 });
@@ -26,9 +26,9 @@ gulp.task('jshint', function () {
 gulp.task('injector:js', ['jshint', 'injector:css'], function () {
   return gulp.src('src/index.html')
     .pipe($.inject(gulp.src([
-        'src/{app,components}/**/*.js',
-        '!src/{app,components}/**/*.spec.js',
-        '!src/{app,components}/**/*.mock.js'
+        'src/components/**/*.js',
+        '!src/components/**/*.spec.js',
+        '!src/components/**/*.mock.js'
       ], {read: false}), {
       ignorePath: 'src',
       addRootSlash: false
@@ -37,7 +37,7 @@ gulp.task('injector:js', ['jshint', 'injector:css'], function () {
 });
 
 gulp.task('partials', function () {
-  return gulp.src('src/{app,components}/**/*.html')
+  return gulp.src('src/components/**/*.html')
     .pipe($.minifyHtml({
       empty: true,
       spare: true,

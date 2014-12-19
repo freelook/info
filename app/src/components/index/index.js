@@ -1,6 +1,8 @@
 'use strict';
 
-angular.module('freelook.info', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngRoute', 'ngMaterial'])
+angular
+  .module('freelook.info',
+  ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngRoute', 'ngMaterial'])
   .config(function ($routeProvider, $locationProvider) {
 
     // Setting hash prefix

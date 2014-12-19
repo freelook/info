@@ -21,7 +21,8 @@
         "jasmine": true,
         "angular": true,
         "app": true,
-        "chrome": true
+        "chrome": true,
+        "window": true
     },
     "predef": [ // Extra globals.
         "define",
