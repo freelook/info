@@ -44,7 +44,8 @@ gulp.task('partials', function () {
       quotes: true
     }))
     .pipe($.angularTemplatecache('templateCacheHtml.js', {
-      module: 'freelook.info'
+      module: 'freelook.info',
+      root: 'components/'
     }))
     .pipe(gulp.dest('.tmp/inject/'));
 });

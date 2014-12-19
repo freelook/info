@@ -11,7 +11,7 @@ angular
     // Routes config
     $routeProvider
       .when('/search/google', {
-        templateUrl: 'main/main.html',
+        templateUrl: 'components/main/main.html',
         controller: 'MainCtrl'
       })
       .otherwise({
