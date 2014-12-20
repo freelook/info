@@ -1,21 +1,17 @@
 <md-toolbar layout="column" layout-align="center center" ng-controller="NavbarCtrl">
 
+  <div ng-controller="InputCtrl">
 
-  <md-content ng-controller="InputCtrl">
+    <md-text-float label="FREE LOOK AT THINGS" ng-model="route.input" type="search"></md-text-float>
 
-    <form name="freelook" ng-submit="submit(freelook)" flex>
-      <div>
-        <md-text-float label="FREE LOOK AT THINGS" ng-model="route.input" type="search" name="data"></md-text-float>
-      </div>
-    </form>
+  </div>
 
 
-  </md-content>
-
-  <md-tabs md-selected="route.social">
-    <md-tab label="google" md-active="route.social === 'google'"  ng-click="go({social:'google'})"></md-tab>
-  </md-tabs>
+    <md-tabs md-selected="route.from">
+      <md-tab label="google" md-active="route.from === 'google'" ng-click="go({from:'google'})"></md-tab>
+    </md-tabs>
 
 
 </md-toolbar>
+
 

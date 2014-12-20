@@ -2,10 +2,7 @@
 
 angular
   .module('freelook.info')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function () {
 
-    $scope.test = function() {
-
-    };
 
   });

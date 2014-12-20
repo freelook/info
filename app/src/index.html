@@ -16,7 +16,8 @@
 
     <!-- build:css({.tmp,src}) styles/app.css -->
     <!-- inject:css -->
-    <link rel="stylesheet" href="components/index/index.css">
+    <link rel="stylesheet" href="components/_index/_index.css">
+    <link rel="stylesheet" href="components/search/search.css">
     <!-- endinject -->
     <!-- endbuild -->
 
@@ -24,21 +25,22 @@
     <script src="../bower_components/modernizr/modernizr.js"></script>
     <!-- endbuild -->
   </head>
-  <body layout="column">
+  <body ng-controller="IndexCtrl">
     <!--[if lt IE 10]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <div class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
     <![endif]-->
 
     <!-- Header -->
     <header ng-include="'components/navbar/navbar.html'"></header>
 
     <!-- View -->
-    <div ng-view style="overflow-y: auto; overflow-x: hidden; min-height: 500px;"></div>
+    <section ng-view></section>
 
     <!-- Footer -->
     <footer ng-include="'components/footer/footer.html'"></footer>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <!--
     <script>
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
       function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
@@ -47,6 +49,7 @@
       r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
       ga('create','UA-XXXXX-X');ga('send','pageview');
     </script>
+    -->
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
@@ -65,10 +68,13 @@
 
     <!-- build:js({.tmp,src}) scripts/app.js -->
     <!-- inject:js -->
-    <script src="components/index/index.js"></script>
+    <script src="components/_index/_index.js"></script>
+    <script src="components/_index/index.controller.js"></script>
+    <script src="components/google/google.service.js"></script>
     <script src="components/input/input.controller.js"></script>
     <script src="components/main/main.controller.js"></script>
     <script src="components/navbar/navbar.controller.js"></script>
+    <script src="components/search/search.controller.js"></script>
     <!-- endinject -->
 
     <!-- inject:partials -->

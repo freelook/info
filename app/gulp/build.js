@@ -9,8 +9,8 @@ var $ = require('gulp-load-plugins')({
 gulp.task('injector:css', ['wiredep'], function () {
   return gulp.src('src/index.html')
     .pipe($.inject(gulp.src([
-        'src/components/**/*.css'
-      ], {read: false}), {
+      'src/components/**/*.css'
+    ], {read: false}), {
       ignorePath: 'src',
       addRootSlash: false
     }))
@@ -26,10 +26,10 @@ gulp.task('jshint', function () {
 gulp.task('injector:js', ['jshint', 'injector:css'], function () {
   return gulp.src('src/index.html')
     .pipe($.inject(gulp.src([
-        'src/components/**/*.js',
-        '!src/components/**/*.spec.js',
-        '!src/components/**/*.mock.js'
-      ], {read: false}), {
+      'src/components/**/*.js',
+      '!src/components/**/*.spec.js',
+      '!src/components/**/*.mock.js'
+    ], {read: false}), {
       ignorePath: 'src',
       addRootSlash: false
     }))
@@ -82,7 +82,7 @@ gulp.task('html', ['wiredep', 'injector:css', 'injector:js', 'partials'], functi
     }))
     .pipe(htmlFilter.restore())
     .pipe(gulp.dest('dist/'))
-    .pipe($.size({ title: 'dist/', showFiles: true }));
+    .pipe($.size({title: 'dist/', showFiles: true}));
 });
 
 gulp.task('images', function () {

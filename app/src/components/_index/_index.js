@@ -10,11 +10,11 @@ angular
 
     // Routes config
     $routeProvider
-      .when('/search/google', {
-        templateUrl: 'components/main/main.html',
-        controller: 'MainCtrl'
+      .when('/search', {
+        templateUrl: 'components/search/search.html',
+        controller: 'SearchCtrl'
       })
       .otherwise({
-        redirectTo: '/search/google'
+        redirectTo: '/search'
       });
   });
