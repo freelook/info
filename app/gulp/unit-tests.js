@@ -6,7 +6,7 @@ var $ = require('gulp-load-plugins')();
 
 var wiredep = require('wiredep');
 
-gulp.task('test', function () {
+gulp.task('unit', function () {
   var bowerDeps = wiredep({
     directory: 'bower_components',
     exclude: ['bootstrap-sass-official'],

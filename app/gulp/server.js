@@ -32,7 +32,7 @@ function browserSyncInit(baseDir, files, browser) {
 
 }
 
-gulp.task('serve', ['watch'], function () {
+gulp.task('server', ['watch'], function () {
   browserSyncInit([
     'src',
     '.tmp'
@@ -45,14 +45,14 @@ gulp.task('serve', ['watch'], function () {
   ]);
 });
 
-gulp.task('serve:dist', ['build'], function () {
+gulp.task('server:dist', ['build'], function () {
   browserSyncInit('dist');
 });
 
-gulp.task('serve:e2e', function () {
+gulp.task('server:e2e', function () {
   browserSyncInit(['src', '.tmp'], null, []);
 });
 
-gulp.task('serve:e2e-dist', ['watch'], function () {
+gulp.task('server:e2e-dist', ['watch'], function () {
   browserSyncInit('dist', null, []);
 });

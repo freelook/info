@@ -4,9 +4,8 @@ html {
   font-family: 'Roboto Slab', serif;
 }
 
-md-toolbar.md-default-theme {
-  background: #fff;
-  color: #03a9f4;
+md-toolbar.md-indigo-theme {
+  background: #fff !important;
 }
 
 .browsehappy {

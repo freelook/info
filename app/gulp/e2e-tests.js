@@ -31,6 +31,6 @@ gulp.task('protractor-only', ['webdriver-update', 'wiredep'], function (done) {
     });
 });
 
-gulp.task('protractor', ['serve:e2e', 'protractor-only']);
-gulp.task('protractor:src', ['serve:e2e', 'protractor-only']);
-gulp.task('protractor:dist', ['serve:e2e-dist', 'protractor-only']);
+gulp.task('e2e', ['server:e2e', 'protractor-only']);
+gulp.task('e2e:src', ['server:e2e', 'protractor-only']);
+gulp.task('e2e:dist', ['server:e2e-dist', 'protractor-only']);
