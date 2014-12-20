@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Navbar controller', function () {
+describe('Header controller', function () {
   var scope;
 
   beforeEach(module('freelook.info'));
@@ -9,7 +9,7 @@ describe('Navbar controller', function () {
 
     scope = $rootScope.$neaw();
 
-    $controller('NavbarCtrl', {
+    $controller('HeaderCtrl', {
       $scope: scope
     });
   }));

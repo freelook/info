@@ -2,7 +2,7 @@
 
 angular
   .module('freelook.info')
-  .controller('NavbarCtrl',
+  .controller('HeaderCtrl',
   function () {
 
   });
