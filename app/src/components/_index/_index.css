@@ -4,17 +4,19 @@ html {
   font-family: 'Roboto Slab', serif;
 }
 
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #3f51b5;
+  padding: 0.2em 0;
+}
+
 md-toolbar.md-indigo-theme {
   background: #fff !important;
 }
 
-.browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
+md-input-group.md-indigo-theme {
+  text-align: center !important;
 }
 
-md-input-group.md-default-theme label {
-  text-align: center;
-}
+
