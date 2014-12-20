@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Main controllers', function () {
+describe('Main controller', function () {
   var scope;
 
   beforeEach(module('freelook.info'));
@@ -15,9 +15,7 @@ describe('Main controllers', function () {
   }));
 
   it('should define scope', function () {
-    spyOn(scope, 'test').and.returnValues(1);
-    expect(scope).toBeDefined();
-    expect(scope.test()).toBe(1);
+    expect(scope.isDefined).toBeTruthy();
   });
 
 });

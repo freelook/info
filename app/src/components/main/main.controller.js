@@ -2,7 +2,8 @@
 
 angular
   .module('freelook.info')
-  .controller('MainCtrl', function () {
+  .controller('MainCtrl', function ($scope) {
 
+    $scope.isDefined = true;
 
   });

@@ -10,6 +10,5 @@ angular
       $route.updateParams(params);
     };
 
-
   });
 

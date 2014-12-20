@@ -4,13 +4,18 @@ angular
   .controller('InputCtrl',
   function ($rootScope, $scope, $timeout) {
 
-    var tm = null;
+    $scope.timer = null;
+
+    $scope.getLabel = function() {
+      return !$rootScope.route.input ? 'FREE LOOK AT INFO' : 'FREE LOOK AT';
+    };
+
 
     $rootScope.$watch('route.input', function (newValue) {
 
-      if (newValue) {
-        $timeout.cancel(tm);
-        tm = $timeout(function () {
+      if (!angular.isUndefined(newValue)) {
+        $timeout.cancel($scope.timer);
+        $scope.timer = $timeout(function () {
           $rootScope.go({input: newValue});
         }, 777);
       }
