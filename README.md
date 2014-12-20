@@ -1,5 +1,5 @@
 
-## [Free look at info](http://freelook.info)
+## [FREE LOOK AT INFO](http://freelook.info)
  
 ## License
 
