@@ -36,6 +36,10 @@
     "app": true,
     "chrome": true,
     "window": true,
-    "spyOn": true
+    "spyOn": true,
+    // Protractor
+    "element": true,
+    "by": true,
+    "browser": true
   }
 }
