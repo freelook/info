@@ -1,7 +1,5 @@
 
 ## [FREE LOOK AT INFO](http://freelook.info)
- 
-## License
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
