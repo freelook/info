@@ -1,6 +1,6 @@
 'use strict';
 angular
-  .module('freelook.info')
+  .module('fli.search')
   .factory('Google', function ($http) {
 
     function search(q, callBack) {

@@ -5,7 +5,7 @@ describe('Google service', function () {
   var sut, mockHTTP;
 
   beforeEach(function () {
-    module('freelook.info');
+    module('fli.search');
 
     mockHTTP = {
       jsonp: jasmine.createSpy().and.returnValue({

@@ -23,8 +23,8 @@ describe('Index controller', function () {
     rootScope.$apply();
   }));
 
-  it('should define route', function () {
-    expect(rootScope.route).toBeDefined();
+  it('should define fli', function () {
+    expect(rootScope.fli).toBeDefined();
   });
 
   it('should update route params', function () {

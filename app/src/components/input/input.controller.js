@@ -7,11 +7,11 @@ angular
     $scope.timer = null;
 
     $scope.getLabel = function() {
-      return !$rootScope.route.input ? 'FREE LOOK AT INFO' : 'FREE LOOK AT';
+      return !$rootScope.fli.route.input ? 'FREE LOOK AT INFO' : 'FREE LOOK AT';
     };
 
 
-    $rootScope.$watch('route.input', function (newValue) {
+    $rootScope.$watch('fli.route.input', function (newValue) {
 
       if (!angular.isUndefined(newValue)) {
         $timeout.cancel($scope.timer);

@@ -1,14 +1,11 @@
 <md-toolbar layout="column" layout-align="center center" ng-controller="HeaderCtrl">
 
-  <div ng-controller="InputCtrl">
-
-    <md-text-float id="input" label="{{getLabel()}}" ng-model="route.input" type="search"></md-text-float>
-
-  </div>
+  <fli-input></fli-input>
 
 
     <md-tabs md-selected="route.from">
-      <md-tab label="google" md-active="route.from === 'google'" ng-click="go({from:'google'})"></md-tab>
+      <md-tab label="google" md-active="fli.route.from === 'google'" ng-click="go({from: 'google'})"></md-tab>
+      <md-tab label="yandex" md-active="fli.route.from === 'yandex'" ng-click="go({from: 'yandex'})"></md-tab>
     </md-tabs>
 
 

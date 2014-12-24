@@ -1,15 +1,6 @@
-
-
-  <md-content layout="column" id="search" layout-margin layout-padding>
-
-    <md-whiteframe flex class="md-whiteframe-z1" layout="column" ng-repeat="result in search.results">
-      <div>
-        <a ng-href="{{'http://prerender.freelook.info/' + result.url}}" target="_blank" ng-bind-html="result.title"></a>
-      </div>
-      <div ng-bind-html="result.content"></div>
-    </md-whiteframe>
-
-  </md-content>
+{{route | json}}
+<fli-google-search ng-if="fli.route.from === 'google'"></fli-google-search>
+<fli-yandex-search></fli-yandex-search>
 
 
 

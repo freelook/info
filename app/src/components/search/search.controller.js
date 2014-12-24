@@ -3,18 +3,12 @@
 angular
   .module('freelook.info')
   .controller('SearchCtrl',
-  function ($rootScope, $routeParams, $scope, Google) {
+  function ($rootScope, $routeParams) {
 
-    $rootScope.route = $routeParams;
-    $scope.search = {};
+    $rootScope.fli.route = $routeParams;
 
-    if ($routeParams.input) {
-
-      Google.search($routeParams.input, function (search) {
-        $scope.search = search || {};
-        console.info($scope.search);
-      });
+    if (!$rootScope.fli.route.from) {
+      $rootScope.go({from: 'google'});
     }
-
 
   });
