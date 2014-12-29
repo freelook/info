@@ -12,6 +12,9 @@ describe('Google controller', function () {
     mockGoogle = {
       search: jasmine.createSpy().and.returnValue({
         success: jasmine.createSpy()
+      }),
+      autocomplete: jasmine.createSpy().and.returnValue({
+        success: jasmine.createSpy()
       })
     };
 
@@ -55,6 +58,21 @@ describe('Google controller', function () {
     rootScope.fli.route.input = '';
     exequteController();
     expect(mockGoogle.search).not.toHaveBeenCalled();
+  });
+
+  it('should call google autocomplete service with info if route not defined', function () {
+    rootScope.fli.route.input = '';
+    exequteController();
+    expect(mockGoogle.autocomplete).toHaveBeenCalledWith('info');
+  });
+
+  it('should set suggested on scope if call for autocomplete success', function () {
+    var expectedArr = ['x', 'xx'],
+      expectedResponse = [[], expectedArr];
+
+    exequteController();
+    mockGoogle.autocomplete(input).success.calls.mostRecent().args[0](expectedResponse);
+    expect(scope.suggested).toBe(expectedArr);
   });
 
 });

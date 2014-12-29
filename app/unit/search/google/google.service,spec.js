@@ -38,6 +38,19 @@ describe('Google service', function () {
       expect(mockHTTP.jsonp).not.toHaveBeenCalled();
     });
 
+    it('it should call http for autocomplete', function () {
+      var q = 'xxx';
+      var expectedRequest = 'http://suggestqueries.google.com/complete/search?client=chrome&q=' + q + '&callback=JSON_CALLBACK';
+      sut.autocomplete(q);
+      expect(mockHTTP.jsonp).toHaveBeenCalledWith(expectedRequest);
+    });
+
+    it('it should not call http for autocomplete if no request text', function () {
+      var q = '';
+      sut.autocomplete(q);
+      expect(mockHTTP.jsonp).not.toHaveBeenCalled();
+    });
+
   });
 
 });

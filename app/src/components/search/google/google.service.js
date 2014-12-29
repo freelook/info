@@ -12,8 +12,16 @@ angular
 
     }
 
+    function autocomplete (q) {
+      if (q) {
+        var gapi = 'http://suggestqueries.google.com/complete/search?client=chrome&q=' + q + '&callback=JSON_CALLBACK';
+        return $http.jsonp(gapi);
+      }
+    }
+
     return {
-      search: search
+      search: search,
+      autocomplete: autocomplete
     };
 
   });
