@@ -5,7 +5,7 @@
   <div ng-bind-html="result.content"></div>
 </md-whiteframe>
 
-<div class="title">Suggested requests:</div>
+<div class="title" ng-if="!!suggested.length">Suggested requests:</div>
 <md-whiteframe flex class="md-whiteframe-z1" layout="column">
   <div class="result">
     <a ng-repeat="suggest in suggested" ng-href="{{'#!/search?from=google&input=' + suggest}}" ng-bind="suggest"></a>
