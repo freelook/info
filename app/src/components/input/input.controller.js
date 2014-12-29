@@ -4,14 +4,20 @@ angular
   .controller('InputCtrl',
   function ($rootScope, $scope, $timeout) {
 
+    var DEFAULT_LABEL = 'FREE LOOK AT INFO';
+
     $scope.timer = null;
 
-    $scope.getLabel = function() {
-      return !$rootScope.fli.route.input ? 'FREE LOOK AT INFO' : 'FREE LOOK AT';
+    $scope.label = DEFAULT_LABEL;
+
+    $scope.setLabel = function( value ) {
+      $scope.label = !value ? DEFAULT_LABEL : 'FREE LOOK AT';
     };
 
 
     $rootScope.$watch('fli.route.input', function (newValue) {
+
+      $scope.setLabel(newValue);
 
       if (!angular.isUndefined(newValue)) {
         $timeout.cancel($scope.timer);

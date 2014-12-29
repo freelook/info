@@ -1,6 +1,9 @@
-{{route | json}}
-<fli-google-search ng-if="fli.route.from === 'google'"></fli-google-search>
-<fli-yandex-search></fli-yandex-search>
+<md-content layout="column" id="search" layout-margin layout-padding>
+
+  <fli-google-search ng-if="fli.route.from === 'google'"></fli-google-search>
+  <fli-yandex-search ng-if="fli.route.from === 'yandex'"></fli-yandex-search>
+
+</md-content>
 
 
 

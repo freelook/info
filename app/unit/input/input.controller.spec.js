@@ -31,6 +31,11 @@ describe('Input controller', function () {
     expect(scope.timer).toBeNull();
   });
 
+  it('should define default label', function () {
+    exequteController();
+    expect(scope.label).toBe('FREE LOOK AT INFO');
+  });
+
   it('should stop timeout on input change', function () {
     spyOn(rootScope, '$watch');
     spyOn(mockTimeout, 'cancel');
@@ -39,7 +44,7 @@ describe('Input controller', function () {
     expect(mockTimeout.cancel).toHaveBeenCalled();
   });
 
-  it('should change route on input change', function () {
+  it('should change route and label on input change', function () {
     spyOn(rootScope, '$watch');
     rootScope.go = jasmine.createSpy();
     exequteController();
@@ -49,6 +54,7 @@ describe('Input controller', function () {
       input: 'xxx'
     });
     expect(scope.timer).not.toBeNull();
+    expect(scope.label).toBe('FREE LOOK AT');
   });
 
 });
