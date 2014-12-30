@@ -23,7 +23,7 @@ angular
     function search(q) {
       if (q) {
         var defer = $q.defer(),
-          yapi = 'http://api.frelook.info/api/get?url=' + _getUrl(q) + '&callback=JSON_CALLBACK';
+          yapi = 'http://freelook.herokuapp.com/api/get?url=' + _getUrl(q) + '&callback=JSON_CALLBACK';
         $http.jsonp(yapi)
           .success(function (html) {
             if (!html.Error) {
