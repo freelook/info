@@ -22,7 +22,8 @@
         "angular": true,
         "app": true,
         "chrome": true,
-        "window": true
+        "window": true,
+        "$": true
     },
     "predef": [ // Extra globals.
         "define",

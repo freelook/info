@@ -28,13 +28,14 @@ describe('The search view', function () {
     it('should have no content if search request empty', function () {
       page.fillInput('');
       page.clickTab('yandex');
-      expect(page.iframe.count()).toBe(0);
+      expect(page.searchYEls.count()).toBe(0);
     });
 
-    it('should load iframe on search', function () {
+
+    iit('should load content on search', function () {
       page.fillInput('javascript');
       page.clickTab('yandex');
-      expect(page.iframe.count()).toBe(1);
+      expect(page.searchYEls.count()).toBe(10);
     });
 
   });

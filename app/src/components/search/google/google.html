@@ -1,3 +1,9 @@
+<md-whiteframe flex class="md-whiteframe-z1" layout="column" layout-align="center center" ng-if="fli.route.input && !search.results.length">
+  <div class="loader">
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+  </div>
+</md-whiteframe>
+
 <md-whiteframe flex class="md-whiteframe-z1" layout="column" ng-repeat="result in search.results">
   <div>
     <a ng-href="{{'http://prerender.freelook.info/' + result.url}}" target="_blank" ng-bind-html="result.title"></a>

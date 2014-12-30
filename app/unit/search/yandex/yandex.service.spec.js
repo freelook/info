@@ -9,7 +9,9 @@ describe('Yandex service', function () {
 
     mockHTTP = {
       jsonp: jasmine.createSpy().and.returnValue({
-        success: jasmine.createSpy()
+        success: jasmine.createSpy().and.returnValue({
+          error: jasmine.createSpy()
+        })
       })
     };
 
@@ -18,6 +20,7 @@ describe('Yandex service', function () {
     mockQ = {
       defer: jasmine.createSpy().and.returnValue({
         resolve: mockResoleve,
+        reject: jasmine.createSpy(),
         promise: jasmine.createSpy()
       })
     };
@@ -35,12 +38,28 @@ describe('Yandex service', function () {
   describe('Yandex calls', function () {
 
     it('it should resolve url for search', function () {
-      var text = 'xxx';
-      var expectedRequest = 'https://yandex.com/sitesearch?text=' + text + '&searchid=2192226&frame=1';
+      var text = 'xxx',
+        expectedRequest = 'http://api.frelook.info/api/get?url=' +
+          encodeURIComponent('https://yandex.com/sitesearch?text=' + text + '&searchid=2192226&frame=1') + '&callback=JSON_CALLBACK';
       sut.search(text);
-      expect(mockResoleve).toHaveBeenCalledWith(expectedRequest);
+      expect(mockHTTP.jsonp).toHaveBeenCalledWith(expectedRequest);
     });
 
+    it('it should resolve html for search', function () {
+      var text = 'xxx',
+        html = '<div><div class="b-serp-item">' +
+          '<div class="b-serp-item__title"><a href="http://xxx.com"><span>title</span></a></div>' +
+          '<div class="b-serp-item__text">text</div>' +
+          '</div></div>',
+        expectedJS = [{
+          url: 'http://xxx.com',
+          title: 'title',
+          text: 'text'
+        }];
+      sut.search(text);
+      mockHTTP.jsonp(text).success.calls.mostRecent().args[0](html);
+      expect(mockResoleve).toHaveBeenCalledWith(expectedJS);
+    });
 
   });
 

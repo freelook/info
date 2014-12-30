@@ -13,6 +13,7 @@ var SearchPage = function() {
   this.input = element(by.id(INPUT_ID));
 
   this.searchEls = element.all(by.repeater('result in search.results'));
+  this.searchYEls = element.all(by.repeater('result in search'));
 
   this.fillInput = function( input ) {
     this.input.sendKeys(input);
@@ -21,8 +22,6 @@ var SearchPage = function() {
   this.clickTab = function( name ) {
     element.all(by.css(TABS[name])).click();
   };
-
-  this.iframe = element.all(by.css('fli-yandex-search iframe'));
 
 };
 

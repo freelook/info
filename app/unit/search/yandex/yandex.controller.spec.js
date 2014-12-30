@@ -1,23 +1,21 @@
 'use strict';
 
 describe('Yandex controller', function () {
-  var scope, input, mockYandex, rootScope, controller, mockSce, expectedUrl;
+  var scope, input, mockYandex, rootScope, controller, expectedResponse;
 
   beforeEach(function () {
 
     module('fli.search');
 
     input = 'xxx';
-    expectedUrl = 'http://yandex.com';
+    expectedResponse = [{
+      title: 'xxx'
+    }];
 
     mockYandex = {
       search: jasmine.createSpy().and.returnValue({
         then: jasmine.createSpy()
       })
-    };
-
-    mockSce = {
-      trustAsResourceUrl: jasmine.createSpy().and.returnValue(expectedUrl)
     };
 
   });
@@ -26,7 +24,6 @@ describe('Yandex controller', function () {
     controller('YandexCtrl', {
       $scope: scope,
       $rootScope: rootScope,
-      $sce: mockSce,
       Yandex: mockYandex
     });
     rootScope.$apply();
@@ -52,9 +49,8 @@ describe('Yandex controller', function () {
 
   it('should set search url on scope if call success', function () {
     exequteController();
-    mockYandex.search(input).then.calls.mostRecent().args[0](expectedUrl);
-    expect(mockSce.trustAsResourceUrl).toHaveBeenCalledWith(expectedUrl);
-    expect(scope.searchUrl).toBe(expectedUrl);
+    mockYandex.search(input).then.calls.mostRecent().args[0](expectedResponse);
+    expect(scope.search).toBe(expectedResponse);
   });
 
   it('should not call yandex service if route not defined', function () {

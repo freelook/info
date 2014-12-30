@@ -1,3 +1,7 @@
 #search md-whiteframe {
  padding: 8px;
 }
+
+#search .loader {
+  margin: 50px;
+}
