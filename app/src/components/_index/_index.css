@@ -11,23 +11,6 @@ html {
   padding: 0.2em 0;
 }
 
-md-toolbar.md-indigo-theme {
-  background: #fff !important;
-}
-
-md-input-group.md-indigo-theme {
-  text-align: center !important;
-}
-
-md-input-group.md-indigo-theme.md-input-has-value,
-md-input-group.md-indigo-theme.md-input-focused {
-  text-align: left !important;
-}
-
-md-input-group.md-indigo-theme input {
-  text-align: center !important;
-}
-
 
 
 

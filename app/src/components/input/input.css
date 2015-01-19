@@ -1,0 +1,16 @@
+fli-input md-input-container {
+  text-align: center !important;
+}
+
+fli-input md-input-container.md-input-has-value,
+fli-input md-input-container.md-input-focused {
+  text-align: left !important;
+}
+
+fli-input md-input-container label {
+  color: #3f51b5 !important;
+}
+
+fli-input md-input-container input {
+  text-align: center !important;
+}

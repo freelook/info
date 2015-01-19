@@ -1,8 +1,4 @@
-<md-whiteframe flex class="md-whiteframe-z1" layout="column" layout-align="center center" ng-if="fli.route.input && !search.results.length">
-  <div class="loader">
-    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
-  </div>
-</md-whiteframe>
+<md-progress-linear md-mode="indeterminate" ng-if="fli.route.input && !search.results.length"></md-progress-linear>
 
 <md-whiteframe flex class="md-whiteframe-z1" layout="column" ng-repeat="result in search.results">
   <div>
@@ -12,10 +8,11 @@
 </md-whiteframe>
 
 <div class="title" ng-if="!!suggested.length">Suggested requests:</div>
-<md-whiteframe flex class="md-whiteframe-z1" layout="column">
+<md-whiteframe flex class="md-whiteframe-z1" layout="column" ng-if="!!suggested.length">
   <div class="result">
     <a ng-repeat="suggest in suggested" ng-href="{{'search?from=google&input=' + suggest}}" ng-bind="suggest"></a>
   </div>
 </md-whiteframe>
+
 
 

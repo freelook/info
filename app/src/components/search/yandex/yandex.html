@@ -1,8 +1,4 @@
-<md-whiteframe flex class="md-whiteframe-z1" layout="column" layout-align="center center" ng-if="fli.route.input && !search.length">
-  <div class="loader">
-    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
-  </div>
-</md-whiteframe>
+<md-progress-linear md-mode="indeterminate" ng-if="fli.route.input && !search.length"></md-progress-linear>
 
 <md-whiteframe flex class="md-whiteframe-z1" layout="column" ng-repeat="result in search">
   <div>
