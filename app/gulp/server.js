@@ -6,7 +6,7 @@ var util = require('util');
 
 var browserSync = require('browser-sync');
 
-var middleware = require('./proxy');
+var middleware = require('./middleware');
 
 function browserSyncInit(baseDir, files, browser) {
   browser = browser === undefined ? 'default' : browser;

@@ -15,9 +15,18 @@
 
 'use strict';
 
-var httpProxy = require('http-proxy');
-var chalk = require('chalk');
+ var httpProxy = require('http-proxy'),
+   chalk = require('chalk'),
+   fs = require('fs'),
+   path = require('path'),
+   url = require('url'),
+   gulp = require('gulp'),
+   browserSync = require('browser-sync');
 
+ // The default file if the file/path is not found
+ var defaultFile = "index.html";
+ var folder = path.resolve(__dirname, "../");
+ var folderSRC = path.resolve(__dirname, "../src");
 /*
  * Location of your backend server
  */
@@ -55,6 +64,17 @@ function proxyMiddleware(req, res, next) {
   }
 }
 
+ function staticIndex(req, res, next) {
+   var fileName = url.parse(req.url);
+   fileName = fileName.href.split(fileName.search).join("");
+   var fileExists = fs.existsSync(folder + fileName);
+   var fileExistsSRC = fs.existsSync(folderSRC + fileName);
+   if (!fileExists && !fileExistsSRC && fileName.indexOf("browser-sync-client") < 0) {
+     req.url = "/" + defaultFile;
+   }
+   return next();
+ }
+
 /*
  * This is where you activate or not your proxy.
  *
@@ -62,4 +82,4 @@ function proxyMiddleware(req, res, next) {
  */
 
 //module.exports = [proxyMiddleware];
-module.exports = [];
+module.exports = [staticIndex];
