@@ -24,9 +24,10 @@
    browserSync = require('browser-sync');
 
  // The default file if the file/path is not found
- var defaultFile = "index.html";
- var folder = path.resolve(__dirname, "../");
- var folderSRC = path.resolve(__dirname, "../src");
+ var defaultFile = 'index.html';
+ var folder = path.resolve(__dirname, '../');
+ var folderSRC = path.resolve(__dirname, '../src');
+ var folderDist = path.resolve(__dirname, '../dist');
 /*
  * Location of your backend server
  */
@@ -66,11 +67,12 @@ function proxyMiddleware(req, res, next) {
 
  function staticIndex(req, res, next) {
    var fileName = url.parse(req.url);
-   fileName = fileName.href.split(fileName.search).join("");
+   fileName = fileName.href.split(fileName.search).join('');
    var fileExists = fs.existsSync(folder + fileName);
    var fileExistsSRC = fs.existsSync(folderSRC + fileName);
-   if (!fileExists && !fileExistsSRC && fileName.indexOf("browser-sync-client") < 0) {
-     req.url = "/" + defaultFile;
+   var fileExistsDist = fs.existsSync(folderDist + fileName);
+   if (!fileExists && !fileExistsSRC && !fileExistsDist && fileName.indexOf('browser-sync-client') < 0) {
+     req.url = '/' + defaultFile;
    }
    return next();
  }
