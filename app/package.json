@@ -15,6 +15,7 @@
     "gulp-exec": "^2.1.1",
     "gulp-filter": "~1.0.2",
     "gulp-flatten": "~0.0.4",
+    "gulp-if": "^1.2.5",
     "gulp-imagemin": "~2.0.0",
     "gulp-inject": "~1.0.2",
     "gulp-jshint": "~1.9.0",

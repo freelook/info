@@ -80,12 +80,12 @@ gulp.task('html', ['wiredep', 'injector:css', 'injector:js', 'partials'], functi
       spare: true,
       quotes: true
     }))
-    .pipe($.assetpaths({
+    .pipe($.if(!!process.env.production, $.assetpaths({
       newDomain: 'http://freelook.info',
       oldDomain: 'no_value',
       docRoot: '/',
       filetypes: ['css']
-    }))
+    })))
     .pipe(htmlFilter.restore())
     .pipe(gulp.dest('dist/'))
     .pipe($.size({title: 'dist/', showFiles: true}));
