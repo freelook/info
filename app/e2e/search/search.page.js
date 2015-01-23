@@ -4,7 +4,7 @@
 
 var SearchPage = function() {
 
-  var INPUT_ID = '003';
+  var INPUT_ID = 'input';
   var TABS = {
     yandex: '#tab_002'
   };
