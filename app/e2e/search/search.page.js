@@ -17,6 +17,7 @@ var SearchPage = function() {
 
   this.fillInput = function( input ) {
     this.input.sendKeys(input);
+    this.input.sendKeys(protractor.Key.ENTER);
   };
 
   this.clickTab = function( name ) {

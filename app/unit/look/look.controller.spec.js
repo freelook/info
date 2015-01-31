@@ -9,7 +9,7 @@ describe('Main controller', function () {
 
     scope = $rootScope.$new();
 
-    $controller('MainCtrl', {
+    $controller('LookCtrl', {
       $scope: scope
     });
   }));

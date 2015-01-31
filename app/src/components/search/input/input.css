@@ -7,6 +7,14 @@ fli-input md-input-container.md-input-focused {
   text-align: left !important;
 }
 
+fli-input md-input-container .md-fab {
+  display: none;
+}
+
+fli-input md-input-container.md-input-has-value .md-fab {
+  display: block;
+}
+
 fli-input md-input-container label {
   color: #3f51b5 !important;
 }

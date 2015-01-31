@@ -1,8 +1,8 @@
 'use strict';
-angular.module('freelook.info')
+angular.module('fli.search')
   .directive('fliInput', function () {
     return {
       controller: 'InputCtrl',
-      templateUrl: 'components/input/input.html'
+      templateUrl: 'components/search/input/input.html'
     };
   });

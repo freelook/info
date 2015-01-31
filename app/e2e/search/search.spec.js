@@ -32,7 +32,7 @@ describe('The search view', function () {
     });
 
 
-    iit('should load content on search', function () {
+    it('should load content on search', function () {
       page.fillInput('javascript');
       page.clickTab('yandex');
       expect(page.searchYEls.count()).toBe(10);

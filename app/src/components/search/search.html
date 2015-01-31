@@ -1,3 +1,16 @@
+<md-toolbar layout="column" layout-align="center center">
+
+  <fli-input layout-fill layout-padding></fli-input>
+
+
+  <md-tabs>
+    <md-tab label="google" md-active="fli.route.from === 'google'" ng-click="go({from: 'google'})"></md-tab>
+    <md-tab label="yandex" md-active="fli.route.from === 'yandex'" ng-click="go({from: 'yandex'})"></md-tab>
+  </md-tabs>
+
+
+</md-toolbar>
+
 <md-content layout="column" id="search" layout-margin layout-padding>
 
   <fli-google-search ng-if="fli.route.from === 'google'"></fli-google-search>
