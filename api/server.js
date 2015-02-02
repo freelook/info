@@ -3,8 +3,8 @@
  * Module dependencies.
  */
 var init = require('./config/init')(),
-	config = require('./config/config'),
-	mongoose = require('mongoose');
+    config = require('./config/config'),
+    db;
 
 /**
  * Main application entry file.
@@ -12,19 +12,26 @@ var init = require('./config/init')(),
  */
 
 // Bootstrap db connection
-var db = mongoose.connect(config.db);
+//var db = ***;
 
 // Init the express application
 var app = require('./config/express')(db);
+
+// Init server
+var server = require('http').Server(app);
+
+// Init socket.io
+var io = require('socket.io')(server);
+require('./config/socket')(io);
 
 // Bootstrap passport config
 require('./config/passport')();
 
 // Start the app by listening on <port>
-app.listen(config.port);
+server.listen(config.port);
 
 // Expose app
-exports = module.exports = app;
+module.exports = app;
 
 // Logging initialization
-console.log('MEAN.JS application started on port ' + config.port);
+console.log('freelook api started on port ' + config.port);

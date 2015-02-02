@@ -1,8 +1,13 @@
-<form name="form" ng-submit="search(form)">
-<md-input-container layout-flex>
+<form name="form" ng-submit="search(form)" layout="row">
 
-    <label ng-bind="label" for="input"></label>
-    <input id="input" ng-model="fli.route.input" type="search">
+  <md-input-container flex>
 
-</md-input-container>
+      <label layout-flex ng-bind="label" for="input"></label>
+      <input layout-flex id="input" ng-model="fli.route.input" type="search">
+
+  </md-input-container>
+
+  <div ng-show="fli.route.input" ng-click="clear()"><i>&times;</i></div>
+  <div ng-show="fli.route.input" ng-click="search()"><i>&rarr;</i></div>
+
 </form>

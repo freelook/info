@@ -1,5 +1,3 @@
-<md-progress-linear md-mode="indeterminate" ng-if="fli.route.input && !search.results.length"></md-progress-linear>
-
 <md-whiteframe flex class="md-whiteframe-z1" layout="column" ng-repeat="result in search.results">
   <div>
     <a ng-href="{{'http://prerender.freelook.info/' + result.url}}" target="_blank" ng-bind-html="result.title"></a>

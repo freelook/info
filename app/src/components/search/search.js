@@ -15,5 +15,4 @@ angular
         redirectTo: '/search'
       });
   })
-  .constant('DEFAULT_LABEL', 'FREE LOOK AT INFO')
-  .constant('SPLIT_LABEL', 'FREE LOOK AT');
+  .constant('DEFAULT_LABEL', 'LOOKING FOR');

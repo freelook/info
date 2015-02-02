@@ -6,15 +6,10 @@
 var express = require('express'),
 	morgan = require('morgan'),
 	bodyParser = require('body-parser'),
-	session = require('express-session'),
 	compress = require('compression'),
 	methodOverride = require('method-override'),
-	cookieParser = require('cookie-parser'),
 	helmet = require('helmet'),
 	passport = require('passport'),
-	mongoStore = require('connect-mongo')({
-		session: session
-	}),
 	flash = require('connect-flash'),
 	config = require('./config'),
 	consolidate = require('consolidate'),
@@ -33,8 +28,6 @@ module.exports = function(db) {
 	app.locals.title = config.app.title;
 	app.locals.description = config.app.description;
 	app.locals.keywords = config.app.keywords;
-	app.locals.jsFiles = config.getJavaScriptAssets();
-	app.locals.cssFiles = config.getCSSAssets();
 
 	// Passing the request url to environment locals
 	app.use(function(req, res, next) {
@@ -58,7 +51,7 @@ module.exports = function(db) {
 
 	// Set views path and view engine
 	app.set('view engine', 'server.view.html');
-	app.set('views', './app/views');
+	app.set('views', './views');
 
 	// Environment dependent middleware
 	if (process.env.NODE_ENV === 'development') {
@@ -79,21 +72,8 @@ module.exports = function(db) {
 	// Enable jsonp
 	app.enable('jsonp callback');
 
-	// CookieParser should be above session
-	app.use(cookieParser());
-
-	// Express MongoDB session storage
-	app.use(session({
-		secret: config.sessionSecret,
-		store: new mongoStore({
-			db: db.connection.db,
-			collection: config.sessionCollection
-		})
-	}));
-
 	// use passport session
 	app.use(passport.initialize());
-	app.use(passport.session());
 
 	// connect flash for flash messages
 	app.use(flash());
@@ -104,12 +84,12 @@ module.exports = function(db) {
 	app.use(helmet.contentTypeOptions());
 	app.use(helmet.ienoopen());
 	app.disable('x-powered-by');
-	
+
 	// Setting the app router and static folder
-	app.use(express.static(path.resolve('./public')));
+	//app.use(express.static(path.resolve('./public')));
 
 	// Globbing routing files
-	config.getGlobbedFiles('./app/routes/**/*.js').forEach(function(routePath) {
+	config.getGlobbedFiles('./routes/**/*.js').forEach(function(routePath) {
 		require(path.resolve(routePath))(app);
 	});
 

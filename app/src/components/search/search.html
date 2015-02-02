@@ -11,6 +11,8 @@
 
 </md-toolbar>
 
+<md-progress-linear md-mode="indeterminate" ng-if="fli.progress"></md-progress-linear>
+
 <md-content layout="column" id="search" layout-margin layout-padding>
 
   <fli-google-search ng-if="fli.route.from === 'google'"></fli-google-search>

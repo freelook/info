@@ -1,7 +1,7 @@
 'use strict';
 
 describe('Input controller', function () {
-  var scope, defLabel, splitLabel, controller;
+  var scope, defLabel, controller;
 
 
   beforeEach(function () {
@@ -18,11 +18,10 @@ describe('Input controller', function () {
     scope.$apply();
   }
 
-  beforeEach(inject(function ($rootScope, $controller, DEFAULT_LABEL, SPLIT_LABEL) {
+  beforeEach(inject(function ($rootScope, $controller, DEFAULT_LABEL) {
     scope = $rootScope.$new();
     controller = $controller;
     defLabel = DEFAULT_LABEL;
-    splitLabel = SPLIT_LABEL;
   }));
 
 
@@ -40,10 +39,10 @@ describe('Input controller', function () {
     });
   });
 
-  it('should change label on input change', function () {
+  it('should clear input', function () {
     exequteController('xxx');
-    scope.setLabel();
-    expect(scope.label).toBe(splitLabel);
+    scope.clear();
+    expect(scope.fli.route.input).toBe('');
   });
 
 });
