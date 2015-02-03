@@ -9,8 +9,7 @@
   },
   "scripts": {
     "start": "gulp",
-    "test": "gulp test",
-    "postinstall": "bower install --config.interactive=false"
+    "test": "gulp test"
   },
   "dependencies": {
     "body-parser": "~1.0.1",

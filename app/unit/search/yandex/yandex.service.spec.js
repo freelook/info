@@ -39,7 +39,7 @@ describe('Yandex service', function () {
 
     it('it should resolve url for search', function () {
       var text = 'xxx',
-        expectedRequest = 'http://freelook.herokuapp.com/api/get?url=' +
+        expectedRequest = 'http://freelook.info/api/prerender.php' +
           encodeURIComponent('https://yandex.com/sitesearch?text=' + text + '&searchid=2192226&frame=1') + '&callback=JSON_CALLBACK';
       sut.search(text);
       expect(mockHTTP.jsonp).toHaveBeenCalledWith(expectedRequest);
