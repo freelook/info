@@ -3,7 +3,7 @@
 angular
   .module('freelook.info')
   .factory('io', function ($rootScope) {
-    var socket = window.io.connect('http://localhost:4000');
+    var socket = window.io.connect('http://freelook.herokuapp.com');
     return {
       on: function (eventName, callback) {
         socket.on(eventName, function () {
