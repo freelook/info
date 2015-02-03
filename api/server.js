@@ -30,8 +30,5 @@ require('./config/passport')();
 // Start the app by listening on <port>
 server.listen(config.port);
 
-// Expose app
-module.exports = app;
-
 // Logging initialization
 console.log('freelook api started on port ' + config.port);
