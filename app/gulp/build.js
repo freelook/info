@@ -51,10 +51,11 @@ gulp.task('partials', function () {
 });
 
 gulp.task('html', ['wiredep', 'injector:css', 'injector:js', 'partials'], function () {
-  var htmlFilter = $.filter('*.html');
-  var jsFilter = $.filter('**/*.js');
-  var cssFilter = $.filter('**/*.css');
-  var assets;
+
+  var htmlFilter = $.filter('*.html'),
+    jsFilter = $.filter('**/*.js'),
+    cssFilter = $.filter('**/*.css'),
+    assets;
 
   return gulp.src('src/*.html')
     .pipe($.inject(gulp.src('.tmp/inject/templateCacheHtml.js', {read: false}), {
