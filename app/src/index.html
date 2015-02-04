@@ -27,9 +27,6 @@
     <!-- endinject -->
     <!-- endbuild -->
 
-    <!-- build:js scripts/modernizr.js -->
-    <script src="../bower_components/modernizr/modernizr.js"></script>
-    <!-- endbuild -->
   </head>
   <body ng-controller="IndexCtrl">
     <!--[if lt IE 10]>
@@ -60,6 +57,7 @@
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/modernizr/modernizr.js"></script>
     <script src="../bower_components/angular/angular.js"></script>
     <script src="../bower_components/angular-animate/angular-animate.js"></script>
     <script src="../bower_components/angular-cookies/angular-cookies.js"></script>
@@ -90,9 +88,8 @@
     <script src="components/search/yandex/yandex.controller.js"></script>
     <script src="components/search/yandex/yandex.directive.js"></script>
     <script src="components/search/yandex/yandex.factory.js"></script>
-    <script src="components/_index/core/config/config.development.js"></script>
+    <script src="components/_index/core/config/config.production.js"></script>
     <!-- endinject -->
-    <!-- endbuild -->
 
     <!-- inject:partials -->
     <!-- angular templates will be automaticaly converted in js and inserted here -->
