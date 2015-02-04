@@ -9,6 +9,9 @@ angular
     $locationProvider.html5Mode(true);
     $locationProvider.hashPrefix('!');
 
+    // Set up cache
+    $httpProvider.defaults.cache = true;
+
     $httpProvider.interceptors.push('LoaderInterceptor');
 
 

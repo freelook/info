@@ -1,7 +1,7 @@
 'use strict';
 
 
-describe('Google service', function () {
+describe('Google', function () {
 
   var sut, mockHTTP;
 
@@ -10,7 +10,10 @@ describe('Google service', function () {
 
     mockHTTP = {
       jsonp: jasmine.createSpy().and.returnValue({
-        success: jasmine.createSpy()
+        success: jasmine.createSpy().and.returnValue({
+          error: jasmine.createSpy()
+        }),
+        error: jasmine.createSpy()
       })
     };
 

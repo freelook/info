@@ -1,14 +1,13 @@
 'use strict';
 
-var gulp = require('gulp');
+var gulp = require('gulp'),
+  util = require('util'),
+  browserSync = require('browser-sync'),
+  middleware = require('./middleware');
 
-var util = require('util');
-
-var browserSync = require('browser-sync');
-
-var middleware = require('./middleware');
 
 function browserSyncInit(baseDir, files, browser) {
+  var fl = files || [];
   browser = browser === undefined ? 'default' : browser;
 
   var routes = null;
@@ -16,6 +15,12 @@ function browserSyncInit(baseDir, files, browser) {
     routes = {
       '/bower_components': 'bower_components'
     };
+  }
+
+  if (!process.env.production) {
+    fl.push('!src/components/**/*.production.js');
+  } else {
+    fl.push('!src/components/**/*.development.js');
   }
 
   browserSync.instance = browserSync.init(files, {

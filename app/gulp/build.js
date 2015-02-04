@@ -24,12 +24,21 @@ gulp.task('jshint', function () {
 });
 
 gulp.task('injector:js', ['jshint', 'injector:css'], function () {
+
+  var js = [
+    'src/components/**/*.js',
+    '!src/components/**/*.spec.js',
+    '!src/components/**/*.mock.js'
+  ];
+
+  if (!process.env.production) {
+    js.push('!src/components/**/*.production.js');
+  } else {
+    js.push('!src/components/**/*.development.js');
+  }
+
   return gulp.src('src/index.html')
-    .pipe($.inject(gulp.src([
-      'src/components/**/*.js',
-      '!src/components/**/*.spec.js',
-      '!src/components/**/*.mock.js'
-    ], {read: false}), {
+    .pipe($.inject(gulp.src(js, {read: false}), {
       ignorePath: 'src',
       addRootSlash: false
     }))

@@ -4,7 +4,7 @@
 var $http = require('request'),
     regURL = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
 
-exports.get = function (req, res) {
+module.exports = function (req, res) {
     if (req.query && req.query.url && regURL.test(req.query.url)) {
 
         $http.get('http://service.prerender.io/' + req.query.url, function (err, response, body) {
