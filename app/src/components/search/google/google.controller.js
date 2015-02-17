@@ -14,12 +14,11 @@ angular
         console.info($scope.search);
       });
 
+      Google.autocomplete($rootScope.fli.route.input).success(function (auto) {
+        $scope.suggested = auto[1] || [];
+      });
+
     }
-
-    Google.autocomplete($rootScope.fli.route.input || 'info').success(function (auto) {
-      $scope.suggested = auto[1] || [];
-    });
-
 
   });
 

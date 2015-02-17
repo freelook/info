@@ -1,9 +1,14 @@
 'use strict';
 
 angular
-  .module('freelook.info')
-  .controller('LookCtrl', function ($scope) {
+  .module('fli.look')
+  .controller('LookCtrl', function ($rootScope, $routeParams, $sce, $scope) {
 
-    $scope.isDefined = true;
+    $rootScope.fli.route = $routeParams || {};
+
+    if (!$rootScope.fli.route.type) {
+      $rootScope.go({type: 'full'});
+    }
+    $scope.url = $sce.trustAsResourceUrl($rootScope.fli.route.url);
 
   });

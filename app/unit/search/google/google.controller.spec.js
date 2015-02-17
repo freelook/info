@@ -60,11 +60,17 @@ describe('Google controller', function () {
     expect(mockGoogle.search).not.toHaveBeenCalled();
   });
 
-  it('should call google autocomplete service with info if route not defined', function () {
+  it('should no call google autocomplete service', function () {
     rootScope.fli.route.input = '';
     exequteController();
-    expect(mockGoogle.autocomplete).toHaveBeenCalledWith('info');
+    expect(mockGoogle.autocomplete).not.toHaveBeenCalled();
   });
+  it('should call google autocomplete service with input', function () {
+    rootScope.fli.route.input = 'xxx';
+    exequteController();
+    expect(mockGoogle.autocomplete).toHaveBeenCalledWith('xxx');
+  });
+
 
   it('should set suggested on scope if call for autocomplete success', function () {
     var expectedArr = ['x', 'xx'],

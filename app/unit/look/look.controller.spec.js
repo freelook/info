@@ -1,21 +1,36 @@
 'use strict';
 
-describe('Main controller', function () {
-  var scope;
+describe('Look controller', function () {
+  var scope, mockRootScope, mockRouteParams;
 
-  beforeEach(module('freelook.info'));
 
-  beforeEach(inject(function ($rootScope, $controller) {
+  beforeEach(function () {
+    module('freelook.info');
+
+    mockRouteParams = {
+      type: 'full'
+    };
+
+  });
+
+  beforeEach(inject(function ($rootScope, $routeParams, $controller) {
 
     scope = $rootScope.$new();
+    mockRootScope = $rootScope;
+    mockRootScope.fli = {
+      route: ''
+    };
 
     $controller('LookCtrl', {
+      $rootScope: mockRootScope,
+      $routeParams: mockRouteParams,
       $scope: scope
     });
+
   }));
 
-  it('should define scope', function () {
-    expect(scope.isDefined).toBeTruthy();
+  it('should define route', function () {
+    expect(mockRootScope.fli.route).toBe(mockRouteParams);
   });
 
 });

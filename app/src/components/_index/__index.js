@@ -2,8 +2,8 @@
 
 angular
   .module('freelook.info',
-  ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngRoute', 'ngMaterial', 'fli.search'])
-  .config(function ($locationProvider, $httpProvider) {
+  ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngRoute', 'ngMaterial', 'fli.search', 'fli.look'])
+  .config(function ($locationProvider, $httpProvider, $mdThemingProvider) {
 
     // Setting hash prefix
     $locationProvider.html5Mode(true);
@@ -15,9 +15,11 @@ angular
     $httpProvider.interceptors.push('LoaderInterceptor');
 
 
+    // Setting theme
+    $mdThemingProvider.theme('default').accentPalette('indigo');
+
   })
   .run(function () {
-
 
 
   });

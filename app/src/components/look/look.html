@@ -1,7 +1,19 @@
-<div layout="column">
+<md-toolbar layout="column" layout-align="center center">
 
-  <md-content>
+  <md-tabs>
+    <md-tab label="≡" ng-click="go('search')"></md-tab>
+    <md-tab label="short" md-active="fli.route.type === 'short'" ng-click="go({type: 'short'})"></md-tab>
+    <md-tab label="full" md-active="fli.route.type === 'full'" ng-click="go({type: 'full'})"></md-tab>
+  </md-tabs>
 
-  </md-content>
+</md-toolbar>
 
-</div>
+<md-progress-linear md-mode="indeterminate" ng-if="fli.progress"></md-progress-linear>
+
+<md-content layout="column" id="look" flex>
+
+  <iframe flex ng-if="!!url && fli.route.type === 'full'" ng-src="{{url}}"></iframe>
+
+</md-content>
+
+
