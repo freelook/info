@@ -14,9 +14,8 @@ angular
 
     $httpProvider.interceptors.push('LoaderInterceptor');
 
-
     // Setting theme
-    $mdThemingProvider.theme('default').accentPalette('indigo');
+    $mdThemingProvider.theme('default').accentPalette('deep-purple');
 
   })
   .run(function () {
