@@ -2,12 +2,12 @@
 
 describe('Yandex', function () {
 
-  var sut, mockApi;
+  var sut, mockPrerender;
 
   beforeEach(function () {
     module('fli.search');
 
-    mockApi = {
+    mockPrerender = {
       get: jasmine.createSpy().and.returnValue({
         then: jasmine.createSpy()
       })
@@ -15,7 +15,7 @@ describe('Yandex', function () {
 
 
     module(function ($provide) {
-      $provide.value('api', mockApi);
+      $provide.value('prerender', mockPrerender);
     });
   });
 
@@ -29,7 +29,7 @@ describe('Yandex', function () {
       var text = 'xxx',
         expectedRequest = 'https://yandex.com/sitesearch?text=' + text + '&searchid=2192226&frame=1';
       sut.search(text);
-      expect(mockApi.get).toHaveBeenCalledWith(expectedRequest);
+      expect(mockPrerender.get).toHaveBeenCalledWith(expectedRequest);
     });
 
   });

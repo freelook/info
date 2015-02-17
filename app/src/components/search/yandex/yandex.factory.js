@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('fli.search')
-  .factory('Yandex', function(api) {
+  .factory('Yandex', function(prerender) {
 
     function _getUrl(q) {
       return 'https://yandex.com/sitesearch?text=' + q + '&searchid=2192226&frame=1';
@@ -22,7 +22,7 @@ angular
 
     function search(q) {
       if (q) {
-        return api.get(_getUrl(q))
+        return prerender.get(_getUrl(q))
           .then(function (html) {
             return _convertHtMLtoJS(html);
           });

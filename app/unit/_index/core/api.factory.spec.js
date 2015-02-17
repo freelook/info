@@ -5,7 +5,7 @@ describe('API', function () {
   var sut, mockHTTP, mockQ, mockResoleve, mockWindow;
 
   beforeEach(function () {
-    module('fli.search');
+    module('freelook.info');
 
     mockHTTP = {
       jsonp: jasmine.createSpy().and.returnValue({
