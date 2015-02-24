@@ -1,6 +1,6 @@
 <md-whiteframe flex class="md-whiteframe-z1" layout="column" ng-repeat="result in search.results">
   <div>
-    <a ng-href="{{'look?url=' + result.url}}" ng-bind-html="result.title"></a>
+    <a ng-href="{{getURL(result)}}" ng-bind-html="result.title"></a>
   </div>
   <div ng-bind-html="result.content"></div>
 </md-whiteframe>

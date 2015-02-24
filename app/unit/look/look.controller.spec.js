@@ -23,7 +23,8 @@ describe('Look controller', function () {
 
     $controller('LookCtrl', {
       $rootScope: mockRootScope,
-      $routeParams: mockRouteParams
+      $routeParams: mockRouteParams,
+      $scope: scope
     });
 
   }));

@@ -6,6 +6,11 @@ md-toolbar {
   background: #fff !important;
 }
 
+md-tabs {
+  overflow: hidden;
+}
+
+
 
 
 
