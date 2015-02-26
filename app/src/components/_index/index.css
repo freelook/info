@@ -10,6 +10,9 @@ md-tabs {
   overflow: hidden;
 }
 
+md-progress-linear {
+  height: 10px;
+}
 
 
 
