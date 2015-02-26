@@ -5,6 +5,10 @@ angular
 
     $scope.search = [];
 
+    $scope.getURL = function(result) {
+      return 'look?url=' + result.url + '&input=' + $rootScope.fli.route.input + '&type=short';
+    };
+
     if ($rootScope.fli.route.input) {
       Yandex.search($rootScope.fli.route.input)
         .then(function (search) {

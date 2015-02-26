@@ -2,7 +2,6 @@
 angular.module('fli.look')
   .directive('fliLookShort', function ($rootScope, $sce, $window, prerender) {
     return {
-      scope: true,
       templateUrl: 'components/look/short/short.html',
       link: function (scope) {
 
@@ -35,8 +34,6 @@ angular.module('fli.look')
           var div = null;
           if (!body) {
             body = $('body', dom);
-            body.find('script, iframe').remove();
-            fixLinks(body);
           }
           $('*:contains(' + by + ')', body)
             .each(function (i, e) {
@@ -64,7 +61,10 @@ angular.module('fli.look')
 
           if (_findHtml) {
             _findHtml.each(function (i, e) {
-              var html = $(e).html();
+              var _el = $(e);
+              _el.find('script, iframe, img').remove();
+              fixLinks(_el);
+              var html = _el.html();
               if (html) {
                 short.push({html: $sce.trustAsHtml(html)});
               }
