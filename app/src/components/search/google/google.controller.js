@@ -15,7 +15,7 @@ angular
     }
 
     $scope.getURL = function(result) {
-      return 'look?url=' + result.url + '&context=' + findContext(result.contentNoFormatting) + '&input=' + $rootScope.fli.route.input;
+      return 'look?url=' + result.url + '&context=' + findContext(result.contentNoFormatting) + '&input=' + $rootScope.fli.route.input + '&type=short';
     };
 
     if ($rootScope.fli.route.input) {
