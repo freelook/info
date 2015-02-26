@@ -23,7 +23,7 @@ angular.module('fli.look')
             });
           });
 
-          return dom.documentElement ? dom.documentElement.innerHTML : '';
+          return !!dom.documentElement ? dom.documentElement.innerHTML : '';
         }
 
         if ($rootScope.fli.route.url) {
