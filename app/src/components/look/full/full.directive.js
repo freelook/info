@@ -3,11 +3,12 @@ angular.module('fli.look')
   .directive('fliLookFull', function ($rootScope, $sce, prerender) {
     return {
       templateUrl: 'components/look/full/full.html',
-      link: function (scope, element) {
+      link: function (scope) {
 
         function _prepareHtml(html) {
-          var dom = (new window.DOMParser()).parseFromString(html, 'text/html');
-          $(dom).find('link').each(function (i, e) {
+          var dom = (new window.DOMParser()).parseFromString(html, 'text/html'),
+            $dom = $(dom);
+          $dom.find('link').each(function (i, e) {
             $(e).attr('href', function (i, value) {
               if (value) {
                 switch (value.substr(0, 2)) {
@@ -22,6 +23,8 @@ angular.module('fli.look')
               }
             });
           });
+
+          $dom.find('script, iframe').remove();
 
           return !!dom.documentElement ? dom.documentElement.innerHTML : '';
         }
