@@ -15,6 +15,9 @@ describe('Google controller', function () {
       }),
       autocomplete: jasmine.createSpy().and.returnValue({
         success: jasmine.createSpy()
+      }),
+      random: jasmine.createSpy().and.returnValue({
+        success: jasmine.createSpy()
       })
     };
 

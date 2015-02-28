@@ -1,7 +1,7 @@
 'use strict';
 
 describe('Yandex controller', function () {
-  var scope, input, mockYandex, rootScope, controller, expectedResponse;
+  var scope, input, mockYandex, rootScope, controller, expectedResponse, mockGoogle;
 
   beforeEach(function () {
 
@@ -18,13 +18,23 @@ describe('Yandex controller', function () {
       })
     };
 
+    mockGoogle = {
+      autocomplete: jasmine.createSpy().and.returnValue({
+        success: jasmine.createSpy()
+      }),
+      random: jasmine.createSpy().and.returnValue({
+        success: jasmine.createSpy()
+      })
+    };
+
   });
 
   function exequteController() {
     controller('YandexCtrl', {
       $scope: scope,
       $rootScope: rootScope,
-      Yandex: mockYandex
+      Yandex: mockYandex,
+      Google: mockGoogle
     });
     rootScope.$apply();
   }

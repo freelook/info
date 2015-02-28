@@ -54,6 +54,11 @@ describe('Google', function () {
       expect(mockHTTP.jsonp).not.toHaveBeenCalled();
     });
 
+    it('it should return random word', function () {
+      sut.random();
+      expect(mockHTTP.jsonp).toHaveBeenCalled();
+    });
+
   });
 
 });

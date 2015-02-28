@@ -7,6 +7,7 @@ angular
 
     $scope.search = {};
     $scope.suggested = [];
+    $scope.lucky = 'freedom';
 
     function findContext(content) {
       var text = content || '',
@@ -14,9 +15,13 @@ angular
       return context.trim() || '';
     }
 
-    $scope.getURL = function(result) {
+    $scope.getURL = function (result) {
       return 'look?url=' + result.url + '&context=' + findContext(result.contentNoFormatting) + '&input=' + $rootScope.fli.route.input + '&type=short';
     };
+
+    Google.random().success(function (lucky) {
+      $scope.lucky = lucky.word;
+    });
 
     if ($rootScope.fli.route.input) {
       Google.search($rootScope.fli.route.input).success(function (search) {
@@ -27,8 +32,8 @@ angular
       Google.autocomplete($rootScope.fli.route.input).success(function (auto) {
         $scope.suggested = auto[1] || [];
       });
-
     }
+
 
   });
 

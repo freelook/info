@@ -5,3 +5,13 @@
   <div ng-bind-html="result.text"></div>
 </md-whiteframe>
 
+<div layout="column" layout-align="center center" ng-if="!search.length && !fli.route.input">
+  <p><a ng-href="{{'search?from=yandex&input=' + lucky}}">I'm lucky!</a></p>
+</div>
+
+<div class="title" ng-if="!!suggested.length">Suggested requests:</div>
+<md-whiteframe flex class="md-whiteframe-z1" layout="column" ng-if="!!suggested.length">
+  <div class="result">
+    <a ng-repeat="suggest in suggested" ng-href="{{'search?from=google&input=' + suggest}}" ng-bind="suggest"></a>
+  </div>
+</md-whiteframe>
