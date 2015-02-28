@@ -1,6 +1,6 @@
 'use strict';
 angular.module('fli.look')
-  .directive('fliLookShort', function ($rootScope, prerender, Short) {
+  .directive('fliLookShort', function ($rootScope, prerender, short) {
     return {
       templateUrl: 'components/look/short/short.html',
       link: function (scope) {
@@ -11,7 +11,7 @@ angular.module('fli.look')
           prerender.get($rootScope.fli.route.url).then(function (html) {
             try {
               $rootScope.fli.progress = true;
-              scope.shortData = Short.get(html, $rootScope.fli.route);
+              scope.shortData = short.get(html, $rootScope.fli.route);
             }
             finally {
               $rootScope.fli.progress = false;

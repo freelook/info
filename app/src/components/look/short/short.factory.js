@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('fli.look')
-  .factory('Short', function ($sce, $window, $location, $rootScope, $cacheFactory) {
+  .factory('short', function ($sce, $window, $location, $rootScope, $cacheFactory) {
 
     var cache = $cacheFactory('short'),
       parser = new window.DOMParser(),

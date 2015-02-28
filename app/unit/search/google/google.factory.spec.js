@@ -3,7 +3,7 @@
 
 describe('Google', function () {
 
-  var sut, mockHTTP;
+  var sut, mockHTTP, mockToast;
 
   beforeEach(function () {
     module('fli.search');
@@ -17,8 +17,13 @@ describe('Google', function () {
       })
     };
 
+    mockToast = {
+      show: jasmine.createSpy()
+    };
+
     module(function ($provide) {
       $provide.value('$http', mockHTTP);
+      $provide.value('toast', mockToast);
     });
   });
 

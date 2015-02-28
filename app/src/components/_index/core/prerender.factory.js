@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('prerender', function ($q, $http, $window) {
+  .factory('prerender', function ($q, $http, $window, toast) {
 
     function get(url) {
       if (url) {
@@ -12,7 +12,7 @@ angular
             defer.resolve(html);
           })
           .error(function (html) {
-            console.info('Sorry error');
+            toast.show('something went wrong');
             defer.reject(html);
           });
 

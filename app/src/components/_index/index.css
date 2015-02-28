@@ -14,6 +14,13 @@ md-progress-linear {
   height: 10px;
 }
 
+md-toast.md-default-theme {
+  background-color: rgba(37, 37, 217, 0.7) !important;
+  text-align: center;
+}
+
+
+
 
 
 

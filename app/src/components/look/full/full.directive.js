@@ -1,6 +1,6 @@
 'use strict';
 angular.module('fli.look')
-  .directive('fliLookFull', function ($rootScope, prerender, Full) {
+  .directive('fliLookFull', function ($rootScope, prerender, full) {
     return {
       templateUrl: 'components/look/full/full.html',
       link: function (scope) {
@@ -8,7 +8,7 @@ angular.module('fli.look')
           prerender.get($rootScope.fli.route.url).then(function (html) {
             try {
               $rootScope.fli.progress = true;
-              scope.html = Full.get(html);
+              scope.html = full.get(html);
             }
             finally {
               $rootScope.fli.progress = false;
