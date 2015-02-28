@@ -3,7 +3,7 @@ angular
   .module('freelook.info')
   .factory('toast', function ($mdToast) {
 
-    var config = $mdToast.simple().position('top left right');
+    var config = $mdToast.simple().position('top right');
 
     function show(text) {
       config.content(text);

@@ -10,7 +10,7 @@ describe('Toast', function () {
 
   beforeEach(inject(function (toast, $mdToast) {
     sut = toast;
-    config = $mdToast.simple().position('top left right');
+    config = $mdToast.simple().position('top right');
     mockMdToastShow = spyOn($mdToast, 'show');
   }));
 
