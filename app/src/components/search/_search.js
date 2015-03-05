@@ -15,4 +15,4 @@ angular
         redirectTo: '/search'
       });
   })
-  .constant('DEFAULT_LABEL', 'LOOKING FOR');
+  .constant('DEFAULT_PLACEHOLDER', 'looking for');

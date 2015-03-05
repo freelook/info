@@ -19,6 +19,9 @@ md-toast.md-default-theme {
   text-align: center;
 }
 
+.md-button {
+  margin: 3px;
+}
 
 
 

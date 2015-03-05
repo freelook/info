@@ -1,7 +1,7 @@
 'use strict';
 
 describe('Input controller', function () {
-  var scope, defLabel, controller;
+  var scope, defpleceholder, controller;
 
 
   beforeEach(function () {
@@ -18,16 +18,16 @@ describe('Input controller', function () {
     scope.$apply();
   }
 
-  beforeEach(inject(function ($rootScope, $controller, DEFAULT_LABEL) {
+  beforeEach(inject(function ($rootScope, $controller, DEFAULT_PLACEHOLDER) {
     scope = $rootScope.$new();
     controller = $controller;
-    defLabel = DEFAULT_LABEL;
+    defpleceholder = DEFAULT_PLACEHOLDER;
   }));
 
 
   it('should define default label', function () {
     exequteController('');
-    expect(scope.label).toBe(defLabel);
+    expect(scope.placeholder).toBe(defpleceholder);
   });
 
   it('should change route on input change', function () {

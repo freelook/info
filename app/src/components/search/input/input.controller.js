@@ -2,14 +2,14 @@
 angular
   .module('fli.search')
   .controller('InputCtrl',
-  function ($scope, DEFAULT_LABEL) {
+  function ($scope, DEFAULT_PLACEHOLDER) {
 
     function init() {
-      $scope.setLabel();
+      $scope.setPlaceholder();
     }
 
-    $scope.setLabel = function () {
-      $scope.label = DEFAULT_LABEL;
+    $scope.setPlaceholder = function () {
+      $scope.placeholder = DEFAULT_PLACEHOLDER;
     };
 
     $scope.search = function () {
