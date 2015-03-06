@@ -19,8 +19,8 @@ describe('Yandex', function () {
     });
   });
 
-  beforeEach(inject(function (Yandex) {
-    sut = Yandex;
+  beforeEach(inject(function (yandex) {
+    sut = yandex;
   }));
 
   describe('Yandex calls', function () {

@@ -10,15 +10,14 @@ describe('Search controller', function () {
     input = 'xxx';
 
     mockRouteParams = {
-      input: input,
-      from: 'google'
+      input: input
     };
 
 
   });
 
   function exequteController() {
-    controller('SearchCtrl', {
+    controller('search.ctrl', {
       $rootScope: rootScope,
       $routeParams: mockRouteParams
     });

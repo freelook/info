@@ -20,20 +20,15 @@ describe('Index controller', function () {
 
     rootScope = $rootScope;
 
-    $controller('IndexCtrl', {
+    $controller('index.ctrl', {
       $rootScope: rootScope,
-      $route: mockRoute,
-      io: mockIo
+      $route: mockRoute
     });
     rootScope.$apply();
   }));
 
   it('should define fli', function () {
     expect(rootScope.fli).toBeDefined();
-  });
-
-  it('should init io', function () {
-    expect(mockIo.on).toHaveBeenCalled();
   });
 
   it('should update route params', function () {

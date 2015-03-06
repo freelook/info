@@ -27,8 +27,8 @@ describe('Google', function () {
     });
   });
 
-  beforeEach(inject(function (Google) {
-    sut = Google;
+  beforeEach(inject(function (google) {
+    sut = google;
   }));
 
   describe('HTTP calls', function () {

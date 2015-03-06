@@ -2,7 +2,7 @@
 
 angular
   .module('fli.look')
-  .factory('full', function ($sce, $window, $location, $rootScope, $cacheFactory, short) {
+  .factory('full', function ($sce, $window, $location, $rootScope, $cacheFactory) {
 
     var cache = $cacheFactory('full'),
       parser = new window.DOMParser();
@@ -29,7 +29,6 @@ angular
       });
 
       $dom.find('script, iframe').remove();
-      short.fixLinks($dom, 'full');
       data = $sce.trustAsHtml(dom.documentElement.innerHTML);
 
       _storeData(data);

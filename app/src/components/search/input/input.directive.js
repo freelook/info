@@ -1,8 +1,8 @@
 'use strict';
 angular.module('fli.search')
-  .directive('fliInput', function () {
+  .directive('fliSearchInput', function () {
     return {
-      controller: 'InputCtrl',
+      controller: 'search.input.ctrl',
       templateUrl: 'components/search/input/input.html'
     };
   });

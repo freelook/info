@@ -1,14 +1,9 @@
 <md-toolbar layout="column" layout-align="center center">
 
   <header layout="row" layout-fill>
-    <md-button class="md-fab md-primary" ng-click="go('search')">≡</md-button>
-    <fli-input flex></fli-input>
+    <md-button class="md-fab md-primary" ng-click="go('search?input=')">≡</md-button>
+    <fli-search-input flex></fli-search-input>
   </header>
-
-  <md-tabs>
-    <md-tab label="short" md-active="fli.route.type === 'short'" ng-click="go({type: 'short'})"></md-tab>
-    <md-tab label="full" md-active="fli.route.type === 'full'" ng-click="go({type: 'full'})"></md-tab>
-  </md-tabs>
 
 </md-toolbar>
 
@@ -16,8 +11,7 @@
 
 <md-content layout="column" id="look" flex>
 
-  <fli-look-short flex ng-if="fli.route.type === 'short'"></fli-look-short>
-  <fli-look-full flex ng-if="fli.route.type === 'full'"></fli-look-full>
+  <fli-look-content flex></fli-look-content>
 
 </md-content>
 

@@ -21,7 +21,7 @@ describe('Look controller', function () {
       route: ''
     };
 
-    $controller('LookCtrl', {
+    $controller('look.ctrl', {
       $rootScope: mockRootScope,
       $routeParams: mockRouteParams,
       $scope: scope

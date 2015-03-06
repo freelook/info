@@ -12,7 +12,7 @@ describe('Input controller', function () {
 
   function exequteController(input) {
     scope.fli = {route:{input: input}};
-    controller('InputCtrl', {
+    controller('search.input.ctrl', {
       $scope: scope
     });
     scope.$apply();
@@ -33,10 +33,8 @@ describe('Input controller', function () {
   it('should change route on input change', function () {
     exequteController('xxx');
     scope.go = jasmine.createSpy();
-    scope.search();
-    expect(scope.go).toHaveBeenCalledWith({
-      input: 'xxx'
-    });
+    scope.find();
+    expect(scope.go).toHaveBeenCalledWith('search?input=xxx');
   });
 
   it('should clear input', function () {

@@ -23,21 +23,4 @@ describe('The search view', function () {
 
   });
 
-  describe('Yandex', function () {
-
-    it('should have no content if search request empty', function () {
-      page.fillInput('');
-      page.clickTab('yandex');
-      expect(page.searchYEls.count()).toBe(0);
-    });
-
-
-    it('should load content on search', function () {
-      page.fillInput('javascript');
-      page.clickTab('yandex');
-      expect(page.searchYEls.count()).toBe(10);
-    });
-
-  });
-
 });

@@ -1,0 +1,21 @@
+fli-search-result .title {
+  margin: 15px;
+}
+
+fli-search-result .result {
+  text-align: justify;
+}
+
+fli-search-result .result a {
+  margin: 7px;
+  display: inline-block;
+}
+
+fli-search-result md-whiteframe {
+  padding: 7px;
+}
+
+fli-search-result .lucky {
+  color: #3f51b5;
+  text-decoration: none;
+}

@@ -1,18 +1,18 @@
 <md-whiteframe flex class="md-whiteframe-z1" layout="column" ng-repeat="result in search.results">
   <div>
-    <a ng-href="{{getURL(result)}}" ng-bind-html="result.title"></a>
+    <a ng-href="{{href(result)}}" ng-bind-html="result.title"></a>
   </div>
   <div ng-bind-html="result.content"></div>
 </md-whiteframe>
 
 <div flex layout="column" layout-align="center center" ng-if="!search.results && !fli.route.input">
-  <p><a class="lucky" ng-href="{{'search?from=google&input=' + lucky}}">get lucky</a></p>
+  <p><a class="lucky" ng-href="{{'search?input=' + lucky}}">get lucky</a></p>
 </div>
 
 <div class="title" ng-if="!!suggested.length">Suggested requests:</div>
 <md-whiteframe class="md-whiteframe-z1" layout="column" ng-if="!!suggested.length">
   <div class="result">
-    <a ng-repeat="suggest in suggested" ng-href="{{'search?from=google&input=' + suggest}}" ng-bind="suggest"></a>
+    <a ng-repeat="suggest in suggested" ng-href="{{'search?input=' + suggest}}" ng-bind="suggest"></a>
   </div>
 </md-whiteframe>
 

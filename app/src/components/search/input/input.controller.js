@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('fli.search')
-  .controller('InputCtrl',
+  .controller('search.input.ctrl',
   function ($scope, DEFAULT_PLACEHOLDER) {
 
     function init() {
@@ -12,8 +12,8 @@ angular
       $scope.placeholder = DEFAULT_PLACEHOLDER;
     };
 
-    $scope.search = function () {
-        $scope.go({input: $scope.fli.route.input});
+    $scope.find = function () {
+      $scope.go('search?input=' +$scope.fli.route.input);
     };
 
     $scope.clear = function () {

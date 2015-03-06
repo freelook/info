@@ -9,7 +9,7 @@ angular
     $routeProvider
       .when('/look', {
         templateUrl: 'components/look/look.html',
-        controller: 'LookCtrl'
+        controller: 'look.ctrl'
       });
 
   });

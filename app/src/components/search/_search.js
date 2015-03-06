@@ -9,7 +9,7 @@ angular
     $routeProvider
       .when('/search', {
         templateUrl: 'components/search/search.html',
-        controller: 'SearchCtrl'
+        controller: 'search.ctrl'
       })
       .otherwise({
         redirectTo: '/search'

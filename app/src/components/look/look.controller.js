@@ -2,19 +2,13 @@
 
 angular
   .module('fli.look')
-  .controller('LookCtrl', function ($rootScope, $routeParams, $location, $scope, $sce) {
+  .controller('look.ctrl', function ($rootScope, $routeParams, $location) {
 
     $location.search({
       url: $routeParams.url,
-      context: $routeParams.context,
-      input: $routeParams.input,
-      type: $routeParams.type || 'short'
+      input: $routeParams.input
     });
 
     $rootScope.fli.route = $routeParams || {};
-
-    $scope.getFrameUrl = function() {
-      return $sce.trustAsResourceUrl($rootScope.fli.route.url);
-    };
 
   });

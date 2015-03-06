@@ -2,11 +2,10 @@
 
 angular
   .module('freelook.info')
-  .controller('SearchCtrl',
+  .controller('search.ctrl',
   function ($rootScope, $routeParams, $location) {
 
     $location.search({
-      from: $routeParams.from || 'google',
       input: $routeParams.input || ''
     });
 

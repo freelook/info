@@ -1,14 +1,9 @@
 <md-toolbar layout="column" layout-align="center center">
 
-<header layout="row" layout-fill>
-  <md-button class="md-fab md-primary">≡</md-button>
-  <fli-input flex></fli-input>
-</header>
-
-  <md-tabs>
-    <md-tab label="google" md-active="fli.route.from === 'google'" ng-click="go({from: 'google'})"></md-tab>
-    <md-tab label="yandex" md-active="fli.route.from === 'yandex'" ng-click="go({from: 'yandex'})"></md-tab>
-  </md-tabs>
+  <header layout="row" layout-fill>
+    <md-button class="md-fab md-primary">≡</md-button>
+    <fli-search-input flex></fli-search-input>
+  </header>
 
 </md-toolbar>
 
@@ -16,13 +11,8 @@
 
 <md-content layout="column" id="search" layout-margin layout-padding flex>
 
-  <fli-google-search flex layout="column" ng-if="fli.route.from === 'google'"></fli-google-search>
-  <fli-yandex-search flex layout="column" ng-if="fli.route.from === 'yandex'"></fli-yandex-search>
+  <fli-search-result flex layout="column"></fli-search-result>
 
 </md-content>
 
-<footer ng-include="'components/footer/footer.html'"></footer>
-
-
-
-
+<footer ng-include="'components/_index/footer/footer.html'"></footer>

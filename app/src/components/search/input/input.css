@@ -1,4 +1,4 @@
-fli-input #input::-webkit-search-cancel-button:after {
+fli-search-input #input::-webkit-search-cancel-button:after {
   content: '×';
   display: block;
   width: 15px;
@@ -6,6 +6,11 @@ fli-input #input::-webkit-search-cancel-button:after {
   color: #3f51b5;
 }
 
-fli-input md-input-container .md-placeholder {
+fli-search-input #input {
+  margin-top: 10px;
+}
+
+fli-search-input md-input-container .md-placeholder {
   display: none !important;
 }
+

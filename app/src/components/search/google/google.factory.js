@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('fli.search')
-  .factory('Google', function ($http, toast) {
+  .factory('google', function ($http, toast) {
 
     function search(q) {
 

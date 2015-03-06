@@ -9,7 +9,7 @@ describe('Header controller', function () {
 
     scope = $rootScope.$neaw();
 
-    $controller('HeaderCtrl', {
+    $controller('header.ctrl', {
       $scope: scope
     });
   }));

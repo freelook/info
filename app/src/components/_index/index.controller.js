@@ -2,24 +2,20 @@
 
 angular
   .module('freelook.info')
-  .controller('IndexCtrl', function ($rootScope, $route, $location, io) {
+  .controller('index.ctrl', function ($rootScope, $route, $location) {
 
     $rootScope.fli = {};
 
     $rootScope.go = function (params) {
       switch (typeof params) {
         case 'string':
-          $location.path(params);
+          $location.url(params);
           break;
         case 'object':
           $route.updateParams(params);
           break;
       }
     };
-
-    io.on('news', function (data) {
-      console.log(data);
-    });
 
   });
 
