@@ -377,19 +377,19 @@ server.evaluateJavascriptOnPage = function(req, res) {
 // Fetches the html on the page
 server.javascriptToExecuteOnPage = function() {
     try {
-
-        window.readConvertLinksToFootnotes = false;
-        window.readStyle = 'style-newspaper';
-        window.readSize = 'size-medium';
-        window.readMargin = 'margin-wide';
-        window.prerenderReady = false;
-
-        var _readability_script = document.createElement('script');
-        _readability_script.onload = function() {
-            window.prerenderReady = true;
-        };
-        _readability_script.src = 'http://arc90labs-readability.googlecode.com/svn/trunk/js/readability.js?x=' + (Math.random());
-        document.documentElement.appendChild(_readability_script);
+        // TODO: reader
+        //window.readConvertLinksToFootnotes = false;
+        //window.readStyle = 'style-newspaper';
+        //window.readSize = 'size-medium';
+        //window.readMargin = 'margin-wide';
+        //window.prerenderReady = false;
+        //
+        //var _readability_script = document.createElement('script');
+        //_readability_script.onload = function() {
+        //    window.prerenderReady = true;
+        //};
+        //_readability_script.src = 'http://arc90labs-readability.googlecode.com/svn/trunk/js/readability.js?x=' + (Math.random());
+        //document.documentElement.appendChild(_readability_script);
 
         var doctype = ''
           , html = document && document.getElementsByTagName('html');
@@ -464,7 +464,7 @@ server._send = function(req, res, statusCode, options) {
                 res.setHeader(header.name, header.value);
             });
         }
-        
+
         if (req.prerender.redirectURL && !(_this.options.followRedirect || process.env.FOLLOW_REDIRECT)) {
             res.setHeader('Location', req.prerender.redirectURL);
         }
