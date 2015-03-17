@@ -12,4 +12,5 @@ angular
         controller: 'look.ctrl'
       });
 
-  });
+  })
+  .constant('LOOK_KEY', 'LOCAL:LOOK');

@@ -13,6 +13,7 @@ fli-search-result .result a {
 
 fli-search-result md-whiteframe {
   padding: 7px;
+  margin: 7px;
 }
 
 fli-search-result .lucky {

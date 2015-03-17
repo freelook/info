@@ -10,6 +10,14 @@ fli-search-input #input {
   margin-top: 10px;
 }
 
+fli-search-input md-input-container{
+  padding-bottom: 10px !important;
+}
+fli-search-input input{
+  text-align: center;
+}
+
+
 fli-search-input md-input-container .md-placeholder {
   display: none !important;
 }

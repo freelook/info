@@ -1,0 +1,36 @@
+<header>
+  <fli-search-input flex></fli-search-input>
+  <md-progress-linear md-mode="indeterminate" ng-if="fli.progress"></md-progress-linear>
+</header>
+
+<md-content layout="column" id="home" flex>
+
+  <md-whiteframe flex class="md-whiteframe-z1" layout="column">
+    <div>
+      <span>Search</span>
+    </div>
+    <div class="result">
+      <a ng-repeat="search in searchs" ng-href="{{'search?input=' + search.input}}" ng-bind="search.input"></a>
+    </div>
+  </md-whiteframe>
+
+  <md-whiteframe flex class="md-whiteframe-z1" layout="column">
+    <div>
+      <span>Look</span>
+    </div>
+    <div class="result">
+      <a ng-repeat="look in looks" ng-href="{{'look?input=' + look.input + '&url=' + look.url}}" ng-bind="look.input"></a>
+    </div>
+  </md-whiteframe>
+
+  <md-whiteframe flex class="md-whiteframe-z1" layout="column">
+    <div>
+      <span>Social widget</span>
+    </div>
+    <div>
+    </div>
+  </md-whiteframe>
+
+</md-content>
+
+<footer ng-include="'components/_index/footer/footer.html'"></footer>

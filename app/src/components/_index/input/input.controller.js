@@ -1,7 +1,7 @@
 'use strict';
 angular
-  .module('fli.search')
-  .controller('search.input.ctrl',
+  .module('freelook.info')
+  .controller('input.ctrl',
   function ($scope, DEFAULT_PLACEHOLDER) {
 
     function init() {
@@ -13,7 +13,11 @@ angular
     };
 
     $scope.find = function () {
-      $scope.go('search?input=' +$scope.fli.route.input);
+      if($scope.fli.route.input) {
+        $scope.go('search?input=' + $scope.fli.route.input);
+      } else {
+        $scope.go('/');
+      }
     };
 
     $scope.clear = function () {
@@ -22,4 +26,5 @@ angular
 
     init();
 
-  });
+  })
+  .constant('DEFAULT_PLACEHOLDER', 'Type what you want');

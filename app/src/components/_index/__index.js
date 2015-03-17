@@ -2,8 +2,8 @@
 
 angular
   .module('freelook.info',
-  ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngRoute', 'ngMaterial', 'fli.search', 'fli.look'])
-  .config(function ($locationProvider, $httpProvider, $mdThemingProvider) {
+  ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngRoute', 'ngMaterial', 'fli.home', 'fli.search', 'fli.look'])
+  .config(function ($locationProvider, $httpProvider, $routeProvider, $mdThemingProvider) {
 
     // Setting hash prefix
     $locationProvider.html5Mode(true);
@@ -16,6 +16,12 @@ angular
 
     // Setting theme
     $mdThemingProvider.theme('default').accentPalette('deep-purple');
+
+    // Routes config
+    $routeProvider
+      .otherwise({
+        redirectTo: '/'
+      });
 
   })
   .run(function () {

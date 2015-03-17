@@ -1,16 +1,15 @@
 'use strict';
 
 angular
-  .module('fli.search',
+  .module('fli.home',
   ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngRoute', 'ngMaterial'])
   .config(function ($routeProvider) {
 
     // Routes config
     $routeProvider
-      .when('/search', {
-        templateUrl: 'components/search/search.html',
-        controller: 'search.ctrl'
+      .when('/', {
+        templateUrl: 'components/home/home.html',
+        controller: 'home.ctrl'
       });
 
-  })
-  .constant('SEARCH_KEY', 'LOCAL:SEARCH');
+  });

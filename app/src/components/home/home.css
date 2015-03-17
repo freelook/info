@@ -1,0 +1,14 @@
+#home md-whiteframe {
+  padding: 7px;
+  margin: 7px;
+  color: #999999;
+}
+
+#home .result {
+  text-align: justify;
+}
+
+#home .result a {
+  margin: 7px;
+  display: inline-block;
+}

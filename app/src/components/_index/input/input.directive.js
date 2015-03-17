@@ -2,7 +2,7 @@
 angular.module('fli.search')
   .directive('fliSearchInput', function () {
     return {
-      controller: 'search.input.ctrl',
-      templateUrl: 'components/search/input/input.html'
+      controller: 'input.ctrl',
+      templateUrl: 'components/_index/input/input.html'
     };
   });

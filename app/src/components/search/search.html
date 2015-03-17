@@ -1,15 +1,9 @@
-<md-toolbar layout="column" layout-align="center center">
+<header>
+  <fli-search-input flex></fli-search-input>
+  <md-progress-linear md-mode="indeterminate" ng-if="fli.progress"></md-progress-linear>
+</header>
 
-  <header layout="row" layout-fill>
-    <md-button class="md-fab md-primary">≡</md-button>
-    <fli-search-input flex></fli-search-input>
-  </header>
-
-</md-toolbar>
-
-<md-progress-linear md-mode="indeterminate" ng-if="fli.progress"></md-progress-linear>
-
-<md-content layout="column" id="search" layout-margin layout-padding flex>
+<md-content layout="column" id="search" flex>
 
   <fli-search-result flex layout="column"></fli-search-result>
 

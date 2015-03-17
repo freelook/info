@@ -6,13 +6,13 @@ describe('Input controller', function () {
 
   beforeEach(function () {
 
-    module('fli.search');
+    module('freelook.info');
 
   });
 
   function exequteController(input) {
     scope.fli = {route:{input: input}};
-    controller('search.input.ctrl', {
+    controller('input.ctrl', {
       $scope: scope
     });
     scope.$apply();

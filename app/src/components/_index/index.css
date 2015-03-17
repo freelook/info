@@ -2,25 +2,17 @@ md-whiteframe {
   overflow-x: hidden;
 }
 
-md-toolbar {
-  background: #fff !important;
-}
-
 md-tabs {
   overflow: hidden;
 }
 
 md-progress-linear {
-  height: 10px;
+  height: 3px;
 }
 
 md-toast.md-default-theme {
   background-color: rgba(37, 37, 217, 0.7) !important;
   text-align: center;
-}
-
-.md-button {
-  margin: 3px;
 }
 
 
