@@ -1,7 +1,16 @@
 <form name="form" ng-submit="find(form)" layout="row">
 
-  <md-input-container flex>
-    <input flex id="input" placeholder="{{placeholder}}" ng-model="fli.route.input" type="search" ng-blur="find()">
-  </md-input-container>
+  <md-button class="md-fab md-primary" ng-click="go('/')">
+    <i ng-if="!fli.route.input" class="fa fa-bars"></i>
+    <i ng-if="fli.route.input" class="fa fa-{{icon}}"></i>
+  </md-button>
+
+  <md-autocomplete flex id="input"
+                   md-search-text="fli.route.input"
+                   md-selected-item="selectedItem"
+                   md-items="item in items"
+                   md-item-text="item.display"
+                   placeholder="{{placeholder}}">
+  </md-autocomplete>
 
 </form>

@@ -1,7 +1,7 @@
 #home md-whiteframe {
+  color: #999999;
   padding: 7px;
   margin: 7px;
-  color: #999999;
 }
 
 #home .result {
@@ -11,4 +11,8 @@
 #home .result a {
   margin: 7px;
   display: inline-block;
+}
+
+#home md-whiteframe {
+  min-height: 150px;
 }

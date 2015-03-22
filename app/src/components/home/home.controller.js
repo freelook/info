@@ -8,7 +8,6 @@ angular
     $rootScope.fli.route = $routeParams || {};
 
     $scope.searchs = local.get(SEARCH_KEY);
-    console.log($scope.searchs);
     $scope.looks = local.get(LOOK_KEY);
 
   });

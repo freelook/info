@@ -2,15 +2,11 @@
 angular
   .module('freelook.info')
   .controller('input.ctrl',
-  function ($scope, DEFAULT_PLACEHOLDER) {
+  function ($scope, $mdBottomSheet, DEFAULT_PLACEHOLDER) {
 
-    function init() {
-      $scope.setPlaceholder();
-    }
-
-    $scope.setPlaceholder = function () {
-      $scope.placeholder = DEFAULT_PLACEHOLDER;
-    };
+    $scope.items = [];
+    $scope.icon = 'bars';
+    $scope.placeholder = DEFAULT_PLACEHOLDER;
 
     $scope.find = function () {
       if($scope.fli.route.input) {
@@ -23,8 +19,6 @@ angular
     $scope.clear = function () {
       $scope.fli.route.input = '';
     };
-
-    init();
 
   })
   .constant('DEFAULT_PLACEHOLDER', 'Type what you want');

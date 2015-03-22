@@ -1,5 +1,10 @@
+body, md-content {
+  background: #ebebeb !important;
+}
+
 md-whiteframe {
   overflow-x: hidden;
+  background: #ffffff !important;
 }
 
 md-tabs {
@@ -7,7 +12,7 @@ md-tabs {
 }
 
 md-progress-linear {
-  height: 3px;
+  height: 7px;
 }
 
 md-toast.md-default-theme {

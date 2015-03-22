@@ -1,24 +1,7 @@
-fli-search-input #input::-webkit-search-cancel-button:after {
-  content: '×';
-  display: block;
-  width: 15px;
-  height: 30px;
-  color: #3f51b5;
+fli-input .md-primary {
+  margin: 3px;
 }
 
-fli-search-input #input {
-  margin-top: 10px;
+fli-input md-autocomplete{
+  margin: 7px;
 }
-
-fli-search-input md-input-container{
-  padding-bottom: 10px !important;
-}
-fli-search-input input{
-  text-align: center;
-}
-
-
-fli-search-input md-input-container .md-placeholder {
-  display: none !important;
-}
-
