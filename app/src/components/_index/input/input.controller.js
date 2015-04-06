@@ -2,22 +2,26 @@
 angular
   .module('freelook.info')
   .controller('input.ctrl',
-  function ($scope, $mdBottomSheet, DEFAULT_PLACEHOLDER) {
+  function ($rootScope, $scope, $mdBottomSheet, DEFAULT_PLACEHOLDER) {
 
     $scope.items = [];
-    $scope.icon = 'bars';
     $scope.placeholder = DEFAULT_PLACEHOLDER;
+    $scope.fli = $rootScope.fli;
 
     $scope.find = function () {
-      if($scope.fli.route.input) {
-        $scope.go('search?input=' + $scope.fli.route.input);
-      } else {
-        $scope.go('/');
+      if ($scope.fli.route.input) {
+        $rootScope.go('search?input=' + $scope.fli.route.input);
       }
     };
 
     $scope.clear = function () {
-      $scope.fli.route.input = '';
+      $rootScope.fli.route.input = '';
+    };
+
+    $scope.action = function (_do) {
+      if (_do && typeof _do === 'function' && !$scope.fli.route.input) {
+        _do();
+      }
     };
 
   })

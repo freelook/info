@@ -1,7 +1,7 @@
 'use strict';
 
 describe('Input controller', function () {
-  var scope, defpleceholder, controller;
+  var scope, defpleceholder, controller, rootScope;
 
 
   beforeEach(function () {
@@ -20,8 +20,16 @@ describe('Input controller', function () {
 
   beforeEach(inject(function ($rootScope, $controller, DEFAULT_PLACEHOLDER) {
     scope = $rootScope.$new();
+    rootScope = $rootScope;
     controller = $controller;
     defpleceholder = DEFAULT_PLACEHOLDER;
+
+    rootScope.fli = {
+      route: {
+        input: ''
+      }
+    };
+
   }));
 
 
@@ -32,15 +40,16 @@ describe('Input controller', function () {
 
   it('should change route on input change', function () {
     exequteController('xxx');
-    scope.go = jasmine.createSpy();
+    scope.fli.route.input = 'xxx';
+    rootScope.go = jasmine.createSpy();
     scope.find();
-    expect(scope.go).toHaveBeenCalledWith('search?input=xxx');
+    expect(rootScope.go).toHaveBeenCalledWith('search?input=xxx');
   });
 
   it('should clear input', function () {
     exequteController('xxx');
     scope.clear();
-    expect(scope.fli.route.input).toBe('');
+    expect(rootScope.fli.route.input).toBe('');
   });
 
 });

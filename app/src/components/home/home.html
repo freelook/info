@@ -1,10 +1,15 @@
 <header>
-  <fli-input flex icon="search"></fli-input>
   <md-progress-linear md-mode="indeterminate" ng-if="fli.progress"></md-progress-linear>
+  <fli-input flex icon="search" do="toggle('left')"></fli-input>
 </header>
 
-<div id="home" flex>
-  <md-content layout="row" layout-sm="column" layout-wrap>
+<div id="home" flex layout="row">
+
+  <md-sidenav class="md-sidenav-left md-whiteframe-z1" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
+      Menu
+  </md-sidenav>
+
+  <md-content layout="row" layout-sm="column" layout-wrap flex>
 
     <md-whiteframe flex-sm flex-gt-sm="45" class="md-whiteframe-z1" layout="column">
       <div>
@@ -34,6 +39,7 @@
     </md-whiteframe>
 
   </md-content>
+
 </div>
 
 <footer ng-include="'components/_index/footer/footer.html'"></footer>

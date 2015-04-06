@@ -7,13 +7,8 @@ fli-search-result .result {
 }
 
 fli-search-result .result a {
-  margin: 7px;
+  margin: 5px;
   display: inline-block;
-}
-
-fli-search-result md-whiteframe {
-  padding: 7px;
-  margin: 7px;
 }
 
 fli-search-result .lucky {

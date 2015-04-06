@@ -7,13 +7,15 @@ angular
     $rootScope.fli = {};
 
     $rootScope.go = function (params) {
-      switch (typeof params) {
-        case 'string':
-          $location.url(params);
-          break;
-        case 'object':
-          $route.updateParams(params);
-          break;
+      if(params) {
+        switch (typeof params) {
+          case 'string':
+            $location.url(params);
+            break;
+          case 'object':
+            $route.updateParams(params);
+            break;
+        }
       }
     };
 

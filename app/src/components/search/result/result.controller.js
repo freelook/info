@@ -3,13 +3,16 @@
 angular
   .module('fli.search')
   .controller('search.result.ctrl',
-  function ($scope, google, yandex) {
+  function ($scope, $mdMedia, google, yandex) {
 
     $scope.search = {};
     $scope.suggested = [];
     $scope.lucky = 'freedom';
 
     $scope.href = function (result) {
+      if($mdMedia('gt-sm')) {
+        return 'search?&input=' + $scope.fli.route.input + '&url=' + result.url;
+      }
       return 'look?url=' + result.url + '&input=' + $scope.fli.route.input;
     };
 

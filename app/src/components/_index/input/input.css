@@ -2,6 +2,12 @@ fli-input .md-primary {
   margin: 3px;
 }
 
-fli-input md-autocomplete{
+fli-input md-autocomplete {
   margin: 7px;
+}
+
+fli-input .md-button.md-fab {
+  width: 45px;
+  height: 45px;
+  margin-top: 5px;
 }

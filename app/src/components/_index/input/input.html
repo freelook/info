@@ -1,8 +1,8 @@
-<form name="form" ng-submit="find(form)" layout="row">
+<form name="form" ng-submit="find(form)" layout="row" ng-controller="input.ctrl">
 
-  <md-button class="md-fab md-primary" ng-click="go('/')">
+  <md-button class="md-fab md-primary" ng-click="action(do)">
     <i ng-if="!fli.route.input" class="fa fa-bars"></i>
-    <i ng-if="fli.route.input" class="fa fa-{{icon}}"></i>
+    <i ng-if="!!fli.route.input" class="fa fa-search"></i>
   </md-button>
 
   <md-autocomplete flex id="input"

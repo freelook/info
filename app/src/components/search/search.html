@@ -1,12 +1,16 @@
 <header>
-  <fli-input flex icon="search"></fli-input>
   <md-progress-linear md-mode="indeterminate" ng-if="fli.progress"></md-progress-linear>
+  <fli-input flex icon="search" do="go('/')"></fli-input>
 </header>
 
-<md-content layout="column" id="search" flex>
+<div id="search" flex layout="row">
 
-  <fli-search-result flex layout="column"></fli-search-result>
+  <md-content flex layout="column">
+    <fli-search-result layout="column"></fli-search-result>
+  </md-content>
 
-</md-content>
+  <fli-look-content ng-if="!!fli.route.url && fli.media('gt-sm')" flex="60"></fli-look-content>
+
+</div>
 
 <footer ng-include="'components/_index/footer/footer.html'"></footer>

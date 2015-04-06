@@ -1,4 +1,4 @@
-body, md-content {
+body, footer, md-content, fli-look-content, fli-search-result {
   background: #ebebeb !important;
 }
 
