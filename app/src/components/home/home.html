@@ -9,30 +9,12 @@
 
   <md-content layout="row" layout-sm="column" layout-wrap flex>
 
-    <md-whiteframe flex-sm flex-gt-sm="45" class="md-whiteframe-z1" layout="column">
+    <md-whiteframe flex-sm flex-gt-sm="45" class="md-whiteframe-z1" layout="column" ng-repeat="item in widgets | filter:fli.route.input">
       <div>
-        <span>Search</span>
+        <span ng-bind="item.name"></span>
       </div>
-      <div class="result">
-        <a ng-repeat="search in searchs" ng-href="{{'search?input=' + search.input}}" ng-bind="search.input"></a>
-      </div>
-    </md-whiteframe>
-
-    <md-whiteframe flex-sm flex-gt-sm="45" class="md-whiteframe-z1" layout="column">
-      <div>
-        <span>Look</span>
-      </div>
-      <div class="result">
-        <a ng-repeat="look in looks" ng-href="{{'look?input=' + look.input + '&url=' + look.url}}"
-           ng-bind="look.input"></a>
-      </div>
-    </md-whiteframe>
-
-    <md-whiteframe flex-sm flex-gt-sm="45" class="md-whiteframe-z1" layout="column">
-      <div>
-        <span>Social</span>
-      </div>
-      <div class="result">
+      <div class="result" ng-if="!!item.items">
+        <a ng-repeat="i in item.items" ng-href="{{item.href(i)}}" ng-bind="i.input"></a>
       </div>
     </md-whiteframe>
 

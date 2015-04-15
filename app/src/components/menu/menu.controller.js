@@ -11,11 +11,13 @@ angular
     $scope.menu = [
       {
         name: 'Home',
-        icon: 'home'
+        icon: 'home',
+        href: '/'
       },
       {
         name: 'Search',
-        icon: 'search'
+        icon: 'search',
+        href: '/search'
       },
       {
         name: 'Add',
