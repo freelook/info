@@ -1,13 +1,11 @@
 <header>
   <md-progress-linear md-mode="indeterminate" ng-if="fli.progress"></md-progress-linear>
-  <fli-input flex icon="search" do="toggle('left')"></fli-input>
+  <fli-input flex icon="bars" do="go('/menu')"></fli-input>
 </header>
 
-<div id="home" flex layout="row">
+<div id="home" layout="row" flex layout-align="center start">
 
-  <md-sidenav class="md-sidenav-left md-whiteframe-z1" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
-      Menu
-  </md-sidenav>
+  <div flex="10"></div>
 
   <md-content layout="row" layout-sm="column" layout-wrap flex>
 
@@ -30,11 +28,11 @@
       </div>
     </md-whiteframe>
 
-    <md-whiteframe flex-sm flex-gt-sm="95" class="md-whiteframe-z1" layout="column">
+    <md-whiteframe flex-sm flex-gt-sm="45" class="md-whiteframe-z1" layout="column">
       <div>
-        <span>Social widget</span>
+        <span>Social</span>
       </div>
-      <div>
+      <div class="result">
       </div>
     </md-whiteframe>
 

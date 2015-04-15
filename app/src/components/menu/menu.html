@@ -1,0 +1,19 @@
+<header>
+  <md-progress-linear md-mode="indeterminate" ng-if="fli.progress"></md-progress-linear>
+  <fli-input flex icon="home" do="go('/')"></fli-input>
+</header>
+
+<div id="menu" layout="row" flex>
+
+  <md-content layout="row" flex layout-wrap>
+    <div flex>
+      <md-whiteframe flex="45" class="md-whiteframe-z1" layout="row" ng-repeat="item in menu | filter: fli.route.input">
+        <i class="fa fa-{{item.icon}}"></i>
+        <span ng-bind="item.name"></span>
+      </md-whiteframe>
+    </div>
+  </md-content>
+
+</div>
+
+<footer ng-include="'components/_index/footer/footer.html'"></footer>

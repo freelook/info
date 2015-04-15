@@ -11,3 +11,7 @@ fli-input .md-button.md-fab {
   height: 45px;
   margin-top: 5px;
 }
+
+fli-input md-autocomplete input {
+  background: #fff !important;
+}

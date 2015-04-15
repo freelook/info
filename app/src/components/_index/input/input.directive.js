@@ -6,6 +6,7 @@ angular.module('freelook.info')
         icon: '@',
         do: '&'
       },
-      templateUrl: 'components/_index/input/input.html'
+      templateUrl: 'components/_index/input/input.html',
+      controller: 'input.ctrl'
     };
   });
