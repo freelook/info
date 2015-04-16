@@ -2,11 +2,11 @@
 <html class="no-js" ng-app="freelook.info">
 <head>
   <base href="/">
-  <title>FREE LOOK AT INFO</title>
+  <title ng-bind="fli.route.input || 'Personal information manager'"></title>
   <meta charset="utf-8">
   <meta name="fragment" content="!">
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width">
+  <meta name="description" content="People don't know what they really want until they look it. That's why we are here - to make the web information free.">
+  <meta name="keywords" content="fli.route.input">
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
   <!-- build:css({.tmp,src}) styles/vendor.css -->
@@ -62,8 +62,6 @@
 <script src="../bower_components/angular-route/angular-route.js"></script>
 <script src="../bower_components/angular-aria/angular-aria.js"></script>
 <script src="../bower_components/angular-material/angular-material.js"></script>
-<script src="../bower_components/firebase/firebase.js"></script>
-<script src="../bower_components/angularfire/dist/angularfire.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
