@@ -25,4 +25,4 @@ angular
     };
 
   })
-  .constant('DEFAULT_PLACEHOLDER', 'Type what you want');
+  .constant('DEFAULT_PLACEHOLDER', 'Type what you need');

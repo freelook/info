@@ -2,9 +2,11 @@
 
 angular
   .module('freelook.info')
-  .controller('index.ctrl', function ($rootScope, $route, $location) {
+  .controller('index.ctrl', function ($rootScope, $route, $location, DEFAULT_TITLE, DEFAULT_DESCRIPTION) {
 
     $rootScope.fli = {};
+    $rootScope.fli.title = DEFAULT_TITLE;
+    $rootScope.fli.description = DEFAULT_DESCRIPTION;
 
     $rootScope.go = function (params) {
       if(params) {
@@ -19,5 +21,7 @@ angular
       }
     };
 
-  });
+  })
+  .constant('DEFAULT_TITLE', 'FLI - free look at info')
+  .constant('DEFAULT_DESCRIPTION', 'Your personal information manager. Just look what you need.');
 

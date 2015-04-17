@@ -2,11 +2,12 @@
 <html class="no-js" ng-app="freelook.info">
 <head>
   <base href="/">
-  <title ng-bind="fli.route.input || 'Personal information manager'"></title>
+  <title ng-bind="fli.title"></title>
   <meta charset="utf-8">
   <meta name="fragment" content="!">
-  <meta name="description" content="People don't know what they really want until they look it. That's why we are here - to make the web information free.">
-  <meta name="keywords" content="fli.route.input">
+  <meta name="description" content="{{fli.description}}">
+  <meta name="keywords" content="{{fli.route.input}}">
+  <meta name="viewport" content="width=device-width">
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
   <!-- build:css({.tmp,src}) styles/vendor.css -->
@@ -70,10 +71,10 @@
 <!-- inject:js -->
 <script src="components/_index/__index.js"></script>
 <script src="components/_index/index.controller.js"></script>
-<script src="components/look/_look.js"></script>
-<script src="components/look/look.controller.js"></script>
 <script src="components/home/_home.js"></script>
 <script src="components/home/home.controller.js"></script>
+<script src="components/look/_look.js"></script>
+<script src="components/look/look.controller.js"></script>
 <script src="components/menu/_menu.js"></script>
 <script src="components/menu/menu.controller.js"></script>
 <script src="components/search/_search.js"></script>
