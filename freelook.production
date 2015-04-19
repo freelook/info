@@ -27,7 +27,7 @@ server {
 	#
 	# include snippets/snakeoil.conf;
 
-	root /root/freelook/info/app/dist;
+	root /freelook/info/app/dist;
 
 	# Add index.php to the list if you are using PHP
 	index index.html;
