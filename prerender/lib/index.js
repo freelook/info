@@ -11,6 +11,7 @@ var cluster = require('cluster')
 // worker cluster process
 exports = module.exports = function(options) {
     var port = options.port || process.env.PORT || 3000;
+    var hostname = options.hostname || process.env.NODE_HOSTNAME || undefined;
 
     if(!options.phantomBasePort) {
         options.phantomBasePort = process.env.PHANTOM_CLUSTER_BASE_PORT || 12300;
@@ -29,16 +30,13 @@ exports = module.exports = function(options) {
         }
 
         cluster.on('exit', function (worker) {
-
-            util.log('worker ' + worker.id + ' died.');
-            // spin up another to replace it
-            util.log('Restarting worker thread...');
+            util.log('worker ' + worker.id + ' died, restarting!');
             cluster.fork();
         });
     } else {
         var httpServer = http.createServer(_.bind(server.onRequest, server));
 
-        httpServer.listen(port, function () {
+        httpServer.listen(port, hostname, function () {
             util.log('Server running on port ' + port);
         });
     }

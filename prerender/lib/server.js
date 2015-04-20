@@ -1,29 +1,37 @@
 var phantom = require('phantom')
   , _ = require('lodash')
   , util = require('./util.js')
-  , zlib = require('zlib');
+  , zlib = require('zlib')
+  , blockedResources = require('./resources/blocked-resources.json');
 
 var COOKIES_ENABLED = process.env.COOKIES_ENABLED || false;
 
-var PAGE_DONE_CHECK_TIMEOUT = process.env.PAGE_DONE_CHECK_TIMEOUT || 50;
+var PAGE_DONE_CHECK_TIMEOUT = process.env.PAGE_DONE_CHECK_TIMEOUT || 300;
 
 var RESOURCE_DOWNLOAD_TIMEOUT = process.env.RESOURCE_DOWNLOAD_TIMEOUT || 10 * 1000;
 
 var WAIT_AFTER_LAST_REQUEST = process.env.WAIT_AFTER_LAST_REQUEST || 500;
 
-var JS_CHECK_TIMEOUT = process.env.JS_CHECK_TIMEOUT || 50;
+var JS_CHECK_TIMEOUT = process.env.JS_CHECK_TIMEOUT || 300;
 
 var JS_TIMEOUT = process.env.JS_TIMEOUT || 10 * 1000;
 
-var NO_JS_EXECUTION_TIMEOUT = process.env.NO_JS_EXECUTION_TIMEOUT || 1000;
+var NO_JS_EXECUTION_TIMEOUT = process.env.NO_JS_EXECUTION_TIMEOUT || 3000;
 
-var EVALUATE_JAVASCRIPT_CHECK_TIMEOUT = process.env.EVALUATE_JAVASCRIPT_CHECK_TIMEOUT || 50;
+var EVALUATE_JAVASCRIPT_CHECK_TIMEOUT = process.env.EVALUATE_JAVASCRIPT_CHECK_TIMEOUT || 300;
+
+var NUM_ITERATIONS = process.env.NUM_ITERATIONS || 40;
 
 var server = exports = module.exports = {};
 
 server.init = function(options) {
     this.plugins = this.plugins || [];
     this.options = options;
+
+
+    if (this.options.worker) {
+        this.options.worker.iteration = 0;
+    }
 
     return this;
 };
@@ -63,17 +71,19 @@ server._pluginEvent = function(methodName, args, callback) {
 
 server.createPhantom = function() {
     var _this = this;
-    util.log('starting phantom');
 
     var args = ["--load-images=false", "--ignore-ssl-errors=true", "--ssl-protocol=tlsv1"];
-    var port = this.options.phantomBasePort || 12300;
 
     if(this.options.phantomArguments) {
         args = this.options.phantomArguments;
     }
 
+    var port = (this.options.phantomBasePort || 12300) + (this.options.worker.id % 200);
+
+    util.log('starting phantom on port [' + port + ']');
+
     var opts = {
-        port: port + this.options.worker.id,
+        port: port,
         binary: require('phantomjs').path,
         onExit: function() {
             _this.phantom = null;
@@ -146,7 +156,7 @@ server.onPhantomPageCreate = function(req, res) {
     this.phantom.set('cookiesEnabled', (req.prerender.cookiesEnabled || _this.options.cookiesEnabled || COOKIES_ENABLED));
 
     // Listen for updates on resource downloads
-    req.prerender.page.onResourceRequested(this.onResourceRequested, _.bind(_this.onResourceRequestedCallback, _this, req, res));
+    req.prerender.page.onResourceRequested(this.onResourceRequested, _.bind(_this.onResourceRequestedCallback, _this, req, res), _this.options.blockedResources || blockedResources);
     req.prerender.page.set('onResourceReceived', _.bind(_this.onResourceReceived, _this, req, res));
     req.prerender.page.set('onResourceTimeout', _.bind(_this.onResourceTimeout, _this, req, res));
 
@@ -168,75 +178,46 @@ server.onPhantomPageCreate = function(req, res) {
                 _this.checkIfPageIsDoneLoading(req, res, req.prerender.status === 'fail');
             }, (req.prerender.pageDoneCheckTimeout || _this.options.pageDoneCheckTimeout || PAGE_DONE_CHECK_TIMEOUT));
 
-            req.prerender.page.open(encodeURI(req.prerender.url.replace(/%20/g, ' ')), function(status) {
+            var uri = req.prerender.url;
+
+            /*
+             * phantomjs 1.9.8 handles URL encoding a little differently than phantomjs 2.0
+             * so this fixes that for the short term until everything can be upgraded.
+             */
+            if(!process.env.DISABLE_URI_ENCODE) {
+                uri = encodeURI(uri.replace(/%20/g, ' '));
+            }
+
+            //html5 push state URLs that have an encoded # (%23) need it to stay encoded
+            if(uri.indexOf('#!') === -1) {
+                uri = uri.replace(/#/g, '%23')
+            }
+
+            req.prerender.page.open(uri, function(status) {
                 req.prerender.status = status;
             });
         });
     });
 };
 
-//We want to abort the request if it's a call to Google Analytics or other tracking services.
 /*
- * CODE DUPLICATION ALERT
- * Anything added to this if block has to be added to the if block
- * in server.onResourceRequestedCallback.
- * This if statment cannot be broken out into a helper method because
- * this method is serialized across the network to PhantomJS :(
- * Also, PhantomJS doesn't call onResourceError for an aborted request
+ * Note: PhantomJS doesn't call onResourceError for an aborted request
  */
-server.onResourceRequested = function (requestData, request) {
-    if ((/google-analytics.com/gi).test(requestData.url) ||
-        (/api.mixpanel.com/gi).test(requestData.url) ||
-        (/fonts.googleapis.com/gi).test(requestData.url) ||
-        (/stats.g.doubleclick.net/gi).test(requestData.url) ||
-        (/mc.yandex.ru/gi).test(requestData.url) ||
-        (/use.typekit.net/gi).test(requestData.url) ||
-        (/beacon.tapfiliate.com/gi).test(requestData.url) ||
-        (/js-agent.newrelic.com/gi).test(requestData.url) ||
-        (/api.segment.io/gi).test(requestData.url) ||
-        (/woopra.com/gi).test(requestData.url) ||
-        (/.ttf/gi).test(requestData.url) ||
-        (/static.olark.com/gi).test(requestData.url) ||
-        (/static.getclicky.com/gi).test(requestData.url) ||
-        (/fast.fonts.com/gi).test(requestData.url) ||
-        (/youtube.com\/embed/gi).test(requestData.url) ||
-        (/cdn.heapanalytics.com/gi).test(requestData.url) ||
-        (/googleads.g.doubleclick.net/gi).test(requestData.url) ||
-        (/pagead2.googlesyndication.com/gi).test(requestData.url)) {
-
-        request.abort();
+server.onResourceRequested = function (requestData, request, blockedResources) {
+    for(var i = 0,l = blockedResources.length; i < l; i++) {
+        var regex = new RegExp(blockedResources[i], 'gi');
+        if(regex.test(requestData.url)) {
+            request.abort();
+            requestData.aborted = true;
+            break;
+        }
     }
 };
 
 // Increment the number of pending requests left to download when a new
 // resource is requested
-/*
- * CODE DUPLICATION ALERT
- * Anything added to this if block has to be added to the if block
- * in server.onResourceRequested.
- * The if statment in onResourceRequested cannot be broken out into a helper method because
- * that method is serialized across the network to PhantomJS :(
- */
 server.onResourceRequestedCallback = function (req, res, request) {
-    if (!(/google-analytics.com/gi).test(request.url) &&
-        !(/api.mixpanel.com/gi).test(request.url) &&
-        !(/fonts.googleapis.com/gi).test(request.url) &&
-        !(/stats.g.doubleclick.net/gi).test(request.url) &&
-        !(/mc.yandex.ru/gi).test(request.url) &&
-        !(/use.typekit.net/gi).test(request.url) &&
-        !(/beacon.tapfiliate.com/gi).test(request.url) &&
-        !(/js-agent.newrelic.com/gi).test(request.url) &&
-        !(/api.segment.io/gi).test(request.url) &&
-        !(/woopra.com/gi).test(request.url) &&
-        !(/.ttf/gi).test(request.url) &&
-        !(/static.olark.com/gi).test(request.url) &&
-        !(/static.getclicky.com/gi).test(request.url) &&
-        !(/fast.fonts.com/gi).test(request.url) &&
-        !(/youtube.com\/embed/gi).test(request.url) &&
-        !(/cdn.heapanalytics.com/gi).test(request.url) &&
-        !(/googleads.g.doubleclick.net/gi).test(request.url) &&
-        !(/pagead2.googlesyndication.com/gi).test(request.url)) {
-
+    if(!request.aborted) {
         req.prerender.pendingRequests++;
     }
 };
@@ -254,13 +235,11 @@ server.onResourceReceived = function (req, res, response) {
     //sometimes on redirects, phantomjs doesnt fire the 'end' stage of the original request, so we need to check it here
     if(response.id === 1 && response.status >= 300 && response.status <= 399) {
 
-        if (response.redirectURL) {
-            req.prerender.redirectURL = response.redirectURL;
+        var match = _.findWhere(response.headers, { name: 'Location' });
+        if (match) {
+            req.prerender.redirectURL = util.normalizeUrl(match.value);
         } else {
-            var match = _.findWhere(response.headers, { name: 'Location' });
-            if (match) {
-                req.prerender.redirectURL = util.normalizeUrl(match.value);
-            }
+            req.prerender.redirectURL = response.redirectURL;
         }
 
         req.prerender.statusCode = response.status;
@@ -377,20 +356,6 @@ server.evaluateJavascriptOnPage = function(req, res) {
 // Fetches the html on the page
 server.javascriptToExecuteOnPage = function() {
     try {
-        // TODO: reader
-        //window.readConvertLinksToFootnotes = false;
-        //window.readStyle = 'style-newspaper';
-        //window.readSize = 'size-medium';
-        //window.readMargin = 'margin-wide';
-        //window.prerenderReady = false;
-        //
-        //var _readability_script = document.createElement('script');
-        //_readability_script.onload = function() {
-        //    window.prerenderReady = true;
-        //};
-        //_readability_script.src = 'http://arc90labs-readability.googlecode.com/svn/trunk/js/readability.js?x=' + (Math.random());
-        //document.documentElement.appendChild(_readability_script);
-
         var doctype = ''
           , html = document && document.getElementsByTagName('html');
 
@@ -464,7 +429,7 @@ server._send = function(req, res, statusCode, options) {
                 res.setHeader(header.name, header.value);
             });
         }
-
+        
         if (req.prerender.redirectURL && !(_this.options.followRedirect || process.env.FOLLOW_REDIRECT)) {
             res.setHeader('Location', req.prerender.redirectURL);
         }
@@ -510,13 +475,14 @@ server._sendResponse = function(req, res, options) {
     var ms = new Date().getTime() - req.prerender.start.getTime();
     util.log('got', req.prerender.statusCode, 'in', ms + 'ms', 'for', req.prerender.url);
 
-    if(options && options.abort) {
-        this._killPhantomJS();
+    if((++this.options.worker.iteration >= (this.options.iterations || NUM_ITERATIONS)) || (options && options.abort)) {
+        server._killPhantomJS();
     }
 };
 
 server._killPhantomJS = function() {
-    this.options.worker.kill();
+    // this.options.worker.kill('SIGTERM');
+    require('tree-kill')(this.options.worker.process.pid, 'SIGTERM');
        //  try {
        //     //not happy with this... but when phantomjs is hanging, it can't exit any normal way
        //     util.log('pkilling phantomjs');
@@ -525,4 +491,4 @@ server._killPhantomJS = function() {
        // } catch(e) {
        //     util.log('Error killing phantomjs from javascript infinite loop:', e);
        // }
-}
+};
