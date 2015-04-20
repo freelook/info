@@ -1,7 +1,7 @@
 {
   "apps": [
     {
-      "name": "freelook.api",
+      "name": "freelook.info.api",
       "script": "server.js",
       "cwd": "api",
       "watch": true,
@@ -11,7 +11,7 @@
       }
     },
     {
-      "name": "freelook.prerender",
+      "name": "freelook.info.prerender",
       "script": "server.js",
       "cwd": "prerender",
       "watch": true,
