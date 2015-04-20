@@ -1,0 +1,24 @@
+{
+  "apps": [
+    {
+      "name": "freelook.api",
+      "script": "server.js",
+      "cwd": "api",
+      "watch": true,
+      "autorestart": true,
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    {
+      "name": "freelook.prerender",
+      "script": "server.js",
+      "cwd": "prerender",
+      "watch": true,
+      "autorestart": true,
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  ]
+}

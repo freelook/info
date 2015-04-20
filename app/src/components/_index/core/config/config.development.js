@@ -3,7 +3,7 @@ var CONFIG = {
     URL: 'http://localhost:4000'
   },
   PRERENDER: {
-    URL: 'http://localhost:4001'
+    URL: 'http://localhost:3000'
   }
 };
 
