@@ -1,11 +1,12 @@
 'use strict';
 
-describe('Prerender factory', function () {
+describe('Boilerpipe', function () {
 
-  var sut, mockHTTP, mockQ, mockResoleve, mockCONFIG;
+  var sut, mockHTTP, mockCONFIG;
 
   beforeEach(function () {
     module('freelook.info');
+    module('fli.look');
 
     mockHTTP = {
       get: jasmine.createSpy().and.returnValue({
@@ -15,32 +16,21 @@ describe('Prerender factory', function () {
       })
     };
 
-    mockResoleve = jasmine.createSpy();
-
-    mockQ = {
-      defer: jasmine.createSpy().and.returnValue({
-        resolve: mockResoleve,
-        reject: jasmine.createSpy(),
-        promise: jasmine.createSpy()
-      })
-    };
-
     module(function ($provide) {
       $provide.value('$http', mockHTTP);
-      $provide.value('$q', mockQ);
     });
   });
 
-  beforeEach(inject(function (CONFIG, prerender) {
-    sut = prerender;
+  beforeEach(inject(function (CONFIG, boilerpipe) {
+    sut = boilerpipe;
     mockCONFIG = CONFIG;
   }));
 
-  describe('calls', function () {
+  describe('Boilerpipe calls', function () {
 
     it('it should resolve url for get request', function () {
       var url = 'http://xxx.com';
-      var expUrl = mockCONFIG.PRERENDER.URL + 'http%3A%2F%2Fxxx.com';
+      var expUrl = mockCONFIG.API.URL + 'boilerpipe/extract?url=' + url + '&extractor=ArticleExtractor&output=json&extractImages=3';
       sut.get(url);
       expect(mockHTTP.get).toHaveBeenCalledWith(expUrl);
     });

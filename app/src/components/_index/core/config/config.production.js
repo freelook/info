@@ -1,9 +1,9 @@
 var CONFIG = {
   API: {
-    URL: 'http://freelook.herokuapp.com'
+    URL: 'http://freelook.info/api/'
   },
   PRERENDER: {
-    URL: 'http://freelookinfo.herokuapp.com'
+    URL: 'http://freelook.info/prerender/'
   }
 };
 

@@ -1,9 +1,9 @@
 var CONFIG = {
   API: {
-    URL: 'http://localhost:4000'
+    URL: 'http://localhost/api/'
   },
   PRERENDER: {
-    URL: 'http://localhost:3000'
+    URL: 'http://localhost/prerender/'
   }
 };
 

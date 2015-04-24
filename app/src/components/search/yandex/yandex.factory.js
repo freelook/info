@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('fli.search')
-  .factory('yandex', function (prerender) {
+  .factory('yandex', function ($q, prerender, toast) {
 
     function _getUrl(q) {
       return 'https://yandex.com/sitesearch?text=' + q + '&searchid=2192226&frame=1';
@@ -22,10 +22,20 @@ angular
 
     function search(q) {
       if (q) {
-        return prerender.get(_getUrl(q))
-          .then(function (html) {
-            return _convertHtMLtoJS(html);
+
+        var defer = $q.defer();
+
+        prerender.get(_getUrl(q))
+          .success(function (html) {
+            return defer.resolve(_convertHtMLtoJS(html));
+          })
+          .error(function (html) {
+            toast.show('something went wrong');
+            return defer.reject(html);
           });
+
+        return defer.promise;
+
       }
     }
 

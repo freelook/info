@@ -43,12 +43,22 @@ server {
 		proxy_set_header Connection "upgrade";
 	}
 
+	location /prerender/ {
+		# Send to server request for prerender
+		proxy_pass http://localhost:3000/;
+	}
+
 	location /api/ {
 		# Send to server request for api
 		proxy_pass http://localhost:4000/;
 		proxy_http_version 1.1;
 		proxy_set_header Upgrade $http_upgrade;
 		proxy_set_header Connection "upgrade";
+	}
+	
+	location /api/boilerpipe/ {
+		# Send to server request for api boilerpipe
+		proxy_pass http://boilerpipe-web.appspot.com/;
 	}
 
 	location @prerender {

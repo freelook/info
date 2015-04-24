@@ -1,12 +1,12 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('api', function ($q, $http, $window, toast) {
+  .factory('api', function ($q, $http, CONFIG, toast) {
 
     function get(url) {
       if (url) {
         var defer = $q.defer(),
-          api = $window.CONFIG.API.URL + '/get?url=' + encodeURIComponent(url) + '&callback=JSON_CALLBACK';
+          api = CONFIG.API.URL + 'get?url=' + encodeURIComponent(url) + '&callback=JSON_CALLBACK';
         $http.jsonp(api)
           .success(function (html) {
             if (!html.Error) {

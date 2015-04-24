@@ -2,7 +2,7 @@
 
 describe('API', function () {
 
-  var sut, mockHTTP, mockQ, mockResoleve, mockWindow;
+  var sut, mockHTTP, mockQ, mockResoleve, mockCONFIG;
 
   beforeEach(function () {
     module('freelook.info');
@@ -31,16 +31,16 @@ describe('API', function () {
     });
   });
 
-  beforeEach(inject(function ($window, api) {
+  beforeEach(inject(function (CONFIG, api) {
     sut = api;
-    mockWindow = $window;
+    mockCONFIG= CONFIG;
   }));
 
   describe('API calls', function () {
 
     it('it should resolve url for get request', function () {
       var url = 'http://xxx.com';
-      var expUrl = 'http://freelook.herokuapp.com/get?url=http%3A%2F%2Fxxx.com&callback=JSON_CALLBACK';
+      var expUrl = mockCONFIG.API.URL + 'get?url=http%3A%2F%2Fxxx.com&callback=JSON_CALLBACK';
       sut.get(url);
       expect(mockHTTP.jsonp).toHaveBeenCalledWith(expUrl);
     });

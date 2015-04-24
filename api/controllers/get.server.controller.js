@@ -2,26 +2,37 @@
 
 
 var $http = require('request'),
+    Boilerpipe = require('boilerpipe'),
     regURL = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
 
 module.exports = function (req, res) {
     if (req.query && req.query.url && regURL.test(req.query.url)) {
 
-        $http.get('http://service.prerender.io/' + req.query.url, function (err, response, body) {
+        $http.get('http://localhost:3000/' + req.query.url, function (err, response, html) {
             if (!err && +response.statusCode === +200) {
-                res.jsonp(body);
+                var boilerpipe = new Boilerpipe({
+                    extractor: Boilerpipe.Extractor.Article,
+                    html: html
+                });
+                boilerpipe.getHtml(function (err, body) {
+                    if (!err) {
+                        res.setHeader('Content-Type', 'text/html');
+                        res.send(body);
+                    }
+                });
+
             } else {
-                res.jsonp({
+                res.json({
                     Error: 1
                 });
             }
         }).on('error', function (err) {
-            res.jsonp({
+            res.json({
                 Error: err
             });
         });
     } else {
-        res.jsonp({
+        res.json({
             Error: 1
         });
     }

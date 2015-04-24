@@ -2,20 +2,26 @@
 
 describe('Yandex', function () {
 
-  var sut, mockPrerender;
+  var sut, mockPrerender, mockToast;
 
   beforeEach(function () {
     module('fli.search');
 
     mockPrerender = {
       get: jasmine.createSpy().and.returnValue({
-        then: jasmine.createSpy()
+        success: jasmine.createSpy().and.returnValue({
+          error: jasmine.createSpy()
+        })
       })
     };
 
+    mockToast = {
+      show: jasmine.createSpy()
+    };
 
     module(function ($provide) {
       $provide.value('prerender', mockPrerender);
+      $provide.value('toast', mockToast);
     });
   });
 
