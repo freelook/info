@@ -3,7 +3,8 @@
 
 var $http = require('request'),
     Boilerpipe = require('boilerpipe'),
-    regURL = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+    $q = require('q'),
+    regURL = /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
 
 module.exports = function (req, res) {
     if (req.query && req.query.url && regURL.test(req.query.url)) {
@@ -14,26 +15,25 @@ module.exports = function (req, res) {
                     extractor: Boilerpipe.Extractor.Article,
                     html: html
                 });
-                boilerpipe.getHtml(function (err, body) {
-                    if (!err) {
-                        res.setHeader('Content-Type', 'text/html');
-                        res.send(body);
-                    }
-                });
+
+                $q.all([$q.ninvoke(boilerpipe, 'getHtml'), $q.ninvoke(boilerpipe, 'getImages')])
+                    .then(function (results) {
+                        res.json({
+                            html: results[0],
+                            images: results[1]
+                        });
+                    })
+                    .catch(function () {
+                        res.status(404).end();
+                    });
 
             } else {
-                res.json({
-                    Error: 1
-                });
+                res.status(404).end();
             }
         }).on('error', function (err) {
-            res.json({
-                Error: err
-            });
+            res.status(404).end();
         });
     } else {
-        res.json({
-            Error: 1
-        });
+        res.status(404).end();
     }
 };

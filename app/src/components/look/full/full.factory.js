@@ -2,46 +2,56 @@
 
 angular
   .module('fli.look')
-  .factory('full', function ($sce, $window, $location, $rootScope, $cacheFactory) {
+  .factory('full', function ($sce, $window, $location, $rootScope, $cacheFactory, CONFIG) {
 
     var cache = $cacheFactory('full'),
       parser = new window.DOMParser();
 
+    function _originLink() {
+      var link = $window.document.createElement('a');
+      link.href = $rootScope.fli.route.url;
+      return link.protocol + '//' + link.host;
+    }
+
+    function _fliUrl(url) {
+      return CONFIG.ORIGIN + 'look?input=' + $rootScope.fli.route.input + '&url=' + url;
+    }
+
     function _prepareHtml(html) {
       var dom = parser.parseFromString(html, 'text/html'),
         $dom = $(dom),
-        data = '';
+        origin = _originLink(),
+        content = '';
 
-      $dom.find('link').each(function (i, e) {
-        $(e).attr('href', function (i, value) {
-          if (value) {
-            switch (value.substr(0, 2)) {
-              case 'ht':
-              case '//':
-                return value;
-              case '/':
-                return $rootScope.fli.route.url + value;
+      $dom.find('a').each(function (i, e) {
+        $(e).attr('href', function (i, href) {
+          if (href) {
+            switch (href.substr(0, 1)) {
+              case 'h':
+                return _fliUrl(href);
+              case 'm':
+                return href;
               default:
-                return $rootScope.fli.route.url + '/' + value;
+                return _fliUrl(origin + href);
             }
           }
         });
       });
 
       $dom.find('script, iframe').remove();
-      data = $sce.trustAsHtml(dom.documentElement.innerHTML);
+      content = $sce.trustAsHtml(dom.documentElement.innerHTML);
 
-      _storeData(data);
+      _storeData(content);
 
-      return data;
+      return content;
     }
 
     function _storeData(data) {
       cache.put($location.url(), data);
     }
 
-    function get(html, by) {
-      return cache.get($location.url()) || _prepareHtml(html, by);
+    function get(html) {
+      return cache.get($location.url()) || _prepareHtml(html);
     }
 
     return {

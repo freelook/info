@@ -8,7 +8,8 @@ angular
     $location.search({
       input: $routeParams.input || '',
       url: $routeParams.url || ''
-    });
+    })
+      .replace();
 
     $rootScope.fli.route = $routeParams || {};
     $rootScope.fli.media = $mdMedia;

@@ -3,8 +3,10 @@
 /**
  * Module dependencies.
  */
-var db, User = {},
-	passport = require('passport');
+var mongoose = require('mongoose'),
+    passport = require('passport'),
+    User = mongoose.model('User'),
+    _ = require('lodash');
 
 /**
  * Get the error message from error object

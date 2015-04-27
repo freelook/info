@@ -1,3 +1,12 @@
 <md-whiteframe ng-if="!!html" class="md-whiteframe-z1" flex layout="column">
+
+    <ul ng-if="images && images.length">
+      <li ng-repeat="img in images">
+        <img alt="{{img.alt}}" ng-src="{{img.src}}">
+      </li>
+    </ul>
+
   <div ng-bind-html="html"></div>
+
 </md-whiteframe>
+

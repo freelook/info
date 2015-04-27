@@ -13,7 +13,7 @@ angular
     $scope.menu = [
       {
         name: 'Home',
-        icon: 'home',
+        icon: 'th-large',
         href: '/'
       },
       {

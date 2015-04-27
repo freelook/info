@@ -1,6 +1,6 @@
 <form name="form" ng-submit="find(form)" layout="row">
 
-  <md-button class="md-fab md-primary" ng-click="action(do)">
+  <md-button class="md-fab md-primary" aria-label="navigation" ng-href="{{href(fliHref)}}">
     <i ng-if="!fli.route.input" class="fa fa-{{icon}}"></i>
     <i ng-if="!!fli.route.input" class="fa fa-search"></i>
   </md-button>

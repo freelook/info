@@ -53,11 +53,6 @@ server {
 		proxy_set_header Connection "upgrade";
 	}
 
-	location /api/boilerpipe/ {
-		# Send to server request for api boilerpipe
-		proxy_pass http://boilerpipe-web.appspot.com/;
-	}
-
 	location @prerender {
 
 		set $prerender 0;

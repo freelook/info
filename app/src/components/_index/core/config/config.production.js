@@ -1,4 +1,5 @@
 var CONFIG = {
+  ORIGIN: 'http://freelook.info/',
   API: {
     URL: 'http://freelook.info/api/'
   },

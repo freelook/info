@@ -13,7 +13,7 @@ gulp.task('webdriver-standalone', $.protractor.webdriver_standalone);
 
 gulp.task('protractor-only', ['webdriver-update', 'wiredep'], function (done) {
   var testFiles = [
-    'test/e2e/**/*.js'
+    'e2e/**/*.js'
   ];
 
   gulp.src(testFiles)

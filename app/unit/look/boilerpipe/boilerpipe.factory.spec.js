@@ -2,22 +2,18 @@
 
 describe('Boilerpipe', function () {
 
-  var sut, mockHTTP, mockCONFIG;
+  var sut, mockApi, mockCONFIG;
 
   beforeEach(function () {
     module('freelook.info');
     module('fli.look');
 
-    mockHTTP = {
-      get: jasmine.createSpy().and.returnValue({
-        success: jasmine.createSpy().and.returnValue({
-          error: jasmine.createSpy()
-        })
-      })
+    mockApi = {
+      get: jasmine.createSpy()
     };
 
     module(function ($provide) {
-      $provide.value('$http', mockHTTP);
+      $provide.value('api', mockApi);
     });
   });
 
@@ -30,9 +26,8 @@ describe('Boilerpipe', function () {
 
     it('it should resolve url for get request', function () {
       var url = 'http://xxx.com';
-      var expUrl = mockCONFIG.API.URL + 'boilerpipe/extract?url=' + url + '&extractor=ArticleExtractor&output=json&extractImages=3';
       sut.get(url);
-      expect(mockHTTP.get).toHaveBeenCalledWith(expUrl);
+      expect(mockApi.get).toHaveBeenCalledWith(url);
     });
 
   });

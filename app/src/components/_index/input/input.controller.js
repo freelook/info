@@ -18,10 +18,12 @@ angular
       $rootScope.fli.route.input = '';
     };
 
-    $scope.action = function (_do) {
-      if (_do && typeof _do === 'function' && !$scope.fli.route.input) {
-        _do();
+    $scope.href = function (_href) {
+      if ($scope.fli.route.input) {
+        return 'search?input=' + $scope.fli.route.input;
       }
+
+      return _href;
     };
 
   })

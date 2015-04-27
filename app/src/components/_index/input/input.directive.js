@@ -4,7 +4,7 @@ angular.module('freelook.info')
     return {
       scope: {
         icon: '@',
-        do: '&'
+        fliHref: '@'
       },
       templateUrl: 'components/_index/input/input.html',
       controller: 'input.ctrl'

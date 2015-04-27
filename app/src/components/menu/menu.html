@@ -1,15 +1,17 @@
 <header>
   <md-progress-linear md-mode="indeterminate" ng-if="fli.progress"></md-progress-linear>
-  <fli-input flex icon="home" do="go('/')"></fli-input>
+  <fli-input flex icon="th-large" fli-href="/"></fli-input>
 </header>
 
 <div id="menu" layout="row" flex>
 
   <md-content layout="row" flex layout-wrap>
     <div flex>
-      <md-whiteframe flex="45" class="md-whiteframe-z1" ng-click="go(item.href)" layout="row" ng-repeat="item in menu | filter: fli.route.input">
-        <i class="fa fa-{{item.icon}}"></i>
-        <span ng-bind="item.name"></span>
+      <md-whiteframe flex="45" class="md-whiteframe-z1" layout="row" ng-repeat="item in menu | filter: fli.route.input">
+        <a ng-href="item.href">
+          <i class="fa fa-{{item.icon}}"></i>
+          <span ng-bind="item.name"></span>
+        </a>
       </md-whiteframe>
     </div>
   </md-content>

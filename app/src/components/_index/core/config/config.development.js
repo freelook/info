@@ -1,4 +1,5 @@
 var CONFIG = {
+  ORIGIN: 'http://localhost/',
   API: {
     URL: 'http://localhost/api/'
   },
