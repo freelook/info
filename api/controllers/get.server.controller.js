@@ -9,30 +9,36 @@ var $http = require('request'),
 module.exports = function (req, res) {
     if (req.query && req.query.url && regURL.test(req.query.url)) {
 
-        $http.get('http://localhost:3000/' + req.query.url, function (err, response, html) {
-            if (!err && +response.statusCode === +200) {
-                var boilerpipe = new Boilerpipe({
-                    extractor: Boilerpipe.Extractor.Article,
-                    html: html
-                });
-
-                $q.all([$q.ninvoke(boilerpipe, 'getHtml'), $q.ninvoke(boilerpipe, 'getImages')])
-                    .then(function (results) {
-                        res.json({
-                            html: results[0],
-                            images: results[1]
-                        });
-                    })
-                    .catch(function () {
-                        res.status(404).end();
+        $http.get({
+                url: req.query.url,
+                headers: {
+                    'User-Agent': 'googlebot'
+                }
+            },
+            function (err, response, html) {
+                if (!err && +response.statusCode === +200) {
+                    var boilerpipe = new Boilerpipe({
+                        extractor: Boilerpipe.Extractor.Article,
+                        html: html
                     });
 
-            } else {
+                    $q.all([$q.ninvoke(boilerpipe, 'getHtml'), $q.ninvoke(boilerpipe, 'getImages')])
+                        .then(function (results) {
+                            res.json({
+                                html: results[0],
+                                images: results[1]
+                            });
+                        })
+                        .catch(function () {
+                            res.status(404).end();
+                        });
+
+                } else {
+                    res.status(404).end();
+                }
+            }).on('error', function (err) {
                 res.status(404).end();
-            }
-        }).on('error', function (err) {
-            res.status(404).end();
-        });
+            });
     } else {
         res.status(404).end();
     }

@@ -2,7 +2,7 @@
 
 angular
   .module('fli.search',
-  ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngRoute', 'ngMaterial'])
+  ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngRoute', 'ngMaterial'])
   .config(function ($routeProvider) {
 
     // Routes config
@@ -13,4 +13,4 @@ angular
       });
 
   })
-  .constant('SEARCH_KEY', 'LOCAL:SEARCH');
+  .constant('SEARCH_KEY', 'FLI:SEARCH');

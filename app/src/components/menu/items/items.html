@@ -1,0 +1,8 @@
+<md-content flex>
+  <md-whiteframe class="md-whiteframe-z1" layout="row" ng-repeat="item in menu | filter: fli.route.input">
+    <a ng-href="{{item.href}}">
+      <i class="fa fa-{{item.icon}}"></i>
+      <span ng-bind="item.name"></span>
+    </a>
+  </md-whiteframe>
+</md-content>

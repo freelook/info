@@ -2,7 +2,7 @@
 
 angular
   .module('fli.home',
-  ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngRoute', 'ngMaterial'])
+  ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngRoute', 'ngMaterial'])
   .config(function ($routeProvider) {
 
     // Routes config

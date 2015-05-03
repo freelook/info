@@ -13,7 +13,7 @@
       <div>
         <span ng-bind="item.name"></span>
       </div>
-      <div class="result" ng-if="!!item.items">
+      <div class="result">
         <a ng-repeat="i in item.items" ng-href="{{item.href(i)}}" ng-bind="i.input"></a>
       </div>
     </md-whiteframe>

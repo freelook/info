@@ -12,6 +12,16 @@ fli-search-result .result a {
 }
 
 fli-search-result .lucky {
-  color: #3f51b5;
+  color: #999999;
+  padding: 10px;
+  margin: 5px;
+}
+
+fli-search-result .lucky .fa {
+  margin-left: 5px;
+  margin-right: 40px;
+}
+
+fli-search-result .lucky a {
   text-decoration: none;
 }

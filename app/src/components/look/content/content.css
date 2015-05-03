@@ -2,3 +2,13 @@ fli-look-content md-whiteframe {
   padding: 5px;
   margin: 5px;
 }
+
+fli-look-content md-card {
+  background: #fff !important;
+}
+
+fli-look-content md-card h3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+

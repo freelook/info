@@ -2,7 +2,7 @@
 
 angular
   .module('freelook.info',
-  ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngRoute', 'ngMaterial',
+  ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngRoute', 'ngMaterial',
     'fli.home', 'fli.menu', 'fli.search', 'fli.look'])
   .config(function ($locationProvider, $httpProvider, $routeProvider, $mdThemingProvider) {
 

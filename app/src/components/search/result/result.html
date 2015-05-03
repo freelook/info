@@ -1,12 +1,16 @@
-<md-whiteframe class="md-whiteframe-z1" layout="column" ng-repeat="result in search.results">
-  <div>
+<md-card class="md-whiteframe-z1" layout="column" ng-repeat="result in search.results">
+  <img flex="25" ng-if="!!result.richSnippet.cseImage.src" ng-src="{{result.richSnippet.cseImage.src}}">
+  <md-card-content>
     <a ng-href="{{href(result)}}" ng-bind-html="result.title"></a>
-  </div>
-  <div ng-bind-html="result.content"></div>
-</md-whiteframe>
+    <div flex ng-bind-html="result.content"></div>
+  </md-card-content>
+</md-card>
 
-<md-whiteframe class="md-whiteframe-z1" layout="column" layout-align="center center" ng-if="!search.results && !fli.route.input">
-  <p><a class="lucky" ng-href="{{'search?input=' + lucky}}">get lucky</a></p>
+<md-whiteframe class="md-whiteframe-z1 lucky" layout="row" ng-if="!search.results && !fli.route.input">
+  <a ng-href="{{'search?input=' + lucky}}">
+    <i class="fa fa-search"></i>
+    <span>GET LUCKY</span>
+  </a>
 </md-whiteframe>
 
 <md-whiteframe class="md-whiteframe-z1" layout="column" ng-if="!!suggested.length">

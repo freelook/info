@@ -1,20 +1,22 @@
 {
   "apps": [
     {
-      "name": "freelook.info.api",
+      "name": "fli.api",
       "script": "server.js",
       "cwd": "api",
       "watch": true,
+      "ignore_watch" : ["node_modules"],
       "autorestart": true,
       "env": {
         "NODE_ENV": "production"
       }
     },
     {
-      "name": "freelook.info.prerender",
+      "name": "fli.prerender",
       "script": "server.js",
       "cwd": "prerender",
       "watch": true,
+      "ignore_watch" : ["node_modules"],
       "autorestart": true,
       "env": {
         "NODE_ENV": "production"

@@ -2,7 +2,7 @@
 
 angular
   .module('fli.look',
-  ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngRoute', 'ngMaterial'])
+  ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngRoute', 'ngMaterial'])
   .config(function ($routeProvider) {
 
     // Routes config
@@ -13,4 +13,4 @@ angular
       });
 
   })
-  .constant('LOOK_KEY', 'LOCAL:LOOK');
+  .constant('LOOK_KEY', 'FLI:LOOK');

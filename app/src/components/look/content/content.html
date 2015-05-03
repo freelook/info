@@ -1,12 +1,19 @@
-<md-whiteframe ng-if="!!html" class="md-whiteframe-z1" flex layout="column">
+<md-card ng-if="!!html" layout="column">
 
-    <ul ng-if="images && images.length">
-      <li ng-repeat="img in images">
-        <img alt="{{img.alt}}" ng-src="{{img.src}}">
-      </li>
-    </ul>
+  <md-tabs ng-if="images && images.length">
+    <md-tab ng-repeat="img in images">
+      <md-tab-label>
+        <img ng-src="{{img.src}}">
+      </md-tab-label>
+      <md-tab-body>
+        <img ng-src="{{img.src}}" alt="{{img.alt}}">
+      </md-tab-body>
+    </md-tab>
+  </md-tabs>
 
-  <div ng-bind-html="html"></div>
+  <md-card-content>
+    <div ng-bind-html="html"></div>
+  </md-card-content>
 
-</md-whiteframe>
+</md-card>
 

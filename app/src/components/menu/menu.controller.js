@@ -10,21 +10,4 @@ angular
     $rootScope.fli.title = !$rootScope.fli.route.input ? DEFAULT_TITLE : 'FLI - ' + $rootScope.fli.route.input;
     $rootScope.fli.description = DEFAULT_DESCRIPTION;
 
-    $scope.menu = [
-      {
-        name: 'Home',
-        icon: 'th-large',
-        href: '/'
-      },
-      {
-        name: 'Search',
-        icon: 'search',
-        href: '/search'
-      },
-      {
-        name: 'Add',
-        icon: 'plus'
-      }
-    ];
-
   });

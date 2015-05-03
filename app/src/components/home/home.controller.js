@@ -10,8 +10,8 @@ angular
     $rootScope.fli.title = !$rootScope.fli.route.input ? DEFAULT_TITLE : 'FLI - ' + $rootScope.fli.route.input;
     $rootScope.fli.description = DEFAULT_DESCRIPTION;
 
-    $scope.searchs = local.get(SEARCH_KEY);
-    $scope.looks = local.get(LOOK_KEY);
+    $scope.searchs = local.get(SEARCH_KEY, []);
+    $scope.looks = local.get(LOOK_KEY, []);
 
     $scope.widgets = [
       {
@@ -27,9 +27,6 @@ angular
         href: function (i) {
           return 'look?input=' + i.input + '&url=' + i.url;
         }
-      },
-      {
-        name: 'Social'
       }
     ];
 
