@@ -2,7 +2,7 @@
 
 angular
   .module('fli.look')
-  .factory('full', function ($sce, $window, $location, $rootScope, $cacheFactory, CONFIG) {
+  .factory('full', function ($sce, $window, $location, $rootScope, $cacheFactory, readability, CONFIG) {
 
     var cache = $cacheFactory('full'),
       parser = new window.DOMParser();
@@ -23,7 +23,7 @@ angular
         origin = _originLink(),
         content = '';
 
-      $window.read(dom);
+      readability.init(dom);
 
       $dom.find('a').each(function (i, e) {
         $(e).attr('href', function (i, href) {
