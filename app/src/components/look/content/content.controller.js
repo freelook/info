@@ -14,7 +14,7 @@ angular
           $scope.html = full.get(content.html) || '';
           $scope.images = content.images || [];
         } else if (content.content) {
-          $scope.html = full.get(content.content) || '';
+          $scope.html = content.content || '';
         }
       }
     }

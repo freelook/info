@@ -23,6 +23,8 @@ angular
         origin = _originLink(),
         content = '';
 
+      $window.read(dom);
+
       $dom.find('a').each(function (i, e) {
         $(e).attr('href', function (i, href) {
           if (href) {

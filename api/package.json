@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "body-parser": "~1.0.1",
-    "boilerpipe": "0.0.7",
     "compression": "~1.0.1",
     "connect-flash": "~0.1.1",
     "consolidate": "~0.10.0",
