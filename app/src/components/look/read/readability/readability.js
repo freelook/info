@@ -1,7 +1,4 @@
 'use strict';
-
-
-'use strict';
 angular
   .module('fli.look')
   .factory('readability', function () {
@@ -800,7 +797,7 @@ angular
         readability.init();
       }
 
-    };
+    }
 
     return {
       init: init
