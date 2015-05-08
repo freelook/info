@@ -76,7 +76,6 @@ span.version {
 #readTools {
 	width: 34px;
 	height: 150px;
-	position: fixed;
 	z-index: 100;
 	top: 10px;
 	left: 10px;
