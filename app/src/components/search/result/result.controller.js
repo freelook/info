@@ -14,10 +14,7 @@ angular
     }
 
     $scope.href = function (result) {
-      if($mdMedia('gt-sm')) {
-        return 'search?&input=' + $scope.fli.route.input + '&url=' + result.url;
-      }
-      return 'look?url=' + result.url + '&input=' + $scope.fli.route.input;
+      return 'look?input=' + $scope.fli.route.input + '&url=' + result.url;
     };
 
     google.random().success(function (lucky) {

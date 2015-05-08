@@ -3,13 +3,23 @@
   <fli-input flex icon="th-large" fli-href="/"></fli-input>
 </header>
 
-<div id="search" flex layout="row">
+<div id="search" flex layout="column">
 
-  <md-content flex layout="column">
-    <fli-search-result layout="column"></fli-search-result>
-  </md-content>
+  <fli-search-result layout-sm="column" layout="row" layout-wrap></fli-search-result>
 
-  <fli-look-content ng-if="!!fli.route.url && fli.media('gt-sm')" flex-gt-sm="60" flex-gt-lg="50"></fli-look-content>
+  <md-whiteframe class="md-whiteframe-z1 lucky" layout="row" ng-if="!search.results && !fli.route.input">
+    <a ng-href="{{'search?input=' + lucky}}">
+      <i class="fa fa-search"></i>
+      <span>GET LUCKY</span>
+    </a>
+  </md-whiteframe>
+
+  <md-whiteframe class="md-whiteframe-z1 suggested" layout="column" ng-if="!!suggested.length">
+    <div class="title" ng-if="!!suggested.length">Suggested requests:</div>
+    <div class="result">
+      <a ng-repeat="suggest in suggested" ng-href="{{'search?input=' + suggest}}" ng-bind="suggest"></a>
+    </div>
+  </md-whiteframe>
 
 </div>
 

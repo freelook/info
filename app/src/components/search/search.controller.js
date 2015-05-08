@@ -6,8 +6,7 @@ angular
   function ($rootScope, $routeParams, $location, $mdMedia, DEFAULT_TITLE, DEFAULT_DESCRIPTION, local, SEARCH_KEY) {
 
     $location.search({
-      input: $routeParams.input || '',
-      url: $routeParams.url || ''
+      input: $routeParams.input || ''
     })
       .replace();
 

@@ -1,5 +1,32 @@
-#search md-whiteframe,
-#search md-sidenav{
+#search md-whiteframe {
   padding: 5px;
   margin: 5px;
+}
+
+#search .lucky {
+  color: #999999;
+  padding: 10px;
+  margin: 5px;
+}
+
+#search .lucky .fa {
+  margin-left: 5px;
+  margin-right: 40px;
+}
+
+#search .lucky a {
+  text-decoration: none;
+}
+
+#search .suggested .title {
+  margin: 15px;
+}
+
+#search .suggested .result {
+  text-align: justify;
+}
+
+#search .suggested .result a {
+  margin: 5px;
+  display: inline-block;
 }

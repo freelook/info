@@ -1,4 +1,4 @@
-body, footer, md-content, fli-look-content, fli-search-result {
+html, header, body, footer {
   background: #ebebeb !important;
 }
 
@@ -16,7 +16,6 @@ md-progress-linear {
 }
 
 md-toast.md-default-theme {
-  background-color: rgba(37, 37, 217, 0.7) !important;
   text-align: center;
 }
 

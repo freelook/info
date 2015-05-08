@@ -7,9 +7,9 @@
 
   <div flex-gt-sm="10"></div>
 
-  <md-content layout="row" layout-sm="column" layout-wrap flex>
+  <div layout="row" layout-sm="column" layout-wrap flex>
 
-    <md-whiteframe flex-sm flex-gt-sm="45" class="md-whiteframe-z1" layout="column" ng-repeat="item in widgets | filter:fli.route.input">
+    <md-whiteframe flex-sm flex-gt-sm="45" class="md-whiteframe-z1" layout="column" ng-repeat="item in widgets | filter:fli.route.input || ''">
       <div>
         <span ng-bind="item.name"></span>
       </div>
@@ -18,7 +18,7 @@
       </div>
     </md-whiteframe>
 
-  </md-content>
+  </div>
 
 </div>
 

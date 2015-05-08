@@ -13,7 +13,8 @@ fli-input .md-button.md-fab {
 }
 
 fli-input .md-fab.md-button i {
-  margin-top: 5px;
+  position: relative;
+  top: -7px;
 }
 
 fli-input md-autocomplete input {

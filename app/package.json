@@ -1,6 +1,8 @@
 {
-  "name": "freelookinfo",
-  "version": "0.0.1",
+  "name": "freelook.info",
+  "description": "fli.app",
+  "version": "0.9.0",
+  "author": "Dima Kostrub",
   "dependencies": {},
   "devDependencies": {
     "browser-sync": "~1.7.1",
