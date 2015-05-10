@@ -16,7 +16,7 @@ angular
     $httpProvider.interceptors.push('LoaderInterceptor');
 
     // Setting theme
-    $mdThemingProvider.theme('default').accentPalette('deep-purple');
+    $mdThemingProvider.theme('default').primaryPalette('indigo');
 
     // Routes config
     $routeProvider

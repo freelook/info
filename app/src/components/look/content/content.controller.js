@@ -3,27 +3,27 @@
 angular
   .module('fli.look')
   .controller('look.content.ctrl',
-  function ($rootScope, $scope, $sce, boilerpipe, read, full) {
+  function ($rootScope, $scope, $sce, api, read, full) {
 
     $scope.html = '';
     $scope.images = [];
 
     function setContent(content) {
       if (content) {
-        if (content.html || content.images) {
+        if (content.html) {
           $scope.html = full.get(content.html) || '';
-          $scope.images = content.images || [];
         } else if (content.content) {
-          $scope.html = content.content || '';
+          $scope.html = full.link(content.content) || '';
         }
       }
     }
 
     if ($rootScope.fli.route.url) {
-      boilerpipe.get($rootScope.fli.route.url)
+      api.get($rootScope.fli.route.url)
         .success(setContent)
         .error(function () {
-          read.get($rootScope.fli.route.url).success(setContent);
+          read.call($rootScope.fli.route.url)
+            .success(setContent);
         });
     }
 

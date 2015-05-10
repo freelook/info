@@ -10,10 +10,10 @@ angular
         }
       };
 
-// Customization
+      // Customization
       var readStyle = 'style-newspaper',
         readSize = 'size-medium',
-        readMargin = 'margin-wide';
+        readMargin = 'margin-narrow';
 
       /*
        * Readability. An Arc90 Lab Experiment.
@@ -77,10 +77,8 @@ angular
           /* Build readability's DOM tree */
           var overlay = document.createElement('DIV');
           var innerDiv = document.createElement('DIV');
-          var articleTools = readability.getArticleTools();
           var articleTitle = readability.getArticleTitle();
           var articleContent = readability.grabArticle(preserveUnlikelyCandidates);
-          var articleFooter = readability.getArticleFooter();
 
           /**
            * If we attempted to strip unlikely candidates on the first run through, and we ended up with no content,
@@ -106,15 +104,13 @@ angular
           innerDiv.className = readMargin + ' ' + readSize;
 
           /* Glue the structure of our document together. */
-          articleContent.appendChild(articleFooter);
           innerDiv.appendChild(articleTitle);
           innerDiv.appendChild(articleContent);
-          overlay.appendChild(articleTools);
           overlay.appendChild(innerDiv);
 
           /* Clear the old HTML, insert the new content. */
-          document.body.innerHTML = '';
-          document.body.insertBefore(overlay, document.body.firstChild);
+          document.documentElement.innerHTML = '';
+          document.documentElement.insertBefore(overlay, document.body.firstChild);
 
           if (readability.frameHack) {
             var readOverlay = document.getElementById('readOverlay');
@@ -122,20 +118,6 @@ angular
             readOverlay.style.overflow = 'auto';
           }
 
-        },
-
-        /**
-         * Get the article tools Element that has buttons like reload, print, email.
-         *
-         * @return void
-         **/
-        getArticleTools: function () {
-          var articleTools = document.createElement('DIV');
-
-          articleTools.id = 'readTools';
-          articleTools.innerHTML = '';
-
-          return articleTools;
         },
 
         /**
@@ -149,20 +131,6 @@ angular
           articleTitle.innerHTML = document.title;
 
           return articleTitle;
-        },
-
-        /**
-         * Get the footer with the readability mark etc.
-         *
-         * @return object
-         **/
-        getArticleFooter: function () {
-          var articleFooter = document.createElement('DIV');
-
-          articleFooter.id = 'readFooter';
-          articleFooter.innerHTML = '';
-
-          return articleFooter;
         },
 
         /**
@@ -224,24 +192,18 @@ angular
           /* remove all scripts that are not readability */
           var scripts = document.getElementsByTagName('script');
           for (var i = scripts.length - 1; i >= 0; i--) {
-            if (typeof(scripts[i].src) === 'undefined' || scripts[i].src.indexOf('readability') === -1) {
-              scripts[i].parentNode.removeChild(scripts[i]);
-            }
+            scripts[i].parentNode.removeChild(scripts[i]);
           }
 
           /* remove all stylesheets */
           for (var k = 0; k < document.styleSheets.length; k++) {
-            if (document.styleSheets[k].href !== null && document.styleSheets[k].href.lastIndexOf('readability') === -1) {
-              document.styleSheets[k].disabled = true;
-            }
+            document.styleSheets[k].disabled = true;
           }
 
-          /* Remove all style tags in head (not doing this on IE) - TODO: Why not? */
+          /* Remove all style tags in head */
           var styleTags = document.getElementsByTagName('style');
           for (var j = 0; j < styleTags.length; j++) {
-            if (window.navigator.appName !== 'Microsoft Internet Explorer') {
-              styleTags[j].textContent = '';
-            }
+            styleTags[j].textContent = '';
           }
 
           /* Turn all double br's into p's */

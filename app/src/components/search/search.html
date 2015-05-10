@@ -5,7 +5,7 @@
 
 <div id="search" flex layout="column">
 
-  <fli-search-result layout-sm="column" layout="row" layout-align="center start" layout-wrap></fli-search-result>
+  <fli-search-result layout-sm="column" layout="row" layout-align="center start" layout-wrap flex></fli-search-result>
 
   <md-whiteframe class="md-whiteframe-z1 lucky" layout="row" ng-if="!search.results && !fli.route.input">
     <a ng-href="{{'search?input=' + lucky}}">

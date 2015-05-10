@@ -7,7 +7,7 @@
 
   <div layout="row" layout-sm="column" layout-align="center start" layout-wrap flex>
 
-    <md-whiteframe flex-sm flex-gt-sm="45" class="md-whiteframe-z1" layout="column" ng-repeat="item in widgets | filter:fli.route.input || ''">
+    <md-whiteframe ng-if="item.items.length" flex-sm flex-gt-sm="45" class="md-whiteframe-z1" layout="column" ng-repeat="item in widgets | filter:fli.route.input || ''">
       <div>
         <span ng-bind="item.name"></span>
       </div>

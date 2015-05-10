@@ -2,7 +2,8 @@ html, header, body, footer {
   background: #ebebeb !important;
 }
 
-md-whiteframe {
+md-whiteframe,
+md-card {
   overflow-x: hidden;
   background: #ffffff !important;
 }

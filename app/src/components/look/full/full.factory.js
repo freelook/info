@@ -2,7 +2,8 @@
 
 angular
   .module('fli.look')
-  .factory('full', function ($sce, $window, $location, $rootScope, $cacheFactory, readability, CONFIG) {
+  .factory('full',
+  function ($sce, $window, $location, $rootScope, $cacheFactory, readability, CONFIG) {
 
     var cache = $cacheFactory('full'),
       parser = new window.DOMParser();
@@ -19,12 +20,24 @@ angular
 
     function _prepareHtml(html) {
       var dom = parser.parseFromString(html, 'text/html'),
-        $dom = $(dom),
-        origin = _originLink(),
-        content = '';
+        $dom = $(dom);
 
       readability.init(dom);
+      _fixLink($dom);
 
+      var content = $sce.trustAsHtml(dom.documentElement.innerHTML);
+
+      _storeData(content);
+
+      return content;
+    }
+
+    function _storeData(data) {
+      cache.put($location.url(), data);
+    }
+
+    function _fixLink($dom) {
+      var origin = _originLink();
       $dom.find('a').each(function (i, e) {
         $(e).attr('href', function (i, href) {
           if (href) {
@@ -39,17 +52,13 @@ angular
           }
         });
       });
-
-      $dom.find('script, iframe').remove();
-      content = $sce.trustAsHtml(dom.documentElement.innerHTML);
-
-      _storeData(content);
-
-      return content;
     }
 
-    function _storeData(data) {
-      cache.put($location.url(), data);
+    function link(html) {
+      var dom = parser.parseFromString(html, 'text/html'),
+        $dom = $(dom);
+      _fixLink($dom);
+      return $sce.trustAsHtml(dom.documentElement.innerHTML);
     }
 
     function get(html) {
@@ -57,6 +66,7 @@ angular
     }
 
     return {
+      link: link,
       get: get
     };
 

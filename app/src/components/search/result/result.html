@@ -1,5 +1,5 @@
-<md-card class="md-whiteframe-z1" flex-gt-sm="30" flex-gt-lg="20" layout="column" ng-repeat="result in search.results">
-  <img ng-if="!!result.richSnippet.cseImage.src" ng-src="{{result.richSnippet.cseImage.src}}">
+<md-card class="md-whiteframe-z1" flex-gt-sm="40" flex-gt-md="30" flex-gt-lg="20" layout="column" ng-repeat="result in search.results">
+  <img ng-href="{{href(result)}}" ng-if="!!result.richSnippet.cseImage.src" ng-src="{{result.richSnippet.cseImage.src}}">
   <md-card-content>
     <a ng-href="{{href(result)}}" ng-bind-html="result.title"></a>
     <div flex ng-bind-html="result.content"></div>
