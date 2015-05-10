@@ -19,7 +19,7 @@ angular
     }
 
     if ($rootScope.fli.route.url) {
-      api.get($rootScope.fli.route.url)
+      api.get(decodeURIComponent($rootScope.fli.route.url))
         .success(setContent)
         .error(function () {
           read.call($rootScope.fli.route.url)
