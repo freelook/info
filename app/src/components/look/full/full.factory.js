@@ -24,6 +24,7 @@ angular
 
       readability.init(dom);
       _fixLink($dom);
+      _fixImg($dom);
 
       var content = $sce.trustAsHtml(dom.documentElement.innerHTML);
 
@@ -34,6 +35,23 @@ angular
 
     function _storeData(data) {
       cache.put($location.url(), data);
+    }
+
+    function _fixImg($dom) {
+      var origin = _originLink();
+      $dom.find('img').each(function (i, e) {
+        $(e).attr('src', function (i, src) {
+          if (src) {
+            switch (src.substr(0, 2)) {
+              case 'ht':
+              case '//':
+                return src;
+              default:
+                return src.charAt(0) === '/' ? origin + src : origin + src.substr(1);
+            }
+          }
+        });
+      });
     }
 
     function _fixLink($dom) {

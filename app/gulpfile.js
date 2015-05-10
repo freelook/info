@@ -9,6 +9,6 @@ gulp.task('dist', ['clean'], function () {
   gulp.start('build');
 });
 
-gulp.task('default', ['clean'], function () {
+gulp.task('default', function () {
   gulp.start('server');
 });

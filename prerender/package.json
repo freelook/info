@@ -2,7 +2,7 @@
   "author": "Prerender.io",
   "name": "prerender",
   "description": "Service to prerender Javascript rendered pages for SEO",
-  "version": "3.15.2",
+  "version": "3.16.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/prerender/prerender"
@@ -12,7 +12,7 @@
     "cache-manager": "^0.16.0",
     "lodash": "^3.1.0",
     "phantom": "^0.7.2",
-    "phantomjs": "^1.9.15",
+    "phantomjs": "^1.9.16",
     "tree-kill": "0.0.6"
   },
   "bin": {
