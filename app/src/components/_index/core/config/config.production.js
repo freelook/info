@@ -1,10 +1,10 @@
 var CONFIG = {
-  ORIGIN: 'http://vps.freelook.info/',
+  ORIGIN: 'http://freelook.info/',
   API: {
-    URL: 'http://vps.freelook.info/api/'
+    URL: 'http://freelook.info/api/'
   },
   PRERENDER: {
-    URL: 'http://vps.freelook.info/prerender/'
+    URL: 'http://freelook.info/prerender/'
   }
 };
 

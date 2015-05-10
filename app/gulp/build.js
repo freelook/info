@@ -91,7 +91,7 @@ gulp.task('html', ['wiredep', 'injector:css', 'injector:js', 'partials'], functi
       quotes: true
     }))
     .pipe($.if(!!process.env.production, $.assetpaths({
-      newDomain: 'http://vps.freelook.info',
+      newDomain: 'http://freelook.info',
       oldDomain: 'no_value',
       docRoot: '/',
       filetypes: ['css']

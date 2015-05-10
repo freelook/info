@@ -29,7 +29,7 @@ describe('API', function () {
 
     it('it should resolve url for get request', function () {
       var url = 'http://xxx.com';
-      var expUrl = mockCONFIG.API.URL + 'get?url=http%3A%2F%2Fxxx.com';
+      var expUrl = mockCONFIG.API.URL + 'get?url=http://xxx.com';
       sut.get(url);
       expect(mockHTTP.get).toHaveBeenCalledWith(expUrl);
     });

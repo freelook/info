@@ -2,10 +2,10 @@
 
 var SearchPage = function() {
 
-  var INPUT_MODEL = 'searchText';
+  var INPUT_ID = 'input-001';
 
 
-  this.input = element(by.model(INPUT_MODEL));
+  this.input = element(by.id(INPUT_ID));
 
   this.searchEls = element.all(by.repeater('result in search.results'));
 

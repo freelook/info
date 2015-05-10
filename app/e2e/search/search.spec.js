@@ -4,7 +4,7 @@ describe('The search view', function () {
   var page;
 
   beforeEach(function () {
-    browser.get('http://localhost:3000/');
+    browser.get('http://localhost');
     page = require('./search.page');
   });
 
