@@ -1,11 +1,10 @@
 'use strict';
 
 var $http = require('request'),
-    $q = require('q'),
-    regURL = /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+    $q = require('q');
 
 module.exports = function (req, res) {
-    if (req.query && req.query.url && regURL.test(req.query.url)) {
+    if (req.query && req.query.url) {
 
         $http.get({
                 url: decodeURIComponent(req.query.url),
