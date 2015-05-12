@@ -20,12 +20,16 @@ module.exports = function (req, res) {
                     });
 
                 } else {
-                    res.status(404).send('error status');
+                    res.status(404).json({
+                        err: err,
+                        response: response,
+                        html: html
+                    });
                 }
             }).on('error', function (err) {
                 res.status(404).send('error request');
             });
     } else {
-        res.status(404).send('no url');
+        res.status(404).send('error url');
     }
 };
