@@ -8,7 +8,7 @@ module.exports = function (req, res) {
     if (req.query && req.query.url) {
 
         $http.get({
-                url: encodeURI(req.query.url),
+                url: encodeURI(decodeURI(req.query.url)),
                 headers: {
                     'User-Agent': 'googlebot'
                 }
