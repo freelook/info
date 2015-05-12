@@ -4,7 +4,12 @@ var $http = require('request'),
     $q = require('q');
 
 module.exports = function (req, res) {
+
     if (req.query && req.query.url) {
+
+        if(req.query.url === 'test') {
+            req.query.url = 'https://ru.wikipedia.org/wiki/Киев';
+        }
 
         $http.get({
                 url: req.query.url,
@@ -16,6 +21,7 @@ module.exports = function (req, res) {
                 if (!err && +response.statusCode === +200) {
 
                     res.json({
+                        url: req.query.url,
                         html: html
                     });
 
