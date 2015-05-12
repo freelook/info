@@ -15,7 +15,7 @@ angular
     }
 
     function _fliUrl(url) {
-      return CONFIG.ORIGIN + 'look?input=' + $rootScope.fli.route.input + '&url=' + url;
+      return CONFIG.ORIGIN + 'look?url=' + url;
     }
 
     function _prepareHtml(html) {
