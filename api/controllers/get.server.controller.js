@@ -7,10 +7,6 @@ module.exports = function (req, res) {
 
     if (req.query && req.query.url) {
 
-        if(req.query.url === 'test') {
-            req.query.url = 'https://ru.wikipedia.org/wiki/Киев';
-        }
-
         $http.get({
                 url: req.query.url,
                 headers: {
@@ -29,14 +25,20 @@ module.exports = function (req, res) {
                     res.status(404).json({
                         url: req.query.url,
                         err: err,
-                        response: response,
-                        html: html
+                        msg: 'error response',
+                        response: response
                     });
                 }
             }).on('error', function (err) {
-                res.status(404).send('error request');
+                res.status(404).json({
+                    err: err || true,
+                    msg: 'error request'
+                });
             });
     } else {
-        res.status(404).send('error url');
+        res.status(404).json({
+            err: true,
+            msg: 'error url'
+        });
     }
 };
