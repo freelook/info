@@ -6,43 +6,10 @@ var $ = require('gulp-load-plugins')({
   pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license', 'del']
 });
 
-gulp.task('injector:css', ['wiredep'], function () {
-  return gulp.src('src/index.html')
-    .pipe($.inject(gulp.src([
-      'src/components/**/*.css'
-    ], {read: false}), {
-      ignorePath: 'src',
-      addRootSlash: false
-    }))
-    .pipe(gulp.dest('src/'));
-});
-
 gulp.task('jshint', function () {
   return gulp.src('src/components/**/*.js')
     .pipe($.jshint())
     .pipe($.jshint.reporter('jshint-stylish'));
-});
-
-gulp.task('injector:js', ['jshint', 'injector:css'], function () {
-
-  var js = [
-    'src/components/**/*.js',
-    '!src/components/**/*.spec.js',
-    '!src/components/**/*.mock.js'
-  ];
-
-  if (!process.env.production) {
-    js.push('!src/components/**/*.production.js');
-  } else {
-    js.push('!src/components/**/*.development.js');
-  }
-
-  return gulp.src('src/index.html')
-    .pipe($.inject(gulp.src(js, {read: false}), {
-      ignorePath: 'src',
-      addRootSlash: false
-    }))
-    .pipe(gulp.dest('src/'));
 });
 
 gulp.task('partials', function () {
@@ -59,14 +26,14 @@ gulp.task('partials', function () {
     .pipe(gulp.dest('.tmp/inject/'));
 });
 
-gulp.task('html', ['wiredep', 'injector:css', 'injector:js', 'partials'], function () {
+gulp.task('html', ['jshint', 'inject', 'partials'], function () {
 
   var htmlFilter = $.filter('*.html'),
     jsFilter = $.filter('**/*.js'),
     cssFilter = $.filter('**/*.css'),
     assets;
 
-  return gulp.src('src/*.html')
+  return gulp.src('.tmp/*.html')
     .pipe($.inject(gulp.src('.tmp/inject/templateCacheHtml.js', {read: false}), {
       starttag: '<!-- inject:partials -->',
       ignorePath: '.tmp',

@@ -11,7 +11,7 @@ function browserSyncInit(baseDir, files, browser) {
   browser = browser === undefined ? 'default' : browser;
 
   var routes = null;
-  if(baseDir === 'src' || (util.isArray(baseDir) && baseDir.indexOf('src') !== -1)) {
+  if (baseDir === 'src' || (util.isArray(baseDir) && baseDir.indexOf('src') !== -1)) {
     routes = {
       '/bower_components': 'bower_components'
     };
@@ -38,18 +38,18 @@ function browserSyncInit(baseDir, files, browser) {
 
 gulp.task('server', ['watch'], function () {
   browserSyncInit([
-    'src',
-    '.tmp'
+    '.tmp',
+    'src'
   ], [
     '.tmp/components/**/*.css',
     'src/assets/images/**/*',
-    'src/*.html',
+    '.tmp/*.html',
     'src/components/**/*.html',
     'src/components/**/*.js'
   ]);
 });
 
-gulp.task('server:dist', ['build'], function () {
+gulp.task('server:dist', ['dist'], function () {
   browserSyncInit('dist');
 });
 

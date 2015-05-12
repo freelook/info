@@ -5,7 +5,7 @@ angular
 
     function get(url) {
       if (url) {
-        var api = CONFIG.API.URL + 'get?url=' + encodeURIComponent(url);
+        var api = CONFIG.API.URL + 'get?url=' + url;
         return $http.get(api);
       }
     }
