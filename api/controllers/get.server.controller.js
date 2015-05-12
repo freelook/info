@@ -21,6 +21,7 @@ module.exports = function (req, res) {
 
                 } else {
                     res.status(404).json({
+                        url: req.query.url,
                         err: err,
                         response: response,
                         html: html
