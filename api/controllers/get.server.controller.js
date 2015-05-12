@@ -8,10 +8,7 @@ module.exports = function (req, res) {
     if (req.query && req.query.url) {
 
         $http.get({
-                url: req.query.url,
-                headers: {
-                    'User-Agent': 'googlebot'
-                }
+                url: req.query.url
             },
             function (err, response, html) {
                 if (!err && +response.statusCode === +200) {
