@@ -17,10 +17,6 @@ angular
       return 'look?input=' + $scope.fli.route.input + '&url=' + result.url;
     };
 
-    google.random().success(function (lucky) {
-      $scope.lucky = lucky.word;
-    });
-
     if ($scope.fli.route.input) {
       google.search($scope.fli.route.input)
         .success(setResult)
@@ -31,6 +27,10 @@ angular
 
       google.autocomplete($scope.fli.route.input).success(function (auto) {
         $scope.suggested = auto[1] || [];
+      });
+    } else {
+      google.random().success(function (lucky) {
+        $scope.lucky = lucky.word;
       });
     }
 
