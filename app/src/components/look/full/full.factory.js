@@ -14,8 +14,11 @@ angular
       return link.protocol + '//' + link.host;
     }
 
-    function _fliUrl(url) {
-      return CONFIG.ORIGIN + 'look?url=' + url;
+    function _fliUrl(url, input) {
+      if (!input) {
+        return CONFIG.ORIGIN + 'look?url=' + url;
+      }
+      return CONFIG.ORIGIN + 'look?input=' + input + '&url=' + url;
     }
 
     function _prepareHtml(html) {
@@ -57,16 +60,17 @@ angular
     function _fixLink($dom) {
       var origin = _originLink();
       $dom.find('a').each(function (i, e) {
+        var input = $(e).text() || '';
         $(e).attr('href', function (i, href) {
           if (href) {
             switch (href.substr(0, 2)) {
               case 'ht':
               case '//':
-                return _fliUrl(href);
+                return _fliUrl(href, input);
               case 'ma':
                 return href;
               default:
-                return href.charAt(0) === '/' ? _fliUrl(origin + href) : _fliUrl(origin + '/' + href);
+                return href.charAt(0) === '/' ? _fliUrl(origin + href, input) : _fliUrl(origin + '/' + href, input);
             }
           }
         });
