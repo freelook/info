@@ -2,7 +2,7 @@
 
 var SearchPage = function() {
 
-  var INPUT_ID = 'input-001';
+  var INPUT_ID = 'input';
 
 
   this.input = element(by.id(INPUT_ID));

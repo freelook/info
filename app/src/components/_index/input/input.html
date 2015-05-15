@@ -1,16 +1,12 @@
 <form name="form" ng-submit="find(form)" layout="row">
 
-  <md-button class="md-fab md-primary" aria-label="navigation" ng-href="{{href(fliHref)}}">
+  <md-button class="md-icon-button md-primary" aria-label="navigation" ng-href="{{href(fliHref)}}">
     <i ng-if="!fli.route.input" class="fa fa-{{icon}}"></i>
     <i ng-if="!!fli.route.input" class="fa fa-search"></i>
   </md-button>
 
-  <md-autocomplete flex id="input"
-                   md-search-text="fli.route.input"
-                   md-selected-item="selectedItem"
-                   md-items="item in items"
-                   md-item-text="item.display"
-                   placeholder="{{placeholder}}">
-  </md-autocomplete>
+  <input flex id="input" type="search"
+         ng-model="fli.route.input"
+         placeholder="{{placeholder}}">
 
 </form>

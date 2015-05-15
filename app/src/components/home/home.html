@@ -1,13 +1,13 @@
 <header>
   <md-progress-linear md-mode="indeterminate" ng-if="fli.progress"></md-progress-linear>
-  <fli-input flex icon="bars" fli-href="/menu"></fli-input>
+  <fli-input flex icon="th-large" fli-href="/"></fli-input>
 </header>
 
 <div id="home" layout="row" flex layout-align="center start">
 
   <div layout="row" layout-sm="column" layout-align="center start" layout-wrap flex>
 
-    <md-whiteframe ng-if="item.items.length" flex-sm flex-gt-sm="45" class="md-whiteframe-z1" layout="column" ng-repeat="item in widgets | filter:fli.route.input || ''">
+    <md-whiteframe ng-if="item.items.length" flex flex-gt-sm="45" class="md-whiteframe-z1" layout="column" ng-repeat="item in widgets | filter:fli.route.input || ''">
       <div>
         <span ng-bind="item.name"></span>
       </div>
