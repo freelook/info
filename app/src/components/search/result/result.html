@@ -5,7 +5,7 @@
     <div class="md-card-image header" ng-if="!result.richSnippet.cseImage.src"></div>
   </a>
   <md-card-content ng-if="!fli.route.type">
-    <a ng-href="{{href(result)}}" ng-bind-html="result.title"></a>
+    <a ng-href="{{href(result.url)}}" ng-bind-html="result.title"></a>
     <div flex ng-bind-html="result.content"></div>
   </md-card-content>
 
