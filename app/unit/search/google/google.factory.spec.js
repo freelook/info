@@ -35,7 +35,7 @@ describe('Google', function () {
 
     it('it should call http for search', function () {
       var q = 'xxx';
-      var expectedRequest = 'https://www.googleapis.com/customsearch/v1element?key=AIzaSyCVAXiUzRYsML1Pv6RwSG1gunmMikTzQqY&cx=007077922014062052604:wiiu7xrm8yk&q=' + q + '&callback=JSON_CALLBACK';
+      var expectedRequest = 'https://www.googleapis.com/customsearch/v1element?key=AIzaSyCVAXiUzRYsML1Pv6RwSG1gunmMikTzQqY&cx=007077922014062052604:wiiu7xrm8yk&q=' + q + '&num=12&callback=JSON_CALLBACK';
       sut.search(q);
       expect(mockHTTP.jsonp).toHaveBeenCalledWith(expectedRequest);
     });

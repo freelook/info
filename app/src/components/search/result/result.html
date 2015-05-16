@@ -1,7 +1,7 @@
 <md-card class="md-whiteframe-z1" flex-gt-sm="40" flex-gt-md="30" flex-gt-lg="20" layout="column"
          ng-repeat="result in search.results">
   <a ng-href="{{href(result)}}">
-    <img class="md-card-image" ng-if="!!result.richSnippet.cseImage.src" ng-src="{{result.richSnippet.cseImage.src}}">
+    <img class="md-card-image" ng-if="!!result.richSnippet.cseImage.src" ng-src="{{result.richSnippet.cseImage.src}}" fli-err>
     <div class="md-card-image header" ng-if="!result.richSnippet.cseImage.src"></div>
   </a>
   <md-card-content>
