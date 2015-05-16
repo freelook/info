@@ -3,9 +3,15 @@ angular
   .module('fli.search')
   .factory('google', function ($http) {
 
-    function search(q, type) {
+    var GAPI = {
+      web: 'https://www.googleapis.com/customsearch/v1element?key=AIzaSyCVAXiUzRYsML1Pv6RwSG1gunmMikTzQqY&cx=007077922014062052604:wiiu7xrm8yk&num=12',
+      image: 'https://www.googleapis.com/customsearch/v1element?key=AIzaSyCVAXiUzRYsML1Pv6RwSG1gunmMikTzQqY&cx=007077922014062052604:wiiu7xrm8yk&num=12&searchtype=image'
+    };
+
+    function search(q, _type) {
       if (q) {
-        var gapi = 'https://www.googleapis.com/customsearch/v1element?key=AIzaSyCVAXiUzRYsML1Pv6RwSG1gunmMikTzQqY&cx=007077922014062052604:wiiu7xrm8yk&q=' + q + '&num=12&callback=JSON_CALLBACK';
+        var type = _type || 'web',
+          gapi = GAPI[type] + '&q=' + q + '&callback=JSON_CALLBACK';
         return $http.jsonp(gapi);
       }
     }

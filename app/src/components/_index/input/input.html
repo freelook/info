@@ -1,8 +1,9 @@
 <form name="form" ng-submit="find(form)" layout="row">
 
   <md-button class="md-icon-button md-primary" aria-label="navigation" ng-href="{{href(fliHref)}}">
-    <i ng-if="!fli.route.input" class="fa fa-{{icon}}"></i>
-    <i ng-if="!!fli.route.input" class="fa fa-search"></i>
+    <i ng-if="!fli.route.input && !fli.focus" class="fa fa-th-large"></i>
+    <i ng-if="fli.focus" class="fa fa-search"></i>
+    <i ng-if="!!fli.route.input && !fli.focus" class="fa fa-{{icon}}"></i>
   </md-button>
 
   <input flex id="input" type="search" ng-focus="focus()" ng-blur="blur()"

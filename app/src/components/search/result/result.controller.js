@@ -12,16 +12,18 @@ angular
       $scope.search = search || {};
     }
 
-    $scope.href = function (result) {
-      return 'look?input=' + $scope.fli.route.input + '&url=' + result.url;
+    $scope.href = function (url) {
+      return 'look?input=' + $scope.fli.route.input + '&url=' + url;
     };
 
     if ($scope.fli.route.input) {
-      google.search($scope.fli.route.input)
+      google.search($scope.fli.route.input, $scope.fli.route.type)
         .success(setResult)
         .error(function () {
-          yandex.search($scope.fli.route.input)
-            .then(setResult);
+          if (!$scope.fli.route.type) {
+            yandex.search($scope.fli.route.input)
+              .then(setResult);
+          }
         });
     }
 

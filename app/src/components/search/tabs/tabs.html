@@ -1,4 +1,4 @@
-<md-tabs md-selected="tabs.selected" md-no-bar="true">
-  <md-tab><a ng-href="{{'/search?input=' + fli.route.input}}">Web</a></md-tab>
-  <md-tab><a ng-href="{{'/search?input=' + fli.route.input + '&type=image'}}">Image</a></md-tab>
+<md-tabs md-selected="tabs.selected">
+  <md-tab md-on-select="go({type: null})"><a ng-href="{{'/search?input=' + fli.route.input}}">Web</a></md-tab>
+  <md-tab md-on-select="go({type: 'image'})"><a ng-href="{{'/search?input=' + fli.route.input + '&type=image'}}">Image</a></md-tab>
 </md-tabs>

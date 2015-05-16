@@ -13,7 +13,7 @@ describe('The search view', function () {
 
     it('should have content on search', function () {
       page.fillInput('javascript');
-      expect(page.searchEls.count()).toBe(10);
+      expect(page.searchEls.count()).toBe(12);
     });
 
     it('should have no content if search request empty', function () {

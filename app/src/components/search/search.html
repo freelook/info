@@ -1,6 +1,6 @@
 <header>
   <md-progress-linear md-mode="indeterminate" ng-if="fli.progress"></md-progress-linear>
-  <fli-input class="search" flex icon="th-large" fli-href="/"></fli-input>
+  <fli-input class="search" flex icon="search" fli-href="/"></fli-input>
 
   <md-whiteframe flex class="md-whiteframe-z1 menu" layout="row" ng-show="fli.focus">
     <a ng-href="{{'search?input=' + lucky}}">
@@ -13,7 +13,7 @@
 
 <div id="search" flex layout="column">
 
-  <fli-search-tabs ng-hide="fli.focus"></fli-search-tabs>
+  <fli-search-tabs ng-hide="fli.focus || !fli.route.input"></fli-search-tabs>
 
   <fli-search-result ng-hide="fli.focus" layout-sm="column" layout="row" layout-align="center start" layout-wrap></fli-search-result>
 

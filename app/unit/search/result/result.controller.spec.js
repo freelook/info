@@ -44,7 +44,8 @@ describe('Result controller', function () {
 
     $rootScope.fli = {
       route: {
-        input: input
+        input: input,
+        type: ''
       }
     };
     rootScope = $rootScope;
@@ -55,7 +56,7 @@ describe('Result controller', function () {
 
   it('should call google service if route defined', function () {
     exequteController();
-    expect(mockGoogle.search).toHaveBeenCalledWith(input);
+    expect(mockGoogle.search).toHaveBeenCalledWith(input, '');
   });
 
   it('should set search on scope if call for search success', function () {
