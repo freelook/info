@@ -71,24 +71,4 @@ describe('Result controller', function () {
     expect(mockGoogle.search).not.toHaveBeenCalled();
   });
 
-  it('should no call google autocomplete service', function () {
-    rootScope.fli.route.input = '';
-    exequteController();
-    expect(mockGoogle.autocomplete).not.toHaveBeenCalled();
-  });
-  it('should call google autocomplete service with input', function () {
-    rootScope.fli.route.input = 'xxx';
-    exequteController();
-    expect(mockGoogle.autocomplete).toHaveBeenCalledWith('xxx');
-  });
-
-
-  it('should set suggested on scope if call for autocomplete success', function () {
-    var expectedArr = ['x', 'xx'],
-      expectedResponse = [[], expectedArr];
-    exequteController();
-    mockGoogle.autocomplete(input).success.calls.mostRecent().args[0](expectedResponse);
-    expect(scope.suggested).toBe(expectedArr);
-  });
-
 });

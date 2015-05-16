@@ -6,7 +6,6 @@ angular
   function ($scope, $mdMedia, google, yandex) {
 
     $scope.search = {};
-    $scope.suggested = [];
     $scope.lucky = 'freedom';
 
     function setResult(search) {
@@ -24,10 +23,6 @@ angular
           yandex.search($scope.fli.route.input)
             .then(setResult);
         });
-
-      google.autocomplete($scope.fli.route.input).success(function (auto) {
-        $scope.suggested = auto[1] || [];
-      });
     }
 
     google.random().success(function (lucky) {
