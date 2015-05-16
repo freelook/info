@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('fli.search')
-  .directive('searchTabs',
+  .directive('fliSearchTabs',
   function () {
     return {
       controller: 'search.tabs.ctrl',

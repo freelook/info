@@ -5,8 +5,10 @@
     <i ng-if="!!fli.route.input" class="fa fa-search"></i>
   </md-button>
 
-  <input flex id="input" type="search"
+  <input flex id="input" type="search" ng-focus="focus()" ng-blur="blur()"
          ng-model="fli.route.input"
          placeholder="{{placeholder}}">
 
 </form>
+
+<fli-menu-items ng-if="!!fli.focus"></fli-menu-items>

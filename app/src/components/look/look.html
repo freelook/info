@@ -1,11 +1,11 @@
 <header>
   <md-progress-linear md-mode="indeterminate" ng-if="fli.progress"></md-progress-linear>
-  <fli-input flex icon="th-large" fli-href="/"></fli-input>
+  <fli-input flex icon="eye" fli-href="/"></fli-input>
 </header>
 
 <div layout="row" id="look" flex layout-align="center start">
 
-  <fli-look-content flex-gt-md="60" flex-gt-lg="50"></fli-look-content>
+  <fli-look-content ng-hide="fli.focus" flex-gt-md="60" flex-gt-lg="50"></fli-look-content>
 
 </div>
 

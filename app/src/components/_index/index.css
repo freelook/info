@@ -20,6 +20,11 @@ md-toast.md-default-theme {
   text-align: center;
 }
 
+md-whiteframe {
+  padding: 5px;
+  margin: 5px;
+}
+
 
 
 

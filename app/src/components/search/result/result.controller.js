@@ -28,11 +28,11 @@ angular
       google.autocomplete($scope.fli.route.input).success(function (auto) {
         $scope.suggested = auto[1] || [];
       });
-    } else {
-      google.random().success(function (lucky) {
-        $scope.lucky = lucky.word;
-      });
     }
+
+    google.random().success(function (lucky) {
+      $scope.lucky = lucky.word;
+    });
 
   });
 

@@ -11,8 +11,8 @@ fli-input input::-webkit-search-cancel-button:after {
 
 fli-input input {
   background: #fff !important;
-  margin: 7px;
-  padding: 0 15px;
+  margin: 5px;
+  padding: 0 15px 0 50px;
   font-size: 14px;
   line-height: 35px;
   height: 35px;
@@ -23,5 +23,5 @@ fli-input input {
 fli-input .md-button.md-icon-button {
   width: 40px;
   height: 40px;
-  margin-top: 3px;
+  position:absolute;
 }

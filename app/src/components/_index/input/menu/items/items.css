@@ -1,14 +1,16 @@
 fli-menu-items md-whiteframe {
   color: #999999;
-  padding: 10px;
+  cursor: pointer;
+  padding: 7px;
   margin: 5px;
 }
 
 fli-menu-items md-whiteframe .fa {
   margin-left: 5px;
-  margin-right: 40px;
+  margin-right: 25px;
 }
 
 fli-menu-items md-whiteframe a {
   text-decoration: none;
+  outline: 0;
 }

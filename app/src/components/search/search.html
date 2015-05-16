@@ -1,22 +1,23 @@
-<header>
+<header id="search-header">
   <md-progress-linear md-mode="indeterminate" ng-if="fli.progress"></md-progress-linear>
   <fli-input class="search" flex icon="th-large" fli-href="/"></fli-input>
-</header>
 
-<search-tabs></search-tabs>
-
-<div id="search" flex layout="column">
-
-  <fli-search-result layout-sm="column" layout="row" layout-align="center start" layout-wrap></fli-search-result>
-
-  <md-whiteframe class="md-whiteframe-z1 lucky" layout="row" ng-if="!search.results && !fli.route.input">
+  <md-whiteframe class="md-whiteframe-z1 lucky" layout="row" ng-show="fli.focus">
     <a ng-href="{{'search?input=' + lucky}}">
       <i class="fa fa-search"></i>
-      <span>GET LUCKY</span>
+      <span>Get lucky</span>
     </a>
   </md-whiteframe>
 
-  <md-whiteframe class="md-whiteframe-z1 suggested" layout="column" ng-if="!!suggested.length">
+</header>
+
+<div id="search" flex layout="column">
+
+  <fli-search-tabs ng-hide="fli.focus"></fli-search-tabs>
+
+  <fli-search-result ng-hide="fli.focus" layout-sm="column" layout="row" layout-align="center start" layout-wrap></fli-search-result>
+
+  <md-whiteframe ng-hide="fli.focus" class="md-whiteframe-z1 suggested" layout="column" ng-if="!!suggested.length">
     <div class="title" ng-if="!!suggested.length">Suggested requests:</div>
     <div class="result">
       <a ng-repeat="suggest in suggested" ng-href="{{'search?input=' + suggest}}" ng-bind="suggest"></a>
