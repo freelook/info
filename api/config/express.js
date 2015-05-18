@@ -20,7 +20,7 @@ module.exports = function(db) {
 	var app = express();
 
 	// Globbing model files
-	config.getGlobbedFiles('./app/models/**/*.js').forEach(function(modelPath) {
+	config.getGlobbedFiles('models/**/*.js').forEach(function(modelPath) {
 		require(path.resolve(modelPath));
 	});
 
