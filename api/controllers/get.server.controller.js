@@ -1,7 +1,19 @@
 'use strict';
 
 var $http = require('request'),
+    iconv = require('iconv-lite'),
     $q = require('q');
+
+var CONTENT_TYPES = {
+    'text/html; charset=utf-8': 'utf8',
+    'text/html; charset=utf8': 'utf8',
+    'text/html; charset=windows-1251': 'win1251'
+};
+
+function getType(_type) {
+    var type = _type || '';
+    return CONTENT_TYPES[type.toLowerCase()]
+}
 
 module.exports = function (req, res) {
 
@@ -9,18 +21,19 @@ module.exports = function (req, res) {
 
         $http.get({
                 url: encodeURI(decodeURI(req.query.url)),
+                encoding: null,
                 headers: {
                     'User-Agent': 'googlebot'
                 }
             },
             function (err, response, html) {
-                if (!err && +response.statusCode === +200) {
-
+                var type = getType(response.headers['content-type']);
+                if (!err && +response.statusCode === +200 && type) {
                     res.json({
                         url: req.query.url,
-                        html: html
+                        response: type,
+                        html: iconv.decode(html, type)
                     });
-
                 } else {
                     res.status(404).json({
                         url: req.query.url,
