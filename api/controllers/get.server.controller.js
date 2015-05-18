@@ -31,7 +31,6 @@ module.exports = function (req, res) {
                 if (!err && +response.statusCode === +200 && type) {
                     res.json({
                         url: req.query.url,
-                        response: type,
                         html: iconv.decode(html, type)
                     });
                 } else {
