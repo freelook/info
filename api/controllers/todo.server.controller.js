@@ -19,7 +19,7 @@ TodoCtr.get = function (req, res) {
     });
 };
 
-TodoCtr.post = function (req, res) {
+TodoCtr.add = function (req, res) {
 
     // create a todo, information comes from AJAX request from Angular
     Todo.create({

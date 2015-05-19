@@ -7,7 +7,7 @@ module.exports = function (app) {
     app.get('/todo', todo.get);
 
     // create todo and send back all todos after creation
-    app.post('/todo', todo.post);
+    app.post('/todo', todo.add);
 
     // delete a todo
     app.delete('/todo/:todo_id', todo.delete);

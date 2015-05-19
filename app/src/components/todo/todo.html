@@ -1,0 +1,31 @@
+<form name="todo" ng-submit="add(todo)">
+
+  <div layout="row">
+
+    <md-input-container flex>
+      <label>Add todo item</label>
+      <input ng-model="text">
+    </md-input-container>
+
+    <md-button class="md-primary md-fab" type="submit" aria-label="add todo item">
+      <i class="fa fa-plus"></i>
+    </md-button>
+
+  </div>
+
+</form>
+
+<div>
+
+  <ul>
+    <li ng-repeat="todo in todos" layout="row">
+      <md-checkbox ng-model="todo.done" aria-label="todo checkbox" ng-init="todo.done=false">
+        <span ng-bind="todo.text"></span>
+      </md-checkbox>
+      <md-button class="md-icon-button" aria-label="delete todo item" ng-click="del(todo)">
+        <i class="fa fa-close"></i>
+      </md-button>
+    </li>
+  </ul>
+
+</div>
