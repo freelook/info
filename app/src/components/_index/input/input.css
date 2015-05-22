@@ -1,27 +1,28 @@
-fli-input input::-webkit-search-cancel-button:after {
-  content: '';
-  display: block;
-  width: 14px;
-  height: 14px;
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAn0lEQVR42u3UMQrDMBBEUZ9WfQqDmm22EaTyjRMHAlM5K+Y7lb0wnUZPIKHlnutOa+25Z4D++MRBX98MD1V/trSppLKHqj9TTBWKcoUqffbUcbBBEhTjBOV4ja4l4OIAZThEOV6jHO8ARXD+gPPvKMABinGOrnu6gTNUawrcQKNCAQ7QeTxORzle3+sDfjJpPCqhJh7GixZq4rHcc9l5A9qZ+WeBhgEuAAAAAElFTkSuQmCC);
-  background-repeat: no-repeat;
-  background-size: 14px;
-  background-position: top left;
+fli-input form {
+  background: #fff !important;
+  margin: 5px;
+  padding: 0;
 }
 
 fli-input input {
   background: #fff !important;
-  margin: 5px;
-  padding: 0 15px 0 50px;
+  padding: 0 0 0 5px;
   font-size: 14px;
-  line-height: 35px;
-  height: 35px;
-  border: 1px #ccc solid;
+  line-height: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 0;
   outline: 0;
 }
 
 fli-input .md-button.md-icon-button {
   width: 40px;
   height: 40px;
-  position:absolute;
+  margin: 0;
+}
+
+fli-input .md-button.md-icon-button i {
+  top: -3px;
+  position: relative;
+  outline: 0;
 }

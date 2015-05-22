@@ -5,15 +5,15 @@
 
 <div id="home" layout="row" flex layout-align="center start">
 
-  <div layout="row" layout-sm="column" layout-align="center start" layout-wrap flex>
+  <div layout="row" layout-align="center start" layout-wrap flex>
 
-    <md-whiteframe ng-if="item.items.length" flex flex-gt-sm="45" class="md-whiteframe-z1" layout="column" ng-repeat="item in widgets | filter:fli.route.input || ''">
-      <div>
-        <span ng-bind="item.name"></span>
-      </div>
-      <div class="result">
-        <a ng-repeat="i in item.items" ng-href="{{item.href(i)}}" ng-bind="i.input"></a>
-      </div>
+    <md-whiteframe ng-if="item.items.length" flex-sm="95" flex-gt-sm="45" class="md-whiteframe-z1" layout="column" ng-repeat="item in widgets | filter:fli.route.input || ''">
+        <div>
+          <span ng-bind="item.name"></span>
+        </div>
+        <div class="result">
+          <a ng-repeat="i in item.items" ng-href="{{item.href(i)}}" ng-bind="i.input"></a>
+        </div>
     </md-whiteframe>
 
   </div>

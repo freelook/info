@@ -13,9 +13,9 @@
 
 <div id="search" flex layout="column">
 
-  <fli-search-tabs ng-hide="fli.focus || !fli.route.input"></fli-search-tabs>
+  <fli-search-tabs ng-hide="fli.focus || !search.results.length"></fli-search-tabs>
 
-  <fli-search-result ng-hide="fli.focus" layout-sm="column" layout="row" layout-align="center start" layout-wrap></fli-search-result>
+  <fli-search-result ng-hide="fli.focus" layout="row" layout-align="center start" layout-wrap></fli-search-result>
 
 </div>
 

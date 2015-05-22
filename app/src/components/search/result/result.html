@@ -1,4 +1,4 @@
-<md-card class="md-whiteframe-z1" flex-gt-sm="40" flex-gt-md="30" flex-gt-lg="20" layout="column" ng-repeat="result in search.results">
+<md-card class="md-whiteframe-z1" flex-sm="95" flex-gt-sm="40" flex-gt-md="30" flex-gt-lg="20" layout="column" ng-repeat="result in search.results">
 
   <a ng-href="{{href(result.url)}}" ng-if="!fli.route.type">
     <img class="md-card-image" ng-if="!!result.richSnippet.cseImage.src" ng-src="{{result.richSnippet.cseImage.src}}" fli-err>

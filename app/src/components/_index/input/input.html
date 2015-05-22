@@ -1,4 +1,4 @@
-<form name="form" ng-submit="find(form)" layout="row">
+<form name="form" class="md-whiteframe-z1" ng-submit="find(form)" layout="row">
 
   <md-button class="md-icon-button md-primary" aria-label="navigation" ng-href="{{href(fliHref)}}">
     <i ng-if="!fli.route.input && !fli.focus" class="fa fa-th-large"></i>
@@ -9,6 +9,10 @@
   <input flex id="input" type="search" ng-focus="focus()" ng-blur="blur()"
          ng-model="fli.route.input"
          placeholder="{{placeholder}}">
+
+  <md-button ng-if="fli.route.input && fli.focus" class="md-icon-button md-primary" aria-label="clear">
+    <i  class="fa fa-close" ng-click="clear()"></i>
+  </md-button>
 
 </form>
 
