@@ -17,7 +17,7 @@ angular
 
     init();
 
-    $scope.add = function (form) {
+    $scope.add = function () {
       var _todo = {
         text: $scope.text || ''
       };

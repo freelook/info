@@ -30,6 +30,6 @@ angular
       get: get,
       add: add,
       del: del
-    }
+    };
 
   });

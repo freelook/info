@@ -7,5 +7,5 @@ gulp.task('watch', ['inject'], function () {
     'src/components/**/*.js',
     'src/assets/images/**/*',
     'bower.json'
-  ], ['inject']);
+  ], ['inject', 'jshint']);
 });
