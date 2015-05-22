@@ -25,7 +25,6 @@ angular
       });
 
   })
-  .run(function () {
-
-
+  .run(function (analytics) {
+    analytics.init();
   });
