@@ -28,11 +28,16 @@ angular
       return $http.jsonp(wapi, {cache: false});
     }
 
+    function trends() {
+      var gtapi = 'https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=http://www.google.com/trends/hottrends/atom/hourly&callback=JSON_CALLBACK';
+      return $http.jsonp(gtapi, {cache: false});
+    }
 
     return {
       search: search,
       autocomplete: autocomplete,
-      random: random
+      random: random,
+      trends: trends
     };
 
   });
