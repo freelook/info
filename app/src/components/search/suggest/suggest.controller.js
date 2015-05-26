@@ -6,11 +6,7 @@ angular
 
     $scope.suggested = [];
 
-    if ($scope.fli.route.input) {
-      google.autocomplete($scope.fli.route.input).success(function (auto) {
-        $scope.suggested = auto[1] || [];
-      });
-    } else {
+    function showTrends() {
       google.trends().success(function (trends) {
         if (trends && trends.responseData && trends.responseData.feed) {
           var entries = trends.responseData.feed.entries || [],
@@ -19,6 +15,19 @@ angular
           $scope.suggested = contentSnippet.split('\n  ').slice(1);
         }
       });
+    }
+
+    if ($scope.fli.route.input) {
+      google.autocomplete($scope.fli.route.input).success(function (auto) {
+        var suggested = auto[1] || [];
+        if (!!suggested.length) {
+          $scope.suggested = suggested;
+        } else {
+          showTrends();
+        }
+      });
+    } else {
+      showTrends();
     }
 
   });

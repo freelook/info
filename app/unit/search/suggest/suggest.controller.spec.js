@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Result controller', function () {
+describe('Suggest controller', function () {
   var scope, input, mockGoogle, rootScope, controller;
 
   beforeEach(function () {
@@ -11,6 +11,9 @@ describe('Result controller', function () {
 
     mockGoogle = {
       autocomplete: jasmine.createSpy().and.returnValue({
+        success: jasmine.createSpy()
+      }),
+      trends: jasmine.createSpy().and.returnValue({
         success: jasmine.createSpy()
       })
     };
@@ -50,13 +53,20 @@ describe('Result controller', function () {
     expect(mockGoogle.autocomplete).toHaveBeenCalledWith('xxx');
   });
 
-
   it('should set suggested on scope if call for autocomplete success', function () {
     var expectedArr = ['x', 'xx'],
       expectedResponse = [[], expectedArr];
     exequteController();
     mockGoogle.autocomplete(input).success.calls.mostRecent().args[0](expectedResponse);
     expect(scope.suggested).toBe(expectedArr);
+  });
+
+  it('should call google trends if autocomplete has no items', function () {
+    var expectedArr = [],
+      expectedResponse = [[], expectedArr];
+    exequteController();
+    mockGoogle.autocomplete(input).success.calls.mostRecent().args[0](expectedResponse);
+    expect(mockGoogle.trends).toHaveBeenCalled();
   });
 
 });
