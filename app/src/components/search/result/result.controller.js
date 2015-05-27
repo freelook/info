@@ -6,7 +6,7 @@ angular
   function ($scope, $mdMedia, google, yandex) {
 
     $scope.search = {};
-    $scope.lucky = 'freedom';
+    $scope.lucky = 'freelook';
 
     function setResult(search) {
       $scope.search = search || {};

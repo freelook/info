@@ -18,11 +18,11 @@ angular
       $scope.fli.route.input = '';
     };
 
-    $scope.href = function (_href) {
+    $scope.href = function () {
       if ($scope.fli.route.input) {
         return 'search?input=' + $scope.fli.route.input;
       }
-      return _href;
+      return '/';
     };
 
     $scope.focus = function () {

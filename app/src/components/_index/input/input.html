@@ -1,6 +1,6 @@
 <form name="form" class="md-whiteframe-z1" ng-submit="find(form)" layout="row">
 
-  <md-button class="md-icon-button md-primary" aria-label="navigation" ng-href="{{href(fliHref)}}">
+  <md-button class="md-icon-button md-primary" aria-label="navigation" ng-href="{{href()}}">
     <i ng-if="!fli.route.input && !fli.focus" class="fa fa-th-large"></i>
     <i ng-if="fli.focus" class="fa fa-search"></i>
     <i ng-if="!!fli.route.input && !fli.focus" class="fa fa-{{icon}}"></i>

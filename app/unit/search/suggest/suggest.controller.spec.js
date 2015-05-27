@@ -1,7 +1,7 @@
 'use strict';
 
 describe('Suggest controller', function () {
-  var scope, input, mockGoogle, rootScope, controller;
+  var scope, input, mockGoogle, rootScope, controller, mockTrends;
 
   beforeEach(function () {
 
@@ -11,19 +11,23 @@ describe('Suggest controller', function () {
 
     mockGoogle = {
       autocomplete: jasmine.createSpy().and.returnValue({
-        success: jasmine.createSpy()
-      }),
-      trends: jasmine.createSpy().and.returnValue({
-        success: jasmine.createSpy()
+        success: jasmine.createSpy().and.returnValue({
+          error: jasmine.createSpy()
+        })
       })
     };
+
+    mockTrends = jasmine.createSpy().and.returnValue({
+      then: jasmine.createSpy()
+    })
 
   });
 
   function exequteController() {
     controller('search.suggest.ctrl', {
       $scope: scope,
-      google: mockGoogle
+      google: mockGoogle,
+      trends: mockTrends
     });
     rootScope.$apply();
   }
@@ -66,7 +70,7 @@ describe('Suggest controller', function () {
       expectedResponse = [[], expectedArr];
     exequteController();
     mockGoogle.autocomplete(input).success.calls.mostRecent().args[0](expectedResponse);
-    expect(mockGoogle.trends).toHaveBeenCalled();
+    expect(mockTrends).toHaveBeenCalled();
   });
 
 });

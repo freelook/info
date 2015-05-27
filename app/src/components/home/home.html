@@ -1,13 +1,13 @@
 <header>
   <md-progress-linear md-mode="indeterminate" ng-if="fli.progress"></md-progress-linear>
-  <fli-input flex icon="th-large" fli-href="/"></fli-input>
+  <fli-input flex icon="th-large"></fli-input>
 </header>
 
 <div id="home" layout="row" flex layout-align="center start">
 
   <div layout="row" layout-align="center start" layout-wrap flex>
 
-    <md-whiteframe ng-if="item.items.length" flex-sm="95" flex class="md-whiteframe-z1" layout="column" ng-repeat="item in widgets | filter:fli.route.input || ''">
+    <md-whiteframe ng-if="item.items.length" ng-hide="fli.focus" flex-sm="95" flex class="md-whiteframe-z1" layout="column" ng-repeat="item in widgets">
         <div>
           <span ng-bind="item.name"></span>
         </div>
@@ -15,6 +15,8 @@
           <a ng-repeat="i in item.items" ng-href="{{item.href(i)}}" ng-bind="i.input"></a>
         </div>
     </md-whiteframe>
+
+    <fli-search-suggest ng-hide="fli.focus"></fli-search-suggest>
 
   </div>
 

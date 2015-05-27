@@ -3,8 +3,7 @@ angular.module('freelook.info')
   .directive('fliInput', function () {
     return {
       scope: {
-        icon: '@',
-        fliHref: '@'
+        icon: '@'
       },
       templateUrl: 'components/_index/input/input.html',
       controller: 'input.ctrl'

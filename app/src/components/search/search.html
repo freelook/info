@@ -1,8 +1,8 @@
 <header>
   <md-progress-linear md-mode="indeterminate" ng-if="fli.progress"></md-progress-linear>
-  <fli-input class="search" flex icon="search" fli-href="/"></fli-input>
+  <fli-input class="search" flex icon="search"></fli-input>
 
-  <md-whiteframe flex class="md-whiteframe-z1 menu" layout="row" ng-show="fli.focus">
+  <md-whiteframe flex class="md-whiteframe-z1 menu" layout="row" ng-show="fli.focus && !fli.route.input">
     <a ng-href="{{'search?input=' + lucky}}">
       <i class="fa fa-search"></i>
       <span>Get lucky</span>
