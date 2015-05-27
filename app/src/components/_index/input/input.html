@@ -6,7 +6,7 @@
     <i ng-if="!!fli.route.input && !fli.focus" class="fa fa-{{icon}}"></i>
   </md-button>
 
-  <input flex id="input" type="search" ng-focus="focus()" ng-blur="blur()"
+  <input flex id="input" type="search" ng-focus="focus()" ng-blur="blur()" autocomplete="off"
          ng-model="fli.route.input"
          placeholder="{{placeholder}}">
 
