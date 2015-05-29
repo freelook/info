@@ -7,7 +7,12 @@ var $http = require('request'),
 var CONTENT_TYPES = {
     'text/html; charset=utf-8': 'utf8',
     'text/html; charset=utf8': 'utf8',
-    'text/html; charset=windows-1251': 'win1251'
+    'text/html;charset=utf-8': 'utf8',
+    'text/html;charset=utf8': 'utf8',
+    'text/html; charset=windows-1251': 'win1251',
+    'text/html; charset=windows1251': 'win1251',
+    'text/html;charset=windows-1251': 'win1251',
+    'text/html;charset=windows1251': 'win1251'
 };
 
 function getType(_type) {
