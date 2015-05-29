@@ -1,0 +1,11 @@
+footer {
+  position: relative;
+}
+
+footer img {
+  position: absolute;
+  right: 10px;
+  top: 25px;
+  outline: 0;
+  cursor: pointer;
+}
