@@ -7,7 +7,8 @@
 
   <div layout="row" layout-align="center start" layout-wrap flex>
 
-    <md-whiteframe ng-if="item.items.length" ng-hide="fli.focus" flex-sm="95" flex class="md-whiteframe-z1" layout="column" ng-repeat="item in widgets">
+    <widget ng-if="item.items.length" ng-hide="fli.focus" flex-sm="95" flex layout="column" ng-repeat="item in widgets">
+    <md-whiteframe class="md-whiteframe-z1">
         <div>
           <span ng-bind="item.name"></span>
         </div>
@@ -15,8 +16,9 @@
           <a ng-repeat="i in item.items" ng-href="{{item.href(i)}}" ng-bind="i.input"></a>
         </div>
     </md-whiteframe>
+    </widget>
 
-    <fli-search-suggest flex-sm="95" ng-hide="fli.focus"></fli-search-suggest>
+    <fli-search-suggest ng-hide="fli.focus" flex-sm="95"></fli-search-suggest>
 
   </div>
 
