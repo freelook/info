@@ -10,9 +10,9 @@ footer md-whiteframe {
 footer .donate {
   position: absolute;
   height: 55px;
-  padding: 3px 0 0 3px;
+  padding: 3px 0 0 1px;
   width: 90px;
-  color: #fff;
+  color: #ffffff;
   left: 5px;
   top: 5px;
   outline: 0;
@@ -20,13 +20,17 @@ footer .donate {
 }
 
 footer .donate .o {
-  color: green;
+  color: orange;
 }
 
 footer .donate .a {
-  color: orange;
+  color: green;
 }
 
 footer .donate .e {
   color: blue;
+}
+
+footer .heart {
+  color: brown;
 }
