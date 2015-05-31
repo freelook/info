@@ -1,9 +1,9 @@
 'use strict';
 angular
   .module('fli.look')
-  .factory('readability', function () {
+  .factory('readability', function ($rootScope) {
 
-    function init(document) {
+    function init(document, _title) {
       var dbg = function (s) {
         if (typeof console !== 'undefined' && false) {
           console.log('Readability: ' + s);
@@ -91,7 +91,7 @@ angular
               return readability.init(true);
             }
             else {
-              articleContent.innerHTML = '<p>Sorry, freelook.info was unable to show this page for content.';
+              articleContent.innerHTML = '';
             }
           }
 
@@ -128,7 +128,7 @@ angular
          **/
         getArticleTitle: function () {
           var articleTitle = document.createElement('H1');
-          articleTitle.innerHTML = document.title;
+          articleTitle.innerHTML = document.title || _title || '# ' + $rootScope.fli.route.input;
 
           return articleTitle;
         },
