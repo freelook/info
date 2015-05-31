@@ -6,15 +6,13 @@ angular
   function ($rootScope, $scope, $sce, api, read, full) {
 
     $scope.html = '';
-    $scope.images = [];
 
-    function setContent(content) {
-      if (content) {
-        if (content.html) {
-          $scope.html = full.get(content.html) || '';
-        } else if (content.content) {
-          $scope.html = full.link(content.content) || '';
-        }
+    function setContent(_content) {
+      var content = _content || {};
+      if (content.html) {
+        $scope.html = full.get(content.html) || '';
+      } else if (content.content) {
+        $scope.html = full.get(content.content, content.title) || '';
       }
     }
 

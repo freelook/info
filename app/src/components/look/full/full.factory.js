@@ -21,11 +21,11 @@ angular
       return CONFIG.ORIGIN + 'look?input=' + input + '&url=' + url;
     }
 
-    function _prepareHtml(html) {
+    function _prepareHtml(html, title) {
       var dom = parser.parseFromString(html, 'text/html'),
         $dom = $(dom);
 
-      readability.init(dom);
+      readability.init(dom, title);
       _fixLink($dom);
       _fixImg($dom);
 
@@ -61,6 +61,7 @@ angular
       var origin = _originLink();
       $dom.find('a').each(function (i, e) {
         var input = $(e).text() || '';
+        $(e).attr('target','_self');
         $(e).attr('href', function (i, href) {
           if (href) {
             switch (href.substr(0, 2)) {
@@ -77,19 +78,11 @@ angular
       });
     }
 
-    function link(html) {
-      var dom = parser.parseFromString(html, 'text/html'),
-        $dom = $(dom);
-      _fixLink($dom);
-      return $sce.trustAsHtml(dom.documentElement.innerHTML);
-    }
-
-    function get(html) {
-      return cache.get($location.url()) || _prepareHtml(html);
+    function get(html, title) {
+      return cache.get($location.url()) || _prepareHtml(html, title);
     }
 
     return {
-      link: link,
       get: get
     };
 
