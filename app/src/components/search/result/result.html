@@ -1,32 +1,9 @@
-<md-card class="md-whiteframe-z1" flex-sm="95" flex-gt-sm="40" flex-gt-md="30" flex-gt-lg="20" layout="column" ng-repeat="result in search.results">
+<fli-search-result-web ng-if="!fli.route.type"></fli-search-result-web>
+<fli-search-result-image ng-if="fli.route.type === 'image'"></fli-search-result-image>
 
-  <a ng-href="{{href(result.url)}}" ng-if="!fli.route.type">
-    <img class="md-card-image" ng-if="!!result.richSnippet.cseImage.src" ng-src="{{result.richSnippet.cseImage.src}}" fli-err>
-    <div class="md-card-image header" ng-if="!result.richSnippet.cseImage.src"></div>
-  </a>
-  <md-card-content ng-if="!fli.route.type">
-    <a ng-href="{{href(result.url)}}" ng-bind-html="result.title"></a>
-    <div flex ng-bind-html="result.content"></div>
-  </md-card-content>
 
-  <a ng-href="{{href(result.originalContextUrl)}}" ng-if="fli.route.type === 'image'">
-  <img class="md-card-image" ng-src="{{result.url}}" fli-err>
-  </a>
-  <md-card-content ng-if="fli.route.type === 'image'">
-    <a ng-href="{{href(result.originalContextUrl)}}" ng-bind-html="result.title"></a>
-    <div flex ng-bind-html="result.content"></div>
-  </md-card-content>
 
-  <md-card-footer layout="row" layout-align="end center">
-    <div class="link" title="{{'SHARE - '+ fli.route.input}}">
-      <i class="fa fa-share-alt"></i>
-    </div>
-    <div class="link" ng-click="link(result.url)" title="{{'VIEW ALL - '+ fli.route.input}}">
-      <i class="fa fa-external-link"></i>
-    </div>
-  </md-card-footer>
 
-</md-card>
 
 
 

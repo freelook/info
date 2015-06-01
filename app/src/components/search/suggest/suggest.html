@@ -3,6 +3,6 @@
     <span>Suggestion</span>
   </div>
   <div class="result">
-    <a ng-repeat="suggest in suggested track by $index" ng-href="{{'search?input=' + suggest}}" ng-bind="suggest"></a>
+    <a ng-repeat="suggest in suggested track by $index" ng-href="{{shref(suggest)}}" ng-bind="suggest"></a>
   </div>
 </md-whiteframe>

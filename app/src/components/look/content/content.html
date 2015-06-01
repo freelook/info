@@ -1,8 +1,13 @@
-<md-card ng-if="!!html" layout="column">
+<md-card ng-if="!!html">
   <md-card-content>
+    <panel layout="row" layout-align="end center">
+    <div class="link" ng-click="link(share(fli.route.url))" title="{{'SHARE - '+ fli.route.input}}">
+      <i class="fa fa-share-alt"></i>
+    </div>
     <div class="link" ng-click="link(fli.route.url)" title="{{'VIEW ALL - '+ fli.route.input}}">
       <i class="fa fa-external-link"></i>
     </div>
+    </panel>
     <div ng-bind-html="html"></div>
   </md-card-content>
 </md-card>

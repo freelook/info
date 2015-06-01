@@ -3,7 +3,7 @@ fli-look-content md-card h3 {
 }
 
 fli-look-content .link {
-  float: right;
+  margin: 0 7px 0 7px;
 }
 
 

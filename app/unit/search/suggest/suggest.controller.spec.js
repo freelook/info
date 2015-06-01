@@ -4,7 +4,7 @@ describe('Suggest controller', function () {
   var scope, input, mockGoogle, rootScope, controller, mockTrends;
 
   beforeEach(function () {
-
+    module('freelook.info');
     module('fli.search');
 
     input = 'xxx';

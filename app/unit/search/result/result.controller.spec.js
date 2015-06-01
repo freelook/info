@@ -1,10 +1,10 @@
 'use strict';
 
 describe('Result controller', function () {
-  var scope, input, mockGoogle, mockYandex, rootScope, controller;
+  var scope, input, mockGoogle, mockYandex, rootScope, controller, _CONFIG;
 
   beforeEach(function () {
-
+    module('freelook.info');
     module('fli.search');
 
     input = 'xxx';
@@ -35,12 +35,13 @@ describe('Result controller', function () {
     controller('search.result.ctrl', {
       $scope: scope,
       google: mockGoogle,
-      yandex: mockYandex
+      yandex: mockYandex,
+      CONFIG: _CONFIG
     });
     rootScope.$apply();
   }
 
-  beforeEach(inject(function ($rootScope, $controller) {
+  beforeEach(inject(function ($rootScope, $controller, CONFIG) {
 
     $rootScope.fli = {
       route: {
@@ -51,7 +52,7 @@ describe('Result controller', function () {
     rootScope = $rootScope;
     scope = $rootScope.$new();
     controller = $controller;
-
+    _CONFIG = CONFIG;
   }));
 
   it('should call google service if route defined', function () {

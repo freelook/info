@@ -10,9 +10,11 @@ angular
     function _convertHtMLtoJS(html) {
       var js = {results: []};
       $.each($($.parseHTML(html)).find('.b-serp-item'), function (i, e) {
+        var _content = $(e).find('.b-serp-item__text').html();
         js.results.push({
           title: $(e).find('.b-serp-item__title a span').html(),
-          content: $(e).find('.b-serp-item__text').html(),
+          content: _content,
+          contentNoFormatting: _content,
           url: $(e).find('.b-serp-item__title a').attr('href')
         });
       });

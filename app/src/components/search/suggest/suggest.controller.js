@@ -2,9 +2,13 @@
 angular
   .module('fli.search')
   .controller('search.suggest.ctrl',
-  function ($scope, google, trends) {
+  function ($scope, CONFIG, google, trends) {
 
     $scope.suggested = [];
+
+    $scope.shref = function(suggest) {
+      return CONFIG.ORIGIN + 'search?input=' + suggest;
+    };
 
     function showTrends() {
       trends().then(function (trends) {
