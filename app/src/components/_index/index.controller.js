@@ -2,7 +2,7 @@
 
 angular
   .module('freelook.info')
-  .controller('index.ctrl', function ($rootScope, $window, $route, $location, DEFAULT_TITLE, DEFAULT_DESCRIPTION) {
+  .controller('index.ctrl', function ($rootScope, $route, $location, DEFAULT_TITLE, DEFAULT_DESCRIPTION) {
 
     $rootScope.fli = {};
     $rootScope.fli.title = DEFAULT_TITLE;
@@ -23,7 +23,7 @@ angular
 
     $rootScope.link = function (href) {
       if (href) {
-        $window.location.href = href;
+        $('<a>').attr('href', href).attr('target', '_blank')[0].click();
       }
     };
 

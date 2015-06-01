@@ -1,5 +1,8 @@
 <md-card ng-if="!!html" layout="column">
   <md-card-content>
+    <div class="link" ng-click="link(fli.route.url)" title="{{'VIEW ALL - '+ fli.route.input}}">
+      <i class="fa fa-external-link"></i>
+    </div>
     <div ng-bind-html="html"></div>
   </md-card-content>
 </md-card>

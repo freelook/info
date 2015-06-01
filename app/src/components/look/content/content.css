@@ -1,10 +1,9 @@
-fli-look-content md-card {
-  background: #fff !important;
+fli-look-content md-card h3 {
+  text-overflow: ellipsis;
 }
 
-fli-look-content md-card h3 {
-  overflow: hidden;
-  text-overflow: ellipsis;
+fli-look-content .link {
+  float: right;
 }
 
 

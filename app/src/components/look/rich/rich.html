@@ -1,0 +1,10 @@
+<md-card layout-sm="column" layout="row">
+  <img ng-if="!!rich.img[0]" class="md-card-image" ng-src="{{rich.img[0]}}" ng-click="link(fli.route.url)" title="{{'VIEW ALL - '+ fli.route.input}}">
+  <md-card-content>
+    <div ng-if="rich.content" class="content" ng-bind-html="rich.content"></div>
+    <div class="link" ng-click="link(fli.route.url)">
+      <i class="fa fa-external-link"></i>
+      <span>VIEW ALL</span>
+    </div>
+  </md-card-content>
+</md-card>

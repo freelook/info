@@ -6,7 +6,7 @@
 	width: 100%;
 }
 #readInner {
-	line-height: 1.4em;
+	line-height: 1.2em;
 	margin: 1em auto;
 }
 #readInner a {
@@ -38,32 +38,6 @@
 }
 
 /* ---------------- USER-CONFIGURABLE STYLING --------------------- */
-
-/* Size options */
-
-.size-small {
-	font-size: 12px;
-}
-.size-medium {
-	font-size: 18px;
-}
-.size-large {
-	font-size: 26px;
-}
-.size-x-large {
-	font-size: 34px;
-}
-/* Style options */
-
-.style-newspaper {
-	font-family:"Times New Roman", Times, serif;
-	background: #FFF;
-	color: #222;
-}
-.style-newspaper h1 {
-	text-transform:capitalize;
-	font-family: Georgia, "Times New Roman", Times, serif;
-}
 
 /* Begin Typekit Styles */
 

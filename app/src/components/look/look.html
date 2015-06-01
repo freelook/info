@@ -5,7 +5,10 @@
 
 <div layout="row" id="look" flex layout-align="center start">
 
-  <fli-look-content ng-hide="fli.focus" flex flex-gt-md="75"></fli-look-content>
+  <div ng-hide="fli.focus" flex flex-gt-md="75">
+    <fli-look-rich></fli-look-rich>
+    <fli-look-content></fli-look-content>
+  </div>
 
 </div>
 

@@ -21,6 +21,12 @@ md-whiteframe {
   margin: 5px;
 }
 
+.link {
+  color: #003399;
+  cursor: pointer;
+  outline: 0;
+}
+
 
 
 

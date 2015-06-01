@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('fli.search')
-  .factory('yandex', function ($q, api, toast) {
+  .factory('yandex', function ($q, $http, api, toast) {
 
     function _getUrl(q) {
       return 'https://yandex.com/sitesearch?text=' + q + '&searchid=2192226&frame=1';
@@ -42,8 +42,16 @@ angular
       }
     }
 
+    function rich(url) {
+      if (url) {
+        var yapi = 'http://rca.yandex.com/?key=rca.1.1.20150601T091020Z.b4512946bda59899.d67a268370439555bf6f8e3c5bb42c5077130bb0&url=' + url + '&callback=JSON_CALLBACK';
+        return $http.jsonp(yapi);
+      }
+    }
+
     return {
-      search: search
+      search: search,
+      rich: rich
     };
 
   });
