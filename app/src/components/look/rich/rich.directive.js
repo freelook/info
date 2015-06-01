@@ -2,7 +2,7 @@
 angular.module('fli.look')
   .directive('fliLookRich', function () {
     return {
-      controller: 'rich.content.ctrl',
+      controller: 'look.rich.ctrl',
       templateUrl: 'components/look/rich/rich.html'
     };
 
