@@ -4,20 +4,17 @@ var $http = require('request'),
     iconv = require('iconv-lite'),
     $q = require('q');
 
-var CONTENT_TYPES = {
-    'text/html; charset=utf-8': 'utf8',
-    'text/html; charset=utf8': 'utf8',
-    'text/html;charset=utf-8': 'utf8',
-    'text/html;charset=utf8': 'utf8',
-    'text/html; charset=windows-1251': 'win1251',
-    'text/html; charset=windows1251': 'win1251',
-    'text/html;charset=windows-1251': 'win1251',
-    'text/html;charset=windows1251': 'win1251'
-};
-
 function getType(_type) {
-    var type = _type || '';
-    return CONTENT_TYPES[type.toLowerCase()]
+    var type = _type || '',
+        fixedType = type.replace(/\s|-/gi, '');
+
+    if (/utf8/i.test(fixedType)) {
+        return 'utf8'
+    }
+
+    if (/windows1251/i.test(fixedType)) {
+        return 'win1251'
+    }
 }
 
 module.exports = function (req, res) {
