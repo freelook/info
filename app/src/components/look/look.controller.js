@@ -9,8 +9,8 @@ angular
     $location.search({
       input: $routeParams.input,
       url: $routeParams.url || '',
-      metaimg: $routeParams.meta_img,
-      metatext: $routeParams.meta_text
+      metaimg: $routeParams.metaimg,
+      metatext: $routeParams.metatext
     })
       .replace();
 
