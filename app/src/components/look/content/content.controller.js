@@ -14,8 +14,8 @@ angular
 
     function setContent(_content) {
       var content = _content || {};
-      if (content.html) {
-        $scope.html = full.get(content.html) || '';
+      if (typeof content === 'string') {
+        $scope.html = full.get(content) || '';
       } else if (content.content) {
         $scope.html = full.get(content.content, content.title) || '';
       }
