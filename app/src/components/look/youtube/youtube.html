@@ -1,10 +1,40 @@
-<md-card ng-if="code">
-  <md-card-content>
-    <iframe layout-fill
-            ng-src="{{youtube()}}"
-            frameborder="0"
-            height="300"
-            allowfullscreen>
-    </iframe>
-  </md-card-content>
-</md-card>
+<div>
+    <md-card>
+        <md-card-content layout="column">
+            <iframe layout-fill
+                    ng-src="{{youtube()}}"
+                    frameborder="0"
+                    height="300"
+                    allowfullscreen>
+            </iframe>
+        </md-card-content>
+    </md-card>
+        <md-card-content layout="row" layout-align="center start" layout-wrap>
+            <md-card class="md-whiteframe-z1" flex-sm="95" flex-gt-sm="40" flex-gt-md="30" flex-gt-lg="20"
+                     layout="column"
+                     ng-repeat="result in results">
+                <a ng-href="{{href(result.url)}}">
+                    <img class="md-card-image" ng-if="!!result.snippet.thumbnails.default.url"
+                         ng-src="{{result.snippet.thumbnails.default.url}}" fli-err>
+
+                    <div class="md-card-image header" ng-if="!result.snippet.thumbnails.default.url"></div>
+                </a>
+                <md-card-content>
+                    <a href="" ng-bind-html="result.snippet.title"></a>
+
+                    <div flex ng-bind-html="result.snippet.description"></div>
+                </md-card-content>
+                <md-card-footer layout="row" layout-align="end center">
+                    <div class="link"
+                         ng-click="link(share(result.url, result.richSnippet.cseImage.src, result.contentNoFormatting))"
+                         title="{{'SHARE - '+ fli.route.input}}">
+                        <i class="fa fa-share-alt"></i>
+                    </div>
+                    <div class="link" ng-click="link(result.url)" title="{{'VIEW ALL - '+ fli.route.input}}">
+                        <i class="fa fa-external-link"></i>
+                    </div>
+                </md-card-footer>
+            </md-card>
+        </md-card-content>
+</div>
+

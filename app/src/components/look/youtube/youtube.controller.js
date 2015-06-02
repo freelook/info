@@ -3,7 +3,7 @@
 angular
   .module('fli.look')
   .controller('look.youtube.ctrl',
-  function ($window, $scope, $rootScope, $sce) {
+  function ($window, $scope, $rootScope, $sce,youtube) {
 
     $scope.code = '';
 
@@ -19,7 +19,14 @@ angular
       if (/youtube/i.test(type.href)) {
         $scope.code = code('v', type.search);
       }
+        youtube.search('test').success(function(data){
+            $scope.results = data.items;
+        });
+
+
     }
+
+
 
     $scope.youtube = function () {
       return $sce.trustAsResourceUrl('https://www.youtube.com/embed/' + $scope.code);
