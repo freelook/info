@@ -57,12 +57,10 @@ module.exports = function(db) {
 	if (process.env.NODE_ENV === 'development') {
 		// Enable logger (morgan)
 		app.use(morgan('dev'));
-
-		// Disable views cache
-		app.set('view cache', false);
-	} else if (process.env.NODE_ENV === 'production') {
-		app.locals.cache = 'memory';
 	}
+
+	// Disable views cache
+	app.set('view cache', false);
 
 	// Request body parsing middleware should be above methodOverride
 	app.use(bodyParser.urlencoded());
