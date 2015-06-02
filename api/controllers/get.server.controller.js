@@ -1,8 +1,7 @@
 'use strict';
 
 var $http = require('request'),
-    iconv = require('iconv-lite'),
-    $q = require('q');
+    iconv = require('iconv-lite');
 
 function getType(_type) {
     var type = _type || '',
