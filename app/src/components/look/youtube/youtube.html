@@ -1,8 +1,8 @@
 <div>
     <md-card>
-        <md-card-content layout="column">
+        <md-card-content layout="column" ng-if="type=='watch'">
             <iframe layout-fill
-                    ng-src="{{youtube()}}"
+                    ng-src="{{video()}}"
                     frameborder="0"
                     height="300"
                     allowfullscreen>

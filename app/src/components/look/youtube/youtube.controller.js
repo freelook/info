@@ -1,39 +1,27 @@
 'use strict';
 
 angular
-  .module('fli.look')
-  .controller('look.youtube.ctrl',
-  function ($window, $scope, $rootScope, $sce,youtube) {
+    .module('fli.look')
+    .controller('look.youtube.ctrl',
+    function ($window, $scope, $rootScope, $sce, youtube) {
 
-    $scope.code = '';
+        $scope.type = '';
+        $scope.results = [];
+        function init() {
+            $scope.type = youtube.define($rootScope.fli.route.url);
 
-    function code(name, search) {
-      var match = (new RegExp('[?&]' + name + '=([^&]*)')).exec(search);
-      return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
-    }
+            alert($scope.type);
 
-    function init(url) {
-      var type = $window.document.createElement('a');
-      type.href = decodeURIComponent(url);
+            $scope.video = function () {
+                return youtube.video($rootScope.fli.route.url);
+            };
 
-      if (/youtube/i.test(type.href)) {
-        $scope.code = code('v', type.search);
-      }
-        youtube.search('test').success(function(data){
-            $scope.results = data.items;
-        });
+            $scope.results = youtube.get($scope.type);
+        }
+
+        init();
 
 
-    }
-
-
-
-    $scope.youtube = function () {
-      return $sce.trustAsResourceUrl('https://www.youtube.com/embed/' + $scope.code);
-    };
-
-    init($rootScope.fli.route.url);
-
-  });
+    });
 
 

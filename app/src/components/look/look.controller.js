@@ -3,8 +3,8 @@
 angular
   .module('fli.look')
   .controller('look.ctrl',
-  function ($rootScope, $routeParams, $location, $mdMedia, DEFAULT_TITLE, DEFAULT_DESCRIPTION,
-            local, LOOK_KEY) {
+  function ($scope,$rootScope, $routeParams, $location, $mdMedia, DEFAULT_TITLE, DEFAULT_DESCRIPTION,
+            local, LOOK_KEY,look) {
 
     $location.search({
       input: $routeParams.input,
@@ -25,5 +25,7 @@ angular
         url: $rootScope.fli.route.url
       }, 10);
     }
+
+    $scope.resource = look.define($rootScope.fli.route.url);
 
   });
