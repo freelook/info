@@ -2,7 +2,7 @@
     <md-card>
         <md-card-content layout="column" ng-if="type=='watch'">
             <iframe layout-fill
-                    ng-src="{{video()}}"
+                    ng-src="{{videoEmbed()}}"
                     frameborder="0"
                     height="300"
                     allowfullscreen>
@@ -13,14 +13,12 @@
             <md-card class="md-whiteframe-z1" flex-sm="95" flex-gt-sm="40" flex-gt-md="30" flex-gt-lg="20"
                      layout="column"
                      ng-repeat="result in results">
-                <a ng-href="{{href(result.url)}}">
+                <a ng-href="{{href(videoUrl(result.id.videoId))}}">
                     <img class="md-card-image" ng-if="!!result.snippet.thumbnails.default.url"
                          ng-src="{{result.snippet.thumbnails.default.url}}" fli-err>
-
-                    <div class="md-card-image header" ng-if="!result.snippet.thumbnails.default.url"></div>
                 </a>
                 <md-card-content>
-                    <a href="" ng-bind-html="result.snippet.title"></a>
+                    <a ng-href="{{href(videoUrl(result.id.videoId))}}" ng-bind-html="result.snippet.title"></a>
 
                     <div flex ng-bind-html="result.snippet.description"></div>
                 </md-card-content>

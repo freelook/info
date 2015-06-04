@@ -5,21 +5,20 @@ angular
     .controller('look.youtube.ctrl',
     function ($window, $scope, $rootScope, $sce, youtube) {
 
-        $scope.type = '';
-        $scope.results = [];
-        function init() {
-            $scope.type = youtube.define($rootScope.fli.route.url);
+        $scope.type = youtube.define($rootScope.fli.route.url);
 
-            alert($scope.type);
+        $scope.videoEmbed = function () {
+            return youtube.videoEmbed($rootScope.fli.route.url);
+        };
 
-            $scope.video = function () {
-                return youtube.video($rootScope.fli.route.url);
-            };
+        youtube.get($scope.type, $rootScope.fli.route.url).then(function (results) {
+            $scope.results = results;
+        });
+        $scope.href = function (url) {
+            return CONFIG.ORIGIN + 'look?input=' + $scope.fli.route.input + '&url=' + encodeURIComponent(url);
+        };
 
-            $scope.results = youtube.get($scope.type);
-        }
-
-        init();
+        $scope.videoUrl = youtube.videoUrl;
 
 
     });
