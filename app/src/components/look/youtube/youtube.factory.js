@@ -3,23 +3,23 @@
 angular
     .module('fli.look')
     .factory('youtube',
-    function ($sce, $http, $q,CONFIG) {
+    function ($sce, $http, $q,$window) {
         var YAPI = {
-                data: "https://www.googleapis.com/youtube/v3/"
+                data: 'https://www.googleapis.com/youtube/v3/'
             },
             APP_KEY = 'AIzaSyB0wq4qIQKeHX3aTScWgbA-BTRwp40NUIM',
             _types = ['watch', 'channel', 'user'];
 
         function _extract(url) {
-            var a = document.createElement('a'),
+            var a = $window.document.createElement('a'),
                 obj = {}, pathnames;
             a.href = url;
-            pathnames = a.pathname.split('/').filter(function(item){
+            pathnames = a.pathname.split('/').filter(function (item) {
                 return item;
             });
             obj.sections = {};
             for (var i = 0; i <= pathnames.length; i = i + 2) {
-                if (i % 2 == 0 && pathnames[i]) {
+                if (i % 2 === 0 && pathnames[i]) {
                     obj.sections[pathnames[i]] = pathnames[i + 1];
                 }
             }
@@ -45,10 +45,6 @@ angular
             return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
         }
 
-        function playlist() {
-            return $http.get(YAPI.data + 'search?part=snippet,id&key=' + APP_KEY + '&channelId=' + channelId);
-
-        }
 
         function videoEmbed(url) {
             var extracted = _extract(url);
@@ -62,22 +58,23 @@ angular
         function _channel(channelId) {
             return $http.get(YAPI.data + 'search?part=snippet,id&key=' + APP_KEY + '&channelId=' + channelId);
         }
-        function _user(username){
+
+        function _user(username) {
             return $http.get(YAPI.data + 'channels?part=snippet,id&key=' + APP_KEY + '&forUsername=' + username);
         }
 
-        function search(q) {
-            return $http.get(YAPI.data + 'search?part=snippet,id&key=' + APP_KEY + '&q=' + q);
-        }
+        //function _search(q) {
+        //    return $http.get(YAPI.data + 'search?part=snippet,id&key=' + APP_KEY + '&q=' + q);
+        //}
 
-        function get(type,url) {
+        function get(type, url) {
             var defer = $q.defer(),
                 extracted = _extract(url);
             switch (type) {
                 case 'user':
-                    _user(extracted.sections['user']).then(function(data){
-                        if(data.data && data.data.items){
-                            _channel(data.data.items[0]['id']).then(function(data){
+                    _user(extracted.sections.user).then(function (data) {
+                        if (data.data && data.data.items) {
+                            _channel(data.data.items[0].id).then(function (data) {
                                 defer.resolve(data.data.items);
                             });
                         }
@@ -87,7 +84,7 @@ angular
                     });
                     break;
                 case 'channel':
-                    _channel(extracted.sections['user']).then(function(data){
+                    _channel(extracted.sections.user).then(function (data) {
                         defer.resolve(data);
                     });
                     break;
@@ -102,7 +99,7 @@ angular
             define: define,
             get: get,
             videoEmbed: videoEmbed,
-            videoUrl:videoUrl
-        }
+            videoUrl: videoUrl
+        };
     })
 ;

@@ -3,7 +3,7 @@
 angular
     .module('fli.look')
     .controller('look.youtube.ctrl',
-    function ($window, $scope, $rootScope, $sce, youtube) {
+    function ($window, $scope, $rootScope, $sce, youtube,CONFIG) {
 
         $scope.type = youtube.define($rootScope.fli.route.url);
 
