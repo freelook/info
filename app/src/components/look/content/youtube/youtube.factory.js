@@ -3,17 +3,20 @@
 angular
   .module('freelook.info')
   .factory('youtube',
-  function ($sce, $http, $q, $window) {
+  function ($sce, $http, $q, url) {
+
     var YAPI = {
         data: 'https://www.googleapis.com/youtube/v3/'
       },
-      APP_KEY = 'AIzaSyDBAHujlSftqeYB03a0FjtwLBsQ2nA4DQM',
-      _types = ['watch', 'channel', 'user'];
+      APP_KEY = 'AIzaSyDBAHujlSftqeYB03a0FjtwLBsQ2nA4DQM';
 
-    function _extract(url) {
-      var a = $window.document.createElement('a'),
+    function type(_url) {
+      return url.parse(_url).pathname;
+    }
+
+    function _extract(_url) {
+      var a = url.parse(_url),
         obj = {}, pathnames;
-      a.href = url;
       pathnames = a.pathname.split('/').filter(function (item) {
         return item;
       });
@@ -27,26 +30,13 @@ angular
       return obj;
     }
 
-    function define(url) {
-      var extracted = _extract(url);
-      if (extracted.sections) {
-        for (var i in _types) {
-          if (Object.keys(extracted.sections).indexOf(_types[i]) !== -1) {
-            return _types[i];
-          }
-        }
-      }
-      return false;
-
-    }
-
     function code(name, search) {
       var match = (new RegExp('[?&]' + name + '=([^&]*)')).exec(search);
       return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
     }
 
 
-    function videoEmbed(url) {
+    function watch(url) {
       var extracted = _extract(url);
       return $sce.trustAsResourceUrl('https://www.youtube.com/embed/' + code('v', extracted.search));
     }
@@ -95,10 +85,14 @@ angular
       return defer.promise;
     }
 
+    function user(_url) {
+      return get('user', _url);
+    }
+
     return {
-      define: define,
-      get: get,
-      videoEmbed: videoEmbed,
+      user: user,
+      watch: watch,
+      type: type,
       videoUrl: videoUrl
     };
   })

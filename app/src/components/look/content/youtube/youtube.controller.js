@@ -3,24 +3,9 @@
 angular
   .module('fli.look')
   .controller('look.content.youtube.ctrl',
-  function ($window, $scope, $rootScope, $sce, youtube, CONFIG) {
+  function ($rootScope, $scope, youtube) {
 
-    $scope.type = youtube.define($rootScope.fli.route.url);
-
-    $scope.videoEmbed = function () {
-      return youtube.videoEmbed($rootScope.fli.route.url);
-    };
-
-    youtube.get($scope.type, $rootScope.fli.route.url)
-      .then(function (results) {
-        $scope.results = results;
-      });
-
-    $scope.href = function (url) {
-      return CONFIG.ORIGIN + 'look?input=' + $scope.fli.route.input + '&url=' + encodeURIComponent(url);
-    };
-
-    $scope.videoUrl = youtube.videoUrl;
+    $scope.youtubeType = youtube.type($rootScope.fli.route.url);
 
   });
 
