@@ -5,7 +5,8 @@ angular
   .controller('look.content.youtube.user.ctrl',
   function ($rootScope, $scope, youtube, CONFIG) {
 
-    youtube.user($rootScope.fli.route.url)
+    youtube
+      .user($scope.site)
       .then(function (results) {
         $scope.results = results;
       });

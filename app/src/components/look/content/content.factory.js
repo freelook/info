@@ -6,7 +6,7 @@ angular
 
     function site(_url) {
       var link = url.parse(decodeURIComponent(_url)) || {};
-      return link.host;
+      return link;
     }
 
     return {

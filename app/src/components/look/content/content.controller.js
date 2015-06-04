@@ -5,7 +5,7 @@ angular
   .controller('look.content.ctrl',
   function ($rootScope, $scope, content) {
 
-    $scope.site = content.site($rootScope.fli.route.url);
+    $scope.site = content.site(decodeURIComponent($rootScope.fli.route.url)) || {};
 
   });
 
