@@ -7,7 +7,7 @@ angular
         var YAPI = {
                 data: 'https://www.googleapis.com/youtube/v3/'
             },
-            APP_KEY = 'AIzaSyB0wq4qIQKeHX3aTScWgbA-BTRwp40NUIM',
+            APP_KEY = 'AIzaSyDBAHujlSftqeYB03a0FjtwLBsQ2nA4DQM',
             _types = ['watch', 'channel', 'user'];
 
         function _extract(url) {
