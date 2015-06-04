@@ -5,8 +5,8 @@ angular
   .factory('content', function (url) {
 
     function site(_url) {
-      var site = url.parse(decodeURIComponent(_url));
-      return site.host;
+      var link = url.parse(decodeURIComponent(_url)) || {};
+      return link.host;
     }
 
     return {
