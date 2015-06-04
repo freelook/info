@@ -29,7 +29,7 @@ angular
     }
 
     function videoUrl(id) {
-      return $sce.trustAsResourceUrl('https://www.youtube.com/watch?v=' + id);
+      return encodeURIComponent('https://www.youtube.com/watch?v=' + id);
     }
 
     function _channel(channelId) {

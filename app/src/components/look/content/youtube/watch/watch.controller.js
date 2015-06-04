@@ -3,10 +3,10 @@
 angular
   .module('fli.look')
   .controller('look.content.youtube.watch.ctrl',
-  function ($rootScope, $scope, youtube) {
+  function ($scope, youtube) {
 
     $scope.watch = function () {
-      return youtube.watch($rootScope.fli.route.url);
+      return youtube.watch($scope.site);
     };
 
   });
