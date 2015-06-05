@@ -1,0 +1,6 @@
+fli-look-content-youtube-user .md-card-image {
+  max-height: 100px;
+  min-height: 100px;
+  margin: 7px;
+  cursor: pointer;
+}

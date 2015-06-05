@@ -3,7 +3,7 @@
 angular
   .module('fli.look')
   .controller('look.ctrl',
-  function ($rootScope, $routeParams, $location, $mdMedia, DEFAULT_TITLE, DEFAULT_DESCRIPTION,
+  function ($scope, $rootScope, $routeParams, $location, $mdMedia, DEFAULT_TITLE, DEFAULT_DESCRIPTION,
             local, LOOK_KEY) {
 
     $location.search({

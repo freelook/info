@@ -1,0 +1,13 @@
+<div layout="column">
+  <md-card layout="row" layout-sm="column" ng-repeat="result in ytbUser.results">
+    <div>
+    <a ng-href="{{ytbUser.href(ytbUser.watchUrl(result.id.videoId))}}">
+      <img class="md-card-image" ng-if="!!result.snippet.thumbnails.medium.url" ng-src="{{result.snippet.thumbnails.medium.url}}" fli-err>
+    </a>
+    </div>
+    <md-card-content>
+      <a ng-href="{{ytbUser.href(ytbUser.watchUrl(result.id.videoId))}}" ng-bind-html="result.snippet.title"></a>
+      <div ng-bind-html="result.snippet.description"></div>
+    </md-card-content>
+  </md-card>
+</div>

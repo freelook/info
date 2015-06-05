@@ -1,6 +1,6 @@
 'use strict';
 angular
-  .module('fli.search')
+  .module('freelook.info')
   .factory('yandex', function ($q, $http, api, toast) {
 
     function _getUrl(q) {

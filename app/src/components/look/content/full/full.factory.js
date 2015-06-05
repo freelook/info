@@ -3,22 +3,21 @@
 angular
   .module('fli.look')
   .factory('full',
-  function ($sce, $window, $location, $rootScope, $cacheFactory, readability, CONFIG) {
+  function ($sce, $location, $rootScope, $cacheFactory, readability, CONFIG, url) {
 
     var cache = $cacheFactory('full'),
       parser = new window.DOMParser();
 
     function _originLink() {
-      var link = $window.document.createElement('a');
-      link.href = decodeURIComponent($rootScope.fli.route.url);
+      var link = url.parse(decodeURIComponent($rootScope.fli.route.url));
       return link.protocol + '//' + link.host;
     }
 
-    function _fliUrl(url, input) {
+    function _fliUrl(_url, input) {
       if (!input) {
-        return CONFIG.ORIGIN + 'look?url=' + url;
+        return CONFIG.ORIGIN + 'look?url=' + _url;
       }
-      return CONFIG.ORIGIN + 'look?input=' + input + '&url=' + url;
+      return CONFIG.ORIGIN + 'look?input=' + input + '&url=' + _url;
     }
 
     function _prepareHtml(html, title) {
@@ -61,7 +60,7 @@ angular
       var origin = _originLink();
       $dom.find('a').each(function (i, e) {
         var input = $(e).text() || '';
-        $(e).attr('target','_self');
+        $(e).attr('target', '_self');
         $(e).attr('href', function (i, href) {
           if (href) {
             switch (href.substr(0, 2)) {
