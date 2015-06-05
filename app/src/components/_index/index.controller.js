@@ -27,6 +27,13 @@ angular
       }
     };
 
+    $rootScope.is = function (site, type) {
+      if (site && type) {
+        return (new RegExp(type)).test(site);
+      }
+      return false;
+    };
+
   })
   .constant('DEFAULT_TITLE', 'FLI - free look at info')
   .constant('DEFAULT_DESCRIPTION', 'Your personal information manager. Just look what you need.');

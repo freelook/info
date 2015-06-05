@@ -2,7 +2,7 @@
 
 angular
   .module('fli.look')
-  .controller('look.rich.ctrl',
+  .controller('look.content.rich.ctrl',
   function ($rootScope, $scope, yandex) {
 
     $scope.rich = {};
