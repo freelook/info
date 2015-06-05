@@ -3,19 +3,22 @@
 angular
   .module('fli.look')
   .controller('look.content.youtube.user.ctrl',
-  function ($rootScope, $scope, youtube, CONFIG) {
+  function ($rootScope, $scope, youtube, CONFIG, url) {
+
+    var vm = this,
+      userId = url.extract('/user/:id', $scope.site.pathname).id;
 
     youtube
-      .user($scope.site)
+      .user(userId)
       .then(function (results) {
-        $scope.results = results;
+        vm.results = results;
       });
 
-    $scope.href = function (url) {
+    vm.href = function (url) {
       return CONFIG.ORIGIN + 'look?input=' + $scope.fli.route.input + '&url=' + url;
     };
 
-    $scope.videoUrl = youtube.videoUrl;
+    vm.watchUrl = youtube.watchUrl;
 
   });
 
