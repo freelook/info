@@ -5,7 +5,7 @@ describe('Yandex', function () {
   var sut, mockApi, mockToast;
 
   beforeEach(function () {
-    module('fli.search');
+    module('freelook.info');
 
     mockApi = {
       get: jasmine.createSpy().and.returnValue({

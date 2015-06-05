@@ -1,6 +1,6 @@
 'use strict';
 angular
-  .module('fli.search')
+  .module('freelook.info')
   .factory('google', function ($http) {
 
     var GAPI = {
