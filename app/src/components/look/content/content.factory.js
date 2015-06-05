@@ -5,8 +5,9 @@ angular
   .factory('content', function (url) {
 
     function site(_url) {
-      var link = url.parse(decodeURIComponent(_url)) || {};
-      return link;
+      var link = url.parse(decodeURIComponent(_url)) || {},
+        name = url.extract('(:subdomain.):domain.:tld(/*)', link.hostname) || {};
+      return angular.extend(link, name);
     }
 
     return {

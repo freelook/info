@@ -1,4 +1,4 @@
 <fli-look-content-rich></fli-look-content-rich>
-<fli-look-content-youtube ng-if="is(site.hostname, 'youtube')"></fli-look-content-youtube>
-<fli-look-content-full></fli-look-content-full>
+<fli-look-content-youtube ng-if="is(site.domain, 'youtube')"></fli-look-content-youtube>
+<fli-look-content-full ng-if="!is(site.domain, content.supportedSites)"></fli-look-content-full>
 
