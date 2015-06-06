@@ -13,7 +13,7 @@ angular
     vm.selected = 0;
 
     vm.href = function (type) {
-      var href = CONFIG.ORIGIN + '/search?input=' + $scope.fli.route.input;
+      var href = CONFIG.ORIGIN + 'search?input=' + $scope.fli.route.input;
       if (type) {
         href += '&type=' + type;
       }
