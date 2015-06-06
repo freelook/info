@@ -2,7 +2,7 @@
 angular
   .module('freelook.info')
   .controller('input.ctrl',
-  function ($rootScope, $scope, $timeout, $mdBottomSheet, CONFIG, DEFAULT_PLACEHOLDER) {
+  function ($rootScope, $scope, $timeout, $mdBottomSheet, $location, CONFIG, DEFAULT_PLACEHOLDER) {
 
     $scope.placeholder = DEFAULT_PLACEHOLDER;
     $rootScope.fli.focus = 0;
@@ -10,7 +10,11 @@ angular
 
     $scope.find = function () {
       if ($scope.fli.route.input) {
-        $rootScope.go({input: $scope.fli.route.input});
+        if ($location.path() === '/search') {
+          $rootScope.go({input: $scope.fli.route.input});
+        } else {
+          $rootScope.go('search?input=' + $scope.fli.route.input);
+        }
       }
     };
 
