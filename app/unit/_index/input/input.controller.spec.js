@@ -43,7 +43,7 @@ describe('Input controller', function () {
     scope.fli.route.input = 'xxx';
     rootScope.go = jasmine.createSpy();
     scope.find();
-    expect(rootScope.go).toHaveBeenCalledWith({input: 'xxx'});
+    expect(rootScope.go).toHaveBeenCalledWith('search?input=xxx');
   });
 
   it('should clear input', function () {
