@@ -9,7 +9,6 @@ angular
     vm.search = {};
 
     function setResult(search) {
-      console.log(search);
       vm.search = !!search.ItemSearchResponse ? search.ItemSearchResponse.Items[0] : {};
     }
 
