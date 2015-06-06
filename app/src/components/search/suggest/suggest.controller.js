@@ -4,15 +4,16 @@ angular
   .controller('search.suggest.ctrl',
   function ($scope, CONFIG, google, trends) {
 
-    $scope.suggested = [];
+    var vm = this;
+    vm.suggested = [];
 
-    $scope.shref = function(suggest) {
+    vm.href = function (suggest) {
       return CONFIG.ORIGIN + 'search?input=' + suggest;
     };
 
     function showTrends() {
       trends().then(function (trends) {
-        $scope.suggested = trends || '';
+        vm.suggested = trends || '';
       });
     }
 
@@ -21,7 +22,7 @@ angular
         .success(function (auto) {
           var suggested = auto[1] || [];
           if (!!suggested.length) {
-            $scope.suggested = suggested;
+            vm.suggested = suggested;
           } else {
             showTrends();
           }

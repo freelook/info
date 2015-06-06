@@ -10,8 +10,16 @@ angular
       }
     }
 
+    function goods(q) {
+      if (q) {
+        var api = CONFIG.API.URL + 'goods?q=' + q;
+        return $http.get(api);
+      }
+    }
+
     return {
-      get: get
+      get: get,
+      goods: goods
     };
 
   });

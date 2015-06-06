@@ -12,6 +12,7 @@
     "test": "gulp test"
   },
   "dependencies": {
+    "apac": "^1.0.0",
     "body-parser": "~1.0.1",
     "compression": "~1.0.1",
     "connect-flash": "~0.1.1",

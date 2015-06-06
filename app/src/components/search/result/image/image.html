@@ -1,16 +1,16 @@
-<md-card class="md-whiteframe-z1" flex-sm="95" flex-gt-sm="40" flex-gt-md="30" flex-gt-lg="20" layout="column" ng-repeat="result in search.results">
-<a ng-href="{{href(result.originalContextUrl)}}">
-  <img class="md-card-image" ng-src="{{result.url}}" fli-err>
+<md-card class="md-whiteframe-z1" flex-sm="95" flex-gt-sm="40" flex-gt-md="30" flex-gt-lg="20" layout="column" ng-repeat="item in image.search.results">
+<a ng-href="{{result.href(item.originalContextUrl)}}">
+  <img class="md-card-image" ng-src="{{item.url}}" fli-err>
 </a>
 <md-card-content>
-  <a ng-href="{{href(result.originalContextUrl)}}" ng-bind-html="result.title"></a>
-  <div flex ng-bind-html="result.content"></div>
+  <a ng-href="{{result.href(item.originalContextUrl)}}" ng-bind-html="item.title"></a>
+  <div flex ng-bind-html="item.content"></div>
 </md-card-content>
 <md-card-footer layout="row" layout-align="end center">
-  <div class="link" ng-click="link(share(result.originalContextUrl, result.url, result.contentNoFormatting))" title="{{'SHARE - '+ fli.route.input}}">
+  <div class="link" ng-click="link(result.share(item.originalContextUrl, item.url, item.contentNoFormatting))" title="{{'SHARE - '+ fli.route.input}}">
     <i class="fa fa-share-alt"></i>
   </div>
-  <div class="link" ng-click="link(result.originalContextUrl)" title="{{'VIEW ALL - '+ fli.route.input}}">
+  <div class="link" ng-click="link(item.originalContextUrl)" title="{{'VIEW ALL - '+ fli.route.input}}">
     <i class="fa fa-external-link"></i>
   </div>
 </md-card-footer>

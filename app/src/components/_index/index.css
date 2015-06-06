@@ -22,9 +22,13 @@ md-whiteframe {
 }
 
 .link {
-  color: #003399;
+  color: #1F00EF;
   cursor: pointer;
   outline: 0;
+}
+
+.underline{
+  text-decoration: underline;
 }
 
 
