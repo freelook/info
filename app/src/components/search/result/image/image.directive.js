@@ -3,7 +3,8 @@ angular
   .module('fli.search')
   .directive('fliSearchResultImage', function () {
     return {
-      replace: true,
+      controller: 'search.result.image.ctrl',
+      controllerAs: 'image',
       templateUrl: 'components/search/result/image/image.html'
     };
   });

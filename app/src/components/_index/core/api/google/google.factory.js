@@ -8,12 +8,20 @@ angular
       image: 'https://www.googleapis.com/customsearch/v1element?key=AIzaSyCVAXiUzRYsML1Pv6RwSG1gunmMikTzQqY&cx=007077922014062052604:wiiu7xrm8yk&num=12&searchtype=image'
     };
 
-    function search(q, _type) {
+    function _search(q, _type) {
       if (q) {
         var type = _type || 'web',
           gapi = GAPI[type] + '&q=' + q + '&callback=JSON_CALLBACK';
         return $http.jsonp(gapi);
       }
+    }
+
+    function web(q) {
+      return _search(q, 'web');
+    }
+
+    function image(q) {
+      return _search(q, 'image');
     }
 
     function autocomplete(q) {
@@ -34,7 +42,8 @@ angular
     }
 
     return {
-      search: search,
+      web: web,
+      image: image,
       autocomplete: autocomplete,
       random: random,
       trends: trends

@@ -4,6 +4,7 @@ angular
   .directive('fliSearchResult', function () {
     return {
       controller: 'search.result.ctrl',
+      controllerAs: 'result',
       templateUrl: 'components/search/result/result.html'
     };
   });

@@ -33,16 +33,16 @@ describe('Google', function () {
 
   describe('HTTP calls', function () {
 
-    it('it should call http for search', function () {
+    it('it should call http for web search', function () {
       var q = 'xxx';
       var expectedRequest = 'https://www.googleapis.com/customsearch/v1element?key=AIzaSyCVAXiUzRYsML1Pv6RwSG1gunmMikTzQqY&cx=007077922014062052604:wiiu7xrm8yk&num=12&q=' + q + '&callback=JSON_CALLBACK';
-      sut.search(q);
+      sut.web(q);
       expect(mockHTTP.jsonp).toHaveBeenCalledWith(expectedRequest);
     });
 
-    it('it should not call http for search if no request text', function () {
+    it('it should not call http for web search if no request text', function () {
       var q = '';
-      sut.search(q);
+      sut.web(q);
       expect(mockHTTP.jsonp).not.toHaveBeenCalled();
     });
 
