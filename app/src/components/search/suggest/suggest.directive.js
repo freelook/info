@@ -5,6 +5,7 @@ angular
   function () {
     return {
       controller: 'search.suggest.ctrl',
+      controllerAs: 'suggest',
       templateUrl: 'components/search/suggest/suggest.html'
     };
   });
