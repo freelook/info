@@ -1,9 +1,9 @@
 'use strict';
 var OperationHelper = require('apac').OperationHelper;
 var opHelper = new OperationHelper({
-    awsId: 'AKIAI3UDVCJD3II2MIOA',
-    awsSecret: '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',
-    assocId: 'flai01-20',
+    awsId: process.env.AWSID,
+    awsSecret: process.env.AWSSECRET,
+    assocId: process.env.ASSOCID,
     version: '2013-08-01'
 });
 
@@ -13,7 +13,7 @@ module.exports = function (req, res) {
         opHelper.execute('ItemSearch', {
             'SearchIndex': 'All',
             'Keywords': req.query.q,
-            'ResponseGroup': 'Medium'
+            'ResponseGroup': 'Large'
         }, function (err, results) {
             res.json(results);
         });

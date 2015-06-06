@@ -5,6 +5,7 @@ angular
   function () {
     return {
       controller: 'search.tabs.ctrl',
+      controllerAs: 'tabs',
       templateUrl: 'components/search/tabs/tabs.html'
     };
   });

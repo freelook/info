@@ -17,7 +17,8 @@ describe('Lucky controller', function () {
 
   function exequteController() {
     return controller('search.lucky.ctrl', {
-      google: mockGoogle
+      google: mockGoogle,
+      $scope: scope
     });
   }
 
