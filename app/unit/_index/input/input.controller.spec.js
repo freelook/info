@@ -11,7 +11,7 @@ describe('Input controller', function () {
   });
 
   function exequteController(input) {
-    scope.fli = {route:{input: input}};
+    scope.fli = {route: {input: input}};
     controller('input.ctrl', {
       $scope: scope
     });

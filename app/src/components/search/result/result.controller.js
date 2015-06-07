@@ -3,20 +3,15 @@
 angular
   .module('fli.search')
   .controller('search.result.ctrl',
-  function ($scope, CONFIG, google, yandex, facebook) {
+  function ($scope, CONFIG, facebook) {
 
-    $scope.search = {};
-    $scope.lucky = 'freelook';
+    var vm = this;
 
-    function setResult(search) {
-      $scope.search = search || {};
-    }
-
-    $scope.href = function (url) {
+    vm.href = function (url) {
       return CONFIG.ORIGIN + 'look?input=' + $scope.fli.route.input + '&url=' + url;
     };
 
-    $scope.share = function (url, img, text) {
+    vm.share = function (url, img, text) {
       var href = 'http://freelook.info/search?input=' + $scope.fli.route.input;
       if (img) {
         href += '&metaimg=' + img;
@@ -26,21 +21,6 @@ angular
       }
       return facebook.share(href);
     };
-
-    if ($scope.fli.route.input) {
-      google.search($scope.fli.route.input, $scope.fli.route.type)
-        .success(setResult)
-        .error(function () {
-          if (!$scope.fli.route.type) {
-            yandex.search($scope.fli.route.input)
-              .then(setResult);
-          }
-        });
-    }
-
-    google.random().success(function (lucky) {
-      $scope.lucky = lucky.word;
-    });
 
   });
 

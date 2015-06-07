@@ -24,12 +24,11 @@ describe('Suggest controller', function () {
   });
 
   function exequteController() {
-    controller('search.suggest.ctrl', {
+    return controller('search.suggest.ctrl', {
       $scope: scope,
       google: mockGoogle,
       trends: mockTrends
     });
-    rootScope.$apply();
   }
 
   beforeEach(inject(function ($rootScope, $controller) {
@@ -59,10 +58,10 @@ describe('Suggest controller', function () {
 
   it('should set suggested on scope if call for autocomplete success', function () {
     var expectedArr = ['x', 'xx'],
-      expectedResponse = [[], expectedArr];
-    exequteController();
+      expectedResponse = [[], expectedArr],
+      vm = exequteController();
     mockGoogle.autocomplete(input).success.calls.mostRecent().args[0](expectedResponse);
-    expect(scope.suggested).toBe(expectedArr);
+    expect(vm.suggested).toBe(expectedArr);
   });
 
   it('should call google trends if autocomplete has no items', function () {

@@ -21,6 +21,10 @@ angular
       }
     };
 
+    $rootScope.decode = function (_url) {
+      return !!_url ? decodeURIComponent(_url) : '';
+    };
+
     $rootScope.link = function (href) {
       if (href) {
         $('<a>').attr('href', href).attr('target', '_blank')[0].click();
