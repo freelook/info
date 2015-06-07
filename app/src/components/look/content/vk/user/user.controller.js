@@ -5,6 +5,5 @@ angular
     .controller('look.content.vk.user.ctrl',
     function () {
 
-
     });
 

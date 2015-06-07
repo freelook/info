@@ -5,7 +5,7 @@ angular
         var host = 'https://api.vk.com/method/';
 
         function usersGet(id) {
-            var api = host + 'users.get?uids=' + id + '&fields=photo_200,status&callback=JSON_CALLBACK';
+            var api = host + 'users.get?uids=' + id + '&fields=photo_200,home_town,status&callback=JSON_CALLBACK';
             return $http.jsonp(api);
         }
 
@@ -16,7 +16,7 @@ angular
 
 
         function wallGet(id){
-            var api = host + 'wall.get?owner_id='+id+'callback=JSON_CALLBACK';
+            var api = host + 'wall.get?owner_id='+id+'&callback=JSON_CALLBACK';
             return $http.jsonp(api);
         }
 

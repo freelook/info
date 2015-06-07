@@ -1,0 +1,27 @@
+<md-card ng-if='group' layout-sm="column" layout="row">
+    <img class="md-card-image" ng-if="!!group.photo_200" ng-src="{{group.photo_200}}" fli-err>
+    <md-card-content>
+        <div class="content">
+            <h3 class="md-title" data-ng-bind="group.name"></h3>
+            <md-divider  class="ng-scope md-default-theme"></md-divider>
+            <div>
+                <div layout="row" ng-if="group.status" layout-wrap>
+                    <div flex="33">
+                        <p>Status:</p>
+                    </div>
+                    <div flex="66">
+                        <p ng-bind="group.status"></p>
+                    </div>
+                </div>
+                <div layout="row" ng-if="user.home_town" layout-wrap>
+                    <div flex="33">
+                        <p>Hometown:</p>
+                    </div>
+                    <div flex="66">
+                        <p ng-bind="user.home_town"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </md-card-content>
+</md-card>
