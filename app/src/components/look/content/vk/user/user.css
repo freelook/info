@@ -1,10 +1,12 @@
 fli-look-content-vk-user .md-card-image {
-    margin: 7px;
-    cursor: pointer;
+  margin: 7px;
+  cursor: pointer;
 }
-fli-look-content-vk-user md-card md-card-content{
-    min-width: 60%;
+
+fli-look-content-vk-user md-card md-card-content {
+  min-width: 60%;
 }
-fli-look-content-vk-user md-card md-card-content p{
-    color: rgba(0,0,0,0.54);
+
+fli-look-content-vk-user md-card md-card-content p {
+  color: rgba(0, 0, 0, 0.54);
 }

@@ -1,3 +1,3 @@
-<fli-look-content-vk-user></fli-look-content-vk-user>
-<fli-look-content-vk-group></fli-look-content-vk-group>
-<fli-look-content-vk-wall></fli-look-content-vk-wall>
+<fli-look-content-vk-user ng-if="!!vk.id && vk.user !== 'not'"></fli-look-content-vk-user>
+<fli-look-content-vk-group ng-if="!!vk.id && vk.user === 'not'"></fli-look-content-vk-group>
+<fli-look-content-vk-wall layout="column" ng-if="!!vk.ownerId"></fli-look-content-vk-wall>

@@ -1,19 +1,19 @@
-<md-card ng-if='group' layout-sm="column" layout="row">
-    <img class="md-card-image" ng-if="!!group.photo_200" ng-src="{{group.photo_200}}" fli-err>
+<md-card layout-sm="column" layout="row">
+    <img class="md-card-image" ng-if="!!vk.group.photo_200" ng-src="{{vk.group.photo_200}}" fli-err>
     <md-card-content>
         <div class="content">
-            <h3 class="md-title" data-ng-bind="group.name"></h3>
+            <h3 class="md-title" data-ng-bind="vk.group.name"></h3>
             <md-divider  class="ng-scope md-default-theme"></md-divider>
             <div>
-                <div layout="row" ng-if="group.status" layout-wrap>
+                <div layout="row" ng-if="vk.group.status">
                     <div flex="33">
                         <p>Status:</p>
                     </div>
                     <div flex="66">
-                        <p ng-bind="group.status"></p>
+                        <p ng-bind="vk.group.status"></p>
                     </div>
                 </div>
-                <div layout="row" ng-if="user.home_town" layout-wrap>
+                <div layout="row" ng-if="user.home_town">
                     <div flex="33">
                         <p>Hometown:</p>
                     </div>

@@ -1,15 +1,10 @@
-<div layout="column">
-    <md-card layout="row" layout-sm="column" ng-repeat="result in results" ng-show="result.attachment || result.text">
-        <div>
-            <img class="md-card-image" ng-if="!!result.attachment.photo.src_big" ng-src="{{result.attachment.photo.src_big}}"
-                 fli-err>
-        </div>
-        <md-card-content>
-            <p ng-bind-html="result.text"></p>
-        </md-card-content>
-        <!--<div ng-repeat="attachment in result.attachments">-->
-        <!--<img ng-if="is(attachment.type,'photo')" class="md-card-image" ng-src="{{attachment.photo.src}}" fli-err>-->
-        <!--{{ attachment}}-->
-        <!--</div>-->
-    </md-card>
-</div>
+<md-card layout="row" layout-sm="column" ng-repeat="result in vkWall.results" ng-if="result.attachment || result.text">
+  <div>
+    <img class="md-card-image" ng-if="!!result.attachment.photo.src_big" ng-src="{{result.attachment.photo.src_big}}" fli-err>
+    <img class="md-card-image" ng-if="!!result.attachment.doc.thumb" ng-src="{{result.attachment.doc.thumb}}" fli-err>
+  </div>
+  <md-card-content>
+    <p ng-bind-html="result.text"></p>
+  </md-card-content>
+</md-card>
+
