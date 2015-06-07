@@ -3,7 +3,7 @@ angular.module('fli.look')
     .directive('fliLookContentVkGroup', function () {
         return {
             controller: 'look.content.vk.group.ctrl',
-            controllerAs: 'vkGroupCtrl',
+            controllerAs: 'vkGroup',
             templateUrl: 'components/look/content/vk/group/group.html'
         };
     });
