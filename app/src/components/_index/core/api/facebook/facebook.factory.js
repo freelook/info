@@ -17,7 +17,7 @@ angular
     }
 
     function _picture(_id) {
-      return $http.jsonp(FB_API + _id + '/picture?redirect=false&type=large&callback=JSON_CALLBACK')
+      return $http.jsonp(FB_API + _id + '/picture?redirect=false&type=large&callback=JSON_CALLBACK');
     }
 
     function _user(_id) {
