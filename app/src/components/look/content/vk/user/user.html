@@ -1,24 +1,22 @@
 <md-card layout-sm="column" layout="row">
-  <img class="md-card-image" ng-if="!!vk.user.photo_200" ng-src="{{vk.user.photo_200}}" fli-err>
-  <md-card-content>
-    <div class="content">
-      <h3 class="md-title" ng-bind="vk.user.first_name + ' ' + vk.user.last_name"></h3>
-      <div>
-        <div layout="row" ng-if="vk.user.status">
-          <div flex="33">
-            <p>Status:</p>
-          </div>
-          <div flex="66">
-            <p ng-bind="vk.user.status"></p>
-          </div>
+  <img flex-gt-sm="33" class="md-card-image" ng-if="!!vk.user.photo_200" ng-src="{{vk.user.photo_200}}" fli-err>
+  <md-card-content flex>
+    <h3 class="md-title" ng-bind="vk.user.first_name + ' ' + vk.user.last_name"></h3>
+    <div>
+      <div layout="row" ng-if="vk.user.status">
+        <div flex="33">
+          <p>Status:</p>
         </div>
-        <div layout="row" ng-if="vk.user.home_town">
-          <div flex="33">
-            <p>Hometown:</p>
-          </div>
-          <div flex="66">
-            <p ng-bind="vk.user.home_town"></p>
-          </div>
+        <div flex="66">
+          <p ng-bind="vk.user.status"></p>
+        </div>
+      </div>
+      <div layout="row" ng-if="vk.user.home_town">
+        <div flex="33">
+          <p>Hometown:</p>
+        </div>
+        <div flex="66">
+          <p ng-bind="vk.user.home_town"></p>
         </div>
       </div>
     </div>

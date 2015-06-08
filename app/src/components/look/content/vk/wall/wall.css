@@ -1,3 +1,5 @@
 fli-look-content-vk-wall .md-card-image {
+  max-height: 150px;
+  min-height: 150px;
   margin: 7px;
 }
