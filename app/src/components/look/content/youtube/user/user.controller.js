@@ -5,20 +5,17 @@ angular
   .controller('look.content.youtube.user.ctrl',
   function ($rootScope, $scope, youtube, CONFIG, url) {
 
-    var vm = this,
-      userId = url.extract('/user/:id', $scope.site.pathname).id;
+    var vm = this;
 
-    youtube
-      .user(userId)
-      .then(function (results) {
-        vm.results = results;
-      });
+    vm.userId = url.extract('/user/:id', $scope.site.pathname).id;
 
-    vm.href = function (url) {
-      return CONFIG.ORIGIN + 'look?input=' + $scope.fli.route.input + '&url=' + url;
-    };
-
-    vm.watchUrl = youtube.watchUrl;
+    if (vm.userId) {
+      youtube
+        .user(vm.userId)
+        .then(function (results) {
+          vm.results = results;
+        });
+    }
 
   });
 
