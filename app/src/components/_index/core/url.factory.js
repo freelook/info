@@ -11,7 +11,7 @@ angular
 
     function extract(_pattern , _url) {
       var pattern = new $window.UrlPattern(_pattern);
-      return pattern.match(_url);
+      return pattern.match(_url) || {};
     }
 
     function qByName(name, search) {

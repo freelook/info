@@ -7,8 +7,8 @@ angular
 
     var vm = this,
       path = $scope.site.pathname || '',
-      vkObj = url.extract('/:id', path) || {};
+      id = url.extract('/:id', path).id || '';
 
-    vm.id = vkObj.id ? vkObj.id : path.split('/').splice(1)[0];
+    vm.id = id ? id : path.split('/').splice(1)[0];
 
   });

@@ -11,6 +11,6 @@ angular
     vm.supportedSites = SUPPORTED_SITES.join('|');
 
   })
-  .constant('SUPPORTED_SITES', ['youtube','vk']);
+  .constant('SUPPORTED_SITES', ['youtube', 'vk', 'facebook']);
 
 
