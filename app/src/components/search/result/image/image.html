@@ -10,6 +10,9 @@
   <div class="link" ng-click="link(result.share(item.originalContextUrl, item.url, item.contentNoFormatting))" title="{{'SHARE - '+ fli.route.input}}">
     <i class="fa fa-share-alt"></i>
   </div>
+  <div class="link" ng-click="link(item.url)" title="{{'VIEW FILE - '+ item.titleNoFormatting}}">
+    <i class="fa fa-file-image-o"></i>
+  </div>
   <div class="link" ng-click="link(item.originalContextUrl)" title="{{'VIEW ALL - '+ fli.route.input}}">
     <i class="fa fa-external-link"></i>
   </div>

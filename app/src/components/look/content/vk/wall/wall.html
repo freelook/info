@@ -1,0 +1,8 @@
+<md-card layout="row" layout-sm="column" ng-repeat="result in vkWall.results" ng-if="result.attachment || result.text">
+    <img flex-gt-sm="33" class="md-card-image" ng-if="!!result.attachment.photo.src_big" ng-src="{{result.attachment.photo.src_big}}" fli-err>
+    <img flex-gt-sm="33" class="md-card-image" ng-if="!!result.attachment.doc.thumb" ng-src="{{result.attachment.doc.thumb}}" fli-err>
+  <md-card-content flex>
+    <p ng-bind-html="result.text"></p>
+  </md-card-content>
+</md-card>
+
