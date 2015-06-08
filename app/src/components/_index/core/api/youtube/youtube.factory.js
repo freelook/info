@@ -44,8 +44,13 @@ angular
       return defer.promise;
     }
 
+    function channel(id) {
+      return _search(id);
+    }
+
     return {
       user: user,
+      channel: channel,
       watch: watch,
       watchUrl: watchUrl
     };

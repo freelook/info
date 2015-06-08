@@ -1,4 +1,4 @@
-<md-card layout-sm="column" layout="row">
+<md-card layout-sm="column" layout="row" ng-if="fb.user">
   <img flex-gt-sm="33" class="md-card-image" ng-click="link(fb.user.link)" ng-if="!!fb.user.data.url" ng-src="{{fb.user.data.url}}" fli-err>
   <md-card-content flex>
     <h3 class="md-title" ng-bind="fb.user.name"></h3>
@@ -18,6 +18,14 @@
         </div>
         <div flex="66">
           <p ng-bind="fb.user.about"></p>
+        </div>
+      </div>
+      <div layout="row" ng-if="fb.user.description">
+        <div flex="33">
+          <p>Description:</p>
+        </div>
+        <div flex="66">
+          <p ng-bind="fb.user.description"></p>
         </div>
       </div>
       <div layout="row" ng-if="fb.user.link">
