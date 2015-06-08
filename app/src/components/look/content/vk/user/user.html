@@ -1,7 +1,8 @@
 <md-card layout-sm="column" layout="row">
-  <img flex-gt-sm="33" class="md-card-image" ng-if="!!vk.user.photo_200" ng-src="{{vk.user.photo_200}}" fli-err>
+  <img flex-gt-sm="33" class="md-card-image" ng-click="link(fli.route.url)" ng-if="!!vk.user.photo_200" ng-src="{{vk.user.photo_200}}" fli-err>
   <md-card-content flex>
     <h3 class="md-title" ng-bind="vk.user.first_name + ' ' + vk.user.last_name"></h3>
+    <md-divider></md-divider>
     <div>
       <div layout="row" ng-if="vk.user.status">
         <div flex="33">
@@ -17,6 +18,14 @@
         </div>
         <div flex="66">
           <p ng-bind="vk.user.home_town"></p>
+        </div>
+      </div>
+      <div layout="row" ng-if="fli.route.url">
+        <div flex="33">
+          <p>Link:</p>
+        </div>
+        <div flex="66" class="link" ng-click="link(fli.route.url)">
+          <p ng-bind="fli.route.url"></p>
         </div>
       </div>
     </div>
