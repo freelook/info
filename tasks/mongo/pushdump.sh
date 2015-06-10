@@ -1,9 +1,8 @@
 #!/bin/bash
 
-pushd ../../../db
+cd ../../../db
 git add -A
 git commit -am"dump"
 git push dump master
-popd
 
 
