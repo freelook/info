@@ -3,7 +3,8 @@
 angular
   .module('freelook.info')
   .controller('search.ctrl',
-  function ($rootScope, $routeParams, $location, $mdMedia, DEFAULT_TITLE, DEFAULT_DESCRIPTION, local, SEARCH_KEY) {
+  function ($rootScope, $routeParams, $location, $mdMedia,
+            DEFAULT_TITLE, DEFAULT_DESCRIPTION, local, SEARCH_KEY) {
 
     $location.search({
       input: $routeParams.input,

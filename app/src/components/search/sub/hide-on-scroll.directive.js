@@ -2,7 +2,7 @@
 angular
   .module('fli.search')
   .directive('fliSubHideOnScroll',
-  function ($window, $timeout) {
+  function ($window, $timeout, $mdMedia) {
     return function (scope, el) {
 
       var element = $(el),
@@ -12,10 +12,12 @@ angular
         document = $($window.document);
 
       function scroll() {
-        if (document.scrollTop() > top) {
-          element.hide();
-        } else {
-          element.show();
+        if ($mdMedia('sm')) {
+          if (document.scrollTop() > top) {
+            element.hide();
+          } else {
+            element.show();
+          }
         }
       }
 
