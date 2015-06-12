@@ -26,7 +26,7 @@ angular
           $timeout.cancel(timeout);
           timeout = null;
         }
-        timeout = $timeout(scroll, 100);
+        timeout = $timeout(scroll, 33);
       });
 
     };
