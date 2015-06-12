@@ -4,12 +4,18 @@
   <fli-search-lucky></fli-search-lucky>
 </header>
 
+
 <div id="search" flex layout="column">
 
   <fli-search-tabs ng-hide="fli.focus"></fli-search-tabs>
-  <fli-search-result ng-hide="fli.focus"></fli-search-result>
+
+  <div layout="row" flex ng-hide="fli.focus">
+    <fli-search-sub></fli-search-sub>
+    <fli-search-result flex></fli-search-result>
+  </div>
 
 </div>
+
 
 <fli-search-suggest ng-hide="fli.focus"></fli-search-suggest>
 
