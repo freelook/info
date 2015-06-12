@@ -2,21 +2,30 @@
 angular
   .module('fli.search')
   .directive('fliSubHideOnScroll',
-  function ($window) {
+  function ($window, $timeout) {
     return function (scope, el) {
 
       var element = $(el),
-        top = element.offset().top + element.height(),
+        sub = $('#sub'),
+        top = sub.offset().top + sub.height(),
+        timeout = null,
         document = $($window.document);
 
-      $(document)
-        .scroll(function () {
-          if (document.scrollTop() > top) {
-            element.parent().hide();
-          } else {
-            element.parent().show();
-          }
-        });
+      function scroll() {
+        if (document.scrollTop() > top) {
+          element.hide();
+        } else {
+          element.show();
+        }
+      }
+
+      document.scroll(function () {
+        if (timeout) {
+          $timeout.cancel(timeout);
+          timeout = null;
+        }
+        timeout = $timeout(scroll, 100);
+      });
 
     };
   });
