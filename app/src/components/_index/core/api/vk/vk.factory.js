@@ -20,8 +20,16 @@ angular
       return $http.jsonp(api);
     }
 
+    function search(q) {
+      if (q) {
+        var api = host + 'newsfeed.search?q=' + q + '&extended=1&count=12&callback=JSON_CALLBACK';
+        return $http.jsonp(api);
+      }
+    }
+
 
     return {
+      search: search,
       usersGet: usersGet,
       wallGet: wallGet,
       groupsGroupById: groupsGroupById

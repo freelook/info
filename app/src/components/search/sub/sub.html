@@ -1,5 +1,6 @@
-<div id="sub" layout="column" layout-align="start center">
-  <md-button class="md-icon-button link" aria-label="search"><i class="fa fa-search"></i></md-button>
-  <md-button class="md-icon-button link" aria-label="fb"><i class="fa fa-facebook"></i></md-button>
-  <md-button class="md-icon-button link" aria-label="vk"><i class="fa fa-vk"></i></md-button>
+<div id="sub">
+  <ng-include layout="column" layout-align="start center" ng-if="!fli.route.type" src="'components/search/sub/web/web.html'"></ng-include>
+  <ng-include layout="column" layout-align="start center" ng-if="fli.route.type === 'image'" src="'components/search/sub/image/image.html'"></ng-include>
+  <ng-include layout="column" layout-align="start center" ng-if="fli.route.type === 'goods'" src="'components/search/sub/goods/goods.html'"></ng-include>
 </div>
+
