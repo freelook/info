@@ -1,0 +1,21 @@
+<md-card class="md-whiteframe-z1" flex-sm="95" flex-gt-sm="40" flex-gt-md="30" flex-gt-lg="20" layout="column" ng-repeat="item in vk.results">
+<a ng-href="{{vk.href(item.group.screen_name || item.user.screen_name)}}">
+  <img class="md-card-image" ng-if="!!item.attachment.photo.src_big" ng-src="{{item.attachment.photo.src_big}}" fli-err>
+  <img class="md-card-image" ng-if="!!item.attachment.video.src_big" ng-src="{{item.attachment.video.src_big}}" fli-err>
+  <div class="md-card-image header" ng-if="!item.attachment.photo.src_big && !item.attachment.video.src_big"></div>
+</a>
+<md-card-content>
+  <a ng-if="item.group" ng-href="{{vk.href(item.group.screen_name)}}" ng-bind="item.group.name"></a>
+  <a ng-if="item.user" ng-href="{{vk.href(item.user.screen_name)}}" ng-bind="item.user.first_name + ' ' + item.user.last_name"></a>
+  <div class="text" flex ng-bind-html="item.text"></div>
+  <div flex ng-if="!!item.attachment.audio">
+    <div ng-bind="item.attachment.audio.title"></div>
+    <audio controls ng-src="{{vk.audio(item.attachment.audio.url)}}"></audio>
+  </div>
+</md-card-content>
+<md-card-footer layout="row" layout-align="end center">
+  <div class="link" ng-click="link(vk.link(item.group.screen_name || item.user.screen_name))" title="{{'VIEW ALL - '+ fli.route.input}}">
+    <i class="fa fa-external-link"></i>
+  </div>
+</md-card-footer>
+</md-card>
