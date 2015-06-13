@@ -31,7 +31,6 @@ angular
     function setResult(vk) {
       var result = vk.response || [];
       vm.results = angular.copy(result).splice(1);
-      console.log(vm.results);
     }
 
     if ($scope.fli.route.input) {
