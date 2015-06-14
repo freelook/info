@@ -22,7 +22,7 @@ angular
 
     function search(q) {
       if (q) {
-        var api = host + 'newsfeed.search?q=' + q + '&extended=1&count=12&callback=JSON_CALLBACK';
+        var api = host + 'newsfeed.search?q=' + q + '&extended=1&count=24&callback=JSON_CALLBACK';
         return $http.jsonp(api);
       }
     }

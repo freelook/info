@@ -1,5 +1,8 @@
 'use strict';
 
 module.exports = {
-	db: 'mongodb://localhost/fli-dev'
+    db: {
+        url: 'mongodb://localhost/fli-dev',
+        config: {}
+    }
 };
