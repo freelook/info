@@ -117,7 +117,15 @@ function checkToken() {
     return defer.promise;
 }
 
+function refreshToken() {
+    var defer = $q.defer(),
+        _date = new Date();
+    _handleToken(defer, _date);
+    return defer.promise;
+}
+
 
 module.exports = {
-    check: checkToken
+    check: checkToken,
+    refresh: refreshToken
 };

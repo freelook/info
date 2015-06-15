@@ -9,11 +9,20 @@ function search(req, res) {
 
     if (req.query && req.query.q) {
         token.check()
-            .then(function (token) {
+            .then(function (_token) {
                 var type = req.query.type || 'group';
                 _req = $http
                     .get({
-                        url: 'https://graph.facebook.com/search?q=' + req.query.q + '&type=' + type + '&' + token
+                        url: 'https://graph.facebook.com/search?q=' + req.query.q + '&type=' + type + '&' + _token
+                    })
+                    .on('response', function (res) {
+                        if (res && res.statusCode === 400) {
+                            var headers = res.headers || {},
+                                err = headers['www-authenticate'] || '';
+                            if (/invalid_token/.test(err)) {
+                                token.refresh();
+                            }
+                        }
                     })
                     .on('error', function () {
                         res.status(404).end();
