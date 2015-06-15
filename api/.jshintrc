@@ -18,9 +18,7 @@
 	"trailing": true, // Prohibit trailing whitespaces.
 	"smarttabs": false, // Suppresses warnings about mixed tabs and spaces
 	"globals": { // Globals variables.
-		"jasmine": true,
-		"angular": true,
-		"ApplicationConfiguration": true
+		"jasmine": true
 	},
 	"predef": [ // Extra globals.
 		"define",
@@ -35,8 +33,5 @@
 		"it",
 		"inject",
 		"expect"
-	],
-	"indent": 4, // Specify indentation spacing
-	"devel": true, // Allow development statements e.g. `console.log();`.
-	"noempty": true // Prohibit use of empty blocks.
+	]
 }
