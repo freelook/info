@@ -2,7 +2,7 @@
 angular
   .module('freelook.info')
   .factory('facebook',
-  function ($http, $q) {
+  function ($http, $q, api) {
 
     var APP_ID = '846841298681206',
       FB_API = 'https://graph.facebook.com/';
@@ -28,9 +28,15 @@ angular
       return $q.all([_user(_id), _picture(_id)]);
     }
 
+    function pages(q) {
+      var point = 'search?q=' + q + '&type=page';
+      return api.facebook(point);
+    }
+
     return {
       share: share,
-      user: user
+      user: user,
+      pages: pages
     };
 
   });

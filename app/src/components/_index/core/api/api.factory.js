@@ -17,9 +17,17 @@ angular
       }
     }
 
+    function facebook(point) {
+      if (point) {
+        var api = CONFIG.API.URL + 'facebook/' + point;
+        return $http.get(api);
+      }
+    }
+
     return {
       get: get,
-      goods: goods
+      goods: goods,
+      facebook: facebook
     };
 
   });
