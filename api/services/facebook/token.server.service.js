@@ -5,15 +5,15 @@ var $http = require('request'),
     $q = require('q'),
     mongoose = require('mongoose'),
     API = mongoose.model('API'),
-    id = '846841298681206',
+    id = process.env.FB_ID,
+    secret = process.env.FB_SECRET,
     pass = process.env.FB_PASS;
 
 
 function _storeToken(token, dateCreation) {
 
-    var defer = $q.defer();
-
-    var expireIn = +token.split('&expires_in=')[1] || 0,
+    var defer = $q.defer(),
+        expireIn = +token.split('&expires=')[1] || 0,
         expire = new Date(dateCreation.getTime() + expireIn * 1000);
 
     $q.npost(API, 'findOneAndUpdate', [{'name': 'token'},
@@ -76,12 +76,33 @@ function _getToken() {
     return defer.promise;
 }
 
+function _exchangeToken(_token) {
+    var defer = $q.defer(),
+        token = _token.split('access_token=').splice(1)[0] || '';
+
+    $http('https://graph.facebook.com/oauth/access_token?grant_type=fb_exchange_token&client_id=' + id + '&client_secret=' + secret + '&fb_exchange_token=' + token,
+        function (err, res, body) {
+            if (!err && body && !body.error) {
+                return defer.resolve(body);
+            }
+            return defer.reject(err);
+        });
+
+    return defer.promise;
+}
+
 function _handleToken(defer, dateCreation) {
     _getToken()
         .then(function (token) {
-            _storeToken(token, dateCreation)
-                .then(function (token) {
-                    return defer.resolve(token);
+            _exchangeToken(token)
+                .then(function (longToken) {
+                    _storeToken(longToken, dateCreation)
+                        .then(function (_longToken) {
+                            return defer.resolve(_longToken);
+                        })
+                        .catch(function (err) {
+                            return defer.reject(err);
+                        });
                 })
                 .catch(function (err) {
                     return defer.reject(err);
@@ -93,9 +114,7 @@ function _handleToken(defer, dateCreation) {
 }
 
 function checkToken() {
-
     var defer = $q.defer();
-
     $q.ninvoke(API, 'findOne', {'name': 'token'})
         .then(function (api) {
             var _date = new Date();
