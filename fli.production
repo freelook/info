@@ -16,7 +16,7 @@
 
 server {
 	#listen 80 is default
-	server_name _;
+	server_name *.freelook.info;
 	return 301 $scheme://freelook.info$request_uri;
 }
 
