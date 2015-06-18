@@ -8,12 +8,12 @@ angular
     var vm = this;
     vm.search = {};
 
-    function _getUrl(id) {
-      return CONFIG.ORIGIN + 'look?input=' + $scope.fli.route.input + '&url=' + _getLink(id);
-    }
-
     function _getLink(id) {
       return 'https://vk.com/' + id;
+    }
+
+    function _getUrl(id) {
+      return CONFIG.ORIGIN + 'look?input=' + $scope.fli.route.input + '&url=' + _getLink(id);
     }
 
     vm.link = function (id) {
@@ -22,10 +22,6 @@ angular
 
     vm.href = function (id) {
       return _getUrl(id);
-    };
-
-    vm.audio = function (_url) {
-      return $sce.trustAsResourceUrl(_url);
     };
 
     function setResult(vk) {
