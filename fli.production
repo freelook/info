@@ -13,6 +13,14 @@
 
 # Default server configuration
 #
+
+server {
+	#listen 80 is default
+	server_name _;
+	return 301 $scheme://freelook.info$request_uri;
+}
+
+
 server {
 	listen 80 default_server;
 	listen [::]:80 default_server;
@@ -32,7 +40,7 @@ server {
 	# Add index.php to the list if you are using PHP
 	index index.html;
 
-	server_name _;
+	server_name freelook.info;
 
 	location / {
 		# First attempt to serve request as file, then
