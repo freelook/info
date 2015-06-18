@@ -24,10 +24,18 @@ angular
       }
     }
 
+    function vk(point) {
+      if (point) {
+        var api = CONFIG.API.URL + 'vk/' + point;
+        return $http.get(api);
+      }
+    }
+
     return {
       get: get,
       goods: goods,
-      facebook: facebook
+      facebook: facebook,
+      vk: vk
     };
 
   });

@@ -16,16 +16,8 @@ angular
       return fapi;
     }
 
-    function _picture(_id) {
-      return $http.jsonp(FB_API + _id + '/picture?redirect=false&type=large&callback=JSON_CALLBACK');
-    }
-
-    function _user(_id) {
-      return $http.jsonp(FB_API + _id + '?callback=JSON_CALLBACK');
-    }
-
     function user(_id) {
-      return $q.all([_user(_id), _picture(_id)]);
+      return $http.jsonp(FB_API + _id + '?callback=JSON_CALLBACK');
     }
 
     function pages(q) {

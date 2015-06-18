@@ -34,7 +34,7 @@ angular
     }
 
     if ($scope.fli.route.input) {
-      vk.search($scope.fli.route.input)
+      vk.pages($scope.fli.route.input)
         .success(setResult);
     }
 

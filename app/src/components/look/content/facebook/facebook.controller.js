@@ -11,15 +11,15 @@ angular
 
     vm.id = id ? id : path.split('/').splice(1)[0];
 
+    vm.img = function (id) {
+      return 'https://graph.facebook.com/' + id + '/picture?type=large';
+    };
+
     if (vm.id) {
       facebook
         .user(vm.id)
-        .then(function (data) {
-          var _usr = data[0] || {},
-            _img = data[1] || {};
-
-          vm.user = angular.extend(_usr.data, _img.data);
-
+        .then(function (user) {
+          vm.user = user || {};
         });
     }
 

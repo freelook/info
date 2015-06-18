@@ -1,38 +1,34 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('vk', function ($http) {
+  .factory('vk', function ($http, api) {
     var host = 'https://api.vk.com/method/';
 
-    function usersGet(id) {
+    function user(id) {
       var api = host + 'users.get?user_ids=' + id + '&fields=photo_200,home_town,status&callback=JSON_CALLBACK';
       return $http.jsonp(api);
     }
 
-    function groupsGroupById(id) {
+    function group(id) {
       var api = host + 'groups.getById?group_id=' + id + '&fields=photo_200,status&callback=JSON_CALLBACK';
       return $http.jsonp(api);
     }
 
-
-    function wallGet(id) {
+    function wall(id) {
       var api = host + 'wall.get?owner_id=' + id + '&callback=JSON_CALLBACK';
       return $http.jsonp(api);
     }
 
-    function search(q) {
-      if (q) {
-        var api = host + 'newsfeed.search?q=' + q + '&extended=1&count=24&callback=JSON_CALLBACK';
-        return $http.jsonp(api);
-      }
+    function pages(q) {
+      var point = 'search?q=' + encodeURIComponent(q + '&count=24');
+      return api.vk(point);
     }
 
-
     return {
-      search: search,
-      usersGet: usersGet,
-      wallGet: wallGet,
-      groupsGroupById: groupsGroupById
+      user: user,
+      wall: wall,
+      group: group,
+      pages: pages
     };
 
   });
