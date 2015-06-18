@@ -5,14 +5,8 @@ var mongoose = require('mongoose'),
 
 var APISchema = new Schema({
     name: String,
-    facebook: {
-        token: String,
-        expire: Date
-    },
-    vk: {
-        token: String,
-        expire: Date
-    }
+    facebook: Object,
+    vk: Object
 });
 
 mongoose.model('API', APISchema);
