@@ -1,3 +1,15 @@
-<md-button class="md-icon-button link" ng-click="go({sub:null})" aria-label="search"><i class="fa fa-eye"></i></md-button>
-<md-button class="md-icon-button link" ng-click="go({sub:'fb'})" aria-label="fb"><i class="fa fa-facebook"></i></md-button>
-<md-button class="md-icon-button link" ng-click="go({sub:'vk'})" aria-label="vk"><i class="fa fa-vk"></i></md-button>
+<md-button class="md-icon-button link" ng-click="go({sub:null})" aria-label="search">
+  <a ng-href="{{sub.href(null)}}">
+    <i class="fa fa-eye"></i>
+  </a>
+</md-button>
+<md-button class="md-icon-button link" ng-click="go({sub:'fb'})" aria-label="fb">
+  <a ng-href="{{sub.href('fb')}}">
+    <i class="fa fa-facebook"></i>
+  </a>
+</md-button>
+<md-button class="md-icon-button link" ng-click="go({sub:'vk'})" aria-label="vk">
+  <a ng-href="{{sub.href('vk')}}">
+    <i class="fa fa-vk"></i>
+  </a>
+</md-button>

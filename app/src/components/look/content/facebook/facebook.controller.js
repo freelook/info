@@ -18,8 +18,8 @@ angular
     if (vm.id) {
       facebook
         .user(vm.id)
-        .then(function (user) {
-          vm.user = user || {};
+        .then(function (_usr) {
+          vm.user = !!_usr ? _usr.data : {};
         });
     }
 

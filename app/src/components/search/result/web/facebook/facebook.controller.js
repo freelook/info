@@ -17,7 +17,7 @@ angular
     };
 
     vm.href = function (id) {
-      return CONFIG.ORIGIN + 'look?input=' + $scope.fli.route.input + '&url=' + encodeURIComponent(vm.link(id));
+      return CONFIG.ORIGIN + 'look?input=' + $scope.fli.route.input + '&url=' + vm.link(id);
     };
 
     function setResult(fb) {
