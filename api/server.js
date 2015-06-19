@@ -12,7 +12,7 @@ var init = require('./config/init')(),
  */
 
 // Bootstrap db connection
-var db = mongoose.connect(config.db, {auth:{authdb:'admin'}}, function (err) {
+var db = mongoose.connect(config.db.url, config.db.config, function (err) {
     if (err) {
         console.error('Could not connect to fli mongo db');
         console.log(err);

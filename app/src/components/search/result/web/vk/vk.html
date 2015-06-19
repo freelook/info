@@ -1,0 +1,15 @@
+<md-card class="md-whiteframe-z1" flex-sm="95" flex-gt-sm="40" flex-gt-md="30" flex-gt-lg="20" layout="column" ng-repeat="item in vk.results">
+<a ng-href="{{vk.href(item.screen_name)}}">
+  <img class="md-card-image" ng-if="!!item.photo_big" ng-src="{{item.photo_big}}" fli-err>
+  <div class="md-card-image header" ng-if="!item.photo_big"></div>
+</a>
+<md-card-content>
+  <a ng-if="item.name" ng-href="{{vk.href(item.name)}}" ng-bind="item.name"></a>
+  <div ng-bind="item.type"></div>
+</md-card-content>
+<md-card-footer layout="row" layout-align="end center">
+  <div class="link" ng-click="link(vk.link(item.screen_name))" title="VIEW ALL">
+    <i class="fa fa-external-link"></i>
+  </div>
+</md-card-footer>
+</md-card>

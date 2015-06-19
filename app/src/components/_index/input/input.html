@@ -1,17 +1,17 @@
-<form name="form" class="md-whiteframe-z1" ng-submit="find(form)" layout="row">
+<form name="form" class="md-whiteframe-z1" ng-submit="inpt.find(form)" layout="row">
 
-  <md-button class="md-icon-button md-primary" aria-label="navigation" ng-href="{{href()}}">
+  <md-button class="md-icon-button md-primary" aria-label="navigation" ng-href="{{inpt.href()}}">
     <i ng-if="!fli.route.input && !fli.focus" class="fa fa-th-large"></i>
     <i ng-if="fli.focus" class="fa fa-search"></i>
-    <i ng-if="!!fli.route.input && !fli.focus" class="fa fa-{{icon}}"></i>
+    <i ng-if="!!fli.route.input && !fli.focus" class="fa fa-{{fli.icon || 'search'}}"></i>
   </md-button>
 
-  <input flex id="input" type="search" ng-focus="focus()" ng-blur="blur()" autocomplete="off"
+  <input flex id="input" type="search" ng-focus="inpt.focus()" ng-blur="inpt.blur()" autocomplete="off"
          ng-model="fli.route.input"
-         placeholder="{{placeholder}}">
+         placeholder="{{inpt.placeholder}}">
 
   <md-button ng-if="fli.route.input && fli.focus" class="md-icon-button md-primary" aria-label="clear">
-    <i  class="fa fa-close" ng-click="clear()"></i>
+    <i  class="fa fa-close" ng-click="inpt.clear()"></i>
   </md-button>
 
 </form>

@@ -9,6 +9,7 @@ angular
     $rootScope.fli.media = $mdMedia;
     $rootScope.fli.title = !$rootScope.fli.route.input ? DEFAULT_TITLE : 'FLI - ' + decodeURIComponent($rootScope.fli.route.input);
     $rootScope.fli.description = DEFAULT_DESCRIPTION;
+    $rootScope.fli.icon = 'th-large';
 
     $scope.searchs = local.get(SEARCH_KEY, []);
     $scope.looks = local.get(LOOK_KEY, []);

@@ -1,0 +1,6 @@
+<div id="sub">
+  <ng-include layout="column" layout-align="start center" ng-if="!fli.route.type" src="'components/search/sub/web/web.html'"></ng-include>
+  <ng-include layout="column" layout-align="start center" ng-if="fli.route.type === 'image'" src="'components/search/sub/image/image.html'"></ng-include>
+  <ng-include layout="column" layout-align="start center" ng-if="fli.route.type === 'goods'" src="'components/search/sub/goods/goods.html'"></ng-include>
+</div>
+

@@ -1,0 +1,14 @@
+<md-card class="md-whiteframe-z1" flex-sm="95" flex-gt-sm="40" flex-gt-md="30" flex-gt-lg="20" layout="column" ng-repeat="item in fb.results">
+<a ng-href="{{fb.href(item.id)}}">
+  <img class="md-card-image" ng-src="{{fb.img(item.id)}}" fli-err>
+</a>
+<md-card-content>
+  <a ng-if="item.name" ng-href="{{fb.href(item.id)}}" ng-bind="item.name"></a>
+  <div ng-if="item.category" flex ng-bind="item.category"></div>
+</md-card-content>
+<md-card-footer layout="row" layout-align="end center">
+  <div class="link" ng-click="link(fb.link(item.id))" title="VIEW ALL">
+    <i class="fa fa-external-link"></i>
+  </div>
+</md-card-footer>
+</md-card>

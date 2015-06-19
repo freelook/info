@@ -1,18 +1,3 @@
-<md-card class="md-whiteframe-z1" flex-sm="95" flex-gt-sm="40" flex-gt-md="30" flex-gt-lg="20" layout="column" ng-repeat="item in web.search.results">
-<a ng-href="{{result.href(item.url)}}">
-  <img class="md-card-image" ng-if="!!item.richSnippet.cseImage.src" ng-src="{{item.richSnippet.cseImage.src}}" fli-err>
-  <div class="md-card-image header" ng-if="!item.richSnippet.cseImage.src"></div>
-</a>
-<md-card-content>
-  <a ng-href="{{result.href(item.url)}}" ng-bind-html="item.title"></a>
-  <div flex ng-bind-html="item.content"></div>
-</md-card-content>
-<md-card-footer layout="row" layout-align="end center">
-  <div class="link" ng-click="link(result.share(item.url, item.richSnippet.cseImage.src, item.contentNoFormatting))" title="{{'SHARE - '+ fli.route.input}}">
-    <i class="fa fa-share-alt"></i>
-  </div>
-  <div class="link" ng-click="link(item.url)" title="{{'VIEW ALL - '+ fli.route.input}}">
-    <i class="fa fa-external-link"></i>
-  </div>
-</md-card-footer>
-</md-card>
+<fli-search-result-web-all layout="row" layout-align="start start" layout-wrap ng-if="!fli.route.sub"></fli-search-result-web-all>
+<fli-search-result-web-vk layout="row" layout-align="start start" layout-wrap ng-if="fli.route.sub === 'vk'"></fli-search-result-web-vk>
+<fli-search-result-web-facebook layout="row" layout-align="start start" layout-wrap ng-if="fli.route.sub === 'fb'"></fli-search-result-web-facebook>

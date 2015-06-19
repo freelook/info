@@ -12,19 +12,17 @@ describe('Input controller', function () {
 
   function exequteController(input) {
     scope.fli = {route: {input: input}};
-    controller('input.ctrl', {
+    return controller('input.ctrl', {
       $scope: scope
     });
-    scope.$apply();
   }
 
   beforeEach(inject(function ($rootScope, $controller, DEFAULT_PLACEHOLDER) {
     scope = $rootScope.$new();
-    rootScope = $rootScope;
     controller = $controller;
     defpleceholder = DEFAULT_PLACEHOLDER;
 
-    rootScope.fli = {
+    scope.fli = {
       route: {
         input: ''
       }
@@ -34,22 +32,22 @@ describe('Input controller', function () {
 
 
   it('should define default label', function () {
-    exequteController('');
-    expect(scope.placeholder).toBe(defpleceholder);
+    var ctrl = exequteController('');
+    expect(ctrl.placeholder).toBe(defpleceholder);
   });
 
   it('should change route on input change', function () {
-    exequteController('xxx');
+    var ctrl = exequteController('xxx');
     scope.fli.route.input = 'xxx';
-    rootScope.go = jasmine.createSpy();
-    scope.find();
-    expect(rootScope.go).toHaveBeenCalledWith('search?input=xxx');
+    scope.go = jasmine.createSpy();
+    ctrl.find();
+    expect(scope.go).toHaveBeenCalledWith('search?input=xxx');
   });
 
   it('should clear input', function () {
-    exequteController('xxx');
-    scope.clear();
-    expect(rootScope.fli.route.input).toBe('');
+    var ctrl = exequteController('xxx');
+    ctrl.clear();
+    expect(scope.fli.route.input).toBe('');
   });
 
 });

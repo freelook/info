@@ -1,0 +1,11 @@
+fli-search-result-web-vk .text {
+  max-height: 100px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+fli-search-result-web-vk audio {
+  width: 100%;
+}
