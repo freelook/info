@@ -61,7 +61,7 @@ gulp.task('html', ['jshint', 'inject', 'partials'], function () {
       newDomain: 'http://freelook.info',
       oldDomain: 'no_value',
       docRoot: '/',
-      filetypes: ['css']
+      filetypes: ['css', 'js']
     })))
     .pipe(htmlFilter.restore())
     .pipe(gulp.dest('dist/'))

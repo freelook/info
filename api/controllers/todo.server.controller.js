@@ -4,9 +4,9 @@ var mongoose = require('mongoose'),
     Todo = mongoose.model('Todo');
 
 
-var TodoCtr = module.exports = {};
+var todoCtrl = module.exports = {};
 
-TodoCtr.get = function (req, res) {
+todoCtrl.get = function (req, res) {
 
     // use mongoose to get all todos in the database
     Todo.find(function (err, todos) {
@@ -19,7 +19,7 @@ TodoCtr.get = function (req, res) {
     });
 };
 
-TodoCtr.add = function (req, res) {
+todoCtrl.add = function (req, res) {
 
     // create a todo, information comes from AJAX request from Angular
     Todo.create({
@@ -40,7 +40,7 @@ TodoCtr.add = function (req, res) {
 
 };
 
-TodoCtr.delete = function (req, res) {
+todoCtrl.delete = function (req, res) {
     Todo.remove({
         _id: req.params.todo_id
     }, function (err, todo) {

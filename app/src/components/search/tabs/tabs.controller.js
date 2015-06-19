@@ -5,8 +5,8 @@ angular
   function ($scope, CONFIG) {
 
     var TYPES = {
-      image: 1,
-      goods: 2
+      goods: 1,
+      image: 2
     };
 
     var vm = this;

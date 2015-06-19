@@ -18,7 +18,7 @@ module.exports = function (req, res) {
             res.json(results);
         });
     } else {
-        res.end();
+        res.status(404).end();
     }
 
 

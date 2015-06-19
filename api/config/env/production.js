@@ -1,5 +1,8 @@
 'use strict';
 
 module.exports = {
-	db: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://localhost/fli'
+    db: {
+        url: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://localhost/fli',
+        config: {auth: {authdb: 'admin'}}
+    }
 };

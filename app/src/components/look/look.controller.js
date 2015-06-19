@@ -18,6 +18,7 @@ angular
     $rootScope.fli.media = $mdMedia;
     $rootScope.fli.title = !$rootScope.fli.route.input ? DEFAULT_TITLE : 'FLI - ' + decodeURIComponent($rootScope.fli.route.input);
     $rootScope.fli.description = DEFAULT_DESCRIPTION;
+    $rootScope.fli.icon = 'eye';
 
     if (!!$rootScope.fli.route.input && !!$rootScope.fli.route.url) {
       local.push(LOOK_KEY, {
