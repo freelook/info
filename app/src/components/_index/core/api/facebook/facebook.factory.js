@@ -4,8 +4,7 @@ angular
   .factory('facebook',
   function ($http, $q, api) {
 
-    var APP_ID = '846841298681206',
-      FB_API = 'https://graph.facebook.com/';
+    var APP_ID = '846841298681206';
 
     function share(_href) {
       var fapi = 'https://www.facebook.com/dialog/share?' +
@@ -17,11 +16,12 @@ angular
     }
 
     function user(_id) {
-      return $http.jsonp(FB_API + _id + '?callback=JSON_CALLBACK');
+      var point = 'search?q=' + encodeURIComponent(_id + '?fli=1');
+      return api.facebook(point);
     }
 
     function pages(q) {
-      var point = 'search?q=' + q + '&type=page';
+      var point = 'search?q=' + encodeURIComponent('search?q=' + q + '&type=page');
       return api.facebook(point);
     }
 
@@ -31,6 +31,7 @@ angular
       pages: pages
     };
 
-  });
+  })
+  .constant('FB_API', 'https://graph.facebook.com/');
 
 

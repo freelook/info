@@ -10,10 +10,9 @@ function search(req, res) {
     if (req.query && req.query.q) {
         token.check()
             .then(function (_token) {
-                var type = req.query.type || 'group';
                 _req = $http
                     .get({
-                        url: 'https://graph.facebook.com/search?q=' + req.query.q + '&type=' + type + '&' + _token
+                        url: 'https://graph.facebook.com/' + req.query.q + '&' + _token
                     })
                     .on('response', function (res) {
                         if (res && res.statusCode === 400) {
