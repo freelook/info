@@ -9,6 +9,7 @@ function market(req, res) {
                 url: encodeURI(decodeURI(req.query.url)),
                 headers: {
                     'User-Agent': 'FLI',
+                    'Accept': '*/*',
                     'Authorization': process.env.YANDEX_KEY || ''
                 }
             })
