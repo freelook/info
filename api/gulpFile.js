@@ -30,7 +30,7 @@ gulp.task('mochaTest', function () {
 gulp.task('watch', function () {
     var server = livereload();
 
-    gulp.watch(jsFiles).on('change', function (file) {
+    gulp.watch(jsFiles, ['jshint']).on('change', function (file) {
         server.changed(file.path);
     });
 });
