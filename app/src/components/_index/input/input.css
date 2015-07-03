@@ -29,5 +29,6 @@ fli-input .md-button.md-icon-button i {
 }
 
 fli-input md-progress-linear {
+  top: -3px;
   position: absolute;
 }
