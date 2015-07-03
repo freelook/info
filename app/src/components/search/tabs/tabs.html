@@ -1,5 +1,5 @@
 <md-tabs md-selected="tabs.selected">
-  <md-tab md-on-select="go({type: null})"><a ng-href="{{tabs.href(null)}}">Web</a></md-tab>
-  <md-tab md-on-select="go({type: 'goods'})"><a ng-href="{{tabs.href('goods')}}">Goods</a></md-tab>
-  <md-tab md-on-select="go({type: 'image'})"><a ng-href="{{tabs.href('image')}}">Image</a></md-tab>
+  <md-tab md-on-select="go({type: null, sub: null})"><a ng-href="{{tabs.href(null)}}">Web</a></md-tab>
+  <md-tab md-on-select="go({type: 'goods', sub: null})"><a ng-href="{{tabs.href('goods')}}">Goods</a></md-tab>
+  <md-tab md-on-select="go({type: 'image', sub: null})"><a ng-href="{{tabs.href('image')}}">Image</a></md-tab>
 </md-tabs>

@@ -8,6 +8,9 @@ angular
 
     vm.href = function (sub) {
       var href = CONFIG.ORIGIN + 'search?input=' + $scope.fli.route.input;
+      if ($scope.fli.route.type) {
+        href += '&type=' + $scope.fli.route.type;
+      }
       if (sub) {
         href += '&sub=' + sub;
       }

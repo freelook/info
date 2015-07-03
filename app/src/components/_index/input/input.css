@@ -2,6 +2,7 @@ fli-input form {
   background: #fff !important;
   margin: 5px;
   padding: 0;
+  z-index: 999;
 }
 
 fli-input input {
@@ -25,4 +26,8 @@ fli-input .md-button.md-icon-button i {
   top: -3px;
   position: relative;
   outline: 0;
+}
+
+fli-input md-progress-linear {
+  position: absolute;
 }

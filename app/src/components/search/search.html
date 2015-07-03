@@ -1,11 +1,9 @@
 <header>
-  <md-progress-linear md-mode="indeterminate" ng-if="fli.progress"></md-progress-linear>
   <fli-input class="search" flex></fli-input>
   <fli-search-lucky></fli-search-lucky>
 </header>
 
-
-<div id="search" flex layout="column">
+<div id="search" flex layout="column" class="animate">
 
   <fli-search-tabs ng-hide="fli.focus"></fli-search-tabs>
 
@@ -15,7 +13,6 @@
   </div>
 
 </div>
-
 
 <fli-search-suggest ng-hide="fli.focus"></fli-search-suggest>
 
