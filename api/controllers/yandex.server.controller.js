@@ -21,7 +21,7 @@ function market(req, res) {
     } else {
         res.status(404).json({
             err: true,
-            msg: 'error url'
+            msg: 'error url ' + process.env.YANDEX_KEY
         });
     }
 
