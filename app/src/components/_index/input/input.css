@@ -2,7 +2,6 @@ fli-input form {
   background: #fff !important;
   margin: 5px;
   padding: 0;
-  z-index: 999;
 }
 
 fli-input input {

@@ -2,6 +2,10 @@ html, header, body, footer {
   background: #ebebeb !important;
 }
 
+header {
+  z-index: 999;
+}
+
 md-whiteframe,
 md-card {
   overflow-x: hidden;
