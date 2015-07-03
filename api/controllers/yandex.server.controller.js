@@ -8,8 +8,6 @@ function market(req, res) {
             .get({
                 url: encodeURI(decodeURI(req.query.url)),
                 headers: {
-                    'Host': 'api.content.market.yandex.ru',
-                    'Accept': '*/*',
                     'Authorization': process.env.YANDEX_KEY || ''
                 }
             })
