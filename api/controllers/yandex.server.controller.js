@@ -8,7 +8,7 @@ function market(req, res) {
             .get({
                 url: encodeURI(decodeURI(req.query.url)),
                 headers: {
-                    'Authorization': process.env.YANDEX_KEY || ''
+                    Authorization: process.env.YANDEX_KEY || ''
                 }
             })
             .on('error', function (err) {
