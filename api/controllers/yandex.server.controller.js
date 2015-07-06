@@ -6,7 +6,7 @@ function market(req, res) {
     if (req.query && req.query.text) {
         var _req = $http
             .get({
-                url: 'https://api.content.market.yandex.ru/v1/search.json?remote_ip=' + req.ip +
+                url: 'https://api.content.market.yandex.ru/v1/search.json?remote_ip=' + req.headers['x-forwarded-for'] +
                 '&text=' + encodeURI(decodeURI(req.query.text)),
                 headers: {
                     'Authorization': process.env.YANDEX_KEY || ''
@@ -22,7 +22,7 @@ function market(req, res) {
     } else {
         res.status(404).json({
             err: true,
-            msg: 'error text ' + req.headers['x-forwarded-for'] + ' ' + req.ip
+            msg: 'error text'
         });
     }
 
