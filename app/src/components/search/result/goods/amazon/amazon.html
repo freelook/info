@@ -1,0 +1,21 @@
+<md-card class="md-whiteframe-z1" flex-sm="95" flex-gt-sm="40" flex-gt-md="30" flex-gt-lg="20" layout="column" ng-repeat="item in amazon.search.Item">
+  <div class="link" ng-click="link(decode(item.DetailPageURL[0]))">
+  <img class="md-card-image" ng-if="!!item.MediumImage[0].URL[0]" ng-src="{{item.MediumImage[0].URL[0]}}" fli-err title="{{'Buy - ' + item.ItemAttributes[0].Title[0]}}">
+  <div class="md-card-image header" ng-if="!item.MediumImage[0].URL[0]" title="{{'Buy - ' + item.ItemAttributes[0].Title[0]}}"></div>
+  </div>
+  <md-card-content>
+    <div ng-click="link(item.DetailPageURL[0])" class="link underline" ng-bind-html="item.ItemAttributes[0].Title[0]"></div>
+  </md-card-content>
+  <md-card-footer layout="row" layout-align="end center">
+    <div class="link" ng-click="link(result.share())" title="{{'SHARE - '+ fli.route.input}}">
+      <i class="fa fa-share-alt"></i>
+    </div>
+    <div class="link" ng-click="link(decode(item.DetailPageURL[0]))" title="{{'VIEW ALL - '+ fli.route.input}}">
+      <span ng-if="item.OfferSummary[0].LowestNewPrice[0].FormattedPrice[0]" ng-bind="item.OfferSummary[0].LowestNewPrice[0].FormattedPrice[0]"></span>
+      <i class="fa fa-cart-plus"></i>
+    </div>
+  </md-card-footer>
+</md-card>
+
+
+
