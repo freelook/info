@@ -3,10 +3,11 @@
 var $http = require('request');
 
 function market(req, res) {
-    if (req.query && req.query.url) {
+    if (req.query && req.query.text) {
         var _req = $http
             .get({
-                url: encodeURI(decodeURI(req.query.url)),
+                url: 'https://api.content.market.yandex.ru/v1/search.json?remote_ip=' + req.ip +
+                '&text=' + encodeURI(decodeURI(req.query.text)),
                 headers: {
                     'Authorization': process.env.YANDEX_KEY || ''
                 }
@@ -21,7 +22,7 @@ function market(req, res) {
     } else {
         res.status(404).json({
             err: true,
-            msg: 'error url'
+            msg: 'error text'
         });
     }
 
