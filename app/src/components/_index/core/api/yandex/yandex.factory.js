@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('yandex', function ($q, $http, api, toast) {
+  .factory('yandex', function ($q, $http, api, toast, CONFIG) {
 
     function _getUrl(q) {
       return 'https://yandex.com/sitesearch?text=' + q + '&searchid=2192226&frame=1';
@@ -52,9 +52,17 @@ angular
       }
     }
 
+    function market(text) {
+      if (text) {
+        var yapi = CONFIG.ORIGIN + 'market?text=' + text + '&callback=JSON_CALLBACK';
+        return $http.jsonp(yapi);
+      }
+    }
+
     return {
       search: search,
-      rich: rich
+      rich: rich,
+      market: market
     };
 
   });
