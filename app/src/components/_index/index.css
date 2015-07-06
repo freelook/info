@@ -61,41 +61,14 @@ md-whiteframe {
   }
 }
 
-@-webkit-keyframes fadeOutUp {
-  0% {
-  }
-
-  100% {
-    -webkit-transform: translate3d(0, -100%, 0);
-    transform: translate3d(0, -100%, 0);
-  }
-}
-
-@keyframes fadeOutUp {
-  0% {
-  }
-
-  100% {
-    -webkit-transform: translate3d(0, -100%, 0);
-    transform: translate3d(0, -100%, 0);
-  }
-}
-
-.animate .ng-enter, .animate .ng-leave {
+.animate .ng-enter {
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
 
-.animate .ng-enter,
-.animate .ng-leave.ng-leave-active {
-  -webkit-animation-name: fadeOutUp;
-  animation-name: fadeOutUp;
-}
-
-.animate .ng-leave,
-.animate .ng-enter.ng-enter-active {
+.animate .ng-enter {
   -webkit-animation-name: fadeInDown;
   animation-name: fadeInDown;
 }
