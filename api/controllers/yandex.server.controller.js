@@ -22,7 +22,7 @@ function market(req, res) {
     } else {
         res.status(404).json({
             err: true,
-            msg: 'error text' + req.headers['X-Forwarded-For']
+            msg: 'error text'
         });
     }
 
