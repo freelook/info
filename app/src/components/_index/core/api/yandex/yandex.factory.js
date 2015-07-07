@@ -54,8 +54,8 @@ angular
 
     function market(text) {
       if (text) {
-        var yapi = CONFIG.ORIGIN + 'market?text=' + text + '&callback=JSON_CALLBACK';
-        return $http.jsonp(yapi);
+        var yapi = CONFIG.API.URL + 'yandex/market?text=' + text;
+        return $http.get(yapi);
       }
     }
 

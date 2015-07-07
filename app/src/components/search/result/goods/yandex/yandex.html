@@ -1,0 +1,30 @@
+<div layout="row" layout-align="end center" layout-margin>
+  <div flex="75" layout="column" layout-align="center center">
+    <a class="link" ng-click="link('http://market.yandex.com')">Данные Яндекс.Маркета</a>
+  </div>
+</div>
+
+<div layout="row" layout-align="start start" layout-wrap>
+<md-card class="md-whiteframe-z1" flex-sm="95" flex-gt-sm="40" flex-gt-md="30" flex-gt-lg="20" layout="column" ng-repeat="item in ya.search.searchResult.results" ng-if="item.offer">
+  <div class="link" ng-click="link(item.offer.url)">
+    <img class="md-card-image" ng-if="!!item.offer.bigPhoto.url" ng-src="{{item.offer.bigPhoto.url}}" fli-err title="{{'Buy - ' + item.offer.name}}">
+    <div class="md-card-image header" ng-if="!item.offer.bigPhoto.url" title="{{'Buy - ' + item.offer.name}}"></div>
+  </div>
+  <md-card-content>
+    <div ng-click="link(item.offer.url)" class="link underline" ng-bind-html="item.offer.name"></div>
+    <div flex ng-bind-html="item.offer.description"></div>
+  </md-card-content>
+  <md-card-footer layout="row" layout-align="end center">
+    <div class="link" ng-click="link(result.share())" title="{{'SHARE - '+ fli.route.input}}">
+      <i class="fa fa-share-alt"></i>
+    </div>
+    <div class="link" ng-click="link(item.offer.url)" title="{{'GO TO SHOP - '+ fli.route.input}}">
+      <span ng-if="item.offer.price" ng-bind="item.offer.price.value + ' ' + item.offer.price.currencyCode"></span>
+      <i class="fa fa-cart-plus"></i>
+    </div>
+  </md-card-footer>
+</md-card>
+</div>
+
+
+
