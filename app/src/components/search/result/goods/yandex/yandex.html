@@ -18,7 +18,7 @@
     <div class="link" ng-click="link(result.share())" title="{{'SHARE - '+ fli.route.input}}">
       <i class="fa fa-share-alt"></i>
     </div>
-    <div class="link" ng-click="link(item.offer.url)" title="{{'GO TO SHOP - '+ fli.route.input}}">
+    <div class="link" ng-click="link(item.offer.url)" title="{{'GO TO SHOP - '+ item.offer.shopInfo.name || fli.route.input}}">
       <span ng-if="item.offer.price" ng-bind="item.offer.price.value + ' ' + item.offer.price.currencyCode"></span>
       <i class="fa fa-cart-plus"></i>
     </div>
