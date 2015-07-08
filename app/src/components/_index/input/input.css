@@ -25,3 +25,8 @@ fli-input .md-button.md-icon-button i {
 fli-input md-progress-linear {
   position: absolute;
 }
+
+fli-input .clear {
+  position: absolute;
+  right: 5px;
+}

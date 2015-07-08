@@ -8,12 +8,12 @@
     <i ng-if="!!fli.route.input && !fli.focus" class="fa fa-{{fli.icon || 'search'}}"></i>
   </md-button>
 
-  <input flex id="input" type="search" ng-focus="inpt.focus()" ng-blur="inpt.blur()" autocomplete="off"
+  <input flex id="input" type="search" ng-focus="inpt.focus()" autocomplete="off"
          ng-model="fli.route.input"
          placeholder="{{inpt.placeholder}}">
 
-  <md-button ng-if="fli.route.input && fli.focus" class="md-icon-button md-primary" aria-label="clear">
-    <i  class="fa fa-close" ng-click="inpt.clear()"></i>
+  <md-button ng-if="fli.route.input && fli.focus" class="md-icon-button md-primary clear" aria-label="clear">
+    <i ng-click="inpt.clear()" class="fa fa-close"></i>
   </md-button>
 
 </form>

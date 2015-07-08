@@ -21,7 +21,10 @@ angular
       },
       {
         name: 'Hide',
-        icon: 'arrow-up'
+        icon: 'arrow-up',
+        action: function () {
+          $rootScope.fli.focus = 0;
+        }
       }
     ];
 

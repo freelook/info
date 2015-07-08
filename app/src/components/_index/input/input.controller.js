@@ -28,6 +28,9 @@ angular
         if ($scope.fli.route.type) {
           href += '&type=' + $scope.fli.route.type;
         }
+        if ($scope.fli.route.sub) {
+          href += '&sub=' + $scope.fli.route.sub;
+        }
         return href;
       }
       return '/';
