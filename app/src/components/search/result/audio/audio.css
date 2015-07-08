@@ -1,0 +1,21 @@
+fli-search-result-audio .audio-control .beta {
+  position: absolute;
+  right: 30px;
+  color: #cccccc;
+}
+
+fli-search-result-audio .audio-control {
+  margin-top: 25px;
+}
+
+fli-search-result-audio .audio-control .title {
+  margin-top: 17px;
+}
+
+fli-search-result-audio .active {
+  background: #f0f0f0 !important;
+}
+
+fli-search-result-audio md-card {
+  outline: 0;
+}

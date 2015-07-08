@@ -31,11 +31,27 @@ angular
       }
     }
 
+    function yandex(point) {
+      if (point) {
+        var api = CONFIG.API.URL + 'yandex/' + point;
+        return $http.get(api);
+      }
+    }
+
+    function proxy(url) {
+      if (url) {
+        var api = CONFIG.API.URL + 'proxy?url' + decodeURIComponent(url);
+        return $http.get(api);
+      }
+    }
+
     return {
       get: get,
       goods: goods,
       facebook: facebook,
-      vk: vk
+      vk: vk,
+      yandex: yandex,
+      proxy: proxy
     };
 
   });

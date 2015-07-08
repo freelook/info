@@ -24,11 +24,17 @@ angular
       return api.vk(point);
     }
 
+    function audio(q) {
+      var point = 'search?q=' + q + '&type=audio.search';
+      return api.vk(point);
+    }
+
     return {
       user: user,
       wall: wall,
       group: group,
-      pages: pages
+      pages: pages,
+      audio: audio
     };
 
   });

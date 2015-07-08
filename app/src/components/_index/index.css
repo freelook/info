@@ -12,8 +12,9 @@ md-card {
   background: #ffffff !important;
 }
 
-md-tabs {
+md-tabs, md-card, md-card-content {
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 md-toast.md-default-theme {
