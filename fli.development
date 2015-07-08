@@ -56,6 +56,11 @@ server {
 		proxy_set_header Connection "upgrade";
 	}
 
+	location /api/proxy {
+		resolver 8.8.8.8;
+		proxy_pass $arg_url;
+	}
+
 	location /api/yandex {
 		# Send to fli server request for api
 		proxy_pass http://freelook.info;

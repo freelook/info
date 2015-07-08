@@ -62,6 +62,11 @@ server {
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 	}
 
+	location /api/proxy {
+		resolver 8.8.8.8;
+		proxy_pass $arg_url;
+	}
+
 	location @prerender {
 
 		set $prerender 0;
