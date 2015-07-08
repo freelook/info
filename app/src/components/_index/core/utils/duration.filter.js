@@ -19,5 +19,5 @@ angular
         minutes = '0' + minutes;
       }
       return hours + ':' + minutes + ':' + seconds;
-    }
+    };
   });
