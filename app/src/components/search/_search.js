@@ -1,8 +1,7 @@
 'use strict';
 
 angular
-  .module('fli.search',
-  ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngRoute', 'ngMaterial'])
+  .module('fli.search', [])
   .config(function ($routeProvider) {
 
     // Routes config

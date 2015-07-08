@@ -1,8 +1,7 @@
 'use strict';
 
 angular
-  .module('fli.todo',
-  ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngRoute', 'ngMaterial'])
+  .module('fli.todo', [])
   .config(function ($routeProvider) {
 
     // Routes config

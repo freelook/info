@@ -1,8 +1,7 @@
 'use strict';
 
 angular
-  .module('fli.home',
-  ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngRoute', 'ngMaterial'])
+  .module('fli.home', [])
   .config(function ($routeProvider) {
 
     // Routes config

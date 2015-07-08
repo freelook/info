@@ -3,3 +3,7 @@ fli-search-tabs {
   padding-left: 15px;
   padding-right: 15px;
 }
+
+fli-search-tabs md-ink-bar {
+  display: none;
+}
