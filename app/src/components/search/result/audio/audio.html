@@ -10,7 +10,7 @@
     <i class="fa fa-forward"></i>
   </md-button>
   <div ng-show="mediaPlayer.playing" class="title">
-    <span ng-bind="audio.getTitle(mediaPlayer.currentTrack - 1)"></span>
+    <span ng-bind-html="audio.getTitle(mediaPlayer.currentTrack - 1)"></span>
   </div>
 </div>
 
@@ -21,9 +21,9 @@
     <md-card-content layout="row">
       <div flex>
         <span ng-bind="$index + 1"></span><span>.</span>
-        <span ng-bind="item.artist" class="link"></span>
+        <span ng-bind-html="item.artist" class="link"></span>
         <span class="link"> - </span>
-        <span ng-bind="item.title" class="link"></span>
+        <span ng-bind-html="item.title" class="link"></span>
       </div>
       <div>
         <span ng-bind="item.duration | duration:'sec'" class="duration"></span>
