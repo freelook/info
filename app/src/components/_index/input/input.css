@@ -1,13 +1,15 @@
 fli-input form {
-  background: #fff !important;
+  background: #fff;
   margin: 5px;
   padding: 0;
 }
 
 fli-input input {
-  background: #fff !important;
-  padding: 0 0 0 5px;
-  font-size: 14px;
+  background: #fff;
+  padding: 0;
+  height: 48px;
+  line-height: 48px;
+  font-size: 16px;
   border: 0;
   border-radius: 0;
   outline: 0;
@@ -23,6 +25,7 @@ fli-input .md-button.md-icon-button i {
 }
 
 fli-input md-progress-linear {
+  top: -3px;
   position: absolute;
 }
 

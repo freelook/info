@@ -1,9 +1,16 @@
-fli-search-tabs {
-  display: block;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
 fli-search-tabs md-ink-bar {
   display: none;
+}
+
+fli-search-tabs .md-tab {
+  padding: 12px 15px;
+}
+
+fli-search-tabs .md-tab a {
+  text-decoration: none;
+}
+
+fli-search-tabs .md-tab.md-active a {
+  color: #888888;
+  text-shadow: 3px 3px 13px #888888;
 }

@@ -1,6 +1,6 @@
-<md-tabs md-selected="tabs.selected" md-no-bar="true">
-  <md-tab><a ng-href="{{tabs.href(null)}}">Web</a></md-tab>
-  <md-tab><a ng-href="{{tabs.href('goods')}}">Goods</a></md-tab>
-  <md-tab><a ng-href="{{tabs.href('image')}}">Image</a></md-tab>
-  <md-tab><a ng-href="{{tabs.href('audio')}}">Audio</a></md-tab>
+<md-tabs md-selected="tabs.selected" md-no-bar="true" md-autoselect="false">
+  <md-tab md-on-select="tabs.go({type: null, sub: null})"><a ng-href="{{tabs.href(null)}}">Web</a></md-tab>
+  <md-tab md-on-select="tabs.go({type: 'goods', sub: null})"><a ng-href="{{tabs.href('goods')}}">Goods</a></md-tab>
+  <md-tab md-on-select="tabs.go({type: 'image', sub: null})"><a ng-href="{{tabs.href('image')}}">Image</a></md-tab>
+  <md-tab md-on-select="tabs.go({type: 'audio', sub: null})"><a ng-href="{{tabs.href('audio')}}">Audio</a></md-tab>
 </md-tabs>

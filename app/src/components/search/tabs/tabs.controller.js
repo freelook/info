@@ -6,10 +6,11 @@ angular
 
     var TYPES = {
       goods: 1,
-      image: 2
+      image: 2,
+      audio: 3
     };
 
-    var vm = this;
+    var vm = this, auto = false;
     vm.selected = 0;
 
     vm.href = function (type) {
@@ -20,8 +21,17 @@ angular
       return href;
     };
 
+    vm.go = function (config) {
+      if (!auto) {
+        $scope.go(config);
+      } else {
+        auto = false;
+      }
+    };
+
     function init() {
       var type = $scope.fli.route.type || 0;
+      auto = true;
       vm.selected = TYPES[type] || 0;
     }
 

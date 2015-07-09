@@ -1,5 +1,5 @@
 html, header, body, footer {
-  background: #ebebeb !important;
+  background: #ebebeb;
 }
 
 header {
@@ -9,7 +9,7 @@ header {
 md-whiteframe,
 md-card {
   overflow-x: hidden;
-  background: #ffffff !important;
+  background: #ffffff;
 }
 
 md-tabs, md-card, md-card-content {
@@ -24,6 +24,10 @@ md-toast.md-default-theme {
 md-whiteframe {
   padding: 5px;
   margin: 5px;
+}
+
+.vm {
+  min-height: 75vmax;
 }
 
 .link {

@@ -1,4 +1,4 @@
-<div class="audio-control" layout="row">
+<div class="audio-control" layout="row" layout-align="start center">
   <audio player-control="mediaPlayer" playlist="audio.results" media-player></audio>
   <md-button class="md-icon-button md-primary" ng-click="mediaPlayer.playPause()" aria-label="play">
     <i class="fa" ng-class="{ 'fa-pause': mediaPlayer.playing, 'fa-play': !mediaPlayer.playing }"></i>
@@ -10,14 +10,11 @@
     <i class="fa fa-forward"></i>
   </md-button>
   <div ng-show="mediaPlayer.playing" class="title">
-    Current: <span ng-bind="audio.getTitle(mediaPlayer.currentTrack - 1)"></span>
-  </div>
-  <div class="beta">
-    <span>BETA</span>
+    <span ng-bind="audio.getTitle(mediaPlayer.currentTrack - 1)"></span>
   </div>
 </div>
 
-<div layout="row" layout-align="start start" layout-wrap>
+<div layout="row" layout-align="center start" layout-wrap>
   <md-card class="md-whiteframe-z1" flex="90" layout="column" ng-repeat="item in audio.results"
            ng-click="mediaPlayer.playPause($index)"
            ng-class="{active: mediaPlayer.playing && mediaPlayer.currentTrack -1 === $index}">
