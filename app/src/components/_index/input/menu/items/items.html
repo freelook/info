@@ -1,3 +1,15 @@
+<div flex layout="row" class="nav">
+    <md-button class="md-icon-button md-primary" ng-click="itemCtrl.back()" aria-label="back">
+      <i class="fa fa-arrow-left"></i>
+    </md-button>
+    <md-button flex class="md-icon-button md-primary" ng-click="itemCtrl.hide()" aria-label="hide">
+      <i class="fa fa-arrow-up"></i>
+    </md-button>
+    <md-button class="md-icon-button md-primary" ng-click="itemCtrl.forward()" aria-label="forward">
+      <i class="fa fa-arrow-right"></i>
+    </md-button>
+</div>
+
 <md-whiteframe flex class="md-whiteframe-z3" layout="row" ng-repeat="item in menu">
   <a flex ng-if="!item.action" ng-href="{{item.href}}">
     <i class="fa fa-{{item.icon}}"></i>

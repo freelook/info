@@ -15,7 +15,7 @@
 </div>
 
 <div layout="row" layout-align="center start" layout-wrap>
-  <md-card class="md-whiteframe-z1" flex="90" layout="column" ng-repeat="item in audio.results"
+  <md-card class="md-whiteframe-z1" flex="95" layout="column" ng-repeat="item in audio.results"
            ng-click="mediaPlayer.playPause($index)"
            ng-class="{active: mediaPlayer.playing && mediaPlayer.currentTrack -1 === $index}">
     <md-card-content layout="row">

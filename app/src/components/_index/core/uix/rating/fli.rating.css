@@ -1,0 +1,24 @@
+fli-rating {
+  outline: 0;
+}
+
+.rating {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+
+.rating li {
+  padding: 1px;
+  color: #ddd;
+  font-size: 20px;
+  text-shadow: .05em .05em #aaa;
+  list-style-type: none;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.rating li.filled {
+  color: #fd0;
+}
+

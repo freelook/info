@@ -7,7 +7,7 @@ angular
             DEFAULT_TITLE, DEFAULT_DESCRIPTION, local, SEARCH_KEY) {
 
     $location.search({
-      input: $routeParams.input,
+      input: $routeParams.input || '',
       type: $routeParams.type,
       sub: $routeParams.sub,
       metaimg: $routeParams.metaimg,

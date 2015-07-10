@@ -5,26 +5,25 @@ angular
   .controller('menu.items.ctrl',
   function ($rootScope, $scope, $window) {
 
+    var vm = this;
+
+    vm.back = function () {
+      $window.history.back();
+    };
+
+    vm.forward = function () {
+      $window.history.forward();
+    };
+
+    vm.hide = function () {
+      $rootScope.fli.focus = 0;
+    };
+
     $scope.menu = [
-      {
-        name: 'Back',
-        icon: 'arrow-left',
-        href: '/',
-        action: function () {
-          $window.history.back();
-        }
-      },
       {
         name: 'Home',
         icon: 'th-large',
         href: '/'
-      },
-      {
-        name: 'Hide',
-        icon: 'arrow-up',
-        action: function () {
-          $rootScope.fli.focus = 0;
-        }
       }
     ];
 

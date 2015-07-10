@@ -18,3 +18,7 @@ fli-menu-items md-whiteframe a,
   text-decoration: none;
   outline: 0;
 }
+
+fli-menu-items .nav {
+  margin: 0 5px 0 5px;
+}

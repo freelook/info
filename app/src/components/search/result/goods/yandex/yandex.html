@@ -1,5 +1,5 @@
-<div layout="row" layout-align="end center" layout-margin>
-  <div flex-sm="75" flex-gt-sm="60" flex-gt-md="30" flex-gt-lg="50" layout="column" layout-align="center center">
+<div layout="row" layout-align="end center">
+  <div flex-sm="100" flex-gt-sm="60" flex-gt-md="30" flex-gt-lg="50" layout="column" layout-align="center center">
     <a class="link" ng-click="link('http://market.yandex.com')">Данные Яндекс.Маркета</a>
   </div>
 </div>
@@ -13,6 +13,7 @@
   <md-card-content>
     <div ng-click="link(item.offer.url)" class="link underline" ng-bind-html="item.offer.name"></div>
     <div flex ng-bind-html="item.offer.description"></div>
+    <fli-rating ng-if="item.offer.shopInfo" ng-model="item.offer.shopInfo.rating"></fli-rating>
   </md-card-content>
   <md-card-footer layout="row" layout-align="end center">
     <div class="link" ng-click="link(result.share())" title="{{'SHARE - '+ fli.route.input}}">
