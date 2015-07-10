@@ -12,7 +12,7 @@ function search(req, res) {
             .then(function (_token) {
                 _req = $http
                     .get({
-                        url: 'https://graph.facebook.com/' + req.query.q + '&' + _token
+                        url: 'https://graph.facebook.com/' + encodeURI(decodeURI(req.query.q)) + '&' + _token
                     })
                     .on('response', function (res) {
                         if (res && res.statusCode === 400) {
