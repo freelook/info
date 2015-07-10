@@ -18,7 +18,11 @@ angular
 
     function push(key, value, max) {
       var arr = get(key, []);
-      arr.unshift(value);
+      if (!arr.some(function (el) {
+          return angular.equals(value, el);
+        })) {
+        arr.unshift(value);
+      }
       if (arr.length > max) {
         arr.pop();
       }
