@@ -7,6 +7,7 @@ var SearchPage = function() {
 
   this.input = element(by.id(INPUT_ID));
 
+
   this.searchEls = element.all(by.repeater('item in all.search.results'));
 
   this.fillInput = function( input ) {
