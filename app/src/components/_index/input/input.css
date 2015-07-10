@@ -33,3 +33,7 @@ fli-input .clear {
   position: absolute;
   right: 5px;
 }
+
+fli-input .clear i {
+  font-size: 1.2em;
+}
