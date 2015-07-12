@@ -1,15 +1,15 @@
 <div class="audio-control" layout="row" layout-align="start center">
   <audio player-control="mediaPlayer" playlist="audio.results" media-player></audio>
-  <md-button class="md-icon-button md-primary" ng-click="mediaPlayer.playPause()" aria-label="play">
-    <i class="fa" ng-class="{ 'fa-pause': mediaPlayer.playing, 'fa-play': !mediaPlayer.playing }"></i>
-  </md-button>
   <md-button class="md-icon-button md-primary" ng-click="mediaPlayer.prev()" aria-label="prev">
     <i class="fa fa-backward"></i>
+  </md-button>
+  <md-button class="md-icon-button md-primary" ng-click="mediaPlayer.playPause()" aria-label="play">
+    <i class="fa" ng-class="{ 'fa-pause': mediaPlayer.playing, 'fa-play': !mediaPlayer.playing }"></i>
   </md-button>
   <md-button class="md-icon-button md-primary" ng-click="mediaPlayer.next()" aria-label="next">
     <i class="fa fa-forward"></i>
   </md-button>
-  <div ng-show="mediaPlayer.playing" class="title">
+  <div flex ng-show="mediaPlayer.playing" class="title">
     <span ng-bind-html="audio.getTitle(mediaPlayer.currentTrack - 1)"></span>
   </div>
 </div>
