@@ -3,7 +3,7 @@
 angular
   .module('fli.home')
   .controller('home.ctrl',
-  function ($rootScope, $routeParams, $scope, $mdMedia, CONFIG, DEFAULT_TITLE, DEFAULT_DESCRIPTION, local, SEARCH_KEY, LOOK_KEY) {
+  function ($rootScope, $routeParams, $scope, $mdMedia, local, url, DEFAULT_TITLE, DEFAULT_DESCRIPTION, SEARCH_KEY, LOOK_KEY) {
 
     $rootScope.fli.route = $routeParams || {};
     $rootScope.fli.media = $mdMedia;
@@ -19,14 +19,14 @@ angular
         name: 'Search',
         items: $scope.searchs,
         href: function (i) {
-          return CONFIG.ORIGIN + 'search?input=' + i.input;
+          return url.href('search?', {input: i.input});
         }
       },
       {
         name: 'Look',
         items: $scope.looks,
         href: function (i) {
-          return CONFIG.ORIGIN + 'look?input=' + i.input + '&url=' + i.url;
+          return url.href('look?', {input: i.input, url: i.url});
         }
       }
     ];

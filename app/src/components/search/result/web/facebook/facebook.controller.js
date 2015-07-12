@@ -3,7 +3,7 @@
 angular
   .module('fli.search')
   .controller('search.result.web.facebook.ctrl',
-  function ($scope, facebook, CONFIG) {
+  function ($scope, facebook, url) {
 
     var vm = this;
     vm.search = {};
@@ -17,7 +17,7 @@ angular
     };
 
     vm.href = function (id) {
-      return CONFIG.ORIGIN + 'look?input=' + $scope.fli.route.input + '&url=' + vm.link(id);
+      return url.href('look?', {input: $scope.fli.route.input, url: vm.link(id)});
     };
 
     function setResult(fb) {

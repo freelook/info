@@ -3,7 +3,7 @@
 angular
   .module('fli.search')
   .controller('search.result.web.vk.ctrl',
-  function ($scope, $sce, CONFIG, vk) {
+  function ($scope, $sce, url, vk) {
 
     var vm = this;
     vm.search = {};
@@ -12,17 +12,12 @@ angular
       return 'https://vk.com/' + id;
     }
 
-    function _getUrl(id) {
-      return CONFIG.ORIGIN + 'look?input=' + $scope.fli.route.input + '&url=' + _getLink(id);
+    function _getHref(id) {
+      return url.href('look?', {input: $scope.fli.route.input, url: _getLink(id)});
     }
 
-    vm.link = function (id) {
-      return _getLink(id);
-    };
-
-    vm.href = function (id) {
-      return _getUrl(id);
-    };
+    vm.link = _getLink;
+    vm.href = _getHref;
 
     function setResult(vk) {
       var result = vk.response || [];

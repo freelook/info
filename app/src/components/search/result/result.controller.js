@@ -3,12 +3,12 @@
 angular
   .module('fli.search')
   .controller('search.result.ctrl',
-  function ($scope, CONFIG, facebook) {
+  function ($scope, url, facebook) {
 
     var vm = this;
 
-    vm.href = function (url) {
-      return CONFIG.ORIGIN + 'look?input=' + $scope.fli.route.input + '&url=' + url;
+    vm.href = function (_url) {
+      return url.href('look?', {input: $scope.fli.route.input, url: _url});
     };
 
     vm.share = function (url, img, text) {

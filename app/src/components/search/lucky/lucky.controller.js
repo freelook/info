@@ -2,17 +2,13 @@
 angular
   .module('fli.search')
   .controller('search.lucky.ctrl',
-  function ($scope, google, CONFIG) {
+  function ($scope, google, url) {
 
     var vm = this;
     vm.lucky = 'freelook';
 
     vm.href = function () {
-      var href = CONFIG.ORIGIN + 'search?input=' + vm.lucky;
-      if ($scope.fli.route.type) {
-        href += '&type=' + $scope.fli.route.type;
-      }
-      return href;
+      return url.href('search?', {input: vm.lucky}, true);
     };
 
     google.random().success(function (lucky) {

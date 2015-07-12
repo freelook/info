@@ -3,7 +3,7 @@
 angular
   .module('fli.look')
   .factory('full',
-  function ($sce, $location, $rootScope, $cacheFactory, readability, CONFIG, url) {
+  function ($sce, $location, $rootScope, $cacheFactory, readability, url) {
 
     var cache = $cacheFactory('full'),
       parser = new window.DOMParser();
@@ -14,10 +14,7 @@ angular
     }
 
     function _fliUrl(_url, input) {
-      if (!input) {
-        return CONFIG.ORIGIN + 'look?url=' + _url;
-      }
-      return CONFIG.ORIGIN + 'look?input=' + input + '&url=' + _url;
+      return url.href('look?', {input: input || null, url: _url});
     }
 
     function _prepareHtml(html, title) {

@@ -2,7 +2,7 @@
 angular
   .module('freelook.info')
   .controller('input.ctrl',
-  function ($scope, $timeout, $mdBottomSheet, $location, CONFIG, DEFAULT_PLACEHOLDER) {
+  function ($scope, $timeout, $mdBottomSheet, $location, url, DEFAULT_PLACEHOLDER) {
 
     var vm = this;
     vm.placeholder = DEFAULT_PLACEHOLDER;
@@ -23,15 +23,11 @@ angular
     };
 
     vm.href = function () {
+      if (!$scope.fli.focus) {
+        return url.href($location.url().slice(1));
+      }
       if ($scope.fli.route.input) {
-        var href = CONFIG.ORIGIN + 'search?input=' + $scope.fli.route.input;
-        if ($scope.fli.route.type) {
-          href += '&type=' + $scope.fli.route.type;
-        }
-        if ($scope.fli.route.sub) {
-          href += '&sub=' + $scope.fli.route.sub;
-        }
-        return href;
+        return url.href('search?', {input: $scope.fli.route.input}, true);
       }
       return '/';
     };
