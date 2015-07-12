@@ -1,13 +1,24 @@
 <div flex layout="row" class="nav">
-    <md-button class="md-icon-button md-primary" ng-click="itemCtrl.back()" aria-label="back">
+  <md-whiteframe layout="row" flex class="md-whiteframe-z3" ng-click="itemCtrl.back()" aria-label="back">
+    <div>
       <i class="fa fa-arrow-left"></i>
-    </md-button>
-    <md-button flex class="md-icon-button md-primary" ng-click="itemCtrl.hide()" aria-label="hide">
+      <span hide-sm>Back</span>
+    </div>
+  </md-whiteframe>
+  <md-whiteframe layout="row" flex layout-align-sm="center start" class="md-whiteframe-z3" ng-click="itemCtrl.hide()"
+                 aria-label="hide">
+    <div>
       <i class="fa fa-arrow-up"></i>
-    </md-button>
-    <md-button class="md-icon-button md-primary" ng-click="itemCtrl.forward()" aria-label="forward">
+      <span hide-sm>Hide</span>
+    </div>
+  </md-whiteframe>
+  <md-whiteframe layout="row" flex layout-align-sm="end start" class="md-whiteframe-z3" ng-click="itemCtrl.forward()"
+                 aria-label="forward">
+    <div>
       <i class="fa fa-arrow-right"></i>
-    </md-button>
+      <span hide-sm>Forward</span>
+    </div>
+  </md-whiteframe>
 </div>
 
 <md-whiteframe flex class="md-whiteframe-z3" layout="row" ng-repeat="item in menu">
