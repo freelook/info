@@ -1,5 +1,6 @@
 fli-search-sub {
   margin: 0;
+  display: block;
 }
 
 fli-search-sub a.active {

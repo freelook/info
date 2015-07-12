@@ -1,3 +1,7 @@
+fli-look-content {
+  display: block;
+}
+
 fli-look-content md-card h3 {
   text-overflow: ellipsis;
 }

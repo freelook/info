@@ -2,12 +2,9 @@ html, header, body, footer {
   background: #ebebeb;
 }
 
-header {
-  z-index: 999;
-}
-
-footer {
-  margin-bottom: 7px;
+ng-view, ng-include, md-whiteframe, md-card, md-card-content, md-card-footer,
+md-tabs, md-content, md-button, md-progress-linear {
+  display: block;
 }
 
 md-whiteframe,

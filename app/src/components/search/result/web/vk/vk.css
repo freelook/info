@@ -1,3 +1,7 @@
+fli-search-result-web-vk {
+  display: block;
+}
+
 fli-search-result-web-vk .text {
   max-height: 100px;
   text-overflow: ellipsis;

@@ -1,5 +1,7 @@
 footer {
   position: relative;
+  display: block;
+  margin-bottom: 7px;
 }
 
 footer md-whiteframe {

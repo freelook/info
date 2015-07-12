@@ -1,3 +1,7 @@
+fli-input {
+  display: block;
+}
+
 fli-input form {
   background: #fff;
   margin: 5px;
@@ -6,10 +10,10 @@ fli-input form {
 
 fli-input input {
   background: #fff;
-  padding: 0;
   height: 48px;
   line-height: 48px;
   font-size: 16px;
+  padding: 0;
   border: 0;
   border-radius: 0;
   outline: 0;
