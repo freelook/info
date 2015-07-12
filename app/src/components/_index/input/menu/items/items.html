@@ -1,18 +1,18 @@
 <div layout="row" class="nav">
   <md-whiteframe layout="row" flex class="md-whiteframe-z3" ng-click="itemCtrl.back()" aria-label="back">
-    <div>
+    <div flex>
       <i class="fa fa-arrow-left"></i>
       <span hide-sm>Back</span>
     </div>
   </md-whiteframe>
   <md-whiteframe layout="row" flex layout-align-sm="center start" class="md-whiteframe-z3" ng-click="itemCtrl.hide()" aria-label="hide">
-    <div>
+    <div flex>
       <i class="fa fa-arrow-up"></i>
       <span hide-sm>Hide</span>
     </div>
   </md-whiteframe>
   <md-whiteframe layout="row" flex layout-align-sm="end start" class="md-whiteframe-z3" ng-click="itemCtrl.forward()" aria-label="forward">
-    <div>
+    <div flex>
       <i class="fa fa-arrow-right"></i>
       <span hide-sm>Forward</span>
     </div>
@@ -20,13 +20,13 @@
 </div>
 
 <md-whiteframe class="md-whiteframe-z3" layout="row" ng-repeat="item in menu">
-  <a ng-if="!item.action" ng-href="{{item.href}}">
+  <a flex ng-if="!item.action" ng-href="{{item.href}}">
     <i class="fa fa-{{item.icon}}"></i>
     <span ng-bind="item.name"></span>
   </a>
-  <a ng-if="!!item.action" ng-click="item.action()">
+  <div flex ng-if="!!item.action" ng-click="item.action()">
     <i class="fa fa-{{item.icon}}"></i>
     <span ng-bind="item.name"></span>
-  </a>
+  </div>
 </md-whiteframe>
 
