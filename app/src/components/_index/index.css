@@ -6,6 +6,10 @@ header {
   z-index: 999;
 }
 
+footer {
+  margin-bottom: 7px;
+}
+
 md-whiteframe,
 md-card {
   overflow-x: hidden;

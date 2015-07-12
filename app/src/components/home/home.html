@@ -5,17 +5,17 @@
 <div id="home" layout="row" flex layout-align="center start" class="animate vm">
 
   <div layout="column" layout-align="start center">
-    <widget layout-fill ng-if="item.items.length" ng-hide="fli.focus" layout="column" ng-repeat="item in widgets">
-    <md-whiteframe class="md-whiteframe-z1">
+    <div layout-fill ng-hide="fli.focus">
+      <md-whiteframe class="md-whiteframe-z1" ng-if="item.items.length" layout="column" ng-repeat="item in widgets">
         <div>
           <span ng-bind="item.name"></span>
         </div>
         <div class="result">
           <a ng-repeat="i in item.items" ng-href="{{item.href(i)}}" ng-bind="i.input"></a>
         </div>
-    </md-whiteframe>
-    </widget>
-    <fli-search-suggest layout-fill ng-hide="fli.focus"></fli-search-suggest>
+      </md-whiteframe>
+      <fli-search-suggest></fli-search-suggest>
+    </div>
   </div>
 
 </div>
