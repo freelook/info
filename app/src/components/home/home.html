@@ -4,8 +4,8 @@
 
 <div id="home" layout="row" flex layout-align="center start" class="animate vm">
 
-  <div layout="column" layout-align="start center">
-    <div layout-fill ng-hide="fli.focus">
+  <div layout="column" flex layout-align="start center" ng-hide="fli.focus">
+    <div layout-fill>
       <md-whiteframe class="md-whiteframe-z1" ng-if="item.items.length" layout="column" ng-repeat="item in widgets">
         <div>
           <span ng-bind="item.name"></span>
