@@ -8,7 +8,8 @@ fli-search-result-audio .audio-control .md-icon-button {
 }
 
 fli-search-result-audio .audio-control .title {
-  margin-top: 3px;
+  margin-top: 17px;
+  font-size: 12px;
 }
 
 fli-search-result-audio .active {

@@ -4,9 +4,8 @@
 
 <div id="home" layout="row" flex layout-align="center start" class="animate vm">
 
-  <div layout="row" layout-align="center start" layout-wrap flex>
-
-    <widget ng-if="item.items.length" ng-hide="fli.focus" flex-sm="95" flex-gt-sm="45" flex layout="column" ng-repeat="item in widgets">
+  <div layout="column" layout-align="start center">
+    <widget layout-fill ng-if="item.items.length" ng-hide="fli.focus" layout="column" ng-repeat="item in widgets">
     <md-whiteframe class="md-whiteframe-z1">
         <div>
           <span ng-bind="item.name"></span>
@@ -16,9 +15,7 @@
         </div>
     </md-whiteframe>
     </widget>
-
-    <fli-search-suggest ng-hide="fli.focus" flex-sm="95" flex-gt-sm="90"></fli-search-suggest>
-
+    <fli-search-suggest layout-fill ng-hide="fli.focus"></fli-search-suggest>
   </div>
 
 </div>

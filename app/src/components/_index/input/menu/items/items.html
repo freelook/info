@@ -1,4 +1,4 @@
-<div flex layout="row" class="nav">
+<div layout="row" class="nav">
   <md-whiteframe layout="row" flex class="md-whiteframe-z3" ng-click="itemCtrl.back()" aria-label="back">
     <div>
       <i class="fa fa-arrow-left"></i>
@@ -19,12 +19,12 @@
   </md-whiteframe>
 </div>
 
-<md-whiteframe flex class="md-whiteframe-z3" layout="row" ng-repeat="item in menu">
-  <a flex ng-if="!item.action" ng-href="{{item.href}}">
+<md-whiteframe class="md-whiteframe-z3" layout="row" ng-repeat="item in menu">
+  <a ng-if="!item.action" ng-href="{{item.href}}">
     <i class="fa fa-{{item.icon}}"></i>
     <span ng-bind="item.name"></span>
   </a>
-  <a flex ng-if="!!item.action" ng-click="item.action()">
+  <a ng-if="!!item.action" ng-click="item.action()">
     <i class="fa fa-{{item.icon}}"></i>
     <span ng-bind="item.name"></span>
   </a>

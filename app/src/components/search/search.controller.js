@@ -24,7 +24,7 @@ angular
     if (!!$rootScope.fli.route.input) {
       local.push(SEARCH_KEY, {
         input: $rootScope.fli.route.input
-      }, 10);
+      }, 20);
     }
 
   });

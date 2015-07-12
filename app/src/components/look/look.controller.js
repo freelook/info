@@ -24,7 +24,7 @@ angular
       local.push(LOOK_KEY, {
         input: $rootScope.fli.route.input,
         url: $rootScope.fli.route.url
-      }, 10);
+      }, 20);
     }
 
   });
