@@ -6,6 +6,10 @@ fli-search-result-goods-yandex .shopName {
   color: #008000;
 }
 
+fli-search-result-goods-yandex fli-rating {
+  margin: 0 5px;
+}
+
 fli-search-result-goods-yandex .info {
   padding: 3px;
   color: #888888;
