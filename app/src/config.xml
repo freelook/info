@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns="http://www.w3.org/ns/widgets"
+        xmlns:gap="http://phonegap.com/ns/1.0"
+        id="com.phonegap.example"
+        versionCode="10"
+        version="1.0.0">
+
+  <name>freelook.info</name>
+
+  <description>
+    FLI - Your personal information manager. Just look what you need.
+  </description>
+
+  <author href="https://freelook.info/about" email="freelook@mail.ua">
+    Dima Kostrub
+  </author>
+
+</widget>
