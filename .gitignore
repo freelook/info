@@ -1,3 +1,4 @@
-.idea/
-.git
-.svn
+**/**/.idea
+**/**/node_modules
+**/**/.git
+**/**/.svn
