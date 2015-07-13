@@ -86,7 +86,7 @@ gulp.task('fonts', function () {
 });
 
 gulp.task('misc', function () {
-  return gulp.src(['src/**/*.ico', 'src/**/*.xml'])
+  return gulp.src(['src/**/*.ico', 'src/**/*.xml', 'src/.gitignore'])
     .pipe(gulp.dest('dist/'));
 });
 
