@@ -9,10 +9,6 @@ gulp.task('dist', ['clean'], function () {
   gulp.start('build');
 });
 
-gulp.task('mobile', ['clean', 'mobile-clean'], function () {
-  gulp.start('mobile-dist');
-});
-
 gulp.task('default', function () {
   gulp.start('server');
 });
