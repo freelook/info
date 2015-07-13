@@ -12,8 +12,22 @@
   </div>
   <md-card-content>
     <div ng-click="link(item.offer.url)" class="link underline" ng-bind-html="item.offer.name"></div>
+    <div class="info" ng-if="item.offer.shopInfo">
+      <span ng-click="link(item.offer.url)" class="shopName link" ng-bind-html="item.offer.shopInfo.name"></span>
+      <fli-rating ng-model="item.offer.shopInfo.rating"></fli-rating>
+      <i class="fa fa-comments-o icon"></i>
+      <span ng-bind="item.offer.shopInfo.gradeTotal"></span>
+    </div>
     <div flex ng-bind-html="item.offer.description"></div>
-    <fli-rating ng-if="item.offer.shopInfo" ng-model="item.offer.shopInfo.rating"></fli-rating>
+    <div class="info" ng-if="item.offer.delivery">
+      <i class="fa fa-bus icon"></i>
+      <span ng-if="item.offer.delivery.free">Free</span>
+      <span ng-bind-html="item.offer.delivery.brief"></span>
+    </div>
+    <div class="info" ng-if="item.offer.phone">
+      <i class="fa fa-phone icon"></i>
+      <span ng-bind-html="item.offer.phone.number"></span>
+    </div>
   </md-card-content>
   <md-card-footer layout="row" layout-align="end center">
     <div class="link" ng-click="link(result.share())" title="{{'SHARE - '+ fli.route.input}}">
