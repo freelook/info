@@ -94,4 +94,13 @@ gulp.task('clean', function (done) {
   $.del(['dist/', '.tmp/'], done);
 });
 
+gulp.task('mobile-clean', function (done) {
+  $.del(['../mobile/'], {force: true}, done);
+});
+
 gulp.task('build', ['html', 'images', 'fonts', 'misc']);
+
+gulp.task('mobile-dist', ['build'], function () {
+  return gulp.src('./dist/**/*.*')
+    .pipe(gulp.dest('../mobile/'));
+});
