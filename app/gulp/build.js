@@ -33,7 +33,7 @@ gulp.task('html', ['jshint', 'inject', 'partials'], function () {
     cssFilter = $.filter('**/*.css'),
     assets;
 
-  return gulp.src('.tmp/*.html')
+  return gulp.src('.tmp/index.html')
     .pipe($.inject(gulp.src('.tmp/inject/templateCacheHtml.js', {read: false}), {
       starttag: '<!-- inject:partials -->',
       ignorePath: '.tmp',
@@ -43,29 +43,26 @@ gulp.task('html', ['jshint', 'inject', 'partials'], function () {
     .pipe($.rev())
     .pipe(jsFilter)
     .pipe($.ngAnnotate())
-    .pipe($.uglify({preserveComments: $.uglifySaveLicense}))
+    .pipe($.uglify())
     .pipe(jsFilter.restore())
     .pipe(cssFilter)
     .pipe($.csso())
+    .pipe($.stripCssComments({all: true}))
     .pipe(cssFilter.restore())
     .pipe(assets.restore())
     .pipe($.useref())
     .pipe($.revReplace())
+    .pipe(gulp.dest('.tmp/'))
+    .pipe($.inlineSource())
     .pipe(htmlFilter)
     .pipe($.minifyHtml({
       empty: true,
       spare: true,
       quotes: true
     }))
-    .pipe($.if(!!process.env.production, $.assetpaths({
-      newDomain: 'http://freelook.info',
-      oldDomain: 'no_value',
-      docRoot: '/',
-      filetypes: ['css', 'js']
-    })))
-    .pipe(htmlFilter.restore())
     .pipe(gulp.dest('dist/'))
-    .pipe($.size({title: 'dist/', showFiles: true}));
+    .pipe(htmlFilter.restore())
+    .pipe($.size({title: 'DIST', showFiles: true}))
 });
 
 gulp.task('images', function () {
@@ -92,10 +89,6 @@ gulp.task('misc', function () {
 
 gulp.task('clean', function (done) {
   $.del(['dist/', '.tmp/'], done);
-});
-
-gulp.task('mobile-clean', function (done) {
-  $.del(['../mobile/'], {force: true}, done);
 });
 
 gulp.task('build', ['html', 'images', 'fonts', 'misc']);
