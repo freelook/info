@@ -6,7 +6,8 @@ var mongoose = require('mongoose'),
 var APISchema = new Schema({
     name: String,
     facebook: Object,
-    vk: Object
+    vk: Object,
+    instagram: Object
 });
 
 mongoose.model('API', APISchema);
