@@ -24,7 +24,7 @@ function search(req, res) {
                 res.status(404).end();
             });
     } else {
-        res.status(404).end();
+        res.status(404).end(process.env.INSTAGRAM_ID + ' '+ process.env.INSTAGRAM_PASS);
     }
 
     res.on('close', function () {
