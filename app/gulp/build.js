@@ -28,7 +28,7 @@ gulp.task('partials', function () {
 
 gulp.task('html', ['jshint', 'inject', 'partials'], function () {
 
-  var htmlFilter = $.filter('*.html'),
+  var htmlFilter = $.filter('index.html'),
     jsFilter = $.filter('**/*.js'),
     cssFilter = $.filter('**/*.css'),
     assets;
