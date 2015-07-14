@@ -43,4 +43,4 @@ angular
     };
 
   })
-  .constant('DEFAULT_PLACEHOLDER', 'Type what you need');
+  .constant('DEFAULT_PLACEHOLDER', 'Type to look');
