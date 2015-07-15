@@ -2,7 +2,7 @@
 angular
   .module('freelook.info')
   .controller('input.ctrl',
-  function ($scope, $timeout, $mdBottomSheet, $location, url, DEFAULT_PLACEHOLDER) {
+  function ($scope, $mdBottomSheet, $location, url, DEFAULT_PLACEHOLDER) {
 
     var vm = this;
     vm.placeholder = DEFAULT_PLACEHOLDER;
@@ -34,12 +34,6 @@ angular
 
     vm.focus = function () {
       $scope.fli.focus = 1;
-    };
-
-    vm.blur = function () {
-      $timeout(function () {
-        $scope.fli.focus = 0;
-      }, 333);
     };
 
   })

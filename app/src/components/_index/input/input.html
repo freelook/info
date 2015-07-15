@@ -13,7 +13,9 @@
          placeholder="{{inpt.placeholder}}">
 
   <md-button ng-if="fli.route.input && fli.focus" class="md-icon-button md-primary clear" aria-label="clear">
-    <i ng-click="inpt.clear()" class="fa fa-close"></i>
+    <div ng-click="inpt.clear()">
+      <i class="fa fa-close"></i>
+    </div>
   </md-button>
 
 </form>
