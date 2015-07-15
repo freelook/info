@@ -12,7 +12,10 @@
 ##
 
 # Default server configuration
-#
+
+# FLI CACHE
+proxy_cache_path /var/www/cache levels=1:2 keys_zone=FLI:10m inactive=60m max_size=1g;
+
 server {
 	listen 80 default_server;
 	listen [::]:80 default_server;
@@ -58,6 +61,13 @@ server {
 
 	location /api/proxy {
 		resolver 8.8.8.8;
+		proxy_pass $arg_url;
+	}
+
+	location /api/proxy/cache {
+		resolver 8.8.8.8;
+		proxy_cache FLI;
+		proxy_cache_valid 60m;
 		proxy_pass $arg_url;
 	}
 
