@@ -3,9 +3,11 @@
 angular
   .module('freelook.info')
   .controller('menu.items.ctrl',
-  function ($rootScope, $scope, $window) {
+  function ($rootScope, $scope, $window, $location) {
 
     var vm = this;
+
+    $scope.menu = [];
 
     vm.back = function () {
       $window.history.back();
@@ -19,12 +21,12 @@ angular
       $rootScope.fli.focus = 0;
     };
 
-    $scope.menu = [
-      {
+    if ($location.path() !== '/') {
+      $scope.menu.push({
         name: 'Home',
         icon: 'th-large',
         href: '/'
-      }
-    ];
+      })
+    }
 
   });
