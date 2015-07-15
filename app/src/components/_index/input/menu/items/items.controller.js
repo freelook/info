@@ -26,7 +26,7 @@ angular
         name: 'Home',
         icon: 'th-large',
         href: '/'
-      })
+      });
     }
 
   });
