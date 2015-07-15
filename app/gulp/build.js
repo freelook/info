@@ -48,6 +48,7 @@ gulp.task('html', ['jshint', 'inject', 'partials'], function () {
     .pipe(cssFilter)
     .pipe($.csso())
     .pipe($.stripCssComments({all: true}))
+    .pipe($.replace('../', ''))
     .pipe(cssFilter.restore())
     .pipe(assets.restore())
     .pipe($.useref())
