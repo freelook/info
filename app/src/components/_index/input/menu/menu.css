@@ -1,8 +1,8 @@
-fli-menu-items {
+fli-input-menu {
   display: block;
 }
 
-fli-menu-items md-whiteframe,
+fli-input-menu md-whiteframe,
 md-whiteframe.menu {
   color: #999999;
   cursor: pointer;
@@ -11,26 +11,26 @@ md-whiteframe.menu {
   outline: 0;
 }
 
-fli-menu-items md-whiteframe .fa,
+fli-input-menu md-whiteframe .fa,
 .menu .fa {
   margin: 10px 15px 0 17px;
 }
 
-fli-menu-items md-whiteframe span,
+fli-input-menu md-whiteframe span,
 .menu span {
   margin-top: 10px;
 }
 
-fli-menu-items md-whiteframe a,
+fli-input-menu md-whiteframe a,
 .menu a {
   text-decoration: none;
   outline: 0;
 }
 
-fli-menu-items .nav md-whiteframe {
+fli-input-menu .nav md-whiteframe {
   margin-bottom: 0;
 }
 
-fli-menu-items .nav i {
+fli-input-menu .nav i {
   color: rgb(63, 81, 181);
 }

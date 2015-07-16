@@ -4,6 +4,9 @@ angular.module('freelook.info')
     return {
       templateUrl: 'components/_index/input/input.html',
       controller: 'input.ctrl',
-      controllerAs: 'inpt'
+      controllerAs: 'inpt',
+      link: function (scope) {
+        scope.inptElement = $('#input');
+      }
     };
   });

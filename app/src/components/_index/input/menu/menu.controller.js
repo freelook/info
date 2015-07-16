@@ -2,12 +2,13 @@
 
 angular
   .module('freelook.info')
-  .controller('menu.items.ctrl',
+  .controller('input.menu.ctrl',
   function ($rootScope, $scope, $window, $location) {
 
     var vm = this;
 
     $scope.menu = [];
+    vm.path = $location.path();
 
     vm.back = function () {
       $window.history.back();
@@ -19,14 +20,13 @@ angular
 
     vm.hide = function () {
       $rootScope.fli.focus = 0;
+      $scope.inptElement.blur();
     };
 
-    if ($location.path() !== '/') {
-      $scope.menu.push({
-        name: 'Home',
-        icon: 'th-large',
-        href: '/'
-      });
-    }
+    $scope.menu.push({
+      name: 'Home',
+      icon: 'th-large',
+      href: '/'
+    });
 
   });
