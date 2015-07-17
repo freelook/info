@@ -16,5 +16,9 @@ angular
       });
     };
 
+    vm.search = function (input) {
+      return url.href('search?', {input: input});
+    };
+
   });
 

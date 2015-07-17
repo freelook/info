@@ -4,7 +4,7 @@ angular
   .directive('fliHomeWidgetTrends', function () {
     return {
       controller: 'home.widget.trends.ctrl',
-      controllerAs: 'trends',
+      controllerAs: 'hotTrends',
       templateUrl: 'components/home/widget/trends/trends.html'
     };
   });

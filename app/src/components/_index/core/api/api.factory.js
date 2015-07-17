@@ -7,9 +7,9 @@ angular
       return proxy(url);
     }
 
-    function proxy(url, cache) {
+    function proxy(url, config) {
       if (url) {
-        var _cache = !!cache ? '/cache' : '',
+        var _cache = config && config.cache ? '/cache' : '',
           api = CONFIG.API.URL + 'proxy' + _cache + '?url=' + decodeURIComponent(url);
         return $http.get(api);
       }

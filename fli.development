@@ -48,6 +48,7 @@ server {
 
 	location /prerender/ {
 		# Send to server request for prerender
+		#proxy_pass http://freelook.info/prerender/;
 		proxy_pass http://localhost:3000/;
 	}
 

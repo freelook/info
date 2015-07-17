@@ -7,7 +7,7 @@
     <a ng-href="{{widget.href({url:item.url, img:item.img, text:item.text})}}" ng-bind-html="item.text"></a>
   </md-card-content>
   <md-card-footer layout="row" layout-align="end center">
-    <div class="link" ng-click="looks.search(item.input)" title="{{'Search - '+ item.input}}">
+    <div class="link" ng-click="widget.search(item.input)" title="{{'Search - '+ item.input}}">
       <span>#</span> <span ng-bind="item.input"></span>
     </div>
     <div class="link" ng-click="link(item.url)" title="{{'Go to - '+ item.text}}">
