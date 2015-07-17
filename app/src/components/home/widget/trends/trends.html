@@ -8,8 +8,8 @@
     <div flex ng-bind-html="item.text"></div>
   </md-card-content>
   <md-card-footer layout="row" layout-align="end center">
-    <div class="link" ng-click="widget.search(item.tittle)" title="{{'Search - '+ item.tittle}}">
-      <span>#</span> <span ng-bind="item.tittle"></span>
+    <div class="link" title="{{'Search - '+ item.tittle}}">
+      <span>#</span> <a ng-href="{{widget.search(item.tittle)}}"><span ng-bind="item.tittle"></span></a>
     </div>
     <div class="link" ng-click="link(item.url)" title="{{'Go to - '+ item.text}}">
       <i class="fa fa-external-link"></i>
