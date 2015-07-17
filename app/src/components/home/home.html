@@ -2,20 +2,12 @@
   <fli-input flex></fli-input>
 </header>
 
-<div id="home" layout="row" flex layout-align="center start" class="animate vm">
+<div id="home" layout="column" flex class="animate vm">
 
-  <div layout="column" flex layout-align="start center" ng-hide="fli.focus">
-    <div layout-fill>
-      <md-whiteframe class="md-whiteframe-z1" ng-if="item.items.length" layout="column" ng-repeat="item in widgets">
-        <div>
-          <span ng-bind="item.name"></span>
-        </div>
-        <div class="result">
-          <a ng-repeat="i in item.items" ng-href="{{item.href(i)}}" ng-bind="i.input"></a>
-        </div>
-      </md-whiteframe>
-      <fli-search-suggest></fli-search-suggest>
-    </div>
+  <fli-home-tabs ng-hide="fli.focus"></fli-home-tabs>
+
+  <div layout="row" flex ng-hide="fli.focus">
+    <fli-home-widget flex></fli-home-widget>
   </div>
 
 </div>

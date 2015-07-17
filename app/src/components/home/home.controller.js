@@ -3,7 +3,14 @@
 angular
   .module('fli.home')
   .controller('home.ctrl',
-  function ($rootScope, $routeParams, $scope, $mdMedia, local, url, DEFAULT_TITLE, DEFAULT_DESCRIPTION, SEARCH_KEY, LOOK_KEY) {
+  function ($rootScope, $routeParams, $location, $scope, $mdMedia, local, url, DEFAULT_TITLE, DEFAULT_DESCRIPTION, LOOK_KEY) {
+
+    $location.search({
+      type: $routeParams.type,
+      metaimg: $routeParams.metaimg,
+      metatext: $routeParams.metatext
+    })
+      .replace();
 
     $rootScope.fli.route = $routeParams || {};
     $rootScope.fli.media = $mdMedia;
@@ -11,17 +18,9 @@ angular
     $rootScope.fli.description = DEFAULT_DESCRIPTION;
     $rootScope.fli.icon = 'th-large';
 
-    $scope.searchs = local.get(SEARCH_KEY, []);
     $scope.looks = local.get(LOOK_KEY, []);
 
     $scope.widgets = [
-      {
-        name: 'Search',
-        items: $scope.searchs,
-        href: function (i) {
-          return url.href('search?', {input: i.input});
-        }
-      },
       {
         name: 'Look',
         items: $scope.looks,

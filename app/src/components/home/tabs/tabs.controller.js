@@ -1,20 +1,18 @@
 'use strict';
 angular
-  .module('fli.search')
-  .controller('search.tabs.ctrl',
+  .module('fli.home')
+  .controller('home.tabs.ctrl',
   function ($scope, url) {
 
     var TYPES = {
-      goods: 1,
-      image: 2,
-      audio: 3
+      looks: 1
     };
 
     var vm = this, auto = false;
     vm.selected = 0;
 
     vm.href = function (type) {
-      return url.href('search?', {input: $scope.fli.route.input, type: type});
+      return url.href('/?', {type: type});
     };
 
     vm.go = function (config) {

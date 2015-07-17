@@ -1,0 +1,20 @@
+fli-home-widget {
+  display: block;
+}
+
+fli-home-widget .md-card-image {
+  min-height: 200px;
+  max-height: 200px;
+}
+
+fli-home-widget md-card-content{
+  padding: 10px;
+}
+
+fli-home-widget md-card-footer {
+  padding: 0;
+}
+
+fli-home-widget md-card-footer > div {
+  margin: 0 10px 5px 10px;
+}

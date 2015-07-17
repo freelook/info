@@ -11,5 +11,4 @@ angular
         controller: 'search.ctrl'
       });
 
-  })
-  .constant('SEARCH_KEY', 'FLI:SEARCH');
+  });

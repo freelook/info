@@ -1,11 +1,9 @@
-<md-whiteframe layout="column" class="md-whiteframe-z5" layout-align="center center">
-  <div class="donate" ng-click="link('https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RFP3HDDXV2NJS')" title="Help us grow">
-    <span>D</span>
-    <span class="o">o</span>
-    <span>n</span>
-    <span class="a">a</span>
-    <span>t</span>
-    <span class="e">e</span>
+<md-whiteframe layout="row" class="md-whiteframe-z5" layout-align="center center">
+  <div flex="20" layout="column" layout-align="center center" ng-click="link('https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RFP3HDDXV2NJS')" title="Help us grow">
+    <p class="link"><i class="fa fa-paypal"></i> <span hide-sm>donate</span></p>
   </div>
-  <p>with <span class="heart">♥</span> <a ng-href="info" title="{{fli.description}}">freelook.info</a></p>
+  <div flex layout="column" layout-align="center center">
+    <p>with <i class="fa fa-heartbeat heart"></i> <a ng-href="info" title="{{fli.description}}">freelook.info</a></p>
+  </div>
+  <div flex="20" layout="column" layout-align="center center"></div>
 </md-whiteframe>

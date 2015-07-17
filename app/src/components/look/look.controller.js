@@ -3,12 +3,14 @@
 angular
   .module('fli.look')
   .controller('look.ctrl',
-  function ($scope, $rootScope, $routeParams, $location, $mdMedia, DEFAULT_TITLE, DEFAULT_DESCRIPTION,
-            local, LOOK_KEY) {
+  function ($scope, $rootScope, $routeParams, $location, $mdMedia, local,
+            DEFAULT_TITLE, DEFAULT_DESCRIPTION, LOOK_KEY) {
 
     $location.search({
       input: $routeParams.input,
       url: $routeParams.url || '',
+      img: $routeParams.url,
+      text: $routeParams.url,
       metaimg: $routeParams.metaimg,
       metatext: $routeParams.metatext
     })
@@ -20,11 +22,11 @@ angular
     $rootScope.fli.description = DEFAULT_DESCRIPTION;
     $rootScope.fli.icon = 'eye';
 
-    if (!!$rootScope.fli.route.input && !!$rootScope.fli.route.url) {
-      local.push(LOOK_KEY, {
-        input: $rootScope.fli.route.input,
-        url: $rootScope.fli.route.url
-      }, 20);
-    }
+    local.push(LOOK_KEY, {
+      input: $rootScope.fli.route.input,
+      url: $rootScope.fli.route.url,
+      img: $rootScope.fli.route.img,
+      text: $rootScope.fli.route.text
+    }, 12);
 
   });

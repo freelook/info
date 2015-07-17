@@ -25,9 +25,9 @@ angular
       return !!_url ? decodeURIComponent(_url) : '';
     };
 
-    $rootScope.link = function (href) {
+    $rootScope.link = function (href, self) {
       if (href) {
-        $('<a>').attr('href', href).attr('target', '_blank')[0].click();
+        $('<a>').attr('href', href).attr('target', !self ? '_blank' : '')[0].click();
       }
     };
 
@@ -40,5 +40,5 @@ angular
 
   })
   .constant('DEFAULT_TITLE', 'FLI - free look at info')
-  .constant('DEFAULT_DESCRIPTION', 'Your personal information manager. Just look what you need.');
+  .constant('DEFAULT_DESCRIPTION', 'Your personal information manager. Just look it');
 
