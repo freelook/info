@@ -4,7 +4,7 @@ var CONFIG = {
     URL: 'http://localhost/api/'
   },
   PRERENDER: {
-    URL: 'http://localhost/prerender/'
+    URL: 'http://freelook.info/prerender/'
   }
 };
 
