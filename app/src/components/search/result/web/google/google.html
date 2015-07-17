@@ -1,10 +1,10 @@
 <md-card class="md-whiteframe-z1" flex-sm="95" flex-gt-sm="40" flex-gt-md="30" flex-gt-lg="20" layout="column" ng-repeat="item in google.search.results">
-<a ng-href="{{result.href(item.url)}}">
+<a ng-href="{{result.href({url:item.url, img:item.richSnippet.cseImage.src, text:item.titleNoFormatting})}}">
   <img class="md-card-image" ng-if="!!item.richSnippet.cseImage.src" ng-src="{{item.richSnippet.cseImage.src}}" title="Look it" fli-err>
   <div class="md-card-image header" ng-if="!item.richSnippet.cseImage.src" title="Look it"></div>
 </a>
 <md-card-content>
-  <a ng-href="{{result.href(item.url)}}" ng-bind-html="item.title"></a>
+  <a ng-href="{{result.href({url:item.url, img:item.richSnippet.cseImage.src, text:item.titleNoFormatting})}}" ng-bind-html="item.title"></a>
   <div flex ng-bind-html="item.content"></div>
 </md-card-content>
 <md-card-footer layout="row" layout-align="end center">

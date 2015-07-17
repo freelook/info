@@ -3,23 +3,17 @@
 angular
   .module('fli.search')
   .controller('search.result.ctrl',
-  function ($scope, url, facebook, local, LOOK_KEY) {
+  function ($scope, url, facebook) {
 
     var vm = this;
 
-    vm.href = function (_url) {
-      return url.href('look?', {input: $scope.fli.route.input, url: _url});
-    };
-
-    vm.look = function (item) {
-      local.push(LOOK_KEY, {
-        img: item.img || '',
-        url: item.url || '',
-        title: item.title || '',
-        input: $scope.fli.route.input || '',
-        type: $scope.fli.route.type || '',
-        sub: $scope.fli.route.sub || ''
-      }, 12);
+    vm.href = function (config) {
+      return url.href('look?', {
+        input: $scope.fli.route.input,
+        url: config.url,
+        img: config.img,
+        text: config.text
+      });
     };
 
     vm.share = function (url, img, text) {

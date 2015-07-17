@@ -4,8 +4,13 @@ angular
   .factory('api', function ($q, $http, CONFIG) {
 
     function get(url) {
+      return proxy(url);
+    }
+
+    function proxy(url, cache) {
       if (url) {
-        var api = CONFIG.API.URL + 'get?url=' + url;
+        var _cache = !!cache ? '/cache' : '',
+          api = CONFIG.API.URL + 'proxy' + _cache + '?url=' + decodeURIComponent(url);
         return $http.get(api);
       }
     }
@@ -38,20 +43,13 @@ angular
       }
     }
 
-    function proxy(url) {
-      if (url) {
-        var api = CONFIG.API.URL + 'proxy?url' + decodeURIComponent(url);
-        return $http.get(api);
-      }
-    }
-
     return {
       get: get,
+      proxy: proxy,
       goods: goods,
       facebook: facebook,
       vk: vk,
-      yandex: yandex,
-      proxy: proxy
+      yandex: yandex
     };
 
   });

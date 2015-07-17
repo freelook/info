@@ -1,10 +1,10 @@
 <md-card class="md-whiteframe-z1" flex-sm="95" flex-gt-sm="40" flex-gt-md="30" flex-gt-lg="20" layout="column" ng-repeat="item in vk.results">
-<a ng-href="{{vk.href(item.screen_name)}}">
+<a ng-href="{{result.href({url:vk.link(item.screen_name), img:item.photo_big, text:item.name})}}">
   <img class="md-card-image" ng-if="!!item.photo_big" ng-src="{{item.photo_big}}" title="Look it" fli-err>
   <div class="md-card-image header" ng-if="!item.photo_big" title="Look it"></div>
 </a>
 <md-card-content>
-  <a ng-if="item.name" ng-href="{{vk.href(item.name)}}" ng-bind="item.name"></a>
+  <a ng-if="item.name" ng-href="{{result.href({url:vk.link(item.screen_name), img:item.photo_big, text:item.name})}}" ng-bind="item.name"></a>
   <div ng-bind="item.type"></div>
 </md-card-content>
 <md-card-footer layout="row" layout-align="end center">

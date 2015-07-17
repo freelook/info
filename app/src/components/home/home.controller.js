@@ -14,7 +14,7 @@ angular
 
     $rootScope.fli.route = $routeParams || {};
     $rootScope.fli.media = $mdMedia;
-    $rootScope.fli.title = !$rootScope.fli.route.input ? DEFAULT_TITLE : 'FLI - ' + decodeURIComponent($rootScope.fli.route.input);
+    $rootScope.fli.title = !$routeParams.input ? DEFAULT_TITLE : 'FLI - ' + decodeURIComponent($routeParams.input);
     $rootScope.fli.description = DEFAULT_DESCRIPTION;
     $rootScope.fli.icon = 'th-large';
 

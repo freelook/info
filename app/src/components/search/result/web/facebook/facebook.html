@@ -1,9 +1,9 @@
 <md-card class="md-whiteframe-z1" flex-sm="95" flex-gt-sm="40" flex-gt-md="30" flex-gt-lg="20" layout="column" ng-repeat="item in fb.results">
-<a ng-href="{{fb.href(item.id)}}">
+<a ng-href="{{result.href({url:fb.link(item.id), img:fb.img(item.id), text:item.name})}}">
   <img class="md-card-image" ng-src="{{fb.img(item.id)}}" title="Look it" fli-err>
 </a>
 <md-card-content>
-  <a ng-if="item.name" ng-href="{{fb.href(item.id)}}" ng-bind="item.name"></a>
+  <a ng-if="item.name" ng-href="{{result.href({url:fb.link(item.id), img:fb.img(item.id), text:item.name})}}" ng-bind="item.name"></a>
   <div ng-if="item.category" flex ng-bind="item.category"></div>
 </md-card-content>
 <md-card-footer layout="row" layout-align="end center">

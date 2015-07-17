@@ -17,7 +17,7 @@ angular
 
     $rootScope.fli.route = $routeParams || {};
     $rootScope.fli.media = $mdMedia;
-    $rootScope.fli.title = !$rootScope.fli.route.input ? DEFAULT_TITLE : 'FLI - ' + decodeURIComponent($rootScope.fli.route.input);
-    $rootScope.fli.description = !$rootScope.fli.route.input ? DEFAULT_DESCRIPTION : 'FLI - free look at ' + decodeURIComponent($rootScope.fli.route.input);
+    $rootScope.fli.title = !$routeParams.input ? DEFAULT_TITLE : 'FLI - ' + decodeURIComponent($routeParams.input);
+    $rootScope.fli.description = !$routeParams.input ? DEFAULT_DESCRIPTION : 'FLI - free look at ' + decodeURIComponent($routeParams.input);
     $rootScope.fli.icon = 'search';
   });

@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Web all controller', function () {
+describe('Web google controller', function () {
   var scope, input, mockGoogle, mockYandex, rootScope, controller, _CONFIG;
 
   beforeEach(function () {
@@ -26,11 +26,9 @@ describe('Web all controller', function () {
   });
 
   function exequteController() {
-    return controller('search.result.web.all.ctrl', {
+    return controller('search.result.web.google.ctrl', {
       $scope: scope,
-      google: mockGoogle,
-      yandex: mockYandex,
-      CONFIG: _CONFIG
+      google: mockGoogle
     });
   }
 
