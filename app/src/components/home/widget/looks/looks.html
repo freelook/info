@@ -1,2 +1,17 @@
-
-looks
+<md-card class="md-whiteframe-z1" flex-sm="95" flex-gt-sm="40" flex-gt-md="30" flex-gt-lg="20" layout="column" ng-repeat="item in looks.items">
+  <a ng-href="{{widget.href({url:item.url, img:item.img, text:item.text})}}">
+    <img class="md-card-image" ng-if="!!item.img" ng-src="{{item.img}}" title="Look it" fli-err>
+    <div class="md-card-image header" ng-if="!item.img" title="Look it"></div>
+  </a>
+  <md-card-content>
+    <a ng-href="{{widget.href({url:item.url, img:item.img, text:item.text})}}" ng-bind-html="item.text"></a>
+  </md-card-content>
+  <md-card-footer layout="row" layout-align="end center">
+    <div class="link" ng-click="looks.search(item.input)" title="{{'Search - '+ item.input}}">
+      <span>#</span> <span ng-bind="item.input"></span>
+    </div>
+    <div class="link" ng-click="link(item.url)" title="{{'Go to - '+ item.text}}">
+      <i class="fa fa-external-link"></i>
+    </div>
+  </md-card-footer>
+</md-card>

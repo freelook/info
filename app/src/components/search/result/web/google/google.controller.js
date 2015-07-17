@@ -3,7 +3,7 @@
 angular
   .module('fli.search')
   .controller('search.result.web.google.ctrl',
-  function ($scope, CONFIG, google) {
+  function ($scope, google) {
 
     var vm = this;
     vm.search = {};
