@@ -17,7 +17,7 @@
   <preference name="permissions" value="none"/>
   <preference name="fullscreen" value="true"/>
 
-  <icon src="assets/images/icon.jpg"/>
+  <icon src="assets/images/icon.png"/>
   <access origin="*"/>
 
 </widget>
