@@ -1,3 +1,19 @@
 fli-home-widget-looks {
   display: block;
 }
+
+fli-home-widget-looks md-card {
+  position: relative;
+}
+
+fli-home-widget-looks md-card:hover .clear {
+  display: block;
+}
+
+fli-home-widget-looks .clear {
+  position: absolute;
+  color: red;
+  right: 0;
+  top: 0;
+  display: none;
+}

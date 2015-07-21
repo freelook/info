@@ -24,7 +24,7 @@ angular
 
 
     if ($routeParams.input && $routeParams.url && $routeParams.img && $routeParams.text) {
-      local.push(LOOK_KEY, {
+      local.arr.push(LOOK_KEY, {
         input: $routeParams.input,
         url: $routeParams.url,
         img: $routeParams.img,

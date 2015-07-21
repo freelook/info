@@ -16,23 +16,38 @@ angular
       }
     }
 
-    function push(key, value, max) {
+    //Array with obj methods
+
+    function push(key, item, max) {
       var arr = get(key, []);
       if (!arr.some(function (el) {
-          return angular.equals(value, el);
+          return angular.equals(item, el);
         })) {
-        arr.unshift(value);
+        arr.unshift(item);
       }
       if (arr.length > max) {
         arr.pop();
       }
       set(key, arr);
+      return arr;
+    }
+
+    function clearItem(key, item) {
+      var arr = get(key, []),
+        filtered = arr.filter(function (el) {
+          return !angular.equals(item, el);
+        });
+      set(key, filtered);
+      return filtered;
     }
 
     return {
       get: get,
       set: set,
-      push: push
+      arr: {
+        push: push,
+        clearItem: clearItem
+      }
     };
 
   });

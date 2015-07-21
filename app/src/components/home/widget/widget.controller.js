@@ -3,15 +3,15 @@
 angular
   .module('fli.home')
   .controller('home.widget.ctrl',
-  function ($scope, url) {
+  function (url) {
 
     var vm = this;
 
     vm.href = function (config) {
       return url.href('look?', {
-        input: $scope.fli.route.input,
+        input: config.input,
         url: config.url,
-        img: config.img,
+        img: !!config.img ? encodeURIComponent(config.img) : null,
         text: config.text
       });
     };
