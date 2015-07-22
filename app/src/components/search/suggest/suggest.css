@@ -2,10 +2,6 @@ fli-search-result {
   display: block;
 }
 
-fli-search-suggest md-whiteframe {
-  color: #999999;
-}
-
 fli-search-suggest .result {
   text-align: justify;
 }

@@ -13,7 +13,7 @@ angular
       $dom.find('.hottrends-trends-list-trend-container').each(function (i, e) {
         var element = $(e);
         trends.push({
-          tittle: element.find('.hottrends-single-trend-title').text(),
+          title: element.find('.hottrends-single-trend-title').text(),
           img: element.find('.hottrends-single-trend-image-and-text-container img').attr('src'),
           text: element.find('.hottrends-single-trend-news-snippet').text(),
           url: element.find('.hottrends-single-trend-news-article-container a').attr('href')

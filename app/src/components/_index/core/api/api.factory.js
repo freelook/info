@@ -43,13 +43,21 @@ angular
       }
     }
 
+    function instagram(point) {
+      if (point) {
+        var api = CONFIG.API.URL + 'instagram/' + point;
+        return $http.get(api);
+      }
+    }
+
     return {
       get: get,
       proxy: proxy,
       goods: goods,
       facebook: facebook,
       vk: vk,
-      yandex: yandex
+      yandex: yandex,
+      instagram: instagram
     };
 
   });

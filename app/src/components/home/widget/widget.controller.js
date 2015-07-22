@@ -10,7 +10,7 @@ angular
     vm.href = function (config) {
       return url.href('look?', {
         input: config.input,
-        url: config.url,
+        url: !!config.url ? encodeURIComponent(config.url) : '',
         img: !!config.img ? encodeURIComponent(config.img) : null,
         text: config.text
       });

@@ -1,17 +1,17 @@
 <md-card class="md-whiteframe-z1" flex-sm="95" flex-gt-sm="40" flex-gt-md="30" flex-gt-lg="20" layout="column" ng-repeat="item in hotTrends.items">
   <md-card-content>
-    <a class="img" ng-href="{{widget.href({input:item.tittle, url:item.url, img:item.img, text:item.tittle})}}">
+    <a class="img" ng-href="{{widget.href({input:item.title, url:item.url, img:item.img, text:item.title})}}">
       <img class="md-card-image" ng-if="!!item.img" ng-src="{{item.img}}" title="Look it" fli-err>
       <div class="md-card-image header" ng-if="!item.img" title="Look it"></div>
     </a>
-    <a ng-href="{{widget.href({input:item.tittle, url:item.url, img:item.img, text:item.tittle})}}" ng-bind-html="item.tittle"></a>
+    <a ng-href="{{widget.href({input:item.title, url:item.url, img:item.img, text:item.title})}}" ng-bind-html="item.title"></a>
     <div flex ng-bind-html="item.text"></div>
   </md-card-content>
   <md-card-footer layout="row" layout-align="end center">
-    <div class="link" title="{{'Search - '+ item.tittle}}">
-      <span>#</span> <a ng-href="{{widget.search(item.tittle)}}"><span ng-bind="item.tittle"></span></a>
+    <div class="link" title="{{'Search - '+ item.title}}">
+      <span>#</span> <a ng-href="{{widget.search(item.title)}}"><span ng-bind="item.title"></span></a>
     </div>
-    <div class="link" ng-click="link(item.url)" title="{{'Go to - '+ item.tittle}}">
+    <div class="link" ng-click="link(item.url)" title="{{'Go to - '+ item.title}}">
       <i class="fa fa-external-link"></i>
     </div>
   </md-card-footer>

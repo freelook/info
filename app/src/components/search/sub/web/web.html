@@ -1,14 +1,14 @@
-<md-button class="md-icon-button link" ng-click="go({sub:null})" aria-label="search">
+<md-button class="md-icon-button link" ng-click="go({sub:null})" aria-label="search" title="google">
   <a ng-class="{active:!fli.route.sub}" ng-href="{{sub.href(null)}}">
     <i class="fa fa-google"></i>
   </a>
 </md-button>
-<md-button class="md-icon-button link" ng-click="go({sub:'fb'})" aria-label="fb">
+<md-button class="md-icon-button link" ng-click="go({sub:'fb'})" aria-label="fb" title="facebook">
   <a ng-class="{active:fli.route.sub==='fb'}" ng-href="{{sub.href('fb')}}">
     <i class="fa fa-facebook"></i>
   </a>
 </md-button>
-<md-button class="md-icon-button link" ng-click="go({sub:'vk'})" aria-label="vk">
+<md-button class="md-icon-button link" ng-click="go({sub:'vk'})" aria-label="vk" title="vk">
   <a ng-class="{active:fli.route.sub==='vk'}" ng-href="{{sub.href('vk')}}">
     <i class="fa fa-vk"></i>
   </a>
