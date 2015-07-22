@@ -5,9 +5,10 @@ angular
   function ($scope, url) {
 
     var TYPES = {
-      goods: 1,
-      image: 2,
-      audio: 3
+      news: 1,
+      goods: 2,
+      image: 3,
+      audio: 4
     };
 
     var vm = this, auto = false;

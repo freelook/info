@@ -36,9 +36,19 @@ angular
       return $http.jsonp(wapi, {cache: false});
     }
 
+    function feeds(point) {
+      var gfapi = 'https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=' + encodeURIComponent(point) + '&callback=JSON_CALLBACK';
+      return $http.jsonp(gfapi);
+    }
+
     function trends() {
-      var gtapi = 'https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=http://www.google.com/trends/hottrends/atom/hourly&callback=JSON_CALLBACK';
-      return $http.jsonp(gtapi);
+      var gtapi = 'http://www.google.com/trends/hottrends/atom/hourly';
+      return feeds(gtapi);
+    }
+
+    function news(q) {
+      var gnapi = 'http://news.google.com/news?q=' + q + '&output=rss';
+      return feeds(gnapi);
     }
 
     return {
@@ -46,7 +56,8 @@ angular
       image: image,
       autocomplete: autocomplete,
       random: random,
-      trends: trends
+      trends: trends,
+      news: news
     };
 
   });
