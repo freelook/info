@@ -1,7 +1,8 @@
 <md-card class="md-whiteframe-z1" flex-sm="95" flex-gt-sm="40" flex-gt-md="30" flex-gt-lg="20" layout="column" ng-repeat="item in newsGoogle.items">
 <md-card-content>
   <a class="img" ng-href="{{result.href({url:item.url, img:item.img, text:item.titleText})}}">
-    <img class="md-card-image" ng-src="{{item.img}}" title="Look it" fli-err>
+    <img class="md-card-image" ng-if="item.img" ng-src="{{item.img}}" title="Look it" fli-err>
+    <div class="md-card-image header" ng-if="!item.img" title="Look it"></div>
   </a>
   <a ng-href="{{result.href({url:item.url, img:item.img, text:item.titleText})}}" ng-bind-html="item.title"></a>
   <div class="from" ng-bind-html="item.from"></div>

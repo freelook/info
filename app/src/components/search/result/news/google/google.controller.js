@@ -15,7 +15,7 @@ angular
         font = $html.find('[size=-1]');
       return {
         img: img.attr('src'),
-        url: $(img.parent()).attr('href'),
+        url: $(img.parent()).attr('href') || $(title.parent()).attr('href'),
         title: title.html(),
         titleText: title.text(),
         from: $(font.get(0)).html(),

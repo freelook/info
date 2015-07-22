@@ -9,10 +9,10 @@ angular
 
     vm.href = function (config) {
       return url.href('look?', {
-        input: $scope.fli.route.input,
-        url: encodeURIComponent(config.url),
-        img: encodeURIComponent(config.img),
-        text: config.text
+        input: $scope.fli.route.input || null,
+        url: encodeURIComponent(config.url) || '',
+        img: encodeURIComponent(config.img) || null,
+        text: config.text || null
       });
     };
 
