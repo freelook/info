@@ -12,7 +12,7 @@ function search(req, res) {
             .then(function (_token) {
                 _req = $http
                     .get({
-                        url: 'https://api.instagram.com/v1/tags/' + req.query.q + '/media/recent?' + _token
+                        url: 'https://api.instagram.com/v1/tags/' + encodeURI(decodeURI(req.query.q)) + '/media/recent?' + _token
                     })
                     .on('error', function () {
                         token.refresh();
