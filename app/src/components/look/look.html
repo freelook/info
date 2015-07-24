@@ -1,15 +1,14 @@
 <header>
   <fli-input flex></fli-input>
+  <div ng-include="'components/look/menu/menu.html'"></div>
 </header>
 
-<div layout="row" id="look" flex layout-align="center start" class="animate vm">
-
-  <div ng-hide="fli.focus" flex flex-gt-sm="90" flex-gt-md="80" flex-gt-lg="60">
-    <fli-look-content></fli-look-content>
-  </div>
-
+<div id="look" layout="column" flex>
+  <fli-look-tabs ng-if="!fli.route.type" ng-hide="fli.focus"></fli-look-tabs>
+  <fli-look-iframe ng-if="fli.route.type==='full'" ng-hide="fli.focus"></fli-look-iframe>
+  <fli-look-content ng-if="!fli.route.type" ng-hide="fli.focus" flex layout="row" layout-align="center start" class="animate vm"></fli-look-content>
 </div>
 
-<footer ng-include="'components/_index/footer/footer.html'"></footer>
+<footer ng-if="!fli.route.type" ng-include="'components/_index/footer/footer.html'"></footer>
 
 

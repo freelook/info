@@ -1,0 +1,20 @@
+fli-look-tabs {
+  display: block;
+}
+
+fli-look-tabs md-ink-bar {
+  display: none;
+}
+
+fli-look-tabs .md-tab {
+  padding: 12px 15px;
+}
+
+fli-look-tabs .md-tab a {
+  text-decoration: none;
+}
+
+fli-look-tabs .md-tab.md-active a {
+  color: #888888;
+  text-shadow: 3px 3px 13px #888888;
+}

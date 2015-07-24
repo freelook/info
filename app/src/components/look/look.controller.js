@@ -8,6 +8,7 @@ angular
 
     $location.search({
       input: $routeParams.input,
+      type: $routeParams.type,
       url: $routeParams.url || '',
       img: $routeParams.img,
       text: $routeParams.text,
