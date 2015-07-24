@@ -73,7 +73,7 @@ server {
 
 	location @redirect {
 		rewrite ^ http://freelook.info/api/proxy?url=$upstream_http_location;
-		proxy_pass http://freelook.info/;
+		proxy_pass http://freelook.info;
 	}
 
 	location /api/proxy/cache {

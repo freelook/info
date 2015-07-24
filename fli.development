@@ -69,7 +69,7 @@ server {
 
 	location @redirect {
 		rewrite ^ http://localhost/api/proxy?url=$upstream_http_location;
-		proxy_pass http://localhost/;
+		proxy_pass http://localhost;
 	}
 
 	location /api/proxy/cache {
