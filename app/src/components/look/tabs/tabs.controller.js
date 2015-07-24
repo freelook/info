@@ -2,7 +2,7 @@
 angular
   .module('fli.look')
   .controller('look.tabs.ctrl',
-  function ($scope, url) {
+  function ($scope, $window, url) {
 
     var TYPES = {
       full: 1
@@ -12,16 +12,20 @@ angular
     vm.selected = 0;
 
     vm.href = function (type) {
-      return url.href('/look?', {
+      return url.href('look?', {
         input: $scope.fli.route.input || null,
         type: type,
         url: $scope.fli.route.url
       });
     };
 
-    vm.go = function (config) {
+    vm.go = function (config, reload) {
       if (!auto) {
-        $scope.go(config);
+        if (!reload) {
+          $scope.go(config);
+        } else {
+          $window.location.href = vm.href(config.type);
+        }
       } else {
         auto = false;
       }

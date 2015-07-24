@@ -3,7 +3,7 @@
 angular
   .module('fli.look')
   .factory('iframe',
-  function ($sce, $location, $rootScope, $cacheFactory, readability, url, CONFIG) {
+  function ($rootScope, url, CONFIG) {
 
     var parser = new window.DOMParser(),
       origin = _originLink(), proxyUrl = CONFIG.API.URL + 'proxy?url=';
@@ -26,7 +26,7 @@ angular
       _fixImg($dom);
       _fixLink($dom);
 
-      return $sce.trustAsHtml(dom.documentElement.innerHTML);
+      return dom.documentElement.innerHTML;
     }
 
     function _fixPath(path) {
