@@ -13,8 +13,9 @@ angular
       return link.protocol + '//' + link.host;
     }
 
-    function proxy(url) {
-      return proxyUrl + decodeURIComponent(url);
+    function proxy(url, path) {
+      var decode = decodeURIComponent(url);
+      return !path ? proxyUrl + decode : path + decode;
     }
 
     function _prepareHtml(html) {
@@ -29,15 +30,20 @@ angular
       return dom.documentElement.innerHTML;
     }
 
-    function _fixPath(path) {
+
+    function _fliUrl(_url, input) {
+      return url.href('look?', {input: input || null, type: 'full', url: _url});
+    }
+
+    function _fixPath(path, customPath) {
       if (path) {
         switch (path.substr(0, 2)) {
           case 'ht':
-            return proxy(path);
+            return proxy(path, customPath);
           case '//':
-            return proxy('http:' + path);
+            return proxy('http:' + path, customPath);
           default:
-            return path.charAt(0) === '/' ? proxy(origin + path) : proxy(origin + '/' + path);
+            return path.charAt(0) === '/' ? proxy(origin + path, customPath) : proxy(origin + '/' + path, customPath);
         }
       }
     }
@@ -60,7 +66,10 @@ angular
 
     function _fixLink($dom) {
       $dom.find('a').each(function (i, e) {
-        $(e).attr('href', '#').attr('onclick', 'return false;');
+        var input = $(e).text() || '';
+        $(e).attr('href', function (i, href) {
+          return _fixPath(href, _fliUrl('', input));
+        }).attr('target', '_parent');
       });
     }
 

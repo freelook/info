@@ -63,6 +63,13 @@ server {
 	location /api/proxy {
 		resolver 8.8.8.8;
 		proxy_pass $arg_url;
+		proxy_intercept_errors on;
+		error_page 301 302 = @redirect;
+	}
+
+	location @redirect {
+		rewrite ^ http://localhost/api/proxy?url=$upstream_http_location;
+		proxy_pass http://localhost/;
 	}
 
 	location /api/proxy/cache {
