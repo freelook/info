@@ -32,21 +32,7 @@ angular
       _fixImg($dom);
       _fixLink($dom);
 
-      exec($dom);
-
       return dom.documentElement.innerHTML;
-    }
-
-    function exec($dom) {
-      function run() {
-      }
-
-      var script = '<script>' + 'var FLI_ORIGIN = "' + proxy(origin) + '/";' +
-        '(' + run.toString() + ')();' +
-        '<\/script>';
-
-      $dom.find('head').prepend($(script));
-
     }
 
 
