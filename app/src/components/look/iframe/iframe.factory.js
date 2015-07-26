@@ -14,7 +14,12 @@ angular
     }
 
     function proxy(url, path) {
-      var decode = decodeURIComponent(url);
+      var decode;
+      try {
+        decode = decodeURIComponent(url);
+      } catch (e) {
+        console.error(e);
+      }
       return !path ? proxyUrl + decode : path + decode;
     }
 
@@ -27,7 +32,21 @@ angular
       _fixImg($dom);
       _fixLink($dom);
 
+      exec($dom);
+
       return dom.documentElement.innerHTML;
+    }
+
+    function exec($dom) {
+      function run() {
+      }
+
+      var script = '<script>' + 'var FLI_ORIGIN = "' + proxy(origin) + '/";' +
+        '(' + run.toString() + ')();' +
+        '<\/script>';
+
+      $dom.find('head').prepend($(script));
+
     }
 
 
@@ -69,7 +88,7 @@ angular
         var input = $(e).text() || '';
         $(e).attr('href', function (i, href) {
           return _fixPath(href, _fliUrl('', input));
-        }).attr('target', '_parent');
+        }).attr('target', '_top');
       });
     }
 
