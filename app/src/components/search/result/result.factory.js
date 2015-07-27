@@ -13,7 +13,8 @@ angular
     }
 
     function share(url, img, text) {
-      var href = 'http://freelook.info/search?input=' + $rootScope.fli.route.input || text;
+      var input = $rootScope.fli.route.input || text || '';
+      var href = 'http://freelook.info/search?input=' + input;
       if (img) {
         href += '&metaimg=' + img;
       }
