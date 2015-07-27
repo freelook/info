@@ -3,7 +3,7 @@
 angular
   .module('fli.look')
   .controller('look.content.full.ctrl',
-  function ($rootScope, $scope, $sce, api, read, full, facebook) {
+  function ($scope, $sce, api, read, full, facebook) {
 
     $scope.html = '';
 
@@ -21,11 +21,11 @@ angular
       }
     }
 
-    if ($rootScope.fli.route.url) {
-      api.get($rootScope.fli.route.url)
+    if ($scope.fli.route.url) {
+      api.get($scope.fli.route.url)
         .success(setContent)
         .error(function () {
-          read.call($rootScope.fli.route.url)
+          read.call($scope.fli.route.url)
             .success(setContent);
         });
     }

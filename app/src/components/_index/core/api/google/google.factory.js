@@ -37,7 +37,7 @@ angular
     }
 
     function feeds(point) {
-      var gfapi = 'https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=' + encodeURIComponent(point) + '&callback=JSON_CALLBACK';
+      var gfapi = 'https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=24&q=' + encodeURIComponent(point) + '&callback=JSON_CALLBACK';
       return $http.jsonp(gfapi);
     }
 

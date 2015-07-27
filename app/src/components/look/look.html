@@ -4,9 +4,11 @@
 </header>
 
 <div id="look" layout="column" flex>
-  <fli-look-tabs ng-if="!fli.route.type" ng-hide="fli.focus"></fli-look-tabs>
-  <fli-look-iframe ng-if="fli.route.type==='full'" ng-hide="fli.focus"></fli-look-iframe>
-  <fli-look-content ng-if="!fli.route.type" ng-hide="fli.focus" flex layout="row" layout-align="center start" class="animate vm"></fli-look-content>
+  <fli-look-iframe ng-if="fli.route.type==='full'" ng-hide="fli.focus" class="animate vm"></fli-look-iframe>
+  <div ng-if="!fli.route.type" ng-hide="fli.focus" class="animate vm">
+    <fli-look-tabs></fli-look-tabs>
+    <fli-look-content flex layout="row" layout-align="center start" ></fli-look-content>
+  </div>
 </div>
 
 <footer ng-if="!fli.route.type" ng-include="'components/_index/footer/footer.html'"></footer>

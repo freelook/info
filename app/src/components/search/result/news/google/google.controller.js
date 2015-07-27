@@ -3,19 +3,22 @@
 angular
   .module('fli.search')
   .controller('search.result.news.google.ctrl',
-  function ($scope, $parse, google) {
+  function ($scope, $parse, url, result, google) {
 
     var vm = this;
+    vm.href = result.href;
+    vm.share = result.share;
     vm.items = [];
 
     function feedToJs(feed) {
       var $html = $($.parseHTML(feed)),
         img = $html.find('img'),
         title = $html.find('a b').first(),
-        font = $html.find('[size=-1]');
+        font = $html.find('[size=-1]'),
+        _url = $(img.parent()).attr('href') || $(title.parent()).attr('href');
       return {
         img: img.attr('src'),
-        url: $(img.parent()).attr('href') || $(title.parent()).attr('href'),
+        url: url.qByName('url', decodeURIComponent(_url)),
         title: title.html(),
         titleText: title.text(),
         from: $(font.get(0)).html(),
@@ -36,10 +39,8 @@ angular
       vm.items = extract(entries) || [];
     }
 
-    if ($scope.fli.route.input) {
-      google.news($scope.fli.route.input)
-        .success(setResult);
-    }
+    google.news($scope.fli.route.input || '')
+      .success(setResult);
 
   });
 

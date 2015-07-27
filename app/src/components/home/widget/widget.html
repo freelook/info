@@ -1,2 +1,3 @@
 <fli-home-widget-trends layout="row" layout-align="center start" layout-wrap ng-if="!fli.route.type"></fli-home-widget-trends>
+<fli-home-widget-news ng-if="fli.route.type === 'news'"></fli-home-widget-news>
 <fli-home-widget-looks layout="row" layout-align="center start" layout-wrap ng-if="fli.route.type === 'looks'"></fli-home-widget-looks>

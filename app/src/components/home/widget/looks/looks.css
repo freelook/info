@@ -5,9 +5,3 @@ fli-home-widget-looks {
 fli-home-widget-looks md-card-footer {
   position: relative;
 }
-
-fli-home-widget-looks .clear {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-}

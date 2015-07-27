@@ -1,4 +1,5 @@
 <md-tabs md-selected="tabs.selected" md-no-bar="true" md-autoselect="false">
   <md-tab md-on-select="tabs.go({type: null})"><a ng-href="{{tabs.href(null)}}">Trends</a></md-tab>
+  <md-tab md-on-select="tabs.go({type: 'news'})"><a ng-href="{{tabs.href('news')}}">News</a></md-tab>
   <md-tab md-on-select="tabs.go({type: 'looks'})"><a ng-href="{{tabs.href('looks')}}">Looks</a></md-tab>
 </md-tabs>

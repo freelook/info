@@ -1,15 +1,15 @@
 <md-card class="md-whiteframe-z1" flex-sm="95" flex-gt-sm="40" flex-gt-md="30" flex-gt-lg="20" layout="column" ng-repeat="item in newsGoogle.items">
 <md-card-content>
-  <a class="img" ng-href="{{result.href({url:item.url, img:item.img, text:item.titleText})}}">
+  <a class="img" ng-href="{{newsGoogle.href({url:item.url, img:item.img, text:item.titleText})}}">
     <img class="md-card-image" ng-if="item.img" ng-src="{{item.img}}" title="Look it" fli-err>
     <div class="md-card-image header" ng-if="!item.img" title="Look it"></div>
   </a>
-  <a ng-href="{{result.href({url:item.url, img:item.img, text:item.titleText})}}" ng-bind-html="item.title"></a>
+  <a ng-href="{{newsGoogle.href({url:item.url, img:item.img, text:item.titleText})}}" ng-bind-html="item.title"></a>
   <div class="from" ng-bind-html="item.from"></div>
   <div flex ng-bind-html="item.text"></div>
 </md-card-content>
 <md-card-footer layout="row" layout-align="end center">
-  <div class="link" ng-click="link(result.share())" title="{{'Share - '+ item.titleText}}">
+  <div class="link" ng-click="link(newsGoogle.share())" title="{{'Share - '+ item.titleText}}">
     <i class="fa fa-share-alt"></i>
   </div>
   <div class="link" ng-click="link(item.url)" title="{{'Go to - '+ item.titleText}}">

@@ -7,7 +7,7 @@
     <a ng-href="{{widget.href({input:item.input, url:item.url, img:item.img, text:item.text})}}" ng-bind-html="item.text"></a>
   </md-card-content>
   <md-card-footer layout="row" layout-align="end center">
-    <div class="link clear" ng-click="looks.clearItem(item)" title="Clear it">
+    <div class="link" ng-click="looks.clearItem(item)" title="Clear it">
       <i class="fa fa-close"></i>
     </div>
     <div class="link" title="{{'Search - '+ item.input}}">

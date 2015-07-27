@@ -15,7 +15,7 @@ angular
       return url.href('look?', {
         input: $scope.fli.route.input || null,
         type: type,
-        url: $scope.fli.route.url
+        url: encodeURIComponent(decodeURIComponent($scope.fli.route.url))
       });
     };
 
