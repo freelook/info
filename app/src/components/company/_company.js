@@ -8,7 +8,8 @@ angular
     $routeProvider
       .when('/company', {
         templateUrl: 'components/company/company.html',
-        controller: 'company.ctrl'
+        controller: 'company.ctrl',
+        controllerAs: 'company'
       });
 
   });

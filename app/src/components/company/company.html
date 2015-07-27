@@ -1,3 +1,29 @@
-<section id="team">
-      freelook@mail.ua
-</section>
+<div class="company header"></div>
+
+<div id="company" layout="column" flex>
+  <header layout="row" layout-sm="column" layout-align="center center">
+    <img class="logo" ng-src="/assets/images/icon.png"/>
+
+    <div>
+      <div class="title" ng-bind="fli.title"></div>
+      <div class="description" ng-bind="fli.description"></div>
+    </div>
+  </header>
+
+  <div flex class="contact" layout="row" layout-align="center center">
+    <div>
+      <img ng-click="link(company.cio.link)" class="logo circle link" ng-src="{{company.cio.img}}" title="CIO"/>
+    </div>
+    <div>
+      <div>
+        <i>CIO:</i><span class="link underline" ng-click="link(company.cio.link)">Dima Kostrub</span>
+      </div>
+      <div class="mail">
+        <i class="fa fa-envelope-o link"></i><a href="mailto:freelook@mail.ua">freelook@mail.ua</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer ng-if="!fli.route.type" ng-include="'components/_index/footer/footer.html'"></footer>
