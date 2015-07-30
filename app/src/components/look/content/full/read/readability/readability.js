@@ -25,8 +25,6 @@ angular
        **/
       var readability = {
         version: '0.5.1',
-        emailSrc: 'http://lab.arc90.com/experiments/readability/email.php',
-        kindleSrc: 'http://lab.arc90.com/experiments/readability/kindle.php',
         iframeLoads: 0,
         frameHack: false, /**
          * The frame hack is to workaround a firefox bug where if you
@@ -128,7 +126,7 @@ angular
          **/
         getArticleTitle: function () {
           var articleTitle = document.createElement('H1');
-          articleTitle.innerHTML = document.title || _title || '# ' + $rootScope.fli.route.input;
+          articleTitle.innerHTML = document.title || _title || $rootScope.fli.route.text || '# ' + $rootScope.fli.route.input;
 
           return articleTitle;
         },
@@ -456,6 +454,15 @@ angular
           articleContent.id = 'readability-content';
           var siblingScoreThreshold = Math.max(10, topCandidate.readability.contentScore * 0.2);
           var siblingNodes = topCandidate.parentNode.childNodes;
+
+          /** Add img from url **/
+          if ($rootScope.fli.route.img) {
+            var img = document.createElement('IMG');
+            img.src = decodeURIComponent($rootScope.fli.route.img);
+            img.setAttribute('fli-err', '');
+            articleContent.appendChild(img);
+          }
+
           for (i = 0, il = siblingNodes.length; i < il; i++) {
             var siblingNode = siblingNodes[i];
             var append = false;

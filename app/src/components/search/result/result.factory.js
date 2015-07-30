@@ -6,8 +6,8 @@ angular
     function href(config) {
       return url.href('look?', {
         input: $rootScope.fli.route.input || config.text || null,
-        url: encodeURIComponent(config.url) || '',
-        img: encodeURIComponent(config.img) || null,
+        url: !!config.url ? encodeURIComponent(config.url) : '',
+        img: !!config.img ? encodeURIComponent(config.img) : null,
         text: config.text || null
       });
     }

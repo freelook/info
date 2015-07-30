@@ -1,40 +1,48 @@
 #readOverlay {
-	display: block;
-	position: relative;
-	top: 0;
-	left: 0;
-	width: 100%;
+  display: block;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
+
 #readInner {
-	line-height: 1.2em;
-	margin: 1em auto;
+  line-height: 1.2em;
+  margin: 1em auto;
 }
+
 #readInner a {
-	color:#003399;
-	text-decoration:none;
+  color: #003399;
+  text-decoration: none;
 }
+
 #readInner a:hover {
-	text-decoration:underline;
+  text-decoration: underline;
 }
+
 #readInner * {
-	margin-bottom: 16px;
-	border: none;
-	background: none;
+  margin-bottom: 16px;
+  border: none;
+  background: none;
 }
+
 #readInner img {
-	float: left;
-	margin-right: 12px;
-	margin-bottom: 12px;
+  float: left;
+  margin-right: 12px;
+  margin-bottom: 12px;
+  max-width: 100%;
 }
+
 #readInner h1 {
-	display: block;
-	width: 100%;
-	border-bottom: 1px solid #333;
-	font-size: 1.2em;
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid #333;
+  font-size: 1.2em;
 }
+
 #readInner blockquote {
-	margin-left: 3em;
-	margin-right: 3em;
+  margin-left: 3em;
+  margin-right: 3em;
 }
 
 /* ---------------- USER-CONFIGURABLE STYLING --------------------- */
@@ -42,45 +50,49 @@
 /* Begin Typekit Styles */
 
 .style-classy {
-	font-family: sans-serif;
-	background-color: #FDFDFD;
-	color: #434343;
+  font-family: sans-serif;
+  background-color: #FDFDFD;
+  color: #434343;
 }
 
 .style-classy #readInner a {
-	color: #8F674B;
-	text-decoration: none;
+  color: #8F674B;
+  text-decoration: none;
 }
 
 .style-post {
-	font-family: "Droid Sans", "Arial", sans-serif;
-	background-color: #FFF;
-	color: #222;
+  font-family: "Droid Sans", "Arial", sans-serif;
+  background-color: #FFF;
+  color: #222;
 }
 
 .style-post h1 {
-	font-family: "League Gothic";
-	font-size: 53px;
-	letter-spacing: 2px;
-	line-height: 1.4;
-	text-align: center;
-	text-transform: uppercase;
+  font-family: "League Gothic";
+  font-size: 53px;
+  letter-spacing: 2px;
+  line-height: 1.4;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 /* Margin Options */
 
 .margin-x-wide {
-	width: 35%;
+  width: 35%;
 }
+
 .margin-wide {
-	width: 55%;
+  width: 55%;
 }
+
 .margin-medium {
-	width: 75%;
+  width: 75%;
 }
+
 .margin-narrow {
-	width: 95%;
+  width: 95%;
 }
+
 /* ---------------- USER-CONFIGURABLE STYLING --------------------- */
 
 
