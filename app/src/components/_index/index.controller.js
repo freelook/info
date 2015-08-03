@@ -12,11 +12,9 @@ angular
       if (params) {
         switch (typeof params) {
           case 'string':
-            $location.url(params);
-            break;
+            return $location.url(params);
           case 'object':
-            $route.updateParams(params);
-            break;
+            return $route.updateParams(params);
         }
       }
     };

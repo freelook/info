@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('fli.search')
-  .factory('result', function ($rootScope, url, share, CONFIG) {
+  .factory('result', function ($rootScope, url, share) {
 
     function _href(config) {
       return url.href('look?', {
@@ -15,7 +15,7 @@ angular
     function _share(url, img, text) {
       var href = '';
       if (url) {
-        href = _href({text: text, img: img, url: url}).split(CONFIG.ORIGIN.slice(0, -1))[1];
+        href = _href({text: text, img: img, url: url});
       }
       return share.url(href);
     }

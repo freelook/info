@@ -1,10 +1,10 @@
 'use strict';
 angular
   .module('fli.share')
-  .factory('share', function ($location, url, facebook) {
+  .factory('share', function ($routeParams, url, facebook) {
 
     function _url(_href) {
-      var href = _href || $location.url();
+      var href = _href || '';
       try {
         href = url.href('share?', {url: encodeURIComponent(decodeURIComponent(href))});
       } catch (e) {

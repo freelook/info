@@ -3,10 +3,15 @@
 angular
   .module('fli.share')
   .controller('share.ctrl',
-  function ($rootScope, $location, $routeParams, $mdMedia, DEFAULT_TITLE, DEFAULT_DESCRIPTION) {
+  function ($rootScope, $window, $routeParams, $mdMedia, CONFIG, DEFAULT_TITLE, DEFAULT_DESCRIPTION) {
 
     if ($routeParams.url) {
-      $location.url(decodeURIComponent($routeParams.url)).replace();
+      try {
+        $window.location.href = $routeParams.url;
+      } catch (e) {
+        console.error(e);
+        $rootScope.go('/').replace();
+      }
     }
 
     $rootScope.fli.route = $routeParams || {};
