@@ -3,7 +3,7 @@
 angular
   .module('fli.look')
   .controller('look.ctrl',
-  function ($scope, $rootScope, $routeParams, $location, $mdMedia, local,
+  function ($rootScope, $routeParams, $location, $mdMedia, local,
             DEFAULT_TITLE, DEFAULT_DESCRIPTION, LOOK_KEY) {
 
     $location.search({
@@ -11,16 +11,14 @@ angular
       type: $routeParams.type,
       url: $routeParams.url || '',
       img: $routeParams.img,
-      text: $routeParams.text,
-      metaimg: $routeParams.metaimg,
-      metatext: $routeParams.metatext
+      text: $routeParams.text
     })
       .replace();
 
     $rootScope.fli.route = $routeParams || {};
     $rootScope.fli.media = $mdMedia;
     $rootScope.fli.title = !$routeParams.input ? DEFAULT_TITLE : 'FLI - ' + decodeURIComponent($routeParams.input);
-    $rootScope.fli.description = DEFAULT_DESCRIPTION;
+    $rootScope.fli.description = !!$routeParams.text ? decodeURIComponent($routeParams.text) : !$routeParams.input ? DEFAULT_DESCRIPTION : 'FLI - free look at ' + decodeURIComponent($routeParams.input);
     $rootScope.fli.icon = 'eye';
 
 

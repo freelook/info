@@ -3,7 +3,7 @@
 angular
   .module('fli.company')
   .controller('company.ctrl',
-  function ($rootScope, $location, $routeParams, $scope, $mdMedia, DEFAULT_TITLE, DEFAULT_DESCRIPTION) {
+  function ($rootScope, $location, $routeParams, $mdMedia, DEFAULT_TITLE, DEFAULT_DESCRIPTION) {
 
     $location.search({}).replace();
 

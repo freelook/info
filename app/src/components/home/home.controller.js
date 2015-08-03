@@ -6,9 +6,7 @@ angular
   function ($rootScope, $routeParams, $location, $scope, $mdMedia, local, url, DEFAULT_TITLE, DEFAULT_DESCRIPTION, LOOK_KEY) {
 
     $location.search({
-      type: $routeParams.type,
-      metaimg: $routeParams.metaimg,
-      metatext: $routeParams.metatext
+      type: $routeParams.type
     })
       .replace();
 
