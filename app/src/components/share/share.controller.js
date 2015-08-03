@@ -6,7 +6,7 @@ angular
   function ($rootScope, $location, $routeParams, $mdMedia, DEFAULT_TITLE, DEFAULT_DESCRIPTION) {
 
     if ($routeParams.url) {
-      $location.url(decodeURIComponent($routeParams.url)).replace();
+      $location.url($routeParams.url).replace();
     }
 
     $rootScope.fli.route = $routeParams || {};
