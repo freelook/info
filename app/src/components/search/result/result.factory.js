@@ -1,9 +1,9 @@
 'use strict';
 angular
   .module('fli.search')
-  .factory('result', function ($rootScope, url, facebook) {
+  .factory('result', function ($rootScope, url, share, CONFIG) {
 
-    function href(config) {
+    function _href(config) {
       return url.href('look?', {
         input: $rootScope.fli.route.input || config.text || null,
         url: !!config.url ? encodeURIComponent(config.url) : '',
@@ -12,21 +12,17 @@ angular
       });
     }
 
-    function share(url, img, text) {
-      var input = $rootScope.fli.route.input || text || '';
-      var href = 'http://freelook.info/search?input=' + input;
-      if (img) {
-        href += '&metaimg=' + img;
+    function _share(url, img, text) {
+      var href = '';
+      if (url) {
+        href = _href({text: text, img: img, url: url}).split(CONFIG.ORIGIN.slice(0, -1))[1];
       }
-      if (text) {
-        href += '&metatext=' + text;
-      }
-      return facebook.share(href);
+      return share.url(href);
     }
 
     return {
-      href: href,
-      share: share
+      href: _href,
+      share: _share
     };
 
   });

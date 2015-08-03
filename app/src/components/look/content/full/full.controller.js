@@ -3,14 +3,11 @@
 angular
   .module('fli.look')
   .controller('look.content.full.ctrl',
-  function ($scope, $sce, api, read, full, facebook) {
+  function ($scope, $sce, api, read, full, share) {
 
     $scope.html = '';
 
-    $scope.share = function (url) {
-      var href = 'http://freelook.info/look?url=' + url;
-      return facebook.share(href);
-    };
+    $scope.share = share.url;
 
     function setContent(_content) {
       var content = _content || {};

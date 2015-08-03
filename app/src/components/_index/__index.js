@@ -3,7 +3,7 @@
 angular
   .module('freelook.info',
   ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngRoute', 'ngMaterial', 'mediaPlayer',
-    'fli.home', 'fli.search', 'fli.look', 'fli.company', 'fli.todo'])
+    'fli.home', 'fli.search', 'fli.look', 'fli.company', 'fli.share', 'fli.todo'])
   .config(function ($locationProvider, $httpProvider, $routeProvider, $mdThemingProvider) {
 
     // Setting hash prefix
