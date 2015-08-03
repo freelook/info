@@ -7,10 +7,14 @@
   <meta name="fragment" content="!">
   <meta name="description" content="{{fli.description}}">
   <meta ng-if="fli.route.input" name="keywords" content="{{fli.route.input}}">
-  <meta ng-if="fli.route.img" property="og:image" content="{{fli.route.img}}" />
-  <meta ng-if="fli.route.text || fli.route.input" property="og:description" content="{{fli.route.text || fli.route.input}}" />
+
+  <meta ng-if="fli.title" property="og:title" content="{{fli.title}}">
+  <meta ng-if="fli.route.img" property="og:image" content="{{fli.route.img}}">
+  <meta ng-if="fli.description" property="og:description" content="{{fli.description}}">
+
   <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="apple-touch-icon" type="image/png" href="/assets/images/icon.png">
 
   <!-- build:css({.tmp,src}) styles/fli.css inline-->
