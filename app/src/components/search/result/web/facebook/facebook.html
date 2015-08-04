@@ -7,6 +7,9 @@
   <div ng-if="item.category" flex ng-bind="item.category"></div>
 </md-card-content>
 <md-card-footer layout="row" layout-align="end center">
+  <div class="link" ng-click="result.share({url:fb.link(item.id), img:fb.img(item.id), text:item.name})" title="{{'Share - '+ item.name}}">
+    <i class="fa fa-share-alt"></i>
+  </div>
   <div class="link" ng-click="link(fb.link(item.id))" title="{{'Go to - '+ item.name}}">
     <i class="fa fa-external-link"></i>
   </div>

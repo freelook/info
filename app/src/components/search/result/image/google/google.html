@@ -1,13 +1,13 @@
 <md-card class="md-whiteframe-z1" flex-sm="95" flex-gt-sm="40" flex-gt-md="30" flex-gt-lg="20" layout="column" ng-repeat="item in imgGoogle.search.results">
-<a ng-href="{{result.href({url:item.originalContextUrl, img:item.url, text:item.titleNoFormatting})}}">
+<a ng-href="{{result.href({url:item.originalContextUrl, img:item.url, text:item.contentNoFormatting})}}">
   <img class="md-card-image" ng-src="{{item.url}}" title="Look it" fli-err>
 </a>
 <md-card-content>
-  <a ng-href="{{result.href({url:item.originalContextUrl, img:item.url, text:item.titleNoFormatting})}}" ng-bind-html="item.title"></a>
+  <a ng-href="{{result.href({url:item.originalContextUrl, img:item.url, text:item.contentNoFormatting})}}" ng-bind-html="item.title"></a>
   <div flex ng-bind-html="item.content"></div>
 </md-card-content>
 <md-card-footer layout="row" layout-align="end center">
-  <div class="link" ng-click="link(result.share(item.originalContextUrl, item.url, item.contentNoFormatting))" title="{{'Share - '+ item.titleNoFormatting}}">
+  <div class="link" ng-click="result.share({url:item.originalContextUrl, img:item.url, text:item.contentNoFormatting})" title="{{'Share - '+ item.titleNoFormatting}}">
     <i class="fa fa-share-alt"></i>
   </div>
   <div class="link" ng-click="link(item.url)" title="{{'Get - '+ item.titleNoFormatting}}">

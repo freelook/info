@@ -7,7 +7,7 @@
     <div ng-click="link(decode(item.DetailPageURL[0]))" class="link underline" ng-bind-html="item.ItemAttributes[0].Title[0]"></div>
   </md-card-content>
   <md-card-footer layout="row" layout-align="end center">
-    <div class="link" ng-click="link(result.share())" title="{{'Share - '+ item.ItemAttributes[0].Title[0]}}">
+    <div class="link" ng-click="result.share(decode(item.DetailPageURL[0]))" title="{{'Share - '+ item.ItemAttributes[0].Title[0]}}">
       <i class="fa fa-share-alt"></i>
     </div>
     <div class="link" ng-click="link(decode(item.DetailPageURL[0]))" title="{{'Go to - '+ item.ItemAttributes[0].Title[0]}}">

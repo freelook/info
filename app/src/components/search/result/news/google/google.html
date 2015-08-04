@@ -9,7 +9,7 @@
   <div flex ng-bind-html="item.text"></div>
 </md-card-content>
 <md-card-footer layout="row" layout-align="end center">
-  <div class="link" ng-click="link(newsGoogle.share())" title="{{'Share - '+ item.titleText}}">
+  <div class="link" ng-click="newsGoogle.share({url:item.url, img:item.img, text:item.titleText})" title="{{'Share - '+ item.titleText}}">
     <i class="fa fa-share-alt"></i>
   </div>
   <div class="link" ng-click="link(item.url)" title="{{'Go to - '+ item.titleText}}">

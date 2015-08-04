@@ -8,6 +8,9 @@
   <div ng-bind="item.type"></div>
 </md-card-content>
 <md-card-footer layout="row" layout-align="end center">
+  <div class="link" ng-click="result.share({url:vk.link(item.screen_name), img:item.photo_big, text:item.name})" title="{{'Share - '+ item.name}}">
+    <i class="fa fa-share-alt"></i>
+  </div>
   <div class="link" ng-click="link(vk.link(item.screen_name))" title="{{'Go to - '+ item.name}}">
     <i class="fa fa-external-link"></i>
   </div>

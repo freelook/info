@@ -11,7 +11,6 @@ angular
     $rootScope.link = url.link;
     $rootScope.location = url.location;
     $rootScope.decode = url.decode;
-    $rootScope.fli.decode = url.decode;
 
     $rootScope.go = function (params) {
       if (params) {
@@ -29,6 +28,11 @@ angular
         return (new RegExp(type)).test(site);
       }
       return false;
+    };
+
+    $rootScope.fli.fix = function (_url) {
+      var fixedUrl = url.decode(_url);
+      return fixedUrl.substr(0, 2) === '//' ? 'http:' + fixedUrl : fixedUrl;
     };
 
   })

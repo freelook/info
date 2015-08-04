@@ -13,8 +13,14 @@ angular
     }
 
     function _share(_config) {
-      var config = _config || {};
-      return share.url(_href(config, CONFIG.PRODUCTION));
+      if (_config) {
+        switch (typeof _config) {
+          case 'string':
+            return share.url(_config);
+          case 'object':
+            return share.url(_href(_config, CONFIG.PRODUCTION));
+        }
+      }
     }
 
     return {
