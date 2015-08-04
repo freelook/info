@@ -3,12 +3,12 @@
 angular
   .module('freelook.info')
   .factory('youtube',
-  function ($sce, $http, $q, url) {
+  function ($sce, $http, $q, url, CONFIG) {
 
     var YAPI = {
         data: 'https://www.googleapis.com/youtube/v3/'
       },
-      APP_KEY = 'AIzaSyDBAHujlSftqeYB03a0FjtwLBsQ2nA4DQM';
+      APP_KEY = CONFIG.API.GOOGLE.KEY;
 
 
     function _search(channelId) {

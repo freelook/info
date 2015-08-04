@@ -1,14 +1,14 @@
 <md-card class="md-whiteframe-z1" flex-sm="95" flex-gt-sm="40" flex-gt-md="30" flex-gt-lg="20" layout="column" ng-repeat="item in google.search.results">
-<a ng-href="{{result.href({url:item.url, img:item.richSnippet.cseImage.src, text:item.titleNoFormatting})}}">
+<a ng-href="{{result.href({url:item.url, img:item.richSnippet.cseImage.src, text:item.contentNoFormatting})}}">
   <img class="md-card-image" ng-if="!!item.richSnippet.cseImage.src" ng-src="{{item.richSnippet.cseImage.src}}" title="Look it" fli-err>
   <div class="md-card-image header" ng-if="!item.richSnippet.cseImage.src" title="Look it"></div>
 </a>
 <md-card-content>
-  <a ng-href="{{result.href({url:item.url, img:item.richSnippet.cseImage.src, text:item.titleNoFormatting})}}" ng-bind-html="item.title"></a>
+  <a ng-href="{{result.href({url:item.url, img:item.richSnippet.cseImage.src, text:item.contentNoFormatting})}}" ng-bind-html="item.title"></a>
   <div flex ng-bind-html="item.content"></div>
 </md-card-content>
 <md-card-footer layout="row" layout-align="end center">
-  <div class="link" ng-click="link(result.share(item.url, item.richSnippet.cseImage.src, item.contentNoFormatting))" title="{{'Share - '+ item.titleNoFormatting}}">
+  <div class="link" ng-click="result.share({url:item.url, img:item.richSnippet.cseImage.src, text:item.contentNoFormatting})" title="{{'Share - '+ item.titleNoFormatting}}">
     <i class="fa fa-share-alt"></i>
   </div>
   <div class="link" ng-click="link(item.url)" title="{{'Go to - '+ item.titleNoFormatting}}">

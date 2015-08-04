@@ -3,12 +3,12 @@
 angular
   .module('fli.look')
   .controller('look.content.full.ctrl',
-  function ($scope, $sce, api, read, full, share, url) {
+  function ($scope, $sce, api, read, full, share, url, CONFIG) {
 
     $scope.html = '';
 
     $scope.share = function () {
-      return share.url(url.href('look?', $scope.fli.route));
+      return share.url(url.href('look?', $scope.fli.route, false, CONFIG.PRODUCTION));
     };
 
     function setContent(_content) {

@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('google', function ($http) {
+  .factory('google', function ($http, googleUrl) {
 
     var GAPI = {
       web: 'https://www.googleapis.com/customsearch/v1element?key=AIzaSyCVAXiUzRYsML1Pv6RwSG1gunmMikTzQqY&cx=007077922014062052604:wiiu7xrm8yk&num=12',
@@ -57,7 +57,8 @@ angular
       autocomplete: autocomplete,
       random: random,
       trends: trends,
-      news: news
+      news: news,
+      url: googleUrl
     };
 
   });

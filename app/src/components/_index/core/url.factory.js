@@ -19,10 +19,11 @@ angular
       return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
     }
 
-    function href(path, params, replace) {
+    function href(path, params, replace, origin) {
       var route = $rootScope.fli.route,
         _params = params || {},
-        _href = CONFIG.ORIGIN + path;
+        _origin = origin || CONFIG.ORIGIN,
+        _href = _origin + path;
       if (!!replace && !!~path.indexOf($location.path().slice(1)) && !angular.equals(route, {})) {
         angular.forEach(route, function (v, k) {
           _href += k + '=' + (_params[k] || v) + '&';
@@ -37,11 +38,30 @@ angular
       return _href.charAt(_href.length - 1) === '&' ? _href.slice(0, -1) : _href;
     }
 
+    function link(href, self) {
+      if (href) {
+        $('<a>').attr('href', href).attr('target', !self ? '_blank' : '')[0].click();
+      }
+    }
+
+    function location(href) {
+      if (href) {
+        $window.location.href = href;
+      }
+    }
+
+    function decode(_url) {
+      return !!_url ? decodeURIComponent(_url) : '';
+    }
+
     return {
       parse: parse,
       href: href,
       extract: extract,
-      qByName: qByName
+      qByName: qByName,
+      link: link,
+      location: location,
+      decode: decode
     };
 
   });
