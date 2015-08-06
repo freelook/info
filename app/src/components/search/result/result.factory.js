@@ -18,7 +18,7 @@ angular
           case 'string':
             return share.url(_config);
           case 'object':
-            return share.url(_href(_config, CONFIG.PRODUCTION));
+            return share.url(_href(_config, CONFIG.PRODUCTION), _config);
         }
       }
     }

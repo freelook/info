@@ -2,7 +2,7 @@
 angular
   .module('freelook.info')
   .factory('facebook',
-  function ($http, $q, api) {
+  function ($http, $rootScope, $q, api, url, CONFIG) {
 
     var APP_ID = '846841298681206';
 
@@ -10,7 +10,8 @@ angular
       var fapi = 'https://www.facebook.com/dialog/share?' +
         'app_id=' + APP_ID +
         '&display=popup' +
-        '&redirect_uri=http://freelook.info' +
+        '&redirect_uri=' +
+        url.href('search?', {input: $rootScope.fli.route.input}, false, CONFIG.PRODUCTION) +
         '&href=' + _href;
       return fapi;
     }

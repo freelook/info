@@ -2,18 +2,22 @@ fli-home-widget-trends {
   display: block;
 }
 
-fli-home-widget-trends .md-card-image {
+fli-home-widget-trends .fli-item .md-card-image,
+fli-home-widget-trends .fli-item .img {
   min-height: 100px;
   max-height: 100px;
   min-width: 100px;
   max-width: 100px;
 }
 
-fli-home-widget-trends .img {
-  min-height: 100px;
-  max-height: 100px;
-  min-width: 100px;
-  max-width: 100px;
+fli-home-widget-trends .fli-item .img {
   margin-right: 5px;
   float: left;
+}
+
+fli-home-widget-trends .fli-item .header {
+  min-height: 100px;
+  max-height: 100px;
+  min-width: 100%;
+  max-width: 100%;
 }

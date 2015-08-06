@@ -1,0 +1,19 @@
+<header>
+  <fli-input flex></fli-input>
+</header>
+
+<div id="share" class="animate vm" layout="column" layout-align="start center">
+  <fli-share></fli-share>
+  <div>
+    <md-button class="md-fab md-primary" aria-label="facebook" ng-click="share.run('facebook')">
+      <i class="fa fa-facebook"></i>
+    </md-button>
+    <md-button ng-disabled="true" class="md-fab md-primary" aria-label="vk">
+      <i class="fa fa-vk"></i>
+    </md-button>
+    <md-button class="md-fab" aria-label="close" ng-click="share.close()">
+      <i class="fa fa-close"></i>
+    </md-button>
+  </div>
+</div>
+

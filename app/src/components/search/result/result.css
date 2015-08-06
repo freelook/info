@@ -1,29 +1,3 @@
 fli-search-result {
   display: block;
 }
-
-fli-search-result md-card .md-card-image,
-fli-search-result md-card img {
-  min-width: 100%;
-  max-width: 100%;
-}
-
-fli-search-result md-card .header {
-  min-height: 200px;
-  max-height: 200px;
-  min-width: 100%;
-  max-width: 100%;
-}
-
-fli-search-result md-card .body {
-  margin: 5px;
-}
-
-fli-search-result md-card-content,
-fli-search-result md-card-footer {
-  padding: 0;
-}
-
-fli-search-result md-card-footer > div {
-  margin: 0 10px 5px 10px;
-}

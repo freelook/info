@@ -1,3 +1,34 @@
 fli-item {
   display: block;
 }
+
+.fli-item .md-card-image,
+.fli-item img {
+  min-width: 100%;
+  max-width: 100%;
+}
+
+.fli-item .header {
+  min-height: 200px;
+  max-height: 200px;
+  min-width: 100%;
+  max-width: 100%;
+}
+
+.fli-item .body {
+  margin: 5px;
+}
+
+.fli-item .from {
+  margin: 3px;
+  color: #888888;
+}
+
+.fli-item md-card-content,
+.fli-item md-card-footer {
+  padding: 0;
+}
+
+.fli-item md-card-footer > div {
+  margin: 0 10px 5px 10px;
+}
