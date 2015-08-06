@@ -1,18 +1,12 @@
-<md-card class="md-whiteframe-z1" flex-sm="95" flex-gt-sm="40" flex-gt-md="30" flex-gt-lg="20" layout="column" ng-repeat="item in vk.results">
-<a ng-href="{{result.href({url:vk.link(item.screen_name), img:item.photo_big, text:item.name})}}">
-  <img class="md-card-image" ng-if="!!item.photo_big" ng-src="{{item.photo_big}}" title="Look it" fli-err>
-  <div class="md-card-image header" ng-if="!item.photo_big" title="Look it"></div>
-</a>
-<md-card-content>
-  <a ng-if="item.name" ng-href="{{result.href({url:vk.link(item.screen_name), img:item.photo_big, text:item.name})}}" ng-bind="item.name"></a>
-  <div ng-bind="item.type"></div>
-</md-card-content>
-<md-card-footer layout="row" layout-align="end center">
-  <div class="link" ng-click="result.share({url:vk.link(item.screen_name), img:item.photo_big, text:item.name})" title="{{'Share - '+ item.name}}">
-    <i class="fa fa-share-alt"></i>
-  </div>
-  <div class="link" ng-click="link(vk.link(item.screen_name))" title="{{'Go to - '+ item.name}}">
-    <i class="fa fa-external-link"></i>
-  </div>
-</md-card-footer>
-</md-card>
+<fli-item ng-repeat="item in vk.results"
+          ng-init="fliItem = {
+          url:vk.link(item.screen_name),
+          img:item.photo_big,
+          title:item.name,
+          text:item.name,
+          content: item.type
+          };
+          fliItemCtrl.href=result.href;
+          fliItemCtrl.share=result.share;">
+
+</fli-item>

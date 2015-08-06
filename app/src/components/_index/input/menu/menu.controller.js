@@ -20,6 +20,7 @@ angular
 
     vm.hide = function () {
       $rootScope.fli.focus = 0;
+      $rootScope.fli.view = '';
       $scope.inptElement.blur();
     };
 

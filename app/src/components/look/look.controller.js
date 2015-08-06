@@ -20,6 +20,7 @@ angular
     $rootScope.fli.title = !$routeParams.input ? DEFAULT_TITLE : 'FLI - ' + decodeURIComponent($routeParams.input);
     $rootScope.fli.description = !!$routeParams.text ? decodeURIComponent($routeParams.text) : !$routeParams.input ? DEFAULT_DESCRIPTION : 'FLI - free look at ' + decodeURIComponent($routeParams.input);
     $rootScope.fli.icon = 'eye';
+    $rootScope.fli.view = '';
 
 
     if ($routeParams.input && $routeParams.url && $routeParams.img && $routeParams.text) {

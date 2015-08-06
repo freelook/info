@@ -18,4 +18,5 @@ angular
     $rootScope.fli.title = !$routeParams.input ? DEFAULT_TITLE : 'FLI - ' + decodeURIComponent($routeParams.input);
     $rootScope.fli.description = !$routeParams.input ? DEFAULT_DESCRIPTION : 'FLI - free look at ' + decodeURIComponent($routeParams.input);
     $rootScope.fli.icon = 'search';
+    $rootScope.fli.view = '';
   });

@@ -1,0 +1,12 @@
+'use strict';
+angular
+  .module('freelook.info')
+  .directive('fliItem', function () {
+    return {
+      replace: true,
+      controller: 'item.ctrl',
+      controllerAs: 'fliItemCtrl',
+      templateUrl: 'components/_index/core/uix/item/item.html'
+    };
+  });
+

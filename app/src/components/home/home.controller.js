@@ -15,6 +15,7 @@ angular
     $rootScope.fli.title = !$routeParams.input ? DEFAULT_TITLE : 'FLI - ' + decodeURIComponent($routeParams.input);
     $rootScope.fli.description = DEFAULT_DESCRIPTION;
     $rootScope.fli.icon = 'th-large';
+    $rootScope.fli.view = '';
 
     $scope.looks = local.get(LOOK_KEY, []);
 

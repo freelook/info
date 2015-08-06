@@ -14,6 +14,7 @@ angular
     $rootScope.fli.title = DEFAULT_TITLE;
     $rootScope.fli.description = DEFAULT_DESCRIPTION;
     $rootScope.fli.icon = 'heartbeat';
+    $rootScope.fli.view = '';
 
     vm.cio = {
       img: 'https://graph.facebook.com/100002976489519/picture?type=large',

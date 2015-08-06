@@ -2,23 +2,27 @@ fli-search-result-news-google {
   dispaly: block;
 }
 
-fli-search-result-news-google .md-card-image {
+fli-search-result-news-google md-card .md-card-image,
+fli-search-result-news-google md-card .img {
   min-height: 100px;
   max-height: 100px;
   min-width: 100px;
   max-width: 100px;
 }
 
-fli-search-result-news-google .img {
+fli-search-result-news-google md-card .header {
   min-height: 100px;
   max-height: 100px;
-  min-width: 100px;
-  max-width: 100px;
+  min-width: 100%;
+  max-width: 100%;
+}
+
+fli-search-result-news-google md-card .img {
   margin-right: 5px;
   float: left;
 }
 
-fli-search-result-news-google .from {
+fli-search-result-news-google md-card .from {
   margin: 3px;
   color: #888888;
 }

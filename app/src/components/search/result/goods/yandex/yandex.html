@@ -6,11 +6,11 @@
 
 <div layout="row" layout-align="start start" layout-wrap>
 <md-card class="md-whiteframe-z1" flex-sm="95" flex-gt-sm="40" flex-gt-md="30" flex-gt-lg="20" layout="column" ng-repeat="item in ya.search.searchResult.results" ng-if="item.offer">
-  <div class="link" ng-click="link(item.offer.url)">
+  <div class="link" ng-click="link(item.offer.url)" class="img">
     <img class="md-card-image" ng-if="!!item.offer.bigPhoto.url" ng-src="{{item.offer.bigPhoto.url}}" title="Look it" fli-err>
     <div class="md-card-image header" ng-if="!item.offer.bigPhoto.url" title="Look it"></div>
   </div>
-  <md-card-content>
+  <md-card-content class="body">
     <div ng-click="link(item.offer.url)" class="link underline" ng-bind-html="item.offer.name"></div>
     <div class="info" ng-if="item.offer.shopInfo">
       <span ng-click="link(item.offer.url)" class="shopName link" ng-bind-html="item.offer.shopInfo.name"></span>

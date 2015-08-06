@@ -1,9 +1,9 @@
 <md-card class="md-whiteframe-z1" flex-sm="95" flex-gt-sm="40" flex-gt-md="30" flex-gt-lg="20" layout="column" ng-repeat="item in imgInsta.items">
-<a ng-href="{{result.href({url:item.link, img:item.images.standard_resolution.url, text:item.caption.text})}}">
+<a ng-href="{{result.href({url:item.link, img:item.images.standard_resolution.url, text:item.caption.text})}}" class="img">
   <img class="md-card-image" ng-if="!!item.images.standard_resolution.url" ng-src="{{item.images.standard_resolution.url}}" title="Look it" fli-err>
   <div class="md-card-image header" ng-if="!item.images.standard_resolution.url" title="Look it"></div>
 </a>
-<md-card-content>
+<md-card-content class="body">
   <div flex ng-bind-html="item.caption.text"></div>
 </md-card-content>
 <md-card-footer layout="row" layout-align="end center">

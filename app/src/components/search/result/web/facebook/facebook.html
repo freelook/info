@@ -1,17 +1,12 @@
-<md-card class="md-whiteframe-z1" flex-sm="95" flex-gt-sm="40" flex-gt-md="30" flex-gt-lg="20" layout="column" ng-repeat="item in fb.results">
-<a ng-href="{{result.href({url:fb.link(item.id), img:fb.img(item.id), text:item.name})}}">
-  <img class="md-card-image" ng-src="{{fb.img(item.id)}}" title="Look it" fli-err>
-</a>
-<md-card-content>
-  <a ng-if="item.name" ng-href="{{result.href({url:fb.link(item.id), img:fb.img(item.id), text:item.name})}}" ng-bind="item.name"></a>
-  <div ng-if="item.category" flex ng-bind="item.category"></div>
-</md-card-content>
-<md-card-footer layout="row" layout-align="end center">
-  <div class="link" ng-click="result.share({url:fb.link(item.id), img:fb.img(item.id), text:item.name})" title="{{'Share - '+ item.name}}">
-    <i class="fa fa-share-alt"></i>
-  </div>
-  <div class="link" ng-click="link(fb.link(item.id))" title="{{'Go to - '+ item.name}}">
-    <i class="fa fa-external-link"></i>
-  </div>
-</md-card-footer>
-</md-card>
+<fli-item ng-repeat="item in fb.results"
+          ng-init="fliItem = {
+          url:fb.link(item.id),
+          img:fb.img(item.id),
+          title:item.name,
+          text:item.name,
+          content: item.content
+          };
+          fliItemCtrl.href=result.href;
+          fliItemCtrl.share=result.share;">
+
+</fli-item>

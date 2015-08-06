@@ -5,6 +5,7 @@ angular
   .controller('index.ctrl', function ($rootScope, $route, $location, url, DEFAULT_TITLE, DEFAULT_DESCRIPTION) {
 
     $rootScope.fli = {};
+    $rootScope.fli.view = '';
     $rootScope.fli.title = DEFAULT_TITLE;
     $rootScope.fli.description = DEFAULT_DESCRIPTION;
 
