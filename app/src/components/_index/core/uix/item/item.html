@@ -1,7 +1,7 @@
-<md-card class="md-whiteframe-z1 fli-item" flex-sm="95" flex-gt-sm="40" flex-gt-md="30" flex-gt-lg="20" layout="column" ng-if="fliItem">
+<md-card class="md-whiteframe-z1 fli-item" ng-class="{small:fliItemCtrl.small}" flex-sm="95" flex-gt-sm="40" flex-gt-md="30" flex-gt-lg="20" layout="column" ng-if="fliItem">
   <md-card-content>
     <a ng-href="{{fliItemCtrl.href(fliItem)}}" class="img">
-      <img class="md-card-image" ng-if="fliItem.img" ng-src="{{fliItem.img}}" title="Look it" alt="{{fliItem.title}}" fli-err>
+      <img class="md-card-image" ng-if="fliItem.img" ng-src="{{fliItem.img}}" title="Look it" alt="{{fliItem.title}}" fli-item-img fli-err>
       <div class="md-card-image header" ng-if="!fliItem.img" title="Look it"></div>
     </a>
     <div class="body">

@@ -11,8 +11,22 @@ fli-item {
 .fli-item .header {
   min-height: 200px;
   max-height: 200px;
-  min-width: 100%;
-  max-width: 100%;
+}
+
+.fli-item.small .md-card-image,
+.fli-item.small .img {
+  min-width: 100px;
+  max-width: 100px;
+}
+
+.fli-item.small .img {
+  margin-right: 5px;
+  float: left;
+}
+
+.fli-item.small .header {
+  min-height: 100px;
+  max-height: 100px;
 }
 
 .fli-item .body {
