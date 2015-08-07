@@ -2,20 +2,4 @@ fli-search-result-news-google {
   dispaly: block;
 }
 
-fli-search-result-news-google .fli-item .md-card-image,
-fli-search-result-news-google .fli-item .img {
-  min-width: 100px;
-  max-width: 100px;
-}
-
-fli-search-result-news-google .fli-item .header {
-  min-height: 100px;
-  max-height: 100px;
-}
-
-fli-search-result-news-google .fli-item .img {
-  margin-right: 5px;
-  float: left;
-}
-
 
