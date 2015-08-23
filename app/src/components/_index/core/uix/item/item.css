@@ -43,6 +43,6 @@ fli-item {
   padding: 0;
 }
 
-.fli-item md-card-footer > div {
-  margin: 0 10px 5px 10px;
+.fli-item md-card-footer .link {
+  margin: 5px 10px 5px 10px;
 }

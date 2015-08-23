@@ -1,20 +1,14 @@
-<md-card class="md-whiteframe-z1" flex-sm="95" flex-gt-sm="40" flex-gt-md="30" flex-gt-lg="20" layout="column" ng-repeat="item in imgInsta.items">
-<a ng-href="{{result.href({url:item.link, img:item.images.standard_resolution.url, text:item.caption.text})}}" class="img">
-  <img class="md-card-image" ng-if="!!item.images.standard_resolution.url" ng-src="{{item.images.standard_resolution.url}}" title="Look it" fli-err>
-  <div class="md-card-image header" ng-if="!item.images.standard_resolution.url" title="Look it"></div>
-</a>
-<md-card-content class="body">
-  <div flex ng-bind-html="item.caption.text"></div>
-</md-card-content>
-<md-card-footer layout="row" layout-align="end center">
-  <div class="link" ng-click="result.share({url:item.link, img:item.images.standard_resolution.url, text:item.caption.text})" title="Share it">
-    <i class="fa fa-share-alt"></i>
-  </div>
+<fli-item ng-repeat="item in imgInsta.items"
+          ng-init="fliItem = {
+          url:item.link,
+          img:item.images.standard_resolution.url,
+          content: item.caption.text
+          };
+          fliItemCtrl.href=result.href;
+          fliItemCtrl.share=result.share;">
+
   <div class="link" ng-click="link(item.images.standard_resolution.url)" title="Get it">
     <i class="fa fa-file-image-o"></i>
   </div>
-  <div class="link" ng-click="link(item.link)" title="Go to it">
-    <i class="fa fa-external-link"></i>
-  </div>
-</md-card-footer>
-</md-card>
+
+</fli-item>

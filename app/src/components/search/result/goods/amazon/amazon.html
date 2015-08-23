@@ -1,10 +1,12 @@
-<md-card class="md-whiteframe-z1" flex-sm="95" flex-gt-sm="40" flex-gt-md="30" flex-gt-lg="20" layout="column" ng-repeat="item in amazon.search.Item">
-  <div class="link" ng-click="link(decode(item.DetailPageURL[0]))" class="img">
-  <img class="md-card-image" ng-if="!!item.MediumImage[0].URL[0]" ng-src="{{item.MediumImage[0].URL[0]}}" title="Look it" fli-err>
-  <div class="md-card-image header" ng-if="!item.MediumImage[0].URL[0]" title="Look it"></div>
-  </div>
-  <md-card-content class="body">
-    <div ng-click="link(decode(item.DetailPageURL[0]))" class="link underline" ng-bind-html="item.ItemAttributes[0].Title[0]"></div>
+<md-card class="md-whiteframe-z1 fli-item" flex-sm="95" flex-gt-sm="40" flex-gt-md="30" flex-gt-lg="20" layout="column" ng-repeat="item in amazon.search.Item">
+  <md-card-content>
+    <div class="img" ng-click="link(decode(item.DetailPageURL[0]))">
+      <img class="md-card-image" ng-if="!!item.MediumImage[0].URL[0]" ng-src="{{item.MediumImage[0].URL[0]}}" title="{{'Look it - '+ item.ItemAttributes[0].Title[0]}}" alt="{{item.ItemAttributes[0].Title[0]}}" fli-item-img fli-err>
+      <div class="md-card-image header" ng-if="!item.MediumImage[0].URL[0]" title="{{'Look it - '+ item.ItemAttributes[0].Title[0]}}"></div>
+    </div>
+    <div class="body">
+      <div ng-click="link(decode(item.DetailPageURL[0]))" class="link underline" ng-bind-html="item.ItemAttributes[0].Title[0]"></div>
+    </div>
   </md-card-content>
   <md-card-footer layout="row" layout-align="end center">
     <div class="link" ng-click="result.share(decode(item.DetailPageURL[0]))" title="{{'Share - '+ item.ItemAttributes[0].Title[0]}}">
