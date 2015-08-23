@@ -13,7 +13,7 @@
   <md-card-footer layout="row" layout-align="end center">
     <ng-transclude></ng-transclude>
     <div class="link" ng-if="fliItemCtrl.search && fliItem.input" title="{{'Search - '+ fliItem.input}}">
-      <span>#</span> <a ng-href="{{fliItemCtrl.search(fliItem.title)}}"><span ng-bind="fliItem.input"></span></a>
+      <span>#</span> <a ng-href="{{fliItemCtrl.search(fliItem.input)}}"><span ng-bind="fliItem.input"></span></a>
     </div>
     <div class="link" ng-if="fliItemCtrl.share" ng-click="fliItemCtrl.share(fliItem)" title="{{'Share - '+ fliItem.title}}">
       <i class="fa fa-share-alt"></i>
@@ -23,4 +23,3 @@
     </div>
   </md-card-footer>
 </md-card>
-
