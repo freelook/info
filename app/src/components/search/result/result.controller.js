@@ -3,11 +3,11 @@
 angular
   .module('fli.search')
   .controller('search.result.ctrl',
-  function ($scope, result) {
+  function ($scope, item) {
 
     var vm = this;
-    vm.href = result.href;
-    vm.share = result.share;
+    vm.href = item.href;
+    vm.share = item.share;
 
   });
 

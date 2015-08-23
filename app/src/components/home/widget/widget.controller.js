@@ -3,9 +3,10 @@
 angular
   .module('fli.home')
   .controller('home.widget.ctrl',
-  function (url) {
+  function (url, item) {
 
     var vm = this;
+    vm.search = item.search;
 
     vm.href = function (config) {
       return url.href('look?', {
@@ -14,10 +15,6 @@ angular
         img: !!config.img ? encodeURIComponent(config.img) : null,
         text: config.text
       });
-    };
-
-    vm.search = function (input) {
-      return url.href('search?', {input: input});
     };
 
   });

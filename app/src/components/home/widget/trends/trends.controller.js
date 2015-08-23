@@ -3,11 +3,11 @@
 angular
   .module('fli.home')
   .controller('home.widget.trends.ctrl',
-  function (hotTrends, result) {
+  function (hotTrends, item) {
 
     var vm = this;
     vm.items = [];
-    vm.share = result.share;
+    vm.share = item.share;
 
     hotTrends()
       .then(function (items) {

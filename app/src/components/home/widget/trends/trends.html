@@ -1,24 +1,15 @@
-<md-card class="md-whiteframe-z1 fli-item" flex-sm="95" flex-gt-sm="40" flex-gt-md="30" flex-gt-lg="20" layout="column" ng-repeat="item in hotTrends.items">
-  <md-card-content >
-    <a class="img" ng-href="{{widget.href({input:item.title, url:item.url, img:item.img, text:item.text})}}">
-      <img class="md-card-image" ng-if="!!item.img" ng-src="{{item.img}}" title="Look it" alt="{{item.title}}" fli-err>
-      <div class="md-card-image header" ng-if="!item.img" title="Look it"></div>
-    </a>
-    <div class="body">
-      <a ng-href="{{widget.href({input:item.title, url:item.url, img:item.img, text:item.text})}}" ng-bind-html="item.title"></a>
-      <div flex ng-bind-html="item.text"></div>
-    </div>
-  </md-card-content>
-  <md-card-footer layout="row" layout-align="end center">
-    <div class="link" title="{{'Search - '+ item.title}}">
-      <span>#</span> <a ng-href="{{widget.search(item.title)}}"><span ng-bind="item.title"></span></a>
-    </div>
-    <div class="link" ng-click="hotTrends.share({input:item.title, url:item.url, img:item.img, text:item.text})" title="{{'Share - '+ item.title}}">
-      <i class="fa fa-share-alt"></i>
-    </div>
-    <div class="link" ng-click="link(item.url)" title="{{'Go to - '+ item.title}}">
-      <i class="fa fa-external-link"></i>
-    </div>
-  </md-card-footer>
-</md-card>
+<fli-item ng-repeat="item in hotTrends.items"
+          ng-init="fliItem = {
+          url:item.url,
+          img:item.img,
+          input:item.title,
+          title:item.title,
+          text:item.text,
+          content: item.text
+          };
+          fliItemCtrl.href=widget.href;
+          fliItemCtrl.share=hotTrends.share;
+          fliItemCtrl.search=widget.search;">
+
+</fli-item>
 
