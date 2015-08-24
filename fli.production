@@ -16,6 +16,12 @@
 # FLI CACHE
 proxy_cache_path /var/www/cache levels=1:2 keys_zone=FLI:10m inactive=60m max_size=1g;
 
+# FLI PRERENDER
+upstream prerender {
+    server localhost:3000;
+    server prerender.freelook.info backup;
+}
+
 server {
 	#listen 80 is default
 	server_name *.freelook.info;
@@ -96,9 +102,12 @@ server {
 		if ($http_user_agent ~ "Prerender") {
 			set $prerender 0;
 		}
+
+		resolver 8.8.8.8;
+
 		if ($prerender = 1) {
 			rewrite .* /$scheme://$host$request_uri? break;
-			proxy_pass http://localhost:3000;
+			proxy_pass http://prerender;
 		}
 		if ($prerender = 0) {
 			rewrite .* /index.html break;
