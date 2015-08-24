@@ -11,7 +11,6 @@
     </div>
   </md-card-content>
   <md-card-footer layout="row" layout-align="end center">
-    {{$index}}
     <ng-transclude></ng-transclude>
     <div class="link" ng-if="fliItemCtrl.search && fliItem.input" title="{{'Search - '+ fliItem.input}}">
       <span>#</span> <a ng-href="{{fliItemCtrl.search(fliItem.input)}}"><span ng-bind="fliItem.input"></span></a>
