@@ -5,8 +5,10 @@
       "script": "server.js",
       "cwd": "api",
       "watch": true,
-      "ignore_watch" : ["node_modules"],
+      "ignore_watch": ["node_modules"],
       "autorestart": true,
+      "exec_mode": "cluster",
+      "instances": 2,
       "env": {
         "NODE_ENV": "production"
       }
@@ -16,8 +18,10 @@
       "script": "server.js",
       "cwd": "prerender",
       "watch": true,
-      "ignore_watch" : ["node_modules"],
+      "ignore_watch": ["node_modules"],
       "autorestart": true,
+      "exec_mode": "cluster",
+      "instances": 2,
       "env": {
         "NODE_ENV": "production"
       }
