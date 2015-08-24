@@ -18,3 +18,7 @@ fli-search-result-goods-yandex .info {
 fli-search-result-goods-yandex .info .icon {
   margin-right: 5px;
 }
+
+fli-search-result-goods-yandex .fli-grid {
+  margin-top: 5px;
+}
