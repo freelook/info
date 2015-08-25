@@ -9,7 +9,14 @@
     </div>
   </md-card-content>
   <md-card-footer layout="row" layout-align="end center">
-    <div class="link" ng-click="result.share(decode(item.DetailPageURL[0]))" title="{{'Share - '+ item.ItemAttributes[0].Title[0]}}">
+    <div class="link"
+         ng-click="result.share(decode(item.DetailPageURL[0]), {
+          url:decode(item.DetailPageURL[0]),
+          img:item.MediumImage[0].URL[0],
+          title:item.ItemAttributes[0].Title[0],
+          text:item.ItemAttributes[0].Title[0]
+          })"
+         title="{{'Share - '+ item.ItemAttributes[0].Title[0]}}">
       <i class="fa fa-share-alt"></i>
     </div>
     <div class="link" ng-click="link(decode(item.DetailPageURL[0]))" title="{{'Go to - '+ item.ItemAttributes[0].Title[0]}}">

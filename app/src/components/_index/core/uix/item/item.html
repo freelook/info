@@ -1,11 +1,11 @@
 <md-card class="md-whiteframe-z1 fli-item" ng-class="{small:!!fliItem.small}" flex-sm="95" flex-gt-sm="40" flex-gt-md="30" flex-gt-lg="20" layout="column" ng-if="fliItem">
   <md-card-content>
-    <a ng-if="!fliItem.link" ng-href="{{fliItemCtrl.href(fliItem)}}" class="img">
+    <a ng-href="{{fliItemCtrl.href(fliItem)}}" class="img">
       <img class="md-card-image" ng-if="fliItem.img" ng-src="{{fliItem.img}}" title="{{'Look it - '+ fliItem.title}}" alt="{{fliItem.title}}" fli-item-img fli-err>
       <div class="md-card-image header" ng-if="!fliItem.img" title="{{'Look it - '+ fliItem.title}}"></div>
     </a>
     <div class="body">
-      <a ng-if="fliItem.title && !fliItem.link" ng-href="{{fliItemCtrl.href(fliItem)}}" ng-bind-html="fliItem.title"></a>
+      <a ng-if="fliItem.title" ng-href="{{fliItemCtrl.href(fliItem)}}" ng-bind-html="fliItem.title"></a>
       <div ng-if="fliItem.from" class="from" ng-bind-html="fliItem.from"></div>
       <div ng-if="fliItem.content" ng-bind-html="fliItem.content"></div>
     </div>

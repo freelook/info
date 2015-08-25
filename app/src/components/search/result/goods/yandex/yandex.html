@@ -34,7 +34,15 @@
     </div>
   </md-card-content>
   <md-card-footer layout="row" layout-align="end center">
-    <div class="link" ng-click="result.share(item.offer.url)" title="{{'Share - '+ item.offer.name}}">
+    <div class="link"
+         ng-click="result.share(item.offer.url, {
+          url:item.offer.url,
+          img:item.offer.bigPhoto.url,
+          title:item.offer.name,
+          content:item.offer.description,
+          text:item.offer.name
+          })"
+         title="{{'Share - '+ item.offer.name}}">
       <i class="fa fa-share-alt"></i>
     </div>
     <div class="link" ng-click="link(item.offer.url)" title="{{'Go to - '+ item.offer.name || fli.route.input}}">

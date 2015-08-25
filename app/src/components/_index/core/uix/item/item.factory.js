@@ -12,14 +12,12 @@ angular
       }, false, origin);
     }
 
-    function _share(_config) {
-      if (_config) {
-        switch (typeof _config) {
-          case 'string':
-            return share.url(_config);
-          case 'object':
-            return share.url(_href(_config, CONFIG.PRODUCTION), _config);
-        }
+    function _share(_item, _config) {
+      switch (typeof _item) {
+        case 'string':
+          return share.url(_item, _config);
+        case 'object':
+          return share.url(_href(_item, CONFIG.PRODUCTION), _item);
       }
     }
 
