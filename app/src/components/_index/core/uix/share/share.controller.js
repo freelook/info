@@ -7,7 +7,6 @@ angular
 
     var vm = this;
     vm.href = item.href;
-    vm.item = share.item();
     vm.run = share.run;
     vm.close = function () {
       $scope.fli.view = '';

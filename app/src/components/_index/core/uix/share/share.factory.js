@@ -3,14 +3,13 @@ angular
   .module('freelook.info')
   .factory('share', function ($rootScope, facebook, google, url) {
 
-    var _item = {}, _href = '',
+    var _href = '',
       connectors = {
         facebook: facebook.share
       };
 
-    function _url(href, config) {
-      if (href && config) {
-        _item = config;
+    function _url(href) {
+      if (href) {
         _href = href;
         $rootScope.fli.view = 'components/_index/core/uix/share/share.view.html';
       }
@@ -25,14 +24,9 @@ angular
         });
     }
 
-    function item() {
-      return _item;
-    }
-
     return {
       url: _url,
-      run: run,
-      item: item
+      run: run
     };
 
   });
