@@ -3,15 +3,18 @@
 angular
   .module('freelook.info')
   .controller('search.ctrl',
-  function ($rootScope, $routeParams, $location, $mdMedia,
+  function ($rootScope, $routeParams, $location, $mdMedia, $translate, locale,
             DEFAULT_TITLE, DEFAULT_DESCRIPTION) {
 
     $location.search({
       input: $routeParams.input || '',
       type: $routeParams.type,
-      sub: $routeParams.sub
+      sub: $routeParams.sub,
+      lng: locale.init($routeParams.lng)
     })
       .replace();
+
+    $translate.use(locale.get());
 
     $rootScope.fli.route = $routeParams || {};
     $rootScope.fli.media = $mdMedia;

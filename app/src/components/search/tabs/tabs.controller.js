@@ -2,7 +2,7 @@
 angular
   .module('fli.search')
   .controller('search.tabs.ctrl',
-  function ($scope, url) {
+  function ($scope, url, locale) {
 
     var TYPES = {
       news: 1,
@@ -15,7 +15,7 @@ angular
     vm.selected = 0;
 
     vm.href = function (type) {
-      return url.href('search?', {input: $scope.fli.route.input, type: type});
+      return url.href('search?', {input: $scope.fli.route.input, type: type, lng: locale.get()});
     };
 
     vm.go = function (config) {

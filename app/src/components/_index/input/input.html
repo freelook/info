@@ -10,7 +10,7 @@
 
   <input flex id="input" type="search" ng-focus="inpt.focus()" autocomplete="off"
          ng-model="fli.route.input"
-         placeholder="{{inpt.placeholder}}">
+         placeholder="{{inpt.placeholder | translate}}">
 
   <md-button ng-if="fli.route.input && fli.focus" class="md-icon-button md-primary clear" aria-label="clear">
     <div ng-click="inpt.clear()">

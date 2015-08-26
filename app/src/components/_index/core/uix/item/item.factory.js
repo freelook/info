@@ -1,14 +1,15 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('item', function ($rootScope, url, share, CONFIG) {
+  .factory('item', function ($rootScope, url, share, locale, CONFIG) {
 
     function _href(config, origin) {
       return url.href('look?', {
         input: $rootScope.fli.route.input || config.input || config.text || null,
         url: !!config.url ? encodeURIComponent(decodeURIComponent(config.url)) : '',
         img: !!config.img ? encodeURIComponent(decodeURIComponent(config.img)) : null,
-        text: config.text || null
+        text: config.text || null,
+        lng: locale.get()
       }, false, origin);
     }
 
@@ -22,7 +23,7 @@ angular
     }
 
     function search(input) {
-      return url.href('search?', {input: input});
+      return url.href('search?', {input: input, lng: locale.get()});
     }
 
     return {

@@ -2,7 +2,7 @@
 angular
   .module('fli.home')
   .controller('home.tabs.ctrl',
-  function ($scope, url) {
+  function ($scope, url, locale) {
 
     var TYPES = {
       news: 1,
@@ -13,7 +13,7 @@ angular
     vm.selected = 0;
 
     vm.href = function (type) {
-      return url.href('?', {type: type});
+      return url.href('?', {type: type, lng: locale.get()});
     };
 
     vm.go = function (config) {

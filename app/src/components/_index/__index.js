@@ -1,30 +1,45 @@
-'use strict';
+(function () {
+  'use strict';
 
-angular
-  .module('freelook.info',
-  ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngRoute', 'ngMaterial', 'mediaPlayer',
-    'fli.home', 'fli.search', 'fli.look', 'fli.company', 'fli.todo'])
-  .config(function ($locationProvider, $httpProvider, $routeProvider, $mdThemingProvider) {
+  window.i18n = {
+    en: {},
+    ru: {}
+  };
 
-    // Setting hash prefix
-    $locationProvider.html5Mode(true);
-    $locationProvider.hashPrefix('!');
+  angular
+    .module('freelook.info',
+    ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngRoute', 'ngMaterial', 'pascalprecht.translate', 'mediaPlayer',
+      'fli.home', 'fli.search', 'fli.look', 'fli.company', 'fli.todo'])
+    .config(function ($locationProvider, $httpProvider, $routeProvider, $mdThemingProvider, $translateProvider) {
 
-    // Set up cache
-    $httpProvider.defaults.cache = true;
+      // Setting hash prefix
+      $locationProvider.html5Mode(true);
+      $locationProvider.hashPrefix('!');
 
-    $httpProvider.interceptors.push('LoaderInterceptor');
+      // Set up cache
+      $httpProvider.defaults.cache = true;
 
-    // Setting theme
-    $mdThemingProvider.theme('default').primaryPalette('indigo');
+      $httpProvider.interceptors.push('LoaderInterceptor');
 
-    // Routes config
-    $routeProvider
-      .otherwise({
-        redirectTo: '/'
-      });
+      // Setting theme
+      $mdThemingProvider.theme('default').primaryPalette('indigo');
 
-  })
-  .run(function (analytics) {
-    analytics.init();
-  });
+      // Translates
+      $translateProvider.translations('en', window.i18n.en);
+      $translateProvider.translations('ru', window.i18n.ru);
+
+      // Setting locale
+      $translateProvider.preferredLanguage('en');
+
+      // Routes config
+      $routeProvider
+        .otherwise({
+          redirectTo: '/'
+        });
+
+    })
+    .run(function (analytics) {
+      analytics.init();
+    });
+
+}());

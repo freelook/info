@@ -5,5 +5,7 @@
   <div flex layout="column" layout-align="center center">
     <p>with <i class="fa fa-heartbeat heart"></i> <a ng-href="{{footer.company}}" title="{{fli.description}}">freelook.info</a></p>
   </div>
-  <div flex="20" layout="column" layout-align="center center"></div>
+  <div flex="20" layout="column" layout-align="center center">
+    <div ng-bind="footer.locale"></div>
+  </div>
 </md-whiteframe>

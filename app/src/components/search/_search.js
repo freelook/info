@@ -1,14 +1,19 @@
-'use strict';
+(function () {
+  'use strict';
 
-angular
-  .module('fli.search', [])
-  .config(function ($routeProvider) {
+  window.i18n.ru.search = {};
+  window.i18n.en.search = {};
 
-    // Routes config
-    $routeProvider
-      .when('/search', {
-        templateUrl: 'components/search/search.html',
-        controller: 'search.ctrl'
-      });
+  angular
+    .module('fli.search', [])
+    .config(function ($routeProvider) {
 
-  });
+      // Routes config
+      $routeProvider
+        .when('/search', {
+          templateUrl: 'components/search/search.html',
+          controller: 'search.ctrl'
+        });
+
+    });
+}());

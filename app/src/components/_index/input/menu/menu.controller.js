@@ -25,7 +25,7 @@ angular
     };
 
     $scope.menu.push({
-      name: 'Home',
+      name: 'index.input.menu.home',
       icon: 'th-large',
       href: '/'
     });

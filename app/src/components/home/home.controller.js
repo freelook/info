@@ -3,13 +3,15 @@
 angular
   .module('fli.home')
   .controller('home.ctrl',
-  function ($rootScope, $routeParams, $location, $scope, $mdMedia, local, locale, url, DEFAULT_TITLE, DEFAULT_DESCRIPTION, LOOK_KEY) {
+  function ($rootScope, $routeParams, $location, $scope, $translate, $mdMedia, local, locale, url, DEFAULT_TITLE, DEFAULT_DESCRIPTION, LOOK_KEY) {
 
     $location.search({
       type: $routeParams.type,
       lng: locale.init($routeParams.lng)
     })
       .replace();
+
+    $translate.use(locale.get());
 
     $rootScope.fli.route = $routeParams || {};
     $rootScope.fli.media = $mdMedia;

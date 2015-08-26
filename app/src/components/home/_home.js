@@ -1,14 +1,20 @@
-'use strict';
+(function () {
+  'use strict';
 
-angular
-  .module('fli.home', [])
-  .config(function ($routeProvider) {
+  window.i18n.ru.home = {};
+  window.i18n.en.home = {};
 
-    // Routes config
-    $routeProvider
-      .when('/', {
-        templateUrl: 'components/home/home.html',
-        controller: 'home.ctrl'
-      });
+  angular
+    .module('fli.home', [])
+    .config(function ($routeProvider) {
 
-  });
+      // Routes config
+      $routeProvider
+        .when('/', {
+          templateUrl: 'components/home/home.html',
+          controller: 'home.ctrl'
+        });
+
+    });
+
+}());

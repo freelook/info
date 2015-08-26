@@ -1,15 +1,21 @@
-'use strict';
+(function () {
+  'use strict';
 
-angular
-  .module('fli.look', [])
-  .config(function ($routeProvider) {
+  window.i18n.ru.look = {};
+  window.i18n.en.look = {};
 
-    // Routes config
-    $routeProvider
-      .when('/look', {
-        templateUrl: 'components/look/look.html',
-        controller: 'look.ctrl'
-      });
+  angular
+    .module('fli.look', [])
+    .config(function ($routeProvider) {
 
-  })
-  .constant('LOOK_KEY', 'FLI:LOOK');
+      // Routes config
+      $routeProvider
+        .when('/look', {
+          templateUrl: 'components/look/look.html',
+          controller: 'look.ctrl'
+        });
+
+    })
+    .constant('LOOK_KEY', 'FLI:LOOK');
+
+}());

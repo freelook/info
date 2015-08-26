@@ -4,20 +4,21 @@ angular
   .factory('locale', function (local) {
 
     var locales = {
-      en: null,
+      en: 'en',
       ru: 'ru'
     };
 
     function init(value) {
-      var lng = locales[value] || null;
-      if (lng !== get()) {
+      var locale = get(),
+        lng = locales[value] || locale || locales.en;
+      if (lng !== locale) {
         local.set('locale', lng);
       }
       return lng;
     }
 
     function get() {
-      return local.get('locale', null);
+      return local.get('locale');
     }
 
     return {

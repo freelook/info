@@ -1,40 +1,47 @@
-'use strict';
-angular
-  .module('freelook.info')
-  .controller('input.ctrl',
-  function ($scope, $mdBottomSheet, $location, url, DEFAULT_PLACEHOLDER) {
+(function () {
+  'use strict';
 
-    var vm = this;
-    vm.placeholder = DEFAULT_PLACEHOLDER;
-    $scope.fli.focus = 0;
+  window.i18n.en.index.input = {};
+  window.i18n.ru.index.input = {};
 
-    vm.find = function () {
-      if ($scope.fli.route.input) {
-        if ($location.path() === '/search') {
-          $scope.go({input: $scope.fli.route.input});
-        } else {
-          $scope.go('search?input=' + $scope.fli.route.input);
+  angular
+    .module('freelook.info')
+    .controller('input.ctrl',
+    function ($scope, $mdBottomSheet, $location, url, PLACEHOLDER_KEY) {
+
+      var vm = this;
+      vm.placeholder = PLACEHOLDER_KEY;
+      $scope.fli.focus = 0;
+
+      vm.find = function () {
+        if ($scope.fli.route.input) {
+          if ($location.path() === '/search') {
+            $scope.go({input: $scope.fli.route.input});
+          } else {
+            $scope.go('search?input=' + $scope.fli.route.input);
+          }
         }
-      }
-    };
+      };
 
-    vm.clear = function () {
-      $scope.fli.route.input = '';
-    };
+      vm.clear = function () {
+        $scope.fli.route.input = '';
+      };
 
-    vm.href = function () {
-      if (!$scope.fli.focus) {
-        return url.href($location.url().slice(1));
-      }
-      if ($scope.fli.route.input) {
-        return url.href('search?', {input: $scope.fli.route.input}, true);
-      }
-      return '/';
-    };
+      vm.href = function () {
+        if (!$scope.fli.focus) {
+          return url.href($location.url().slice(1));
+        }
+        if ($scope.fli.route.input) {
+          return url.href('search?', {input: $scope.fli.route.input}, true);
+        }
+        return '/';
+      };
 
-    vm.focus = function () {
-      $scope.fli.focus = 1;
-    };
+      vm.focus = function () {
+        $scope.fli.focus = 1;
+      };
 
-  })
-  .constant('DEFAULT_PLACEHOLDER', 'Type to look');
+    })
+    .constant('PLACEHOLDER_KEY', 'index.input.placeholder');
+
+}());

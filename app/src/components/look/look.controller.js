@@ -3,7 +3,7 @@
 angular
   .module('fli.look')
   .controller('look.ctrl',
-  function ($rootScope, $routeParams, $location, $mdMedia, local,
+  function ($rootScope, $routeParams, $location, $mdMedia, $translate, local, locale,
             DEFAULT_TITLE, DEFAULT_DESCRIPTION, LOOK_KEY) {
 
     $location.search({
@@ -11,9 +11,12 @@ angular
       type: $routeParams.type,
       url: $routeParams.url || '',
       img: $routeParams.img,
-      text: $routeParams.text
+      text: $routeParams.text,
+      lng: locale.init($routeParams.lng)
     })
       .replace();
+
+    $translate.use(locale.get());
 
     $rootScope.fli.route = $routeParams || {};
     $rootScope.fli.media = $mdMedia;
