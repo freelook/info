@@ -44,6 +44,7 @@ server {
 		proxy_http_version 1.1;
 		proxy_set_header Upgrade $http_upgrade;
 		proxy_set_header Connection "upgrade";
+		proxy_intercept_errors on;
 	}
 
 	location /prerender/ {
@@ -100,12 +101,18 @@ server {
 		if ($prerender = 1) {
 			rewrite .* /$scheme://$host$request_uri? break;
 			proxy_pass http://localhost:3000;
+			error_page 502 = @reprerender;
 		}
 		if ($prerender = 0) {
 			#rewrite .* /index.html break;
 			proxy_pass http://localhost:8080;
 		}
 
+	}
+
+	location @reprerender {
+		rewrite .* /$scheme://freelook.info$request_uri? break;
+		proxy_pass http://prerender.freelook.info;
 	}
 
 	# pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000

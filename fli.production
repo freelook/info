@@ -47,6 +47,7 @@ server {
 		# First attempt to serve request as file, then
 		# enable html5 push state.
 		try_files $uri @prerender;
+		proxy_intercept_errors on;
 	}
 
 	location /prerender/ {
@@ -97,13 +98,19 @@ server {
 			set $prerender 0;
 		}
 		if ($prerender = 1) {
-			rewrite .* /$scheme://$host$request_uri? break;
+			rewrite .* /$scheme://freelook.info$request_uri? break;
 			proxy_pass http://localhost:3000;
+			error_page 502 = @reprerender;
 		}
 		if ($prerender = 0) {
 			rewrite .* /index.html break;
 		}
 
+	}
+
+	location @reprerender {
+		rewrite .* /$scheme://freelook.info$request_uri? break;
+		proxy_pass http://prerender.freelook.info;
 	}
 
 	# pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
