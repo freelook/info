@@ -1,8 +1,8 @@
 <md-card class="md-whiteframe-z1 fli-item" ng-class="{small:!!fliItem.small}" flex-sm="95" flex-gt-sm="40" flex-gt-md="30" flex-gt-lg="20" layout="column" ng-if="fliItem">
   <md-card-content>
     <a ng-href="{{fliItemCtrl.href(fliItem)}}" class="img">
-      <img class="md-card-image" ng-if="fliItem.img" ng-src="{{fliItem.img}}" title="{{'Look it - '+ fliItem.title}}" alt="{{fliItem.title}}" fli-item-img fli-err>
-      <div class="md-card-image header" ng-if="!fliItem.img" title="{{'Look it - '+ fliItem.title}}"></div>
+      <img class="md-card-image" ng-if="fliItem.img" ng-src="{{fliItem.img}}" title="{{'index.core.uix.item.lookIt' | translate:{v:fliItem.title} }}" alt="{{fliItem.title}}" fli-item-img fli-err>
+      <div class="md-card-image header" ng-if="!fliItem.img" title="{{'index.core.uix.item.lookIt' | translate:{v:fliItem.title} }}"></div>
     </a>
     <div class="body">
       <a ng-if="fliItem.title" ng-href="{{fliItemCtrl.href(fliItem)}}" ng-bind-html="fliItem.title"></a>
@@ -12,13 +12,13 @@
   </md-card-content>
   <md-card-footer layout="row" layout-align="end center">
     <ng-transclude></ng-transclude>
-    <div class="link" ng-if="fliItemCtrl.search && fliItem.input" title="{{'Search - '+ fliItem.input}}">
+    <div class="link" ng-if="fliItemCtrl.search && fliItem.input" title="{{'index.core.uix.item.search' | translate:{v:fliItem.input} }}">
       <span>#</span> <a ng-href="{{fliItemCtrl.search(fliItem.input)}}"><span ng-bind="fliItem.input"></span></a>
     </div>
-    <div class="link" ng-if="fliItemCtrl.share" ng-click="fliItemCtrl.share(fliItem)" title="{{'Share - '+ fliItem.title}}">
+    <div class="link" ng-if="fliItemCtrl.share" ng-click="fliItemCtrl.share(fliItem)" title="{{'index.core.uix.item.share' | translate:{v:fliItem.title} }}">
       <i class="fa fa-share-alt"></i>
     </div>
-    <div class="link" ng-if="fliItem.url" ng-click="link(fliItem.url)" title="{{'Go to - '+ fliItem.title}}">
+    <div class="link" ng-if="fliItem.url" ng-click="link(fliItem.url)" title="{{'index.core.uix.item.goTo' | translate:{v:fliItem.title} }}">
       <i class="fa fa-external-link"></i>
     </div>
   </md-card-footer>

@@ -1,6 +1,10 @@
+fli-footer {
+  display: block;
+}
+
 footer {
   display: block;
-  margin-bottom: 5px;
+  margin: 5px 0;
 }
 
 footer .heart {

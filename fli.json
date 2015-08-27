@@ -7,8 +7,6 @@
       "watch": true,
       "ignore_watch": ["node_modules"],
       "autorestart": true,
-      "exec_mode": "cluster",
-      "instances": 2,
       "env": {
         "NODE_ENV": "production"
       }
@@ -20,8 +18,6 @@
       "watch": true,
       "ignore_watch": ["node_modules"],
       "autorestart": true,
-      "exec_mode": "cluster",
-      "instances": 2,
       "env": {
         "NODE_ENV": "production"
       }

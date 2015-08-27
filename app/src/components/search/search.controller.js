@@ -3,8 +3,7 @@
 angular
   .module('freelook.info')
   .controller('search.ctrl',
-  function ($rootScope, $routeParams, $location, $mdMedia, $translate, locale,
-            DEFAULT_TITLE, DEFAULT_DESCRIPTION) {
+  function ($rootScope, $routeParams, $location, $mdMedia, $translate, locale, I18N) {
 
     $location.search({
       input: $routeParams.input || '',
@@ -18,8 +17,8 @@ angular
 
     $rootScope.fli.route = $routeParams || {};
     $rootScope.fli.media = $mdMedia;
-    $rootScope.fli.title = !$routeParams.input ? DEFAULT_TITLE : 'FLI - ' + decodeURIComponent($routeParams.input);
-    $rootScope.fli.description = !$routeParams.input ? DEFAULT_DESCRIPTION : 'FLI - free look at ' + decodeURIComponent($routeParams.input);
+    $rootScope.fli.title = !$routeParams.input ? $translate.instant(I18N.DEFAULT_TITLE) : 'FLI - ' + decodeURIComponent($routeParams.input);
+    $rootScope.fli.description = !$routeParams.input ? $translate.instant(I18N.DEFAULT_DESCRIPTION) : $translate.instant(I18N.CUSTOM_DESCRIPTION) + decodeURIComponent($routeParams.input);
     $rootScope.fli.icon = 'search';
     $rootScope.fli.view = '';
   });

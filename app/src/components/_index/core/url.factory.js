@@ -21,10 +21,12 @@ angular
 
     function href(path, params, replace, origin) {
       var route = $rootScope.fli.route,
+        currentPath = $location.path().slice(1),
+        _path = path || currentPath + '?',
         _params = params || {},
         _origin = origin || CONFIG.ORIGIN,
-        _href = _origin + path;
-      if (!!replace && !!~path.indexOf($location.path().slice(1)) && !angular.equals(route, {})) {
+        _href = _origin + _path;
+      if (!!replace && !!~_path.indexOf(currentPath) && !angular.equals(route, {})) {
         angular.forEach(route, function (v, k) {
           _href += k + '=' + (_params[k] || v) + '&';
         });

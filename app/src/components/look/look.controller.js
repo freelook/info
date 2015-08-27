@@ -4,7 +4,7 @@ angular
   .module('fli.look')
   .controller('look.ctrl',
   function ($rootScope, $routeParams, $location, $mdMedia, $translate, local, locale,
-            DEFAULT_TITLE, DEFAULT_DESCRIPTION, LOOK_KEY) {
+            I18N, LOOK_KEY) {
 
     $location.search({
       input: $routeParams.input,
@@ -20,8 +20,8 @@ angular
 
     $rootScope.fli.route = $routeParams || {};
     $rootScope.fli.media = $mdMedia;
-    $rootScope.fli.title = !$routeParams.input ? DEFAULT_TITLE : 'FLI - ' + decodeURIComponent($routeParams.input);
-    $rootScope.fli.description = !!$routeParams.text ? decodeURIComponent($routeParams.text) : !$routeParams.input ? DEFAULT_DESCRIPTION : 'FLI - free look at ' + decodeURIComponent($routeParams.input);
+    $rootScope.fli.title = !$routeParams.input ? $translate.instant(I18N.DEFAULT_TITLE) : 'FLI - ' + decodeURIComponent($routeParams.input);
+    $rootScope.fli.description = !!$routeParams.text ? decodeURIComponent($routeParams.text) : !$routeParams.input ? $translate.instant(I18N.DEFAULT_DESCRIPTION) : $translate.instant(I18N.CUSTOM_DESCRIPTION) + decodeURIComponent($routeParams.input);
     $rootScope.fli.icon = 'eye';
     $rootScope.fli.view = '';
 

@@ -3,12 +3,12 @@
 angular
   .module('fli.todo')
   .controller('todo.ctrl',
-  function ($rootScope, $routeParams, $scope, $mdMedia, DEFAULT_TITLE, DEFAULT_DESCRIPTION, todo) {
+  function ($rootScope, $routeParams, $scope, $mdMedia, $translate, I18N, todo) {
 
     $rootScope.fli.route = $routeParams || {};
     $rootScope.fli.media = $mdMedia;
     $rootScope.fli.title = 'FLI - todo list';
-    $rootScope.fli.description = DEFAULT_DESCRIPTION;
+    $rootScope.fli.description = $translate.instant(I18N.DEFAULT_DESCRIPTION);
 
     function init(todos) {
       $scope.todos = todos || [];

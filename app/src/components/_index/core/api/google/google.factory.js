@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('google', function ($http, googleUrl) {
+  .factory('google', function ($http, googleUrl, locale) {
 
     var GAPI = {
       web: 'https://www.googleapis.com/customsearch/v1element?key=AIzaSyCVAXiUzRYsML1Pv6RwSG1gunmMikTzQqY&cx=007077922014062052604:wiiu7xrm8yk&num=12',
@@ -42,12 +42,12 @@ angular
     }
 
     function trends() {
-      var gtapi = 'http://www.google.com/trends/hottrends/atom/hourly';
+      var gtapi = 'http://www.google.com/trends/hottrends/atom/hourly?pn=' + locale.getTrendsCode();
       return feeds(gtapi);
     }
 
     function news(q) {
-      var gnapi = 'http://news.google.com/news?q=' + q + '&output=rss';
+      var gnapi = 'http://news.google.com/news?q=' + q + '&output=rss&ned=' + locale.getNewsCodes();
       return feeds(gnapi);
     }
 

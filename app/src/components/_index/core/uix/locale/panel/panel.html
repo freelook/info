@@ -1,0 +1,5 @@
+<div layout="row" layout-align="center center">
+  <md-button class="md-icon-button md-primary" ng-repeat="locale in localePanel.locales" aria-label="locale">
+    <a ng-href="{{localePanel.href(locale)}}" ng-bind="locale"></a>
+  </md-button>
+</div>

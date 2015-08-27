@@ -6,12 +6,13 @@
 
   angular
     .module('freelook.info')
-    .controller('index.ctrl', function ($rootScope, $route, $location, url, DEFAULT_TITLE, DEFAULT_DESCRIPTION) {
+    .controller('index.ctrl',
+    function ($rootScope, $route, $location, $translate, url, I18N) {
 
       $rootScope.fli = {};
       $rootScope.fli.view = '';
-      $rootScope.fli.title = DEFAULT_TITLE;
-      $rootScope.fli.description = DEFAULT_DESCRIPTION;
+      $rootScope.fli.title = $translate.instant(I18N.DEFAULT_TITLE);
+      $rootScope.fli.description = $translate.instant(I18N.DEFAULT_DESCRIPTION);
 
       $rootScope.link = url.link;
       $rootScope.location = url.location;
@@ -35,14 +36,21 @@
         return false;
       };
 
+      $rootScope.href = function (locale) {
+        return url.href('', {lng: locale}, true);
+      };
+
       $rootScope.fli.fix = function (_url) {
         var fixedUrl = url.decode(_url);
         return fixedUrl.substr(0, 2) === '//' ? 'http:' + fixedUrl : fixedUrl;
       };
 
     })
-    .constant('DEFAULT_TITLE', 'FLI - free look at info')
-    .constant('DEFAULT_DESCRIPTION', 'Your personal information manager. Just look it');
+    .constant('I18N', {
+      DEFAULT_TITLE: 'index.title',
+      DEFAULT_DESCRIPTION: 'index.description',
+      CUSTOM_DESCRIPTION: 'index.customDescription'
+    });
 
 }());
 
