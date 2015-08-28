@@ -7,12 +7,13 @@
   angular
     .module('freelook.info')
     .controller('index.ctrl',
-    function ($rootScope, $route, $location, $translate, url, I18N) {
+    function ($rootScope, $route, $location, $translate, url, locales, I18N) {
 
       $rootScope.fli = {};
       $rootScope.fli.view = '';
       $rootScope.fli.title = $translate.instant(I18N.DEFAULT_TITLE);
       $rootScope.fli.description = $translate.instant(I18N.DEFAULT_DESCRIPTION);
+      $rootScope.fli.locales = locales;
 
       $rootScope.link = url.link;
       $rootScope.location = url.location;
@@ -36,8 +37,8 @@
         return false;
       };
 
-      $rootScope.href = function (locale) {
-        return url.href('', {lng: locale}, true);
+      $rootScope.href = function (localeCode) {
+        return url.href('', {l: localeCode}, true);
       };
 
       $rootScope.fli.fix = function (_url) {

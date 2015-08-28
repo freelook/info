@@ -19,14 +19,14 @@ fli-item {
   max-width: 100px;
 }
 
-.fli-item.small .img {
-  margin-right: 5px;
-  float: left;
-}
-
 .fli-item.small .header {
   min-height: 100px;
   max-height: 100px;
+}
+
+.fli-item.small .img {
+  margin-right: 5px;
+  float: left;
 }
 
 .fli-item .body {

@@ -27,7 +27,7 @@ angular
 
     return function () {
       var defer = $q.defer();
-      tapi = CONFIG.PRERENDER.URL + 'https://www.google.com/trends/hottrends?pn=' + locale.getTrendsCode();
+      tapi = CONFIG.PRERENDER.URL + 'https://www.google.com/trends/hottrends?pn=' + locale.getPnCode();
 
       api
         .proxy(tapi, {cache: true})

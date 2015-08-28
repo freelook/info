@@ -1,3 +1,15 @@
 fli-look-content-full {
   display: block;
 }
+
+@media (min-width: 400px) {
+  fli-look-content-full .fli-item .img {
+    margin-right: 5px;
+    float: left;
+  }
+
+  fli-look-content-full .fli-item .img {
+    min-width: 30%;
+    max-width: 30%;
+  }
+}

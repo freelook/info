@@ -327,7 +327,7 @@ angular
               var unlikelyMatchString = node.className + node.id;
               if (unlikelyMatchString.search(readability.regexps.unlikelyCandidatesRe) !== -1 &&
                 unlikelyMatchString.search(readability.regexps.okMaybeItsACandidateRe) === -1 &&
-                node.tagName !== 'BODY') {
+                node.tagName !== 'BODY' && node.tagName !== 'HTML') {
                 dbg('Removing unlikely candidate - ' + unlikelyMatchString);
                 node.parentNode.removeChild(node);
                 nodeIndex--;
@@ -454,14 +454,6 @@ angular
           articleContent.id = 'readability-content';
           var siblingScoreThreshold = Math.max(10, topCandidate.readability.contentScore * 0.2);
           var siblingNodes = topCandidate.parentNode.childNodes;
-
-          /** Add img from url **/
-          if ($rootScope.fli.route.img) {
-            var img = document.createElement('IMG');
-            img.src = decodeURIComponent($rootScope.fli.route.img);
-            img.setAttribute('fli-err', '');
-            articleContent.appendChild(img);
-          }
 
           for (i = 0, il = siblingNodes.length; i < il; i++) {
             var siblingNode = siblingNodes[i];

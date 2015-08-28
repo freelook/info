@@ -17,8 +17,7 @@
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="apple-touch-icon" type="image/png" href="/assets/images/icon.png">
 
-  <link rel="alternate" href="{{href('en')}}" hreflang="en">
-  <link rel="alternate" href="{{href('ru')}}" hreflang="ru">
+  <link ng-repeat="locale in fli.locales" rel="alternate" href="{{href(locale.code)}}" hreflang="{{locale.code}}">
 
   <!-- build:css({.tmp,src}) styles/fli.css inline-->
   <!-- bower:css -->

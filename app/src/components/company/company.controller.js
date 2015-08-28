@@ -6,12 +6,12 @@ angular
   function ($rootScope, $location, $routeParams, $mdMedia, $translate, locale, I18N) {
 
     $location.search({
-      lng: locale.init($routeParams.lng)
+      l: locale.init($routeParams.l)
     })
       .replace();
 
     var vm = this;
-    $translate.use(locale.get());
+    $translate.use(locale.getLng());
 
     $rootScope.fli.route = $routeParams || {};
     $rootScope.fli.media = $mdMedia;

@@ -1,13 +1,11 @@
-<md-card ng-if="!!html">
-  <md-card-content>
-    <div layout="row" layout-align="end center">
-      <div class="link" ng-click="share()" title="{{'SHARE - '+ fli.route.input}}">
-        <i class="fa fa-share-alt"></i>
-      </div>
-      <div class="link" ng-click="link(fli.route.url)" title="{{'VIEW ALL - '+ fli.route.input}}">
-        <i class="fa fa-external-link"></i>
-      </div>
-    </div>
-    <div ng-bind-html="html"></div>
-  </md-card-content>
-</md-card>
+<div ng-if="!!fullCtrl.html">
+  <fli-item ng-init="fliItem = {
+          url: fli.route.url,
+          img:fli.route.img,
+          title:fli.route.input,
+          content:fullCtrl.html
+          };
+          fliItemCtrl.href=fullCtrl.href;
+          fliItemCtrl.share=fullCtrl.share;">
+  </fli-item>
+</div>

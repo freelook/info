@@ -2,7 +2,7 @@
 angular
   .module('fli.look')
   .controller('look.tabs.ctrl',
-  function ($scope, $window, url) {
+  function ($scope, $window, url, locale) {
 
     var TYPES = {
       full: 1
@@ -15,7 +15,8 @@ angular
       return url.href('look?', {
         input: $scope.fli.route.input || null,
         type: type,
-        url: encodeURIComponent(decodeURIComponent($scope.fli.route.url))
+        url: encodeURIComponent(decodeURIComponent($scope.fli.route.url)),
+        l: locale.getCode()
       });
     };
 

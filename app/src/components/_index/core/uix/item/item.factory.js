@@ -9,7 +9,7 @@ angular
         url: !!config.url ? encodeURIComponent(decodeURIComponent(config.url)) : '',
         img: !!config.img ? encodeURIComponent(decodeURIComponent(config.img)) : null,
         text: config.text || null,
-        lng: locale.get()
+        l: locale.getCode()
       }, false, origin);
     }
 
@@ -23,7 +23,7 @@ angular
     }
 
     function search(input) {
-      return url.href('search?', {input: input, lng: locale.get()});
+      return url.href('search?', {input: input, l: locale.getCode()});
     }
 
     return {

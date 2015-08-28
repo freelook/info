@@ -3,20 +3,25 @@
 angular
   .module('fli.look')
   .controller('look.content.full.ctrl',
-  function ($scope, $sce, api, read, full, share, url, CONFIG) {
+  function ($scope, $sce, $location, api, read, full, share, url, CONFIG) {
 
-    $scope.html = '';
+    var vm = this;
+    vm.html = '';
 
-    $scope.share = function () {
+    vm.href = function () {
+      return $location.absUrl();
+    };
+
+    vm.share = function () {
       return share.url(url.href('look?', $scope.fli.route, false, CONFIG.PRODUCTION));
     };
 
     function setContent(_content) {
       var content = _content || {};
       if (typeof content === 'string') {
-        $scope.html = full.get(content) || '';
+        vm.html = full.get(content) || '';
       } else if (content.content) {
-        $scope.html = full.get(content.content, content.title) || '';
+        vm.html = full.get(content.content, content.title) || '';
       }
     }
 

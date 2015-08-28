@@ -8,8 +8,8 @@ angular
     var vm = this;
     vm.locales = locale.locales;
 
-    vm.href = function (locale) {
-      return url.href('', {lng: locale}, true);
+    vm.href = function (localeCode) {
+      return url.href('', {l: localeCode}, true);
     };
 
   });

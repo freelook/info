@@ -8,11 +8,11 @@ angular
 
     $location.search({
       type: $routeParams.type,
-      lng: locale.init($routeParams.lng)
+      l: locale.init($routeParams.l)
     })
       .replace();
 
-    $translate.use(locale.get());
+    $translate.use(locale.getLng());
 
     $rootScope.fli.route = $routeParams || {};
     $rootScope.fli.media = $mdMedia;

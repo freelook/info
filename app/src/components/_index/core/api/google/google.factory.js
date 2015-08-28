@@ -42,12 +42,12 @@ angular
     }
 
     function trends() {
-      var gtapi = 'http://www.google.com/trends/hottrends/atom/hourly?pn=' + locale.getTrendsCode();
+      var gtapi = 'http://www.google.com/trends/hottrends/atom/hourly?pn=' + locale.getPnCode();
       return feeds(gtapi);
     }
 
     function news(q) {
-      var gnapi = 'http://news.google.com/news?q=' + q + '&output=rss&ned=' + locale.getNewsCodes();
+      var gnapi = 'http://news.google.com/news?q=' + q + '&output=rss&ned=' + locale.getNedCodes();
       return feeds(gnapi);
     }
 

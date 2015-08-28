@@ -17,10 +17,10 @@ describe('Input controller', function () {
     });
   }
 
-  beforeEach(inject(function ($rootScope, $controller, DEFAULT_PLACEHOLDER) {
+  beforeEach(inject(function ($rootScope, $controller, PLACEHOLDER) {
     scope = $rootScope.$new();
     controller = $controller;
-    defpleceholder = DEFAULT_PLACEHOLDER;
+    defpleceholder = PLACEHOLDER;
 
     scope.fli = {
       route: {

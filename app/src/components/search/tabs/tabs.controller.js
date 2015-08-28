@@ -15,7 +15,7 @@ angular
     vm.selected = 0;
 
     vm.href = function (type) {
-      return url.href('search?', {input: $scope.fli.route.input, type: type, lng: locale.get()});
+      return url.href('search?', {input: $scope.fli.route.input, type: type, l: locale.getCode()});
     };
 
     vm.go = function (config) {

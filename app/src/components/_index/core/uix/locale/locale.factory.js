@@ -1,53 +1,52 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('locale', function ($window, local) {
-
-    var locales = {
-      en: 'en',
-      ru: 'ru'
-    }, trends = {
-      en: 'p1',
-      ru: 'p14'
-    }, news = {
-      en: 'us',
-      ru: 'ru_ru'
-    };
+  .factory('locale', function ($window, local, locales) {
 
     function init(value) {
-      var locale = get(), navigatorLanguage = !!isRu() ? locales.ru : locales.en,
-        lng = locales[value] || locale || navigatorLanguage;
-      if (lng !== locale) {
-        local.set('locale', lng);
+      var storedLocaleCode = getCode(),
+        navigatorLocaleCode = !!isRu() ? locales.ru.code : locales.en.code,
+        locale = locales[value] || {},
+        localeCode = locale.code || storedLocaleCode || navigatorLocaleCode;
+      if (localeCode !== storedLocaleCode) {
+        local.set('locale', localeCode);
       }
-      return lng;
+      return localeCode;
     }
 
     function get() {
+      return locales[getCode()] || {};
+    }
+
+    function getCode() {
       return local.get('locale');
     }
 
-    function getTrendsCode() {
-      return trends[get()] || trends.en;
+    function getLng() {
+      return get().lng || locales.en.lng;
     }
 
-    function getNewsCodes() {
-      return news[get()] || news.en;
+    function getPnCode() {
+      return get().pn || locales.en.pn;
+    }
+
+    function getNedCodes() {
+      return get().ned || locales.en.ned;
     }
 
     function isRu() {
-      var navigatorLanguage = $window.navigator.userLanguage || $window.navigator.language;
-      return navigatorLanguage.match(/ru/gi);
+      var navigatorLocale = $window.navigator.userLanguage || $window.navigator.language;
+      return navigatorLocale.match(/ru/gi);
     }
 
     return {
       init: init,
       get: get,
-      getTrendsCode: getTrendsCode,
-      getNewsCodes: getNewsCodes,
-      locales: locales,
-      trends: trends,
-      news: news
+      getCode: getCode,
+      getLng: getLng,
+      getPnCode: getPnCode,
+      getNedCodes: getNedCodes,
+      locales: locales
     };
 
   });

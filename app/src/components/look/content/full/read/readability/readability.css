@@ -36,7 +36,6 @@
 #readInner h1 {
   display: block;
   width: 100%;
-  border-bottom: 1px solid #333;
   font-size: 1.2em;
 }
 
