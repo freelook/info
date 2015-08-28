@@ -3,7 +3,7 @@ fli-item {
 }
 
 .fli-item .md-card-image,
-.fli-item img {
+.fli-item .img {
   min-width: 100%;
   max-width: 100%;
 }
