@@ -5,7 +5,7 @@ angular
 
     function init(value) {
       var storedLocaleCode = getCode(),
-        navigatorLocaleCode = !!isRu() ? locales.ru.code : locales.en.code,
+        navigatorLocaleCode = getNavigatorLocaleCode(),
         locale = locales[value] || {},
         localeCode = locale.code || storedLocaleCode || navigatorLocaleCode;
       if (localeCode !== storedLocaleCode) {
@@ -23,20 +23,21 @@ angular
     }
 
     function getLng() {
-      return get().lng || locales.en.lng;
+      return get().lng || locales.us.lng;
     }
 
     function getPnCode() {
-      return get().pn || locales.en.pn;
+      return get().pn || locales.us.pn;
     }
 
     function getNedCodes() {
-      return get().ned || locales.en.ned;
+      return get().ned || locales.us.ned;
     }
 
-    function isRu() {
-      var navigatorLocale = $window.navigator.userLanguage || $window.navigator.language;
-      return navigatorLocale.match(/ru/gi);
+    function getNavigatorLocaleCode() {
+      var navigatorLocale = $window.navigator.userLanguage || $window.navigator.language || '',
+        navigatorLocaleCode = navigatorLocale.split('-')[0].toLowerCase();
+      return !!locales[navigatorLocaleCode] ? navigatorLocaleCode : locales.us.code;
     }
 
     return {
