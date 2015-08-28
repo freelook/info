@@ -101,7 +101,7 @@ server {
 		if ($prerender = 1) {
 			rewrite .* /$scheme://$host$request_uri? break;
 			proxy_pass http://localhost:3000;
-			error_page 502 = @reprerender;
+			error_page 500 501 502 503 504 = @reprerender;
 		}
 		if ($prerender = 0) {
 			#rewrite .* /index.html break;

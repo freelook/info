@@ -3,7 +3,7 @@ html, header, body, footer {
 }
 
 ng-view, ng-include, md-whiteframe, md-card, md-card-content, md-card-footer,
-md-tabs, md-content, md-button, md-progress-linear {
+md-tabs, md-tab, md-content, md-button, md-progress-linear {
   display: block;
 }
 
