@@ -37,7 +37,10 @@
   display: block;
   width: 100%;
   font-size: 1.2em;
-  margin-bottom: 50px;
+}
+
+#readInner #readability-content {
+  margin-top: 75px;
 }
 
 #readInner blockquote {

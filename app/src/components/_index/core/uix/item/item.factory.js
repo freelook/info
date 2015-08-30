@@ -8,7 +8,6 @@ angular
         input: $rootScope.fli.route.input || config.input || config.text || null,
         url: !!config.url ? encodeURIComponent(decodeURIComponent(config.url)) : '',
         img: !!config.img ? encodeURIComponent(decodeURIComponent(config.img)) : null,
-        text: config.text || null,
         l: locale.getCode()
       }, false, origin);
     }

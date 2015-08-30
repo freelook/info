@@ -126,7 +126,7 @@ angular
          **/
         getArticleTitle: function () {
           var articleTitle = document.createElement('H1');
-          articleTitle.innerHTML = document.title || _title || $rootScope.fli.route.text || '# ' + $rootScope.fli.route.input;
+          articleTitle.innerHTML = document.title || _title || '# ' + $rootScope.fli.route.input;
 
           return articleTitle;
         },

@@ -8,10 +8,9 @@ angular
 
     $location.search({
       input: $routeParams.input,
-      type: $routeParams.type,
+      type: $routeParams.type || null,
       url: $routeParams.url || '',
-      img: $routeParams.img,
-      text: $routeParams.text,
+      img: $routeParams.img || null,
       l: locale.init($routeParams.l)
     })
       .replace();
@@ -21,7 +20,7 @@ angular
     $rootScope.fli.route = $routeParams || {};
     $rootScope.fli.media = $mdMedia;
     $rootScope.fli.title = !$routeParams.input ? $translate.instant(I18N.DEFAULT_TITLE) : 'FLI - ' + decodeURIComponent($routeParams.input);
-    $rootScope.fli.description = !!$routeParams.text ? decodeURIComponent($routeParams.text) : !$routeParams.input ? $translate.instant(I18N.DEFAULT_DESCRIPTION) : $translate.instant(I18N.CUSTOM_DESCRIPTION) + decodeURIComponent($routeParams.input);
+    $rootScope.fli.description = !$routeParams.input ? $translate.instant(I18N.DEFAULT_DESCRIPTION) : $translate.instant(I18N.CUSTOM_DESCRIPTION) + decodeURIComponent($routeParams.input);
     $rootScope.fli.icon = 'eye';
     $rootScope.fli.view = '';
 
