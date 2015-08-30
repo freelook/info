@@ -4,8 +4,8 @@
 </header>
 
 <div id="look" layout="column" flex>
-  <fli-look-iframe ng-if="fli.route.type==='full'" ng-hide="fli.focus" class="animate vm"></fli-look-iframe>
-  <div ng-if="!fli.route.type" ng-hide="fli.focus" class="animate vm">
+  <fli-look-iframe flex ng-if="fli.route.type==='full'" ng-hide="fli.focus" class="animate vm"></fli-look-iframe>
+  <div flex ng-if="!fli.route.type" ng-hide="fli.focus" class="animate vm">
     <fli-look-tabs></fli-look-tabs>
     <fli-look-content flex layout="row" layout-align="center start" ></fli-look-content>
   </div>

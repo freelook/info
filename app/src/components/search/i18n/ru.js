@@ -4,6 +4,7 @@ window.i18n.ru.search = {
     news: 'новости',
     goods: 'товары',
     images: 'картинки',
-    audio: 'аудио'
+    audio: 'аудио',
+    video: 'видео'
   }
 };

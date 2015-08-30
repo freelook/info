@@ -25,12 +25,11 @@ angular
     $rootScope.fli.view = '';
 
 
-    if ($routeParams.input && $routeParams.url && $routeParams.img && $routeParams.text) {
+    if ($routeParams.input && $routeParams.url && $routeParams.img) {
       local.arr.push(LOOK_KEY, {
         input: $routeParams.input,
         url: $routeParams.url,
-        img: $routeParams.img,
-        text: $routeParams.text
+        img: $routeParams.img
       }, 12);
     }
 

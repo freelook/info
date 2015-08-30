@@ -8,7 +8,8 @@ angular
       news: 1,
       goods: 2,
       image: 3,
-      audio: 4
+      audio: 4,
+      video: 5
     };
 
     var vm = this, auto = false;

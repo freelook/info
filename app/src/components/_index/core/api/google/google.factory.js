@@ -51,6 +51,11 @@ angular
       return feeds(gnapi);
     }
 
+    function video(q) {
+      var gvapi = 'https://ajax.googleapis.com/ajax/services/search/video?&v=1.0&rsz=8&q=' + encodeURIComponent(q) + '&callback=JSON_CALLBACK';
+      return $http.jsonp(gvapi);
+    }
+
     return {
       web: web,
       image: image,
@@ -58,7 +63,8 @@ angular
       random: random,
       trends: trends,
       news: news,
-      url: googleUrl
+      url: googleUrl,
+      video: video
     };
 
   });

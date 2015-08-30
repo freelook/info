@@ -4,6 +4,7 @@ window.i18n.en.search = {
     news: 'news',
     goods: 'goods',
     images: 'images',
-    audio: 'audio'
+    audio: 'audio',
+    video: 'video'
   }
 };
