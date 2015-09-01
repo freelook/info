@@ -20,6 +20,7 @@
   "white": true,
   "validthis": true,
   "globals": {
+    "document": true,
     "angular": true,
     "$": true,
     "console": true,
