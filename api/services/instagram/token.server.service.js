@@ -3,26 +3,26 @@
 var $http = require('request'),
     phantom = require('phantom'),
     $q = require('q'),
-    mongoose = require('mongoose'),
-    API = mongoose.model('API'),
+    Parse = require('parse').Parse,
+    API = Parse.Object.extend('API'),
+    query = new Parse.Query(API),
     id = process.env.INSTAGRAM_ID,
     pass = process.env.INSTAGRAM_PASS;
 
 
-function _storeToken(token) {
+function _storeToken(api, token) {
     var defer = $q.defer();
 
-    $q.npost(API, 'findOneAndUpdate', [{'name': 'token'},
-        {
-            instagram: {
-                token: token,
-                expire: 0
-            }
-        }, {upsert: true}])
-        .then(function (api) {
-            return defer.resolve(api.instagram.token);
-        })
-        .catch(function (err) {
+    api.set('name', 'token');
+    api.set('instagram', {
+        token: token,
+        expire: 0
+    });
+
+    api.save()
+        .then(function () {
+            return defer.resolve(token);
+        }, function (err) {
             return defer.reject(err);
         });
 
@@ -46,7 +46,7 @@ function _getToken() {
             page.open(url, function (status) {
                 if (status === 'success') {
                     page.evaluate(function (p) {
-                        document.querySelector('[name=username]').value = 'freelookinfo';
+                        document.querySelector('[name=username]').value = 'freelook.info';
                         document.querySelector('[name=password]').value = p;
                         return document.querySelector('[type=submit]').getBoundingClientRect();
                     }, function (login) {
@@ -71,10 +71,10 @@ function _getToken() {
     return defer.promise;
 }
 
-function _handleToken(defer) {
+function _handleToken(api, defer) {
     _getToken()
         .then(function (token) {
-            _storeToken(token)
+            _storeToken(api, token)
                 .then(function (token) {
                     return defer.resolve(token);
                 })
@@ -87,18 +87,22 @@ function _handleToken(defer) {
         });
 }
 
-function checkToken() {
+function checkToken(_update) {
     var defer = $q.defer();
-    $q.ninvoke(API, 'findOne', {'name': 'token'})
-        .then(function (api) {
-            if (api && api.instagram && api.instagram.token) {
-                return defer.resolve(api.instagram.token);
-            } else {
-                _handleToken(defer);
-            }
 
-        })
-        .catch(function (err) {
+    query.first({name: 'token'})
+        .then(function (api) {
+            var instagram = api && api.get('instagram') || '';
+            if (api) {
+                if (!_update && instagram && instagram.token) {
+                    return defer.resolve(instagram.token);
+                } else {
+                    _handleToken(api, defer);
+                }
+            } else {
+                _handleToken(new API(), defer);
+            }
+        }, function (err) {
             return defer.reject(err);
         });
 
@@ -106,9 +110,7 @@ function checkToken() {
 }
 
 function refreshToken() {
-    var defer = $q.defer();
-    _handleToken(defer);
-    return defer.promise;
+    return checkToken(true);
 }
 
 

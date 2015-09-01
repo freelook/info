@@ -3,30 +3,30 @@
 var $http = require('request'),
     phantom = require('phantom'),
     $q = require('q'),
-    mongoose = require('mongoose'),
-    API = mongoose.model('API'),
+    Parse = require('parse').Parse,
+    API = Parse.Object.extend('API'),
+    query = new Parse.Query(API),
     id = process.env.FB_ID,
     secret = process.env.FB_SECRET,
     pass = process.env.FB_PASS;
 
 
-function _storeToken(token, dateCreation) {
+function _storeToken(api, token, dateCreation) {
 
     var defer = $q.defer(),
         expireIn = +token.split('&expires=')[1] || 0,
         expire = new Date(dateCreation.getTime() + expireIn * 1000);
 
-    $q.npost(API, 'findOneAndUpdate', [{'name': 'token'},
-        {
-            facebook: {
-                token: token,
-                expire: expire
-            }
-        }, {upsert: true}])
-        .then(function (api) {
-            return defer.resolve(api.facebook.token);
-        })
-        .catch(function (err) {
+    api.set('name', 'token');
+    api.set('facebook', {
+        token: token,
+        expire: expire
+    });
+
+    api.save()
+        .then(function () {
+            return defer.resolve(token);
+        }, function (err) {
             return defer.reject(err);
         });
 
@@ -91,12 +91,12 @@ function _exchangeToken(_token) {
     return defer.promise;
 }
 
-function _handleToken(defer, dateCreation) {
+function _handleToken(api, defer, dateCreation) {
     _getToken()
         .then(function (token) {
             _exchangeToken(token)
                 .then(function (longToken) {
-                    _storeToken(longToken, dateCreation)
+                    _storeToken(api, longToken, dateCreation)
                         .then(function (_longToken) {
                             return defer.resolve(_longToken);
                         })
@@ -113,23 +113,23 @@ function _handleToken(defer, dateCreation) {
         });
 }
 
-function checkToken() {
+function checkToken(_update) {
     var defer = $q.defer();
-    $q.ninvoke(API, 'findOne', {'name': 'token'})
+
+    query.first({name: 'token'})
         .then(function (api) {
-            var _date = new Date();
-            if (api && api.facebook && api.facebook.token && api.facebook.expire) {
-                if (api.facebook.expire > _date) {
-                    return defer.resolve(api.facebook.token);
+            var _date = new Date(),
+                facebook = api && api.get('facebook') || '';
+            if (api) {
+                if (!_update && facebook && facebook.token && facebook.expire > _date) {
+                    return defer.resolve(facebook.token);
                 } else {
-                    _handleToken(defer, _date);
+                    _handleToken(api, defer, _date);
                 }
             } else {
-                _handleToken(defer, _date);
+                _handleToken(new API(), defer, _date);
             }
-
-        })
-        .catch(function (err) {
+        }, function (err) {
             return defer.reject(err);
         });
 
@@ -137,10 +137,7 @@ function checkToken() {
 }
 
 function refreshToken() {
-    var defer = $q.defer(),
-        _date = new Date();
-    _handleToken(defer, _date);
-    return defer.promise;
+    return checkToken(true);
 }
 
 

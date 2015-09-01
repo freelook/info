@@ -22,8 +22,8 @@ gulp.task('nodemon', function (done) {
 });
 
 gulp.task('mochaTest', function () {
-    process.env.NODE_ENV = 'test';
-    gulp.src(['server.js', 'app/tests/**/*.js'])
+    process.env.NODE_ENV = 'development';
+    gulp.src(['server.js', 'tests/**/*.js'])
         .pipe(mocha({reporter: 'spec'}));
 });
 

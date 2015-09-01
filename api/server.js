@@ -4,23 +4,14 @@
  */
 var init = require('./config/init')(),
     config = require('./config/config'),
-    mongoose = require('mongoose');
-
-/**
- * Main application entry file.
- * Please note that the order of loading is important.
- */
+    Parse = require('parse').Parse;
 
 // Bootstrap db connection
-var db = mongoose.connect(config.db.url, config.db.config, function (err) {
-    if (err) {
-        console.error('Could not connect to fli mongo db');
-        console.log(err);
-    }
-});
+Parse.initialize(config.Parse.id, config.Parse.js, config.Parse.master);
+Parse.Cloud.useMasterKey();
 
 // Init the express application
-var app = require('./config/express')(db);
+var app = require('./config/express')();
 
 // Init server
 var server = require('http').Server(app);
@@ -28,9 +19,6 @@ var server = require('http').Server(app);
 // Init socket.io
 var io = require('socket.io')(server);
 require('./config/socket')(io);
-
-// Bootstrap passport config
-require('./config/passport')();
 
 // Start the app by listening on <port>
 server.listen(config.port);
