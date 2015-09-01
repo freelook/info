@@ -38,9 +38,9 @@
         });
 
     })
-    .run(function ($rootScope, analytics) {
+    .run(function ($rootScope, analytics, Parse) {
       analytics.init();
-
+      Parse.initialize('Z06a4jL9cgIguqkgMV4rMXl9xnZmPAhmIa29QERn', 'fzpDuSbfiiiK1tVgobdutlSozKJfW3CNgU7l6Lex');
       $rootScope.$on('$routeChangeStart', function () {
         $(document).scrollTop(0);
       });

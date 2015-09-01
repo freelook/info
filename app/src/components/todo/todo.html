@@ -1,10 +1,10 @@
-<form name="todo" ng-submit="add(todo)">
+<form name="todo" ng-submit="todoCtrl.add()">
 
   <div layout="row">
 
     <md-input-container flex>
       <label>Add todo item</label>
-      <input ng-model="text">
+      <input ng-model="todoCtrl.text">
     </md-input-container>
 
     <md-button class="md-primary md-fab" type="submit" aria-label="add todo item">
@@ -18,11 +18,11 @@
 <div>
 
   <ul>
-    <li ng-repeat="todo in todos" layout="row">
-      <md-checkbox ng-model="todo.done" aria-label="todo checkbox" ng-init="todo.done=false">
-        <span ng-bind="todo.text"></span>
+    <li ng-repeat="item in todoCtrl.todos track by $index" layout="row">
+      <md-checkbox ng-model="item.done" aria-label="item checkbox" ng-init="item.done=false">
+        <span ng-bind="item.get('text')"></span>
       </md-checkbox>
-      <md-button class="md-icon-button" aria-label="delete todo item" ng-click="del(todo)">
+      <md-button class="md-icon-button" aria-label="delete item" ng-click="todoCtrl.del(item)">
         <i class="fa fa-close"></i>
       </md-button>
     </li>

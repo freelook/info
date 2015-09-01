@@ -8,7 +8,8 @@ angular
     $routeProvider
       .when('/todo', {
         templateUrl: 'components/todo/todo.html',
-        controller: 'todo.ctrl'
+        controller: 'todo.ctrl',
+        controllerAs: 'todoCtrl'
       });
 
   });

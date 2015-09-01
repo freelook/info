@@ -3,27 +3,23 @@
 angular
   .module('fli.todo')
   .factory('todo',
-  function ($http, CONFIG) {
+  function (Parse) {
+
+    var TODO = Parse.Object.extend('TODO'),
+      query = new Parse.Query(TODO);
+
 
     function get() {
-      return $http.get(CONFIG.API.URL + 'todo')
-        .error(function (data) {
-          console.log('Error: ' + data);
-        });
+      return query.find();
     }
 
-    function add(todo) {
-      return $http.post(CONFIG.API.URL + 'todo', todo)
-        .error(function (data) {
-          console.log('Error: ' + data);
-        });
+    function add(_todo) {
+      var todo = new TODO();
+      return todo.save(_todo);
     }
 
-    function del(id) {
-      return $http.delete(CONFIG.API.URL + 'todo/' + id)
-        .error(function (data) {
-          console.log('Error: ' + data);
-        });
+    function del(_todo) {
+      return _todo.destroy();
     }
 
     return {

@@ -3,7 +3,9 @@
 angular
   .module('fli.todo')
   .controller('todo.ctrl',
-  function ($rootScope, $routeParams, $scope, $mdMedia, $translate, I18N, todo) {
+  function ($rootScope, $routeParams, $mdMedia, $translate, $timeout, I18N, todo) {
+
+    var vm = this;
 
     $rootScope.fli.route = $routeParams || {};
     $rootScope.fli.media = $mdMedia;
@@ -11,23 +13,28 @@ angular
     $rootScope.fli.description = $translate.instant(I18N.DEFAULT_DESCRIPTION);
 
     function init(todos) {
-      $scope.todos = todos || [];
-      $scope.text = '';
+      $timeout(function () {
+        vm.todos = !!todo ? todos : [];
+        vm.text = '';
+      });
     }
 
-    init();
+    function get() {
+      todo.get().then(init);
+    }
 
-    $scope.add = function () {
+    vm.add = function () {
       var _todo = {
-        text: $scope.text || ''
+        text: vm.text || ''
       };
-      todo.add(_todo).success(init);
+      todo.add(_todo).then(get);
     };
 
-    $scope.del = function (_todo) {
-      todo.del(_todo._id).success(init);
+    vm.del = function (_todo) {
+      todo.del(_todo).then(get);
     };
 
-    todo.get().success(init);
+    init();
+    get();
 
   });
