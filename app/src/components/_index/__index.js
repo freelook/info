@@ -38,8 +38,13 @@
         });
 
     })
-    .run(function (analytics) {
+    .run(function ($rootScope, analytics) {
       analytics.init();
+
+      $rootScope.$on('$routeChangeStart', function () {
+        $(document).scrollTop(0);
+      });
+
     });
 
 }());
