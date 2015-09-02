@@ -29,12 +29,24 @@ angular
       return api.vk(point);
     }
 
+    function share(_url, item) {
+      var _item = item || {},
+        _img = item.img || '',
+        _title = _item.title || '',
+        _description = _item.content || '';
+      return 'http://vk.com/share.php?url=' + _url +
+        '&image=' + _img +
+        '&title=' + _title +
+        '&description=' + _description;
+    }
+
     return {
       user: user,
       wall: wall,
       group: group,
       pages: pages,
-      audio: audio
+      audio: audio,
+      share: share
     };
 
   });
