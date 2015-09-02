@@ -3,7 +3,7 @@
 angular
   .module('freelook.info')
   .controller('input.menu.ctrl',
-  function ($rootScope, $scope, $window, $location, locale) {
+  function ($rootScope, $scope, $window, $location) {
 
     var vm = this;
 
@@ -27,7 +27,7 @@ angular
     $scope.menu.push({
       name: 'index.input.menu.home',
       icon: 'th-large',
-      href: '/?l=' + locale.getCode()
+      href: '/'
     });
 
   });
