@@ -10,4 +10,20 @@ fli-look-content .link {
   margin: 0 7px 0 7px;
 }
 
+fli-look-content .fli-item .header {
+  display: none;
+}
+
+@media (min-width: 400px) {
+  fli-look-content .fli-item .img {
+    margin-right: 5px;
+    float: left;
+  }
+
+  fli-look-content .fli-item .img {
+    min-width: 30%;
+    max-width: 30%;
+  }
+}
+
 

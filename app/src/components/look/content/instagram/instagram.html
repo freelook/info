@@ -1,0 +1,11 @@
+<div ng-if="insta.item">
+  <fli-item ng-init="fliItem = {
+          url:insta.item.link,
+          img:insta.item.images.standard_resolution.url,
+          title:insta.item.tags[0],
+          content:insta.item.caption.text
+          };
+          fliItemCtrl.href=insta.href;">
+
+  </fli-item>
+</div>

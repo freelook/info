@@ -4,7 +4,8 @@ angular
   .factory('instagram', function ($q, api) {
 
     function _search(q) {
-      return api.instagram('search?q=' + q);
+      var point = 'search?q=' + encodeURIComponent('tags/' + q + '/media/recent?fli=1');
+      return api.instagram(point);
     }
 
     function image(q) {
@@ -22,8 +23,14 @@ angular
       return defer.promise;
     }
 
+    function media(id) {
+      var point = 'search?q=' + encodeURIComponent('media/shortcode/' + id + '?fli=1');
+      return api.instagram(point);
+    }
+
     return {
-      image: image
+      image: image,
+      media: media
     };
 
   });

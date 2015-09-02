@@ -12,7 +12,7 @@ angular
     vm.richSkip = RICH_SKIP.join('|');
 
   })
-  .constant('SUPPORTED_SITES', ['youtube', 'vk', 'facebook'])
-  .constant('RICH_SKIP', ['freelook', 'vk', 'facebook']);
+  .constant('SUPPORTED_SITES', ['youtube', 'vk', 'facebook', 'instagram'])
+  .constant('RICH_SKIP', ['freelook', 'vk', 'facebook', 'instagram']);
 
 
