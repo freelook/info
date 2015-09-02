@@ -6,10 +6,10 @@ angular
   function ($rootScope, $routeParams, $location, $mdMedia, $translate, locale, I18N) {
 
     $location.search({
+      l: locale.init($routeParams.l),
       input: $routeParams.input || '',
       type: $routeParams.type,
-      sub: $routeParams.sub,
-      l: locale.init($routeParams.l)
+      sub: $routeParams.sub
     })
       .replace();
 

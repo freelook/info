@@ -13,11 +13,11 @@ angular
 
     vm.href = function (type) {
       return url.href('look?', {
+        l: locale.getCode(),
         input: $scope.fli.route.input || null,
         type: type || null,
         url: !!$scope.fli.route.url ? encodeURIComponent(decodeURIComponent($scope.fli.route.url)) : '',
-        img: !!$scope.fli.route.img ? encodeURIComponent(decodeURIComponent($scope.fli.route.img)) : null,
-        l: locale.getCode()
+        img: !!$scope.fli.route.img ? encodeURIComponent(decodeURIComponent($scope.fli.route.img)) : null
       });
     };
 

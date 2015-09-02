@@ -7,14 +7,7 @@ angular
 
     var vm = this;
     vm.search = item.search;
-
-    vm.href = function (config) {
-      return url.href('look?', {
-        input: config.input,
-        url: !!config.url ? encodeURIComponent(config.url) : '',
-        img: !!config.img ? encodeURIComponent(config.img) : null
-      });
-    };
+    vm.href = item.href;
 
   });
 

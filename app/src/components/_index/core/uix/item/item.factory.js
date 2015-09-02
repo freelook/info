@@ -5,10 +5,10 @@ angular
 
     function _href(config, origin) {
       return url.href('look?', {
+        l: locale.getCode(),
         input: $rootScope.fli.route.input || config.input || null,
         url: !!config.url ? encodeURIComponent(decodeURIComponent(config.url)) : '',
-        img: !!config.img ? encodeURIComponent(decodeURIComponent(config.img)) : null,
-        l: locale.getCode()
+        img: !!config.img ? encodeURIComponent(decodeURIComponent(config.img)) : null
       }, false, origin);
     }
 
@@ -22,7 +22,7 @@ angular
     }
 
     function search(input) {
-      return url.href('search?', {input: input, l: locale.getCode()});
+      return url.href('search?', {l: locale.getCode(), input: input});
     }
 
     return {

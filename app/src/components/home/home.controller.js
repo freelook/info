@@ -7,8 +7,8 @@ angular
             local, locale, url, I18N, LOOK_KEY) {
 
     $location.search({
-      type: $routeParams.type,
-      l: locale.init($routeParams.l)
+      l: locale.init($routeParams.l),
+      type: $routeParams.type
     })
       .replace();
 

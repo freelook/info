@@ -7,11 +7,11 @@ angular
             I18N, LOOK_KEY) {
 
     $location.search({
+      l: locale.init($routeParams.l),
       input: $routeParams.input,
       type: $routeParams.type || null,
       url: $routeParams.url || '',
-      img: $routeParams.img || null,
-      l: locale.init($routeParams.l)
+      img: $routeParams.img || null
     })
       .replace();
 

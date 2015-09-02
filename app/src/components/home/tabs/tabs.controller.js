@@ -13,7 +13,7 @@ angular
     vm.selected = 0;
 
     vm.href = function (type) {
-      return url.href('?', {type: type, l: locale.getCode()});
+      return url.href('?', {l: locale.getCode(), type: type});
     };
 
     vm.go = function (config) {

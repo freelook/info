@@ -3,7 +3,7 @@
 angular
   .module('fli.look')
   .factory('iframe',
-  function ($rootScope, url, CONFIG) {
+  function ($rootScope, url, locale, CONFIG) {
 
     var parser = new window.DOMParser(),
       origin = _originLink(), proxyUrl = CONFIG.API.URL + 'proxy?url=';
@@ -37,7 +37,7 @@ angular
 
 
     function _fliUrl(_url, input) {
-      return url.href('look?', {input: input || null, type: 'full', url: _url});
+      return url.href('look?', {l: locale.getCode(), input: input || null, type: 'full', url: _url});
     }
 
     function _fixPath(path, customPath) {
