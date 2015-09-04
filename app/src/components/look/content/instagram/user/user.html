@@ -1,0 +1,19 @@
+<div ng-if="instaUser.item">
+  <fli-item ng-init="fliItem = {
+          url:fli.route.url,
+          img:instaUser.item.profile_picture,
+          title:instaUser.item.full_name,
+          content:instaUser.item.username
+          };
+          fliItemCtrl.href=content.href;">
+
+    <div class="body">
+      <div layout="row" ng-if="instaUser.item.website">
+        <div class="link" ng-click="link(instaUser.item.website)">
+          <p ng-bind="instaUser.item.website"></p>
+        </div>
+      </div>
+    </div>
+
+  </fli-item>
+</div>

@@ -28,9 +28,50 @@ angular
       return api.instagram(point);
     }
 
+    function user(url) {
+      var defer = $q.defer();
+
+      _getId(url)
+        .then(function (_id) {
+          userById(_id)
+            .success(function (usr) {
+              return defer.resolve(usr);
+            })
+            .error(function (err) {
+              return defer.reject(err);
+            });
+        })
+        .catch(function (err) {
+          return defer.reject(err);
+        });
+
+      return defer.promise;
+    }
+
+    function userById(id) {
+      var point = 'search?q=' + encodeURIComponent('users/' + id + '?fli=1');
+      return api.instagram(point);
+    }
+
+    function _getId(url) {
+      var defer = $q.defer();
+      api.proxy(url)
+        .success(function (html) {
+          var _html = html || '',
+            id = _html.match(/"id":"(.+?)"/i)[1] || '';
+          return defer.resolve(id);
+        })
+        .error(function (err) {
+          return defer.reject(err);
+        });
+
+      return defer.promise;
+    }
+
     return {
       image: image,
-      media: media
+      media: media,
+      user: user
     };
 
   });

@@ -1,11 +1,2 @@
-<div ng-if="insta.item">
-  <fli-item ng-init="fliItem = {
-          url:insta.item.link,
-          img:insta.item.images.standard_resolution.url,
-          title:insta.item.tags[0],
-          content:insta.item.caption.text
-          };
-          fliItemCtrl.href=content.href;">
-
-  </fli-item>
-</div>
+<fli-look-content-instagram-media ng-if="insta.mediaId"></fli-look-content-instagram-media>
+<fli-look-content-instagram-user ng-if="insta.userId"></fli-look-content-instagram-user>

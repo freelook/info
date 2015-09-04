@@ -21,7 +21,7 @@ angular
 
       _getId(url)
         .then(function (_id) {
-          userbyId(_id)
+          userById(_id)
             .success(function (usr) {
               return defer.resolve(usr);
             })
@@ -36,7 +36,7 @@ angular
       return defer.promise;
     }
 
-    function userbyId(_id) {
+    function userById(_id) {
       var point = 'search?q=' + encodeURIComponent(_id + '?fli=1');
       return api.facebook(point);
     }
