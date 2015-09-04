@@ -8,9 +8,9 @@ angular
     var vm = this;
     vm.item = '';
 
-    if ($scope.insta.mediaId) {
+    if ($scope.insta.mediaCode) {
       instagram
-        .media($scope.insta.mediaId)
+        .media($scope.insta.mediaCode)
         .then(function (item) {
           vm.item = $parse('data.data')(item) || '';
         });

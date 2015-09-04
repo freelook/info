@@ -8,7 +8,7 @@ angular
     var vm = this;
     vm.item = '';
 
-    if ($scope.insta.userId) {
+    if ($scope.insta.userName) {
       instagram
         .user($scope.fli.route.url)
         .then(function (item) {

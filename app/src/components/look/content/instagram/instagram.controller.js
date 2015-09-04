@@ -8,7 +8,7 @@ angular
     var vm = this,
       path = $scope.site.pathname || '';
 
-    vm.userId = url.extract('/:id/', path).id || url.extract('/:id', path).id || '';
-    vm.mediaId = url.extract('/p/:id/', path).id || url.extract('/p/:id', path).id || '';
+    vm.userName = url.extract('/:id/', path).id || url.extract('/:id', path).id || '';
+    vm.mediaCode = url.extract('/p/:id/', path).id || url.extract('/p/:id', path).id || '';
 
   });
