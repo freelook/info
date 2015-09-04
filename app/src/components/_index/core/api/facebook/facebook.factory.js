@@ -2,7 +2,7 @@
 angular
   .module('freelook.info')
   .factory('facebook',
-  function ($http, $rootScope, $q, api, url, CONFIG) {
+  function ($http, $rootScope, $q, api, url, parser, CONFIG) {
 
     var APP_ID = '846841298681206';
 
@@ -16,7 +16,27 @@ angular
       return fapi;
     }
 
-    function user(_id) {
+    function user(url) {
+      var defer = $q.defer();
+
+      _getId(url)
+        .then(function (_id) {
+          userbyId(_id)
+            .success(function (usr) {
+              return defer.resolve(usr);
+            })
+            .error(function (err) {
+              return defer.reject(err);
+            });
+        })
+        .catch(function (err) {
+          return defer.reject(err);
+        });
+
+      return defer.promise;
+    }
+
+    function userbyId(_id) {
       var point = 'search?q=' + encodeURIComponent(_id + '?fli=1');
       return api.facebook(point);
     }
@@ -24,6 +44,22 @@ angular
     function pages(q) {
       var point = 'search?q=' + encodeURIComponent('search?q=' + q + '&type=page');
       return api.facebook(point);
+    }
+
+    function _getId(url) {
+      var defer = $q.defer();
+      api.proxy(url)
+        .success(function (html) {
+          var dom = parser.parseFromString(html, 'text/html'),
+            content = $(dom).find('meta[property="al:android:url"]').attr('content') || '',
+            id = content.split('profile/').splice(1)[0] || content.split('?id=').splice(1)[0] || '';
+          return defer.resolve(id);
+        })
+        .error(function (err) {
+          return defer.reject(err);
+        });
+
+      return defer.promise;
     }
 
     return {

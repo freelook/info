@@ -3,7 +3,7 @@
 angular
   .module('freelook.info')
   .controller('input.ctrl',
-  function ($scope, $mdBottomSheet, $location, url, PLACEHOLDER) {
+  function ($scope, $mdBottomSheet, $location, url, locale, PLACEHOLDER) {
 
     var vm = this;
     vm.placeholder = PLACEHOLDER;
@@ -28,7 +28,7 @@ angular
         return url.href($location.url().slice(1));
       }
       if ($scope.fli.route.input) {
-        return url.href('search?', {input: $scope.fli.route.input}, true);
+        return url.href('search?', {l: locale.getCode(), input: $scope.fli.route.input}, true);
       }
       return '/';
     };

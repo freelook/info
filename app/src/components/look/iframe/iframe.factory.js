@@ -3,10 +3,9 @@
 angular
   .module('fli.look')
   .factory('iframe',
-  function ($rootScope, url, locale, CONFIG) {
+  function ($rootScope, url, locale, parser, CONFIG) {
 
-    var parser = new window.DOMParser(),
-      origin = _originLink(), proxyUrl = CONFIG.API.URL + 'proxy?url=';
+    var origin = _originLink(), proxyUrl = CONFIG.API.URL + 'proxy?url=';
 
     function _originLink() {
       var link = url.parse(decodeURIComponent($rootScope.fli.route.url));

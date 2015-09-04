@@ -1,9 +1,12 @@
-<md-card layout-sm="column" layout="row" ng-if="fb.user">
-  <img flex-gt-sm="33" class="md-card-image" ng-click="link(fb.user.link)" ng-if="!!fb.user.id" ng-src="{{fb.img(fb.user.id)}}" fli-err>
-  <md-card-content flex>
-    <h3 class="md-title" ng-bind="fb.user.name"></h3>
-    <md-divider></md-divider>
-    <div>
+<div ng-if="fb.user">
+  <fli-item ng-init="fliItem = {
+          url:fb.user.link,
+          img:fb.img(fb.user.id),
+          title:fb.user.name
+          };
+          fliItemCtrl.href=content.href;">
+
+    <div class="body">
       <div layout="row" ng-if="fb.user.category">
         <div flex="33">
           <p>Category:</p>
@@ -29,14 +32,12 @@
         </div>
       </div>
       <div layout="row" ng-if="fb.user.link">
-        <div flex="33">
-          <p>Link:</p>
-        </div>
-        <div flex="66" class="link" ng-click="link(fb.user.link)">
+        <div class="link" ng-click="link(fb.user.link)">
           <p ng-bind="fb.user.link"></p>
         </div>
       </div>
     </div>
-  </md-card-content>
-</md-card>
+
+  </fli-item>
+</div>
 

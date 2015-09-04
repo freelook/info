@@ -3,23 +3,19 @@
 angular
   .module('fli.look')
   .controller('look.content.facebook.ctrl',
-  function ($scope, facebook, url) {
+  function ($scope, facebook) {
 
-    var vm = this,
-      path = $scope.site.pathname || '',
-      id = url.extract('/:id', path).id || '';
-
-    vm.id = id ? id : path.split('/').splice(1)[0];
+    var vm = this;
 
     vm.img = function (id) {
       return 'https://graph.facebook.com/' + id + '/picture?type=large';
     };
 
-    if (vm.id) {
+    if ($scope.fli.route.url) {
       facebook
-        .user(vm.id)
+        .user($scope.fli.route.url)
         .then(function (_usr) {
-          vm.user = !!_usr ? _usr.data : {};
+          vm.user = _usr || {};
         });
     }
 

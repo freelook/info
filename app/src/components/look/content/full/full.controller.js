@@ -3,14 +3,10 @@
 angular
   .module('fli.look')
   .controller('look.content.full.ctrl',
-  function ($scope, $sce, $location, api, read, full, share, url, CONFIG) {
+  function ($scope, $sce, api, read, full, share, url, CONFIG) {
 
     var vm = this;
     vm.html = '';
-
-    vm.href = function () {
-      return $location.absUrl();
-    };
 
     vm.share = function () {
       return share.url(url.href('look?', $scope.fli.route, false, CONFIG.PRODUCTION));

@@ -16,7 +16,7 @@ angular
 
     $rootScope.fli.route = $routeParams || {};
     $rootScope.fli.media = $mdMedia;
-    $rootScope.fli.title = !$routeParams.input ? $translate.instant(I18N.DEFAULT_TITLE) : 'FLI - ' + decodeURIComponent($routeParams.input);
+    $rootScope.fli.title = !$routeParams.input ? $translate.instant(I18N.DEFAULT_TITLE) : decodeURIComponent($routeParams.input) + ' - FLI';
     $rootScope.fli.description = $translate.instant(I18N.DEFAULT_DESCRIPTION);
     $rootScope.fli.icon = 'th-large';
     $rootScope.fli.view = '';

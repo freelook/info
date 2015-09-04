@@ -1,7 +1,7 @@
 <md-card class="md-whiteframe-z1 fli-item" ng-class="{small:!!fliItem.small}" layout="column" ng-if="fliItem">
   <md-card-content>
     <a ng-href="{{fliItemCtrl.href(fliItem)}}" class="img">
-      <img class="md-card-image" ng-if="fliItem.img" ng-src="{{fliItem.img}}" title="{{'index.core.uix.item.lookIt' | translate:{v:fliItem.title} }}" alt="{{fliItem.title}}" fli-item-img fli-err>
+      <img class="md-card-image" ng-if="fliItem.img" ng-src="{{fliItem.img}}" title="{{'index.core.uix.item.lookIt' | translate:{v:fliItem.title || 'FLI'} }}" alt="{{fliItem.title}}" fli-item-img fli-err>
       <div class="md-card-image header" ng-if="!fliItem.img" title="{{'index.core.uix.item.lookIt' | translate:{v:fliItem.title} }}"></div>
     </a>
     <div class="body">
@@ -9,9 +9,9 @@
       <div ng-if="fliItem.from" class="from" ng-bind-html="fliItem.from"></div>
       <div ng-if="fliItem.content" ng-bind-html="fliItem.content"></div>
     </div>
+    <ng-transclude></ng-transclude>
   </md-card-content>
   <md-card-footer layout="row" layout-align="end center">
-    <ng-transclude></ng-transclude>
     <div class="link" ng-if="fliItemCtrl.search && fliItem.input" title="{{'index.core.uix.item.search' | translate:{v:fliItem.input} }}">
       <span>#</span> <a ng-href="{{fliItemCtrl.search(fliItem.input)}}"><span ng-bind="fliItem.input"></span></a>
     </div>

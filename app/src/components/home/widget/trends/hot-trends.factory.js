@@ -1,12 +1,11 @@
 'use strict';
 angular
   .module('fli.home')
-  .factory('hotTrends', function ($q, $cacheFactory, api, locale, CONFIG) {
+  .factory('hotTrends', function ($q, $cacheFactory, api, locale, parser, CONFIG) {
 
     //var cache = $cacheFactory('hotTrends');
 
-    var parser = new window.DOMParser(),
-      tapi = '';
+    var tapi = '';
 
     function _htmlToTrends(html) {
       var dom = parser.parseFromString(html, 'text/html'),

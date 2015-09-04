@@ -23,7 +23,8 @@ window.i18n.en.index = {
         lookIt: 'Look it - {{v}}',
         search: 'Search - {{v}}',
         share: 'Share - {{v}}',
-        goTo: 'Go to - {{v}}'
+        goTo: 'Go to - {{v}}',
+        getIt: 'Get file'
       }
     }
   }

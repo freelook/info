@@ -3,10 +3,9 @@
 angular
   .module('fli.look')
   .factory('full',
-  function ($sce, $location, $rootScope, $cacheFactory, locale, readability, url) {
+  function ($sce, $location, $rootScope, $cacheFactory, locale, readability, url, parser) {
 
-    var cache = $cacheFactory('full'),
-      parser = new window.DOMParser();
+    var cache = $cacheFactory('full');
 
     function _originLink() {
       var link = url.parse(decodeURIComponent($rootScope.fli.route.url));
