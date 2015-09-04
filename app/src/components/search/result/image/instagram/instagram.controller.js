@@ -3,10 +3,12 @@
 angular
   .module('fli.search')
   .controller('search.result.image.instagram.ctrl',
-  function ($scope, $parse, instagram) {
+  function ($scope, $parse, item, instagram) {
 
     var vm = this;
     vm.items = [];
+    vm.href = item.href;
+    vm.share = item.share;
     vm.userId = $parse('instaUser.item.id')($scope) || '';
 
     function setResult(items) {
