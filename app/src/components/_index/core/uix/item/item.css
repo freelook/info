@@ -17,6 +17,7 @@ fli-item {
 .fli-item.small .img {
   min-width: 100px;
   max-width: 100px;
+  border-radius: 50%;
 }
 
 .fli-item.small .header {
@@ -25,7 +26,7 @@ fli-item {
 }
 
 .fli-item.small .img {
-  margin-right: 5px;
+  margin: 5px;
   float: left;
 }
 
@@ -45,4 +46,9 @@ fli-item {
 
 .fli-item md-card-footer .link {
   margin: 5px 10px 5px 10px;
+}
+
+.fli-item.no-fill.md-whiteframe-z1 {
+  background: #ebebeb;
+  box-shadow: none;
 }

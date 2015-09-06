@@ -15,6 +15,9 @@
     <div class="link" ng-if="fliItemCtrl.search && fliItem.input" title="{{'index.core.uix.item.search' | translate:{v:fliItem.input} }}">
       <span>#</span> <a ng-href="{{fliItemCtrl.search(fliItem.input)}}"><span ng-bind="fliItem.input"></span></a>
     </div>
+    <div class="link" ng-if="fliItem.file" ng-click="link(fliItem.file)" title="{{'index.core.uix.item.getIt' | translate}}">
+      <i class="fa fa-file-image-o"></i>
+    </div>
     <div class="link" ng-if="fliItemCtrl.share" ng-click="fliItemCtrl.share(fliItem)" title="{{'index.core.uix.item.share' | translate:{v:fliItem.title} }}">
       <i class="fa fa-share-alt"></i>
     </div>

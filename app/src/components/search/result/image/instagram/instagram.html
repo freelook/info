@@ -2,13 +2,10 @@
           ng-init="fliItem = {
           url:item.link,
           img:item.images.standard_resolution.url,
-          content: item.caption.text
+          content: item.caption.text,
+          file: item.images.standard_resolution.url
           };
           fliItemCtrl.href=imgInsta.href;
           fliItemCtrl.share=imgInsta.share;">
-
-  <div class="body link" ng-click="link(item.images.standard_resolution.url)" title="Get it">
-    <i class="fa fa-file-image-o"></i> <span translate="index.core.uix.item.getIt"></span>
-  </div>
 
 </fli-item>

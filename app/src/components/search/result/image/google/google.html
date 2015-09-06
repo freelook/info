@@ -3,13 +3,10 @@
           url:item.originalContextUrl,
           img:item.url,
           title:item.title,
-          content: item.content
+          content: item.content,
+          file: item.url
           };
           fliItemCtrl.href=result.href;
           fliItemCtrl.share=result.share;">
-
-  <div class="body link" ng-click="link(item.url)" title="{{'Get - '+ item.titleNoFormatting}}">
-    <i class="fa fa-file-image-o"></i> <span translate="index.core.uix.item.getIt"></span>
-  </div>
 
 </fli-item>
