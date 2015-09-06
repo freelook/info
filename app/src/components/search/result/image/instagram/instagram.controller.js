@@ -17,11 +17,11 @@ angular
 
     if ($scope.fli.route.input) {
       if (vm.userId) {
-        instagram.mediaByUserId(vm.userId)
+        instagram.imageByUserId(vm.userId)
           .then(setResult);
       } else {
         var tag = $scope.fli.route.input.trim().replace(/\s/g, '_');
-        instagram.image(tag)
+        instagram.imageByTag(tag)
           .then(setResult);
 
       }

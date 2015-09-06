@@ -7,12 +7,13 @@ var $http = require('request'),
     API = Parse.Object.extend('API'),
     query = new Parse.Query(API),
     id = process.env.VK_ID,
-    pass = process.env.VK_PASS;
+    pass = process.env.VK_PASS,
+    vk_token = '';
 
 
 function _storeToken(api, token) {
     var defer = $q.defer();
-
+    vk_token = token;
     api.set('name', 'token');
     api.set('vk', {
         token: token,
@@ -88,13 +89,17 @@ function _handleToken(api, defer) {
 }
 
 function checkToken(_update) {
-    var defer = $q.defer();
+    if (vk_token) {
+        return $q.when(vk_token);
+    }
 
+    var defer = $q.defer();
     query.first({name: 'token'})
         .then(function (api) {
             var vk = api && api.get('vk') || '';
             if (api) {
                 if (!_update && vk && vk.token) {
+                    vk_token = vk.token;
                     return defer.resolve(vk.token);
                 } else {
                     _handleToken(api, defer);

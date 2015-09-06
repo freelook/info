@@ -8,7 +8,8 @@ var $http = require('request'),
     query = new Parse.Query(API),
     id = process.env.FB_ID,
     secret = process.env.FB_SECRET,
-    pass = process.env.FB_PASS;
+    pass = process.env.FB_PASS,
+    fb_token = '';
 
 
 function _storeToken(api, token, dateCreation) {
@@ -17,6 +18,7 @@ function _storeToken(api, token, dateCreation) {
         expireIn = +token.split('&expires=')[1] || 0,
         expire = new Date(dateCreation.getTime() + expireIn * 1000);
 
+    fb_token = token;
     api.set('name', 'token');
     api.set('facebook', {
         token: token,
@@ -114,14 +116,18 @@ function _handleToken(api, defer, dateCreation) {
 }
 
 function checkToken(_update) {
-    var defer = $q.defer();
+    if (fb_token) {
+        return $q.when(fb_token);
+    }
 
+    var defer = $q.defer();
     query.first({name: 'token'})
         .then(function (api) {
             var _date = new Date(),
                 facebook = api && api.get('facebook') || '';
             if (api) {
                 if (!_update && facebook && facebook.token && facebook.expire > _date) {
+                    fb_token = facebook.token;
                     return defer.resolve(facebook.token);
                 } else {
                     _handleToken(api, defer, _date);

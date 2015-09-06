@@ -37,12 +37,12 @@ angular
     }
 
     function userById(_id) {
-      var point = 'search?q=' + encodeURIComponent(_id + '?fli=1');
+      var point = encodeURIComponent(_id + '?fli=1');
       return api.facebook(point);
     }
 
     function pages(q) {
-      var point = 'search?q=' + encodeURIComponent('search?q=' + q + '&type=page');
+      var point = encodeURIComponent('search?q=' + q + '&type=page');
       return api.facebook(point);
     }
 

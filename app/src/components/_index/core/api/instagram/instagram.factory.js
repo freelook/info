@@ -3,19 +3,32 @@ angular
   .module('freelook.info')
   .factory('instagram', function ($q, api) {
 
-    function image(q) {
-      var point = 'search?q=' + encodeURIComponent('tags/' + q + '/media/recent?fli=1');
-      return imageByPromise(api.instagram(point));
+    function imageByTag(q) {
+      return _image(encodeURIComponent('tags/' + q + '/media/recent?fli=1'));
     }
 
-    function media(id) {
-      var point = 'search?q=' + encodeURIComponent('media/shortcode/' + id + '?fli=1');
+    function imageByUserId(id) {
+      return _image(encodeURIComponent('users/' + id + '/media/recent?fli=1'));
+    }
+
+    function _image(point) {
+      var defer = $q.defer();
+      api.instagram(point)
+        .success(function (res) {
+          var data = res && res.data ? res.data : [];
+          return defer.resolve(data.filter(function (el) {
+            return el && el.type === 'image';
+          }));
+        })
+        .error(function (res) {
+          return defer.reject(res);
+        });
+      return defer.promise;
+    }
+
+    function mediaByCode(code) {
+      var point = encodeURIComponent('media/shortcode/' + code + '?fli=1');
       return api.instagram(point);
-    }
-
-    function mediaByUserId(id) {
-      var point = 'search?q=' + encodeURIComponent('users/' + id + '/media/recent?fli=1');
-      return imageByPromise(api.instagram(point));
     }
 
     function user(url) {
@@ -38,19 +51,9 @@ angular
       return defer.promise;
     }
 
-    function imageByPromise(promise) {
-      var defer = $q.defer();
-      promise
-        .success(function (res) {
-          var data = res && res.data ? res.data : [];
-          return defer.resolve(data.filter(function (el) {
-            return el && el.type === 'image';
-          }));
-        })
-        .error(function (res) {
-          return defer.reject(res);
-        });
-      return defer.promise;
+    function userById(id) {
+      var point = encodeURIComponent('users/' + id + '?fli=1');
+      return api.instagram(point);
     }
 
     function _getId(url) {
@@ -68,15 +71,10 @@ angular
       return defer.promise;
     }
 
-    function userById(id) {
-      var point = 'search?q=' + encodeURIComponent('users/' + id + '?fli=1');
-      return api.instagram(point);
-    }
-
     return {
-      image: image,
-      media: media,
-      mediaByUserId: mediaByUserId,
+      imageByTag: imageByTag,
+      imageByUserId: imageByUserId,
+      mediaByCode: mediaByCode,
       user: user
     };
 

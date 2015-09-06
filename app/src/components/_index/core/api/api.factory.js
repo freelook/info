@@ -7,47 +7,33 @@ angular
       return proxy(url);
     }
 
+    function _point(_end) {
+      return $http.get(CONFIG.API.URL + _end);
+    }
+
     function proxy(url, config) {
-      if (url) {
-        var _cache = config && config.cache ? '/cache' : '',
-          api = CONFIG.API.URL + 'proxy' + _cache + '?url=' + decodeURIComponent(url);
-        return $http.get(api);
-      }
+      var _cache = config && config.cache ? '/cache' : '';
+      return _point('proxy' + _cache + '?url=' + decodeURIComponent(url));
     }
 
     function goods(q) {
-      if (q) {
-        var api = CONFIG.API.URL + 'goods?q=' + q;
-        return $http.get(api);
-      }
+      return _point('goods?q=' + q);
     }
 
     function facebook(point) {
-      if (point) {
-        var api = CONFIG.API.URL + 'facebook/' + point;
-        return $http.get(api);
-      }
+      return _point('facebook?q=' + point);
     }
 
     function vk(point) {
-      if (point) {
-        var api = CONFIG.API.URL + 'vk/' + point;
-        return $http.get(api);
-      }
+      return _point('vk?q=' + point);
     }
 
     function yandex(point) {
-      if (point) {
-        var api = CONFIG.API.URL + 'yandex/' + point;
-        return $http.get(api);
-      }
+      return _point('yandex/' + point);
     }
 
     function instagram(point) {
-      if (point) {
-        var api = CONFIG.API.URL + 'instagram/' + point;
-        return $http.get(api);
-      }
+      return _point('instagram?q=' + point);
     }
 
     return {

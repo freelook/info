@@ -4,7 +4,7 @@ var $http = require('request'),
     $q = require('q'),
     token = require('../services/facebook/token');
 
-function search(req, res) {
+function query(req, res) {
     var _req;
 
     if (req.query && req.query.q) {
@@ -44,5 +44,5 @@ function search(req, res) {
 }
 
 module.exports = {
-    search: search
+    query: query
 };

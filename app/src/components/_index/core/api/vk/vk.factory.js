@@ -20,12 +20,12 @@ angular
     }
 
     function pages(q) {
-      var point = 'search?q=' + encodeURIComponent(q + '&count=24');
+      var point = encodeURIComponent(q + '&count=24');
       return api.vk(point);
     }
 
     function audio(q) {
-      var point = 'search?q=' + q + '&type=audio.search';
+      var point = encodeURIComponent(q) + '&type=audio.search';
       return api.vk(point);
     }
 

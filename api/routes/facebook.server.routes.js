@@ -3,5 +3,5 @@
 module.exports = function (app) {
     // Api routing
     var facebook = require('../controllers/facebook');
-    app.route('/facebook/search').get(facebook.search);
+    app.route('/facebook').get(facebook.query);
 };

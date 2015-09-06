@@ -10,7 +10,7 @@ angular
 
     if ($scope.insta.mediaCode) {
       instagram
-        .media($scope.insta.mediaCode)
+        .mediaByCode($scope.insta.mediaCode)
         .then(function (item) {
           vm.item = $parse('data.data')(item) || '';
         });

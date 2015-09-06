@@ -7,12 +7,13 @@ var $http = require('request'),
     API = Parse.Object.extend('API'),
     query = new Parse.Query(API),
     id = process.env.INSTAGRAM_ID,
-    pass = process.env.INSTAGRAM_PASS;
+    pass = process.env.INSTAGRAM_PASS,
+    instagram_token = '';
 
 
 function _storeToken(api, token) {
     var defer = $q.defer();
-
+    instagram_token = token;
     api.set('name', 'token');
     api.set('instagram', {
         token: token,
@@ -88,13 +89,17 @@ function _handleToken(api, defer) {
 }
 
 function checkToken(_update) {
-    var defer = $q.defer();
+    if (instagram_token) {
+        return $q.when(instagram_token);
+    }
 
+    var defer = $q.defer();
     query.first({name: 'token'})
         .then(function (api) {
             var instagram = api && api.get('instagram') || '';
             if (api) {
                 if (!_update && instagram && instagram.token) {
+                    instagram_token = instagram.token;
                     return defer.resolve(instagram.token);
                 } else {
                     _handleToken(api, defer);
