@@ -35,10 +35,17 @@ gulp.task('inject', function () {
     directory: 'bower_components'
   };
 
-  return gulp.src('src/*.html')
+  gulp.src('src/index.html')
     .pipe($.inject(injectStyles, injectOptions))
     .pipe($.inject(injectScripts, injectOptions))
     .pipe(wiredep(wiredepOptions))
+    .pipe(gulp.dest('.tmp/'));
+
+  gulp.src('src/app.html')
+    .pipe($.inject(injectStyles, injectOptions))
+    .pipe($.inject(injectScripts, injectOptions))
+    .pipe(wiredep(wiredepOptions))
+    .pipe(gulp.dest('src/'))
     .pipe(gulp.dest('.tmp/'));
 
 });

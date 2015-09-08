@@ -1,0 +1,27 @@
+{
+  "name": "freelook.info",
+  "version": "0.0.10",
+  "manifest_version": 2,
+  "description": "Free look at info",
+  "homepage_url": "http://freelook.info",
+  "icons": {
+    "16": "assets/images/icon-16.png",
+    "128": "assets/images/icon-128.png"
+  },
+  "app": {
+    "background": {
+      "scripts": ["chrome.js"]
+    }
+  },
+  "permissions": [
+    "storage",
+    "tabs",
+    "<all_urls>"
+  ],
+  "externally_connectable": {
+    "matches": [
+      "*://*.freelook.info/*",
+      "*://localhost/*"
+    ]
+  }
+}

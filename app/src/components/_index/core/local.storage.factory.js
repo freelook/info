@@ -3,14 +3,40 @@ angular
   .module('freelook.info')
   .factory('local', function ($window) {
 
+    var localStorage = '';
+
+    function CustomStorage() {
+      this.data = {};
+    }
+
+    CustomStorage.prototype.getItem = function (key) {
+      return this.data[key];
+    };
+
+    CustomStorage.prototype.setItem = function (key, value) {
+      this.data[key] = value;
+    };
+
+    try {
+      localStorage = $window.localStorage || new CustomStorage();
+    } catch (e) {
+      localStorage = new CustomStorage();
+    }
+
     function get(key, defaultValue) {
-      var localStorageValue = $window.JSON.parse($window.localStorage.getItem(key));
+      var localStorageValue = '';
+      try {
+        localStorageValue = $window.JSON.parse(localStorage.getItem(key));
+      } catch (e) {
+        console.log('Couldn\'t get ' + key);
+      }
+
       return !!localStorageValue ? localStorageValue : defaultValue || '';
     }
 
     function set(key, value) {
       try {
-        $window.localStorage.setItem(key, JSON.stringify(value));
+        localStorage.setItem(key, JSON.stringify(value));
       } catch (e) {
         console.log('Couldn\'t store ' + key + ' with value ' + value);
       }

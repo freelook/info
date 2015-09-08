@@ -1,1 +1,0 @@
-"use strict";var freelook;window.chrome.runtime.onMessageExternal.addListener(function(a,b,c){"init"===a.msg&&(freelook=b.tab,c({success:!0}))});

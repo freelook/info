@@ -28,12 +28,12 @@ gulp.task('partials', function () {
 
 gulp.task('html', ['jshint', 'inject', 'partials'], function () {
 
-  var htmlFilter = $.filter('index.html'),
+  var htmlFilter = $.filter('*.html'),
     jsFilter = $.filter('**/*.js'),
     cssFilter = $.filter('**/*.css'),
     assets;
 
-  return gulp.src('.tmp/index.html')
+  return gulp.src('.tmp/*.html')
     .pipe($.inject(gulp.src('.tmp/inject/templateCacheHtml.js', {read: false}), {
       starttag: '<!-- inject:partials -->',
       ignorePath: '.tmp',
@@ -44,18 +44,22 @@ gulp.task('html', ['jshint', 'inject', 'partials'], function () {
     .pipe(jsFilter)
     .pipe($.ngAnnotate())
     .pipe($.uglify())
+    .pipe(gulp.dest('dist/'))
+    .pipe(gulp.dest('.tmp/'))
     .pipe(jsFilter.restore())
     .pipe(cssFilter)
     .pipe($.csso())
     .pipe($.stripCssComments({all: true}))
+    .pipe(gulp.dest('dist/'))
+    .pipe(gulp.dest('.tmp/'))
     .pipe($.replace('../', ''))
     .pipe(cssFilter.restore())
     .pipe(assets.restore())
     .pipe($.useref())
     .pipe($.revReplace())
     .pipe(gulp.dest('.tmp/'))
-    .pipe($.inlineSource())
     .pipe(htmlFilter)
+    .pipe($.inlineSource())
     .pipe($.minifyHtml({
       empty: true,
       spare: true,
@@ -63,7 +67,7 @@ gulp.task('html', ['jshint', 'inject', 'partials'], function () {
     }))
     .pipe(gulp.dest('dist/'))
     .pipe(htmlFilter.restore())
-    .pipe($.size({title: 'DIST', showFiles: true}))
+    .pipe($.size({title: 'Build', showFiles: true}))
 });
 
 gulp.task('images', function () {
@@ -84,7 +88,7 @@ gulp.task('fonts', function () {
 });
 
 gulp.task('misc', function () {
-  return gulp.src(['src/**/*.ico', 'src/**/*.xml', 'src/.gitignore'])
+  return gulp.src(['src/**/*.ico', 'src/**/*.xml', 'src/.gitignore', 'src/*.json', 'src/*.js'])
     .pipe(gulp.dest('dist/'));
 });
 
