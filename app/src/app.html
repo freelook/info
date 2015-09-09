@@ -20,6 +20,7 @@
   <link ng-repeat="locale in fli.locales" rel="alternate" href="{{href(locale.code)}}" hreflang="{{locale.code}}">
 
   <!-- build:css({.tmp,src}) styles/fli.css-->
+  <link rel="stylesheet" href="bower_components/angular/angular-csp.css" />
   <!-- bower:css -->
   <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
   <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
@@ -146,11 +147,11 @@
 <script src="components/look/content/content.controller.js"></script>
 <script src="components/look/content/content.directive.js"></script>
 <script src="components/look/content/content.factory.js"></script>
+<script src="components/look/i18n/en.js"></script>
+<script src="components/look/i18n/ru.js"></script>
 <script src="components/look/iframe/iframe.controller.js"></script>
 <script src="components/look/iframe/iframe.directive.js"></script>
 <script src="components/look/iframe/iframe.factory.js"></script>
-<script src="components/look/i18n/en.js"></script>
-<script src="components/look/i18n/ru.js"></script>
 <script src="components/look/tabs/tabs.controller.js"></script>
 <script src="components/look/tabs/tabs.directive.js"></script>
 <script src="components/search/i18n/en.js"></script>
