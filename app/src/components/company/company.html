@@ -2,7 +2,7 @@
 
 <div id="company" layout="column" flex>
   <header layout="row" layout-sm="column" layout-align="center center" ng-click="go('/')">
-    <img class="logo" ng-src="/assets/images/icon.png"/>
+    <img class="logo" ng-src="/assets/images/icon.png" fli-err/>
 
     <div>
       <div class="title" ng-bind="fli.title"></div>
@@ -12,7 +12,7 @@
 
   <div flex class="contact" layout="row" layout-align="center center">
     <div>
-      <img ng-click="link(company.cio.link)" class="logo circle link" ng-src="{{company.cio.img}}" title="CIO"/>
+      <img ng-click="link(company.cio.link)" class="logo circle link" ng-src="{{company.cio.img}}" title="CIO" fli-err>
     </div>
     <div>
       <div>

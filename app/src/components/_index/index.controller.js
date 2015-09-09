@@ -7,7 +7,7 @@
   angular
     .module('freelook.info')
     .controller('index.ctrl',
-    function ($rootScope, $route, $location, $translate, url, locales, I18N) {
+    function ($rootScope, $route, $location, $translate, $sce, url, locales, I18N) {
 
       $rootScope.fli = {};
       $rootScope.fli.view = '';
@@ -39,6 +39,10 @@
 
       $rootScope.href = function (localeCode) {
         return url.href('', {l: localeCode}, true);
+      };
+
+      $rootScope.trust = function (src) {
+        return $sce.trustAsResourceUrl(src);
       };
 
       $rootScope.fli.fix = function (_url) {
