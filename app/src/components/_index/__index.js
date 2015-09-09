@@ -10,7 +10,8 @@
     .module('freelook.info',
     ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngRoute', 'ngMaterial', 'pascalprecht.translate', 'mediaPlayer',
       'fli.home', 'fli.search', 'fli.look', 'fli.company', 'fli.todo'])
-    .config(function ($locationProvider, $httpProvider, $routeProvider, $mdThemingProvider, $translateProvider) {
+    .config(function ($locationProvider, $httpProvider, $routeProvider, $mdThemingProvider,
+                      $translateProvider, $sceProvider) {
 
       // Setting hash prefix
       $locationProvider.html5Mode(true);
@@ -30,6 +31,9 @@
 
       // Setting locale
       $translateProvider.preferredLanguage('en');
+
+      // !! temp TODO: trust
+      $sceProvider.enabled(false);
 
       // Routes config
       $routeProvider

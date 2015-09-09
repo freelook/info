@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="freelook.info">
+<html ng-app="freelook.info" ng-csp>
 <head>
   <base href="/">
   <title ng-bind="fli.title"></title>
@@ -21,8 +21,8 @@
 
   <!-- build:css({.tmp,src}) styles/fli.css-->
   <!-- bower:css -->
-  <link rel="stylesheet" href="../bower_components/angular-material/angular-material.css" />
-  <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.css" />
+  <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
   <!-- endbower -->
 
   <!-- inject:css -->
@@ -94,18 +94,18 @@
 
 <!-- build:js({.tmp,src}) scripts/fli.js-->
 <!-- bower:js -->
-<script src="../bower_components/jquery/dist/jquery.js"></script>
-<script src="../bower_components/angular/angular.js"></script>
-<script src="../bower_components/angular-animate/angular-animate.js"></script>
-<script src="../bower_components/angular-touch/angular-touch.js"></script>
-<script src="../bower_components/angular-sanitize/angular-sanitize.js"></script>
-<script src="../bower_components/angular-route/angular-route.js"></script>
-<script src="../bower_components/angular-aria/angular-aria.js"></script>
-<script src="../bower_components/angular-material/angular-material.js"></script>
-<script src="../bower_components/angular-translate/angular-translate.js"></script>
-<script src="../bower_components/url-pattern/lib/url-pattern.js"></script>
-<script src="../bower_components/angular-media-player/dist/angular-media-player.min.js"></script>
-<script src="../bower_components/parse/parse.min.js"></script>
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-touch/angular-touch.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-aria/angular-aria.js"></script>
+<script src="bower_components/angular-material/angular-material.js"></script>
+<script src="bower_components/angular-translate/angular-translate.js"></script>
+<script src="bower_components/url-pattern/lib/url-pattern.js"></script>
+<script src="bower_components/angular-media-player/dist/angular-media-player.min.js"></script>
+<script src="bower_components/parse/parse.min.js"></script>
 <!-- endbower -->
 
 <!-- inject:js -->
@@ -146,11 +146,11 @@
 <script src="components/look/content/content.controller.js"></script>
 <script src="components/look/content/content.directive.js"></script>
 <script src="components/look/content/content.factory.js"></script>
-<script src="components/look/i18n/en.js"></script>
-<script src="components/look/i18n/ru.js"></script>
 <script src="components/look/iframe/iframe.controller.js"></script>
 <script src="components/look/iframe/iframe.directive.js"></script>
 <script src="components/look/iframe/iframe.factory.js"></script>
+<script src="components/look/i18n/en.js"></script>
+<script src="components/look/i18n/ru.js"></script>
 <script src="components/look/tabs/tabs.controller.js"></script>
 <script src="components/look/tabs/tabs.directive.js"></script>
 <script src="components/search/i18n/en.js"></script>
@@ -167,7 +167,7 @@
 <script src="components/search/tabs/tabs.controller.js"></script>
 <script src="components/search/tabs/tabs.directive.js"></script>
 <script src="components/_index/core/api/api.factory.js"></script>
-<script src="components/_index/core/config/config.production.js"></script>
+<script src="components/_index/core/config/config.development.js"></script>
 <script src="components/_index/core/utils/domparser.util.js"></script>
 <script src="components/_index/core/utils/duration.filter.js"></script>
 <script src="components/_index/core/utils/fli.error.js"></script>
@@ -261,6 +261,8 @@
 <script src="components/_index/core/uix/locale/panel/panel.directive.js"></script>
 <script src="components/look/content/full/read/readability/readability.js"></script>
 <!-- endinject -->
+
+<script src="components/_index/core/config/config.development.js"></script>
 
 <!-- inject:partials -->
 <!-- angular templates will be automaticaly converted in js and inserted here -->

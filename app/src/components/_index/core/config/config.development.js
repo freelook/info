@@ -1,5 +1,5 @@
 var CONFIG = {
-  ORIGIN: 'http://localhost/',
+  ORIGIN: '/',
   PRODUCTION: 'http://freelook.info/',
   API: {
     URL: 'http://localhost/api/',
