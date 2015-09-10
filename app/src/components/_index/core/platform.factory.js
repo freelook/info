@@ -3,25 +3,13 @@ angular
   .module('freelook.info')
   .factory('platform', function ($window, $parse, CONFIG) {
 
-    var chromeApp = '', platformName = '';
-
-    function init() {
-      _initChromeApp();
-    }
-
-    function _initChromeApp() {
-      if (isChrome()) {
-        $window.chrome.runtime.getBackgroundPage(function (_chromeApp) {
-          chromeApp = _chromeApp;
-        });
-      }
-    }
+    var platformName = '';
 
     function name() {
       if (platformName) {
         return platformName;
       }
-      if (checkChromeApp()) {
+      if (!!isChromeApp()) {
         platformName = 'chrome';
         return platformName;
       }
@@ -34,22 +22,24 @@ angular
       return CONFIG[_platformName].ORIGIN;
     }
 
-    function isChrome() {
+    function isChromeApp() {
       return !!$parse('chrome.runtime.getBackgroundPage')($window);
     }
 
-
-    function checkChromeApp() {
-      return chromeApp;
+    function getChromeApp() {
+      if (isChromeApp()) {
+        $window.chrome.runtime.getBackgroundPage(function () {
+          // TODO resolve _chromeApp
+        });
+      }
     }
 
 
     return {
-      init: init,
       name: name,
       getOrigin: getOrigin,
-      isChrome: isChrome,
-      checkChromeApp: checkChromeApp
+      isChromeApp: isChromeApp,
+      getChromeApp: getChromeApp
     };
 
   });

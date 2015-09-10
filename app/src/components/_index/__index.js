@@ -38,9 +38,8 @@
         });
 
     })
-    .run(function ($rootScope, CONFIG, analytics, Parse, platform) {
+    .run(function ($rootScope, CONFIG, analytics, Parse) {
       analytics.init();
-      platform.init();
       Parse.initialize(CONFIG.API.PARSE.ID, CONFIG.API.PARSE.KEY);
 
       // Chrome app only
