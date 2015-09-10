@@ -9,7 +9,7 @@
   angular
     .module('freelook.info',
     ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngRoute', 'ngMaterial', 'pascalprecht.translate', 'mediaPlayer',
-      'fli.home', 'fli.search', 'fli.look', 'fli.company', 'fli.todo'])
+      'fli.home', 'fli.search', 'fli.look', 'fli.about', 'fli.todo'])
     .config(function ($locationProvider, $httpProvider, $routeProvider, $mdThemingProvider, $translateProvider) {
 
       // Setting hash prefix
@@ -38,10 +38,10 @@
         });
 
     })
-    .run(function ($rootScope, analytics, Parse) {
+    .run(function ($rootScope, CONFIG, analytics, Parse, platform) {
       analytics.init();
-      Parse.initialize('Z06a4jL9cgIguqkgMV4rMXl9xnZmPAhmIa29QERn', 'fzpDuSbfiiiK1tVgobdutlSozKJfW3CNgU7l6Lex');
-
+      platform.init();
+      Parse.initialize(CONFIG.API.PARSE.ID, CONFIG.API.PARSE.KEY);
 
       // Chrome app only
       $('body').css('overflow-y', 'visible');

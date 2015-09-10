@@ -1,4 +1,4 @@
-.company.header {
+.about.header {
   top: 0;
   left: 0;
   right: 0;
@@ -16,11 +16,11 @@
   z-index: 0;
 }
 
-#company {
+#about {
   z-index: 999;
 }
 
-#company header {
+#about header {
   color: #ffffff;
   background: transparent;
   min-height: 300px;
@@ -29,28 +29,28 @@
   cursor: pointer;
 }
 
-#company .logo {
+#about .logo {
   height: 100px;
   width: 100px;
   margin: 10px;
 }
 
-#company .title {
+#about .title {
   font-size: 30px;
 }
 
-#company .description {
+#about .description {
   font-size: 16px;
 }
 
-#company .contact {
+#about .contact {
   color: #888888;
 }
 
-#company .mail {
+#about .mail {
   margin-top: 10px;
 }
 
-#company .contact i {
+#about .contact i {
   margin-right: 10px;
 }

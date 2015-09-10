@@ -1,8 +1,8 @@
 'use strict';
 
 angular
-  .module('fli.company')
-  .controller('company.ctrl',
+  .module('fli.about')
+  .controller('about.ctrl',
   function ($rootScope, $location, $routeParams, $mdMedia, $translate, locale, I18N) {
 
     $location.search({

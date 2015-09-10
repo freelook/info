@@ -1,7 +1,9 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('url', function ($window, $rootScope, $location, CONFIG) {
+  .factory('url', function ($window, $rootScope, $location, platform) {
+
+    var platformOrigin = platform.getOrigin();
 
     function parse(_url) {
       var url = $window.document.createElement('a');
@@ -24,7 +26,7 @@ angular
         currentPath = $location.path().slice(1),
         _path = path || currentPath + '?',
         _params = params || {},
-        _origin = origin || CONFIG.ORIGIN,
+        _origin = origin || platformOrigin,
         _href = _origin + _path;
       if (!!replace && !!~_path.indexOf(currentPath) && !angular.equals(route, {})) {
         angular.forEach(route, function (v, k) {

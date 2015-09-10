@@ -28,7 +28,7 @@
 
   <!-- inject:css -->
   <link rel="stylesheet" href="components/_index/index.css">
-  <link rel="stylesheet" href="components/company/company.css">
+  <link rel="stylesheet" href="components/about/about.css">
   <link rel="stylesheet" href="components/home/home.css">
   <link rel="stylesheet" href="components/look/look.css">
   <link rel="stylesheet" href="components/search/search.css">
@@ -75,8 +75,8 @@
   <link rel="stylesheet" href="components/search/result/goods/amazon/amazon.css">
   <link rel="stylesheet" href="components/search/result/goods/yandex/yandex.css">
   <link rel="stylesheet" href="components/search/result/image/google/google.css">
-  <link rel="stylesheet" href="components/search/result/image/instagram/instagram.css">
   <link rel="stylesheet" href="components/search/result/news/google/google.css">
+  <link rel="stylesheet" href="components/search/result/image/instagram/instagram.css">
   <link rel="stylesheet" href="components/search/result/video/google/google.css">
   <link rel="stylesheet" href="components/search/result/web/facebook/facebook.css">
   <link rel="stylesheet" href="components/search/result/web/google/google.css">
@@ -112,8 +112,8 @@
 <!-- inject:js -->
 <script src="components/_index/__index.js"></script>
 <script src="components/_index/index.controller.js"></script>
-<script src="components/company/_company.js"></script>
-<script src="components/company/company.controller.js"></script>
+<script src="components/about/_about.js"></script>
+<script src="components/about/about.controller.js"></script>
 <script src="components/home/_home.js"></script>
 <script src="components/home/home.controller.js"></script>
 <script src="components/look/_look.js"></script>
@@ -129,6 +129,7 @@
 <script src="components/_index/core/local.storage.factory.js"></script>
 <script src="components/_index/core/parse.factory.js"></script>
 <script src="components/_index/core/parser.html.factory.js"></script>
+<script src="components/_index/core/platform.factory.js"></script>
 <script src="components/_index/core/prerender.factory.js"></script>
 <script src="components/_index/core/toast.factory.js"></script>
 <script src="components/_index/core/url.factory.js"></script>
@@ -207,7 +208,9 @@
 <script src="components/search/result/web/web.directive.js"></script>
 <script src="components/search/suggest/trends/trends.factory.js"></script>
 <script src="components/_index/core/api/facebook/facebook.factory.js"></script>
-<script src="components/_index/core/api/google/google.factory.js"></script>
+<script src="components/_index/core/api/google/_google.factory.js"></script>
+<script src="components/_index/core/api/google/google.chrome.factory.js"></script>
+<script src="components/_index/core/api/google/google.site.factory.js"></script>
 <script src="components/_index/core/api/instagram/instagram.factory.js"></script>
 <script src="components/_index/core/api/vk/vk.factory.js"></script>
 <script src="components/_index/core/api/yandex/yandex.factory.js"></script>
@@ -245,10 +248,10 @@
 <script src="components/search/result/goods/yandex/yandex.directive.js"></script>
 <script src="components/search/result/image/google/google.controller.js"></script>
 <script src="components/search/result/image/google/google.directive.js"></script>
-<script src="components/search/result/image/instagram/instagram.controller.js"></script>
-<script src="components/search/result/image/instagram/instagram.directive.js"></script>
 <script src="components/search/result/news/google/google.controller.js"></script>
 <script src="components/search/result/news/google/google.directive.js"></script>
+<script src="components/search/result/image/instagram/instagram.controller.js"></script>
+<script src="components/search/result/image/instagram/instagram.directive.js"></script>
 <script src="components/search/result/video/google/google.controller.js"></script>
 <script src="components/search/result/video/google/google.directive.js"></script>
 <script src="components/search/result/web/facebook/facebook.controller.js"></script>
@@ -262,8 +265,6 @@
 <script src="components/_index/core/uix/locale/panel/panel.directive.js"></script>
 <script src="components/look/content/full/read/readability/readability.js"></script>
 <!-- endinject -->
-
-<script src="components/_index/core/config/config.development.js"></script>
 
 <!-- inject:partials -->
 <!-- angular templates will be automaticaly converted in js and inserted here -->

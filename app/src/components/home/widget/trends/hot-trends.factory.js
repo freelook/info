@@ -14,7 +14,7 @@ angular
         var element = $(e);
         trends.push({
           title: element.find('.hottrends-single-trend-title').text(),
-          img: 'http:' + element.find('.hottrends-single-trend-image-and-text-container img').attr('src'),
+          img: element.find('.hottrends-single-trend-image-and-text-container img').attr('src'),
           text: element.find('.hottrends-single-trend-news-snippet').text(),
           url: element.find('.hottrends-single-trend-news-article-container a').attr('href')
         });
