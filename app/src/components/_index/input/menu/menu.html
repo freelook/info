@@ -20,7 +20,7 @@
 </div>
 
 <md-whiteframe class="md-whiteframe-z1" layout="row" ng-repeat="item in menu" ng-if="item.href !== menuCtrl.path">
-  <a flex ng-href="{{item.href}}" ng-click="go(item.href);$event.preventDefault();">
+  <a flex ng-href="{{item.href}}" ng-click="go(item.href)">
     <i class="fa fa-{{item.icon}}"></i>
     <span ng-bind="item.name | translate"></span>
   </a>
