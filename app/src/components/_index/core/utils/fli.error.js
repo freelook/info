@@ -6,8 +6,9 @@ angular
 
 
       el.on('error', function () {
-        if (attr.ngSrc) {
-          var src = attr.ngSrc.substr(0, 2) === '//' ? 'http:' + attr.ngSrc : attr.ngSrc;
+        var attrSrc = attr.ngSrc || attr.src;
+        if (attrSrc) {
+          var src = attrSrc.substr(0, 2) === '//' ? 'http:' + attrSrc : attrSrc;
           $http
             .get(src, {responseType: 'blob'})
             .success(function (res) {
