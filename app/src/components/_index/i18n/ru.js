@@ -12,7 +12,7 @@ window.i18n.ru.index = {
     }
   },
   footer: {
-    donate: 'копилка',
+    donate: 'донат',
     help: 'Помогите нам стать лучше',
     with: 'мы'
   },
