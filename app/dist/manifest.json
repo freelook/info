@@ -15,6 +15,7 @@
   },
   "permissions": [
     "storage",
+    "webview",
     "tabs",
     "<all_urls>"
   ],

@@ -3,7 +3,7 @@
 angular
   .module('fli.look')
   .factory('full',
-  function ($sce, $location, $rootScope, $cacheFactory, locale, readability, url, parser) {
+  function ($location, $rootScope, $cacheFactory, locale, readability, url, parser) {
 
     var cache = $cacheFactory('full');
 
@@ -24,7 +24,7 @@ angular
       _fixLink($dom);
       _fixImg($dom);
 
-      var content = $sce.trustAsHtml(dom.documentElement.innerHTML);
+      var content = dom.documentElement.innerHTML;
 
       _storeData(content);
 
@@ -38,17 +38,19 @@ angular
     function _fixImg($dom) {
       var origin = _originLink();
       $dom.find('img').each(function (i, e) {
-        $(e).attr('src', function (i, src) {
-          if (src) {
-            switch (src.substr(0, 2)) {
-              case 'ht':
-              case '//':
-                return src;
-              default:
-                return src.charAt(0) === '/' ? origin + src : origin + '/' + src;
+        $(e)
+          .attr('src', function (i, src) {
+            if (src) {
+              switch (src.substr(0, 2)) {
+                case 'ht':
+                case '//':
+                  return src;
+                default:
+                  return src.charAt(0) === '/' ? origin + src : origin + '/' + src;
+              }
             }
-          }
-        });
+          })
+          .attr('fli-err', '');
       });
     }
 

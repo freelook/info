@@ -23,6 +23,9 @@
         if (params) {
           switch (typeof params) {
             case 'string':
+              if (params.substr(0, 4) === 'http') {
+                $location.absUrl(params);
+              }
               return $location.url(params);
             case 'object':
               return $route.updateParams(params);

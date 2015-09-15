@@ -5,7 +5,7 @@
 
 <div id="look" layout="column" flex>
 
-  <div ng-if="fli.route.type==='full'" >
+  <div ng-if="fli.route.type==='full'" layout="column" flex>
     <fli-look-iframe flex ng-if="fli.platform==='site'" ng-hide="fli.focus" class="animate vm"></fli-look-iframe>
     <webview web-view-height layout-fill ng-if="fli.platform==='chrome'" ng-hide="fli.focus" class="animate" src="{{trust(decode(fli.route.url))}}"></webview>
   </div>
