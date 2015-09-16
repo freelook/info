@@ -17,6 +17,7 @@
     "storage",
     "webview",
     "tabs",
+    "fullscreen",
     "<all_urls>"
   ],
   "externally_connectable": {
