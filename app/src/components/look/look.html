@@ -7,7 +7,7 @@
 
   <div ng-if="fli.route.type==='full'" layout="column" flex>
     <fli-look-iframe flex ng-if="fli.platform==='site'" ng-hide="fli.focus" class="animate vm"></fli-look-iframe>
-    <webview web-view-height layout-fill ng-if="fli.platform==='chrome'" ng-hide="fli.focus" class="animate" src="{{trust(decode(fli.route.url))}}"></webview>
+    <webview web-view layout-fill ng-if="fli.platform==='chrome'" ng-hide="fli.focus" class="animate" src="{{trust(decode(fli.route.url))}}"></webview>
   </div>
 
   <div flex ng-if="!fli.route.type" ng-hide="fli.focus" class="animate vm">
@@ -17,5 +17,3 @@
 </div>
 
 <fli-footer ng-if="!fli.route.type && !fli.focus"></fli-footer>
-
-

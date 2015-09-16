@@ -14,6 +14,11 @@ angular
       $rootScope.fli.progress = value;
     }
 
+    $rootScope.$on('$routeChangeStart', function () {
+      count = 0;
+      toggleLoader(false);
+    });
+
     return {
       request: function (config) {
         count++;
