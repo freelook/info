@@ -4,7 +4,6 @@ angular
   .directive('fliErr', function ($http, $window) {
     return function (scope, el, attr) {
 
-
       $(el).on('error', function () {
         var attrSrc = attr.ngSrc || attr.src;
         if (attrSrc) {

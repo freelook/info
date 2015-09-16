@@ -8,6 +8,7 @@
       <a ng-if="fliItem.title" ng-href="{{fliItemCtrl.href(fliItem)}}" ng-click="go(fliItemCtrl.href(fliItem))" ng-bind-html="fliItem.title"></a>
       <div ng-if="fliItem.from" class="from" ng-bind-html="fliItem.from"></div>
       <div ng-if="fliItem.content" ng-bind-html="fliItem.content"></div>
+      <div ng-if="fliItem.compile" fli-bind-compile="fliItem.compile"></div>
     </div>
     <ng-transclude></ng-transclude>
   </md-card-content>

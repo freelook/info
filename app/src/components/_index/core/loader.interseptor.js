@@ -16,28 +16,19 @@ angular
 
     return {
       request: function (config) {
-
         count++;
-
         toggleLoader(isLoading());
         return config || $q.when(config);
-
       },
       response: function (response) {
-
         --count;
-
         toggleLoader(isLoading());
         return response || $q.when(response);
-
       },
       responseError: function (response) {
-
         --count;
-
         toggleLoader(isLoading());
         return $q.reject(response);
-
       }
 
     };
