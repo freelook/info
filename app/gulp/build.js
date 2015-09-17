@@ -96,4 +96,13 @@ gulp.task('clean', function (done) {
   $.del(['dist/', '.tmp/'], done);
 });
 
+gulp.task('zip', [], function () {
+  var manifest = require('../src/manifest.json'),
+    distFileName = manifest.name + '_' + manifest.version + '.zip';
+
+  return gulp.src(['dist/**'])
+    .pipe($.zip(distFileName))
+    .pipe(gulp.dest('pack'));
+});
+
 gulp.task('build', ['html', 'images', 'fonts', 'misc']);
