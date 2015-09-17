@@ -29,7 +29,6 @@ angular
           } else {
             showEmpty();
           }
-
         }
       });
 
