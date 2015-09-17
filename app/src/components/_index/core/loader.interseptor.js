@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('LoaderInterceptor',
+  .factory('loaderInterceptor',
   function ($q, $rootScope) {
 
     var count = 0;

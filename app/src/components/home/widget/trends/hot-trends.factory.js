@@ -1,11 +1,32 @@
 'use strict';
 angular
   .module('fli.home')
-  .factory('hotTrends', function ($q, $cacheFactory, api, locale, parser, CONFIG) {
+  .factory('hotTrends',
+  function ($rootScope, $q, $cacheFactory, api, locale, parser, prerender, platform) {
 
-    //var cache = $cacheFactory('hotTrends');
+    var cache = $cacheFactory('hotTrends');
 
-    var tapi = '';
+    var tapi = '',
+      connectors = {
+        site: function (defer) {
+          prerender.cache(tapi)
+            .success(function (html) {
+              return defer.resolve(_htmlToTrends(html));
+            })
+            .error(function (trends) {
+              return defer.reject(trends);
+            });
+        },
+        chrome: function (defer) {
+          prerender.local(tapi)
+            .then(function (html) {
+              return defer.resolve(_htmlToTrends(html));
+            })
+            .catch(function (trends) {
+              return defer.reject(trends);
+            });
+        }
+      };
 
     function _htmlToTrends(html) {
       var dom = parser.parseFromString(html, 'text/html'),
@@ -20,23 +41,20 @@ angular
         });
       });
 
-      //cache.put(tapi, trends);
+      if (trends.length) {
+        cache.put(tapi, trends);
+      }
+
       return trends;
     }
 
     return function () {
       var defer = $q.defer();
-      tapi = CONFIG.PRERENDER.URL + 'https://www.google.com/trends/hottrends?pn=' + locale.getPnCode();
-
-      api
-        .proxy(tapi, {cache: true})
-        .success(function (html) {
-          return defer.resolve(_htmlToTrends(html));
-        })
-        .error(function (trends) {
-          return defer.reject(trends);
-        });
-
+      tapi = 'https://www.google.com/trends/hottrends?pn=' + locale.getPnCode();
+      if (cache.get(tapi)) {
+        return $q.when(cache.get(tapi));
+      }
+      connectors[platform.name()](defer);
       return defer.promise;
     };
 

@@ -19,7 +19,7 @@
       // Set up cache
       $httpProvider.defaults.cache = true;
 
-      $httpProvider.interceptors.push('LoaderInterceptor');
+      $httpProvider.interceptors.push('loaderInterceptor');
 
       // Setting theme
       $mdThemingProvider.theme('default').primaryPalette('indigo');

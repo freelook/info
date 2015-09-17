@@ -5,7 +5,7 @@ angular
   function ($scope, url, locale) {
 
     var TYPES = {
-      news: 1,
+      trends: 1,
       looks: 2
     };
 

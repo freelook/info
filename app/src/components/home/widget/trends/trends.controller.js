@@ -5,14 +5,32 @@ angular
   .controller('home.widget.trends.ctrl',
   function (hotTrends, item) {
 
-    var vm = this;
+    var vm = this,
+      initCount = 3;
     vm.items = [];
     vm.share = item.share;
 
-    hotTrends()
-      .then(function (items) {
-        vm.items = items || [];
-      });
+    function retry() {
+      if (initCount > 0) {
+        initCount--;
+        init();
+      }
+    }
+
+    function init() {
+      hotTrends()
+        .then(function (items) {
+          if (items && items.length) {
+            vm.items = items;
+          } else {
+            retry();
+          }
+        })
+        .catch(retry);
+    }
+
+
+    init();
 
   });
 
