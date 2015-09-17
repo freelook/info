@@ -4,20 +4,32 @@ angular
   .directive('fliErr', function ($http, $window) {
     return function (scope, el, attr) {
 
+      var blobSrc = '';
+
+      function showEmpty() {
+        $(el)
+          .after('<div class="md-card-image header"></div>')
+          .remove();
+      }
+
       $(el).on('error', function () {
         var attrSrc = attr.ngSrc || attr.src;
         if (attrSrc) {
           var src = attrSrc.substr(0, 2) === '//' ? 'http:' + attrSrc : attrSrc;
-          $http
-            .get(src, {responseType: 'blob'})
-            .success(function (res) {
-              $(el).attr('src', $window.URL.createObjectURL(res));
-            })
-            .error(function () {
-              $(el)
-                .after('<div class="md-card-image header"></div>')
-                .remove();
-            });
+          if (!blobSrc) {
+            $http
+              .get(src, {responseType: 'blob'})
+              .success(function (res) {
+                blobSrc = $window.URL.createObjectURL(res);
+                $(el).attr('src', blobSrc);
+              })
+              .error(function () {
+                showEmpty();
+              });
+          } else {
+            showEmpty();
+          }
+
         }
       });
 
