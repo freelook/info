@@ -1,5 +1,5 @@
 <md-whiteframe ng-hide="fli.focus" class="md-whiteframe-z3" layout="column" ng-if="!!suggest.suggested.length">
   <div class="result">
-    <a ng-repeat="item in suggest.suggested track by $index" ng-href="{{suggest.href(item)}}" ng-bind="item"></a>
+    <a ng-repeat="item in suggest.suggested track by $index" ng-href="{{suggest.href(item)}}" ng-click="go(suggest.href(item))" ng-bind="item"></a>
   </div>
 </md-whiteframe>
