@@ -64,7 +64,7 @@ angular
       extract: extract,
       qByName: qByName,
       link: link,
-      location: location,
+      location: platform.name() !== 'chrome' ? location : link,
       decode: decode
     };
 

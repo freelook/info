@@ -90,7 +90,7 @@
 <body ng-controller="index.ctrl as index">
 
 <!-- View -->
-<ng-include src="fli.view" ng-if="!!fli.view"></ng-include>
+<ng-include src="fli.view" layout="column" layout-fill ng-if="!!fli.view"></ng-include>
 <ng-view id="view" layout="column" layout-fill ng-hide="!!fli.view"></ng-view>
 <webview id="prerender" ng-hide="true" width="0" height="0"></webview>
 
