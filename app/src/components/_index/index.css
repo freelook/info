@@ -18,10 +18,6 @@ md-whiteframe {
   margin: 5px;
 }
 
-.vm {
-  min-height: 60vh;
-}
-
 .link {
   color: #1F00EF;
   cursor: pointer;

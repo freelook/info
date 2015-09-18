@@ -3,17 +3,16 @@
   <fli-search-lucky></fli-search-lucky>
 </header>
 
-<div id="search" flex layout="column" class="animate vm">
+<div id="search" flex layout="column" class="animate" ng-hide="fli.focus">
 
-  <fli-search-tabs ng-hide="fli.focus"></fli-search-tabs>
+  <fli-search-tabs></fli-search-tabs>
 
-  <div layout="row" flex ng-hide="fli.focus">
+  <div layout="row" flex>
     <fli-search-sub fli-sub-hide-on-scroll></fli-search-sub>
     <fli-search-result flex></fli-search-result>
   </div>
 
+  <fli-search-suggest></fli-search-suggest>
+  <fli-footer></fli-footer>
+
 </div>
-
-<fli-search-suggest ng-hide="fli.focus"></fli-search-suggest>
-
-<fli-footer></fli-footer>

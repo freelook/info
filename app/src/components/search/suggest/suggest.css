@@ -1,5 +1,9 @@
-fli-search-result {
+fli-search-suggest {
   display: block;
+}
+
+fli-search-suggest md-whiteframe {
+  margin-top: 15px;
 }
 
 fli-search-suggest .result {
