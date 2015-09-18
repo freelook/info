@@ -2,7 +2,7 @@
 angular
   .module('freelook.info')
   .factory('facebook',
-  function ($http, $rootScope, $q, api, url, parser, CONFIG) {
+  function ($http, $rootScope, $q, api, url, CONFIG) {
 
     var APP_ID = '846841298681206';
 
@@ -21,13 +21,16 @@ angular
 
       _getId(url)
         .then(function (_id) {
-          userById(_id)
-            .success(function (usr) {
-              return defer.resolve(usr);
-            })
-            .error(function (err) {
-              return defer.reject(err);
-            });
+          if (_id) {
+            return userById(_id)
+              .success(function (usr) {
+                return defer.resolve(usr);
+              })
+              .error(function (err) {
+                return defer.reject(err);
+              });
+          }
+          return defer.reject();
         })
         .catch(function (err) {
           return defer.reject(err);
@@ -50,9 +53,9 @@ angular
       var defer = $q.defer();
       api.proxy(url)
         .success(function (html) {
-          var dom = parser.parseFromString(html, 'text/html'),
-            content = $(dom).find('meta[property="al:android:url"]').attr('content') || '',
-            id = content.split('profile/').splice(1)[0] || content.split('?id=').splice(1)[0] || '';
+          var _html = html || '',
+            match = _html.match(/profile_id=(.+?)&/i) || [],
+            id = match[1] || '';
           return defer.resolve(id);
         })
         .error(function (err) {

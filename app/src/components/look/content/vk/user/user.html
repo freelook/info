@@ -1,9 +1,14 @@
-<md-card layout-sm="column" layout="row">
-  <img flex-gt-sm="33" class="md-card-image" ng-click="link(fli.route.url)" ng-if="!!vk.user.photo_200" ng-src="{{vk.user.photo_200}}" fli-err>
-  <md-card-content flex>
-    <h3 class="md-title" ng-bind="vk.user.first_name + ' ' + vk.user.last_name"></h3>
-    <md-divider></md-divider>
-    <div>
+<div ng-if="vk.user">
+  <fli-item class="no-fill" ng-init="fliItem = {
+          small: 1,
+          url:fli.route.url,
+          img:vk.user.photo_200,
+          title:vk.user.first_name + ' ' + vk.user.last_name,
+          content:vk.user.uid
+          };
+          fliItemCtrl.href=content.href;">
+
+    <div class="body">
       <div layout="row" ng-if="vk.user.status">
         <div flex="33">
           <p>Status:</p>
@@ -29,5 +34,7 @@
         </div>
       </div>
     </div>
-  </md-card-content>
-</md-card>
+
+  </fli-item>
+
+</div>

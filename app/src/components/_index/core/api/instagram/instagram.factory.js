@@ -36,13 +36,16 @@ angular
 
       _getId(url)
         .then(function (_id) {
-          userById(_id)
-            .success(function (usr) {
-              return defer.resolve(usr);
-            })
-            .error(function (err) {
-              return defer.reject(err);
-            });
+          if (_id) {
+            return userById(_id)
+              .success(function (usr) {
+                return defer.resolve(usr);
+              })
+              .error(function (err) {
+                return defer.reject(err);
+              });
+          }
+          return defer.reject();
         })
         .catch(function (err) {
           return defer.reject(err);
@@ -61,7 +64,8 @@ angular
       api.proxy(url)
         .success(function (html) {
           var _html = html || '',
-            id = _html.match(/"id":"(.+?)"/i)[1] || '';
+            match = _html.match(/"id":"(.+?)"/i) || [],
+            id = match[1] || '';
           return defer.resolve(id);
         })
         .error(function (err) {
