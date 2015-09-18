@@ -1,8 +1,12 @@
-<md-card layout="row" layout-sm="column" ng-repeat="result in vkWall.results" ng-if="result.attachment || result.text">
-    <img flex-gt-sm="33" class="md-card-image" ng-if="!!result.attachment.photo.src_big" ng-src="{{result.attachment.photo.src_big}}" fli-err>
-    <img flex-gt-sm="33" class="md-card-image" ng-if="!!result.attachment.doc.thumb" ng-src="{{result.attachment.doc.thumb}}" fli-err>
-  <md-card-content flex>
-    <p ng-bind-html="result.text"></p>
-  </md-card-content>
-</md-card>
+<div ng-if="result.attachment || result.text" ng-repeat="result in vkWall.results">
+  <fli-item ng-init="fliItem = {
+          url:fli.route.url,
+          img:result.attachment.photo.src_big || result.attachment.doc.thumb,
+          title:result.post_type,
+          content: result.text
+          };
+          fliItemCtrl.href=content.href;">
+
+  </fli-item>
+</div>
 
