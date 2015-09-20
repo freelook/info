@@ -3,14 +3,11 @@
 angular
   .module('fli.look')
   .controller('look.content.youtube.ctrl',
-  function ($scope, youtube, url) {
+  function ($scope, youtube, item) {
 
     var vm = this;
 
-    vm.href = function (_url) {
-      return url.href('look?', {input: $scope.fli.route.input, url: _url});
-    };
-
+    vm.href = item.href;
     vm.watchUrl = youtube.watchUrl;
 
   });

@@ -1,9 +1,9 @@
-<md-card  layout="row" layout-sm="column" ng-if="ytbChannel.results" ng-repeat="result in ytbChannel.results">
-  <a flex-gt-sm="33" ng-href="{{ytb.href(ytb.watchUrl(result.id.videoId))}}">
-    <img class="md-card-image" ng-if="!!result.snippet.thumbnails.medium.url" ng-src="{{result.snippet.thumbnails.medium.url}}" fli-err>
-  </a>
-  <md-card-content>
-    <a ng-href="{{ytb.href(ytb.watchUrl(result.id.videoId))}}" ng-bind-html="result.snippet.title"></a>
-    <div ng-bind-html="result.snippet.description"></div>
-  </md-card-content>
-</md-card>
+<fli-item ng-repeat="result in ytbChannel.results" ng-init="fliItem = {
+          url:decode(ytb.watchUrl(result.id.videoId)),
+          img:result.snippet.thumbnails.medium.url,
+          title:result.snippet.title,
+          content:result.snippet.description
+          };
+          fliItemCtrl.href=ytb.href;">
+
+</fli-item>
