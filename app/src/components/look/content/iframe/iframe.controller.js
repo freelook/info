@@ -6,10 +6,11 @@ angular
   function ($scope, $parse, api, iframe) {
 
     function setter(_html) {
-      var html = iframe.get(_html) || '';
+      var html = iframe.get(_html) || '',
+        iframeEl = $('#iframe').get(0);
       if (html) {
-        if ($parse('contentDocument.documentElement.innerHTML')($scope.iframeEl)) {
-          $scope.iframeEl.contentDocument.documentElement.innerHTML = html;
+        if ($parse('contentDocument.documentElement.innerHTML')(iframeEl)) {
+          iframeEl.contentDocument.documentElement.innerHTML = html;
         }
       }
     }

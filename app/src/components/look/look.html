@@ -3,16 +3,11 @@
   <div ng-include="'components/look/menu/menu.html'"></div>
 </header>
 
-<div id="look" layout="column" flex ng-hide="fli.focus">
+<div id="look" flex layout="column" ng-hide="fli.focus">
 
-  <div ng-if="fli.route.type==='full'" layout="column" flex>
-    <fli-look-iframe flex ng-if="fli.platform==='site'" class="animate"></fli-look-iframe>
-    <webview web-view layout-fill ng-if="fli.platform==='chrome'" class="animate" src="{{trust(decode(fli.route.url))}}"></webview>
-  </div>
-
-  <div flex ng-if="!fli.route.type" class="animate">
-    <fli-look-tabs></fli-look-tabs>
-    <fli-look-content flex layout="row" layout-align="center start"></fli-look-content>
+  <div flex class="animate" flex layout="column">
+    <fli-look-tabs ng-if="!fli.route.type"></fli-look-tabs>
+    <fli-look-content flex layout="column"></fli-look-content>
   </div>
 
   <fli-footer ng-if="!fli.route.type"></fli-footer>

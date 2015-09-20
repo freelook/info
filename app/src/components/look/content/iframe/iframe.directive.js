@@ -4,11 +4,7 @@ angular.module('fli.look')
     return {
       controller: 'look.iframe.ctrl',
       controllerAs: 'iframe',
-      templateUrl: 'components/look/iframe/iframe.html',
-      replace: true,
-      link: function (scope, el) {
-        scope.iframeEl = $(el).get(0);
-      }
+      templateUrl: 'components/look/content/iframe/iframe.html'
     };
 
   });
