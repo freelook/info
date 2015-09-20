@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('fli.search')
-  .factory('trends', function ($q, google) {
+  .factory('suggest', function ($q, google) {
 
     function _feedToTrends(html) {
       var trends = [];

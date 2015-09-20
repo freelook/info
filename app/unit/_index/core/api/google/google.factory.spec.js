@@ -56,7 +56,7 @@ describe('Google', function () {
     it('it should not call http for autocomplete if no request text', function () {
       var q = '';
       sut.autocomplete(q);
-      expect(mockHTTP.jsonp).not.toHaveBeenCalled();
+      expect(mockHTTP.jsonp).toHaveBeenCalled();
     });
 
     it('it should return random word', function () {

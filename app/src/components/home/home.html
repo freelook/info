@@ -2,14 +2,10 @@
   <fli-input flex></fli-input>
 </header>
 
-<div id="home" layout="column" flex class="animate" ng-hide="fli.focus">
+<div id="home" layout="column" flex ng-hide="fli.focus">
 
   <fli-home-tabs></fli-home-tabs>
-
-  <div layout="row" flex>
-    <fli-home-widget flex></fli-home-widget>
-  </div>
-
+  <fli-home-widget class="animate" flex></fli-home-widget>
   <fli-footer></fli-footer>
 
 </div>

@@ -1,0 +1,12 @@
+<div ng-if="!!suggest.search.results">
+  <fli-item ng-repeat="item in suggest.search.results"
+            ng-init="fliItem = {
+          url:item.url,
+          img:item.richSnippet.cseImage.src,
+          title:item.titleNoFormatting,
+          content: item.content
+          };
+          fliItemCtrl.href=suggest.href;">
+
+  </fli-item>
+</div>

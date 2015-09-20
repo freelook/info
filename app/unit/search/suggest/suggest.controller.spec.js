@@ -1,7 +1,7 @@
 'use strict';
 
 describe('Suggest controller', function () {
-  var scope, input, mockGoogle, rootScope, controller, mockTrends;
+  var scope, input, mockGoogle, rootScope, controller, mockSuggest;
 
   beforeEach(function () {
     module('freelook.info');
@@ -17,7 +17,7 @@ describe('Suggest controller', function () {
       })
     };
 
-    mockTrends = jasmine.createSpy().and.returnValue({
+    mockSuggest = jasmine.createSpy().and.returnValue({
       then: jasmine.createSpy()
     })
 
@@ -27,7 +27,7 @@ describe('Suggest controller', function () {
     return controller('search.suggest.ctrl', {
       $scope: scope,
       google: mockGoogle,
-      trends: mockTrends
+      suggest: mockSuggest
     });
   }
 
@@ -69,7 +69,7 @@ describe('Suggest controller', function () {
       expectedResponse = [[], expectedArr];
     exequteController();
     mockGoogle.autocomplete(input).success.calls.mostRecent().args[0](expectedResponse);
-    expect(mockTrends).toHaveBeenCalled();
+    expect(mockSuggest).toHaveBeenCalled();
   });
 
 });

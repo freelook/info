@@ -5,11 +5,9 @@
 
 <div id="look" flex layout="column" ng-hide="fli.focus">
 
-  <div flex class="animate" flex layout="column">
-    <fli-look-tabs ng-if="!fli.route.type"></fli-look-tabs>
-    <fli-look-content flex layout="column"></fli-look-content>
-  </div>
-
+  <fli-look-tabs ng-if="!fli.route.type"></fli-look-tabs>
+  <fli-look-content class="animate" flex layout="column"></fli-look-content>
+  <fli-look-suggest class="fli-grid" ng-if="!fli.route.type && site.host"></fli-look-suggest>
   <fli-footer ng-if="!fli.route.type"></fli-footer>
 
 </div>

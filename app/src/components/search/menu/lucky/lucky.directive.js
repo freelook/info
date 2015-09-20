@@ -6,6 +6,6 @@ angular
     return {
       controller: 'search.lucky.ctrl',
       controllerAs: 'lucky',
-      templateUrl: 'components/search/lucky/lucky.html'
+      templateUrl: 'components/search/menu/lucky/lucky.html'
     };
   });

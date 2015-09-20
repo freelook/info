@@ -1,15 +1,15 @@
 <header>
   <fli-input flex></fli-input>
-  <fli-search-lucky></fli-search-lucky>
+  <div ng-include="'components/search/menu/menu.html'"></div>
 </header>
 
-<div id="search" flex layout="column" class="animate" ng-hide="fli.focus">
+<div id="search" flex layout="column" ng-hide="fli.focus">
 
   <fli-search-tabs></fli-search-tabs>
 
   <div layout="row" flex>
     <fli-search-sub fli-sub-hide-on-scroll></fli-search-sub>
-    <fli-search-result flex></fli-search-result>
+    <fli-search-result class="animate" flex></fli-search-result>
   </div>
 
   <fli-search-suggest></fli-search-suggest>
