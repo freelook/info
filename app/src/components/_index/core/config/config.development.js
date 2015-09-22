@@ -11,7 +11,8 @@ var CONFIG = {
     }
   },
   PRERENDER: {
-    URL: 'http://freelook.info/prerender/'
+    URL: 'http://localhost/prerender/',
+    PRODUCTION: 'http://freelook.info/prerender/'
   },
   SITE: {
     ORIGIN: 'http://localhost/'
