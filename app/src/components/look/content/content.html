@@ -2,7 +2,7 @@
   <fli-look-iframe flex class="animate" layout="column" flex></fli-look-iframe>
 </div>
 
-<div ng-if="!fli.route.type" layout="row" layout-align="center start" flex>
+<div ng-if="!fli.route.type" layout="row" layout="column" flex>
   <fli-look-content-youtube ng-if="is(site.domain, 'youtube')"></fli-look-content-youtube>
   <fli-look-content-vk ng-if="is(site.domain, 'vk')"></fli-look-content-vk>
   <fli-look-content-facebook ng-if="is(site.domain, 'facebook')"></fli-look-content-facebook>

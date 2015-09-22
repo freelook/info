@@ -4,14 +4,11 @@ angular
   .factory('prerender', function ($q, $http, $timeout, api, CONFIG) {
 
     function get(url) {
-      if (url) {
-        var api = CONFIG.PRERENDER.URL + encodeURIComponent(url);
-        return $http.get(api);
-      }
+      return $http.get(CONFIG.PRERENDER.URL + encodeURIComponent(url));
     }
 
     function cache(_url) {
-      return api.proxy(CONFIG.PRERENDER.URL + _url, {cache: true});
+      return api.proxy(CONFIG.PRERENDER.PRODUCTION + _url, {cache: true});
     }
 
     function local(url) {
