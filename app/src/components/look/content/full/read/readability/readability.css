@@ -40,7 +40,7 @@
 }
 
 #readInner #readability-content {
-  margin-top: 75px;
+  clear: both;
 }
 
 #readInner blockquote {

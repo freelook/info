@@ -5,9 +5,9 @@
       <div class="md-card-image header" ng-if="!fliItem.img" title="{{'index.core.uix.item.lookIt' | translate:{v:fliItem.title} }}"></div>
     </a>
     <div class="body">
-      <a ng-if="fliItem.title" ng-href="{{fliItemCtrl.href(fliItem)}}" ng-click="go(fliItemCtrl.href(fliItem))" ng-bind-html="fliItem.title"></a>
-      <div ng-if="fliItem.content" ng-bind-html="fliItem.content"></div>
-      <div ng-if="fliItem.compile" fli-bind-compile="fliItem.compile"></div>
+      <a class="title" ng-if="fliItem.title" ng-href="{{fliItemCtrl.href(fliItem)}}" ng-click="go(fliItemCtrl.href(fliItem))" ng-bind-html="fliItem.title"></a>
+      <div class="clearfix" ng-if="fliItem.content" ng-bind-html="fliItem.content"></div>
+      <div class="clearfix" ng-if="fliItem.compile" fli-bind-compile="fliItem.compile"></div>
     </div>
     <ng-transclude></ng-transclude>
   </md-card-content>

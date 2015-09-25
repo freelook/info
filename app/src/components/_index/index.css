@@ -36,6 +36,10 @@ md-whiteframe {
   border-radius: 50%;
 }
 
+.clearfix {
+  clear: both;
+}
+
 /* Animation */
 
 @-webkit-keyframes fadeInDown {

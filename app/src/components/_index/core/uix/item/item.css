@@ -2,6 +2,15 @@ fli-item {
   display: block;
 }
 
+.fli-item {
+  box-shadow: none;
+  border: 1px solid #cccccc;
+}
+
+.fli-item a {
+  outline: none;
+}
+
 .fli-item .md-card-image,
 .fli-item .img {
   min-width: 100%;
@@ -30,13 +39,12 @@ fli-item {
   float: left;
 }
 
-.fli-item .body {
-  margin: 5px;
+.fli-item .clearfix {
+  margin-top: 7px;
 }
 
-.fli-item .from {
-  margin: 3px;
-  color: #888888;
+.fli-item .body {
+  margin: 5px;
 }
 
 .fli-item md-card-content,
@@ -50,5 +58,6 @@ fli-item {
 
 .fli-item.no-fill.md-whiteframe-z1 {
   background: #ebebeb;
+  border: none;
   box-shadow: none;
 }

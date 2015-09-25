@@ -1,5 +1,6 @@
 <div ng-if="!!fullCtrl.html">
   <fli-item ng-init="fliItem = {
+          small: 1,
           url: fli.route.url,
           img:fli.route.img,
           title:fli.route.input,
@@ -9,3 +10,5 @@
           fliItemCtrl.share=fullCtrl.share;">
   </fli-item>
 </div>
+
+<fli-look-suggest class="fli-grid" ng-if="!fli.route.type && site.host"></fli-look-suggest>
