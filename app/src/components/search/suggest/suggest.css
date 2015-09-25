@@ -2,7 +2,7 @@ fli-search-suggest {
   display: block;
 }
 
-fli-search-suggest md-whiteframe {
+fli-search-suggest .block {
   margin-top: 15px;
 }
 
@@ -11,6 +11,6 @@ fli-search-suggest .result {
 }
 
 fli-search-suggest .result a {
-  margin: 5px;
+  margin: 7px;
   display: inline-block;
 }

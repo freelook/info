@@ -1,6 +1,6 @@
 <md-progress-linear md-mode="indeterminate" ng-if="fli.progress && !fli.focus"></md-progress-linear>
 
-<form name="form" class="md-whiteframe-z5" ng-submit="inpt.find(form)" layout="row">
+<form name="form" ng-submit="inpt.find(form)" layout="row">
 
   <md-button class="md-icon-button md-primary" aria-label="navigation" ng-href="{{inpt.href()}}" ng-click="go(inpt.href())">
     <i ng-if="fli.focus && !fli.route.input" class="fa fa-th-large"></i>
@@ -8,9 +8,11 @@
     <i ng-if="!fli.focus" class="fa fa-{{fli.icon || 'search'}}"></i>
   </md-button>
 
-  <input flex id="input" type="search" ng-focus="inpt.focus()" autocomplete="off"
-         ng-model="fli.route.input"
-         placeholder="{{inpt.placeholder | translate}}">
+  <md-input-container flex md-no-float>
+    <input flex id="input" type="search" ng-focus="inpt.focus()" autocomplete="off"
+           ng-model="fli.route.input"
+           placeholder="{{inpt.placeholder | translate}}">
+  </md-input-container>
 
   <md-button ng-if="fli.route.input && fli.focus" class="md-icon-button md-primary clear" aria-label="clear">
     <div ng-click="inpt.clear()">
@@ -20,6 +22,6 @@
 
 </form>
 
-<fli-input-menu ng-if="!!fli.focus"></fli-input-menu>
+<fli-input-menu ng-if="fli.focus"></fli-input-menu>
 
 

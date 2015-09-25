@@ -2,9 +2,13 @@ fli-footer {
   display: block;
 }
 
-footer {
-  display: block;
-  margin: 10px 0 5px;
+footer,
+fli-footer .block {
+  margin-top: 25px;
+}
+
+fli-footer .block {
+  border-top: 1px solid #cccccc;
 }
 
 footer .heart {

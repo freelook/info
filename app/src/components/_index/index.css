@@ -3,7 +3,7 @@ html, header, body, footer {
 }
 
 ng-view, ng-include, md-whiteframe, md-card, md-card-content, md-card-footer,
-md-tabs, md-tab, md-content, md-button, md-progress-linear {
+md-tabs, md-tab, md-content, md-button, md-progress-linear, header, footer {
   display: block;
 }
 
@@ -14,13 +14,20 @@ md-tabs, md-card, md-card-content, md-whiteframe {
 
 md-whiteframe {
   background: #ffffff;
-  padding: 5px;
-  margin: 5px;
+}
+
+md-whiteframe,
+.block {
+  padding: 7px;
+  margin: 7px;
 }
 
 .link {
   color: #1F00EF;
   cursor: pointer;
+}
+
+a, .link {
   outline: 0;
 }
 
@@ -39,45 +46,6 @@ md-whiteframe {
 .clearfix {
   clear: both;
 }
-
-/* Animation */
-
-@-webkit-keyframes fadeInDown {
-  0% {
-    -webkit-transform: translate3d(0, -100%, 0);
-    transform: translate3d(0, -100%, 0);
-  }
-
-  100% {
-    -webkit-transform: none;
-    transform: none;
-  }
-}
-
-@keyframes fadeInDown {
-  0% {
-    -webkit-transform: translate3d(0, -100%, 0);
-    transform: translate3d(0, -100%, 0);
-  }
-
-  100% {
-    -webkit-transform: none;
-    transform: none;
-  }
-}
-
-.animate .ng-enter {
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-
-.animate .ng-enter {
-  -webkit-animation-name: fadeInDown;
-  animation-name: fadeInDown;
-}
-
 
 
 

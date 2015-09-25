@@ -2,8 +2,8 @@ fli-input-menu {
   display: block;
 }
 
-fli-input-menu md-whiteframe,
-md-whiteframe.menu {
+.menu {
+  border-bottom: 1px #cccccc solid;
   color: #999999;
   cursor: pointer;
   height: 35px;
@@ -11,23 +11,20 @@ md-whiteframe.menu {
   outline: 0;
 }
 
-fli-input-menu md-whiteframe .fa,
 .menu .fa {
   margin: 10px 15px 0 17px;
 }
 
-fli-input-menu md-whiteframe span,
 .menu span {
   margin-top: 10px;
 }
 
-fli-input-menu md-whiteframe a,
 .menu a {
   text-decoration: none;
   outline: 0;
 }
 
-fli-input-menu .nav md-whiteframe {
+fli-input-menu .nav .menu {
   margin-bottom: 0;
 }
 

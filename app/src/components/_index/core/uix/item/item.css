@@ -7,10 +7,6 @@ fli-item {
   border: 1px solid #cccccc;
 }
 
-.fli-item a {
-  outline: none;
-}
-
 .fli-item .md-card-image,
 .fli-item .img {
   min-width: 100%;

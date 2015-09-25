@@ -3,20 +3,22 @@ fli-input {
 }
 
 fli-input form {
-  background: #fff;
+  /*background: #fff;*/
   margin: 5px;
   padding: 0;
 }
 
 fli-input input {
-  background: #fff;
-  height: 48px;
-  line-height: 48px;
+  height: 40px;
+  line-height: 40px;
   font-size: 16px;
   padding: 0;
-  border: 0;
-  border-radius: 0;
   outline: 0;
+  border-radius: 0;
+}
+
+fli-input md-input-container {
+  padding-bottom: 0;
 }
 
 fli-input .md-button.md-icon-button {

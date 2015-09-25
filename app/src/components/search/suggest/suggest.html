@@ -1,6 +1,6 @@
-<md-whiteframe class="md-whiteframe-z3" layout="column" ng-if="!!suggest.suggested.length">
+<div class="block" layout="column" ng-if="!!suggest.suggested.length">
   <div class="result">
     <a ng-repeat="item in suggest.suggested track by $index" ng-href="{{suggest.href(item)}}"
        ng-click="go(suggest.href(item))" ng-bind="item"></a>
   </div>
-</md-whiteframe>
+</div>
