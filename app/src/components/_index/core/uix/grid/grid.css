@@ -10,7 +10,7 @@
   column-fill: auto;
 }
 
-.fli-grid > * {
+.fli-grid .fli-item {
   -webkit-column-break-inside: avoid;
   -moz-column-break-inside: avoid;
   column-break-inside: avoid;
