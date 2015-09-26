@@ -1,0 +1,7 @@
+fli-setting {
+  display: block;
+}
+
+#setting fli-setting {
+  margin-top: 25px;
+}

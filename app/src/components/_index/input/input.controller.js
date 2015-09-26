@@ -3,7 +3,7 @@
 angular
   .module('freelook.info')
   .controller('input.ctrl',
-  function ($scope, $mdBottomSheet, $location, url, locale, PLACEHOLDER) {
+  function ($scope, $location, url, locale, PLACEHOLDER) {
 
     var vm = this;
     vm.placeholder = PLACEHOLDER;
@@ -35,6 +35,10 @@ angular
       }
       vm.icon = 'th-large';
       return '/';
+    };
+
+    vm.setting = function () {
+      $scope.fli.view = 'components/_index/core/uix/setting/setting.view.html';
     };
 
     vm.focus = function () {

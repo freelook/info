@@ -3,7 +3,7 @@
   <div ng-include="'components/look/menu/menu.html'"></div>
 </header>
 
-<div id="look" flex layout="column" ng-hide="fli.focus">
+<div id="look" flex layout="column" ng-hide="!!fli.focus">
 
   <fli-look-tabs ng-if="!fli.route.type"></fli-look-tabs>
   <fli-look-content class="animate" flex layout="column"></fli-look-content>

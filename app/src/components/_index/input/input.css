@@ -34,11 +34,8 @@ fli-input md-progress-linear[md-mode="indeterminate"] {
   position: absolute;
 }
 
-fli-input .clear {
+fli-input .clear,
+fli-input .setting {
   position: absolute;
   right: 5px;
-}
-
-fli-input .clear i {
-  font-size: 1.2em;
 }

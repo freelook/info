@@ -19,6 +19,12 @@
     </div>
   </md-button>
 
+  <md-button ng-if="!fli.focus" class="md-icon-button md-primary setting" aria-label="setting">
+    <div ng-click="inpt.setting()">
+      <i class="fa fa-cog"></i>
+    </div>
+  </md-button>
+
 </form>
 
 <fli-input-menu ng-if="fli.focus"></fli-input-menu>
