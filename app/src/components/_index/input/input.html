@@ -1,5 +1,3 @@
-<md-progress-linear md-mode="indeterminate" ng-if="fli.progress && !fli.focus"></md-progress-linear>
-
 <form name="form" ng-submit="inpt.find(form)" layout="row">
 
   <md-button class="md-icon-button link" aria-label="navigation">
@@ -12,6 +10,7 @@
     <input flex id="input" type="search" ng-focus="inpt.focus()" autocomplete="off"
            ng-model="fli.route.input"
            placeholder="{{inpt.placeholder | translate}}">
+    <md-progress-linear md-mode="indeterminate" ng-if="fli.progress && !fli.focus"></md-progress-linear>
   </md-input-container>
 
   <md-button ng-if="fli.route.input && fli.focus" class="md-icon-button md-primary clear" aria-label="clear">
