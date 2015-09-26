@@ -2,20 +2,26 @@
 angular
   .module('freelook.info')
   .directive('fliHref', function ($rootScope, platform) {
-    return function (scope, el, attr) {
+    return function (scope, el, attrs) {
 
       var handlers = {
         site: function () {
-          $(el).attr('href', attr.fliHref);
+          $(el).attr('href', attrs.fliHref);
         },
         chrome: function () {
-          $(el).attr('href', attr.fliHref).on('click', function () {
-            $rootScope.go(attr.fliHref);
+          $(el).attr('href', attrs.fliHref).on('click', function () {
+            $rootScope.go(attrs.fliHref);
           });
         }
-      };
+      }, handler = handlers[platform.name()];
 
-      handlers[platform.name()]();
+      function init() {
+        handler();
+      }
+
+      attrs.$observe('fliHref', function () {
+        init();
+      });
 
     };
   });

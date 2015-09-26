@@ -3,12 +3,13 @@
           url:item.url,
           img:item.img,
           title:item.input,
-          input:item.input
+          input:item.input,
+          transclude:'footer'
           };
           fliItemCtrl.href=widget.href;
           fliItemCtrl.search=widget.search;">
 
-  <div class="link" ng-click="looks.clearItem(item)" title="Clear it">
+  <div class="clear link" ng-click="looks.clearItem(item)" title="Clear it">
     <i class="fa fa-close"></i>
   </div>
 

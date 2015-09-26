@@ -11,7 +11,7 @@
       <img class="md-card-image" ng-if="!!item.offer.bigPhoto.url" ng-src="{{item.offer.bigPhoto.url}}" title="{{'Look it - '+ item.offer.name}}" alt="{{item.offer.name}}" fli-item-img fli-err>
       <div class="md-card-image header" ng-if="!item.offer.bigPhoto.url" title="{{'Look it - '+ item.offer.name}}"></div>
     </div>
-    <div class="body">
+    <div class="block">
       <div ng-click="link(item.offer.url)" class="link underline" ng-bind-html="item.offer.name"></div>
       <div class="info" ng-if="item.offer.shopInfo">
         <div ng-click="link(item.offer.url)" class="shopName link" ng-bind-html="item.offer.shopInfo.name"></div>

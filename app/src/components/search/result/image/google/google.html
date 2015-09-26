@@ -3,10 +3,14 @@
           url:item.originalContextUrl,
           img:item.url,
           title:item.title,
-          content: item.content,
-          file: item.url
+          content:item.content,
+          transclude:'footer'
           };
           fliItemCtrl.href=result.href;
           fliItemCtrl.share=result.share;">
+
+  <div class="link" ng-click="link(item.url)" title="{{'index.core.uix.item.getIt' | translate}}">
+    <i class="fa fa-file-image-o"></i>
+  </div>
 
 </fli-item>

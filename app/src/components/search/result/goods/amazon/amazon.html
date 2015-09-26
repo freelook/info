@@ -4,7 +4,7 @@
       <img class="md-card-image" ng-if="!!item.MediumImage[0].URL[0]" ng-src="{{item.MediumImage[0].URL[0]}}" title="{{'Look it - '+ item.ItemAttributes[0].Title[0]}}" alt="{{item.ItemAttributes[0].Title[0]}}" fli-item-img fli-err>
       <div class="md-card-image header" ng-if="!item.MediumImage[0].URL[0]" title="{{'Look it - '+ item.ItemAttributes[0].Title[0]}}"></div>
     </div>
-    <div class="body">
+    <div class="block">
       <div ng-click="link(decode(item.DetailPageURL[0]))" class="link underline" ng-bind-html="item.ItemAttributes[0].Title[0]"></div>
     </div>
   </md-card-content>

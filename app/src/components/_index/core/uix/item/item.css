@@ -39,10 +39,6 @@ fli-item {
   margin-top: 7px;
 }
 
-.fli-item .body {
-  margin: 5px;
-}
-
 .fli-item md-card-content,
 .fli-item md-card-footer {
   padding: 0;
@@ -52,8 +48,7 @@ fli-item {
   margin: 5px 10px 5px 10px;
 }
 
-.fli-item.no-fill.md-whiteframe-z1 {
-  background: #ebebeb;
+.fli-item.no-fill {
   border: none;
-  box-shadow: none;
+  background: transparent;
 }

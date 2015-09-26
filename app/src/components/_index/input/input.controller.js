@@ -7,6 +7,7 @@ angular
 
     var vm = this;
     vm.placeholder = PLACEHOLDER;
+    vm.icon = $scope.fli.icon;
     $scope.fli.focus = 0;
 
     vm.find = function () {
@@ -25,11 +26,14 @@ angular
 
     vm.href = function () {
       if (!$scope.fli.focus) {
+        vm.icon = $scope.fli.icon;
         return url.href($location.url().slice(1));
       }
       if ($scope.fli.route.input) {
+        vm.icon = 'search';
         return url.href('search?', {l: locale.getCode(), input: $scope.fli.route.input}, true);
       }
+      vm.icon = 'th-large';
       return '/';
     };
 

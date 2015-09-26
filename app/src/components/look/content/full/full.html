@@ -1,13 +1,17 @@
 <div ng-if="!!fullCtrl.html">
-  <fli-item ng-init="fliItem = {
+  <fli-item class="full" ng-init="fliItem = {
           small: 1,
           url: fli.route.url,
           img:fli.route.img,
-          title:fli.route.input,
-          compile:fullCtrl.html
+          title:fli.route.input
           };
           fliItemCtrl.href=content.href;
           fliItemCtrl.share=fullCtrl.share;">
+
+    <div class="block">
+      <div class="clearfix" fli-bind-compile="fullCtrl.html"></div>
+    </div>
+
   </fli-item>
 </div>
 
