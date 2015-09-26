@@ -1,11 +1,11 @@
 <md-card class="md-whiteframe-z1 fli-item" ng-class="{small:!!fliItem.small}" layout="column" ng-if="fliItem">
   <md-card-content>
-    <a ng-href="{{fliItemCtrl.href(fliItem)}}" ng-click="go(fliItemCtrl.href(fliItem))" class="img">
+    <a fli-href="{{fliItemCtrl.href(fliItem)}}" class="img">
       <img class="md-card-image" ng-if="fliItem.img" ng-src="{{fliItem.img}}" title="{{'index.core.uix.item.lookIt' | translate:{v:fliItem.title || 'FLI'} }}" alt="{{fliItem.title}}" fli-item-img fli-err>
       <div class="md-card-image header" ng-if="!fliItem.img" title="{{'index.core.uix.item.lookIt' | translate:{v:fliItem.title} }}"></div>
     </a>
     <div class="body">
-      <a class="title" ng-if="fliItem.title" ng-href="{{fliItemCtrl.href(fliItem)}}" ng-click="go(fliItemCtrl.href(fliItem))" ng-bind-html="fliItem.title"></a>
+      <a class="title" ng-if="fliItem.title" fli-href="{{fliItemCtrl.href(fliItem)}}" ng-bind-html="fliItem.title"></a>
       <div class="clearfix" ng-if="fliItem.content" ng-bind-html="fliItem.content"></div>
       <div class="clearfix" ng-if="fliItem.compile" fli-bind-compile="fliItem.compile"></div>
     </div>
@@ -13,7 +13,7 @@
   </md-card-content>
   <md-card-footer layout="row" layout-align="end center">
     <div class="link" ng-if="fliItemCtrl.search && fliItem.input" title="{{'index.core.uix.item.search' | translate:{v:fliItem.input} }}">
-      <span>#</span> <a ng-href="{{fliItemCtrl.search(fliItem.input)}}" ng-click="go(fliItemCtrl.search(fliItem.input))"><span ng-bind="fliItem.input"></span></a>
+      <span>#</span> <a fli-href="{{fliItemCtrl.search(fliItem.input)}}"><span ng-bind="fliItem.input"></span></a>
     </div>
     <div class="link" ng-if="fliItem.file" ng-click="link(fliItem.file)" title="{{'index.core.uix.item.getIt' | translate}}">
       <i class="fa fa-file-image-o"></i>

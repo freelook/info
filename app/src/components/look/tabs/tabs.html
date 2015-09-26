@@ -1,5 +1,5 @@
 <md-tabs md-selected="tabs.selected" md-no-bar="true" md-autoselect="false">
-  <md-tab md-on-select="tabs.go({type: null})"><a ng-href="{{tabs.href(null)}}" translate="look.tabs.short"></a></md-tab>
-  <md-tab ng-if="fli.platform === 'site'" md-on-select="tabs.go({type: 'full'}, true)"><a ng-href="{{tabs.href('full')}}" onclick="return false;" translate="look.tabs.full"></a></md-tab>
-  <md-tab ng-if="fli.platform === 'chrome'" md-on-select="tabs.go({type: 'full'})"><a ng-href="{{tabs.href('full')}}" translate="look.tabs.full"></a></md-tab>
+  <md-tab md-on-select="tabs.go({type: null})"><a fli-href="{{tabs.href(null)}}" translate="look.tabs.short"></a></md-tab>
+  <md-tab ng-if="fli.platform === 'site'" md-on-select="tabs.go({type: 'full'}, true)"><a fli-href="{{tabs.href('full')}}" onclick="return false;" translate="look.tabs.full"></a></md-tab>
+  <md-tab ng-if="fli.platform === 'chrome'" md-on-select="tabs.go({type: 'full'})"><a fli-href="{{tabs.href('full')}}" translate="look.tabs.full"></a></md-tab>
 </md-tabs>

@@ -2,11 +2,11 @@
 
 <form name="form" ng-submit="inpt.find(form)" layout="row">
 
-  <md-button class="md-icon-button md-primary" aria-label="navigation" ng-href="{{inpt.href()}}" ng-click="go(inpt.href())">
+  <a class="md-icon-button md-primary md-button" aria-label="navigation" fli-href="{{inpt.href()}}">
     <i ng-if="fli.focus && !fli.route.input" class="fa fa-th-large"></i>
     <i ng-if="fli.focus && fli.route.input" class="fa fa-search"></i>
     <i ng-if="!fli.focus" class="fa fa-{{fli.icon || 'search'}}"></i>
-  </md-button>
+  </a>
 
   <md-input-container flex md-no-float>
     <input flex id="input" type="search" ng-focus="inpt.focus()" autocomplete="off"

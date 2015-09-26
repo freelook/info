@@ -18,7 +18,7 @@
         <div>
           <span ng-bind="item.duration | duration:'sec'" class="duration"></span>
         <span class="link" ng-click="$event.stopPropagation()">
-          <a ng-href="{{item.src}}" download="{{item.artist + ' - ' + item.title}}" target="_blank">
+          <a fli-href="{{item.src}}" download="{{item.artist + ' - ' + item.title}}" target="_blank">
             <i class="fa fa-download"></i>
           </a>
         </span>

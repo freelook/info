@@ -20,7 +20,7 @@
 </div>
 
 <div class="menu block" layout="row" ng-repeat="item in menu" ng-if="item.href !== menuCtrl.path">
-  <a flex ng-href="{{item.href}}" ng-click="go(item.href)">
+  <a flex fli-href="{{item.href}}">
     <i class="fa fa-{{item.icon}}"></i>
     <span ng-bind="item.name | translate"></span>
   </a>

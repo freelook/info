@@ -1,10 +1,10 @@
 <md-button class="md-icon-button link" ng-click="go({sub:null})" aria-label="a" title="amazon">
-  <a ng-class="{active:!fli.route.sub}" ng-href="{{sub.href(null)}}">
+  <a ng-class="{active:!fli.route.sub}" fli-href="{{sub.href(null)}}">
     <i class="fa">A</i>
   </a>
 </md-button>
 <md-button class="md-icon-button link" ng-click="go({sub:'ya'})" aria-label="ya" title="yandex">
-  <a ng-class="{active:fli.route.sub==='ya'}" ng-href="{{sub.href('ya')}}">
+  <a ng-class="{active:fli.route.sub==='ya'}" fli-href="{{sub.href('ya')}}">
     <i class="fa">Y</i>
   </a>
 </md-button>
