@@ -27,9 +27,7 @@
 }
 
 #readInner img {
-  float: left;
-  margin-right: 12px;
-  margin-bottom: 12px;
+  margin: 13px;
   max-width: 100%;
 }
 
