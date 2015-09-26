@@ -14,13 +14,13 @@
   </md-input-container>
 
   <md-button ng-if="fli.route.input && fli.focus" class="md-icon-button md-primary clear" aria-label="clear">
-    <div ng-click="inpt.clear()">
+    <div class="link" ng-click="inpt.clear()">
       <i class="fa fa-close"></i>
     </div>
   </md-button>
 
   <md-button ng-if="!fli.focus" class="md-icon-button md-primary setting" aria-label="setting">
-    <div ng-click="inpt.setting()">
+    <div class="link" ng-click="inpt.setting()">
       <i class="fa fa-cog"></i>
     </div>
   </md-button>
