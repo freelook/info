@@ -47,6 +47,16 @@ a, .link {
   clear: both;
 }
 
+/*config for small devices*/
+@media (max-width: 500px) {
+  md-tabs {
+    padding-left: 13px;
+  }
+}
+
+
+
+
 
 
 
