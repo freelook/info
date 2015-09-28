@@ -3,11 +3,9 @@ angular
   .module('fli.search')
   .directive('fliSubHideOnScroll',
   function ($window, $timeout, $mdMedia) {
-    return function (scope, el) {
+    return function (scope, element) {
 
-      var element = $(el),
-        sub = $('#sub'),
-        top = sub.offset().top + sub.height(),
+      var top = 300,
         timeout = null,
         document = $($window.document);
 
