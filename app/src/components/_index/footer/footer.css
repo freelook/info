@@ -2,9 +2,8 @@ fli-footer {
   display: block;
 }
 
-footer,
-fli-footer .block {
-  margin-top: 25px;
+footer {
+  padding-top: 30px;
 }
 
 fli-footer .block {

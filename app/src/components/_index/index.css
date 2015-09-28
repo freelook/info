@@ -23,7 +23,7 @@ md-whiteframe,
 }
 
 .link {
-  color: #1F00EF;
+  color: #1f00ef;
   cursor: pointer;
 }
 
@@ -45,6 +45,11 @@ a, .link {
 
 .clearfix {
   clear: both;
+}
+
+a.active {
+  color: #888888;
+  text-shadow: 3px 3px 13px #888888;
 }
 
 /*config for small devices*/

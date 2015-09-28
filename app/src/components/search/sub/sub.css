@@ -2,8 +2,3 @@ fli-search-sub {
   margin: 0;
   display: block;
 }
-
-fli-search-sub a.active {
-  color: #888888;
-  text-shadow: 3px 3px 13px #888888;
-}

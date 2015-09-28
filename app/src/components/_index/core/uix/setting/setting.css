@@ -5,3 +5,9 @@ fli-setting {
 #setting fli-setting {
   margin-top: 25px;
 }
+
+#setting .block .title {
+  padding-bottom: 7px;
+  border-bottom: 1px solid #cccccc;
+  color: #999999;
+}
