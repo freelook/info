@@ -39,7 +39,3 @@ fli-input .setting {
   position: absolute;
   right: 5px;
 }
-
-fli-input fli-input-menu {
-  min-height: 80vh;
-}
