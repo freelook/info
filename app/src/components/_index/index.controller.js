@@ -57,7 +57,8 @@
     .constant('I18N', {
       DEFAULT_TITLE: 'index.title',
       DEFAULT_DESCRIPTION: 'index.description',
-      CUSTOM_DESCRIPTION: 'index.customDescription'
+      CUSTOM_DESCRIPTION: 'index.customDescription',
+      FLI_POSTFIX: 'index.fliPostfix'
     });
 
 }());

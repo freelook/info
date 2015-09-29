@@ -19,7 +19,7 @@ angular
 
     $rootScope.fli.route = $routeParams || {};
     $rootScope.fli.media = $mdMedia;
-    $rootScope.fli.title = !$routeParams.input ? $translate.instant(I18N.DEFAULT_TITLE) : decodeURIComponent($routeParams.input) + ' - FLI';
+    $rootScope.fli.title = !$routeParams.input ? $translate.instant(I18N.DEFAULT_TITLE) : decodeURIComponent($routeParams.input) + $translate.instant(I18N.FLI_POSTFIX);
     $rootScope.fli.description = !$routeParams.input ? $translate.instant(I18N.DEFAULT_DESCRIPTION) : $translate.instant(I18N.CUSTOM_DESCRIPTION) + decodeURIComponent($routeParams.input);
     $rootScope.fli.icon = 'eye';
     $rootScope.fli.view = '';

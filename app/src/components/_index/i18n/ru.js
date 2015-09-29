@@ -2,6 +2,7 @@ window.i18n.ru.index = {
   title: 'FLI - свободный взгляд на информацию',
   description: 'Твой персональный информационный фильтр',
   customDescription: 'FLI - свободный взгляд на ',
+  fliPostfix: ' | FLI',
   input: {
     placeholder: 'Введи и смотри',
     menu: {
@@ -19,7 +20,7 @@ window.i18n.ru.index = {
   core: {
     uix: {
       item: {
-        lookIt : 'Смотреть - {{v}}',
+        lookIt: 'Смотреть - {{v}}',
         search: 'Искать - {{v}}',
         share: 'Расшарить - {{v}}',
         goTo: 'Перейти - {{v}}',
