@@ -1,6 +1,6 @@
 window.i18n.en.index = {
   title: 'FLI - free look at information',
-  description: 'Your personal information manager',
+  description: 'Your personal information filter',
   customDescription: 'FLI - free look at ',
   context: '',
   input: {
