@@ -1,5 +1,6 @@
-<fli-item ng-repeat="item in google.search.results"
-          ng-init="fliItem = {
+<div ng-if="fli.route.input">
+  <fli-item ng-repeat="item in google.search.results"
+            ng-init="fliItem = {
           url:item.url,
           img:item.richSnippet.cseImage.src,
           title:item.titleNoFormatting,
@@ -8,4 +9,7 @@
           fliItemCtrl.href=result.href;
           fliItemCtrl.share=result.share;">
 
-</fli-item>
+  </fli-item>
+</div>
+
+<fli-search-result-web-google-trends ng-if="!fli.route.input"></fli-search-result-web-google-trends>

@@ -1,14 +1,16 @@
 'use strict';
 
 angular
-  .module('fli.home')
-  .controller('home.widget.trends.ctrl',
+  .module('fli.search')
+  .controller('search.result.web.google.trends.ctrl',
   function (hotTrends, item) {
 
     var vm = this,
       initCount = 3;
     vm.items = [];
     vm.share = item.share;
+    vm.share = item.href;
+    vm.share = item.search;
 
     function retry() {
       if (initCount > 0) {

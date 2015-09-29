@@ -1,6 +1,6 @@
 'use strict';
 angular
-  .module('fli.home')
+  .module('fli.search')
   .factory('hotTrends',
   function ($rootScope, $q, $cacheFactory, api, locale, parser, prerender, platform) {
 
