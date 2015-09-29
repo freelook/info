@@ -1,6 +1,6 @@
 'use strict';
 angular
-  .module('fli.search')
+  .module('freelook.info')
   .directive('fliSubHideOnScroll',
   function ($window, $timeout, $mdMedia) {
     return function (scope, element) {

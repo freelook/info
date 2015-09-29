@@ -6,10 +6,6 @@ fli-home-tabs md-ink-bar {
   display: none;
 }
 
-fli-home-tabs .md-tab {
-  padding: 12px 15px;
-}
-
 fli-home-tabs .md-tab a {
   text-decoration: none;
 }

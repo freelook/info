@@ -38,7 +38,10 @@ angular
     };
 
     vm.setting = function () {
-      $scope.fli.view = 'components/_index/core/uix/setting/setting.view.html';
+      if (!$scope.fli.view) {
+        return $scope.fli.view = 'components/_index/core/uix/setting/setting.view.html';
+      }
+      return $scope.fli.view = '';
     };
 
     vm.focus = function () {

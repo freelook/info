@@ -54,8 +54,12 @@ a.active {
 
 /*config for small devices*/
 @media (max-width: 500px) {
-  md-tabs {
-    padding-left: 13px;
+  md-tabs md-prev-button {
+    padding-left: 20px;
+  }
+
+  md-tabs md-next-button {
+    padding-right: 20px;
   }
 }
 
