@@ -30,7 +30,7 @@ fli-input .md-button.md-icon-button i {
 }
 
 fli-input #progress {
-  bottom: 1px;
+  bottom: -3px;
   position: absolute;
 }
 

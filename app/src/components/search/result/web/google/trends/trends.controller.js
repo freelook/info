@@ -9,8 +9,8 @@ angular
       initCount = 3;
     vm.items = [];
     vm.share = item.share;
-    vm.share = item.href;
-    vm.share = item.search;
+    vm.href = item.href;
+    vm.search = item.search;
 
     function retry() {
       if (initCount > 0) {
