@@ -18,12 +18,16 @@ angular
             });
         },
         chrome: function (defer) {
+          $rootScope.fli.progress = true;
           prerender.local(tapi)
             .then(function (html) {
               return defer.resolve(_htmlToTrends(html));
             })
             .catch(function (trends) {
               return defer.reject(trends);
+            })
+            .finally(function () {
+              $rootScope.fli.progress = true;
             });
         }
       };
