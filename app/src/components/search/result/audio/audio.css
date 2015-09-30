@@ -2,24 +2,34 @@ fli-search-result-audio {
   display: block;
 }
 
-fli-search-result-audio .audio-control {
-  margin: 0;
-  position: relative;
-}
-
+fli-search-result-audio .audio-control,
 fli-search-result-audio .audio-control .md-icon-button {
   margin: 0;
 }
 
 fli-search-result-audio .audio-control .title {
   font-size: 12px;
-  margin: 10px;
+  margin-left: 15px;
+  overflow: hidden;
 }
 
 fli-search-result-audio .active {
   background: #dfdfdf;
 }
 
-fli-search-result-audio md-card {
+fli-search-result-audio .player {
+  margin-right: 10px;
+}
+
+fli-search-result-audio md-card,
+fli-search-result-audio #duration {
   outline: 0;
+}
+
+fli-search-result-audio #duration {
+  margin-top: 15px;
+}
+
+fli-search-result-audio #duration .md-container {
+  height: 1px;
 }

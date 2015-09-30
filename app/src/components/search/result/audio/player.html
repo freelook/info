@@ -1,14 +1,31 @@
-<div>
-  <md-button class="md-icon-button md-primary" ng-click="mediaPlayer.prev()" aria-label="prev">
-    <i class="fa fa-backward"></i>
-  </md-button>
-  <md-button class="md-icon-button md-primary" ng-click="mediaPlayer.playPause()" aria-label="play">
-    <i class="fa" ng-class="{ 'fa-pause': mediaPlayer.playing, 'fa-play': !mediaPlayer.playing }"></i>
-  </md-button>
-  <md-button class="md-icon-button md-primary" ng-click="mediaPlayer.next()" aria-label="next">
-    <i class="fa fa-forward"></i>
-  </md-button>
+<div layout="row" layout-sm="column" layout-align="start center">
+  <div>
+    <md-button class="md-icon-button md-primary" ng-click="mediaPlayer.prev()" aria-label="prev">
+      <i class="fa fa-backward"></i>
+    </md-button>
+    <md-button class="md-icon-button md-primary" ng-click="mediaPlayer.playPause()" aria-label="play">
+      <i class="fa" ng-class="{ 'fa-pause': mediaPlayer.playing, 'fa-play': !mediaPlayer.playing }"></i>
+    </md-button>
+    <md-button class="md-icon-button md-primary" ng-click="mediaPlayer.next()" aria-label="next">
+      <i class="fa fa-forward"></i>
+    </md-button>
+  </div>
+
+  <div flex ng-show="mediaPlayer.playing" class="title">
+    <span ng-bind-html="audio.getTitle(mediaPlayer.currentTrack - 1)"></span>
+  </div>
 </div>
-<div flex ng-show="mediaPlayer.playing" class="title">
-  <span ng-bind-html="audio.getTitle(mediaPlayer.currentTrack - 1)"></span>
+
+<div ng-show="mediaPlayer.playing" layout="row" layout-align="start center">
+  <div flex>
+    <md-progress-linear flex id="duration"
+                        ng-click="mediaPlayer.seek(mediaPlayer.duration * audio.seekPercentage($event))"
+                        md-mode="determinate"
+                        value="{{mediaPlayer.currentTime*100/mediaPlayer.duration}}">
+
+    </md-progress-linear>
+  </div>
+  <div class="title" ng-show="mediaPlayer.formatTime">
+    <span ng-bind="mediaPlayer.formatTime"></span>
+  </div>
 </div>

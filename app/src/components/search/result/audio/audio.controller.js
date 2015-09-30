@@ -13,6 +13,14 @@ angular
       return song ? song.artist + ' - ' + song.title : '';
     };
 
+    vm.seekPercentage = function ($event) {
+      var percentage = $event.offsetX / $event.target.offsetWidth;
+      if (percentage <= 1) {
+        return percentage;
+      }
+      return 0;
+    };
+
     function setResult(audio) {
       var results = audio.response || [];
       vm.results = angular.copy(results).splice(1).map(function (song) {
