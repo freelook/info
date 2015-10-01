@@ -1,10 +1,4 @@
 .fli-grid {
-  -webkit-column-count: 1;
-  -webkit-column-gap: 7px;
-  -webkit-column-fill: auto;
-  -moz-column-count: 1;
-  -moz-column-gap: 7px;
-  -moz-column-fill: auto;
   column-count: 1;
   column-gap: 7px;
   column-fill: auto;

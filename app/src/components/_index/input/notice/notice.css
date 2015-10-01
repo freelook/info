@@ -1,0 +1,13 @@
+fli-input-notice {
+  display: block;
+}
+
+fli-input-notice .notice {
+  margin: 5px;
+}
+
+fli-input-notice .notice .item {
+  padding: 7px;
+  margin-top: 10px;
+  border-bottom: 1px solid #cccccc;
+}

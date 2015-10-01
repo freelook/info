@@ -11,6 +11,9 @@ window.i18n.en.index = {
       hide: 'Hide',
       forward: 'Forward',
       home: 'Home'
+    },
+    note: {
+      chrome: 'Use all features and speed up the work. Try the application?'
     }
   },
   footer: {

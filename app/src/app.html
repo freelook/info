@@ -16,7 +16,7 @@
 
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="apple-touch-icon" type="image/png" href="/assets/images/icon.png">
-
+  <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/jlpjaecnenjbpkbcpnocbeibjokkbnhj">
   <link ng-repeat="locale in fli.locales" rel="alternate" href="{{href(locale.code)}}" hreflang="{{locale.code}}">
 
   <!-- build:css({.tmp,src}) styles/fli.css-->
@@ -37,13 +37,14 @@
   <link rel="stylesheet" href="components/home/tabs/tabs.css">
   <link rel="stylesheet" href="components/home/widget/widget.css">
   <link rel="stylesheet" href="components/look/content/content.css">
-  <link rel="stylesheet" href="components/look/suggest/suggest.css">
   <link rel="stylesheet" href="components/look/tabs/tabs.css">
+  <link rel="stylesheet" href="components/look/suggest/suggest.css">
   <link rel="stylesheet" href="components/search/result/result.css">
   <link rel="stylesheet" href="components/search/sub/sub.css">
   <link rel="stylesheet" href="components/search/suggest/suggest.css">
   <link rel="stylesheet" href="components/search/tabs/tabs.css">
   <link rel="stylesheet" href="components/_index/input/menu/menu.css">
+  <link rel="stylesheet" href="components/_index/input/notice/notice.css">
   <link rel="stylesheet" href="components/home/widget/looks/looks.css">
   <link rel="stylesheet" href="components/home/widget/news/news.css">
   <link rel="stylesheet" href="components/home/widget/trends/trends.css">
@@ -156,10 +157,10 @@
 <script src="components/look/content/content.factory.js"></script>
 <script src="components/look/i18n/en.js"></script>
 <script src="components/look/i18n/ru.js"></script>
-<script src="components/look/suggest/suggest.controller.js"></script>
-<script src="components/look/suggest/suggest.directive.js"></script>
 <script src="components/look/tabs/tabs.controller.js"></script>
 <script src="components/look/tabs/tabs.directive.js"></script>
+<script src="components/look/suggest/suggest.controller.js"></script>
+<script src="components/look/suggest/suggest.directive.js"></script>
 <script src="components/search/i18n/en.js"></script>
 <script src="components/search/i18n/ru.js"></script>
 <script src="components/search/result/result.controller.js"></script>
@@ -183,6 +184,10 @@
 <script src="components/_index/core/utils/hide-on-scroll.directive.js"></script>
 <script src="components/_index/input/menu/menu.controller.js"></script>
 <script src="components/_index/input/menu/menu.directive.js"></script>
+<script src="components/_index/input/notice/notice.controller.js"></script>
+<script src="components/_index/input/notice/notice.directive.js"></script>
+<script src="components/_index/input/notice/notice.factory.js"></script>
+<script src="components/_index/input/notice/notices.factory.js"></script>
 <script src="components/home/widget/looks/looks.controller.js"></script>
 <script src="components/home/widget/looks/looks.directive.js"></script>
 <script src="components/home/widget/news/news.directive.js"></script>
