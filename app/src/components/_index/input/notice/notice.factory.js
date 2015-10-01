@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('notice', function ($rootScope, notices) {
+  .factory('notice', function ($rootScope, notices, local) {
 
     var notice, counter;
 
@@ -13,6 +13,11 @@ angular
     }
 
     function check() {
+      if (!local.get('notice', true)) {
+        _init();
+        return notice;
+      }
+
       var _notice = notice;
       if (_notice) {
         _init();

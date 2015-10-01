@@ -1,8 +1,9 @@
-<div class="block">
-
-  <div class="title">Locale</div>
-
+<div class="block margin">
+  <div class="title" translate="index.core.uix.setting.locale"></div>
   <fli-locale-panel></fli-locale-panel>
-
 </div>
 
+<div class="block" layout="row">
+  <md-switch class="md-primary" ng-model="setting.notice" aria-label="switch notice" ng-change="setting.toggleNotice()"></md-switch>
+  <div flex class="title" translate="index.core.uix.setting.notice"></div>
+</div>

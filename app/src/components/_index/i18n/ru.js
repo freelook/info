@@ -28,6 +28,10 @@ window.i18n.ru.index = {
         share: 'Расшарить - {{v}}',
         goTo: 'Перейти - {{v}}',
         getIt: 'Получить файл'
+      },
+      setting: {
+        locale: 'Локаль',
+        notice: 'Извещение'
       }
     }
   }

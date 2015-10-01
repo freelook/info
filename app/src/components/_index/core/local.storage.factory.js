@@ -31,7 +31,7 @@ angular
         console.log('Couldn\'t get ' + key);
       }
 
-      return !!localStorageValue ? localStorageValue : defaultValue || '';
+      return localStorageValue !== null ? localStorageValue : defaultValue || '';
     }
 
     function set(key, value) {

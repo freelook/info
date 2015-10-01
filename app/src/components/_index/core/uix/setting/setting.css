@@ -6,8 +6,16 @@ fli-setting {
   margin-top: 25px;
 }
 
+#setting .margin {
+  margin-left: 45px;
+}
+
 #setting .block .title {
   padding-bottom: 7px;
   border-bottom: 1px solid #cccccc;
   color: #999999;
+}
+
+#setting md-switch {
+  margin: 0;
 }

@@ -29,6 +29,10 @@ window.i18n.en.index = {
         share: 'Share - {{v}}',
         goTo: 'Go to - {{v}}',
         getIt: 'Get file'
+      },
+      setting: {
+        locale: 'Locale',
+        notice: 'Notice'
       }
     }
   }
