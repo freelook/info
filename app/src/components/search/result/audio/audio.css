@@ -27,7 +27,8 @@ fli-search-result-audio #duration {
 }
 
 fli-search-result-audio #duration {
-  margin-top: 15px;
+  margin-top: 20px;
+  height: 20px;
 }
 
 fli-search-result-audio #duration .md-container {
