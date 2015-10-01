@@ -1,14 +1,11 @@
-<md-card>
-  <md-card-content layout="column">
-    <iframe ng-if="fli.platform==='site'" layout-fill
-            ng-src="{{watch()}}"
-            frameborder="0"
-            height="400"
-            allowfullscreen>
-    </iframe>
-    <webview ng-if="fli.platform==='chrome'" layout-fill
-             src="{{watch()}}"
-             web-view>
-    </webview>
-  </md-card-content>
-</md-card>
+<md-whiteframe class="md-whiteframe-z1" layout="column">
+  <iframe ng-if="fli.platform==='site'"
+          ng-src="{{watch()}}"
+          frameborder="0"
+          allowfullscreen>
+  </iframe>
+  <webview ng-if="fli.platform==='chrome'"
+           src="{{watch()}}">
+  </webview>
+</md-whiteframe>
+
