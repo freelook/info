@@ -10,7 +10,7 @@ angular
     }
 
     CustomStorage.prototype.getItem = function (key) {
-      return this.data[key];
+      return this.data[key] || null;
     };
 
     CustomStorage.prototype.setItem = function (key, value) {
@@ -24,9 +24,11 @@ angular
     }
 
     function get(key, defaultValue) {
-      var localStorageValue = '';
+      var localStorageValue = localStorage.getItem(key) || null;
       try {
-        localStorageValue = $window.JSON.parse(localStorage.getItem(key));
+        if (localStorageValue) {
+          localStorageValue = $window.JSON.parse(localStorageValue);
+        }
       } catch (e) {
         console.log('Couldn\'t get ' + key);
       }
