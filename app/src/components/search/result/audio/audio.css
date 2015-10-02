@@ -2,6 +2,10 @@ fli-search-result-audio {
   display: block;
 }
 
+fli-search-result-audio audio {
+  display: none;
+}
+
 fli-search-result-audio .audio-control,
 fli-search-result-audio .audio-control .md-icon-button {
   margin: 0;
@@ -27,8 +31,8 @@ fli-search-result-audio #duration {
 }
 
 fli-search-result-audio #duration {
-  margin-top: 20px;
-  height: 20px;
+  margin-top: 15px;
+  height: 15px;
 }
 
 fli-search-result-audio #duration .md-container {

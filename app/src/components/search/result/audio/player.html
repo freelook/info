@@ -17,9 +17,8 @@
 </div>
 
 <div ng-show="mediaPlayer.playing" layout="row" layout-align="start center">
-  <div flex>
+  <div flex class="link" ng-click="mediaPlayer.seek(mediaPlayer.duration * audio.seekPercentage($event))">
     <md-progress-linear flex id="duration"
-                        ng-click="mediaPlayer.seek(mediaPlayer.duration * audio.seekPercentage($event))"
                         md-mode="determinate"
                         value="{{mediaPlayer.currentTime*100/mediaPlayer.duration}}">
 
