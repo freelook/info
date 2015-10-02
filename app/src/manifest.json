@@ -29,8 +29,7 @@
   "url_handlers": {
     "fli": {
       "matches": [
-        "*://*.freelook.info/*",
-        "*://localhost/*"
+        "*://*.freelook.info/*"
       ],
       "title": "FLI"
     }
