@@ -7,7 +7,7 @@ angular
     var vm = this;
     vm.showLocalePanel = false;
     vm.donate = 'https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RFP3HDDXV2NJS';
-    vm.about = $location.path() !== '/about' ? url.href('about?', {l: locale.getCode()}) : url.href('?', {l: locale.getCode()});
+    vm.about = 'http://about.freelook.info/';
     vm.localeCode = locale.getCode();
 
     vm.toggleLocalePanel = function () {
