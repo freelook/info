@@ -1,6 +1,6 @@
 {
   "name": "freelook.info",
-  "version": "0.12.0",
+  "version": "0.12.1",
   "manifest_version": 2,
   "description": "Free look at info",
   "homepage_url": "http://freelook.info",
@@ -29,7 +29,7 @@
   "url_handlers": {
     "fli": {
       "matches": [
-        "*://*.freelook.info/*"
+        "*://freelook.info/*"
       ],
       "title": "FLI"
     }

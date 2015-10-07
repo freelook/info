@@ -24,7 +24,7 @@
           switch (typeof params) {
             case 'string':
               if (params.substr(0, 4) === 'http') {
-                return $location.absUrl(params);
+                return url.location(params);
               }
               return $location.url(params);
             case 'object':
