@@ -1,6 +1,7 @@
 var CONFIG = {
   PRODUCTION: 'http://freelook.info/',
   API: {
+    SOCKET: 'http://localhost:4000',
     URL: 'http://localhost/api/',
     GOOGLE: {
       KEY: 'AIzaSyDBAHujlSftqeYB03a0FjtwLBsQ2nA4DQM'

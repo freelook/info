@@ -2,13 +2,12 @@
 
 angular
   .module('freelook.info')
-  .factory('io', function ($rootScope, $window) {
+  .factory('io', function ($rootScope, $window, CONFIG) {
 
-    var socket = $window.io && $window.io.connect($window.CONFIG.API.URL);
+    var socket = $window.io && $window.io.connect(CONFIG.API.SOCKET);
 
     return {
       on: function (eventName, callback) {
-
         return socket && socket.on(eventName, function () {
             var args = arguments;
             $rootScope.$apply(function () {
