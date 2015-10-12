@@ -1,11 +1,16 @@
 {
   "name": "freelook.info",
-  "version": "0.12.1",
+  "version": "0.12.2",
   "manifest_version": 2,
   "description": "Free look at info",
-  "homepage_url": "http://freelook.info",
+  "author": {
+    "name": "Dima Kostrub",
+    "site": "http://freelook.info/",
+    "mail": "freelook@mail.ua"
+  },
   "icons": {
     "16": "assets/images/icon-16.png",
+    "48": "assets/images/icon-48.png",
     "128": "assets/images/icon-128.png"
   },
   "app": {
@@ -16,8 +21,8 @@
   "permissions": [
     "storage",
     "webview",
-    "tabs",
     "fullscreen",
+    "contextMenus",
     "<all_urls>"
   ],
   "externally_connectable": {

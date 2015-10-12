@@ -10,3 +10,10 @@ window.chrome.runtime.onMessageExternal.addListener(
   function (req, sender, res) {
     res({do: req.do + '+'});
   });
+
+window.chrome.contextMenus.create({
+  title: "FLI",
+  type: "normal",
+  contexts: ["all"],
+  id: "1"
+});

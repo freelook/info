@@ -2,12 +2,12 @@
 <widget xmlns="http://www.w3.org/ns/widgets"
         xmlns:gap="http://phonegap.com/ns/1.0"
         id="info.freelook"
-        version="0.11.0">
+        version="0.12.2">
 
   <name>freelook.info</name>
 
   <description>
-    FLI - Your personal information manager. Just look what you need.
+    FLI - Your personal information filter. Just look what you need.
   </description>
 
   <author href="https://freelook.info/about" email="freelook@mail.ua">
