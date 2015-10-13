@@ -20,9 +20,11 @@ var CONFIG = {
   },
   CHROME: {
     ORIGIN: '/',
-    ID: 'xxxxx'
+    ID: 'xxxxxxx'
+  },
+  MOBILE: {
+    ORIGIN: '/'
   }
-
 };
 
 

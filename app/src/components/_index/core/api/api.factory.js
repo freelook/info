@@ -5,7 +5,8 @@ angular
 
     var apiConnectors = {
       site: apiSite,
-      chrome: apiChrome
+      chrome: apiChrome,
+      mobile: apiChrome
     };
 
     return apiConnectors[platform.name()];

@@ -32,6 +32,8 @@ angular
         }
       };
 
+    connectors.mobile = connectors.site;
+
     function _htmlToTrends(html) {
       var dom = parser.parseFromString(html, 'text/html'),
         $dom = $(dom), trends = [];

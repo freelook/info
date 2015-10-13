@@ -9,8 +9,12 @@ angular
       if (platformName) {
         return platformName;
       }
-      if (!!isChromeApp()) {
+      if (isChromeApp()) {
         platformName = 'chrome';
+        return platformName;
+      }
+      if (isMobileApp()) {
+        platformName = 'mobile';
         return platformName;
       }
       platformName = 'site';
@@ -24,6 +28,10 @@ angular
 
     function isChromeApp() {
       return !!$parse('chrome.runtime.getBackgroundPage')($window);
+    }
+
+    function isMobileApp() {
+      return !!$parse('_cordovaNative')($window);
     }
 
     function getChromeApp() {

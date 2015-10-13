@@ -2,7 +2,7 @@
 <widget xmlns="http://www.w3.org/ns/widgets"
         xmlns:gap="http://phonegap.com/ns/1.0"
         id="info.freelook"
-        version="0.12.2">
+        version="0.12.3">
 
   <name>freelook.info</name>
 
@@ -10,14 +10,23 @@
     FLI - Your personal information filter. Just look what you need.
   </description>
 
-  <author href="https://freelook.info/about" email="freelook@mail.ua">
+  <author href="https://about.freelook.info" email="freelook@mail.ua">
     Dima Kostrub
   </author>
 
+  <content src="app.html"/>
+
   <preference name="permissions" value="none"/>
-  <preference name="fullscreen" value="true"/>
+
+  <gap:plugin name="org.apache.cordova.inappbrowser" source="npm"/>
+  <gap:plugin name="cordova-plugin-whitelist" source="npm"/>
 
   <icon src="assets/images/icon.png"/>
+
   <access origin="*"/>
+
+  <gap:url-scheme name="info.freelook">
+    <scheme>freelookinfo</scheme>
+  </gap:url-scheme>
 
 </widget>

@@ -13,7 +13,7 @@
     .config(function ($locationProvider, $httpProvider, $routeProvider, $mdThemingProvider, $translateProvider) {
 
       // Setting hash prefix
-      $locationProvider.html5Mode(true);
+      $locationProvider.html5Mode({enabled: true, requireBase: false});
       $locationProvider.hashPrefix('!');
 
       // Set up cache

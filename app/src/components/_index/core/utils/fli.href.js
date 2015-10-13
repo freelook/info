@@ -13,7 +13,7 @@ angular
             $rootScope.go(attrs.fliHref);
           });
         }
-      }, handler = handlers[platform.name()];
+      }, handler = handlers[platform.name()] || handlers.site;
 
       function init() {
         handler();

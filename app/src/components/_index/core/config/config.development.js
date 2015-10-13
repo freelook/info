@@ -21,8 +21,10 @@ var CONFIG = {
   CHROME: {
     ORIGIN: '/',
     ID: 'hebeffpnegfapnbacgikegnfibflcghh'
+  },
+  MOBILE: {
+    ORIGIN: '/'
   }
-
 };
 
 

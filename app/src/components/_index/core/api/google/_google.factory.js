@@ -5,7 +5,8 @@ angular
 
     var googleConnectors = {
       site: googleSite,
-      chrome: googleChrome
+      chrome: googleChrome,
+      mobile: googleChrome
     };
 
     return googleConnectors[platform.name()];
