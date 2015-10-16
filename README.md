@@ -1,10 +1,9 @@
-## [FREE LOOK AT INFO](http://freelook.info)
+## [FREE LOOK AT INFO](http://freelook.info)   [![Build Status](https://travis-ci.org/freelook/info.svg?branch=dev)](https://travis-ci.org/freelook/info)
 
 [SITE](https://freelook.info)
 [ABOUT](https://about.freelook.info)
 [CHROME](https://chrome.google.com/webstore/detail/jlpjaecnenjbpkbcpnocbeibjokkbnhj)
 [ANDROID](https://play.google.com/store/apps/details?id=info.freelook)
-[![Build Status](https://travis-ci.org/freelook/info.svg?branch=dev)](https://travis-ci.org/freelook/info)
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
