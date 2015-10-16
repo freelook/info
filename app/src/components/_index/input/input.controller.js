@@ -33,7 +33,7 @@ angular
         vm.icon = 'search';
         return url.href('search?', {l: locale.getCode(), input: $scope.fli.route.input});
       }
-      vm.icon = 'th-large';
+      vm.icon = 'eye-slash';
       return '/';
     };
 

@@ -5,12 +5,13 @@ angular
   function ($scope, url, locale) {
 
     var TYPES = {
+      looks: 0,
       news: 1,
       trends: 2
     };
 
     var vm = this, auto = false;
-    vm.selected = 0;
+    vm.selected = -1;
 
     vm.href = function (type) {
       return url.href('?', {l: locale.getCode(), type: type});
@@ -27,7 +28,7 @@ angular
     function init() {
       var type = $scope.fli.route.type || '';
       auto = true;
-      vm.selected = !!type ? TYPES[type] : 0;
+      vm.selected = !!type ? TYPES[type] : -1;
     }
 
     init();

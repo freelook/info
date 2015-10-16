@@ -52,6 +52,10 @@ a.active {
   text-shadow: 3px 3px 13px #888888;
 }
 
+.color-8 {
+  color: #888888;
+}
+
 /*config for small devices*/
 @media (max-width: 500px) {
   md-tabs md-prev-button {
