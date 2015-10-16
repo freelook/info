@@ -4,7 +4,7 @@ node_js:
 env:
   - NODE_ENV=development
 before_script:
-  - npm i -g gulp@3.8.11
+  - npm i -g gulp@3.8.11 bower
   - cd app && npm i && bower i
 
 script:
