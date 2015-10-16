@@ -5,8 +5,8 @@ env:
   - NODE_ENV=development
 before_script:
   - npm i -g gulp@3.8.11
-  - cd app && npm i && gulp server:dist
+  - cd app && npm i
 
 script:
   - gulp unit
-  - gulp e2e
+  - gulp e2e:dist
