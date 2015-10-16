@@ -1,6 +1,7 @@
 'use strict';
 
-window.chrome.app.runtime.onLaunched.addListener(function () {
+window.chrome.app.runtime.onLaunched.addListener(function (params) {
+  window.params = params;
   window.chrome.app.window.create('app.html', {
     state: 'maximized'
   });

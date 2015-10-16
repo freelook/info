@@ -38,12 +38,13 @@
         });
 
     })
-    .run(function ($rootScope, CONFIG, analytics, Parse) {
+    .run(function ($rootScope, platform, CONFIG, analytics, Parse) {
       analytics.init();
       Parse.initialize(CONFIG.API.PARSE.ID, CONFIG.API.PARSE.KEY);
 
       // Chrome app only
       $('body').css('overflow-y', 'visible');
+      platform.initChromeApp();
 
       $rootScope.$on('$routeChangeStart', function () {
         $(document).scrollTop(0);

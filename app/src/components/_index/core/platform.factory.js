@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('platform', function ($window, $parse, CONFIG) {
+  .factory('platform', function ($window, $parse, $rootScope, $timeout, CONFIG) {
 
     var platformName = '';
 
@@ -34,10 +34,16 @@ angular
       return !!$parse('_cordovaNative')($window);
     }
 
-    function getChromeApp() {
+    function initChromeApp() {
       if (isChromeApp()) {
-        $window.chrome.runtime.getBackgroundPage(function () {
-          // TODO resolve _chromeApp
+        $window.chrome.runtime.getBackgroundPage(function (page) {
+          var url = $parse('params.url')(page) || '',
+            path = url.split(CONFIG.PRODUCTION).splice(1)[0];
+          if (path) {
+            $timeout(function () {
+              $rootScope.go('/' + path);
+            });
+          }
         });
       }
     }
@@ -47,7 +53,7 @@ angular
       name: name,
       getOrigin: getOrigin,
       isChromeApp: isChromeApp,
-      getChromeApp: getChromeApp
+      initChromeApp: initChromeApp
     };
 
   });
