@@ -1,4 +1,4 @@
-## [FREE LOOK AT INFO](http://freelook.info)   [![Build Status](https://travis-ci.org/freelook/info.svg?branch=dev)](https://travis-ci.org/freelook/info)
+## [FREE LOOK AT INFO](http://freelook.info)   [![Build Status](https://travis-ci.org/freelook/info.svg)](https://travis-ci.org/freelook/info)
 
 [SITE](https://freelook.info)
 [BLOG](https://about.freelook.info)
