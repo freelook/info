@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+  - 0.12
+env:
+  - NODE_ENV=development
+before_script:
+  - npm i -g gulp
+  - cd api && npm i && gulp
+  - cd ../app && npm i && gulp server:dist
+
+script:
+  - gulp unit
+  - gulp e2e
