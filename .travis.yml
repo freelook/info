@@ -9,4 +9,3 @@ before_script:
 
 script:
   - gulp unit
-  - gulp e2e:dist
