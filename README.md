@@ -1,7 +1,7 @@
 ## [FREE LOOK AT INFO](http://freelook.info)   [![Build Status](https://travis-ci.org/freelook/info.svg?branch=dev)](https://travis-ci.org/freelook/info)
 
 [SITE](https://freelook.info)
-[ABOUT](https://about.freelook.info)
+[BLOG](https://about.freelook.info)
 [CHROME](https://chrome.google.com/webstore/detail/jlpjaecnenjbpkbcpnocbeibjokkbnhj)
 [ANDROID](https://play.google.com/store/apps/details?id=info.freelook)
 
