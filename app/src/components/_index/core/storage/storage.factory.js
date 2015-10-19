@@ -1,50 +1,36 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('local', function ($window) {
+  .factory('storage', function ($window, localStorage, customStorage) {
 
-    var localStorage = '';
-
-    function CustomStorage() {
-      this.data = {};
-    }
-
-    CustomStorage.prototype.getItem = function (key) {
-      return this.data[key] || null;
-    };
-
-    CustomStorage.prototype.setItem = function (key, value) {
-      this.data[key] = value;
-    };
+    var storage;
 
     try {
-      localStorage = $window.localStorage || new CustomStorage();
+      storage = localStorage || customStorage;
     } catch (e) {
-      localStorage = new CustomStorage();
+      storage = customStorage;
     }
 
     function get(key, defaultValue) {
-      var localStorageValue = localStorage.getItem(key) || null;
+      var storageValue = storage.getItem(key) || null;
       try {
-        if (localStorageValue) {
-          localStorageValue = $window.JSON.parse(localStorageValue);
+        if (storageValue) {
+          storageValue = $window.JSON.parse(storageValue);
         }
       } catch (e) {
         console.log('Couldn\'t get ' + key);
       }
 
-      return localStorageValue !== null ? localStorageValue : defaultValue || '';
+      return storageValue !== null ? storageValue : defaultValue || '';
     }
 
     function set(key, value) {
       try {
-        localStorage.setItem(key, JSON.stringify(value));
+        storage.setItem(key, JSON.stringify(value));
       } catch (e) {
         console.log('Couldn\'t store ' + key + ' with value ' + value);
       }
     }
-
-    //Array with obj methods
 
     function push(key, item, max) {
       var arr = get(key, []);

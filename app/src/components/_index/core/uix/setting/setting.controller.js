@@ -3,18 +3,18 @@
 angular
   .module('freelook.info')
   .controller('setting.ctrl',
-  function ($scope, local) {
+  function ($scope, storage) {
 
     var vm = this;
 
-    vm.notice = local.get('notice', true);
+    vm.notice = storage.get('notice', true);
 
     vm.close = function () {
       $scope.fli.view = '';
     };
 
     vm.toggleNotice = function () {
-      local.set('notice', vm.notice);
+      storage.set('notice', vm.notice);
     };
 
   });

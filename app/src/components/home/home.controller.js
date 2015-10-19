@@ -3,8 +3,7 @@
 angular
   .module('fli.home')
   .controller('home.ctrl',
-  function ($rootScope, $routeParams, $location, $scope, $translate, $mdMedia,
-            local, locale, url, I18N, LOOK_KEY) {
+  function ($rootScope, $routeParams, $location, $scope, $translate, $mdMedia, locale, url, I18N) {
 
     $location.search({
       l: locale.init($routeParams.l),
@@ -20,7 +19,5 @@ angular
     $rootScope.fli.description = $translate.instant(I18N.DEFAULT_DESCRIPTION);
     $rootScope.fli.icon = 'th-large';
     $rootScope.fli.view = '';
-
-    $scope.looks = local.get(LOOK_KEY, []);
 
   });

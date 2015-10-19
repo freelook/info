@@ -21,4 +21,5 @@ angular
     $rootScope.fli.description = !$routeParams.input ? $translate.instant(I18N.DEFAULT_DESCRIPTION) : $translate.instant(I18N.CUSTOM_DESCRIPTION) + decodeURIComponent($routeParams.input);
     $rootScope.fli.icon = 'search';
     $rootScope.fli.view = '';
+
   });

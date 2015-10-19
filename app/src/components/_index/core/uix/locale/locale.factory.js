@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('locale', function ($window, local, locales) {
+  .factory('locale', function ($window, storage, locales) {
 
     function init(value) {
       var storedLocaleCode = getCode(),
@@ -9,7 +9,7 @@ angular
         locale = locales[value] || {},
         localeCode = locale.code || storedLocaleCode || navigatorLocaleCode;
       if (localeCode !== storedLocaleCode) {
-        local.set('locale', localeCode);
+        storage.set('locale', localeCode);
       }
       return localeCode;
     }
@@ -19,7 +19,7 @@ angular
     }
 
     function getCode() {
-      return local.get('locale');
+      return storage.get('locale');
     }
 
     function getLng() {

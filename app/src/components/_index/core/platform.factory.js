@@ -5,6 +5,10 @@ angular
 
     var platformName = '';
 
+    function init() {
+      initChromeApp();
+    }
+
     function name() {
       if (platformName) {
         return platformName;
@@ -50,10 +54,10 @@ angular
 
 
     return {
+      init: init,
       name: name,
       getOrigin: getOrigin,
-      isChromeApp: isChromeApp,
-      initChromeApp: initChromeApp
+      isChromeApp: isChromeApp
     };
 
   });

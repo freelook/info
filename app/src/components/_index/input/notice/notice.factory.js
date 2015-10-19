@@ -1,36 +1,25 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('notice', function ($rootScope, notices, local) {
+  .factory('notice', function (notices, storage) {
 
-    var notice, counter;
+    var counter;
 
     _init();
 
     function _init() {
       counter = 0;
-      notice = '';
     }
 
     function check() {
-      if (!local.get('notice', true)) {
-        _init();
-        return notice;
+      if (storage.get('notice', true)) {
+        counter++;
+        if (counter === 7) {
+          _init();
+          return notices[0];
+        }
       }
-
-      var _notice = notice;
-      if (_notice) {
-        _init();
-      }
-      return _notice;
     }
-
-    $rootScope.$on('$routeChangeSuccess', function () {
-      counter++;
-      if (counter === 5) {
-        notice = notices[0];
-      }
-    });
 
     return {
       check: check

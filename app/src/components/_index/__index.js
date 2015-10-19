@@ -39,12 +39,12 @@
 
     })
     .run(function ($rootScope, platform, CONFIG, analytics, Parse) {
+      platform.init();
       analytics.init();
       Parse.initialize(CONFIG.API.PARSE.ID, CONFIG.API.PARSE.KEY);
 
       // Chrome app only
       $('body').css('overflow-y', 'visible');
-      platform.initChromeApp();
 
       $rootScope.$on('$routeChangeStart', function () {
         $(document).scrollTop(0);

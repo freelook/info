@@ -3,7 +3,7 @@
 angular
   .module('fli.look')
   .controller('look.ctrl',
-  function ($rootScope, $routeParams, $location, $mdMedia, $translate, local, locale,
+  function ($rootScope, $routeParams, $location, $mdMedia, $translate, storage, locale,
             I18N, LOOK_KEY) {
 
     $location.search({
@@ -26,7 +26,7 @@ angular
 
 
     if ($routeParams.input && $routeParams.url && $routeParams.img) {
-      local.arr.push(LOOK_KEY, {
+      storage.arr.push(LOOK_KEY, {
         input: $routeParams.input,
         url: $routeParams.url,
         img: $routeParams.img
