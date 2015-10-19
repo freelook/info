@@ -2,9 +2,9 @@
 <widget xmlns="http://www.w3.org/ns/widgets"
         xmlns:gap="http://phonegap.com/ns/1.0"
         id="info.freelook"
-        version="0.12.3">
+        version="0.12.4">
 
-  <name>freelook.info</name>
+  <name>FLI</name>
 
   <description>
     FLI - Your personal information filter. Just look what you need.
@@ -18,14 +18,14 @@
 
   <preference name="permissions" value="none"/>
 
-  <gap:plugin name="org.apache.cordova.inappbrowser" source="npm"/>
-  <gap:plugin name="cordova-plugin-whitelist" source="npm"/>
+  <gap:plugin name="cordova-plugin-whitelist" source="npm" version="1.0.0" />
+  <gap:plugin name="org.apache.cordova.inappbrowser" source="npm" version="0.6.0" />
 
   <icon src="assets/images/icon.png"/>
 
   <access origin="*"/>
 
-  <gap:url-scheme name="info.freelook">
+  <gap:url-scheme name="info.freelook" role="Viewer">
     <scheme>freelookinfo</scheme>
   </gap:url-scheme>
 

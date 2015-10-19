@@ -1,5 +1,5 @@
 <div layout="column" flex>
   <iframe id="iframe" flex ng-if="fli.platform==='site'"></iframe>
-  <webview web-view layout-fill ng-if="fli.platform==='chrome'" class="animate"
-           src="{{trust(decode(fli.route.url))}}"></webview>
+  <webview web-view layout-fill ng-if="fli.platform==='chrome'" class="animate" src="{{trust(decode(fli.route.url))}}"></webview>
+  <div inapp-view flex ng-if="fli.platform==='mobile'"></div>
 </div>
