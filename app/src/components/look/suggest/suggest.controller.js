@@ -12,8 +12,12 @@ angular
       vm.search = search || {};
     }
 
-    if ($scope.fli.route.input && $scope.site.host) {
-      google.web('site:' + $scope.site.host + ' ' + $scope.fli.route.input).success(setResult);
+    if ($scope.site.host) {
+      if ($scope.fli.route.input) {
+        google.web('site:' + $scope.site.host + ' ' + $scope.fli.route.input).success(setResult);
+      } else {
+        google.web('related:' + $scope.site.host).success(setResult);
+      }
     }
 
   });

@@ -12,11 +12,11 @@ angular
 
     vm.find = function () {
       if ($scope.fli.route.input) {
-        if ($location.path() === '/search') {
-          $scope.go({input: $scope.fli.route.input});
-        } else {
-          $scope.go('search?input=' + $scope.fli.route.input);
-        }
+        $scope.go(url.href('search?', {
+          l: locale.getCode(),
+          input: $scope.fli.route.input || '',
+          type: $scope.fli.route.type || 'web'
+        }, false, '/'));
       }
     };
 
