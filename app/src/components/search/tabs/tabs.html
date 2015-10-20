@@ -1,4 +1,4 @@
-<md-tabs md-selected="tabs.selected" md-no-bar="true" md-autoselect="false">
+<md-tabs md-selected="tabs.selected" md-no-bar="true" md-autoselect="false" ng-if="fli.route.input">
   <md-tab md-on-select="tabs.go({type: 'web', sub: null})"><a fli-href="{{tabs.href('web')}}" translate="search.tabs.web"></a></md-tab>
   <md-tab md-on-select="tabs.go({type: 'news', sub: null})"><a fli-href="{{tabs.href('news')}}" translate="search.tabs.news"></a></md-tab>
   <md-tab md-on-select="tabs.go({type: 'goods', sub: null})"><a fli-href="{{tabs.href('goods')}}" translate="search.tabs.goods"></a></md-tab>
