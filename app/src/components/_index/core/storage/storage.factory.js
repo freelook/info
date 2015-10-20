@@ -35,14 +35,14 @@ angular
     function push(key, item, max) {
       var arr = get(key, []);
       if (!arr.some(function (el) {
-          return angular.equals(item, el);
+          return angular.equals(item.url, el.url);
         })) {
         arr.unshift(item);
+        if (arr.length > max) {
+          arr.pop();
+        }
+        set(key, arr);
       }
-      if (arr.length > max) {
-        arr.pop();
-      }
-      set(key, arr);
       return arr;
     }
 
