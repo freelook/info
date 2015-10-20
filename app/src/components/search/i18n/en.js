@@ -6,5 +6,8 @@ window.i18n.en.search = {
     images: 'images',
     audio: 'audio',
     video: 'video'
+  },
+  menu: {
+    lucky: 'Get lucky'
   }
 };

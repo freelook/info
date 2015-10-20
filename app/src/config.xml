@@ -7,7 +7,7 @@
   <name>FLI</name>
 
   <description>
-    FLI - Your personal information filter. Just look what you need.
+    FLI - free look at information. Your personal information filter. Just look what you need.
   </description>
 
   <author href="https://about.freelook.info" email="freelook@mail.ua">
@@ -15,18 +15,15 @@
   </author>
 
   <content src="app.html"/>
-
   <preference name="permissions" value="none"/>
-
-  <gap:plugin name="cordova-plugin-whitelist" source="npm" version="1.0.0" />
-  <gap:plugin name="org.apache.cordova.inappbrowser" source="npm" version="0.6.0" />
-
   <icon src="assets/images/icon.png"/>
 
   <access origin="*"/>
 
-  <gap:url-scheme name="info.freelook" role="Viewer">
-    <scheme>freelookinfo</scheme>
-  </gap:url-scheme>
+  <gap:plugin name="cordova-plugin-whitelist" source="npm"/>
+  <gap:plugin name="org.apache.cordova.inappbrowser" source="npm"/>
+  <gap:plugin name="cordova-plugin-customurlscheme" source="npm">
+    <param name="URL_SCHEME" value="freelookinfo"/>
+  </gap:plugin>
 
 </widget>

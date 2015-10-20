@@ -28,6 +28,7 @@ angular
     if ($routeParams.input && $routeParams.url && $routeParams.img) {
       storage.arr.push(LOOK_KEY, {
         input: $routeParams.input,
+        type: $routeParams.type,
         url: $routeParams.url,
         img: $routeParams.img
       }, 12);

@@ -1,5 +1,5 @@
 <md-tabs md-selected="tabs.selected" md-no-bar="true" md-autoselect="false">
   <md-tab md-on-select="tabs.go({type: 'looks'})"><a fli-href="{{tabs.href('looks')}}" translate="home.tabs.looks"></a></md-tab>
-  <md-tab md-on-select="tabs.go({type: 'news'})"><a fli-href="{{tabs.href('news')}}" translate="home.tabs.news"></a></md-tab>
-  <md-tab md-on-select="tabs.go({type: 'trends'})"><a fli-href="{{tabs.href('trends')}}" translate="home.tabs.trends"></a></md-tab>
+  <md-tab md-on-select="tabs.search('web')"><a fli-href="{{tabs.search('web', true)}}" translate="home.tabs.trends"></a></md-tab>
+  <md-tab md-on-select="tabs.search('news')"><a fli-href="{{tabs.search('news', true)}}" translate="home.tabs.news"></a></md-tab>
 </md-tabs>

@@ -1,9 +1,7 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('apiChrome', function ($q, $http, CONFIG) {
-
-    // Todo api core
+  .factory('apiApp', function ($q, $http, CONFIG) {
 
     function _point(_end) {
       return $http.get(CONFIG.API.URL + _end);

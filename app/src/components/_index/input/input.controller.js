@@ -31,7 +31,7 @@ angular
       }
       if ($scope.fli.route.input) {
         vm.icon = 'search';
-        return url.href('search?', {l: locale.getCode(), input: $scope.fli.route.input});
+        return url.href('search?', {l: locale.getCode(), input: $scope.fli.route.input, type: $scope.fli.route.type});
       }
       vm.icon = 'eye-slash';
       return '/';

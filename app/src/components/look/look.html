@@ -1,13 +1,12 @@
 <header>
   <fli-input flex></fli-input>
-  <div ng-include="'components/look/menu/menu.html'"></div>
 </header>
 
 <div id="look" flex layout="column">
 
-  <fli-look-tabs ng-if="!fli.route.type"></fli-look-tabs>
+  <fli-look-tabs></fli-look-tabs>
   <fli-look-content class="animate" flex layout="column"></fli-look-content>
-  <fli-footer ng-if="!fli.route.type"></fli-footer>
+  <fli-footer></fli-footer>
 
 </div>
 

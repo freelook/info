@@ -6,5 +6,8 @@ window.i18n.ru.search = {
     images: 'картинки',
     audio: 'аудио',
     video: 'видео'
+  },
+  menu: {
+    lucky: 'Мне повезет'
   }
 };

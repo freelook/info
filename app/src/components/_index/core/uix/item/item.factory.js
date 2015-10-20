@@ -6,7 +6,8 @@ angular
     function _href(config, origin) {
       return url.href('look?', {
         l: locale.getCode(),
-        input: $rootScope.fli.route.input || config.input || null,
+        input: config.input || $rootScope.fli.route.input || null,
+        type: config.type || $rootScope.fli.route.type || null,
         url: !!config.url ? encodeURIComponent(decodeURIComponent(config.url)) : '',
         img: !!config.img ? encodeURIComponent(decodeURIComponent(config.img)) : null
       }, false, origin);

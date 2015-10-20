@@ -21,6 +21,15 @@ angular
       $scope.go(config);
     };
 
+    vm.search = function (type, isHref) {
+      var config = {l: locale.getCode(), input: '', type: type};
+      if (isHref) {
+        return url.href('search?', config);
+      }
+      return vm.go(url.href('search?', config, false, '/'));
+    };
+
+
     function init() {
       var type = $scope.fli.route.type || '';
       vm.selected = !!type ? TYPES[type] : -1;

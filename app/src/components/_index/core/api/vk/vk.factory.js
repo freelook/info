@@ -40,13 +40,18 @@ angular
         '&description=' + _description;
     }
 
+    function login() {
+      return 'https://oauth.vk.com/authorize?client_id=4588210&scope=audio,video&redirect_uri=http://freelook.info/token&display=popup&response_type=token';
+    }
+
     return {
       user: user,
       wall: wall,
       group: group,
       pages: pages,
       audio: audio,
-      share: share
+      share: share,
+      login: login
     };
 
   });

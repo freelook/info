@@ -8,7 +8,7 @@ angular
     $location.search({
       l: locale.init($routeParams.l),
       input: $routeParams.input || '',
-      type: $routeParams.type,
+      type: $routeParams.type || 'web',
       sub: $routeParams.sub
     })
       .replace();
