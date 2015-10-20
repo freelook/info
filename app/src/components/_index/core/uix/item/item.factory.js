@@ -23,7 +23,7 @@ angular
     }
 
     function search(input) {
-      return url.href('search?', {l: locale.getCode(), input: input});
+      return url.href('search?', {l: locale.getCode(), input: input, type: 'web'});
     }
 
     return {

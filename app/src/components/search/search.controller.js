@@ -5,13 +5,17 @@ angular
   .controller('search.ctrl',
   function ($rootScope, $routeParams, $location, $mdMedia, $translate, locale, I18N) {
 
-    $location.search({
-      l: locale.init($routeParams.l),
-      input: $routeParams.input || '',
-      type: $routeParams.type || 'web',
-      sub: $routeParams.sub
-    })
-      .replace();
+    if (!$routeParams.input) {
+      $location.search({}).path('/').replace();
+    } else {
+      $location.search({
+        l: locale.init($routeParams.l),
+        input: $routeParams.input,
+        type: $routeParams.type || 'web',
+        sub: $routeParams.sub
+      })
+        .replace();
+    }
 
     $translate.use(locale.getLng());
 
