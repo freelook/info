@@ -3,7 +3,7 @@
 angular
   .module('freelook.info')
   .controller('input.ctrl',
-  function ($scope, $location, url, locale, PLACEHOLDER) {
+  function ($scope, $rootScope, $location, url, locale, PLACEHOLDER) {
 
     var vm = this;
     vm.placeholder = PLACEHOLDER;
@@ -20,8 +20,9 @@ angular
       }
     };
 
-    vm.clear = function () {
+    vm.clear = function ($event) {
       $scope.fli.route.input = '';
+      $event.stopPropagation();
     };
 
     vm.href = function () {
