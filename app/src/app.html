@@ -6,12 +6,11 @@
   <meta name="fragment" content="!">
   <meta name="description" content="{{fli.description}}">
   <meta ng-if="fli.route.input" name="keywords" content="{{fli.route.input}}">
-
   <meta ng-if="fli.title" property="og:title" content="{{fli.title}}">
   <meta ng-if="fli.route.img" property="og:image" content="{{fli.fix(fli.route.img)}}">
   <meta ng-if="fli.description" property="og:description" content="{{fli.description}}">
-
   <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+  <meta http-equiv="Content-Security-Policy" content="default-src *; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval';">
 
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="apple-touch-icon" type="image/png" href="/assets/images/icon.png">
@@ -169,7 +168,8 @@
 <script src="components/_index/core/api/api.app.factory.js"></script>
 <script src="components/_index/core/api/api.factory.js"></script>
 <script src="components/_index/core/api/api.site.factory.js"></script>
-<script src="components/_index/core/config/config.development.js"></script>
+<script src="components/_index/core/config/config.production.js"></script>
+<script src="components/_index/core/cordova/inAppBrowser.factory.js"></script>
 <script src="components/_index/core/storage/chrome.storage.factory.js"></script>
 <script src="components/_index/core/storage/custom.storage.factory.js"></script>
 <script src="components/_index/core/storage/local.storage.factory.js"></script>

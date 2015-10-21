@@ -17,7 +17,7 @@ angular
               return defer.reject(trends);
             });
         },
-        chrome: function (defer) {
+        app: function (defer) {
           $rootScope.fli.progress = true;
           prerender.local(tapi)
             .then(function (html) {
@@ -27,12 +27,13 @@ angular
               return defer.reject(trends);
             })
             .finally(function () {
-              $rootScope.fli.progress = true;
+              $rootScope.fli.progress = false;
             });
         }
       };
 
-    connectors.mobile = connectors.site;
+    connectors.chrome = connectors.app;
+    connectors.mobile = connectors.app;
 
     function _htmlToTrends(html) {
       var dom = parser.parseFromString(html, 'text/html'),

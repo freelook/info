@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('url', function ($window, $rootScope, $location, platform) {
+  .factory('url', function ($window, $rootScope, $location, platform, inAppBrowser) {
 
     var platformOrigin = platform.getOrigin();
 
@@ -44,7 +44,11 @@ angular
 
     function link(href, self) {
       if (href) {
-        $('<a>').attr('href', href).attr('target', !self ? '_blank' : '')[0].click();
+        if (platform.name() !== 'mobile') {
+          $('<a>').attr('href', href).attr('target', !self ? '_blank' : '')[0].click();
+        } else {
+          inAppBrowser.open(href);
+        }
       }
     }
 

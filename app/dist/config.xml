@@ -20,9 +20,9 @@
 
   <access origin="*"/>
 
-  <gap:plugin name="cordova-plugin-whitelist" source="npm"/>
-  <gap:plugin name="org.apache.cordova.inappbrowser" source="npm"/>
-  <gap:plugin name="cordova-plugin-customurlscheme" source="npm">
+  <gap:plugin name="cordova-plugin-whitelist" source="npm" version="1.0.0"/>
+  <gap:plugin name="org.apache.cordova.inappbrowser" source="npm" version="0.6.0"/>
+  <gap:plugin name="cordova-plugin-customurlscheme" source="npm" version="4.0.0">
     <param name="URL_SCHEME" value="freelookinfo"/>
   </gap:plugin>
 

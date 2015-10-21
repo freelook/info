@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('prerender', function ($q, $http, $timeout, api, CONFIG) {
+  .factory('prerender', function ($window, $q, $http, $timeout, api, inAppBrowser, platform, CONFIG) {
 
     function get(url) {
       return $http.get(CONFIG.PRERENDER.URL + encodeURIComponent(url));
@@ -11,7 +11,7 @@ angular
       return api.proxy(CONFIG.PRERENDER.PRODUCTION + _url, {cache: true});
     }
 
-    function local(url) {
+    function chrome(url) {
       var defer = $q.defer();
       var webview = $('#prerender').attr('src', url);
 
@@ -35,10 +35,31 @@ angular
       return defer.promise;
     }
 
+    function mobile(url) {
+      var defer = $q.defer(),
+        ref = inAppBrowser.open(url, 'location=yes,hidden=yes');
+
+      ref.addEventListener('loadstop', function () {
+        ref.executeScript({code: 'document.documentElement.innerHTML'}, function (html) {
+          if (html && html.length) {
+            ref.close();
+            return defer.resolve(html[0]);
+          }
+        });
+      });
+
+      ref.addEventListener('loaderror', function (data) {
+        ref.close();
+        return defer.reject(data);
+      });
+
+      return defer.promise;
+    }
+
     return {
       get: get,
       cache: cache,
-      local: local
+      local: platform.name() === 'chrome' ? chrome : mobile
     };
 
   });
