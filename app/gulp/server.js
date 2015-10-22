@@ -7,29 +7,21 @@ var gulp = require('gulp'),
 
 
 function browserSyncInit(baseDir, files, browser) {
-  var fl = files || [];
+  var fls = files || [];
   browser = browser === undefined ? 'default' : browser;
 
-  var routes = null;
-  if (baseDir === 'src' || (util.isArray(baseDir) && baseDir.indexOf('src') !== -1)) {
-    routes = {
-      '/bower_components': 'bower_components'
-    };
-  }
-
   if (!process.env.production) {
-    fl.push('!src/components/**/*.production.js');
+    fls.push('!src/components/**/*.production.js');
   } else {
-    fl.push('!src/components/**/*.development.js');
+    fls.push('!src/components/**/*.development.js');
   }
 
-  browserSync.instance = browserSync.init(files, {
+  browserSync.instance = browserSync.init(fls, {
     startPath: '/',
     port: 8080,
     server: {
       baseDir: baseDir,
-      middleware: middleware,
-      routes: routes
+      middleware: middleware
     },
     browser: browser
   });
@@ -54,7 +46,7 @@ gulp.task('server:dist', ['dist'], function () {
 });
 
 gulp.task('server:e2e', function () {
-  browserSyncInit(['src', '.tmp'], null, []);
+  browserSyncInit(['.tmp', 'src'], null, []);
 });
 
 gulp.task('server:e2e-dist', ['watch'], function () {

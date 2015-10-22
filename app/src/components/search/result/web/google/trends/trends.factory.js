@@ -33,7 +33,7 @@ angular
       };
 
     connectors.chrome = connectors.app;
-    connectors.mobile = connectors.app;
+    connectors.mobile = connectors.site;
 
     function _htmlToTrends(html) {
       var dom = parser.parseFromString(html, 'text/html'),

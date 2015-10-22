@@ -1,6 +1,6 @@
 'use strict';
 
-var SearchPage = function() {
+var SearchPage = function () {
 
   var INPUT_ID = 'input';
 
@@ -10,9 +10,13 @@ var SearchPage = function() {
 
   this.searchEls = element.all(by.repeater('item in google.search.results'));
 
-  this.fillInput = function( input ) {
-    this.input.sendKeys(input);
-    this.input.sendKeys(protractor.Key.ENTER);
+  this.fillInput = function (input) {
+    var self = this;
+    self.input.clear().then(function () {
+      self.input.sendKeys(input);
+      self.input.sendKeys(protractor.Key.ENTER);
+    });
+
   };
 
 };

@@ -42,14 +42,14 @@ gulp.task('html', ['jshint', 'inject', 'partials'], function () {
     .pipe(assets = $.useref.assets())
     .pipe($.rev())
     .pipe(jsFilter)
-    .pipe($.ngAnnotate())
-    .pipe($.uglify())
+    .pipe($.if(!process.env.debug, $.ngAnnotate()))
+    .pipe($.if(!process.env.debug, $.uglify()))
     .pipe(gulp.dest('dist/'))
     .pipe(gulp.dest('.tmp/'))
     .pipe(jsFilter.restore())
     .pipe(cssFilter)
-    .pipe($.csso())
-    .pipe($.stripCssComments({all: true}))
+    .pipe($.if(!process.env.debug, $.csso()))
+    .pipe($.if(!process.env.debug, $.stripCssComments({all: true})))
     .pipe(gulp.dest('dist/'))
     .pipe($.replace('../', ''))
     .pipe(gulp.dest('.tmp/'))
@@ -59,7 +59,7 @@ gulp.task('html', ['jshint', 'inject', 'partials'], function () {
     .pipe($.revReplace())
     .pipe(gulp.dest('.tmp/'))
     .pipe(htmlFilter)
-    .pipe($.inlineSource())
+    .pipe($.if(!process.env.debug, $.inlineSource()))
     .pipe($.minifyHtml({
       empty: true,
       spare: true,

@@ -35,17 +35,21 @@ angular
       return defer.promise;
     }
 
+
+    // not working for current plugin, try after update
     function mobile(url) {
       var defer = $q.defer(),
         ref = inAppBrowser.open(url, 'location=yes,hidden=yes');
 
       ref.addEventListener('loadstop', function () {
-        ref.executeScript({code: 'document.documentElement.innerHTML'}, function (html) {
-          if (html && html.length) {
-            ref.close();
-            return defer.resolve(html[0]);
-          }
-        });
+        $timeout(function () {
+          ref.executeScript({code: 'document.documentElement.innerHTML'}, function (html) {
+            if (html && html.length) {
+              ref.close();
+              return defer.resolve(html[0]);
+            }
+          });
+        }, 1000);
       });
 
       ref.addEventListener('loaderror', function (data) {
