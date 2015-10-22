@@ -23,7 +23,7 @@ angular
 
     function init() {
       var type = $scope.fli.route.type || '';
-      vm.selected = !!type ? TYPES[type] : -1;
+      vm.selected = TYPES[type] || -1;
     }
 
     init();

@@ -12,25 +12,20 @@ angular
       video: 5
     };
 
-    var vm = this, auto = false;
-    vm.selected = 0;
+    var vm = this;
+    vm.selected = -1;
 
     vm.href = function (type) {
       return url.href('search?', {l: locale.getCode(), input: $scope.fli.route.input, type: type});
     };
 
     vm.go = function (config) {
-      if (!auto) {
-        $scope.go(config);
-      } else {
-        auto = false;
-      }
+      $scope.go(config);
     };
 
     function init() {
       var type = $scope.fli.route.type || '';
-      auto = true;
-      vm.selected = !!type ? TYPES[type] : 0;
+      vm.selected = TYPES[type] || 0;
     }
 
     init();
