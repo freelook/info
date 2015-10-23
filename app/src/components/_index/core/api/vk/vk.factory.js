@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('vk', function ($http, $window, $timeout, api) {
+  .factory('vk', function ($http, $window, $rootScope, $timeout, api) {
     var host = 'https://api.vk.com/method/';
 
     function init() {
