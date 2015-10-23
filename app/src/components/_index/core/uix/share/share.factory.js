@@ -29,6 +29,7 @@ angular
         .success(function (res) {
           if (res && res.id) {
             url.link(connectors[connector](res.id, _item, _href));
+            $rootScope.fli.view = '';
           }
         });
     }

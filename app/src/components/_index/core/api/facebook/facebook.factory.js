@@ -4,16 +4,23 @@ angular
   .factory('facebook',
   function ($http, $rootScope, $q, api, url, CONFIG) {
 
-    var APP_ID = '846841298681206';
+    var APP_ID = CONFIG.FB.ID;
 
-    function share(_href) {
-      var fapi = 'https://www.facebook.com/dialog/share?' +
+    function share(_href, item) {
+      var _item = item || {},
+        _img = item.img || '',
+        _title = _item.titleNoFormatting || _item.title || '',
+        _description = _item.contentNoFormatting || _item.content || '';
+      return 'https://www.facebook.com/dialog/feed?' +
         'app_id=' + APP_ID +
-        '&display=popup' +
+        '&display=page' +
         '&redirect_uri=' +
         url.href('search?', {input: $rootScope.fli.route.input}, false, CONFIG.PRODUCTION) +
-        '&href=' + _href;
-      return fapi;
+        '&link=' + _href +
+        '&name=' + _title +
+        '&caption=FLI' +
+        '&description=' + _description +
+        '&picture=' + _img;
     }
 
     function user(url) {
