@@ -48,7 +48,7 @@ angular
         '&image=' + _img +
         '&title=' + _title +
         '&description=' + _description +
-        'noparse=true';
+        '&noparse=true';
     }
 
     function login() {
