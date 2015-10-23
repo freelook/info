@@ -93,7 +93,7 @@ gulp.task('misc', function () {
 });
 
 gulp.task('vendors', function () {
-  return gulp.src(['src/vendors/*.js'])
+  return gulp.src(['src/vendors/**/*.js'])
     .pipe(gulp.dest('dist/vendors'));
 });
 
