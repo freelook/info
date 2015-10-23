@@ -92,6 +92,11 @@ gulp.task('misc', function () {
     .pipe(gulp.dest('dist/'));
 });
 
+gulp.task('vendors', function () {
+  return gulp.src(['src/vendors/*.js'])
+    .pipe(gulp.dest('dist/vendors'));
+});
+
 gulp.task('clean', function (done) {
   $.del(['dist/', '.tmp/'], done);
 });
@@ -105,4 +110,4 @@ gulp.task('zip', [], function () {
     .pipe(gulp.dest('pack'));
 });
 
-gulp.task('build', ['html', 'images', 'fonts', 'misc']);
+gulp.task('build', ['html', 'images', 'fonts', 'misc', 'vendors']);

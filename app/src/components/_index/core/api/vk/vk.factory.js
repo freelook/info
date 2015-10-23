@@ -1,8 +1,18 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('vk', function ($http, api) {
+  .factory('vk', function ($http, $window, $timeout, api) {
     var host = 'https://api.vk.com/method/';
+
+    function init() {
+      $timeout(function () {
+        var e = 'script', el = document.createElement(e),
+          s = document.getElementsByTagName(e)[0];
+        el.src = 'vendors/vk/openapi.js';
+        el.async = true;
+        s.parentNode.insertBefore(el, s);
+      }, 0);
+    }
 
     function user(id) {
       var api = host + 'users.get?user_ids=' + id + '&fields=photo_200,home_town,status&callback=JSON_CALLBACK';
@@ -37,7 +47,8 @@ angular
       return 'http://vk.com/share.php?url=' + _url +
         '&image=' + _img +
         '&title=' + _title +
-        '&description=' + _description;
+        '&description=' + _description +
+        'noparse=true';
     }
 
     function login() {
@@ -45,6 +56,7 @@ angular
     }
 
     return {
+      init: init,
       user: user,
       wall: wall,
       group: group,

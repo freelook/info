@@ -8,8 +8,10 @@
   <meta ng-if="fli.route.input" name="keywords" content="{{fli.route.input}}">
   <meta ng-if="fli.title" property="og:title" content="{{fli.title}}">
   <meta ng-if="fli.route.img" property="og:image" content="{{fli.fix(fli.route.img)}}">
+  <link ng-if="fli.route.img" rel="image_src" href="{{fli.fix(fli.route.img)}}"/>
   <meta ng-if="fli.description" property="og:description" content="{{fli.description}}">
   <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+  <meta property="vk:app_id" content="4588210"/>
   <meta http-equiv="Content-Security-Policy">
 
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -57,7 +59,6 @@
   <link rel="stylesheet" href="components/search/result/news/news.css">
   <link rel="stylesheet" href="components/search/result/video/video.css">
   <link rel="stylesheet" href="components/search/result/web/web.css">
-  <link rel="stylesheet" href="components/_index/core/uix/animation/animation.css">
   <link rel="stylesheet" href="components/_index/core/uix/grid/grid.css">
   <link rel="stylesheet" href="components/_index/core/uix/item/item.css">
   <link rel="stylesheet" href="components/_index/core/uix/rating/fli.rating.css">
@@ -80,9 +81,10 @@
   <link rel="stylesheet" href="components/search/result/web/facebook/facebook.css">
   <link rel="stylesheet" href="components/search/result/web/google/google.css">
   <link rel="stylesheet" href="components/search/result/web/vk/vk.css">
+  <link rel="stylesheet" href="components/search/result/web/google/trends/trends.css">
+  <link rel="stylesheet" href="components/_index/core/uix/animation/animation.css">
   <link rel="stylesheet" href="components/_index/core/uix/locale/panel/panel.css">
   <link rel="stylesheet" href="components/look/content/full/read/readability/readability.css">
-  <link rel="stylesheet" href="components/search/result/web/google/trends/trends.css">
   <!-- endinject -->
   <!-- endbuild -->
 
@@ -153,7 +155,6 @@
 <script src="components/look/i18n/ru.js"></script>
 <script src="components/look/suggest/suggest.controller.js"></script>
 <script src="components/look/suggest/suggest.directive.js"></script>
-<script src="components/look/tabs/tabs.directive.js"></script>
 <script src="components/search/i18n/en.js"></script>
 <script src="components/search/i18n/ru.js"></script>
 <script src="components/search/result/result.controller.js"></script>
@@ -168,7 +169,7 @@
 <script src="components/_index/core/api/api.app.factory.js"></script>
 <script src="components/_index/core/api/api.factory.js"></script>
 <script src="components/_index/core/api/api.site.factory.js"></script>
-<script src="components/_index/core/config/config.production.js"></script>
+<script src="components/_index/core/config/config.development.js"></script>
 <script src="components/_index/core/cordova/inAppBrowser.factory.js"></script>
 <script src="components/_index/core/storage/chrome.storage.factory.js"></script>
 <script src="components/_index/core/storage/custom.storage.factory.js"></script>
@@ -217,27 +218,24 @@
 <script src="components/search/result/video/video.directive.js"></script>
 <script src="components/search/result/web/web.controller.js"></script>
 <script src="components/search/result/web/web.directive.js"></script>
+<script src="components/_index/core/api/facebook/facebook.factory.js"></script>
 <script src="components/_index/core/api/google/_google.factory.js"></script>
 <script src="components/_index/core/api/google/google.chrome.factory.js"></script>
 <script src="components/_index/core/api/google/google.site.factory.js"></script>
-<script src="components/_index/core/api/instagram/instagram.factory.js"></script>
 <script src="components/_index/core/api/vk/vk.factory.js"></script>
-<script src="components/_index/core/api/facebook/facebook.factory.js"></script>
+<script src="components/_index/core/api/instagram/instagram.factory.js"></script>
 <script src="components/_index/core/api/yandex/yandex.factory.js"></script>
 <script src="components/_index/core/api/youtube/youtube.factory.js"></script>
 <script src="components/_index/core/uix/item/item.controller.js"></script>
 <script src="components/_index/core/uix/item/item.directive.js"></script>
 <script src="components/_index/core/uix/item/item.factory.js"></script>
 <script src="components/_index/core/uix/item/item.img.directive.js"></script>
-<script src="components/_index/core/uix/locale/locale.factory.js"></script>
-<script src="components/_index/core/uix/locale/locales.constant.js"></script>
 <script src="components/_index/core/uix/rating/fli.rating.js"></script>
 <script src="components/_index/core/uix/setting/setting.controller.js"></script>
 <script src="components/_index/core/uix/setting/setting.directive.js"></script>
 <script src="components/_index/core/uix/share/share.controller.js"></script>
 <script src="components/_index/core/uix/share/share.directive.js"></script>
 <script src="components/_index/core/uix/share/share.factory.js"></script>
-<script src="components/look/content/full/read/read.factory.js"></script>
 <script src="components/look/content/instagram/media/media.controller.js"></script>
 <script src="components/look/content/instagram/media/media.directive.js"></script>
 <script src="components/look/content/instagram/user/user.controller.js"></script>
@@ -273,12 +271,15 @@
 <script src="components/search/result/web/vk/vk.controller.js"></script>
 <script src="components/search/result/web/vk/vk.directive.js"></script>
 <script src="components/_index/core/api/google/url/google.url.factory.js"></script>
-<script src="components/_index/core/uix/locale/panel/panel.controller.js"></script>
-<script src="components/_index/core/uix/locale/panel/panel.directive.js"></script>
-<script src="components/look/content/full/read/readability/readability.js"></script>
 <script src="components/search/result/web/google/trends/trends.controller.js"></script>
 <script src="components/search/result/web/google/trends/trends.directive.js"></script>
 <script src="components/search/result/web/google/trends/trends.factory.js"></script>
+<script src="components/_index/core/uix/locale/locale.factory.js"></script>
+<script src="components/_index/core/uix/locale/locales.constant.js"></script>
+<script src="components/_index/core/uix/locale/panel/panel.controller.js"></script>
+<script src="components/_index/core/uix/locale/panel/panel.directive.js"></script>
+<script src="components/look/content/full/read/read.factory.js"></script>
+<script src="components/look/content/full/read/readability/readability.js"></script>
 <!-- endinject -->
 
 <!-- inject:partials -->

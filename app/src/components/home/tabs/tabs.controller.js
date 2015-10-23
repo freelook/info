@@ -22,8 +22,12 @@ angular
     };
 
     function init() {
-      var type = $scope.fli.route.type || '';
-      vm.selected = TYPES[type] || -1;
+      var type = TYPES[$scope.fli.route.type || ''];
+      if (angular.isUndefined(type)) {
+        vm.go({type: null});
+      } else {
+        vm.selected = type;
+      }
     }
 
     init();

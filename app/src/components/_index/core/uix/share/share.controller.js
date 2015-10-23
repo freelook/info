@@ -8,8 +8,6 @@ angular
     var vm = this;
     vm.href = item.href;
     vm.run = share.run;
-    vm.close = function () {
-      $scope.fli.view = '';
-    };
+
   });
 

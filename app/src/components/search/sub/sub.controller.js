@@ -10,7 +10,7 @@ angular
       return url.href('search?', {
         l: locale.getCode(),
         input: $scope.fli.route.input || '',
-        type: $scope.fli.route.type || null,
+        type: $scope.fli.route.type || 'web',
         sub: sub
       });
     };

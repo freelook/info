@@ -17,17 +17,25 @@ angular
       }
     }
 
+    function get() {
+      return {
+        href: _href,
+        item: _item
+      };
+    }
+
     function run(connector) {
       google.url.insert(_href)
         .success(function (res) {
           if (res && res.id) {
-            url.location(connectors[connector](res.id, _item, _href));
+            url.link(connectors[connector](res.id, _item, _href));
           }
         });
     }
 
     return {
       url: _url,
+      get: get,
       run: run
     };
 

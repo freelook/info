@@ -24,6 +24,9 @@ var CONFIG = {
   },
   MOBILE: {
     ORIGIN: '/'
+  },
+  VK: {
+    ID: '4588210'
   }
 };
 
