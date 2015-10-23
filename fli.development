@@ -85,6 +85,11 @@ server {
 		proxy_pass $arg_url;
 	}
 
+	location /page {
+		resolver 8.8.8.8;
+		proxy_pass http://goo.gl/$arg_id;
+	}
+
 	location /api/yandex {
 		# Send to fli server request for api
 		proxy_pass http://freelook.info;

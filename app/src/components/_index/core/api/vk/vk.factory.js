@@ -41,7 +41,7 @@ angular
 
     function share(_url, item) {
       var _item = item || {},
-        _img = item.img || '',
+        _img = $rootScope.fli.fix(item.img) || '',
         _title = _item.titleNoFormatting || _item.title || '',
         _description = _item.contentNoFormatting || _item.content || '';
       return 'http://vk.com/share.php?url=' + _url +

@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('share', function ($rootScope, facebook, google, vk, url) {
+  .factory('share', function ($rootScope, facebook, google, vk, url, CONFIG) {
 
     var _href = '', _item = {},
       connectors = {
@@ -28,7 +28,9 @@ angular
       google.url.insert(_href)
         .success(function (res) {
           if (res && res.id) {
-            url.link(connectors[connector](res.id, _item, _href));
+            var id = res.id.split('goo.gl/').splice(1)[0],
+              page = CONFIG.PRODUCTION + 'page?id=' + id;
+            url.link(connectors[connector](page, _item, _href));
             $rootScope.fli.view = '';
           }
         });

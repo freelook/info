@@ -8,7 +8,7 @@ angular
 
     function share(_href, item) {
       var _item = item || {},
-        _img = item.img || '',
+        _img = $rootScope.fli.fix(item.img) || '',
         _title = _item.titleNoFormatting || _item.title || '',
         _description = _item.contentNoFormatting || _item.content || '';
       return 'https://www.facebook.com/dialog/feed?' +

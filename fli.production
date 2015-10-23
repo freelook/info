@@ -89,6 +89,11 @@ server {
 		proxy_pass $arg_url;
 	}
 
+	location /page {
+		resolver 8.8.8.8;
+		proxy_pass http://goo.gl/$arg_id;
+	}
+
 	location @prerender {
 
 		set $prerender 0;
