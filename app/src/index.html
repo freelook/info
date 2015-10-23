@@ -33,8 +33,8 @@
 <body ng-controller="index.ctrl as index">
 
 <!-- View -->
-<ng-include src="fli.view" layout="column" layout-fill ng-if="!!fli.view"></ng-include>
-<ng-view id="view" layout="column" layout-fill ng-hide="!!fli.view"></ng-view>
+<ng-include src="fli.view" layout="column" layout-fill ng-if="fli.view"></ng-include>
+<ng-view id="view" layout="column" layout-fill ng-hide="fli.view"></ng-view>
 
 <!-- build:js({.tmp,src}) scripts/fli.js inline-->
 <!-- bower:js -->

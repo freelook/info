@@ -59,6 +59,7 @@
   <link rel="stylesheet" href="components/search/result/news/news.css">
   <link rel="stylesheet" href="components/search/result/video/video.css">
   <link rel="stylesheet" href="components/search/result/web/web.css">
+  <link rel="stylesheet" href="components/_index/core/uix/animation/animation.css">
   <link rel="stylesheet" href="components/_index/core/uix/grid/grid.css">
   <link rel="stylesheet" href="components/_index/core/uix/item/item.css">
   <link rel="stylesheet" href="components/_index/core/uix/rating/fli.rating.css">
@@ -79,12 +80,11 @@
   <link rel="stylesheet" href="components/search/result/news/google/google.css">
   <link rel="stylesheet" href="components/search/result/video/google/google.css">
   <link rel="stylesheet" href="components/search/result/web/facebook/facebook.css">
-  <link rel="stylesheet" href="components/search/result/web/google/google.css">
   <link rel="stylesheet" href="components/search/result/web/vk/vk.css">
-  <link rel="stylesheet" href="components/search/result/web/google/trends/trends.css">
-  <link rel="stylesheet" href="components/_index/core/uix/animation/animation.css">
+  <link rel="stylesheet" href="components/search/result/web/google/google.css">
   <link rel="stylesheet" href="components/_index/core/uix/locale/panel/panel.css">
   <link rel="stylesheet" href="components/look/content/full/read/readability/readability.css">
+  <link rel="stylesheet" href="components/search/result/web/google/trends/trends.css">
   <!-- endinject -->
   <!-- endbuild -->
 
@@ -93,8 +93,8 @@
 <body ng-controller="index.ctrl as index">
 
 <!-- View -->
-<ng-include src="fli.view" layout="column" layout-fill ng-if="!!fli.view"></ng-include>
-<ng-view id="view" layout="column" layout-fill ng-hide="!!fli.view"></ng-view>
+<ng-include src="fli.view" layout="column" layout-fill ng-if="fli.view"></ng-include>
+<ng-view id="view" layout="column" layout-fill ng-hide="fli.view"></ng-view>
 <webview id="prerender" ng-hide="true" width="0" height="0"></webview>
 
 <script src="cordova.js"></script>
@@ -122,11 +122,11 @@
 <script src="components/home/home.controller.js"></script>
 <script src="components/look/_look.js"></script>
 <script src="components/look/look.controller.js"></script>
-<script src="components/search/_search.js"></script>
-<script src="components/search/search.controller.js"></script>
 <script src="components/todo/_todo.js"></script>
 <script src="components/todo/todo.controller.js"></script>
 <script src="components/todo/todo.factory.js"></script>
+<script src="components/search/_search.js"></script>
+<script src="components/search/search.controller.js"></script>
 <script src="components/_index/core/analytics.factory.js"></script>
 <script src="components/_index/core/io.factory.js"></script>
 <script src="components/_index/core/loader.interseptor.js"></script>
@@ -218,24 +218,27 @@
 <script src="components/search/result/video/video.directive.js"></script>
 <script src="components/search/result/web/web.controller.js"></script>
 <script src="components/search/result/web/web.directive.js"></script>
-<script src="components/_index/core/api/facebook/facebook.factory.js"></script>
 <script src="components/_index/core/api/google/_google.factory.js"></script>
 <script src="components/_index/core/api/google/google.chrome.factory.js"></script>
 <script src="components/_index/core/api/google/google.site.factory.js"></script>
-<script src="components/_index/core/api/vk/vk.factory.js"></script>
+<script src="components/_index/core/api/facebook/facebook.factory.js"></script>
 <script src="components/_index/core/api/instagram/instagram.factory.js"></script>
+<script src="components/_index/core/api/vk/vk.factory.js"></script>
 <script src="components/_index/core/api/yandex/yandex.factory.js"></script>
 <script src="components/_index/core/api/youtube/youtube.factory.js"></script>
 <script src="components/_index/core/uix/item/item.controller.js"></script>
 <script src="components/_index/core/uix/item/item.directive.js"></script>
 <script src="components/_index/core/uix/item/item.factory.js"></script>
 <script src="components/_index/core/uix/item/item.img.directive.js"></script>
+<script src="components/_index/core/uix/locale/locale.factory.js"></script>
+<script src="components/_index/core/uix/locale/locales.constant.js"></script>
 <script src="components/_index/core/uix/rating/fli.rating.js"></script>
 <script src="components/_index/core/uix/setting/setting.controller.js"></script>
 <script src="components/_index/core/uix/setting/setting.directive.js"></script>
 <script src="components/_index/core/uix/share/share.controller.js"></script>
 <script src="components/_index/core/uix/share/share.directive.js"></script>
 <script src="components/_index/core/uix/share/share.factory.js"></script>
+<script src="components/look/content/full/read/read.factory.js"></script>
 <script src="components/look/content/instagram/media/media.controller.js"></script>
 <script src="components/look/content/instagram/media/media.directive.js"></script>
 <script src="components/look/content/instagram/user/user.controller.js"></script>
@@ -266,20 +269,17 @@
 <script src="components/search/result/video/google/google.directive.js"></script>
 <script src="components/search/result/web/facebook/facebook.controller.js"></script>
 <script src="components/search/result/web/facebook/facebook.directive.js"></script>
-<script src="components/search/result/web/google/google.controller.js"></script>
-<script src="components/search/result/web/google/google.directive.js"></script>
 <script src="components/search/result/web/vk/vk.controller.js"></script>
 <script src="components/search/result/web/vk/vk.directive.js"></script>
+<script src="components/search/result/web/google/google.controller.js"></script>
+<script src="components/search/result/web/google/google.directive.js"></script>
 <script src="components/_index/core/api/google/url/google.url.factory.js"></script>
+<script src="components/_index/core/uix/locale/panel/panel.controller.js"></script>
+<script src="components/_index/core/uix/locale/panel/panel.directive.js"></script>
+<script src="components/look/content/full/read/readability/readability.js"></script>
 <script src="components/search/result/web/google/trends/trends.controller.js"></script>
 <script src="components/search/result/web/google/trends/trends.directive.js"></script>
 <script src="components/search/result/web/google/trends/trends.factory.js"></script>
-<script src="components/_index/core/uix/locale/locale.factory.js"></script>
-<script src="components/_index/core/uix/locale/locales.constant.js"></script>
-<script src="components/_index/core/uix/locale/panel/panel.controller.js"></script>
-<script src="components/_index/core/uix/locale/panel/panel.directive.js"></script>
-<script src="components/look/content/full/read/read.factory.js"></script>
-<script src="components/look/content/full/read/readability/readability.js"></script>
 <!-- endinject -->
 
 <!-- inject:partials -->

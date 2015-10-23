@@ -63,6 +63,8 @@ server {
 
 	location /api/proxy {
 		resolver 8.8.8.8;
+		proxy_pass_request_headers off;
+		proxy_set_header User-Agent 'Chrome/45';
 		proxy_pass $arg_url;
 		proxy_intercept_errors on;
 		error_page 301 302 = @redirect;
@@ -75,6 +77,8 @@ server {
 
 	location /api/proxy/cache {
 		resolver 8.8.8.8;
+		proxy_pass_request_headers off;
+		proxy_set_header User-Agent 'Chrome/45';
 		proxy_ignore_headers Cache-Control Expires Set-Cookie;
 		proxy_cache FLI;
 		proxy_cache_valid 60m;
