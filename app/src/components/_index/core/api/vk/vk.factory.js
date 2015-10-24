@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('vk', function ($http, $window, $rootScope, $timeout, api) {
+  .factory('vk', function ($http, $window, $timeout, api) {
     var host = 'https://api.vk.com/method/';
 
     function init() {
@@ -41,7 +41,7 @@ angular
 
     function share(_url, item) {
       var _item = item || {},
-        _img = $rootScope.fli.fix(item.img) || '',
+        _img = item.img || '',
         _title = _item.titleNoFormatting || _item.title || '',
         _description = _item.contentNoFormatting || _item.content || '';
       return 'http://vk.com/share.php?url=' + _url +

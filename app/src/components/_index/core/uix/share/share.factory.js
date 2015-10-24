@@ -9,10 +9,15 @@ angular
         vk: vk.share
       };
 
+    function _imgFix(item) {
+      item.img = $rootScope.fli.fix(item.img);
+      return item;
+    }
+
     function _url(href, item) {
       if (href) {
         _href = href;
-        _item = item || {};
+        _item = item ? _imgFix(item) : {};
         $rootScope.fli.view = 'components/_index/core/uix/share/share.view.html';
       }
     }
@@ -31,7 +36,6 @@ angular
             var id = res.id.split('goo.gl/').splice(1)[0],
               page = CONFIG.PRODUCTION + 'page?id=' + id;
             url.location(connectors[connector](page, _item, _href));
-            $rootScope.fli.view = '';
           }
         });
     }
