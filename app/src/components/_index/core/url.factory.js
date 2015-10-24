@@ -45,7 +45,7 @@ angular
     function link(href, self) {
       if (href) {
         if (platform.name() !== 'mobile') {
-          $('<a>').attr('href', href).attr('target', !self ? '_blank' : '')[0].click();
+          $window.open(href, !self ? '_blank' : '_self');
         } else {
           inAppBrowser.open(href);
         }

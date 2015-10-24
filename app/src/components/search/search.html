@@ -3,7 +3,7 @@
   <div ng-include="'components/search/menu/menu.html'"></div>
 </header>
 
-<div id="search" flex layout="column">
+<div id="search" flex layout="column" ng-if="fli.route.input">
 
   <fli-search-tabs></fli-search-tabs>
 

@@ -1,6 +1,5 @@
 .fli-grid {
   column-count: 1;
-  column-gap: 7px;
   column-fill: auto;
 }
 
@@ -8,6 +7,7 @@
   -webkit-column-break-inside: avoid;
   -moz-column-break-inside: avoid;
   column-break-inside: avoid;
+  display: inline-block;
 }
 
 .fli-grid .fli-item .fa {
