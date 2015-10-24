@@ -2,6 +2,10 @@ html, header, body, footer {
   background: #ebebeb;
 }
 
+body {
+  overflow-y: visible;
+}
+
 ng-view, ng-include, md-whiteframe, md-card, md-card-content, md-card-footer,
 md-tabs, md-tab, md-content, md-button, md-progress-linear, header, footer {
   display: block;

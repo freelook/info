@@ -9,6 +9,7 @@
   <md-input-container flex md-no-float>
     <input flex id="input" type="search" ng-focus="inpt.focus()" autocomplete="off"
            ng-model="fli.route.input"
+           ng-model-options="{updateOn:'blur'}"
            placeholder="{{inpt.placeholder | translate}}">
     <md-progress-linear id="progress" md-mode="indeterminate" ng-if="fli.progress && !fli.focus"></md-progress-linear>
   </md-input-container>

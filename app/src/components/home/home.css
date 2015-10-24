@@ -1,3 +1,5 @@
-#home-header .icon.fa-eye-slash {
-  margin: 13vh 0;
+#home-header .icon {
+  width: 100px;
+  text-align: center;
+  margin: 13% auto;
 }

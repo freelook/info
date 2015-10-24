@@ -44,9 +44,6 @@
       vk.init();
       Parse.initialize(CONFIG.API.PARSE.ID, CONFIG.API.PARSE.KEY);
 
-      // Chrome app only
-      $('body').css('overflow-y', 'visible');
-
       $rootScope.$on('$routeChangeStart', function () {
         $(document).scrollTop(0);
       });

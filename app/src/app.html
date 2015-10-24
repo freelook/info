@@ -62,6 +62,7 @@
   <link rel="stylesheet" href="components/_index/core/uix/animation/animation.css">
   <link rel="stylesheet" href="components/_index/core/uix/grid/grid.css">
   <link rel="stylesheet" href="components/_index/core/uix/item/item.css">
+  <link rel="stylesheet" href="components/_index/core/uix/polyfill/polyfill.css">
   <link rel="stylesheet" href="components/_index/core/uix/rating/fli.rating.css">
   <link rel="stylesheet" href="components/_index/core/uix/setting/setting.css">
   <link rel="stylesheet" href="components/_index/core/uix/share/share.css">
@@ -74,8 +75,8 @@
   <link rel="stylesheet" href="components/look/content/youtube/user/user.css">
   <link rel="stylesheet" href="components/look/content/youtube/watch/watch.css">
   <link rel="stylesheet" href="components/search/result/goods/amazon/amazon.css">
-  <link rel="stylesheet" href="components/search/result/goods/yandex/yandex.css">
   <link rel="stylesheet" href="components/search/result/image/google/google.css">
+  <link rel="stylesheet" href="components/search/result/goods/yandex/yandex.css">
   <link rel="stylesheet" href="components/search/result/image/instagram/instagram.css">
   <link rel="stylesheet" href="components/search/result/news/google/google.css">
   <link rel="stylesheet" href="components/search/result/video/google/google.css">
@@ -90,7 +91,7 @@
 
 </head>
 
-<body ng-controller="index.ctrl as index">
+<body ng-controller="index.ctrl as index" fli-polyfill>
 
 <!-- View -->
 <ng-include src="fli.view" layout="column" layout-fill ng-if="fli.view"></ng-include>
@@ -232,6 +233,7 @@
 <script src="components/_index/core/uix/item/item.img.directive.js"></script>
 <script src="components/_index/core/uix/locale/locale.factory.js"></script>
 <script src="components/_index/core/uix/locale/locales.constant.js"></script>
+<script src="components/_index/core/uix/polyfill/polyfill.directive.js"></script>
 <script src="components/_index/core/uix/rating/fli.rating.js"></script>
 <script src="components/_index/core/uix/setting/setting.controller.js"></script>
 <script src="components/_index/core/uix/setting/setting.directive.js"></script>
@@ -257,10 +259,10 @@
 <script src="components/look/content/youtube/watch/watch.directive.js"></script>
 <script src="components/search/result/goods/amazon/amazon.controller.js"></script>
 <script src="components/search/result/goods/amazon/amazon.directive.js"></script>
-<script src="components/search/result/goods/yandex/yandex.controller.js"></script>
-<script src="components/search/result/goods/yandex/yandex.directive.js"></script>
 <script src="components/search/result/image/google/google.controller.js"></script>
 <script src="components/search/result/image/google/google.directive.js"></script>
+<script src="components/search/result/goods/yandex/yandex.controller.js"></script>
+<script src="components/search/result/goods/yandex/yandex.directive.js"></script>
 <script src="components/search/result/image/instagram/instagram.controller.js"></script>
 <script src="components/search/result/image/instagram/instagram.directive.js"></script>
 <script src="components/search/result/news/google/google.controller.js"></script>

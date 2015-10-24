@@ -1,0 +1,11 @@
+.polyfill .layout-row > * {
+  display: inline-block;
+}
+
+.polyfill .layout-row > .flex {
+  min-width: 20%;
+}
+
+.polyfill .layout-column > .flex {
+  min-height: 25px;
+}
