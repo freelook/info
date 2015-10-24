@@ -30,7 +30,7 @@ angular
           if (res && res.id) {
             var id = res.id.split('goo.gl/').splice(1)[0],
               page = CONFIG.PRODUCTION + 'page?id=' + id;
-            url.link(connectors[connector](page, _item, _href));
+            url.location(connectors[connector](page, _item, _href));
             $rootScope.fli.view = '';
           }
         });
