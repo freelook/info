@@ -2,7 +2,7 @@
 <widget xmlns="http://www.w3.org/ns/widgets"
         xmlns:gap="http://phonegap.com/ns/1.0"
         id="info.freelook"
-        version="0.12.6">
+        version="0.12.7">
 
   <name>FLI</name>
 
@@ -15,15 +15,17 @@
   </author>
 
   <content src="app.html"/>
+
   <preference name="permissions" value="none"/>
+
   <icon src="assets/images/icon.png"/>
-  <gap:splash src="assets/images/icon.png"/>
+  <gap:splash src="assets/images/splash.png"/>
 
   <access origin="*"/>
 
   <gap:plugin name="cordova-plugin-whitelist" source="npm" version="1.0.0"/>
-  <gap:plugin name="org.apache.cordova.inappbrowser" source="npm" version="0.6.0"/>
-  <gap:plugin name="org.apache.cordova.splashscreen" source="npm" version="1.0.0"/>
+  <gap:plugin name="org.apache.cordova.inappbrowser" source="npm" version="latest"/>
+  <gap:plugin name="org.apache.cordova.splashscreen" source="npm" version="latest"/>
   <gap:plugin name="cordova-plugin-customurlscheme" source="npm" version="4.0.0">
     <param name="URL_SCHEME" value="freelookinfo"/>
   </gap:plugin>

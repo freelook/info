@@ -20,11 +20,11 @@
   <link ng-repeat="locale in fli.locales" rel="alternate" href="{{href(locale.code)}}" hreflang="{{locale.code}}">
 
   <!-- build:css({.tmp,src}) styles/fli.css-->
-  <link rel="stylesheet" href="bower_components/angular/angular-csp.css" />
   <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/angular/angular-csp.css" />
   <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
-  <!-- endbower -->
   <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+  <!-- endbower -->
 
   <!-- inject:css -->
   <link rel="stylesheet" href="components/_index/index.css">
@@ -76,10 +76,10 @@
   <link rel="stylesheet" href="components/look/content/youtube/user/user.css">
   <link rel="stylesheet" href="components/look/content/youtube/watch/watch.css">
   <link rel="stylesheet" href="components/search/result/goods/amazon/amazon.css">
-  <link rel="stylesheet" href="components/search/result/goods/yandex/yandex.css">
   <link rel="stylesheet" href="components/search/result/image/google/google.css">
-  <link rel="stylesheet" href="components/search/result/image/instagram/instagram.css">
+  <link rel="stylesheet" href="components/search/result/goods/yandex/yandex.css">
   <link rel="stylesheet" href="components/search/result/news/google/google.css">
+  <link rel="stylesheet" href="components/search/result/image/instagram/instagram.css">
   <link rel="stylesheet" href="components/search/result/video/google/google.css">
   <link rel="stylesheet" href="components/search/result/web/facebook/facebook.css">
   <link rel="stylesheet" href="components/search/result/web/google/google.css">
@@ -111,11 +111,11 @@
 <script src="bower_components/angular-aria/angular-aria.js"></script>
 <script src="bower_components/angular-material/angular-material.js"></script>
 <script src="bower_components/angular-translate/angular-translate.js"></script>
+<script src="bower_components/socket.io-client/socket.io.js"></script>
 <script src="bower_components/url-pattern/lib/url-pattern.js"></script>
 <script src="bower_components/angular-media-player/dist/angular-media-player.min.js"></script>
 <script src="bower_components/parse/parse.min.js"></script>
 <!-- endbower -->
-<script src="bower_components/socket.io-client/socket.io.js"></script>
 
 <!-- inject:js -->
 <script src="components/_index/__index.js"></script>
@@ -138,10 +138,10 @@
 <script src="components/_index/core/prerender.factory.js"></script>
 <script src="components/_index/core/toast.factory.js"></script>
 <script src="components/_index/core/url.factory.js"></script>
-<script src="components/_index/i18n/en.js"></script>
-<script src="components/_index/i18n/ru.js"></script>
 <script src="components/_index/footer/footer.controller.js"></script>
 <script src="components/_index/footer/footer.directive.js"></script>
+<script src="components/_index/i18n/en.js"></script>
+<script src="components/_index/i18n/ru.js"></script>
 <script src="components/_index/input/input.controller.js"></script>
 <script src="components/_index/input/input.directive.js"></script>
 <script src="components/home/i18n/en.js"></script>
@@ -171,8 +171,9 @@
 <script src="components/_index/core/api/api.app.factory.js"></script>
 <script src="components/_index/core/api/api.factory.js"></script>
 <script src="components/_index/core/api/api.site.factory.js"></script>
-<script src="components/_index/core/config/config.development.js"></script>
+<script src="components/_index/core/config/config.production.js"></script>
 <script src="components/_index/core/cordova/inAppBrowser.factory.js"></script>
+<script src="components/_index/core/cordova/splash.factory.js"></script>
 <script src="components/_index/core/storage/chrome.storage.factory.js"></script>
 <script src="components/_index/core/storage/custom.storage.factory.js"></script>
 <script src="components/_index/core/storage/local.storage.factory.js"></script>
@@ -262,14 +263,14 @@
 <script src="components/look/content/youtube/watch/watch.directive.js"></script>
 <script src="components/search/result/goods/amazon/amazon.controller.js"></script>
 <script src="components/search/result/goods/amazon/amazon.directive.js"></script>
-<script src="components/search/result/goods/yandex/yandex.controller.js"></script>
-<script src="components/search/result/goods/yandex/yandex.directive.js"></script>
 <script src="components/search/result/image/google/google.controller.js"></script>
 <script src="components/search/result/image/google/google.directive.js"></script>
-<script src="components/search/result/image/instagram/instagram.controller.js"></script>
-<script src="components/search/result/image/instagram/instagram.directive.js"></script>
+<script src="components/search/result/goods/yandex/yandex.controller.js"></script>
+<script src="components/search/result/goods/yandex/yandex.directive.js"></script>
 <script src="components/search/result/news/google/google.controller.js"></script>
 <script src="components/search/result/news/google/google.directive.js"></script>
+<script src="components/search/result/image/instagram/instagram.controller.js"></script>
+<script src="components/search/result/image/instagram/instagram.directive.js"></script>
 <script src="components/search/result/video/google/google.controller.js"></script>
 <script src="components/search/result/video/google/google.directive.js"></script>
 <script src="components/search/result/web/facebook/facebook.controller.js"></script>

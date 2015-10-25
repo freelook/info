@@ -38,7 +38,8 @@
         });
 
     })
-    .run(function ($rootScope, platform, CONFIG, analytics, vk, Parse) {
+    .run(function ($rootScope, platform, splash, analytics, vk, CONFIG, Parse) {
+      splash.hide();
       platform.init();
       analytics.init();
       vk.init();
