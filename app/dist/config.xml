@@ -17,6 +17,7 @@
   <content src="app.html"/>
 
   <preference name="permissions" value="none"/>
+  <preference name="SplashScreenDelay" value="7000"/>
 
   <icon src="assets/images/icon.png"/>
   <gap:splash src="assets/images/splash.png"/>
