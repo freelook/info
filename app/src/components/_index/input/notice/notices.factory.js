@@ -1,14 +1,17 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('notices', function (platform) {
+  .factory('notices', function ($rootScope, platform) {
 
     var notices = [];
 
     if (platform.name() === 'site') {
       notices.push({
         text: 'index.input.note.chrome',
-        link: 'https://chrome.google.com/webstore/detail/jlpjaecnenjbpkbcpnocbeibjokkbnhj'
+        link: '',
+        handler: function () {
+          $rootScope.fli.view = 'components/_index/core/uix/apps/apps.view.html';
+        }
       });
 
     }

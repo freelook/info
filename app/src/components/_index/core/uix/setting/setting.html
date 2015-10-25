@@ -7,3 +7,7 @@
   <md-switch class="md-primary" ng-model="setting.notice" aria-label="switch notice" ng-change="setting.toggleNotice()"></md-switch>
   <div flex class="title" translate="index.core.uix.setting.notice"></div>
 </div>
+
+<div class="block" layout="row" layout-align="center center" ng-if="fli.platform==='site'">
+  <fli-apps></fli-apps>
+</div>
