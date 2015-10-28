@@ -15,6 +15,10 @@
     "phantomjs": "~1.9.17",
     "tree-kill": "0.0.6"
   },
+  "engines": {
+    "node": "0.12.x",
+    "npm": "2.10.x"
+  },
   "bin": {
     "prerender": "server.js"
   }
