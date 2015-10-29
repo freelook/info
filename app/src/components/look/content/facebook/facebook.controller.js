@@ -7,9 +7,7 @@ angular
 
     var vm = this;
 
-    vm.img = function (id) {
-      return 'https://graph.facebook.com/' + id + '/picture?type=large';
-    };
+    vm.img = facebook.img;
 
     if ($scope.fli.route.url) {
       facebook

@@ -91,11 +91,16 @@ angular
       return defer.promise;
     }
 
+    function img(id) {
+      return 'https://graph.facebook.com/' + id + '/picture?type=large';
+    }
+
     return {
       init: init,
       share: share,
       user: user,
-      pages: pages
+      pages: pages,
+      img: img
     };
 
   })

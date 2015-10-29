@@ -7,12 +7,9 @@
   angular
     .module('freelook.info')
     .controller('index.ctrl',
-    function ($rootScope, $route, $location, $translate, $sce, url, locales, platform, I18N) {
+    function ($rootScope, $route, $location, $translate, $sce, url, locales, platform) {
 
       $rootScope.fli = {};
-      $rootScope.fli.view = '';
-      $rootScope.fli.title = $translate.instant(I18N.DEFAULT_TITLE);
-      $rootScope.fli.description = $translate.instant(I18N.DEFAULT_DESCRIPTION);
       $rootScope.fli.locales = locales;
       $rootScope.fli.platform = platform.name();
       $rootScope.link = url.link;
