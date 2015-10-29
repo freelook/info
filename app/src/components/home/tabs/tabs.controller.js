@@ -13,12 +13,19 @@ angular
     var vm = this;
     vm.selected = -1;
 
+    function _config(type) {
+      return {
+        l: locale.getCode(),
+        type: type
+      };
+    }
+
     vm.href = function (type) {
-      return url.href('?', {l: locale.getCode(), type: type});
+      return url.href('?', _config(type));
     };
 
-    vm.go = function (config) {
-      $scope.go(config);
+    vm.go = function (type) {
+      $scope.go(url.href('?', _config(type), false, '/'));
     };
 
     function init() {

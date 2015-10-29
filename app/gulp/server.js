@@ -1,7 +1,6 @@
 'use strict';
 
 var gulp = require('gulp'),
-  util = require('util'),
   browserSync = require('browser-sync'),
   middleware = require('./middleware');
 
@@ -19,6 +18,7 @@ function browserSyncInit(baseDir, files, browser) {
   browserSync.instance = browserSync.init(fls, {
     startPath: '/',
     port: 8080,
+    open: false,
     server: {
       baseDir: baseDir,
       middleware: middleware
