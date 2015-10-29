@@ -16,7 +16,7 @@ var CONFIG = {
     PRODUCTION: 'http://freelook.info/prerender/'
   },
   SITE: {
-    ORIGIN: 'http://localhost/'
+    ORIGIN: 'http://local.freelook.info/'
   },
   CHROME: {
     ORIGIN: '/',

@@ -2,9 +2,28 @@
 angular
   .module('freelook.info')
   .factory('facebook',
-  function ($http, $rootScope, $q, api, url, CONFIG) {
+  function ($http, $rootScope, $window, $q, $timeout, api, url, Parse, CONFIG) {
 
     var APP_ID = CONFIG.FB.ID;
+
+    function init() {
+      $window.fbAsyncInit = function () {
+        Parse.FacebookUtils.init({
+          appId: CONFIG.FB.ID,
+          version: 'v2.4'
+        });
+      };
+      $timeout(function () {
+        var js, id = 'facebook-jssdk', d = document, s = 'script',
+          fjs = d.getElementsByTagName(s)[0];
+        if (!d.getElementById(id)) {
+          js = d.createElement(s);
+          js.id = id;
+          js.src = 'vendors/fb/sdk.js';
+          fjs.parentNode.insertBefore(js, fjs);
+        }
+      }, 0);
+    }
 
     function share(_href, item) {
       var _item = item || {},
@@ -73,6 +92,7 @@ angular
     }
 
     return {
+      init: init,
       share: share,
       user: user,
       pages: pages

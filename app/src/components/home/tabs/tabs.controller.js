@@ -31,7 +31,7 @@ angular
     function init() {
       var type = TYPES[$scope.fli.route.type || ''];
       if (angular.isUndefined(type)) {
-        vm.go({type: null});
+        vm.go(null);
       } else {
         vm.selected = type;
       }

@@ -38,12 +38,13 @@
         });
 
     })
-    .run(function ($rootScope, platform, splash, analytics, vk, CONFIG, Parse) {
+    .run(function ($rootScope, platform, splash, analytics, vk, facebook, Parse, CONFIG) {
       splash.hide();
       platform.init();
       analytics.init();
-      vk.init();
       Parse.initialize(CONFIG.API.PARSE.ID, CONFIG.API.PARSE.KEY);
+      vk.init();
+      facebook.init();
 
       $rootScope.$on('$routeChangeStart', function () {
         $(document).scrollTop(0);
