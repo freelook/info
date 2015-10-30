@@ -3,22 +3,29 @@ angular
   .module('freelook.info')
   .factory('auth', function ($rootScope, $timeout, user, Parse) {
 
-    function logIn() {
-      Parse.FacebookUtils.logIn(null, {
-        success: function () {
-          $timeout(function () {
-            $rootScope.fli.user = user.current();
-          });
-          console.log('User signed up and logged in through Facebook!');
-        },
-        error: function () {
-          console.log('User cancelled the Facebook login or did not fully authorize.');
-        }
+    function _setUser() {
+      $timeout(function () {
+        $rootScope.fli.user = user.current();
       });
     }
 
+    function logIn() {
+      if (!user.current()) {
+        Parse.FacebookUtils.logIn(null, {
+          success: function () {
+            _setUser();
+          }
+        });
+      }
+    }
+
+    function logOut() {
+      Parse.User.logOut().then(_setUser);
+    }
+
     return {
-      logIn: logIn
+      logIn: logIn,
+      logOut: logOut
     };
 
   });

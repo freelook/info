@@ -8,7 +8,7 @@ angular
     var vm = this;
 
     vm.notice = storage.get('notice', true);
-    vm.logIn = auth.logIn;
+    vm.logOut = auth.logOut;
     vm.fbImg = facebook.img;
 
     vm.close = function () {

@@ -31,7 +31,8 @@ window.i18n.ru.index = {
       },
       setting: {
         locale: 'Локаль',
-        notice: 'Извещение'
+        notice: 'Извещение',
+        logIn: 'Вход'
       }
     }
   }

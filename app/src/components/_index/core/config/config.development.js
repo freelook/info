@@ -1,8 +1,8 @@
 var CONFIG = {
   PRODUCTION: 'http://freelook.info/',
   API: {
-    SOCKET: 'http://localhost:4000',
-    URL: 'http://localhost/api/',
+    SOCKET: 'http://local.freelook.info:4000',
+    URL: 'http://local.freelook.info/api/',
     GOOGLE: {
       KEY: 'AIzaSyDBAHujlSftqeYB03a0FjtwLBsQ2nA4DQM'
     },
@@ -12,7 +12,7 @@ var CONFIG = {
     }
   },
   PRERENDER: {
-    URL: 'http://localhost/prerender/',
+    URL: 'http://local.freelook.info/prerender/',
     PRODUCTION: 'http://freelook.info/prerender/'
   },
   SITE: {

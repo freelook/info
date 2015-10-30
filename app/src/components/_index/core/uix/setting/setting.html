@@ -1,3 +1,10 @@
+<div class="block" ng-if="fli.user">
+  <img class="circle" ng-src="{{setting.fbImg(fli.user.attributes.authData.facebook.id)}}">
+  <md-button class="md-icon-button link" aria-label="fb-logout" ng-click="setting.logOut()">
+    <i class="fa fa-sign-out fa-2x"></i>
+  </md-button>
+</div>
+
 <div class="block margin">
   <div class="title" translate="index.core.uix.setting.locale"></div>
   <fli-locale-panel></fli-locale-panel>
@@ -10,16 +17,6 @@
 
 <div class="block" layout="row" layout-align="center center" ng-if="fli.platform==='site'">
   <fli-apps></fli-apps>
-</div>
-
-
-<div class="block" layout="row">
-  <md-button ng-if="!fli.user" class="md-icon-button link" aria-label="fb-login" ng-click="setting.logIn()">
-    <i class="fa fa-sign-in fa-2x"></i>
-  </md-button>
-  <div ng-if="fli.user">
-    <img class="circle" ng-src="{{setting.fbImg(fli.user.attributes.authData.facebook.id)}}" >
-  </div>
 </div>
 
 

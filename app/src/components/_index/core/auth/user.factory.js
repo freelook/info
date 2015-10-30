@@ -7,7 +7,6 @@ angular
       return Parse.User.current();
     }
 
-
     return {
       current: current
     };

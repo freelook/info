@@ -7,15 +7,16 @@ fli-setting {
 }
 
 #setting .margin {
-  margin-left: 45px;
+  margin-left: 50px;
 }
 
-#setting .block .title {
+#setting .title {
   padding-bottom: 7px;
   border-bottom: 1px solid #cccccc;
   color: #999999;
 }
 
-#setting md-switch {
+#setting md-switch,
+#setting .md-icon-button {
   margin: 0;
 }

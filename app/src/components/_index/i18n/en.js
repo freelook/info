@@ -32,7 +32,8 @@ window.i18n.en.index = {
       },
       setting: {
         locale: 'Locale',
-        notice: 'Notice'
+        notice: 'Notice',
+        logIn: 'Log in'
       }
     }
   }

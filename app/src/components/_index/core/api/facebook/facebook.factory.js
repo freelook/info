@@ -91,8 +91,9 @@ angular
       return defer.promise;
     }
 
-    function img(id) {
-      return 'https://graph.facebook.com/' + id + '/picture?type=large';
+    function img(id, type) {
+      var _type = type || 'normal';
+      return 'https://graph.facebook.com/' + id + '/picture?type=' + _type;
     }
 
     return {

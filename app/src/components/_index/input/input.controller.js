@@ -3,12 +3,15 @@
 angular
   .module('freelook.info')
   .controller('input.ctrl',
-  function ($scope, $location, url, locale, PLACEHOLDER) {
+  function ($scope, $location, url, locale, facebook, auth, PLACEHOLDER) {
 
     var vm = this;
+    $scope.fli.focus = 0;
+
     vm.placeholder = PLACEHOLDER;
     vm.icon = $scope.fli.icon;
-    $scope.fli.focus = 0;
+    vm.fbImg = facebook.img;
+
 
     vm.find = function () {
       if ($scope.fli.route.input) {
@@ -39,7 +42,8 @@ angular
     };
 
     vm.setting = function () {
-      $scope.fli.view = !$scope.fli.view ? 'components/_index/core/uix/setting/setting.view.html' : '';
+      $scope.fli.view = 'components/_index/core/uix/setting/setting.view.html';
+      auth.logIn();
     };
 
     vm.focus = function () {
