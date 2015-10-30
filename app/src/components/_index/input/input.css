@@ -26,6 +26,7 @@ fli-input .md-button.md-icon-button {
 
 fli-input .md-button.md-icon-button i {
   position: relative;
+  margin-top: 10px;
   outline: 0;
 }
 
