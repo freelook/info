@@ -10,7 +10,7 @@ angular
       $window.fbAsyncInit = function () {
         Parse.FacebookUtils.init({
           appId: CONFIG.FB.ID,
-          version: 'v2.4'
+          version: 'v2.5'
         });
       };
       $timeout(function () {
