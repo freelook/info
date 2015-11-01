@@ -1,14 +1,18 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('auth', function (platform, authSite) {
+  .factory('auth', function (platform, authSite, authChrome) {
 
-    var authNoop = {
-      logIn: angular.noop,
-      logOut: angular.noop
+    var providers = {
+      site: authSite,
+      chrome: authChrome,
+      noop: {
+        logIn: angular.noop,
+        logOut: angular.noop
+      }
     };
 
-    return platform.name() === 'site' ? authSite : authNoop;
+    return providers[platform.name()] || providers.noop;
 
   });
 

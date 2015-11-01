@@ -14,13 +14,6 @@ angular
       vm.showLocalePanel = !vm.showLocalePanel;
     };
 
-    //var editorExtensionId = 'hebeffpnegfapnbacgikegnfibflcghh';
-
-    //window.chrome.runtime.sendMessage(editorExtensionId, {do: 'do'},
-    //  function (res) {
-    //    console.log(res);
-    //  });
-
   });
 
 

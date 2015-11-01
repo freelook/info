@@ -96,12 +96,17 @@ angular
       return 'https://graph.facebook.com/' + id + '/picture?type=' + _type;
     }
 
+    function me(token) {
+      $http.get('https://graph.facebook.com/me?' + token);
+    }
+
     return {
       init: init,
       share: share,
       user: user,
       pages: pages,
-      img: img
+      img: img,
+      me: me
     };
 
   })
