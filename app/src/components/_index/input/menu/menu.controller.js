@@ -28,6 +28,10 @@ angular
       name: 'index.input.menu.home',
       icon: 'eye-slash',
       href: url.href('?', {l: locale.getCode()})
+    }, {
+      name: 'index.input.menu.add',
+      icon: 'plus',
+      href: url.href('show?', {l: locale.getCode()})
     });
 
   });

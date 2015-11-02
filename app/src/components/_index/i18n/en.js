@@ -10,7 +10,8 @@ window.i18n.en.index = {
       back: 'Back',
       hide: 'Hide',
       forward: 'Forward',
-      home: 'Home'
+      home: 'Home',
+      add: 'Add'
     },
     note: {
       chrome: 'Use all features and speed up the work. Try the application?'
