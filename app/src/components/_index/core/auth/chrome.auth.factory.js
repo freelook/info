@@ -10,15 +10,17 @@ angular
     }
 
     function logIn() {
-      $window.chrome.runtime.onMessage.addListener(function (req) {
-        Parse.FacebookUtils.logIn(req, {
-          success: function () {
-            _setUser(req);
-            $window.chrome.app.window.current().focus();
-          }
+      if (!user.current()) {
+        $window.chrome.runtime.onMessage.addListener(function (req) {
+          Parse.FacebookUtils.logIn(req, {
+            success: function () {
+              _setUser(req);
+              $window.chrome.app.window.current().focus();
+            }
+          });
         });
-      });
-      url.link(CONFIG.SITE.ORIGIN + 'token/chrome');
+        url.link(CONFIG.SITE.ORIGIN + 'token/chrome');
+      }
     }
 
     function logOut() {
