@@ -3,12 +3,12 @@
 angular
   .module('freelook.info')
   .controller('input.menu.ctrl',
-  function ($rootScope, $scope, $window, $location) {
+  function ($rootScope, $scope, $window, $location, locale, url) {
 
     var vm = this;
 
     $scope.menu = [];
-    vm.path = $location.path();
+    vm.url = $location.absUrl();
 
     vm.back = function () {
       $window.history.back();
@@ -26,8 +26,8 @@ angular
 
     $scope.menu.push({
       name: 'index.input.menu.home',
-      icon: 'th-large',
-      href: '/'
+      icon: 'eye-slash',
+      href: url.href('?', {l: locale.getCode()})
     });
 
   });

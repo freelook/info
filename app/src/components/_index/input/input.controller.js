@@ -29,16 +29,7 @@ angular
     };
 
     vm.href = function () {
-      if (!$scope.fli.focus) {
-        vm.icon = $scope.fli.icon;
-        return url.href($location.url().slice(1));
-      }
-      if ($scope.fli.route.input) {
-        vm.icon = 'search';
-        return url.href('search?', {l: locale.getCode(), input: $scope.fli.route.input, type: $scope.fli.route.type});
-      }
-      vm.icon = 'eye-slash';
-      return '/';
+      return url.href($location.url().slice(1));
     };
 
     vm.setting = function () {

@@ -5,9 +5,8 @@ angular
   function ($scope, url, locale) {
 
     var TYPES = {
-      looks: 0,
-      news: 1,
-      trends: 2
+      news: 0,
+      web: 1
     };
 
     var vm = this;
