@@ -1,5 +1,5 @@
 <div class="block" ng-if="fli.user">
-  <img class="circle" ng-src="{{setting.fbImg(fli.user.attributes.authData.facebook.id)}}">
+  <img class="circle" ng-src="{{setting.fbImg(fli.user.attributes.authData.facebook.id)}}" fli-err>
   <md-button class="md-icon-button link" aria-label="fb-logout" ng-click="setting.logOut()">
     <i class="fa fa-sign-out fa-2x"></i>
   </md-button>

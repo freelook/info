@@ -12,6 +12,7 @@ angular
           appId: CONFIG.FB.ID,
           version: 'v2.5'
         });
+        $rootScope.$broadcast('fbAsyncInit');
       };
       $timeout(function () {
         var js, id = 'facebook-jssdk', d = document, s = 'script',
@@ -96,17 +97,12 @@ angular
       return 'https://graph.facebook.com/' + id + '/picture?type=' + _type;
     }
 
-    function me(token) {
-      $http.get('https://graph.facebook.com/me?' + token);
-    }
-
     return {
       init: init,
       share: share,
       user: user,
       pages: pages,
-      img: img,
-      me: me
+      img: img
     };
 
   })

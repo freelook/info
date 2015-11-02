@@ -11,7 +11,7 @@ angular
 
     function logIn() {
       if (!user.current()) {
-        Parse.FacebookUtils.logIn(null, {
+        return Parse.FacebookUtils.logIn(null, {
           success: function () {
             _setUser();
           }

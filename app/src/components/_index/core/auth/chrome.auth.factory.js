@@ -10,19 +10,15 @@ angular
     }
 
     function logIn() {
-      window.chrome.runtime.onMessage.addListener(function (req) {
-        // todo parse req.token
-        Parse.FacebookUtils.logIn({
-          //id: '',
-          //access_token: '',
-          //expiration_date: ''
-        }, {
+      $window.chrome.runtime.onMessage.addListener(function (req) {
+        Parse.FacebookUtils.logIn(req, {
           success: function () {
             _setUser(req);
+            $window.chrome.app.window.current().focus();
           }
         });
       });
-      url.link('https://www.facebook.com/dialog/oauth?client_id=' + CONFIG.FB.ID + '&redirect_uri=' + CONFIG.SITE.ORIGIN + 'token&response_type=token');
+      url.link(CONFIG.SITE.ORIGIN + 'token/chrome');
     }
 
     function logOut() {
