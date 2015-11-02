@@ -6,11 +6,7 @@ describe('Look controller', function () {
 
   beforeEach(function () {
     module('freelook.info');
-
-    mockRouteParams = {
-      type: 'full'
-    };
-
+    mockRouteParams = {};
   });
 
   beforeEach(inject(function ($rootScope, $routeParams, $controller) {
@@ -30,7 +26,7 @@ describe('Look controller', function () {
   }));
 
   it('should define route', function () {
-    expect(mockRootScope.fli.route).toBe(mockRouteParams);
+    expect(mockRootScope.fli.route).toBeDefined();
   });
 
 });

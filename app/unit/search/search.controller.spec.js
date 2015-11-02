@@ -6,13 +6,8 @@ describe('Search controller', function () {
   beforeEach(function () {
 
     module('freelook.info');
-
     input = 'xxx';
-
-    mockRouteParams = {
-      input: input
-    };
-
+    mockRouteParams = {};
 
   });
 
@@ -34,7 +29,7 @@ describe('Search controller', function () {
 
   it('should define root route and search', function () {
     exequteController();
-    expect(rootScope.fli.route).toBe(mockRouteParams);
+    expect(rootScope.fli.route).toBeDefined();
   });
 
 });
