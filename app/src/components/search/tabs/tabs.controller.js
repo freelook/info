@@ -10,7 +10,8 @@ angular
       goods: 2,
       image: 3,
       audio: 4,
-      video: 5
+      video: 5,
+      promo: 6
     };
 
     var vm = this, auto = false;

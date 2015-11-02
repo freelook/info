@@ -5,7 +5,8 @@ window.i18n.ru.search = {
     goods: 'товары',
     images: 'картинки',
     audio: 'аудио',
-    video: 'видео'
+    video: 'видео',
+    promo: 'промо'
   },
   menu: {
     lucky: 'Мне повезет'
