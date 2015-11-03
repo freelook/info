@@ -92,6 +92,11 @@ angular
       return defer.promise;
     }
 
+    function post(_id) {
+      var point = encodeURIComponent(_id + '?fli=1');
+      return api.facebook(point);
+    }
+
     function img(id, type) {
       var _type = type || 'normal';
       return 'https://graph.facebook.com/' + id + '/picture?type=' + _type;
@@ -102,6 +107,7 @@ angular
       share: share,
       user: user,
       pages: pages,
+      post: post,
       img: img
     };
 

@@ -1,13 +1,18 @@
-'use strict';
+(function () {
+  'use strict';
 
-angular
-  .module('fli.show', [])
-  .config(function ($routeProvider) {
-    // Routes config
-    $routeProvider
-      .when('/show', {
-        templateUrl: 'components/show/show.html',
-        controller: 'show.ctrl'
-      });
-  });
+  window.i18n.ru.show = {};
+  window.i18n.en.show = {};
 
+  angular
+    .module('fli.show', [])
+    .config(function ($routeProvider) {
+      // Routes config
+      $routeProvider
+        .when('/show', {
+          templateUrl: 'components/show/show.html',
+          controller: 'show.ctrl'
+        });
+    });
+
+}());

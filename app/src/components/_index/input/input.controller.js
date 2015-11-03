@@ -9,6 +9,7 @@ angular
     $scope.fli.focus = 0;
 
     vm.placeholder = PLACEHOLDER;
+    vm.type = 'search';
     vm.icon = $scope.fli.icon;
     vm.fbImg = facebook.img;
 
