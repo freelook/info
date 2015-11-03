@@ -3,7 +3,9 @@
 angular
   .module('freelook.info')
   .controller('item.ctrl',
-  function () {
+  function ($rootScope) {
 
+    var vm = this;
+    vm.fix = $rootScope.fli.fix;
 
   });

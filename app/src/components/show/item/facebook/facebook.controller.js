@@ -10,6 +10,7 @@ angular
       storyId = url.qByName('id', $scope.site.search) || '',
       id = url.extract('*/posts/:id', $scope.site.pathname).id || '';
 
+    vm.fix = angular.identity;
     vm.id = storyFbId ? storyId + '_' + storyFbId : id;
 
     facebook

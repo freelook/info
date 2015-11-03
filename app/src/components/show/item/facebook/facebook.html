@@ -1,13 +1,13 @@
 <div flex class="block">
   <div ng-if="facebookItem.post">
     <fli-item ng-init="fliItem = {
+          small:1,
           url:facebookItem.post.actions[0].link,
           img:facebookItem.post.picture,
           title:facebookItem.post.name,
           content:facebookItem.post.description
           };
-          fliItemCtrl.href=show.href;
-          fliItemCtrl.share=show.share;">
+          fliItemCtrl.fix=facebookItem.fix;">
     </fli-item>
   </div>
 </div>

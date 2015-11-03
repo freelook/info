@@ -1,7 +1,7 @@
 <md-card class="fli-item" ng-class="{small:!!fliItem.small}" layout="column" ng-if="fliItem">
   <md-card-content>
     <a fli-href="{{fliItemCtrl.href(fliItem)}}" class="img">
-      <img class="md-card-image" ng-if="fliItem.img" ng-src="{{fli.fix(fliItem.img)}}" title="{{'index.core.uix.item.lookIt' | translate:{v:fliItem.title || 'FLI'} }}" alt="{{fliItem.title}}" fli-item-img fli-err>
+      <img class="md-card-image" ng-if="fliItem.img" ng-src="{{fliItemCtrl.fix(fliItem.img)}}" title="{{'index.core.uix.item.lookIt' | translate:{v:fliItem.title || 'FLI'} }}" alt="{{fliItem.title}}" fli-item-img fli-err>
       <div class="md-card-image header" ng-if="!fliItem.img" title="{{'index.core.uix.item.lookIt' | translate:{v:fliItem.title} }}"></div>
     </a>
     <div class="block">
