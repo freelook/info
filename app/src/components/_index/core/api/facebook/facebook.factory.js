@@ -93,7 +93,7 @@ angular
     }
 
     function post(_id) {
-      var point = encodeURIComponent(_id + '?fli=1');
+      var point = encodeURIComponent(_id + '?fields=id,picture,caption,description,name');
       return api.facebook(point);
     }
 
