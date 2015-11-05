@@ -6,7 +6,8 @@ angular
   function ($rootScope, $routeParams, $location, $scope, $translate, index, locale) {
 
     $location.search({
-      l: locale.init($routeParams.l)
+      l: locale.init($routeParams.l),
+      input: $routeParams.input
     })
       .replace();
 

@@ -3,13 +3,18 @@
 angular
   .module('fli.show')
   .controller('show.input.ctrl',
-  function ($rootScope) {
+  function ($scope, url, locale) {
 
     var vm = this;
     vm.placeholder = 'show.input.placeholder';
     vm.type = 'url';
     vm.find = function () {
-      $rootScope.fli.focus = 0;
+      if ($scope.fli.route.input) {
+        $scope.go(url.href('show?', {
+          l: locale.getCode(),
+          input: $scope.fli.route.input || ''
+        }, false, '/'));
+      }
     };
 
   });

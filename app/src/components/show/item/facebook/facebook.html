@@ -1,13 +1,39 @@
 <div flex class="block">
-  <div ng-if="facebookItem.post">
-    <fli-item ng-init="fliItem = {
-          small:1,
+  <div ng-if="facebookItem.post" flex>
+
+    <div flex layout="column" layout-align="center center">
+      <fli-item ng-init="fliItem = {
           url:facebookItem.post.actions[0].link,
           img:facebookItem.post.picture,
           title:facebookItem.post.name,
           content:facebookItem.post.description
           };
           fliItemCtrl.fix=facebookItem.fix;">
-    </fli-item>
+      </fli-item>
+    </div>
+
+    <div flex>
+
+      <md-radio-group ng-model="facebookItem.action" layout>
+        <md-radio-button value="click" class="md-primary" ng-disabled="1">CLICK</md-radio-button>
+        <md-radio-button value="like" class="md-primary">LIKE</md-radio-button>
+      </md-radio-group>
+
+      <div class="block" layout="row" layout-align="center center">
+        <md-slider flex md-discrete ng-model="facebookItem.looks" min="1" max="10" id="looks-slider" aria-label="looks" class="md-primary"></md-slider>
+        <div>
+          <span ng-bind="facebookItem.looks"></span>
+          <i>look's</i>
+        </div>
+      </div>
+
+      <div layout="row" layout-align="center center">
+        <md-button class="md-fab md-primary" aria-label="show" ng-click="facebookItem.show()">
+          <i class="fa fa-plus"></i>
+        </md-button>
+      </div>
+
+    </div>
+
   </div>
 </div>

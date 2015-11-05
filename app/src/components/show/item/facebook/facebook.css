@@ -1,3 +1,7 @@
 fli-show-item-facebook {
   display: block;
 }
+
+fli-show-item-facebook .fli-item {
+  max-width: 400px;
+}
