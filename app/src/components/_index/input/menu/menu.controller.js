@@ -8,7 +8,7 @@ angular
     var vm = this;
 
     $scope.menu = [];
-    vm.url = $location.absUrl();
+    vm.url = decodeURIComponent($location.absUrl());
 
     vm.back = function () {
       $window.history.back();
@@ -31,7 +31,7 @@ angular
     }, {
       name: 'index.input.menu.add',
       icon: 'plus',
-      href: url.href('show?', {l: locale.getCode()})
+      href: url.href('show?', {l: locale.getCode(), input: $rootScope.fli.route.input})
     });
 
   });

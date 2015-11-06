@@ -11,18 +11,15 @@ angular
       id = url.extract('*/posts/:id', $scope.site.pathname).id || '';
 
     vm.fix = angular.identity;
-    vm.action = 'like';
-    vm.looks = 1;
-    vm.id = storyFbId ? storyId + '_' + storyFbId : id;
+    vm.id = storyId && storyFbId ? storyId + '_' + storyFbId : id ? id : '';
 
-    vm.show = function () {
-      console.log('Show item: ' + $scope.fli.route.input, vm.post);
-    };
+    if (vm.id) {
+      facebook
+        .post(vm.id)
+        .then(function (_post) {
+          $scope.showItem.post = _post.data;
+        });
+    }
 
-    facebook
-      .post(vm.id)
-      .then(function (_post) {
-        vm.post = _post.data;
-      });
 
   });

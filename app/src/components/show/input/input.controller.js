@@ -12,7 +12,7 @@ angular
       if ($scope.fli.route.input) {
         $scope.go(url.href('show?', {
           l: locale.getCode(),
-          input: $scope.fli.route.input || ''
+          input: $scope.fli.route.input ? encodeURIComponent(decodeURIComponent($scope.fli.route.input)) : null
         }, false, '/'));
       }
     };
