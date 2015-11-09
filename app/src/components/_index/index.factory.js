@@ -9,6 +9,7 @@ angular
       $rootScope.fli.route = $routeParams || {};
       $rootScope.fli.media = $mdMedia;
       $rootScope.fli.view = '';
+      $rootScope.fli.focus = 0;
       $rootScope.fli.user = user.current();
     }
 

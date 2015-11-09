@@ -13,11 +13,11 @@
     </div>
   </div>
 
-  <div layout="row" layout-align="center center">
-    <md-button class="md-fab md-primary" aria-label="show" ng-disabled="!showItem.post.looks"
-               ng-click="showItemConfig.show()">
+  <div layout="column" layout-align="center center">
+    <md-button class="md-fab md-primary" aria-label="show" ng-disabled="!fli.user || !showItem.post.looks" ng-click="showItemForm.show()">
       <i class="fa fa-plus"></i>
     </md-button>
+    <div ng-if="!fli.user" translate="index.input.note.needLogin" class="color-8"></div>
   </div>
 
 </div>

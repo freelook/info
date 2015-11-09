@@ -6,11 +6,7 @@ angular
   function ($rootScope, $scope, notice, url) {
 
     var vm = this;
-    vm.note = notice.check();
-
-    $scope.$on('note', function (event, _note) {
-      vm.note = _note;
-    });
+    vm.note = notice.pop() || '';
 
     vm.close = function () {
       vm.note = '';

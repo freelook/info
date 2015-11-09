@@ -2,7 +2,7 @@
 
 angular
   .module('fli.show')
-  .controller('show.item.config.ctrl',
+  .controller('show.item.form.ctrl',
   function ($scope) {
 
     var vm = this;

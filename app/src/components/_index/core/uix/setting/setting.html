@@ -5,7 +5,7 @@
   </md-button>
 </div>
 
-<div class="block margin">
+<div class="block">
   <div class="title" translate="index.core.uix.setting.locale"></div>
   <fli-locale-panel></fli-locale-panel>
 </div>
@@ -15,8 +15,9 @@
   <div flex class="title" translate="index.core.uix.setting.notice"></div>
 </div>
 
-<div class="block" layout="row" layout-align="center center" ng-if="fli.platform==='site'">
-  <fli-apps></fli-apps>
+<div class="block" ng-if="fli.platform==='site'">
+  <div class="title" translate="index.core.uix.setting.app"></div>
+  <fli-apps layout="row" layout-align="center center"></fli-apps>
 </div>
 
 

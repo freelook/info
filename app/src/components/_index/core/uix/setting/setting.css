@@ -6,14 +6,13 @@ fli-setting {
   margin-top: 25px;
 }
 
-#setting .margin {
-  margin-left: 50px;
+#setting .title {
+  padding: 7px;
+  color: #999999;
 }
 
-#setting .title {
-  padding-bottom: 7px;
+#setting .block {
   border-bottom: 1px solid #cccccc;
-  color: #999999;
 }
 
 #setting md-switch,

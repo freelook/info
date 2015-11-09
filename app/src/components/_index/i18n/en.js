@@ -14,7 +14,7 @@ window.i18n.en.index = {
       add: 'Add'
     },
     note: {
-      chrome: 'Use all features and speed up the work. Try the application?'
+      needLogin: 'Need login'
     }
   },
   footer: {
@@ -34,7 +34,8 @@ window.i18n.en.index = {
       setting: {
         locale: 'Locale',
         notice: 'Notice',
-        logIn: 'Log in'
+        logIn: 'Log in',
+        app: 'Use all features and speed up the work with application'
       }
     }
   }
