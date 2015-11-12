@@ -18,4 +18,6 @@ var server = prerender({
 // server.use(prerender.inMemoryHtmlCache());
 // server.use(prerender.s3HtmlCache());
 
+require('child_process').spawn('killall', ['phantomjs']);
+
 server.start();
