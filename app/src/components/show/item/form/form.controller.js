@@ -7,8 +7,8 @@ angular
 
     var vm = this;
 
-    $scope.showItem.post.action = 'like';
-    $scope.showItem.post.looks = 1;
+    $scope.showItem.post.action = 'click';
+    $scope.showItem.post.look = 1;
 
     vm.show = function () {
       console.log('Show item: ' + $scope.fli.route.input, vm.post);

@@ -1,10 +1,9 @@
-<md-card layout-sm="column" layout="row">
-  <img flex-gt-sm="33" ng-if="!!rich.img[0]" class="md-card-image" ng-src="{{rich.img[0]}}" ng-click="link(fli.route.url)" title="{{'VIEW ALL - '+ fli.route.input}}">
-  <md-card-content flex>
-    <div ng-if="rich.content" class="content" ng-bind-html="rich.content"></div>
-    <div class="link" ng-click="link(fli.route.url)">
-      <i class="fa fa-external-link"></i>
-      <span>VIEW ALL</span>
-    </div>
-  </md-card-content>
-</md-card>
+<div ng-if="richCtrl.item">
+  <fli-item ng-init="fliItem = {
+          url:richCtrl.item.url,
+          img:richCtrl.item.img[0],
+          title:richCtrl.item.title,
+          content:richCtrl.item.content
+          };">
+  </fli-item>
+</div>

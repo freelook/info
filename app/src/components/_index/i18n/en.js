@@ -29,7 +29,11 @@ window.i18n.en.index = {
         search: 'Search - {{v}}',
         share: 'Share - {{v}}',
         goTo: 'Go to - {{v}}',
-        getIt: 'Get file'
+        getIt: 'Get file',
+        edit: {
+          title: 'Title',
+          content: 'Content'
+        }
       },
       setting: {
         locale: 'Locale',

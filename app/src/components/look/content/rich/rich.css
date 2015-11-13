@@ -1,16 +1,4 @@
-fli-look-content-rich .md-card-image {
-  min-height: 200px;
-  max-height: 200px;
-  margin: 7px;
-  cursor: pointer;
-}
-
-fli-look-content-rich .content {
-  text-align: justify;
-}
-
-fli-look-content-rich .link {
-  margin: 5px;
-  float: right;
+fli-look-content-rich {
+  display: block;
 }
 

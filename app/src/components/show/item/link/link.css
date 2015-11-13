@@ -1,0 +1,7 @@
+fli-show-item-link {
+  display: block;
+}
+
+fli-show-item-link .fli-item {
+  max-width: 400px;
+}

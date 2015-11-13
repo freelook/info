@@ -28,7 +28,11 @@ window.i18n.ru.index = {
         search: 'Искать - {{v}}',
         share: 'Расшарить - {{v}}',
         goTo: 'Перейти - {{v}}',
-        getIt: 'Получить файл'
+        getIt: 'Получить файл',
+        edit: {
+          title: 'Заголовок',
+          content: 'Контент'
+        }
       },
       setting: {
         locale: 'Локаль',

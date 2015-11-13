@@ -15,5 +15,7 @@ angular
     $rootScope.fli.icon = 'plus';
     index.init();
 
+    $rootScope.fli.route.url = $routeParams.input;
+
   });
 
