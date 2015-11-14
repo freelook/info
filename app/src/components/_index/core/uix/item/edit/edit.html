@@ -9,7 +9,7 @@
     <div class="block">
       <md-input-container ng-if="fliItemCtrl.imgEdit">
         <label translate="index.core.uix.item.edit.image"></label>
-        <input ng-model="fliItem.img" ng-change="fliItemCtrl.imgToggle(fliItem.img)" type="url" required>
+        <input ng-model="fliItem.img" ng-blur="fliItemCtrl.imgToggle(fliItem.img)" type="url" required>
       </md-input-container>
 
       <md-input-container>
