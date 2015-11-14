@@ -1,14 +1,18 @@
 window.i18n.ru.show = {
   input: {
-    placeholder: 'Ссылка для показа'
+    placeholder: 'Добавить ссылку'
   },
   item: {
     form: {
-      looks: 'лук\'ов',
+      price: 'цена',
       per: 'за',
+      action: 'действие',
       click: 'клик',
       share: 'репост',
-      amount: 'количество'
+      like: 'лайк',
+      amount: 'количество',
+      total: 'итог'
     }
-  }
+  },
+  soon: 'Будет скоро ... работаем над этим'
 };

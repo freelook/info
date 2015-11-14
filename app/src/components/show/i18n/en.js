@@ -1,14 +1,18 @@
 window.i18n.en.show = {
   input: {
-    placeholder: 'Link to show'
+    placeholder: 'Add your link'
   },
   item: {
     form: {
-      looks: 'look\'s',
+      price: 'price',
       per: 'per',
+      action: 'action',
       click: 'click',
       share: 'share',
-      amount: 'amount'
+      like: 'like',
+      amount: 'amount',
+      total: 'total'
     }
-  }
+  },
+  soon: 'Will be soon... working on it'
 };

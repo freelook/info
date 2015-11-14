@@ -7,11 +7,8 @@ angular
 
     var vm = this;
 
-    $scope.showItem.post.action = 'click';
-    $scope.showItem.post.look = 1;
-
     vm.show = function () {
-      console.log('Show item: ' + $scope.fli.route.input, vm.post);
+      console.log('Show item: ' + $scope.fli.route.input, $scope.showItem.post);
     };
 
   });

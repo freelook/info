@@ -1,3 +1,7 @@
 fli-show-item-form {
   display: block;
 }
+
+fli-show-item-form .input {
+  width: 100px;
+}

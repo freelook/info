@@ -1,32 +1,56 @@
-<div flex>
+<div flex class="block color-8">
 
-  <div class="block" layout="row" layout-align="center center">
+  <div class="block" layout="row">
 
-    <md-input-container>
-      <label translate="show.item.form.looks"></label>
-      <input ng-model="showItem.post.look" min="1" max="5" type="number">
+    <md-input-container ng-init="showItem.post.price=1" class="input">
+      <label>
+        <span translate="show.item.form.price"></span>
+        <i class="fa fa-eye"></i>
+      </label>
+      <input ng-model="showItem.post.price" min="1" type="number">
     </md-input-container>
 
-    <div layout="row" class="block">
+    <div class="block">
       <span translate="show.item.form.per"></span>
     </div>
 
-    <md-radio-group ng-model="showItem.post.action" layout>
-      <md-radio-button value="click" class="md-primary"><span translate="show.item.form.click"></span></md-radio-button>
-      <md-radio-button value="share" class="md-primary"><span translate="show.item.form.share"></span></md-radio-button>
-    </md-radio-group>
+    <md-input-container>
+      <label translate="show.item.form.action"></label>
+      <md-select ng-model="showItem.post.action">
+        <md-option value="click" selected="selected"><span translate="show.item.form.click"></span></md-option>
+        <md-option value="share" disabled><span translate="show.item.form.share"></span></md-option>
+        <md-option value="like" disabled><span translate="show.item.form.like"></span></md-option>
+      </md-select>
+    </md-input-container>
 
   </div>
 
-  <div layout="row" layout-align="center center">
-    <div ng-if="!fli.user" translate="index.input.note.needLogin" class="color-8"></div>
-    <md-input-container ng-if="fli.user">
+  <div class="block" layout="row">
+
+    <md-input-container class="input" ng-init="showItem.post.amount=1">
       <label translate="show.item.form.amount"></label>
-      <input ng-model="showItem.post.amount" required type="number">
+      <input ng-model="showItem.post.amount" min="1" type="number">
     </md-input-container>
-    <md-button class="md-fab md-primary" aria-label="show" ng-disabled="!fli.user || !showItem.post.amount" ng-click="showItemForm.show()">
-      <i class="fa fa-plus"></i> <span ng-bind="showItem.post.amount"></span>
+    <div class="block">
+      <span>=</span>
+    </div>
+    <md-input-container class="input">
+      <label>
+        <span translate="show.item.form.total"></span>
+        <i class="fa fa-eye"></i>
+      </label>
+      <input value="{{showItem.post.amount * showItem.post.price}}" disabled>
+    </md-input-container>
+
+  </div>
+
+  <div class="block" layout="row">
+
+    <div ng-if="showItem.post.action && !fli.user" translate="index.input.note.needLogin"></div>
+    <md-button class="md-fab md-primary" aria-label="show" ng-disabled="!fli.user || !showItem.post.action || !showItem.post.amount" ng-click="showItemForm.show()">
+      <i class="fa fa-share"></i>
     </md-button>
+
   </div>
 
 </div>
