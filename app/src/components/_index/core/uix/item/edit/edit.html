@@ -1,15 +1,20 @@
 <md-card class="fli-item" ng-class="{small:!!fliItem.small}" layout="column" ng-if="fliItem">
   <md-card-content>
 
-    <div>
+    <div ng-if="!fliItemCtrl.imgEdit" class="link" ng-click="fliItemCtrl.imgToggle(fliItem.img)">
       <img class="md-card-image" ng-if="fliItem.img" ng-src="{{fliItem.img}}" fli-item-img fli-err>
       <div class="md-card-image header" ng-if="!fliItem.img"></div>
     </div>
 
     <div class="block">
+      <md-input-container ng-if="fliItemCtrl.imgEdit">
+        <label translate="index.core.uix.item.edit.image"></label>
+        <input ng-model="fliItem.img" ng-change="fliItemCtrl.imgToggle(fliItem.img)" type="url" required>
+      </md-input-container>
+
       <md-input-container>
         <label translate="index.core.uix.item.edit.title"></label>
-        <input ng-model="fliItem.title" md-maxlength="50">
+        <input ng-model="fliItem.title" md-maxlength="50" required>
       </md-input-container>
 
       <md-input-container>

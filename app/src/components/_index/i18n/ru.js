@@ -30,6 +30,7 @@ window.i18n.ru.index = {
         goTo: 'Перейти - {{v}}',
         getIt: 'Получить файл',
         edit: {
+          image: 'Ссылка на картинку',
           title: 'Заголовок',
           content: 'Контент'
         }

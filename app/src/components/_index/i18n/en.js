@@ -31,6 +31,7 @@ window.i18n.en.index = {
         goTo: 'Go to - {{v}}',
         getIt: 'Get file',
         edit: {
+          image: 'Link to image',
           title: 'Title',
           content: 'Content'
         }

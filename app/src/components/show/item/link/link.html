@@ -1,14 +1,15 @@
 <div flex class="block">
 
-    <div ng-if="showItem.post">
-      <fli-item-edit ng-init="fliItem = {
+  <div ng-if="showItem.post">
+    <fli-item-edit ng-init="fliItem = {
           url:showItem.post.url,
           img:showItem.post.img,
           title:showItem.post.title,
           content:showItem.post.content
-          };">
+          };
+          fliItemCtrl.setImg=linkItem.setImg">
 
-      </fli-item-edit>
-    </div>
+    </fli-item-edit>
+  </div>
 
 </div>
