@@ -1,0 +1,10 @@
+{
+  "applications": {
+    "_default": {
+      "link": "freelook.info"
+    },
+    "freelook.info": {
+      "applicationId": "Z06a4jL9cgIguqkgMV4rMXl9xnZmPAhmIa29QERn"
+    }
+  }
+}
