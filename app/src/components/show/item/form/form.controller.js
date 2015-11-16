@@ -3,12 +3,12 @@
 angular
   .module('fli.show')
   .controller('show.item.form.ctrl',
-  function ($scope) {
+  function ($scope, SHOW) {
 
     var vm = this;
 
     vm.show = function () {
-      console.log('Show item: ' + $scope.fli.route.input, $scope.showItem.post);
+      SHOW.add($scope.showItem.post);
     };
 
   });

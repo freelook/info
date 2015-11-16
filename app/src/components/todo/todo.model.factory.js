@@ -2,12 +2,11 @@
 
 angular
   .module('fli.todo')
-  .factory('todo',
+  .factory('TODO',
   function (Parse) {
 
     var TODO = Parse.Object.extend('TODO'),
       query = new Parse.Query(TODO);
-
 
     function get() {
       return query.find();
