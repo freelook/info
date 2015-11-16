@@ -3,7 +3,7 @@
 angular
   .module('freelook.info')
   .controller('item.edit.ctrl',
-  function ($scope) {
+  function () {
 
     var vm = this;
     vm.imgEdit = false;

@@ -14,6 +14,7 @@ angular
         type: $routeParams.type || 'web',
         sub: $routeParams.sub
       })
+        .hash('')
         .replace();
     }
 

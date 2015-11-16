@@ -16,6 +16,15 @@ angular
       return pattern.match(_url) || {};
     }
 
+    function qToObj(search) {
+      var queryObj = {};
+      search.replace(/([^?=&]+)(=([^&]*))?/g, function ($0, $1, $2, $3) {
+        queryObj[$1] = $3;
+      });
+      return queryObj;
+    }
+
+
     function qByName(name, search) {
       var match = (new RegExp('[?&]' + name + '=([^&]*)')).exec(search);
       return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
@@ -66,6 +75,7 @@ angular
       parse: parse,
       href: href,
       extract: extract,
+      qToObj: qToObj,
       qByName: qByName,
       link: link,
       location: platform.name() !== 'chrome' ? location : link,

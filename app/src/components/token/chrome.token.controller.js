@@ -3,27 +3,17 @@
 angular
   .module('fli.token')
   .controller('chrome.token.ctrl',
-  function ($window, $scope, user, auth, CONFIG) {
-
-    function _sendUsr(usr) {
-      $window.chrome.runtime.sendMessage(CONFIG.CHROME.ID, usr.attributes.authData.facebook,
-        function () {
-          $window.close();
-        });
-    }
+  function ($window, user, auth, token, CONFIG) {
 
     function _logIn() {
-      auth.logIn().then(function () {
-        _init();
-      });
+      auth.logIn({redirectUri: CONFIG.SITE.ORIGIN + 'token?chrome=1'});
     }
 
     function _init() {
       var usr = user.current();
       if (usr) {
-        _sendUsr(usr);
+        token.sendToChrome(usr);
       } else {
-        $scope.$on('fbAsyncInit', _logIn);
         _logIn();
       }
     }

@@ -2,7 +2,7 @@
 angular
   .module('freelook.info')
   .factory('facebook',
-  function ($http, $rootScope, $window, $q, $timeout, api, url, Parse, CONFIG) {
+  function ($http, $rootScope, $window, $q, $timeout, api, url, Parse, CONFIG, FB_API) {
 
     var APP_ID = CONFIG.FB.ID;
 
@@ -94,11 +94,18 @@ angular
 
     function img(id, type) {
       var _type = type || 'normal';
-      return 'https://graph.facebook.com/' + id + '/picture?type=' + _type;
+      return FB_API + id + '/picture?type=' + _type;
+    }
+
+    function logIn(_config) {
+      var config = _config || {},
+        redirectUri = config.redirectUri || CONFIG.SITE.ORIGIN + 'token';
+      return url.location('https://www.facebook.com/dialog/oauth?client_id=' + APP_ID + '&redirect_uri=' + redirectUri + '&response_type=token&display=popup');
     }
 
     return {
       init: init,
+      logIn: logIn,
       share: share,
       user: user,
       pages: pages,

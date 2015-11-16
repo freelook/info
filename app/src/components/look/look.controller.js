@@ -12,6 +12,7 @@ angular
       url: $routeParams.url || '',
       img: $routeParams.img || null
     })
+      .hash('')
       .replace();
 
     $translate.use(locale.getLng());

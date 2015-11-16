@@ -39,7 +39,6 @@ angular
     };
 
     vm.setting = function () {
-      $scope.fli.view = 'components/_index/core/uix/setting/setting.view.html';
       auth.logIn();
     };
 

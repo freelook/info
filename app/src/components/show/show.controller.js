@@ -9,6 +9,7 @@ angular
       l: locale.init($routeParams.l),
       input: $routeParams.input
     })
+      .hash('')
       .replace();
 
     $translate.use(locale.getLng());

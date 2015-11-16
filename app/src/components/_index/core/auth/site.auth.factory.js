@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('authSite', function ($rootScope, $timeout, user, Parse) {
+  .factory('authSite', function ($rootScope, $timeout, user, facebook, Parse) {
 
     function _setUser() {
       $timeout(function () {
@@ -9,13 +9,11 @@ angular
       });
     }
 
-    function logIn() {
-      if (!user.current()) {
-        return Parse.FacebookUtils.logIn(null, {
-          success: function () {
-            _setUser();
-          }
-        });
+    function logIn(config) {
+      if (user.current()) {
+        $rootScope.fli.view = 'components/_index/core/uix/setting/setting.view.html';
+      } else {
+        facebook.logIn(config);
       }
     }
 
