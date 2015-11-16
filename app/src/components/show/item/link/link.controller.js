@@ -23,6 +23,6 @@ angular
 
     yandex.rich(decodeURIComponent($scope.fli.route.input))
       .success(_setItem)
-      .error(_setItem)
+      .error(_setItem);
 
   });
