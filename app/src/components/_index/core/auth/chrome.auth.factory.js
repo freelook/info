@@ -11,7 +11,7 @@ angular
 
     function logIn() {
       if (user.current()) {
-        $rootScope.fli.view = 'components/_index/core/uix/setting/setting.view.html';
+        $rootScope.fli.view = 'components/_index/setting/setting.view.html';
       } else {
         $window.chrome.runtime.onMessage.addListener(function (req) {
           Parse.FacebookUtils.logIn(req, {

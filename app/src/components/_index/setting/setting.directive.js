@@ -5,6 +5,6 @@ angular
     return {
       controller: 'setting.ctrl',
       controllerAs: 'setting',
-      templateUrl: 'components/_index/core/uix/setting/setting.html'
+      templateUrl: 'components/_index/setting/setting.html'
     };
   });
