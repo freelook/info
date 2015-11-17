@@ -19,6 +19,7 @@ angular
         };
         Parse.FacebookUtils.logIn(authData, {
           success: function () {
+            user.current().set('username', me.name).save();
             _goHome();
           }
         });

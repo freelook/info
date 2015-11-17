@@ -11,11 +11,13 @@ angular
       $rootScope.fli.view = '';
       $rootScope.fli.focus = 0;
 
-      $rootScope.fli.user = user.current();
-      user.current().fetch().then(function () {
-        $rootScope.fli.user = user.current();
-      });
-
+      var _usr = user.current();
+      $rootScope.fli.user = _usr;
+      if (_usr) {
+        _usr.fetch().then(function () {
+          $rootScope.fli.user = user.current();
+        });
+      }
     }
 
     return {

@@ -6,8 +6,11 @@
     </md-button>
   </div>
   <div>
-    <span ng-bind="fli.user.get('looks')"></span>
-    <span class="fa fa-eye link"></span>
+    <div class="block" ng-bind="fli.user.get('username')"></div>
+    <div class="block">
+      <span ng-bind="fli.user.get('looks')"></span>
+      <span class="fa fa-eye link"></span>
+    </div>
   </div>
 </div>
 
