@@ -39,7 +39,7 @@
         <span translate="show.item.form.total"></span>
         <i class="fa fa-eye link"></i>
       </label>
-      <input value="{{showItem.post.amount * showItem.post.price}}" disabled>
+      <input value="{{showItemForm.total()}}" max="{{fli.user.get('looks')}}" disabled>
     </md-input-container>
 
   </div>
@@ -47,7 +47,7 @@
   <div class="block" layout="row">
 
     <div ng-if="showItem.post.action && !fli.user" translate="index.input.note.needLogin"></div>
-    <md-button class="md-fab md-primary" aria-label="show" ng-disabled="!fli.user || !showItem.post.action || !showItem.post.amount" ng-click="showItemForm.show()">
+    <md-button class="md-fab md-primary" aria-label="show" ng-disabled="!showItemForm.shareEnabled()" ng-click="showItemForm.show()">
       <i class="fa fa-share"></i>
     </md-button>
 

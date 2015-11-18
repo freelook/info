@@ -18,14 +18,9 @@ angular
       return show.save(_show);
     }
 
-    function del(_show) {
-      return _show.destroy();
-    }
-
     return {
       get: get,
-      add: add,
-      del: del
+      add: add
     };
 
   });
