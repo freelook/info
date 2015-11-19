@@ -29,7 +29,8 @@ window.i18n.en.index = {
         search: 'Search - {{v}}',
         share: 'Share - {{v}}',
         goTo: 'Go to - {{v}}',
-        getIt: 'Get file',
+        getIt: 'Get it',
+        clearIt: 'Clear it',
         edit: {
           image: 'Link to image',
           title: 'Title',

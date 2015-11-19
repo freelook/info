@@ -6,7 +6,8 @@ angular
 
     var TYPES = {
       news: 0,
-      web: 1
+      web: 1,
+      promo: 2
     };
 
     var vm = this;

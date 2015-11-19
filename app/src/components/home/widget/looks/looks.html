@@ -1,5 +1,6 @@
-<fli-item ng-repeat="item in looks.items"
-          ng-init="fliItem = {
+<div class="fli-grid">
+  <fli-item ng-repeat="item in looks.items"
+            ng-init="fliItem = {
           url:item.url,
           img:item.img,
           title:item.input,
@@ -11,8 +12,9 @@
           fliItemCtrl.href=widget.href;
           fliItemCtrl.search=widget.search;">
 
-  <div class="clear link" ng-click="looks.clearItem(item)" title="Clear it">
-    <i class="fa fa-close"></i>
-  </div>
+    <div class="clear link" ng-click="looks.clearItem(item)" title="{{'index.core.uix.item.clearIt' | translate}}">
+      <i class="fa fa-close"></i>
+    </div>
 
-</fli-item>
+  </fli-item>
+</div>
