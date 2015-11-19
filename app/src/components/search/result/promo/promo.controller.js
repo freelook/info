@@ -9,6 +9,7 @@ angular
     vm.results = [];
 
     vm.click = function (_item) {
+      // handle action
       console.log('+ ' + _item.get('price'));
     };
 
