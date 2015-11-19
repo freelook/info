@@ -10,7 +10,7 @@ window.i18n.ru.show = {
       click: 'клик',
       share: 'репост',
       like: 'лайк',
-      amount: 'количество',
+      amount: 'кол-во',
       total: 'итог'
     }
   },

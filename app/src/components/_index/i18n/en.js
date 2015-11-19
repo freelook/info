@@ -41,6 +41,10 @@ window.i18n.en.index = {
         notice: 'Notice',
         logIn: 'Log in',
         app: 'Use all features and speed up the work with application'
+      },
+      toast: {
+        error: 'Something went wrong',
+        added: 'Item was added'
       }
     }
   }

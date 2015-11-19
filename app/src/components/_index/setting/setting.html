@@ -1,4 +1,4 @@
-<div class="block" ng-if="fli.user" layout="row">
+<div class="block border" ng-if="fli.user" layout="row">
   <div>
     <img class="circle" ng-src="{{setting.fbImg(fli.user.attributes.authData.facebook.id)}}" fli-err>
     <md-button class="md-icon-button link" aria-label="fb-logout" ng-click="setting.logOut()">
@@ -14,12 +14,12 @@
   </div>
 </div>
 
-<div class="block">
+<div class="block border">
   <div class="title" translate="index.core.uix.setting.locale"></div>
   <fli-locale-panel></fli-locale-panel>
 </div>
 
-<div class="block" layout="row">
+<div class="block border" layout="row">
   <md-switch class="md-primary" ng-model="setting.notice" aria-label="switch notice"
              ng-change="setting.toggleNotice()"></md-switch>
   <div flex class="title" translate="index.core.uix.setting.notice"></div>

@@ -3,7 +3,7 @@
 angular
   .module('fli.token')
   .controller('token.ctrl',
-  function ($window, $scope, $timeout, $location, $routeParams, url, user, token, Parse) {
+  function ($window, $scope, $timeout, $location, $routeParams, url, user, token, LINKS, Parse) {
 
     var _token = $location.absUrl().split('#')[1] || 'error=1',
       tokenQuery = '?' + _token,
@@ -31,7 +31,7 @@ angular
         token.sendToChrome(user.current());
       } else {
         $timeout(function () {
-          $location.path('/').hash('').replace();
+          $location.path(LINKS.HOME).hash('').replace();
         });
       }
     }

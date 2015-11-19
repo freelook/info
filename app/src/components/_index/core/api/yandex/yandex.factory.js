@@ -36,7 +36,7 @@ angular
             return defer.reject(data);
           })
           .error(function (data) {
-            toast.show('something went wrong');
+            toast.error();
             return defer.reject(data);
           });
 

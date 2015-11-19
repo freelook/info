@@ -3,9 +3,15 @@
 angular
   .module('fli.show')
   .controller('show.item.form.ctrl',
-  function ($scope, user, SHOW) {
+  function ($scope, nav, user, toast, SHOW) {
 
     var vm = this;
+
+    function _init() {
+      if (!$scope.fli.user) {
+        toast.show('index.input.note.needLogin');
+      }
+    }
 
     vm.total = function () {
       return $scope.showItem.post.amount * $scope.showItem.post.price;
@@ -20,9 +26,12 @@ angular
 
     vm.show = function () {
       SHOW.add($scope.showItem.post).then(function () {
-        user.init();
+        nav.goHome();
+        toast.show('index.core.uix.toast.added');
       });
     };
+
+    _init();
 
   });
 
