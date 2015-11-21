@@ -6,10 +6,10 @@ angular
   function (Parse) {
 
     var TODO = Parse.Object.extend('TODO'),
-      query = new Parse.Query(TODO);
+      Todo = new Parse.Query(TODO);
 
     function get() {
-      return query.find();
+      return Todo.find();
     }
 
     function add(_todo) {

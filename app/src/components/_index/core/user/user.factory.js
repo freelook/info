@@ -5,7 +5,6 @@ angular
 
     function init() {
       var _usr = current();
-      $rootScope.fli.user = _usr;
       if (_usr) {
         _usr.fetch().then(function () {
           $timeout(function () {
@@ -19,9 +18,17 @@ angular
       return Parse.User.current();
     }
 
+    function getSessionToken() {
+      var _usr = current();
+      if (_usr) {
+        return _usr.getSessionToken();
+      }
+    }
+
     return {
       init: init,
-      current: current
+      current: current,
+      getSessionToken: getSessionToken
     };
 
   });

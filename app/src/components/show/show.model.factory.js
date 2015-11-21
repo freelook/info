@@ -6,10 +6,10 @@ angular
   function (user, Parse) {
 
     var SHOW = Parse.Object.extend('SHOW'),
-      _query = new Parse.Query(SHOW);
+      Show = new Parse.Query(SHOW);
 
     function query() {
-      return _query;
+      return Show;
     }
 
     function add(_show) {

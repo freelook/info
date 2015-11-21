@@ -4,8 +4,7 @@ Parse.Cloud.beforeSave(Parse.User, function (request, response) {
     } else {
         if (!request.master && request.object.dirty('looks')) {
             return response.error({
-                err: 2,
-                code: 'LOOKS_READ_ONLY'
+                err: 'LOOKS_READ_ONLY'
             });
         }
     }

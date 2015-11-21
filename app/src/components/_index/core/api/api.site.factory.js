@@ -3,8 +3,12 @@ angular
   .module('freelook.info')
   .factory('apiSite', function ($q, $http, CONFIG) {
 
+    function _enpoint(_end) {
+      return CONFIG.API.URL + _end;
+    }
+
     function _point(_end) {
-      return $http.get(CONFIG.API.URL + _end);
+      return $http.get(_enpoint(_end));
     }
 
     function proxy(url, config) {
@@ -36,6 +40,10 @@ angular
       return _point('instagram?q=' + point);
     }
 
+    function promo(point) {
+      return _enpoint('promo/' + point);
+    }
+
     return {
       get: get,
       proxy: proxy,
@@ -43,7 +51,8 @@ angular
       facebook: facebook,
       vk: vk,
       yandex: yandex,
-      instagram: instagram
+      instagram: instagram,
+      promo: promo
     };
 
   });

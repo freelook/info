@@ -3,9 +3,13 @@
 angular
   .module('freelook.info')
   .controller('setting.ctrl',
-  function ($scope, storage, auth, facebook) {
+  function ($scope, storage, auth, user, facebook) {
 
     var vm = this;
+
+    function _init() {
+      user.init();
+    }
 
     vm.notice = storage.get('notice', true);
     vm.logOut = auth.logOut;
@@ -19,6 +23,8 @@ angular
       storage.set('notice', vm.notice);
     };
 
+
+    _init();
 
   });
 

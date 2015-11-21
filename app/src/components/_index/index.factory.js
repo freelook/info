@@ -10,8 +10,7 @@ angular
       $rootScope.fli.media = $mdMedia;
       $rootScope.fli.view = '';
       $rootScope.fli.focus = 0;
-
-      user.init();
+      $rootScope.fli.user = user.current();
     }
 
     return {

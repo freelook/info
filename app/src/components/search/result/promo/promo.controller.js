@@ -3,14 +3,13 @@
 angular
   .module('fli.search')
   .controller('search.result.promo.ctrl',
-  function ($timeout, SHOW) {
+  function ($timeout, promo, SHOW) {
 
     var vm = this;
     vm.results = [];
 
     vm.click = function (_item) {
-      // handle action
-      console.log('+ ' + _item.get('price'));
+      promo.click(_item);
     };
 
     SHOW.query()
