@@ -17,7 +17,7 @@ function click(req, res) {
                 res.status(404).send('BAD_LINK');
             });
     } else {
-        res.status(404).end();
+        res.status(404).send('BAD_LINK');
     }
 
 }

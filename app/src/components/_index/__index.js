@@ -38,7 +38,7 @@
         });
 
     })
-    .run(function ($rootScope, platform, splash, analytics, vk, facebook, Parse, CONFIG) {
+    .run(function ($rootScope, platform, splash, analytics, vk, facebook, io, Parse, CONFIG) {
       splash.hide();
       platform.init();
       analytics.init();
