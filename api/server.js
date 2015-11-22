@@ -11,17 +11,14 @@ Parse.initialize(config.Parse.id, config.Parse.js, config.Parse.master);
 Parse.Cloud.useMasterKey();
 
 // Init the express application
-var app = require('./config/express')();
-
-// Init server
-var server = require('http').Server(app);
+var api = require('express')();
 
 // Init socket.io
-var io = require('socket.io')(server);
-require('./config/socket')(io);
+var io = require('socket.io')(api.listen(config.port));
 
-// Start the app by listening on <port>
-server.listen(config.port);
+require('./config/socket')(io);
+require('./services/core/io')(io);
+require('./config/express')(api);
 
 // Logging initialization
 console.log('freelook.info api started on port ' + config.port);

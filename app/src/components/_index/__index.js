@@ -8,7 +8,7 @@
 
   angular
     .module('freelook.info',
-    ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngRoute', 'ngMaterial', 'pascalprecht.translate', 'mediaPlayer',
+    ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngCookies', 'ngRoute', 'ngMaterial', 'pascalprecht.translate', 'mediaPlayer',
       'fli.home', 'fli.search', 'fli.look', 'fli.token', 'fli.show', 'fli.todo'])
     .config(function ($locationProvider, $httpProvider, $routeProvider, $mdThemingProvider, $translateProvider) {
 
@@ -25,6 +25,7 @@
       $mdThemingProvider.theme('default').primaryPalette('indigo');
 
       // Translates
+      $translateProvider.useSanitizeValueStrategy('sanitize');
       $translateProvider.translations('en', window.i18n.en);
       $translateProvider.translations('ru', window.i18n.ru);
 

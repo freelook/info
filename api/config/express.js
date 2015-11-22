@@ -3,8 +3,8 @@
 /**
  * Module dependencies.
  */
-var express = require('express'),
-    morgan = require('morgan'),
+var morgan = require('morgan'),
+    cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser'),
     compress = require('compression'),
     methodOverride = require('method-override'),
@@ -14,9 +14,7 @@ var express = require('express'),
     consolidate = require('consolidate'),
     path = require('path');
 
-module.exports = function (db) {
-    // Initialize express app
-    var app = express();
+module.exports = function (app) {
 
     // Setting application local variables
     app.locals.title = config.app.title;
@@ -57,6 +55,7 @@ module.exports = function (db) {
     app.set('view cache', false);
 
     // Request body parsing middleware should be above methodOverride
+    app.use(cookieParser());
     app.use(bodyParser.urlencoded());
     app.use(bodyParser.json());
     app.use(methodOverride());

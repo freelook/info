@@ -30,6 +30,7 @@ angular
       if ($routeParams.chrome) {
         token.sendToChrome(user.current());
       } else {
+        user.init();
         $timeout(function () {
           $location.path(LINKS.HOME).hash('').replace();
         });

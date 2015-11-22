@@ -1,13 +1,11 @@
 'use strict';
 angular
   .module('fli.search')
-  .factory('promo', function (api, url, user) {
+  .factory('promo', function (api, url) {
 
     function click(_item) {
-      var id = _item.id,
-        token = user.getSessionToken();
-      if (id && token) {
-        url.link(api.promo('click?id=' + id + '&token=' + token));
+      if (_item && _item.id) {
+        url.link(api.promo('click?id=' + _item.id));
       }
     }
 
