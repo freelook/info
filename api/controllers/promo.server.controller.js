@@ -13,7 +13,7 @@ function click(req, res) {
             .then(function (_url) {
                 var link = _url || '';
                 res.redirect(link);
-                io().to(req.cookies.socket).emit('+++');
+                io().to(req.cookies.socket).emit('API', 'update');
             })
             .catch(function () {
                 res.status(404).send('BAD_LINK');

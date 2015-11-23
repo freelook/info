@@ -22,11 +22,14 @@ Parse.Cloud.define('show_click', function (request, response) {
 
                         Parse.Cloud.useMasterKey();
                         if (amount > 0) {
-                            _show.set('amount', amount - 1).save().then(function () {
-                                _user.set('looks', looks + price).save().then(function () {
-                                    response.success({url: _show.get('url')});
+                            _show.add('users', _user)
+                                .set('amount', amount - 1)
+                                .save()
+                                .then(function () {
+                                    _user.set('looks', looks + price).save().then(function () {
+                                        response.success({url: _show.get('url')});
+                                    });
                                 });
-                            });
                         }
                     }
                 });

@@ -15,5 +15,9 @@
           controller: 'search.ctrl'
         });
 
+    })
+    .run(function (promo) {
+      promo.init();
     });
+
 }());

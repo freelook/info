@@ -9,7 +9,7 @@ angular
 
     function _init() {
       if (!$scope.fli.user) {
-        toast.show('index.input.note.needLogin');
+        toast.needLogin();
       }
     }
 

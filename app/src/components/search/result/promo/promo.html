@@ -8,6 +8,7 @@
           };">
 
     <div class="link" ng-click="promo.click(item)" title="{{'index.core.uix.item.getIt' | translate}}">
+      <span class="fa fa-mouse-pointer" ng-if="item.get('action') === 'click'"></span>
       <span>+</span>
       <span ng-bind="item.get('price')"></span>
       <i class="fa fa-eye"></i>

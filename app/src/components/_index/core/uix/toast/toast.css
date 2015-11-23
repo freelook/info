@@ -1,4 +1,5 @@
-md-toast {
+md-toast,
+md-toast.md-default-theme {
   width: 100%;
   min-width: 100%;
   background: #3F51B5;

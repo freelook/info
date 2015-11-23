@@ -14,9 +14,14 @@ angular
       show('index.core.uix.toast.error');
     }
 
+    function needLogin() {
+      show('index.input.note.needLogin');
+    }
+
     return {
       show: show,
-      error: error
+      error: error,
+      needLogin: needLogin
     };
 
   });
