@@ -7,10 +7,14 @@ window.chrome.app.runtime.onLaunched.addListener(function (params) {
   });
 });
 
-window.chrome.runtime.onMessageExternal.addListener(
-  function (req, sender, res) {
-    res({do: req.do + '+'});
-  });
+window.chrome.runtime.onMessage.addListener(function (req, sender, res) {
+  res();
+});
+
+window.chrome.runtime.onMessageExternal.addListener(function (req, sender, res) {
+  window.chrome.runtime.sendMessage(req);
+  res();
+});
 
 window.chrome.contextMenus.create({
   title: "FLI",
