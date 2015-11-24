@@ -25,7 +25,7 @@
       $mdThemingProvider.theme('default').primaryPalette('indigo');
 
       // Translates
-      $translateProvider.useSanitizeValueStrategy('sanitize');
+      $translateProvider.useSanitizeValueStrategy('escapeParameters');
       $translateProvider.translations('en', window.i18n.en);
       $translateProvider.translations('ru', window.i18n.ru);
 

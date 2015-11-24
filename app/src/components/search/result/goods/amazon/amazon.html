@@ -1,4 +1,4 @@
-<md-card class="md-whiteframe-z1 fli-item" flex-sm="95" flex-gt-sm="40" flex-gt-md="30" flex-gt-lg="20" layout="column" ng-repeat="item in amazon.search.Item">
+<md-card class="fli-item" layout="column" ng-repeat="item in amazon.search.Item">
   <md-card-content>
     <div class="img" ng-click="link(decode(item.DetailPageURL[0]))">
       <img class="md-card-image" ng-if="!!item.MediumImage[0].URL[0]" ng-src="{{item.MediumImage[0].URL[0]}}" title="{{'Look it - '+ item.ItemAttributes[0].Title[0]}}" alt="{{item.ItemAttributes[0].Title[0]}}" fli-item-img fli-err>
