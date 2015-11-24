@@ -2,38 +2,29 @@
 
 describe('Prerender factory', function () {
 
-  var sut, mockHTTP, mockQ, mockResoleve, mockCONFIG;
+  var sut, mockHTTP, mockQ, mockCONFIG;
 
   beforeEach(function () {
     module('freelook.info');
-
-    mockHTTP = {
-      get: jasmine.createSpy().and.returnValue({
-        success: jasmine.createSpy().and.returnValue({
-          error: jasmine.createSpy()
-        })
-      })
-    };
-
-    mockResoleve = jasmine.createSpy();
-
-    mockQ = {
-      defer: jasmine.createSpy().and.returnValue({
-        resolve: mockResoleve,
-        reject: jasmine.createSpy(),
-        promise: jasmine.createSpy()
-      })
-    };
-
-    module(function ($provide) {
-      $provide.value('$http', mockHTTP);
-      $provide.value('$q', mockQ);
-    });
   });
 
-  beforeEach(inject(function (CONFIG, prerender) {
+  beforeEach(inject(function ($http, $q, CONFIG, prerender) {
     sut = prerender;
     mockCONFIG = CONFIG;
+
+
+    mockHTTP = spyOn($http, 'get').and.returnValue({
+      success: jasmine.createSpy().and.returnValue({
+        error: jasmine.createSpy()
+      })
+    });
+
+    mockQ = spyOn($q, 'defer').and.returnValue({
+      resolve: jasmine.createSpy(),
+      reject: jasmine.createSpy(),
+      promise: jasmine.createSpy()
+    });
+
   }));
 
   describe('calls', function () {
@@ -42,7 +33,7 @@ describe('Prerender factory', function () {
       var url = 'http://xxx.com';
       var expUrl = mockCONFIG.PRERENDER.URL + 'http%3A%2F%2Fxxx.com';
       sut.get(url);
-      expect(mockHTTP.get).toHaveBeenCalledWith(expUrl);
+      expect(mockHTTP).toHaveBeenCalledWith(expUrl);
     });
 
   });

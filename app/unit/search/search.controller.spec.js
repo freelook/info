@@ -4,10 +4,11 @@ describe('Search controller', function () {
   var mockRouteParams, input, rootScope, controller;
 
   beforeEach(function () {
-
     module('freelook.info');
     input = 'xxx';
-    mockRouteParams = {};
+    mockRouteParams = {
+      input: input
+    };
 
   });
 
@@ -16,7 +17,6 @@ describe('Search controller', function () {
       $rootScope: rootScope,
       $routeParams: mockRouteParams
     });
-    rootScope.$apply();
   }
 
   beforeEach(inject(function ($rootScope, $controller) {

@@ -24,7 +24,7 @@ describe('Index controller', function () {
       $rootScope: rootScope,
       $route: mockRoute
     });
-    rootScope.$apply();
+
   }));
 
   it('should define fli', function () {
