@@ -19,11 +19,13 @@ describe('Search controller', function () {
     });
   }
 
-  beforeEach(inject(function ($rootScope, $controller) {
+  beforeEach(inject(function ($rootScope, $controller, $httpBackend) {
 
     $rootScope.fli = {};
     rootScope = $rootScope;
     controller = $controller;
+
+    $httpBackend.whenGET(/.html/).respond(200, '');
 
   }));
 

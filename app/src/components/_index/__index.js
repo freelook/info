@@ -40,6 +40,8 @@
 
     })
     .run(function ($rootScope, platform, splash, analytics, vk, facebook, io, Parse, CONFIG) {
+      $rootScope.fli = {};
+
       splash.hide();
       platform.init();
       analytics.init();

@@ -25,8 +25,10 @@ describe('Yandex', function () {
     });
   });
 
-  beforeEach(inject(function (yandex) {
+  beforeEach(inject(function (yandex, $httpBackend) {
     sut = yandex;
+
+    $httpBackend.whenGET(/.html/).respond(200, '');
   }));
 
   describe('Yandex calls', function () {

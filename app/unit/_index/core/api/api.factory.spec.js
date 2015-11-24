@@ -20,9 +20,12 @@ describe('API', function () {
     });
   });
 
-  beforeEach(inject(function (CONFIG, api) {
+  beforeEach(inject(function ($httpBackend, CONFIG, api) {
     sut = api;
     mockCONFIG = CONFIG;
+
+    $httpBackend.whenGET(/.html/).respond(200, '');
+
   }));
 
   describe('API calls', function () {

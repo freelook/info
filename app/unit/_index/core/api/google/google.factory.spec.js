@@ -27,8 +27,10 @@ describe('Google', function () {
     });
   });
 
-  beforeEach(inject(function (google) {
+  beforeEach(inject(function ($httpBackend, google) {
     sut = google;
+
+    $httpBackend.whenGET(/.html/).respond(200, '');
   }));
 
   describe('HTTP calls', function () {

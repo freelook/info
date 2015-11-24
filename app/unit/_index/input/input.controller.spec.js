@@ -22,7 +22,7 @@ describe('Input controller', function () {
     });
   }
 
-  beforeEach(inject(function ($rootScope, $controller, PLACEHOLDER) {
+  beforeEach(inject(function ($rootScope, $controller, $httpBackend, PLACEHOLDER) {
     scope = $rootScope.$new();
     controller = $controller;
     defpleceholder = PLACEHOLDER;
@@ -32,6 +32,8 @@ describe('Input controller', function () {
         input: ''
       }
     };
+
+    $httpBackend.whenGET(/.html/).respond(200, '');
 
   }));
 

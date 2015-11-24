@@ -14,5 +14,6 @@ before_script:
   - cd app && npm i && bower i
 
 script:
+  - gulp jshint
   - gulp unit
   - gulp e2e:dist

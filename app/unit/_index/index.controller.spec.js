@@ -16,7 +16,7 @@ describe('Index controller', function () {
 
   });
 
-  beforeEach(inject(function ($rootScope, $controller) {
+  beforeEach(inject(function ($rootScope, $controller, $httpBackend) {
 
     rootScope = $rootScope;
 
@@ -24,6 +24,8 @@ describe('Index controller', function () {
       $rootScope: rootScope,
       $route: mockRoute
     });
+
+    $httpBackend.whenGET(/.html/).respond(200, '');
 
   }));
 

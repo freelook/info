@@ -5,7 +5,6 @@ describe('Suggest controller', function () {
 
   beforeEach(function () {
     module('freelook.info');
-    module('fli.search');
 
     input = 'xxx';
 
@@ -31,7 +30,7 @@ describe('Suggest controller', function () {
     });
   }
 
-  beforeEach(inject(function ($rootScope, $controller) {
+  beforeEach(inject(function ($rootScope, $controller, $httpBackend) {
 
     $rootScope.fli = {
       route: {
@@ -41,6 +40,8 @@ describe('Suggest controller', function () {
     rootScope = $rootScope;
     scope = $rootScope.$new();
     controller = $controller;
+
+    $httpBackend.whenGET(/.html/).respond(200, '');
 
   }));
 

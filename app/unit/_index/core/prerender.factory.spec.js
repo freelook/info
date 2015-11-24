@@ -8,7 +8,7 @@ describe('Prerender factory', function () {
     module('freelook.info');
   });
 
-  beforeEach(inject(function ($http, $q, CONFIG, prerender) {
+  beforeEach(inject(function ($http, $q, $httpBackend, CONFIG, prerender) {
     sut = prerender;
     mockCONFIG = CONFIG;
 
@@ -24,6 +24,8 @@ describe('Prerender factory', function () {
       reject: jasmine.createSpy(),
       promise: jasmine.createSpy()
     });
+
+    $httpBackend.whenGET(/.html/).respond(200, '');
 
   }));
 

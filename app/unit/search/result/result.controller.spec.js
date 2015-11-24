@@ -5,7 +5,6 @@ describe('Result controller', function () {
 
   beforeEach(function () {
     module('freelook.info');
-    module('fli.search');
 
     mockFaceBook = {
       share: jasmine.createSpy()
@@ -22,11 +21,13 @@ describe('Result controller', function () {
     rootScope.$apply();
   }
 
-  beforeEach(inject(function ($rootScope, $controller, CONFIG) {
+  beforeEach(inject(function ($rootScope, $controller, $httpBackend, CONFIG) {
     rootScope = $rootScope;
     scope = $rootScope.$new();
     controller = $controller;
     _CONFIG = CONFIG;
+
+    $httpBackend.whenGET(/.html/).respond(200, '');
   }));
 
   it('should share link with facebook', function () {

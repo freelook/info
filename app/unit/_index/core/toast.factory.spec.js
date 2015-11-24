@@ -8,10 +8,13 @@ describe('Toast', function () {
     module('freelook.info');
   });
 
-  beforeEach(inject(function (toast, $mdToast) {
+  beforeEach(inject(function (toast, $mdToast, $httpBackend) {
     sut = toast;
     config = $mdToast.simple().position('top');
     mockMdToastShow = spyOn($mdToast, 'show');
+
+    $httpBackend.whenGET(/.html/).respond(200, '');
+
   }));
 
   describe('show', function () {

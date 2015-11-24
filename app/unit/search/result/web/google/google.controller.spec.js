@@ -5,7 +5,6 @@ describe('Web google controller', function () {
 
   beforeEach(function () {
     module('freelook.info');
-    module('fli.search');
 
     input = 'xxx';
 
@@ -32,7 +31,7 @@ describe('Web google controller', function () {
     });
   }
 
-  beforeEach(inject(function ($rootScope, $controller, CONFIG) {
+  beforeEach(inject(function ($rootScope, $controller, $httpBackend, CONFIG) {
 
     $rootScope.fli = {
       route: {
@@ -44,6 +43,8 @@ describe('Web google controller', function () {
     scope = $rootScope.$new();
     controller = $controller;
     _CONFIG = CONFIG;
+
+    $httpBackend.whenGET(/.html/).respond(200, '');
   }));
 
   it('should call google service if route defined', function () {

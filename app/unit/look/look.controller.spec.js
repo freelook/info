@@ -9,7 +9,7 @@ describe('Look controller', function () {
     mockRouteParams = {};
   });
 
-  beforeEach(inject(function ($rootScope, $routeParams, $controller) {
+  beforeEach(inject(function ($rootScope, $routeParams, $httpBackend, $controller) {
 
     scope = $rootScope.$new();
     mockRootScope = $rootScope;
@@ -22,6 +22,8 @@ describe('Look controller', function () {
       $routeParams: mockRouteParams,
       $scope: scope
     });
+
+    $httpBackend.whenGET(/.html/).respond(200, '');
 
   }));
 

@@ -5,7 +5,6 @@ describe('Lucky controller', function () {
 
   beforeEach(function () {
     module('freelook.info');
-    module('fli.search');
 
     mockGoogle = {
       random: jasmine.createSpy().and.returnValue({
@@ -22,11 +21,13 @@ describe('Lucky controller', function () {
     });
   }
 
-  beforeEach(inject(function ($rootScope, $controller, CONFIG) {
+  beforeEach(inject(function ($rootScope, $controller, $httpBackend, CONFIG) {
     rootScope = $rootScope;
     scope = $rootScope.$new();
     controller = $controller;
     _CONFIG = CONFIG;
+
+    $httpBackend.whenGET(/.html/).respond(200, '');
   }));
 
   it('should call google service for random world', function () {
