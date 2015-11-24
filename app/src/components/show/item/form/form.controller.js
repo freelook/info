@@ -18,7 +18,6 @@ angular
     };
 
     vm.shareEnabled = function () {
-      // handle post form errors
       return $scope.fli.user &&
         $scope.showItem.post.action &&
         $scope.showItem.post.amount &&

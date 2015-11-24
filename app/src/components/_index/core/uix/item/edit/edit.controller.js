@@ -7,11 +7,9 @@ angular
 
     var vm = this;
     vm.imgEdit = false;
-    vm.setImg = angular.noop;
 
-    vm.imgToggle = function (_img) {
+    vm.imgToggle = function () {
       vm.imgEdit = !vm.imgEdit;
-      vm.setImg(_img);
     };
 
   });

@@ -1,25 +1,24 @@
-<md-card class="fli-item" ng-class="{small:!!fliItem.small}" layout="column" ng-if="fliItem">
+<md-card class="fli-item" ng-class="{small:!!fliItemCtrl.small}" layout="column" ng-if="fliItemCtrl">
   <md-card-content>
 
-    <div ng-if="!fliItemCtrl.imgEdit" class="link" ng-click="fliItemCtrl.imgToggle(fliItem.img)">
-      <img class="md-card-image" ng-if="fliItem.img" ng-src="{{fliItem.img}}" fli-item-img fli-err>
-      <div class="md-card-image header" ng-if="!fliItem.img"></div>
+    <div ng-if="!fliItemCtrl.imgEdit" class="link" ng-click="fliItemCtrl.imgToggle()">
+      <img class="md-card-image" ng-if="fliItemCtrl.img" ng-src="{{fliItemCtrl.img}}" fli-item-img fli-err>
     </div>
 
     <div class="block">
-      <md-input-container ng-if="fliItemCtrl.imgEdit">
+      <md-input-container ng-if="!fliItemCtrl.img || fliItemCtrl.imgEdit">
         <label translate="index.core.uix.item.edit.image"></label>
-        <input ng-model="fliItem.img" ng-blur="fliItemCtrl.imgToggle(fliItem.img)" type="url" required>
+        <input ng-model="fliItemCtrl.img" ng-blur="fliItemCtrl.imgToggle()" type="url" required>
       </md-input-container>
 
       <md-input-container>
         <label translate="index.core.uix.item.edit.title"></label>
-        <input ng-model="fliItem.title" md-maxlength="50" required>
+        <input ng-model="fliItemCtrl.title" md-maxlength="50" required>
       </md-input-container>
 
       <md-input-container>
         <label translate="index.core.uix.item.edit.content"></label>
-        <textarea md-no-autogrow="true" ng-model="fliItem.content" md-maxlength="500"></textarea>
+        <textarea md-no-autogrow="true" ng-model="fliItemCtrl.content" md-maxlength="300"></textarea>
       </md-input-container>
     </div>
 
