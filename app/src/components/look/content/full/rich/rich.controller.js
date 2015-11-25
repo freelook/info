@@ -3,17 +3,14 @@
 angular
   .module('fli.look')
   .controller('look.content.rich.ctrl',
-  function ($scope, yandex) {
+  function ($scope, rich) {
 
     var vm = this;
 
-    vm.setItem = angular.noop;
-
     if ($scope.fli.route.url) {
-      yandex.rich(decodeURIComponent($scope.fli.route.url))
-        .success(function (rich) {
-          vm.item = rich;
-          vm.setItem(rich);
+      rich.get($scope.fli.route.url)
+        .then(function (_item) {
+          vm.item = _item;
         });
     }
 
