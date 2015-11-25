@@ -15,9 +15,9 @@ gulp.task('unit', function () {
   });
 
   var testFiles = bowerDeps.js.concat([
-    'src/components/_index/__index.js',
+    'src/components/**/*.module.js',
     'src/components/**/*.js',
-    'unit/**/*.js'
+    'unit/**/*.spec.js'
   ]);
 
 
@@ -27,7 +27,6 @@ gulp.task('unit', function () {
       action: 'run'
     }))
     .on('error', function (err) {
-      // Make sure failed tests cause gulp to exit non-zero
       throw err;
     });
 });
