@@ -54,7 +54,6 @@
   <link rel="stylesheet" href="components/look/content/facebook/facebook.css">
   <link rel="stylesheet" href="components/look/content/full/full.css">
   <link rel="stylesheet" href="components/look/content/instagram/instagram.css">
-  <link rel="stylesheet" href="components/look/content/rich/rich.css">
   <link rel="stylesheet" href="components/look/content/vk/vk.css">
   <link rel="stylesheet" href="components/look/content/youtube/youtube.css">
   <link rel="stylesheet" href="components/search/menu/lucky/lucky.css">
@@ -75,6 +74,7 @@
   <link rel="stylesheet" href="components/_index/core/uix/rating/fli.rating.css">
   <link rel="stylesheet" href="components/_index/core/uix/share/share.css">
   <link rel="stylesheet" href="components/_index/core/uix/toast/toast.css">
+  <link rel="stylesheet" href="components/look/content/full/rich/rich.css">
   <link rel="stylesheet" href="components/look/content/instagram/media/media.css">
   <link rel="stylesheet" href="components/look/content/instagram/user/user.css">
   <link rel="stylesheet" href="components/look/content/vk/group/group.css">
@@ -84,7 +84,6 @@
   <link rel="stylesheet" href="components/look/content/youtube/user/user.css">
   <link rel="stylesheet" href="components/look/content/youtube/watch/watch.css">
   <link rel="stylesheet" href="components/search/result/goods/amazon/amazon.css">
-  <link rel="stylesheet" href="components/search/result/goods/google/amazon.css">
   <link rel="stylesheet" href="components/search/result/goods/yandex/yandex.css">
   <link rel="stylesheet" href="components/search/result/image/google/google.css">
   <link rel="stylesheet" href="components/search/result/image/instagram/instagram.css">
@@ -230,8 +229,6 @@
 <script src="components/look/content/full/full.factory.js"></script>
 <script src="components/look/content/instagram/instagram.controller.js"></script>
 <script src="components/look/content/instagram/instagram.directive.js"></script>
-<script src="components/look/content/rich/rich.controller.js"></script>
-<script src="components/look/content/rich/rich.directive.js"></script>
 <script src="components/look/content/vk/vk.controller.js"></script>
 <script src="components/look/content/vk/vk.directive.js"></script>
 <script src="components/look/content/youtube/youtube.controller.js"></script>
@@ -256,12 +253,13 @@
 <script src="components/show/item/form/form.directive.js"></script>
 <script src="components/show/item/link/link.controller.js"></script>
 <script src="components/show/item/link/link.directive.js"></script>
+<script src="components/_index/core/api/facebook/FB.factory.js"></script>
 <script src="components/_index/core/api/facebook/facebook.factory.js"></script>
 <script src="components/_index/core/api/google/_google.factory.js"></script>
 <script src="components/_index/core/api/google/google.chrome.factory.js"></script>
 <script src="components/_index/core/api/google/google.site.factory.js"></script>
-<script src="components/_index/core/api/promo/promo.factory.js"></script>
 <script src="components/_index/core/api/instagram/instagram.factory.js"></script>
+<script src="components/_index/core/api/promo/promo.factory.js"></script>
 <script src="components/_index/core/api/vk/vk.factory.js"></script>
 <script src="components/_index/core/api/yandex/yandex.factory.js"></script>
 <script src="components/_index/core/api/youtube/youtube.factory.js"></script>
@@ -280,6 +278,8 @@
 <script src="components/_index/core/uix/share/share.factory.js"></script>
 <script src="components/_index/core/uix/toast/toast.factory.js"></script>
 <script src="components/look/content/full/read/read.factory.js"></script>
+<script src="components/look/content/full/rich/rich.controller.js"></script>
+<script src="components/look/content/full/rich/rich.directive.js"></script>
 <script src="components/look/content/instagram/media/media.controller.js"></script>
 <script src="components/look/content/instagram/media/media.directive.js"></script>
 <script src="components/look/content/instagram/user/user.controller.js"></script>
@@ -298,8 +298,6 @@
 <script src="components/look/content/youtube/watch/watch.directive.js"></script>
 <script src="components/search/result/goods/amazon/amazon.controller.js"></script>
 <script src="components/search/result/goods/amazon/amazon.directive.js"></script>
-<script src="components/search/result/goods/google/amazon.controller.js"></script>
-<script src="components/search/result/goods/google/amazon.directive.js"></script>
 <script src="components/search/result/goods/yandex/yandex.controller.js"></script>
 <script src="components/search/result/goods/yandex/yandex.directive.js"></script>
 <script src="components/search/result/image/google/google.controller.js"></script>

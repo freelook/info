@@ -3,15 +3,15 @@
 angular
   .module('fli.token')
   .controller('token.ctrl',
-  function ($window, $scope, $timeout, $location, $routeParams, url, user, token, LINKS, Parse) {
+  function ($timeout, $location, $routeParams, url, user, token, FB, LINKS, Parse) {
 
     var _token = $location.absUrl().split('#')[1] || 'error=1',
       tokenQuery = '?' + _token,
       authTokenData = url.qToObj(tokenQuery);
 
 
-    function _getUser() {
-      $window.FB.api('/me', {access_token: authTokenData.access_token}, function (me) {
+    function _getUser(fb) {
+      fb.api('/me', {access_token: authTokenData.access_token}, function (me) {
         var authData = {
           access_token: authTokenData.access_token,
           expiration_date: new Date(authTokenData.expires_in * 1000 + (new Date()).getTime()).toJSON(),
@@ -38,13 +38,7 @@ angular
     }
 
     if (authTokenData.access_token) {
-      if ($window.FB) {
-        _getUser();
-      } else {
-        $scope.$on('fbAsyncInit', function () {
-          _getUser();
-        });
-      }
+      FB.init().then(_getUser);
     } else {
       _goHome();
     }
