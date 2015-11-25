@@ -5,6 +5,7 @@ exports.config = {
   //seleniumServerJar: deprecated, this should be set on node_modules/protractor/config.json
 
   // Capabilities to be passed to the webdriver instance.
+  framework: 'jasmine2',
   capabilities: {
     'browserName': 'chrome'
   },
