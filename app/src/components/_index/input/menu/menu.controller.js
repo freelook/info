@@ -31,7 +31,7 @@ angular
     }, {
       name: 'index.input.menu.add',
       icon: 'plus',
-      href: url.href('show?', {l: locale.getCode(), input: $rootScope.fli.route.input})
+      href: url.href('show?', {l: locale.getCode()})
     });
 
   });

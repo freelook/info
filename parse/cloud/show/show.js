@@ -14,6 +14,8 @@ Parse.Cloud.beforeSave('SHOW', function (request, response) {
             if (_user) {
                 var price = +request.object.get('price'),
                     amount = +request.object.get('amount'),
+                    title = request.object.get('title') || '',
+                    content = request.object.get('content') || '',
                     looks = +_user.get('looks') || 0,
                     total = price * amount;
 
@@ -21,6 +23,14 @@ Parse.Cloud.beforeSave('SHOW', function (request, response) {
                     return response.error({
                         err: 'NOT_ENOUGH_LOOKS'
                     });
+                }
+
+                if (title.length > 100) {
+                    request.object.set(title, title.substring(0, 97) + '...');
+                }
+
+                if (content.length > 300) {
+                    request.object.set(content, content.substring(0, 297) + '...');
                 }
 
                 Parse.Cloud.useMasterKey();

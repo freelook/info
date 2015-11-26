@@ -21,6 +21,9 @@ angular
       return $scope.fli.user &&
         $scope.showItem.post.action &&
         $scope.showItem.post.amount &&
+        $scope.showItem.post.img &&
+        $scope.showItem.post.title &&
+        $scope.showItem.post.content &&
         vm.total() <= $scope.fli.user.get('looks');
     };
 
