@@ -3,10 +3,13 @@ angular
   .module('freelook.info')
   .factory('nav', function ($location, $timeout, LINKS) {
 
+    function path(_path) {
+      $location.path(_path);
+    }
 
     function go(_path) {
       $timeout(function () {
-        $location.path(_path);
+        path(_path);
       });
     }
 
@@ -14,9 +17,9 @@ angular
       go(LINKS.HOME);
     }
 
-
     return {
       go: go,
+      path: path,
       goHome: goHome
     };
 

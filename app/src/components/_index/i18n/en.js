@@ -18,7 +18,9 @@ window.i18n.en.index = {
     }
   },
   footer: {
+    feedback: 'feedback',
     donate: 'donate',
+    locale: 'locale',
     help: 'Help us grow',
     with: 'with'
   },
