@@ -5,10 +5,10 @@
 
 <div id="search" flex layout="column" ng-if="fli.route.input">
 
-  <fli-search-tabs></fli-search-tabs>
+  <fli-search-tabs ng-show="fli.filter"></fli-search-tabs>
 
   <div layout="row" flex>
-    <fli-search-sub fli-sub-hide-on-scroll></fli-search-sub>
+    <fli-search-sub ng-show="fli.filter" fli-sub-hide-on-scroll></fli-search-sub>
     <fli-search-result class="animate" flex></fli-search-result>
   </div>
 

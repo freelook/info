@@ -51,7 +51,7 @@ a, .link {
   clear: both;
 }
 
-a.active {
+.active {
   color: #888888;
   text-shadow: 3px 3px 13px #888888;
 }

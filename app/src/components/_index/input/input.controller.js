@@ -46,5 +46,10 @@ angular
       $scope.fli.focus = 1;
     };
 
+    vm.filter = function ($event) {
+      $scope.fli.filter = !$scope.fli.filter;
+      $event.stopPropagation();
+    };
+
   })
   .constant('PLACEHOLDER', 'index.input.placeholder');

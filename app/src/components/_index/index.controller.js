@@ -9,6 +9,7 @@
     .controller('index.ctrl',
     function ($rootScope, $route, $location, $translate, $sce, url, locales, platform) {
 
+      $rootScope.fli.filter = 1;
       $rootScope.fli.locales = locales;
       $rootScope.fli.platform = platform.name();
       $rootScope.link = url.link;
