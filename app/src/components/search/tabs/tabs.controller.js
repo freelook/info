@@ -2,7 +2,7 @@
 angular
   .module('fli.search')
   .controller('search.tabs.ctrl',
-  function ($scope, url, locale) {
+  function ($scope, $location, url, locale) {
 
     var TYPES = {
       web: 0,
@@ -21,7 +21,8 @@ angular
       return {
         l: locale.getCode(),
         input: $scope.fli.route.input,
-        type: type
+        type: type,
+        url: $scope.fli.route.url
       };
     }
 
@@ -31,7 +32,8 @@ angular
 
     vm.go = function (type) {
       if (!auto) {
-        $scope.go(url.href('search?', _config(type), false, '/'));
+        var path = $location.path().slice(1) + '?';
+        $scope.go(url.href(path, _config(type), false, '/'));
       } else {
         auto = false;
       }

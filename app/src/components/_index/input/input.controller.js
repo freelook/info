@@ -3,7 +3,7 @@
 angular
   .module('freelook.info')
   .controller('input.ctrl',
-  function ($scope, $location, url, locale, facebook, auth, PLACEHOLDER) {
+  function ($scope, $location, url, locale, facebook, auth, content, PLACEHOLDER) {
 
     var vm = this;
     $scope.fli.focus = 0;
@@ -12,7 +12,7 @@ angular
     vm.type = 'search';
     vm.icon = $scope.fli.icon;
     vm.fbImg = facebook.img;
-
+    vm.site = content.site($scope.fli.route.url);
 
     vm.find = function () {
       if ($scope.fli.route.input) {

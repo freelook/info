@@ -1,6 +1,7 @@
 <div ng-if="instaUser.item">
-  <fli-item class="no-fill" ng-init="fliItem = {
-          small: 1,
+  <fli-item ng-init="fliItem = {
+          small:1,
+          nofill:1,
           url:fli.route.url,
           img:instaUser.item.profile_picture,
           title:instaUser.item.full_name,

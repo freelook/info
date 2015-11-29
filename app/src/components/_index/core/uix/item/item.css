@@ -50,7 +50,7 @@ fli-item {
   margin: 5px 10px 5px 10px;
 }
 
-.fli-item.no-fill {
+.fli-item.nofill {
   border: none;
   background: transparent;
 }

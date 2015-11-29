@@ -1,9 +1,16 @@
 <div ng-if="richCtrl.item">
   <fli-item ng-init="fliItem = {
+          small:1,
+          nofill:1,
           url:richCtrl.item.url,
-          img:richCtrl.item.img[0],
+          img:richCtrl.item.img,
           title:richCtrl.item.title,
           content:richCtrl.item.content
           };">
+
+    <div class="block color-8">
+      <span ng-bind="richCtrl.item.host"></span>
+    </div>
+
   </fli-item>
 </div>

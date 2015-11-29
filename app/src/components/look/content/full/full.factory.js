@@ -13,7 +13,7 @@ angular
     }
 
     function _fliUrl(_url, input) {
-      return url.href('look?', {l: locale.getCode(), input: input || null, url: _url});
+      return url.href('look?', {l: locale.getCode(), input: input || null, type: 'web', url: _url});
     }
 
     function _prepareHtml(html, title) {

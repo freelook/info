@@ -1,6 +1,7 @@
 <div ng-if="fb.user">
-  <fli-item class="no-fill" ng-init="fliItem = {
-          small: 1,
+  <fli-item ng-init="fliItem = {
+          small:1,
+          nofill:1,
           url:fb.user.link,
           img:fb.img(fb.user.id),
           title:fb.user.name
