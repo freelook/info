@@ -109,7 +109,7 @@ server {
 		}
 		if ($prerender = 1) {
 			rewrite .* /$scheme://$host$request_uri? break;
-			proxy_pass http://localhost:3000;
+			proxy_pass http://prerender.freelook.info;
 			error_page 500 501 502 503 504 = @reprerender;
 		}
 		if ($prerender = 0) {
@@ -121,7 +121,7 @@ server {
 
 	location @reprerender {
 		rewrite .* /$scheme://freelook.info$request_uri? break;
-		proxy_pass http://prerender.freelook.info;
+		proxy_pass http://localhost:3000;
 	}
 
 	# pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
