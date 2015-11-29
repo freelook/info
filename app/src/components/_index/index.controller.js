@@ -7,11 +7,12 @@
   angular
     .module('freelook.info')
     .controller('index.ctrl',
-    function ($rootScope, $route, $location, $translate, $sce, url, locales, platform) {
+    function ($rootScope, $route, $location, $translate, $sce, url, locales, platform, CONFIG) {
 
       $rootScope.fli.filter = 1;
       $rootScope.fli.locales = locales;
       $rootScope.fli.platform = platform.name();
+      $rootScope.fli.config = CONFIG;
       $rootScope.link = url.link;
       $rootScope.location = url.location;
       $rootScope.decode = url.decode;

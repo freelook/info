@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('FB', function ($window, $timeout, $q, Parse, CONFIG) {
+  .factory('FB', function ($window, $timeout, $q, locale, Parse, CONFIG) {
 
     function init() {
 
@@ -14,7 +14,7 @@ angular
       $window.fbAsyncInit = function () {
         Parse.FacebookUtils.init({
           appId: CONFIG.FB.ID,
-          version: 'v2.5'
+          version: CONFIG.FB.VERSION
         });
         return defer.resolve($window.FB);
       };
@@ -25,7 +25,7 @@ angular
         if (!d.getElementById(id)) {
           js = d.createElement(s);
           js.id = id;
-          js.src = 'vendors/fb/sdk.js';
+          js.src = 'vendors/fb/' + locale.getLng() + '/sdk.js';
           fjs.parentNode.insertBefore(js, fjs);
         }
       }, 0);
@@ -33,8 +33,18 @@ angular
       return defer.promise;
     }
 
+    function xfbml() {
+      init().then(function (fb) {
+        fb.init({
+          xfbml: true,
+          version: CONFIG.FB.VERSION
+        });
+      });
+    }
+
     return {
-      init: init
+      init: init,
+      xfbml: xfbml
     };
 
   });

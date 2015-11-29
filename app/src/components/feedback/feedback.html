@@ -1,18 +1,11 @@
-<header id="feedback-header">
-  <div ng-if="!fli.focus && !fli.route.type">
-    <div class="icon">
-      <i class="fa fa-eye-slash fa-5x color-8"></i>
-    </div>
-  </div>
+<header>
   <fli-input flex></fli-input>
 </header>
 
 <div id="feedback" layout="column" flex>
 
-  <fli-feedback-comment class="animate" flex></fli-feedback-comment>
-  <div class="link" flex="20" layout="column" layout-align="center center" ng-click="location(feedback.donate)" title="{{'index.footer.help' | translate}}">
-    <p><i class="fa fa-usd"></i> <span hide-sm translate="index.footer.donate"></span></p>
-  </div>
+  <fli-feedback-comments flex></fli-feedback-comments>
+  <fli-donate></fli-donate>
   <fli-footer></fli-footer>
 
 </div>
