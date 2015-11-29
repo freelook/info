@@ -16,4 +16,3 @@ before_script:
 script:
   - gulp jshint
   - gulp unit
-  - gulp e2e
