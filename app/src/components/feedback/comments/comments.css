@@ -1,3 +1,8 @@
 fli-feedback-comments {
   display: block;
 }
+
+fli-feedback-comments .fb-comments {
+  width: 100%;
+  text-align: center;
+}
