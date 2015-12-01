@@ -6,12 +6,13 @@ angular
 
     var TYPES = {
       web: 0,
-      news: 1,
-      goods: 2,
-      image: 3,
-      audio: 4,
-      video: 5,
-      promo: 6
+      people: 1,
+      news: 2,
+      goods: 3,
+      image: 4,
+      audio: 5,
+      video: 6,
+      promo: 7
     };
 
     var vm = this, auto = false;

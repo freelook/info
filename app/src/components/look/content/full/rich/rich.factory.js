@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('fli.look')
-  .factory('rich', function ($q, api, parser, content, toast) {
+  .factory('rich', function ($q, api, parser, content) {
 
     function _htmlToItem(_html, _url) {
       var _item = {}, dom = parser.parseFromString(_html, 'text/html'),
@@ -23,7 +23,6 @@ angular
           return defer.resolve(_htmlToItem(_html, _url));
         })
         .error(function (err) {
-          toast.error();
           return defer.reject(err);
         });
 

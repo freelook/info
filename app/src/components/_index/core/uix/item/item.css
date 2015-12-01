@@ -4,6 +4,7 @@ fli-item {
 
 .fli-item {
   outline: 0;
+  width: 100%;
   box-shadow: none;
   border: 1px solid #cccccc;
 }

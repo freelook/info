@@ -20,5 +20,7 @@ angular
     feeds: 'https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=24&q=',
     trends: 'http://www.google.com/trends/hottrends/atom/hourly?pn=',
     news: 'http://news.google.com/news?output=rss&q=',
-    video: 'https://ajax.googleapis.com/ajax/services/search/video?&v=1.0&rsz=8&q='
+    video: 'https://ajax.googleapis.com/ajax/services/search/video?&v=1.0&rsz=8&q=',
+    url: 'https://www.googleapis.com/urlshortener/v1/url?key=',
+    plus: 'https://www.googleapis.com/plus/v1/'
   });

@@ -4,7 +4,7 @@ angular
   .factory('facebook',
   function ($http, $rootScope, $window, $q, api, url, Parse, FB, CONFIG, FB_API) {
 
-    var APP_ID = CONFIG.FB.ID;
+    var APP_ID = CONFIG.API.FB.ID;
 
     function init() {
       FB.init();
@@ -56,7 +56,7 @@ angular
     }
 
     function pages(q) {
-      var point = encodeURIComponent('search?q=' + q + '&type=page');
+      var point = encodeURIComponent('search?q=' + q + '&type=page&limit=24');
       return api.facebook(point);
     }
 

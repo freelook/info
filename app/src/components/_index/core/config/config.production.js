@@ -4,7 +4,14 @@ var CONFIG = {
     SOCKET: 'http://freelook.info:4000',
     URL: 'http://freelook.info/api/',
     GOOGLE: {
-      KEY: 'AIzaSyDBAHujlSftqeYB03a0FjtwLBsQ2nA4DQM'
+      KEY: 'AIzaSyApeXU8AqzpzVPhXgUQqBJS2A7u1WqCNvU'
+    },
+    VK: {
+      ID: '4588210'
+    },
+    FB: {
+      ID: '846841298681206',
+      VERSION: 'v2.5'
     },
     PARSE: {
       ID: 'Z06a4jL9cgIguqkgMV4rMXl9xnZmPAhmIa29QERn',
@@ -24,13 +31,6 @@ var CONFIG = {
   },
   MOBILE: {
     ORIGIN: '/'
-  },
-  VK: {
-    ID: '4588210'
-  },
-  FB: {
-    ID: '846841298681206',
-    VERSION: 'v2.5'
   }
 };
 

@@ -1,6 +1,7 @@
 window.i18n.ru.search = {
   tabs: {
     web: 'веб',
+    people: 'люди',
     news: 'новости',
     goods: 'товары',
     images: 'картинки',

@@ -7,6 +7,8 @@ fli-search-suggest .block {
 }
 
 fli-search-suggest .result {
+  text-overflow: ellipsis;
+  overflow: hidden;
   text-align: justify;
 }
 

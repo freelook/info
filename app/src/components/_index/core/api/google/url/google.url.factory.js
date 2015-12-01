@@ -1,10 +1,9 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('googleUrl', function ($http, CONFIG) {
+  .factory('googleUrl', function ($http, CONFIG, GAPI) {
 
-    var APP_KEY = CONFIG.API.GOOGLE.KEY,
-      API_ENDPOINT = 'https://www.googleapis.com/urlshortener/v1/url?key=' + APP_KEY;
+    var API_ENDPOINT = GAPI.url + CONFIG.API.GOOGLE.KEY;
 
     function insert(longUrl) {
       return $http.post(API_ENDPOINT, {
@@ -13,10 +12,8 @@ angular
     }
 
     function get(shortUrl) {
-      var gugapi = API_ENDPOINT + '&shortUrl=' + shortUrl;
-      return $http.get(gugapi);
+      return $http.get(API_ENDPOINT + '&shortUrl=' + shortUrl);
     }
-
 
     return {
       insert: insert,

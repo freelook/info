@@ -13,8 +13,8 @@ angular
 
       $window.fbAsyncInit = function () {
         Parse.FacebookUtils.init({
-          appId: CONFIG.FB.ID,
-          version: CONFIG.FB.VERSION
+          appId: CONFIG.API.FB.ID,
+          version: CONFIG.API.FB.VERSION
         });
         return defer.resolve($window.FB);
       };

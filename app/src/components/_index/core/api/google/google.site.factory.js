@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('googleSite', function ($http, googleUrl, locale, GAPI) {
+  .factory('googleSite', function ($http, googleUrl, googlePlus, locale, GAPI) {
 
     function _search(q, _type) {
       if (q) {
@@ -49,8 +49,9 @@ angular
       random: random,
       trends: trends,
       news: news,
+      video: video,
       url: googleUrl,
-      video: video
+      plus: googlePlus
     };
 
   });

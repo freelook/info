@@ -1,6 +1,7 @@
 window.i18n.en.search = {
   tabs: {
     web: 'web',
+    people: 'people',
     news: 'news',
     goods: 'goods',
     images: 'images',
