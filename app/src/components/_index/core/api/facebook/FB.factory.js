@@ -37,7 +37,7 @@ angular
       init().then(function (fb) {
         fb.init({
           xfbml: true,
-          version: CONFIG.FB.VERSION
+          version: CONFIG.API.FB.VERSION
         });
       });
     }
