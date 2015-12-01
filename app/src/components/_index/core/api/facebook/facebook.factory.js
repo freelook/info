@@ -60,6 +60,11 @@ angular
       return api.facebook(point);
     }
 
+    function people(q) {
+      var point = encodeURIComponent('search?q=' + q + '&type=user&limit=24');
+      return api.facebook(point);
+    }
+
     function _getId(url) {
       var defer = $q.defer();
       api.proxy(url)
@@ -87,13 +92,19 @@ angular
       return url.location('https://www.facebook.com/dialog/oauth?client_id=' + APP_ID + '&redirect_uri=' + redirectUri + '&response_type=token&display=popup');
     }
 
+    function link(_id) {
+      return 'https://www.facebook.com/' + _id;
+    }
+
     return {
       init: init,
       logIn: logIn,
       share: share,
       user: user,
       pages: pages,
-      img: img
+      people: people,
+      img: img,
+      link: link
     };
 
   })

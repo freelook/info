@@ -2,7 +2,7 @@
 
 angular
   .module('fli.search')
-  .controller('search.result.web.facebook.ctrl',
+  .controller('search.result.people.facebook.ctrl',
   function ($scope, facebook) {
 
     var vm = this;
@@ -11,11 +11,11 @@ angular
     vm.link = facebook.link;
 
     function setResult(fb) {
-      vm.results = fb.data || [];
+      vm.people = fb.data || [];
     }
 
     if ($scope.fli.route.input) {
-      facebook.pages($scope.fli.route.input)
+      facebook.people($scope.fli.route.input)
         .success(setResult);
     }
 

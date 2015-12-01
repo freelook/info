@@ -1,9 +1,9 @@
 <fli-item ng-repeat="item in fb.results"
           ng-init="fliItem = {
           url:fb.link(item.id),
-          img:fb.img(item.id),
+          img:fb.img(item.id, 'large'),
           title:item.name,
-          content: item.content
+          content:item.category
           };
           fliItemCtrl.href=result.href;
           fliItemCtrl.share=result.share;">

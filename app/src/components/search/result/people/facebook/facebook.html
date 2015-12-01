@@ -1,0 +1,8 @@
+<fli-item ng-repeat="item in fb.people"
+          ng-init="fliItem = {
+          url:fb.link(item.id),
+          img:fb.img(item.id),
+          title:item.name
+          };">
+
+</fli-item>
