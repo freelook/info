@@ -93,7 +93,8 @@ angular
     }
 
     function link(_id) {
-      return 'https://www.facebook.com/' + _id;
+      var id = _id || '';
+      return 'https://www.facebook.com/' + id;
     }
 
     return {

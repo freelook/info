@@ -2,7 +2,7 @@
 
 angular
   .module('fli.search')
-  .controller('search.result.web.vk.ctrl',
+  .controller('search.result.people.vk.ctrl',
   function ($scope, $sce, url, vk) {
 
     var vm = this;
@@ -11,11 +11,11 @@ angular
 
     function setResult(vk) {
       var result = vk.response || [];
-      vm.results = angular.copy(result).splice(1);
+      vm.people = angular.copy(result).splice(1);
     }
 
     if ($scope.fli.route.input) {
-      vk.pages($scope.fli.route.input)
+      vk.people($scope.fli.route.input)
         .success(setResult);
     }
 

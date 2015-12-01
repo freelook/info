@@ -1,0 +1,9 @@
+<fli-item ng-repeat="item in vk.people"
+          ng-init="fliItem = {
+          url:vk.link(item.domain),
+          img:item.photo_200,
+          title:item.first_name + ' ' + item.last_name,
+          content: item.about || item.status
+          };">
+
+</fli-item>

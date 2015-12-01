@@ -10,10 +10,9 @@ function query(req, res) {
     if (req.query && req.query.q) {
         token.check()
             .then(function (_token) {
-                var type = req.query.type || 'groups.search';
                 _req = $http
                     .get({
-                        url: 'https://api.vk.com/method/' + type + '?q=' + encodeURI(decodeURI(req.query.q)) + '&' + _token
+                        url: 'https://api.vk.com/method/' + encodeURI(decodeURI(req.query.q)) + '&' + _token
                     })
                     .on('error', function () {
                         token.refresh();
