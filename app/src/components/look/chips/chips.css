@@ -1,0 +1,7 @@
+fli-look-chips {
+  display: block;
+}
+
+fli-look-chips md-chips .md-chips {
+  box-shadow: none;
+}

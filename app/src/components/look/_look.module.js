@@ -12,7 +12,8 @@
       $routeProvider
         .when('/look', {
           templateUrl: 'components/look/look.html',
-          controller: 'look.ctrl'
+          controller: 'look.ctrl',
+          controllerAs: 'look'
         });
 
     })

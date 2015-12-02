@@ -26,13 +26,15 @@ md-whiteframe,
   margin: 7px;
 }
 
+a,
+a:link,
+a:visited,
+a:active,
+a:hover,
 .link {
+  outline: 0;
   color: #1f00ef;
   cursor: pointer;
-}
-
-a, .link {
-  outline: 0;
 }
 
 .underline {
@@ -58,17 +60,6 @@ a, .link {
 
 .color-8 {
   color: #888888;
-}
-
-/*config for small devices*/
-@media (max-width: 500px) {
-  md-tabs md-prev-button {
-    padding-left: 20px;
-  }
-
-  md-tabs md-next-button {
-    padding-right: 20px;
-  }
 }
 
 

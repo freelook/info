@@ -7,6 +7,7 @@ fli-search-tabs md-ink-bar {
 }
 
 fli-search-tabs .md-tab a {
+  min-width: 150px;
   text-decoration: none;
 }
 
