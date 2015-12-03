@@ -1,0 +1,16 @@
+fli-search-chips {
+  display: block;
+  margin: 0 7px;
+}
+
+fli-search-chips md-chips .md-chips {
+  box-shadow: none;
+}
+
+fli-search-chips .md-chips .md-chip-input-container {
+  display: none;
+}
+
+fli-search-chips a {
+  text-decoration: none;
+}

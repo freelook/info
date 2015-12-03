@@ -1,0 +1,5 @@
+<md-chips ng-hide="fli.route.sub" ng-model="subCtrl.subs[fli.route.type]" readonly="1">
+  <md-chip-template ng-click="subCtrl.go($chip.sub)">
+    <a fli-href="{{subCtrl.href($chip.sub)}}" ng-bind="$chip.sub"></a>
+  </md-chip-template>
+</md-chips>

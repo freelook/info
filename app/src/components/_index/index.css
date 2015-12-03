@@ -53,7 +53,8 @@ a:hover,
   clear: both;
 }
 
-.active {
+.active,
+a.active {
   color: #888888;
   text-shadow: 3px 3px 13px #888888;
 }

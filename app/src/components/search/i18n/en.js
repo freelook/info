@@ -8,7 +8,6 @@ window.i18n.en.search = {
     audio: 'audio',
     video: 'video',
     promo: 'promo'
-
   },
   menu: {
     lucky: 'Get lucky'

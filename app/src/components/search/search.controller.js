@@ -11,7 +11,7 @@ angular
       $location.search({
         l: locale.init($routeParams.l),
         input: $routeParams.input,
-        type: $routeParams.type || 'web',
+        type: $routeParams.type,
         sub: $routeParams.sub
       })
         .hash('')
