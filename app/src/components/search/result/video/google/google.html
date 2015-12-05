@@ -1,9 +1,9 @@
 <fli-item ng-repeat="item in videoGoogle.items"
           ng-init="fliItem = {
-          url:item.url,
-          img:item.tbUrl,
-          title:item.title,
-          content:item.content
+          url:videoGoogle.watchUrl(item.id.videoId),
+          img:item.snippet.thumbnails.default.url,
+          title:item.snippet.title,
+          content:item.snippet.description
           };
           fliItemCtrl.href=result.href;
           fliItemCtrl.share=result.share;">
