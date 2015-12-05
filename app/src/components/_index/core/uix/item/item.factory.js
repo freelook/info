@@ -8,6 +8,7 @@ angular
         l: locale.getCode(),
         input: config.input || $rootScope.fli.route.input || null,
         type: config.type || $rootScope.fli.route.type || null,
+        sub: config.sub || $rootScope.fli.route.sub || null,
         url: !!config.url ? encodeURIComponent(decodeURIComponent(config.url)) : '',
         img: !!config.img ? encodeURIComponent(decodeURIComponent(config.img)) : null
       }, false, origin);
@@ -23,7 +24,7 @@ angular
     }
 
     function search(input) {
-      return url.href('search?', {l: locale.getCode(), input: input, type: 'web'});
+      return url.href('search?', {l: locale.getCode(), input: input});
     }
 
     return {

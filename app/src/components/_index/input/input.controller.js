@@ -32,7 +32,12 @@ angular
     vm.href = function () {
       if ($scope.fli.focus && $scope.fli.route.input) {
         vm.icon = 'search';
-        return url.href('search?', {l: locale.getCode(), input: $scope.fli.route.input, type: $scope.fli.route.type});
+        return url.href('search?', {
+          l: locale.getCode(),
+          input: $scope.fli.route.input,
+          type: $scope.fli.route.type,
+          sub: $scope.fli.route.sub
+        });
       }
       vm.icon = $scope.fli.icon;
       return url.href($location.url().slice(1));

@@ -2,7 +2,7 @@
 angular
   .module('fli.search')
   .controller('search.chips.type.ctrl',
-  function ($scope, $location, url, locale) {
+  function ($scope, $location, $translate, url, locale) {
 
     var vm = this;
     vm.types = [
@@ -15,6 +15,21 @@ angular
       {type: 'video'},
       {type: 'promo'}
     ];
+
+    function _init() {
+      if ($scope.chips && $scope.fli.route.type) {
+        $scope.chips.items.push({
+          name: $translate.instant('search.tabs.' + $scope.fli.route.type),
+          key: 'type',
+          route: {
+            type: null,
+            sub: null
+          },
+          click: function () {
+          }
+        });
+      }
+    }
 
     function _config(type) {
       return {
@@ -31,5 +46,7 @@ angular
     vm.go = function (type) {
       $scope.go({type: type});
     };
+
+    _init();
 
   });

@@ -28,25 +28,25 @@
   <!-- endbower -->
 
   <!-- inject:css -->
-  <link rel="stylesheet" href="components/_index/index.css">
   <link rel="stylesheet" href="components/feedback/feedback.css">
+  <link rel="stylesheet" href="components/_index/index.css">
   <link rel="stylesheet" href="components/home/home.css">
   <link rel="stylesheet" href="components/look/look.css">
   <link rel="stylesheet" href="components/search/search.css">
   <link rel="stylesheet" href="components/show/show.css">
   <link rel="stylesheet" href="components/token/token.css">
+  <link rel="stylesheet" href="components/feedback/comments/comments.css">
   <link rel="stylesheet" href="components/_index/footer/footer.css">
   <link rel="stylesheet" href="components/_index/input/input.css">
   <link rel="stylesheet" href="components/_index/setting/setting.css">
-  <link rel="stylesheet" href="components/feedback/comments/comments.css">
   <link rel="stylesheet" href="components/home/tabs/tabs.css">
   <link rel="stylesheet" href="components/home/widget/widget.css">
   <link rel="stylesheet" href="components/look/chips/chips.css">
   <link rel="stylesheet" href="components/look/content/content.css">
   <link rel="stylesheet" href="components/look/suggest/suggest.css">
   <link rel="stylesheet" href="components/search/chips/chips.css">
+  <link rel="stylesheet" href="components/search/menu/menu.css">
   <link rel="stylesheet" href="components/search/result/result.css">
-  <link rel="stylesheet" href="components/search/sub/sub.css">
   <link rel="stylesheet" href="components/search/suggest/suggest.css">
   <link rel="stylesheet" href="components/show/item/item.css">
   <link rel="stylesheet" href="components/_index/input/menu/menu.css">
@@ -75,8 +75,8 @@
   <link rel="stylesheet" href="components/_index/core/uix/animation/animation.css">
   <link rel="stylesheet" href="components/_index/core/uix/apps/apps.css">
   <link rel="stylesheet" href="components/_index/core/uix/donate/donate.css">
-  <link rel="stylesheet" href="components/_index/core/uix/grid/grid.css">
   <link rel="stylesheet" href="components/_index/core/uix/fa/fa.css">
+  <link rel="stylesheet" href="components/_index/core/uix/grid/grid.css">
   <link rel="stylesheet" href="components/_index/core/uix/item/item.css">
   <link rel="stylesheet" href="components/_index/core/uix/polyfill/polyfill.css">
   <link rel="stylesheet" href="components/_index/core/uix/rating/fli.rating.css">
@@ -141,11 +141,11 @@
 <!-- endbower -->
 
 <!-- inject:js -->
+<script src="components/feedback/_feedback.module.js"></script>
+<script src="components/feedback/feedback.controller.js"></script>
 <script src="components/_index/__index.module.js"></script>
 <script src="components/_index/index.controller.js"></script>
 <script src="components/_index/index.factory.js"></script>
-<script src="components/feedback/_feedback.module.js"></script>
-<script src="components/feedback/feedback.controller.js"></script>
 <script src="components/home/_home.module.js"></script>
 <script src="components/home/home.controller.js"></script>
 <script src="components/look/_look.module.js"></script>
@@ -159,6 +159,8 @@
 <script src="components/token/chrome.token.controller.js"></script>
 <script src="components/token/token.controller.js"></script>
 <script src="components/token/token.factory.js"></script>
+<script src="components/feedback/comments/comments.controller.js"></script>
+<script src="components/feedback/comments/comments.directive.js"></script>
 <script src="components/_index/core/analytics.factory.js"></script>
 <script src="components/_index/core/io.factory.js"></script>
 <script src="components/_index/core/loader.interseptor.js"></script>
@@ -176,8 +178,6 @@
 <script src="components/_index/input/input.directive.js"></script>
 <script src="components/_index/setting/setting.controller.js"></script>
 <script src="components/_index/setting/setting.directive.js"></script>
-<script src="components/feedback/comments/comments.controller.js"></script>
-<script src="components/feedback/comments/comments.directive.js"></script>
 <script src="components/home/i18n/en.js"></script>
 <script src="components/home/i18n/ru.js"></script>
 <script src="components/home/tabs/tabs.controller.js"></script>
@@ -197,10 +197,9 @@
 <script src="components/search/chips/chips.directive.js"></script>
 <script src="components/search/i18n/en.js"></script>
 <script src="components/search/i18n/ru.js"></script>
+<script src="components/search/menu/menu.directive.js"></script>
 <script src="components/search/result/result.controller.js"></script>
 <script src="components/search/result/result.directive.js"></script>
-<script src="components/search/sub/sub.controller.js"></script>
-<script src="components/search/sub/sub.directive.js"></script>
 <script src="components/search/suggest/suggest.controller.js"></script>
 <script src="components/search/suggest/suggest.directive.js"></script>
 <script src="components/search/suggest/suggest.factory.js"></script>

@@ -9,6 +9,7 @@ angular
       l: locale.init($routeParams.l),
       input: $routeParams.input,
       type: $routeParams.type || null,
+      sub: $routeParams.sub || null,
       url: $routeParams.url || '',
       img: $routeParams.img || null
     })
@@ -23,6 +24,7 @@ angular
       storage.arr.push(LOOK_KEY, {
         input: $routeParams.input,
         type: $routeParams.type,
+        sub: $routeParams.sub,
         url: $routeParams.url,
         img: $routeParams.img
       }, 12);

@@ -28,6 +28,20 @@ angular
       promo: []
     };
 
+    function _init() {
+      if ($scope.chips && $scope.fli.route.sub) {
+        $scope.chips.items.push({
+          name: $scope.fli.route.sub,
+          key: 'sub',
+          route: {
+            sub: null
+          },
+          click: function () {
+          }
+        });
+      }
+    }
+
     function _config(sub) {
       return {
         l: locale.getCode(),
@@ -44,5 +58,7 @@ angular
     vm.go = function (sub) {
       $scope.go({sub: sub});
     };
+
+    _init();
 
   });
