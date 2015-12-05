@@ -61,7 +61,7 @@ angular
     }
 
     function people(q) {
-      var point = encodeURIComponent('search?q=' + q + '&type=user&limit=24');
+      var point = encodeURIComponent('search?q=' + q + '&type=user&limit=24&fields=id,name,about,gender');
       return api.facebook(point);
     }
 

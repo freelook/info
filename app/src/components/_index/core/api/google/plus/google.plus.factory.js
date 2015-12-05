@@ -8,7 +8,7 @@ angular
     }
 
     function people(q) {
-      var point = 'people?query=' + q;
+      var point = 'people?query=' + q + '&fields=items(url,image,displayName,aboutMe,gender)';
       return _plus(point);
     }
 

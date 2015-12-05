@@ -7,8 +7,8 @@ angular
 
     var APP_KEY = CONFIG.API.GOOGLE.KEY;
 
-    function _point(_point) {
-      return $http.get(YAPI.data + _point + '&key=' + APP_KEY);
+    function _point(point) {
+      return $http.get(YAPI.data + point + '&key=' + APP_KEY);
     }
 
     function _searchByChannelId(channelId) {
