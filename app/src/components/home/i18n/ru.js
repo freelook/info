@@ -1,6 +1,6 @@
 window.i18n.ru.home = {
   tabs: {
-    trends: 'тренды',
+    web: 'тренды',
     news: 'новости',
     looks: 'просмотры',
     promo: 'промо'

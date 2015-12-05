@@ -1,15 +1,11 @@
-<header id="home-header">
-  <div ng-if="!fli.focus && !fli.route.type">
-    <div class="icon">
-      <i class="fa fa-eye-slash fa-5x color-8"></i>
-    </div>
-  </div>
+<header>
+  <fli-home-logo></fli-home-logo>
   <fli-input flex></fli-input>
+  <fli-home-chips flex ng-show="fli.filter"></fli-home-chips>
 </header>
 
 <div id="home" layout="column" flex>
 
-  <fli-home-tabs ng-show="fli.filter"></fli-home-tabs>
   <fli-home-widget class="animate" flex></fli-home-widget>
   <fli-footer></fli-footer>
 

@@ -1,0 +1,9 @@
+fli-home-logo {
+  display: block;
+}
+
+fli-home-logo .icon {
+  width: 100px;
+  text-align: center;
+  margin: 5% auto;
+}
