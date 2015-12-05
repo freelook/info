@@ -24,8 +24,6 @@ angular
           route: {
             type: null,
             sub: null
-          },
-          click: function () {
           }
         });
       }

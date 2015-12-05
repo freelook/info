@@ -18,8 +18,6 @@ angular
           key: 'type',
           route: {
             type: null
-          },
-          click: function () {
           }
         });
       }

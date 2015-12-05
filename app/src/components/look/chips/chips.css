@@ -6,3 +6,11 @@ fli-look-chips {
 fli-look-chips md-chips .md-chips {
   box-shadow: none;
 }
+
+fli-look-chips .md-chips .md-chip-input-container {
+  display: none;
+}
+
+fli-look-chips a {
+  text-decoration: none;
+}

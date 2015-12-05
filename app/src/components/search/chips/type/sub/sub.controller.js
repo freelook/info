@@ -35,8 +35,6 @@ angular
           key: 'sub',
           route: {
             sub: null
-          },
-          click: function () {
           }
         });
       }
