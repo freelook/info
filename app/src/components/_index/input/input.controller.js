@@ -19,7 +19,7 @@ angular
         $scope.go(url.href('search?', {
           l: locale.getCode(),
           input: $scope.fli.route.input || '',
-          type: $scope.fli.route.type || 'web',
+          type: $scope.fli.route.type,
           sub: $scope.fli.route.sub
         }, false, '/'));
       }
