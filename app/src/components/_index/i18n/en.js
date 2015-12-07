@@ -5,7 +5,7 @@ window.i18n.en.index = {
   fliPostfix: ' | FLI',
   context: '',
   input: {
-    placeholder: 'Type to look',
+    placeholder: 'type to look',
     menu: {
       back: 'Back',
       hide: 'Hide',

@@ -1,28 +1,14 @@
-<div layout="row" class="nav">
-  <div class="menu block" flex ng-click="menuCtrl.back()" aria-label="back">
-    <div flex layout="row">
-      <i class="fa fa-arrow-left"></i>
-      <span hide-sm translate="index.input.menu.back"></span>
-    </div>
-  </div>
-  <div class="menu block" flex ng-click="menuCtrl.hide()" aria-label="hide">
-    <div flex layout="row" layout-align-sm="center center">
-      <i class="fa fa-arrow-up"></i>
-      <span hide-sm translate="index.input.menu.hide"></span>
-    </div>
-  </div>
-  <div class="menu block" flex ng-click="menuCtrl.forward()" aria-label="forward">
-    <div flex layout="row" layout-align-sm="end center">
-      <i class="fa fa-arrow-right"></i>
-      <span hide-sm translate="index.input.menu.forward"></span>
-    </div>
-  </div>
-</div>
+<div layout="row">
 
-<div class="menu block" layout="row" ng-repeat="item in menu" ng-if="item.href !== menuCtrl.url">
-  <a flex fli-href="{{item.href}}">
-    <i class="fa fa-{{item.icon}}"></i>
-    <span ng-bind="item.name | translate"></span>
-  </a>
-</div>
+  <md-button class="md-icon-button" ng-click="menuCtrl.hide()" aria-label="hide">
+    <i class="fa fa-arrow-up link"></i>
+  </md-button>
 
+  <div flex class="menu block" layout="row" ng-repeat="item in menuCtrl.items" ng-if="item.path !== menuCtrl.path">
+    <a flex fli-href="{{item.href}}">
+      <i class="fa fa-{{item.icon}}"></i>
+      <span ng-bind="item.name | translate"></span>
+    </a>
+  </div>
+
+</div>

@@ -4,7 +4,7 @@ window.i18n.ru.index = {
   customDescription: 'FLI - свободный взгляд на ',
   fliPostfix: ' | FLI',
   input: {
-    placeholder: 'Введи и смотри',
+    placeholder: 'введи и смотри',
     menu: {
       back: 'Назад',
       hide: 'Скрыть',

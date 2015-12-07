@@ -1,0 +1,14 @@
+md-chips {
+  display: block;
+  margin: 0 7px;
+}
+
+md-chips .md-chips {
+  box-shadow: none;
+}
+
+md-chips a,
+md-chips md-chip {
+  outline: none;
+  text-decoration: none;
+}

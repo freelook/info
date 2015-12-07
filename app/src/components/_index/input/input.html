@@ -1,12 +1,18 @@
 <div layout="row">
 
+  <md-button class="md-icon-button link" aria-label="home">
+    <a fli-href="{{input.home()}}">
+      <i class="fa fa-eye-slash"></i>
+    </a>
+  </md-button>
+
   <md-button ng-show="!fli.focus" class="md-icon-button md-primary" aria-label="filter">
     <div class="link" ng-click="input.filter($event)" ng-class="{active:fli.filter}">
       <i class="fa fa-filter"></i>
     </div>
   </md-button>
 
-  <md-button class="md-icon-button link" aria-label="navigation">
+  <md-button ng-show="fli.focus" class="md-icon-button link" aria-label="navigation">
     <a fli-href="{{input.href()}}">
       <i class="fa fa-{{input.icon}}"></i>
     </a>
@@ -17,7 +23,7 @@
       <input flex id="input" ng-focus="input.focus()" autocomplete="off"
              ng-model="fli.route.input"
              ng-model-options="{updateOn:'blur'}"
-             placeholder="{{input.placeholder | translate}}"
+             placeholder="# {{input.placeholder | translate}}"
              type="{{input.type}}">
       <md-progress-linear id="progress" md-mode="indeterminate" ng-if="fli.progress && !fli.focus"></md-progress-linear>
     </md-input-container>

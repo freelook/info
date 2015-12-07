@@ -10,7 +10,7 @@ angular
 
     vm.placeholder = PLACEHOLDER;
     vm.type = 'search';
-    vm.icon = $scope.fli.icon;
+    vm.icon = 'search';
     vm.fbImg = facebook.img;
     vm.site = content.site($scope.fli.route.url);
 
@@ -23,6 +23,10 @@ angular
       };
     }
 
+    vm.home = function () {
+      return url.href('?', {l: locale.getCode()});
+    };
+
     vm.find = function () {
       if ($scope.fli.route.input) {
         $scope.go(url.href('search?', _route(), false, '/'));
@@ -30,12 +34,7 @@ angular
     };
 
     vm.href = function () {
-      if ($scope.fli.focus && $scope.fli.route.input) {
-        vm.icon = 'search';
-        return url.href('search?', _route());
-      }
-      vm.icon = $scope.fli.icon;
-      return url.href($location.url().slice(1));
+      return url.href('search?', _route());
     };
 
     vm.clear = function ($event) {

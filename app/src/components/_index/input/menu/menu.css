@@ -3,31 +3,19 @@ fli-input-menu {
 }
 
 .menu {
-  border-bottom: 1px #cccccc solid;
-  color: #999999;
-  cursor: pointer;
-  height: 35px;
-  padding: 0;
   outline: 0;
+  padding: 5px;
 }
 
 .menu .fa {
-  margin: 10px 15px 0 17px;
-}
-
-.menu span {
-  margin-top: 10px;
+  margin: 10px 20px 5px 5px;
 }
 
 .menu a {
   text-decoration: none;
-  outline: 0;
 }
 
-fli-input-menu .nav .menu {
-  margin-bottom: 0;
-}
-
-fli-input-menu .nav i {
-  color: rgb(63, 81, 181);
+.menu.block {
+  margin: 0 55px 5px 5px;
+  border-bottom: 1px #cccccc solid;
 }

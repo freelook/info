@@ -8,13 +8,23 @@ angular
     var vm = this;
     vm.placeholder = 'show.input.placeholder';
     vm.type = 'url';
+    vm.icon = 'plus';
+
+    function _route() {
+      return {
+        l: locale.getCode(),
+        input: $scope.fli.route.input ? encodeURIComponent(decodeURIComponent($scope.fli.route.input)) : ''
+      };
+    }
+
     vm.find = function () {
       if ($scope.fli.route.input) {
-        $scope.go(url.href('show?', {
-          l: locale.getCode(),
-          input: $scope.fli.route.input ? encodeURIComponent(decodeURIComponent($scope.fli.route.input)) : null
-        }, false, '/'));
+        $scope.go(url.href('show?', _route(), false, '/'));
       }
+    };
+
+    vm.href = function () {
+      return url.href('show?', _route());
     };
 
   });
