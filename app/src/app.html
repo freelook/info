@@ -29,8 +29,8 @@
 
   <!-- inject:css -->
   <link rel="stylesheet" href="components/_index/index.css">
-  <link rel="stylesheet" href="components/home/home.css">
   <link rel="stylesheet" href="components/feedback/feedback.css">
+  <link rel="stylesheet" href="components/home/home.css">
   <link rel="stylesheet" href="components/look/look.css">
   <link rel="stylesheet" href="components/search/search.css">
   <link rel="stylesheet" href="components/show/show.css">
@@ -38,9 +38,9 @@
   <link rel="stylesheet" href="components/_index/footer/footer.css">
   <link rel="stylesheet" href="components/_index/input/input.css">
   <link rel="stylesheet" href="components/_index/setting/setting.css">
+  <link rel="stylesheet" href="components/feedback/comments/comments.css">
   <link rel="stylesheet" href="components/home/chips/chips.css">
   <link rel="stylesheet" href="components/home/widget/widget.css">
-  <link rel="stylesheet" href="components/feedback/comments/comments.css">
   <link rel="stylesheet" href="components/look/chips/chips.css">
   <link rel="stylesheet" href="components/look/content/content.css">
   <link rel="stylesheet" href="components/look/suggest/suggest.css">
@@ -146,10 +146,10 @@
 <script src="components/_index/__index.module.js"></script>
 <script src="components/_index/index.controller.js"></script>
 <script src="components/_index/index.factory.js"></script>
-<script src="components/home/_home.module.js"></script>
-<script src="components/home/home.controller.js"></script>
 <script src="components/feedback/_feedback.module.js"></script>
 <script src="components/feedback/feedback.controller.js"></script>
+<script src="components/home/_home.module.js"></script>
+<script src="components/home/home.controller.js"></script>
 <script src="components/look/_look.module.js"></script>
 <script src="components/look/look.controller.js"></script>
 <script src="components/search/_search.module.js"></script>
@@ -178,14 +178,14 @@
 <script src="components/_index/input/input.directive.js"></script>
 <script src="components/_index/setting/setting.controller.js"></script>
 <script src="components/_index/setting/setting.directive.js"></script>
+<script src="components/feedback/comments/comments.controller.js"></script>
+<script src="components/feedback/comments/comments.directive.js"></script>
 <script src="components/home/chips/chips.controller.js"></script>
 <script src="components/home/chips/chips.directive.js"></script>
 <script src="components/home/i18n/en.js"></script>
 <script src="components/home/i18n/ru.js"></script>
 <script src="components/home/widget/widget.controller.js"></script>
 <script src="components/home/widget/widget.directive.js"></script>
-<script src="components/feedback/comments/comments.controller.js"></script>
-<script src="components/feedback/comments/comments.directive.js"></script>
 <script src="components/look/chips/chips.controller.js"></script>
 <script src="components/look/chips/chips.directive.js"></script>
 <script src="components/look/content/content.controller.js"></script>
@@ -217,7 +217,7 @@
 <script src="components/_index/core/auth/auth.factory.js"></script>
 <script src="components/_index/core/auth/chrome.auth.factory.js"></script>
 <script src="components/_index/core/auth/site.auth.factory.js"></script>
-<script src="components/_index/core/config/config.development.js"></script>
+<script src="components/_index/core/config/config.production.js"></script>
 <script src="components/_index/core/cordova/inAppBrowser.factory.js"></script>
 <script src="components/_index/core/cordova/splash.factory.js"></script>
 <script src="components/_index/core/storage/chrome.storage.factory.js"></script>
@@ -352,8 +352,8 @@
 <script src="components/search/result/web/google/google.directive.js"></script>
 <script src="components/search/result/web/vk/vk.controller.js"></script>
 <script src="components/search/result/web/vk/vk.directive.js"></script>
-<script src="components/_index/core/api/google/url/google.url.factory.js"></script>
 <script src="components/_index/core/api/google/plus/google.plus.factory.js"></script>
+<script src="components/_index/core/api/google/url/google.url.factory.js"></script>
 <script src="components/_index/core/uix/item/edit/edit.controller.js"></script>
 <script src="components/_index/core/uix/item/edit/edit.directive.js"></script>
 <script src="components/_index/core/uix/locale/panel/panel.controller.js"></script>
