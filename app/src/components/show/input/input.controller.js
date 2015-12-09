@@ -9,6 +9,7 @@ angular
     vm.placeholder = 'show.input.placeholder';
     vm.type = 'url';
     vm.icon = 'plus';
+    vm.action = 'add';
 
     function _route() {
       return {

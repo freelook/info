@@ -1,6 +1,6 @@
 window.i18n.en.show = {
   input: {
-    placeholder: 'Add your link'
+    placeholder: 'http:// add your link'
   },
   item: {
     form: {

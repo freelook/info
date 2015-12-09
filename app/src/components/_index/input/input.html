@@ -1,6 +1,6 @@
 <div layout="row">
 
-  <md-button class="md-icon-button link" aria-label="home">
+  <md-button class="md-icon-button link" aria-label="home" ng-click="input.home(1)">
     <a fli-href="{{input.home()}}">
       <i class="fa fa-eye-slash"></i>
     </a>
@@ -23,7 +23,7 @@
       <input flex id="input" ng-focus="input.focus()" autocomplete="off"
              ng-model="fli.route.input"
              ng-model-options="{updateOn:'blur'}"
-             placeholder="# {{input.placeholder | translate}}"
+             placeholder="{{input.placeholder | translate}}"
              type="{{input.type}}">
       <md-progress-linear id="progress" md-mode="indeterminate" ng-if="fli.progress && !fli.focus"></md-progress-linear>
     </md-input-container>

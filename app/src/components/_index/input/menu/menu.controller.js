@@ -3,23 +3,27 @@
 angular
   .module('freelook.info')
   .controller('input.menu.ctrl',
-  function ($rootScope, $scope, $location, locale, url) {
+  function ($rootScope, $scope, locale, url) {
 
     var vm = this;
-
-    vm.items = [];
-    vm.path = $location.path();
 
     vm.hide = function () {
       $scope.fli.focus = 0;
       $scope.fli.view = '';
     };
 
-    vm.items.push({
-      name: 'index.input.menu.add',
-      icon: 'plus',
-      href: url.href('show?', {l: locale.getCode()}),
-      path: '/show'
-    });
+    vm.items = [
+      {
+        name: 'index.input.menu.search',
+        icon: 'search',
+        href: url.href('?', {l: locale.getCode()}),
+        action: 'search'
+      },
+      {
+        name: 'index.input.menu.add',
+        icon: 'plus',
+        href: url.href('show?', {l: locale.getCode()}),
+        action: 'add'
+      }];
 
   });

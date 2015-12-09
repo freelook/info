@@ -1,10 +1,11 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('nav', function ($location, $timeout, LINKS) {
+  .factory('nav', function ($location, $timeout, locale, LINKS) {
 
     function path(_path) {
-      $location.path(_path);
+      $location.path(_path)
+        .search({l: locale.getLng()});
     }
 
     function go(_path) {

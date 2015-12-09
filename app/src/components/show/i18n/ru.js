@@ -1,6 +1,6 @@
 window.i18n.ru.show = {
   input: {
-    placeholder: 'Добавить ссылку'
+    placeholder: 'http:// добавить ссылку'
   },
   item: {
     form: {

@@ -3,7 +3,7 @@
 angular
   .module('freelook.info')
   .controller('input.ctrl',
-  function ($scope, $location, url, locale, facebook, auth, content, PLACEHOLDER) {
+  function ($scope, $location, url, locale, facebook, auth, content, nav, PLACEHOLDER) {
 
     var vm = this;
     $scope.fli.focus = 0;
@@ -11,6 +11,7 @@ angular
     vm.placeholder = PLACEHOLDER;
     vm.type = 'search';
     vm.icon = 'search';
+    vm.action = 'search';
     vm.fbImg = facebook.img;
     vm.site = content.site($scope.fli.route.url);
 
@@ -23,8 +24,9 @@ angular
       };
     }
 
-    vm.home = function () {
-      return url.href('?', {l: locale.getCode()});
+    vm.home = function (isClick) {
+      var href = url.href('?', {l: locale.getCode()});
+      return !isClick ? href : nav.goHome();
     };
 
     vm.find = function () {

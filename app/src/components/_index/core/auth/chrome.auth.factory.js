@@ -27,6 +27,7 @@ angular
 
     function logOut() {
       Parse.User.logOut().then(_setUser);
+      $rootScope.fli.view = '';
     }
 
     return {

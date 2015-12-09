@@ -5,13 +5,14 @@ window.i18n.en.index = {
   fliPostfix: ' | FLI',
   context: '',
   input: {
-    placeholder: 'type to look',
+    placeholder: '# type to look',
     menu: {
-      back: 'Back',
-      hide: 'Hide',
-      forward: 'Forward',
-      home: 'Home',
-      add: 'Add'
+      back: 'back',
+      hide: 'hide',
+      forward: 'forward',
+      home: 'home',
+      add: 'add',
+      search: 'search'
     },
     note: {
       needLogin: 'Need login'
