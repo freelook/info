@@ -5,7 +5,7 @@ angular
 
     function path(_path) {
       $location.path(_path)
-        .search({l: locale.getLng()});
+        .search({l: locale.getCode()});
     }
 
     function go(_path) {
