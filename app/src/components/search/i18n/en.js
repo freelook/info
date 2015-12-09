@@ -10,6 +10,6 @@ window.i18n.en.search = {
     promo: 'promo'
   },
   menu: {
-    lucky: 'Get lucky'
+    lucky: 'get lucky'
   }
 };

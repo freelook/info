@@ -10,6 +10,6 @@ window.i18n.ru.search = {
     promo: 'промо'
   },
   menu: {
-    lucky: 'Мне повезет'
+    lucky: 'на удачу'
   }
 };

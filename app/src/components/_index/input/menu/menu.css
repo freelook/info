@@ -16,6 +16,11 @@ fli-input-menu {
 }
 
 .menu.block {
-  margin: 0 55px 5px 5px;
+  margin: 0 55px 5px 50px;
+  border-bottom: 1px #cccccc solid;
+}
+
+fli-input-menu .menu.block {
+  margin-left: 0;
   border-bottom: 1px #cccccc solid;
 }
