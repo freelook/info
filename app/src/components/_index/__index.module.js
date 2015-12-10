@@ -47,7 +47,6 @@
       analytics.init();
       Parse.initialize(CONFIG.API.PARSE.ID, CONFIG.API.PARSE.KEY);
       vk.init();
-      facebook.init();
 
       $rootScope.$on('$routeChangeStart', function () {
         $(document).scrollTop(0);
