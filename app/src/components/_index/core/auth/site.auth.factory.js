@@ -9,12 +9,8 @@ angular
       });
     }
 
-    function logIn(config) {
-      if (user.current()) {
-        $rootScope.fli.view = 'components/_index/setting/setting.view.html';
-      } else {
-        facebook.logIn(config);
-      }
+    function logIn() {
+      $rootScope.fli.view = 'components/_index/setting/setting.view.html';
     }
 
     function logOut() {
