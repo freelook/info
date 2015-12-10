@@ -19,7 +19,7 @@ angular
         route: url.href('search?', {
           l: locale.getCode(),
           input: $scope.fli.route.input
-        })
+        }, false, '/')
       },
       {
         name: site.host,
@@ -29,7 +29,7 @@ angular
           input: $scope.fli.route.input,
           type: $scope.fli.route.type,
           sub: $scope.fli.route.sub
-        })
+        }, false, '/')
       }
     ];
 

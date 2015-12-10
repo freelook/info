@@ -8,6 +8,7 @@ fli-input-menu {
 }
 
 .menu .fa {
+  font-size: inherit;
   margin: 9px 20px 5px 5px;
 }
 
@@ -16,11 +17,11 @@ fli-input-menu {
 }
 
 .menu.block {
-  margin: 0 55px 5px 50px;
+  margin: 0 55px 5px 57px;
   border-bottom: 1px #cccccc solid;
 }
 
 fli-input-menu .menu.block {
-  margin-left: 0;
+  margin-left: 7px;
   border-bottom: 1px #cccccc solid;
 }
