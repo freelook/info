@@ -29,15 +29,15 @@
     </md-input-container>
   </form>
 
-  <md-button ng-show="fli.focus && fli.route.input" class="md-icon-button link" aria-label="clear" ng-click="input.clear($event)">
+  <md-button ng-if="fli.focus && fli.route.input" class="md-icon-button link" aria-label="clear" ng-click="input.clear($event)">
     <i class="fa fa-close"></i>
   </md-button>
 
-  <md-button ng-show="!(fli.focus && fli.route.input || fli.view)" class="md-icon-button link" aria-label="setting" ng-click="input.setting()">
+  <md-button ng-if="!(fli.focus && fli.route.input || fli.view)" class="md-icon-button link" aria-label="setting" ng-click="input.setting()">
     <i class="fa fa-cog"></i>
   </md-button>
 
-  <md-button ng-show="!(fli.focus && fli.route.input) && fli.view" class="md-icon-button link" aria-label="close" ng-click="input.close()">
+  <md-button ng-if="!(fli.focus && fli.route.input) && fli.view" class="md-icon-button link" aria-label="close" ng-click="input.close()">
     <i class="fa fa-close"></i>
   </md-button>
 
