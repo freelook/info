@@ -45,6 +45,8 @@
 </div>
 
 <fli-input-notice ng-show="!fli.focus"></fli-input-notice>
-<fli-input-menu ng-show="fli.focus || fli.view" layout="column" flex></fli-input-menu>
-
+<fli-input-menu ng-show="fli.focus" layout="column" flex></fli-input-menu>
+<md-button ng-if="fli.view" ng-click="input.close()" class="md-icon-button link" aria-label="close">
+  <i class="fa fa-close"></i>
+</md-button>
 

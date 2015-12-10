@@ -9,7 +9,6 @@ angular
 
     vm.hide = function () {
       $scope.fli.focus = 0;
-      $scope.fli.view = '';
     };
 
     vm.items = [

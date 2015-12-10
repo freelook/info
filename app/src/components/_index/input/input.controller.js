@@ -44,6 +44,10 @@ angular
       $event.stopPropagation();
     };
 
+    vm.close = function () {
+      $scope.fli.view = '';
+    };
+
     vm.setting = function () {
       auth.logIn();
     };
