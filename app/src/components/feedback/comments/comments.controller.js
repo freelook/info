@@ -3,13 +3,11 @@
 angular
   .module('fli.feedback')
   .controller('feedback.comments.ctrl',
-  function ($timeout, locale, url, FB, CONFIG) {
+  function () {
 
     var vm = this;
-    vm.count = 5;
-    vm.href = url.href('feedback?', {l: locale.getLng()}, false, CONFIG.PRODUCTION);
-
-    FB.xfbml();
+    vm.mail = 'mail@freelook.info';
+    vm.href = 'mailto:mail@freelook.info?subject=[FLI:feedback]';
 
   });
 

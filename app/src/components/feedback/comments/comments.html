@@ -1,3 +1,6 @@
-<div layout="column" layout-align="start center" flex>
-  <div class="fb-comments" data-href="{{comments.href}}" data-numposts="{{comments.count}}"></div>
+<div class="block" layout="column" layout-align="start center" flex>
+  <div class="block color-8" translate="feedback.ideas"></div>
+  <div class="block link">
+    <a ng-href="{{comments.href}}" ng-bind="comments.mail"></a>
+  </div>
 </div>
