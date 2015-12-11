@@ -26,12 +26,14 @@ Parse.Cloud.beforeSave('SHOW', function (request, response) {
                 }
 
                 if (title.length > 100) {
-                    request.object.set(title, title.substring(0, 97) + '...');
+                    request.object.set('title', title.substring(0, 97) + '...');
                 }
 
                 if (content.length > 300) {
-                    request.object.set(content, content.substring(0, 297) + '...');
+                    request.object.set('content', content.substring(0, 297) + '...');
                 }
+
+                request.object.set('users', []);
 
                 Parse.Cloud.useMasterKey();
                 _user.set('looks', looks - total).save().then(function () {
