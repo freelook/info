@@ -2,10 +2,6 @@ fli-setting {
   display: block;
 }
 
-#setting fli-setting {
-  margin-top: 25px;
-}
-
 #setting .title {
   padding: 7px;
   color: #999999;

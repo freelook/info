@@ -1,27 +1,15 @@
-<div class="block border" ng-if="fli.user" layout="row">
-  <div>
-    <img class="circle" ng-src="{{setting.fbImg(fli.user.attributes.authData.facebook.id)}}" fli-err>
-    <md-button class="md-icon-button link" aria-label="fb-logout" ng-click="setting.logOut()">
-      <i class="fa fa-sign-out fa-2x"></i>
-    </md-button>
-  </div>
-  <div>
-    <div class="block" ng-bind="fli.user.get('username')"></div>
-    <div class="block">
-      <span ng-bind="fli.user.get('looks')"></span>
-      <span class="fa fa-eye link"></span>
-    </div>
-  </div>
+<div class="block">
+  <fli-setting-user flex ng-if="fli.user" class="border"></fli-setting-user>
+  <fli-setting-login flex ng-if="!fli.user"></fli-setting-login>
 </div>
 
 <div class="block border">
-  <div class="title" translate="index.core.uix.setting.locale"></div>
+  <div class="title"><span translate="index.core.uix.setting.locale"></span>:</div>
   <fli-locale-panel></fli-locale-panel>
 </div>
 
 <div class="block border" layout="row">
-  <md-switch class="md-primary" ng-model="setting.notice" aria-label="switch notice"
-             ng-change="setting.toggleNotice()"></md-switch>
+  <md-switch class="md-primary" ng-model="setting.notice" aria-label="switch notice" ng-change="setting.toggleNotice()"></md-switch>
   <div flex class="title" translate="index.core.uix.setting.notice"></div>
 </div>
 

@@ -1,9 +1,7 @@
 <div layout="row">
 
-  <md-button class="md-icon-button link" aria-label="home" ng-click="input.home(1)">
-    <a fli-href="{{input.home()}}">
-      <i class="fa fa-eye-slash"></i>
-    </a>
+  <md-button class="md-icon-button link" aria-label="home" ng-click="input.home()">
+    <i class="fa fa-eye-slash"></i>
   </md-button>
 
   <md-button ng-show="!fli.focus" class="md-icon-button md-primary" aria-label="filter">
@@ -29,16 +27,13 @@
     </md-input-container>
   </form>
 
-  <md-button ng-if="fli.focus && fli.route.input" class="md-icon-button link" aria-label="clear" ng-click="input.clear($event)">
+  <md-button ng-if="fli.focus" class="md-icon-button link" aria-label="clear" ng-click="input.clear()">
     <i class="fa fa-close"></i>
   </md-button>
 
-  <md-button ng-if="!(fli.focus && fli.route.input || fli.view)" class="md-icon-button link" aria-label="setting" ng-click="input.setting()">
-    <i class="fa fa-cog"></i>
-  </md-button>
-
-  <md-button ng-if="!(fli.focus && fli.route.input) && fli.view" class="md-icon-button link" aria-label="close" ng-click="input.close()">
-    <i class="fa fa-close"></i>
+  <md-button ng-if="!fli.focus" class="md-icon-button link" aria-label="setting" ng-click="input.setting()">
+    <i ng-if="!fli.user" class="fa fa-sign-in fa-2x"></i>
+    <i ng-if="fli.user" class="fa fa-cog"></i>
   </md-button>
 
 </div>

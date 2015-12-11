@@ -11,7 +11,7 @@ angular
     vm.localeCode = locale.getCode();
 
     vm.feedback = function () {
-      nav.path('feedback');
+      nav.go('feedback');
     };
 
     vm.toggleLocalePanel = function () {

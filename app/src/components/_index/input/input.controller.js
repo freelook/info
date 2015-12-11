@@ -3,7 +3,7 @@
 angular
   .module('freelook.info')
   .controller('input.ctrl',
-  function ($scope, $location, url, locale, facebook, auth, content, nav, PLACEHOLDER) {
+  function ($scope, $location, url, locale, facebook, content, nav, PLACEHOLDER) {
 
     var vm = this;
     $scope.fli.focus = 0;
@@ -24,9 +24,9 @@ angular
       };
     }
 
-    vm.home = function (isClick) {
-      var href = url.href('?', {l: locale.getCode()});
-      return !isClick ? href : nav.goHome();
+    vm.home = function () {
+      vm.close();
+      nav.goHome();
     };
 
     vm.find = function () {
@@ -39,17 +39,17 @@ angular
       return url.href('search?', _route());
     };
 
-    vm.clear = function ($event) {
+    vm.clear = function () {
       $scope.fli.route.input = '';
-      $event.stopPropagation();
     };
 
     vm.close = function () {
       $scope.fli.view = '';
+      $scope.fli.focus = 0;
     };
 
     vm.setting = function () {
-      auth.logIn();
+      $scope.fli.view = 'components/_index/setting/setting.view.html';
     };
 
     vm.focus = function () {

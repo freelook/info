@@ -1,0 +1,15 @@
+<div layout="row" layout-align="end center">
+
+  <div flex>
+    <div class="block" ng-bind="fli.user.get('username')"></div>
+    <div class="block">
+      <span ng-bind="fli.user.get('looks')"></span>
+      <span class="fa fa-eye link"></span>
+    </div>
+  </div>
+
+  <md-button class="md-icon-button link" aria-label="fb-logout" ng-click="user.logOut()">
+    <i class="fa fa-sign-out fa-2x"></i>
+  </md-button>
+
+</div>

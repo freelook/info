@@ -9,7 +9,7 @@
   angular
     .module('freelook.info',
     ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngCookies', 'ngRoute', 'ngMaterial', 'pascalprecht.translate', 'mediaPlayer',
-      'fli.home', 'fli.search', 'fli.look', 'fli.token', 'fli.show', 'fli.feedback'])
+      'fli.home', 'fli.search', 'fli.look', 'fli.show', 'fli.feedback'])
     .config(function ($locationProvider, $httpProvider, $routeProvider, $mdThemingProvider, $translateProvider) {
 
       // Setting hash prefix
@@ -46,7 +46,6 @@
       platform.init();
       analytics.init();
       Parse.initialize(CONFIG.API.PARSE.ID, CONFIG.API.PARSE.KEY);
-      vk.init();
 
       $rootScope.$on('$routeChangeStart', function () {
         $(document).scrollTop(0);
