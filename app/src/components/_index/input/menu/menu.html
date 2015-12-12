@@ -1,17 +1,10 @@
-<div layout="row">
-
-  <md-button class="md-icon-button" ng-click="menuCtrl.hide()" aria-label="hide">
-    <i class="fa fa-arrow-up link"></i>
-  </md-button>
-
-  <div layout="column" flex>
-    <div flex class="menu block" layout="row" ng-repeat="item in menuCtrl.items"
-         ng-if="input.action !== item.action">
-      <a flex fli-href="{{item.href}}">
-        <i class="fa fa-{{item.icon}}"></i>
-        <span ng-bind="item.name | translate"></span>
-      </a>
-    </div>
+<div layout="column" flex>
+  <div flex class="menu block" layout="row" ng-repeat="item in menuCtrl.items"
+       ng-if="input.action !== item.action">
+    <a flex fli-href="{{item.href}}">
+      <i class="fa fa-{{item.icon}}"></i>
+      <span ng-bind="item.name | translate"></span>
+    </a>
   </div>
-
 </div>
+

@@ -3,13 +3,9 @@
 angular
   .module('freelook.info')
   .controller('input.menu.ctrl',
-  function ($rootScope, $scope, locale, url) {
+  function (locale, url) {
 
     var vm = this;
-
-    vm.hide = function () {
-      $scope.fli.focus = 0;
-    };
 
     vm.items = [
       {
@@ -23,6 +19,7 @@ angular
         icon: 'plus',
         href: url.href('show?', {l: locale.getCode()}),
         action: 'add'
-      }];
+      }
+    ];
 
   });

@@ -54,6 +54,9 @@ window.i18n.ru.index = {
       toast: {
         error: 'Что-то пошло не так',
         added: 'Пост был добавлен'
+      },
+      share: {
+        link: 'ссылка'
       }
     }
   }

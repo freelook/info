@@ -24,9 +24,5 @@ angular
       }
     };
 
-    vm.href = function () {
-      return url.href('show?', _route());
-    };
-
   });
 

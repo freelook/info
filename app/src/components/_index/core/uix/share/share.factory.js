@@ -1,48 +1,31 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('share', function ($rootScope, facebook, google, vk, url, CONFIG) {
+  .factory('share', function ($rootScope, $q, google, CONFIG) {
 
-    var _href = '', _item = {},
-      connectors = {
-        facebook: facebook.share,
-        vk: vk.share
-      };
+    var _href = '';
 
-    function _imgFix(item) {
-      item.img = $rootScope.fli.fix(item.img);
-      return item;
+    function url(href) {
+      _href = href;
+      $rootScope.fli.view = 'components/_index/core/uix/share/share.view.html';
     }
 
-    function _url(href, item) {
-      if (href) {
-        _href = href;
-        _item = item ? _imgFix(item) : {};
-        $rootScope.fli.view = 'components/_index/core/uix/share/share.view.html';
-      }
-    }
-
-    function get() {
-      return {
-        href: _href,
-        item: _item
-      };
-    }
-
-    function run(connector) {
+    function run() {
+      var defer = $q.defer();
       google.url.insert(_href)
         .success(function (res) {
           if (res && res.id) {
-            var id = res.id.split('goo.gl/').splice(1)[0],
-              page = CONFIG.PRODUCTION + 'page?id=' + id;
-            url.location(connectors[connector](page, _item, _href));
+            var id = res.id.split('goo.gl/').splice(1)[0];
+            return defer.resolve(CONFIG.PRODUCTION + 'page?id=' + id);
           }
+          return defer.reject(res);
         });
+
+      return defer.promise;
     }
 
     return {
-      url: _url,
-      get: get,
+      url: url,
       run: run
     };
 

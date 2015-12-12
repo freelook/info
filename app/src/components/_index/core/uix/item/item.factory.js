@@ -19,18 +19,18 @@ angular
         case 'string':
           return share.url(_item);
         case 'object':
-          return share.url(_href(_item, CONFIG.PRODUCTION), _item);
+          return share.url(_href(_item, CONFIG.PRODUCTION));
       }
     }
 
-    function search(input) {
+    function _search(input) {
       return url.href('search?', {l: locale.getCode(), input: input});
     }
 
     return {
       href: _href,
       share: _share,
-      search: search
+      search: _search
     };
 
   });

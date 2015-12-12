@@ -4,19 +4,15 @@
     <i class="fa fa-eye-slash"></i>
   </md-button>
 
-  <md-button ng-show="!fli.focus" class="md-icon-button md-primary" aria-label="filter">
-    <div class="link" ng-click="input.filter($event)" ng-class="{active:fli.filter}">
-      <i class="fa fa-filter"></i>
-    </div>
+  <md-button ng-if="!fli.focus" class="md-icon-button link" aria-label="filter" ng-click="input.filter()">
+      <i class="fa fa-filter" ng-class="{active:fli.filter}"></i>
   </md-button>
 
-  <md-button ng-show="fli.focus" class="md-icon-button link" aria-label="navigation">
-    <a fli-href="{{input.href()}}">
-      <i class="fa fa-{{input.icon}}"></i>
-    </a>
+  <md-button ng-if="fli.focus" class="md-icon-button link" aria-label="navigation" ng-click="input.find()">
+    <i class="fa fa-{{input.icon}}"></i>
   </md-button>
 
-  <form name="form" ng-submit="input.find(form)" flex>
+  <form name="form" ng-submit="input.find()" flex>
     <md-input-container flex md-no-float>
       <input flex id="input" ng-focus="input.focus()" autocomplete="off"
              ng-model="fli.route.input"

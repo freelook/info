@@ -3,17 +3,15 @@
 angular
   .module('freelook.info')
   .controller('input.ctrl',
-  function ($scope, $location, url, locale, facebook, content, nav, PLACEHOLDER) {
+  function ($scope, url, locale, nav, PLACEHOLDER) {
 
-    var vm = this;
+    var vm = this, _search_ = 'search';
     $scope.fli.focus = 0;
 
     vm.placeholder = PLACEHOLDER;
-    vm.type = 'search';
-    vm.icon = 'search';
-    vm.action = 'search';
-    vm.fbImg = facebook.img;
-    vm.site = content.site($scope.fli.route.url);
+    vm.type = _search_;
+    vm.icon = _search_;
+    vm.action = _search_;
 
     function _route() {
       return {
@@ -24,19 +22,10 @@ angular
       };
     }
 
-    vm.home = function () {
-      vm.close();
-      nav.goHome();
-    };
-
     vm.find = function () {
       if ($scope.fli.route.input) {
         $scope.go(url.href('search?', _route(), false, '/'));
       }
-    };
-
-    vm.href = function () {
-      return url.href('search?', _route());
     };
 
     vm.clear = function () {
@@ -45,20 +34,32 @@ angular
 
     vm.close = function () {
       $scope.fli.view = '';
-      $scope.fli.focus = 0;
     };
 
-    vm.setting = function () {
-      $scope.fli.view = 'components/_index/setting/setting.view.html';
+    vm.blur = function () {
+      $scope.fli.focus = 0;
     };
 
     vm.focus = function () {
       $scope.fli.focus = 1;
     };
 
-    vm.filter = function ($event) {
+    vm.setting = function () {
+      $scope.fli.view = 'components/_index/setting/setting.view.html';
+    };
+
+    vm.filter = function () {
       $scope.fli.filter = !$scope.fli.filter;
-      $event.stopPropagation();
+    };
+
+    vm.home = function () {
+      if ($scope.fli.focus) {
+        vm.blur();
+      } else if ($scope.fli.view) {
+        vm.close();
+      } else {
+        nav.goHome();
+      }
     };
 
   })

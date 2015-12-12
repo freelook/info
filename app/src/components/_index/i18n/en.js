@@ -55,6 +55,9 @@ window.i18n.en.index = {
       toast: {
         error: 'Something went wrong',
         added: 'Item was added'
+      },
+      share: {
+        link: 'link'
       }
     }
   }

@@ -3,11 +3,13 @@
 angular
   .module('freelook.info')
   .controller('share.ctrl',
-  function ($scope, share, item) {
+  function ($scope, share) {
 
     var vm = this;
-    vm.href = item.href;
-    vm.run = share.run;
+
+    share.run().then(function (link) {
+      vm.link = link;
+    });
 
   });
 
