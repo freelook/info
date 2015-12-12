@@ -1,10 +1,10 @@
 <header>
   <fli-input flex></fli-input>
   <fli-search-menu></fli-search-menu>
-  <fli-search-chips flex ng-show="fli.filter"></fli-search-chips>
+  <fli-search-chips flex></fli-search-chips>
 </header>
 
-<div id="search" flex layout="column" ng-if="fli.route.input">
+<div id="search" flex layout="column" ng-hide="fli.focus" ng-if="fli.route.input">
 
   <div layout="row" flex>
     <fli-search-result class="animate" flex></fli-search-result>

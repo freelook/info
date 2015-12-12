@@ -1,5 +1,5 @@
-<div class="block">
-  <fli-setting-user flex ng-if="fli.user" class="border"></fli-setting-user>
+<div class="block border">
+  <fli-setting-user flex ng-if="fli.user"></fli-setting-user>
   <fli-setting-login flex ng-if="!fli.user"></fli-setting-login>
 </div>
 
@@ -8,7 +8,7 @@
   <fli-locale-panel></fli-locale-panel>
 </div>
 
-<div class="block border" layout="row">
+<div class="block border" layout="row" ng-if="fli.user">
   <md-switch class="md-primary" ng-model="setting.notice" aria-label="switch notice" ng-change="setting.toggleNotice()"></md-switch>
   <div flex class="title" translate="index.core.uix.setting.notice"></div>
 </div>

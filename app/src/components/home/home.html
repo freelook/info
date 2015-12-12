@@ -1,9 +1,9 @@
 <header>
   <fli-input flex></fli-input>
-  <fli-home-chips flex ng-show="fli.filter"></fli-home-chips>
+  <fli-home-chips flex></fli-home-chips>
 </header>
 
-<div id="home" layout="column" flex>
+<div id="home" flex layout="column" ng-hide="fli.focus">
 
   <fli-home-widget class="animate" flex></fli-home-widget>
   <fli-footer></fli-footer>

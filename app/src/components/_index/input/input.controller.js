@@ -49,7 +49,7 @@ angular
     };
 
     vm.filter = function () {
-      $scope.fli.filter = !$scope.fli.filter;
+      $scope.fli.filter = 1;
     };
 
     vm.home = function () {

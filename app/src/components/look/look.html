@@ -1,9 +1,9 @@
 <header>
   <fli-input flex></fli-input>
-  <fli-look-chips flex ng-show="fli.filter"></fli-look-chips>
+  <fli-look-chips flex></fli-look-chips>
 </header>
 
-<div id="look" flex layout="column">
+<div id="look" flex layout="column" ng-hide="fli.focus">
 
   <fli-look-content class="animate" flex layout="column"></fli-look-content>
   <fli-footer></fli-footer>

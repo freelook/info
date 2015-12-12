@@ -39,16 +39,17 @@
         });
 
     })
-    .run(function ($rootScope, platform, splash, analytics, vk, facebook, io, Parse, CONFIG) {
+    .run(function ($rootScope, platform, splash, analytics, scroll, io, Parse, CONFIG) {
       $rootScope.fli = {};
 
       splash.hide();
       platform.init();
       analytics.init();
+
       Parse.initialize(CONFIG.API.PARSE.ID, CONFIG.API.PARSE.KEY);
 
       $rootScope.$on('$routeChangeStart', function () {
-        $(document).scrollTop(0);
+        scroll.top();
       });
 
     });
