@@ -1,6 +1,6 @@
 <fli-look-content-rich></fli-look-content-rich>
 
-<noindex ng-if="fullCtrl.html">
+<div ng-if="fullCtrl.html">
   <fli-item class="full" ng-init="fliItem = {
           small: 1,
           url: fli.route.url,
@@ -17,6 +17,6 @@
     </div>
 
   </fli-item>
-</noindex>
+</div>
 
 <fli-look-suggest ng-show="!fli.progress" class="fli-grid" ng-if="site.host"></fli-look-suggest>
