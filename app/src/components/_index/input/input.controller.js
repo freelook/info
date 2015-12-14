@@ -30,6 +30,7 @@ angular
 
     vm.clear = function () {
       $scope.fli.route.input = '';
+      vm.blur();
     };
 
     vm.close = function () {
