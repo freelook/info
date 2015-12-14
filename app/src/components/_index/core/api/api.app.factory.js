@@ -39,6 +39,10 @@ angular
       return _point('instagram?q=' + point);
     }
 
+    function twitter(point) {
+      return _point('twitter?q=' + point);
+    }
+
     function promo(point) {
       return _enpoint('promo/' + point);
     }
@@ -51,6 +55,7 @@ angular
       vk: vk,
       yandex: yandex,
       instagram: instagram,
+      twitter: twitter,
       promo: promo
     };
 

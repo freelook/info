@@ -18,6 +18,9 @@ angular
         {sub: 'vk'}
       ],
       news: [],
+      actions: [
+        {sub: 'twitter'}
+      ],
       goods: [],
       images: [
         {sub: 'google'},

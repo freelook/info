@@ -9,6 +9,7 @@ angular
       {type: 'web'},
       {type: 'people'},
       {type: 'news'},
+      {type: 'actions'},
       {type: 'goods'},
       {type: 'images'},
       {type: 'audio'},
