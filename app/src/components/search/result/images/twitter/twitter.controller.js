@@ -2,7 +2,7 @@
 
 angular
   .module('fli.search')
-  .controller('search.result.web.actions.twitter.ctrl',
+  .controller('search.result.web.images.twitter.ctrl',
   function ($scope, $parse, twitter) {
 
     var vm = this;
@@ -10,11 +10,12 @@ angular
     vm.search = [];
 
     function setResult(search) {
+      console.log(search);
       vm.search = $parse('statuses')(search) || [];
     }
 
     if ($scope.fli.route.input) {
-      twitter.search($scope.fli.route.input).success(setResult);
+      twitter.images($scope.fli.route.input).success(setResult);
     }
 
   });

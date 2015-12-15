@@ -2,7 +2,7 @@
 
 angular
   .module('fli.search')
-  .controller('search.result.image.google.ctrl',
+  .controller('search.result.images.google.ctrl',
   function ($scope, google) {
 
     var vm = this;

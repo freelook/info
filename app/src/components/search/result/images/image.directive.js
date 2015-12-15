@@ -5,7 +5,7 @@ angular
     return {
       controller: 'search.result.image.ctrl',
       controllerAs: 'image',
-      templateUrl: 'components/search/result/image/image.html'
+      templateUrl: 'components/search/result/images/images.html'
     };
   });
 

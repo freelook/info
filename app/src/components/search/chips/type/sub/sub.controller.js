@@ -24,7 +24,8 @@ angular
       goods: [],
       images: [
         {sub: 'google'},
-        {sub: 'instagram'}
+        {sub: 'instagram'},
+        {sub: 'twitter'}
       ],
       audio: [],
       video: [],

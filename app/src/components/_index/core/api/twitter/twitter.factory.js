@@ -1,10 +1,17 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('twitter', function (api) {
+  .factory('twitter', function (api, locale) {
 
     function search(q) {
-      var point = encodeURIComponent('search/tweets.json?q=' + q);
+      var point = encodeURIComponent('search/tweets.json?count=24&result_type=popular&lang=' +
+        locale.getLng() + '&q=' + q);
+      return api.twitter(point);
+    }
+
+    function images(q) {
+      var point = encodeURIComponent('search/tweets.json?result_type=popular&lang=' +
+        locale.getLng() + '&q=' + q);
       return api.twitter(point);
     }
 
@@ -15,6 +22,7 @@ angular
 
     return {
       search: search,
+      images: images,
       link: link
     };
 

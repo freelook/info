@@ -8,6 +8,7 @@ angular
     var vm = this;
     vm.href = item.href;
     vm.share = item.share;
+    vm.search = item.search;
 
   });
 

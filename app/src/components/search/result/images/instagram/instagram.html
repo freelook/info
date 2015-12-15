@@ -3,10 +3,12 @@
           url:item.link,
           img:item.images.standard_resolution.url,
           content:item.caption.text,
+          searchInput: item.tags[0],
           transclude:'footer'
           };
           fliItemCtrl.href=imgInsta.href;
-          fliItemCtrl.share=imgInsta.share;">
+          fliItemCtrl.share=imgInsta.share;
+          fliItemCtrl.search=imgInsta.search;">
 
   <div class="link" ng-click="link(item.images.standard_resolution.url)"
        title="{{'index.core.uix.item.getIt' | translate}}">

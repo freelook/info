@@ -3,7 +3,7 @@ window.i18n.ru.search = {
     web: 'веб',
     people: 'люди',
     news: 'новости',
-    actions: 'действия',
+    actions: 'активности',
     goods: 'товары',
     images: 'картинки',
     audio: 'аудио',

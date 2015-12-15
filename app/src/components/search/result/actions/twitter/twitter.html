@@ -2,10 +2,12 @@
           ng-init="fliItem = {
           url:twitter.link(item.user.screen_name),
           img:item.user.profile_image_url,
-          title:item.user.description.name|| item.user.description.screen_name,
+          title:item.user.name|| item.user.screen_name,
           content: item.text,
+          searchInput: item.entities.hashtags[0].text
           };
-          fliItemCtrl.href=result.href;">
+          fliItemCtrl.href=result.href;
+          fliItemCtrl.search=result.search;">
 
 </fli-item>
 
