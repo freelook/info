@@ -15,7 +15,8 @@ angular
       people: [
         {sub: 'google'},
         {sub: 'facebook'},
-        {sub: 'vk'}
+        {sub: 'vk'},
+        {sub: 'twitter'}
       ],
       news: [],
       actions: [

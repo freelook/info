@@ -10,8 +10,13 @@ angular
     }
 
     function images(q) {
-      var point = encodeURIComponent('search/tweets.json?result_type=popular&lang=' +
+      var point = encodeURIComponent('search/tweets.json?count=48&result_type=popular&lang=' +
         locale.getLng() + '&q=' + q);
+      return api.twitter(point);
+    }
+
+    function people(q) {
+      var point = encodeURIComponent('users/search.json?&q=' + q);
       return api.twitter(point);
     }
 
@@ -23,6 +28,7 @@ angular
     return {
       search: search,
       images: images,
+      people: people,
       link: link
     };
 

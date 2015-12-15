@@ -1,0 +1,9 @@
+<fli-item ng-repeat="item in twitter.search"
+          ng-init="fliItem = {
+          url:twitter.link(item.screen_name),
+          img:item.profile_image_url,
+          title:item.name|| item.screen_name,
+          content: item.description || item.status.text
+          };">
+
+</fli-item>
