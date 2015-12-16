@@ -33,6 +33,10 @@ angular
       return _point('wall.get?owner_id=' + id + '&callback=JSON_CALLBACK');
     }
 
+    function actions(q) {
+      return _point('newsfeed.search?q=' + q + '&extended=1&callback=JSON_CALLBACK');
+    }
+
     function pages(q) {
       var point = encodeURIComponent('groups.search?q=' + q + '&count=24');
       return api.vk(point);
@@ -73,6 +77,7 @@ angular
       init: init,
       user: user,
       wall: wall,
+      actions: actions,
       group: group,
       pages: pages,
       people: people,

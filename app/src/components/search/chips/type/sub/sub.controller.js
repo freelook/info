@@ -20,7 +20,8 @@ angular
       ],
       news: [],
       actions: [
-        {sub: 'twitter'}
+        {sub: 'twitter'},
+        {sub: 'vk'}
       ],
       goods: [],
       images: [
