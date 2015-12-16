@@ -25,7 +25,7 @@
                 return url.location(params);
               }
               return $timeout(function () {
-                $location.url(params)
+                $location.url(params);
               });
             case 'object':
               return $route.updateParams(params);
