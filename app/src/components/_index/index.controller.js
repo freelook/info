@@ -7,7 +7,7 @@
   angular
     .module('freelook.info')
     .controller('index.ctrl',
-    function ($rootScope, $route, $location, $translate, $sce, url, locales, platform, CONFIG) {
+    function ($rootScope, $route, $location, $translate, $sce, $timeout, url, locales, platform, CONFIG) {
 
       $rootScope.fli.filter = 1;
       $rootScope.fli.locales = locales;
@@ -24,7 +24,9 @@
               if (params.substr(0, 4) === 'http') {
                 return url.location(params);
               }
-              return $location.url(params);
+              return $timeout(function () {
+                $location.url(params)
+              });
             case 'object':
               return $route.updateParams(params);
           }

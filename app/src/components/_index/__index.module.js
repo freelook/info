@@ -10,10 +10,11 @@
     .module('freelook.info',
     ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngCookies', 'ngRoute', 'ngMaterial', 'pascalprecht.translate', 'mediaPlayer',
       'fli.home', 'fli.search', 'fli.look', 'fli.show', 'fli.feedback'])
-    .config(function ($locationProvider, $httpProvider, $routeProvider, $mdThemingProvider, $translateProvider) {
+    .config(function ($locationProvider, $httpProvider, $routeProvider, $mdThemingProvider, $translateProvider,
+                      platformProvider) {
 
       // Setting hash prefix
-      $locationProvider.html5Mode({enabled: true, requireBase: false});
+      $locationProvider.html5Mode({enabled: !platformProvider.isChromeApp(), requireBase: false});
       $locationProvider.hashPrefix('!');
 
       // Set up cache
