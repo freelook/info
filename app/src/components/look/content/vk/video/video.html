@@ -1,11 +1,11 @@
 <md-whiteframe class="md-whiteframe-z1" layout="column">
   <iframe ng-if="fli.platform==='site'"
-          ng-src="{{watchCtrl.watch()}}"
+          ng-src="{{vkCtrl.watch()}}"
           frameborder="0"
           allowfullscreen>
   </iframe>
   <webview ng-if="fli.platform==='chrome'"
-           src="{{watchCtrl.watch()}}">
+           src="{{vkCtrl.watch()}}">
   </webview>
 </md-whiteframe>
 

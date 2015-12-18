@@ -1,0 +1,9 @@
+fli-look-content-vk-video {
+  display: block;
+}
+
+fli-look-content-vk-video webview,
+fli-look-content-vk-video iframe {
+  width: 100%;
+  height: 500px;
+}

@@ -5,7 +5,9 @@ angular
   .controller('look.content.youtube.watch.ctrl',
   function ($scope, youtube) {
 
-    $scope.watch = function () {
+    var vm = this;
+
+    vm.watch = function () {
       return youtube.watch($scope.site);
     };
 

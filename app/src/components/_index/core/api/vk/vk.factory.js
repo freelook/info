@@ -52,6 +52,11 @@ angular
       return api.vk(point);
     }
 
+    function video(q) {
+      var point = encodeURIComponent('video.search?q=' + q);
+      return api.vk(point);
+    }
+
     function share(_url, item) {
       var _item = item || {},
         _img = item.img || '',
@@ -82,6 +87,7 @@ angular
       pages: pages,
       people: people,
       audio: audio,
+      video: video,
       share: share,
       login: login,
       link: link

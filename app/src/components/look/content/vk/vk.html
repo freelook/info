@@ -1,3 +1,4 @@
 <fli-look-content-vk-user ng-if="!!vk.id && vk.user !== 'not'"></fli-look-content-vk-user>
 <fli-look-content-vk-group ng-if="!!vk.id && vk.user === 'not'"></fli-look-content-vk-group>
 <fli-look-content-vk-wall class="fli-grid" ng-if="!!vk.ownerId"></fli-look-content-vk-wall>
+<fli-look-content-vk-video ng-if="fli.route.type==='video' && fli.route.sub==='vk'"></fli-look-content-vk-video>

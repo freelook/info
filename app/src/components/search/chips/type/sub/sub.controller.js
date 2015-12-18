@@ -30,7 +30,10 @@ angular
         {sub: 'twitter'}
       ],
       audio: [],
-      video: [],
+      video: [
+        {sub: 'youtube'},
+        {sub: 'vk'}
+      ],
       promo: []
     };
 

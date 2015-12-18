@@ -1,0 +1,11 @@
+<fli-item ng-repeat="item in vk.results"
+          ng-init="fliItem = {
+          url:item.player,
+          img:item.image_medium || item.thumb,
+          title:item.title,
+          content:item.description
+          };
+          fliItemCtrl.href=result.href;
+          fliItemCtrl.share=result.share;">
+
+</fli-item>
