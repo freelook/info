@@ -10,7 +10,8 @@ angular
       web: [
         {sub: 'google'},
         {sub: 'facebook'},
-        {sub: 'vk'}
+        {sub: 'vk'},
+        {sub: 'pinterest'}
       ],
       people: [
         {sub: 'google'},

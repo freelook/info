@@ -1,0 +1,13 @@
+fli-search-result-web-pinterest {
+  display: block;
+}
+
+fli-search-result-web-pinterest .board img {
+  margin-right: 7px;
+  max-width: 100px;
+  max-height: 100px;
+}
+
+fli-search-result-web-pinterest .board {
+  text-decoration: none;
+}

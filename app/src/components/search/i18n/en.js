@@ -12,5 +12,8 @@ window.i18n.en.search = {
   },
   menu: {
     lucky: 'get lucky'
+  },
+  pinterest: {
+    board: 'Board'
   }
 };

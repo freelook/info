@@ -12,5 +12,8 @@ window.i18n.ru.search = {
   },
   menu: {
     lucky: 'на удачу'
+  },
+  pinterest: {
+    board: 'Доска'
   }
 };
