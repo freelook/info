@@ -15,12 +15,17 @@ angular
       return _point('pidgets/users/' + q + '/pins/');
     }
 
+    function boards(q) {
+      return _point('pidgets/boards' + q + 'pins/');
+    }
+
     function link(_path) {
       return 'https://www.pinterest.com' + _path;
     }
 
     return {
       pins: pins,
+      boards: boards,
       link: link
     };
 

@@ -16,7 +16,7 @@ angular
     };
 
   })
-  .constant('SUPPORTED_SITES', ['youtube', 'vk', 'facebook', 'instagram'])
-  .constant('RICH_SKIP', ['freelook', 'vk', 'facebook', 'instagram']);
+  .constant('SUPPORTED_SITES', ['youtube', 'vk', 'facebook', 'instagram', 'pinterest'])
+  .constant('RICH_SKIP', ['freelook', 'vk', 'facebook', 'instagram', 'pinterest']);
 
 
