@@ -1,3 +1,7 @@
 fli-look-content-vk-group {
   display: block;
 }
+
+fli-look-content-vk-group .clearfix {
+  clear: none;
+}

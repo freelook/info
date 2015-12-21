@@ -6,8 +6,7 @@
           img:vk.group.photo_200,
           title:vk.group.name,
           content:vk.group.screen_name
-          };
-          fliItemCtrl.href=content.href;">
+          };">
 
     <div class="block">
       <div layout="row" ng-if="vk.group.status">
@@ -24,14 +23,6 @@
         </div>
         <div flex="66">
           <p ng-bind="vk.group.home_town"></p>
-        </div>
-      </div>
-      <div layout="row" ng-if="fli.route.url">
-        <div flex="33">
-          <p>Link:</p>
-        </div>
-        <div flex="66" class="link" ng-click="link(fli.route.url)">
-          <p ng-bind="fli.route.url"></p>
         </div>
       </div>
     </div>
