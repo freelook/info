@@ -35,6 +35,10 @@
 
       // Routes config
       $routeProvider
+        .when('/', {
+          templateUrl: 'components/home/home.html',
+          controller: 'home.ctrl'
+        })
         .otherwise({
           redirectTo: '/'
         });

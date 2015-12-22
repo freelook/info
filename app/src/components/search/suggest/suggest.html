@@ -1,4 +1,4 @@
-<div class="block" layout="column" ng-if="!!suggest.suggested.length">
+<div class="block" layout="column" ng-if="fli.route.input && suggest.suggested.length">
   <div class="result">
     <a ng-repeat="item in suggest.suggested track by $index" fli-href="{{suggest.href(item)}}" ng-bind="item"></a>
   </div>

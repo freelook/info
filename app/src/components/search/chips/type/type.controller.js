@@ -39,7 +39,7 @@ angular
     }
 
     vm.href = function (type) {
-      return url.href('search?', _config(type));
+      return url.href('?', _config(type));
     };
 
     vm.go = function (type) {

@@ -1,11 +1,15 @@
 <header>
   <fli-input flex></fli-input>
-  <fli-home-chips flex></fli-home-chips>
+  <fli-search-menu></fli-search-menu>
+  <fli-search-chips flex></fli-search-chips>
 </header>
 
 <div id="home" flex layout="column" ng-hide="fli.focus">
 
   <fli-home-widget class="animate" flex></fli-home-widget>
+  <fli-look-content class="animate" flex layout="column"></fli-look-content>
+  <fli-search-result class="animate" flex></fli-search-result>
+  <fli-search-suggest></fli-search-suggest>
   <fli-footer></fli-footer>
 
 </div>

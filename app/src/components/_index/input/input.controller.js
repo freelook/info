@@ -24,7 +24,7 @@ angular
 
     vm.find = function () {
       if ($scope.fli.route.input) {
-        $scope.go(url.href('search?', _route(), false, '/'));
+        $scope.go(url.href('?', _route(), false, '/'));
       }
     };
 

@@ -1,4 +1,4 @@
-<div ng-if="!!suggest.search.results">
+<div ng-if="fli.route.url && suggest.search.results">
   <fli-item ng-repeat="item in suggest.search.results"
             ng-init="fliItem = {
           url:item.url,
