@@ -77,8 +77,8 @@
   <link rel="stylesheet" href="components/show/item/form/form.css">
   <link rel="stylesheet" href="components/show/item/link/link.css">
   <link rel="stylesheet" href="components/_index/core/uix/animation/animation.css">
-  <link rel="stylesheet" href="components/_index/core/uix/chips/chips.css">
   <link rel="stylesheet" href="components/_index/core/uix/apps/apps.css">
+  <link rel="stylesheet" href="components/_index/core/uix/chips/chips.css">
   <link rel="stylesheet" href="components/_index/core/uix/donate/donate.css">
   <link rel="stylesheet" href="components/_index/core/uix/fa/fa.css">
   <link rel="stylesheet" href="components/_index/core/uix/grid/grid.css">
@@ -86,8 +86,8 @@
   <link rel="stylesheet" href="components/_index/core/uix/logo/logo.css">
   <link rel="stylesheet" href="components/_index/core/uix/polyfill/polyfill.css">
   <link rel="stylesheet" href="components/_index/core/uix/rating/fli.rating.css">
-  <link rel="stylesheet" href="components/_index/core/uix/toast/toast.css">
   <link rel="stylesheet" href="components/_index/core/uix/share/share.css">
+  <link rel="stylesheet" href="components/_index/core/uix/toast/toast.css">
   <link rel="stylesheet" href="components/look/content/full/rich/rich.css">
   <link rel="stylesheet" href="components/look/content/instagram/media/media.css">
   <link rel="stylesheet" href="components/look/content/instagram/user/user.css">
@@ -101,8 +101,8 @@
   <link rel="stylesheet" href="components/look/content/youtube/user/user.css">
   <link rel="stylesheet" href="components/look/content/youtube/watch/watch.css">
   <link rel="stylesheet" href="components/search/chips/type/sub/sub.css">
-  <link rel="stylesheet" href="components/search/result/actions/vk/vk.css">
   <link rel="stylesheet" href="components/search/result/actions/twitter/twitter.css">
+  <link rel="stylesheet" href="components/search/result/actions/vk/vk.css">
   <link rel="stylesheet" href="components/search/result/goods/amazon/amazon.css">
   <link rel="stylesheet" href="components/search/result/goods/yandex/yandex.css">
   <link rel="stylesheet" href="components/search/result/images/google/google.css">
@@ -119,8 +119,8 @@
   <link rel="stylesheet" href="components/search/result/web/google/google.css">
   <link rel="stylesheet" href="components/search/result/web/pinterest/pinterest.css">
   <link rel="stylesheet" href="components/search/result/web/vk/vk.css">
-  <link rel="stylesheet" href="components/_index/core/uix/locale/panel/panel.css">
   <link rel="stylesheet" href="components/_index/core/uix/item/edit/edit.css">
+  <link rel="stylesheet" href="components/_index/core/uix/locale/panel/panel.css">
   <link rel="stylesheet" href="components/look/content/full/read/readability/readability.css">
   <link rel="stylesheet" href="components/search/result/web/google/trends/trends.css">
   <!-- endinject -->
@@ -225,7 +225,7 @@
 <script src="components/_index/core/api/api.app.factory.js"></script>
 <script src="components/_index/core/api/api.factory.js"></script>
 <script src="components/_index/core/api/api.site.factory.js"></script>
-<script src="components/_index/core/config/config.production.js"></script>
+<script src="components/_index/core/config/config.development.js"></script>
 <script src="components/_index/core/cordova/inAppBrowser.factory.js"></script>
 <script src="components/_index/core/cordova/splash.factory.js"></script>
 <script src="components/_index/core/storage/chrome.storage.factory.js"></script>
@@ -297,31 +297,34 @@
 <script src="components/show/item/link/link.directive.js"></script>
 <script src="components/_index/core/api/facebook/FB.factory.js"></script>
 <script src="components/_index/core/api/facebook/facebook.factory.js"></script>
+<script src="components/_index/core/api/google/_google.factory.js"></script>
+<script src="components/_index/core/api/google/google.chrome.factory.js"></script>
+<script src="components/_index/core/api/google/google.site.factory.js"></script>
 <script src="components/_index/core/api/instagram/instagram.factory.js"></script>
 <script src="components/_index/core/api/pinterest/pinterest.factory.js"></script>
-<script src="components/_index/core/api/twitter/twitter.factory.js"></script>
 <script src="components/_index/core/api/promo/promo.factory.js"></script>
+<script src="components/_index/core/api/twitter/twitter.factory.js"></script>
+<script src="components/_index/core/api/vk/vk.factory.js"></script>
 <script src="components/_index/core/api/yandex/yandex.factory.js"></script>
 <script src="components/_index/core/api/youtube/youtube.factory.js"></script>
-<script src="components/_index/core/api/vk/vk.factory.js"></script>
 <script src="components/_index/core/uix/apps/apps.controller.js"></script>
 <script src="components/_index/core/uix/apps/apps.directive.js"></script>
 <script src="components/_index/core/uix/donate/donate.controller.js"></script>
 <script src="components/_index/core/uix/donate/donate.directive.js"></script>
-<script src="components/_index/core/uix/locale/locale.factory.js"></script>
-<script src="components/_index/core/uix/locale/locales.constant.js"></script>
 <script src="components/_index/core/uix/item/item.controller.js"></script>
 <script src="components/_index/core/uix/item/item.directive.js"></script>
 <script src="components/_index/core/uix/item/item.factory.js"></script>
 <script src="components/_index/core/uix/item/item.img.directive.js"></script>
+<script src="components/_index/core/uix/locale/locale.factory.js"></script>
+<script src="components/_index/core/uix/locale/locales.constant.js"></script>
 <script src="components/_index/core/uix/logo/logo.directive.js"></script>
 <script src="components/_index/core/uix/polyfill/polyfill.directive.js"></script>
 <script src="components/_index/core/uix/rating/fli.rating.js"></script>
 <script src="components/_index/core/uix/scroll/scroll.factory.js"></script>
-<script src="components/_index/core/uix/toast/toast.factory.js"></script>
 <script src="components/_index/core/uix/share/share.controller.js"></script>
 <script src="components/_index/core/uix/share/share.directive.js"></script>
 <script src="components/_index/core/uix/share/share.factory.js"></script>
+<script src="components/_index/core/uix/toast/toast.factory.js"></script>
 <script src="components/look/content/full/read/read.factory.js"></script>
 <script src="components/look/content/full/rich/rich.controller.js"></script>
 <script src="components/look/content/full/rich/rich.directive.js"></script>
@@ -350,10 +353,10 @@
 <script src="components/look/content/youtube/watch/watch.directive.js"></script>
 <script src="components/search/chips/type/sub/sub.controller.js"></script>
 <script src="components/search/chips/type/sub/sub.directive.js"></script>
-<script src="components/search/result/actions/vk/vk.controller.js"></script>
-<script src="components/search/result/actions/vk/vk.directive.js"></script>
 <script src="components/search/result/actions/twitter/twitter.controller.js"></script>
 <script src="components/search/result/actions/twitter/twitter.directive.js"></script>
+<script src="components/search/result/actions/vk/vk.controller.js"></script>
+<script src="components/search/result/actions/vk/vk.directive.js"></script>
 <script src="components/search/result/goods/amazon/amazon.controller.js"></script>
 <script src="components/search/result/goods/amazon/amazon.directive.js"></script>
 <script src="components/search/result/goods/yandex/yandex.controller.js"></script>
@@ -386,20 +389,17 @@
 <script src="components/search/result/web/pinterest/pinterest.directive.js"></script>
 <script src="components/search/result/web/vk/vk.controller.js"></script>
 <script src="components/search/result/web/vk/vk.directive.js"></script>
-<script src="components/_index/core/api/google/_google.factory.js"></script>
-<script src="components/_index/core/api/google/google.chrome.factory.js"></script>
-<script src="components/_index/core/api/google/google.site.factory.js"></script>
-<script src="components/_index/core/uix/locale/panel/panel.controller.js"></script>
-<script src="components/_index/core/uix/locale/panel/panel.directive.js"></script>
+<script src="components/_index/core/api/google/plus/google.plus.factory.js"></script>
+<script src="components/_index/core/api/google/url/google.url.factory.js"></script>
 <script src="components/_index/core/uix/item/edit/edit.controller.js"></script>
 <script src="components/_index/core/uix/item/edit/edit.directive.js"></script>
 <script src="components/_index/core/uix/item/icon/icon.directive.js"></script>
+<script src="components/_index/core/uix/locale/panel/panel.controller.js"></script>
+<script src="components/_index/core/uix/locale/panel/panel.directive.js"></script>
 <script src="components/look/content/full/read/readability/readability.js"></script>
 <script src="components/search/result/web/google/trends/trends.controller.js"></script>
 <script src="components/search/result/web/google/trends/trends.directive.js"></script>
 <script src="components/search/result/web/google/trends/trends.factory.js"></script>
-<script src="components/_index/core/api/google/plus/google.plus.factory.js"></script>
-<script src="components/_index/core/api/google/url/google.url.factory.js"></script>
 <!-- endinject -->
 
 <!-- inject:partials -->

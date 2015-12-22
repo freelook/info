@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-  .module('freelook.info')
+  .module('fli.search')
   .controller('search.ctrl',
   function ($rootScope, $routeParams, $location, $translate, index, locale) {
 
