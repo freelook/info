@@ -1,14 +1,10 @@
 'use strict';
 
 describe('Index controller', function () {
-  var mockRoute, rootScope, mockIo;
+  var rootScope, mockIo;
 
   beforeEach(function () {
     module('freelook.info');
-
-    mockRoute = {
-      updateParams: jasmine.createSpy()
-    };
 
     mockIo = {
       on: jasmine.createSpy()
@@ -16,27 +12,18 @@ describe('Index controller', function () {
 
   });
 
-  beforeEach(inject(function ($rootScope, $controller, $httpBackend) {
+  beforeEach(inject(function ($rootScope, $controller) {
 
     rootScope = $rootScope;
 
     $controller('index.ctrl', {
-      $rootScope: rootScope,
-      $route: mockRoute
+      $rootScope: rootScope
     });
-
-    $httpBackend.whenGET(/.html/).respond(200, '');
 
   }));
 
   it('should define fli', function () {
     expect(rootScope.fli).toBeDefined();
-  });
-
-  it('should update route params', function () {
-    var expectParams = {input: 'xxx'};
-    rootScope.go(expectParams);
-    expect(mockRoute.updateParams).toHaveBeenCalledWith(expectParams);
   });
 
 });

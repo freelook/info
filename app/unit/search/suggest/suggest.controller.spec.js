@@ -30,7 +30,7 @@ describe('Suggest controller', function () {
     });
   }
 
-  beforeEach(inject(function ($rootScope, $controller, $httpBackend) {
+  beforeEach(inject(function ($rootScope, $controller) {
 
     $rootScope.fli = {
       route: {
@@ -40,8 +40,6 @@ describe('Suggest controller', function () {
     rootScope = $rootScope;
     scope = $rootScope.$new();
     controller = $controller;
-
-    $httpBackend.whenGET(/.html/).respond(200, '');
 
   }));
 

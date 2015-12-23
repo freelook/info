@@ -21,13 +21,11 @@ describe('Result controller', function () {
     rootScope.$apply();
   }
 
-  beforeEach(inject(function ($rootScope, $controller, $httpBackend, CONFIG) {
+  beforeEach(inject(function ($rootScope, $controller, CONFIG) {
     rootScope = $rootScope;
     scope = $rootScope.$new();
     controller = $controller;
     _CONFIG = CONFIG;
-
-    $httpBackend.whenGET(/.html/).respond(200, '');
   }));
 
   it('should share link with facebook', function () {
