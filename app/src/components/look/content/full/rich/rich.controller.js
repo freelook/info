@@ -7,12 +7,10 @@ angular
 
     var vm = this;
 
-    if ($scope.fli.route.url) {
-      rich.get($scope.fli.route.url)
-        .then(function (_item) {
-          vm.item = _item;
-        });
-    }
+    rich.get($scope.fli.route.url)
+      .then(function (_item) {
+        vm.item = _item;
+      });
 
   });
 

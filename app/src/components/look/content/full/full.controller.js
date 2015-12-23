@@ -19,14 +19,12 @@ angular
       }
     }
 
-    if ($scope.fli.route.url) {
-      api.get($scope.fli.route.url)
-        .success(setContent)
-        .error(function () {
-          read.call($scope.fli.route.url)
-            .success(setContent);
-        });
-    }
+    api.get($scope.fli.route.url)
+      .success(setContent)
+      .error(function () {
+        read.call($scope.fli.route.url)
+          .success(setContent);
+      });
 
   });
 

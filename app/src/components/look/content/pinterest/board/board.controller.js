@@ -14,9 +14,7 @@ angular
       $scope.pinterest.user = $parse('data.user')(res);
     }
 
-    if ($scope.fli.route.input) {
-      pinterest.boards($scope.pinterest.pathname)
-        .success(setResult);
-    }
+    pinterest.boards($scope.pinterest.pathname)
+      .success(setResult);
 
   });
