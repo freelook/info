@@ -1,13 +1,14 @@
-<fli-search-result-web ng-if="fli.route.type === 'web'"></fli-search-result-web>
-<fli-search-result-people ng-if="fli.route.type === 'people'"></fli-search-result-people>
-<fli-search-result-news ng-if="fli.route.type === 'news'"></fli-search-result-news>
-<fli-search-result-actions ng-if="fli.route.type === 'actions'"></fli-search-result-actions>
-<fli-search-result-goods ng-if="fli.route.type === 'goods'"></fli-search-result-goods>
-<fli-search-result-image ng-if="fli.route.type === 'images'"></fli-search-result-image>
-<fli-search-result-audio ng-if="fli.route.type === 'audio'"></fli-search-result-audio>
-<fli-search-result-video ng-if="fli.route.type === 'video'"></fli-search-result-video>
-<fli-search-result-promo ng-if="fli.route.type === 'promo'"></fli-search-result-promo>
-
+<div ng-if="!fli.route.url">
+  <fli-search-result-web ng-if="fli.route.type === 'web'"></fli-search-result-web>
+  <fli-search-result-people ng-if="fli.route.type === 'people'"></fli-search-result-people>
+  <fli-search-result-news ng-if="fli.route.type === 'news'"></fli-search-result-news>
+  <fli-search-result-actions ng-if="fli.route.type === 'actions'"></fli-search-result-actions>
+  <fli-search-result-goods ng-if="fli.route.type === 'goods'"></fli-search-result-goods>
+  <fli-search-result-image ng-if="fli.route.type === 'images'"></fli-search-result-image>
+  <fli-search-result-audio ng-if="fli.route.type === 'audio'"></fli-search-result-audio>
+  <fli-search-result-video ng-if="fli.route.type === 'video'"></fli-search-result-video>
+  <fli-search-result-promo ng-if="fli.route.type === 'promo'"></fli-search-result-promo>
+</div>
 
 
 

@@ -25,7 +25,6 @@ angular
       }, 24);
     }
 
-
   })
   .constant('SUPPORTED_SITES', ['youtube', 'vk', 'facebook', 'instagram', 'pinterest'])
   .constant('RICH_SKIP', ['freelook', 'vk', 'facebook', 'instagram', 'pinterest']);
