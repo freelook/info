@@ -3,7 +3,7 @@
 angular
   .module('fli.search')
   .controller('search.result.goods.amazon.ctrl',
-  function ($scope, CONFIG, api) {
+  function ($scope, api, lucky) {
 
     var vm = this;
     vm.search = {};
@@ -12,10 +12,8 @@ angular
       vm.search = !!search.ItemSearchResponse ? search.ItemSearchResponse.Items[0] : {};
     }
 
-    if ($scope.fli.route.input) {
-      api.goods($scope.fli.route.input)
-        .success(setResult);
-    }
+    api.goods($scope.fli.route.input || lucky.word)
+      .success(setResult);
 
   });
 

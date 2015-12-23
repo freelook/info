@@ -14,10 +14,8 @@ angular
       vm.people = angular.copy(result).splice(1);
     }
 
-    if ($scope.fli.route.input) {
-      vk.people($scope.fli.route.input)
-        .success(setResult);
-    }
+    vk.people($scope.fli.route.input || '')
+      .success(setResult);
 
   });
 

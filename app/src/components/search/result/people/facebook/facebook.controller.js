@@ -3,7 +3,7 @@
 angular
   .module('fli.search')
   .controller('search.result.people.facebook.ctrl',
-  function ($scope, facebook) {
+  function ($scope, facebook, lucky) {
 
     var vm = this;
 
@@ -14,10 +14,8 @@ angular
       vm.people = fb.data || [];
     }
 
-    if ($scope.fli.route.input) {
-      facebook.people($scope.fli.route.input)
-        .success(setResult);
-    }
+    facebook.people($scope.fli.route.input || lucky.word)
+      .success(setResult);
 
   });
 

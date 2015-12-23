@@ -3,7 +3,7 @@
 angular
   .module('fli.search')
   .controller('search.result.images.google.ctrl',
-  function ($scope, google) {
+  function ($scope, google, lucky) {
 
     var vm = this;
     vm.search = {};
@@ -12,10 +12,8 @@ angular
       vm.search = search || {};
     }
 
-    if ($scope.fli.route.input) {
-      google.image($scope.fli.route.input)
-        .success(setResult);
-    }
+    google.image($scope.fli.route.input || lucky.word)
+      .success(setResult);
 
   });
 

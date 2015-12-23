@@ -3,7 +3,7 @@
 angular
   .module('fli.search')
   .controller('search.result.audio.ctrl',
-  function ($scope, vk, CONFIG) {
+  function ($scope, vk, lucky, CONFIG) {
 
     var vm = this;
     vm.results = [];
@@ -29,10 +29,8 @@ angular
       });
     }
 
-    if ($scope.fli.route.input) {
-      vk.audio($scope.fli.route.input)
-        .success(setResult);
-    }
+    vk.audio($scope.fli.route.input || lucky.word)
+      .success(setResult);
 
   });
 

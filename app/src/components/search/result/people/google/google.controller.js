@@ -3,7 +3,7 @@
 angular
   .module('fli.search')
   .controller('search.result.people.google.ctrl',
-  function ($scope, google) {
+  function ($scope, google, lucky) {
 
     var vm = this;
     vm.people = {};
@@ -12,10 +12,8 @@ angular
       vm.people = people || {};
     }
 
-    if ($scope.fli.route.input) {
-      google.plus.people($scope.fli.route.input)
-        .success(setResult);
-    }
+    google.plus.people($scope.fli.route.input || lucky.word)
+      .success(setResult);
 
   });
 

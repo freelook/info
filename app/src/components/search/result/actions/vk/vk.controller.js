@@ -14,10 +14,8 @@ angular
       vm.actions = angular.copy(result).splice(1);
     }
 
-    if ($scope.fli.route.input) {
-      vk.actions($scope.fli.route.input)
-        .success(setResult);
-    }
+    vk.actions($scope.fli.route.input || '')
+      .success(setResult);
 
   });
 

@@ -3,7 +3,7 @@
 angular
   .module('fli.search')
   .controller('search.result.web.actions.twitter.ctrl',
-  function ($scope, $parse, twitter) {
+  function ($scope, $parse, twitter, lucky) {
 
     var vm = this;
     vm.link = twitter.link;
@@ -13,9 +13,8 @@ angular
       vm.search = $parse('statuses')(search) || [];
     }
 
-    if ($scope.fli.route.input) {
-      twitter.search($scope.fli.route.input).success(setResult);
-    }
+    twitter.search($scope.fli.route.input || lucky.word)
+      .success(setResult);
 
   });
 

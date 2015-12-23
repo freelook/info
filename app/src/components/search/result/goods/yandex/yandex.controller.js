@@ -3,7 +3,7 @@
 angular
   .module('fli.search')
   .controller('search.result.goods.yandex.ctrl',
-  function ($scope, CONFIG, yandex) {
+  function ($scope, yandex) {
 
     var vm = this;
     vm.search = {};
@@ -12,10 +12,8 @@ angular
       vm.search = search || {};
     }
 
-    if ($scope.fli.route.input) {
-      yandex.market($scope.fli.route.input)
-        .success(setResult);
-    }
+    yandex.market($scope.fli.route.input || '')
+      .success(setResult);
 
   });
 
