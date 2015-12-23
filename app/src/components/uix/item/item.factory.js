@@ -9,7 +9,7 @@ angular
         input: config.input || $rootScope.fli.route.input || null,
         type: config.type || $rootScope.fli.route.type || null,
         sub: config.sub || $rootScope.fli.route.sub || null,
-        url: !!config.url ? encodeURIComponent(decodeURIComponent(config.url)) : '',
+        url: !!config.url ? encodeURIComponent(decodeURIComponent(config.url)) : null,
         img: !!config.img ? encodeURIComponent(decodeURIComponent(config.img)) : null
       }, false, origin);
     }

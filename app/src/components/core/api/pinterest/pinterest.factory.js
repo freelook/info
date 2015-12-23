@@ -19,8 +19,12 @@ angular
       $dom.find('.GridItems .item').each(function (i, e) {
         var element = $(e);
         js.push({
-          title: element.find('.pinCredits > .creditTitle').text(),
-          board: element.find('.creditItem > a').attr('href'),
+          title: element.find('.creditItem .creditTitle').text(),
+          board: {
+            url: element.find('.creditItem > a').attr('href'),
+            img: element.find('.creditItem img').attr('data-src'),
+            name: element.find('.creditItem .creditName').text()
+          },
           img: element.find('img.pinImg').attr('src'),
           content: element.find('.pinMeta > .pinDescription').text(),
           url: element.find('.pinImageActionButtonWrapper > a').attr('href')

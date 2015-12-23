@@ -3,7 +3,7 @@
 angular
   .module('fli.search')
   .controller('search.result.web.pinterest.ctrl',
-  function ($scope, $parse, pinterest, item) {
+  function ($scope, pinterest, item) {
 
     var vm = this;
 
@@ -14,18 +14,16 @@ angular
     vm.board = function (_board) {
       return vm.href({
         url: vm.link(_board.url),
-        img: _board.image_thumbnail_url
+        img: _board.img
       });
     };
 
-    function setResult(res) {
-      vm.pins = $parse('data.pins')(res) || [];
+    function setResult(pins) {
+      vm.pins = pins || [];
     }
 
-    if ($scope.fli.route.input) {
-      pinterest.pins($scope.fli.route.input)
-        .success(setResult);
-    }
+    pinterest.search($scope.fli.route.input || '')
+      .then(setResult);
 
   });
 

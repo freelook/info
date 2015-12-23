@@ -14,10 +14,8 @@ angular
       vm.results = fb.data || [];
     }
 
-    if ($scope.fli.route.input) {
-      facebook.pages($scope.fli.route.input)
-        .success(setResult);
-    }
+    facebook.pages($scope.fli.route.input || '')
+      .success(setResult);
 
   });
 

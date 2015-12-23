@@ -1,15 +1,15 @@
 <fli-item ng-repeat="item in pinterest.pins"
           ng-init="fliItem = {
-          url:item.link,
-          img:item.images['237x'].url,
-          title:item.domain,
-          content:item.description
+          url:item.url,
+          img:item.img,
+          title:item.title,
+          content:item.content
           };
           fliItemCtrl.href=pinterest.href;
           fliItemCtrl.share=pinterest.share;">
 
   <a class="board block link" layout="row" fli-href="{{pinterest.board(item.board)}}">
-    <img src="{{item.board.image_thumbnail_url}}">
+    <img src="{{item.board.img}}">
     <div>
       <div ng-bind="item.board.name"></div>
       <div class="color-8" translate="search.pinterest.board"></div>

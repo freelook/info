@@ -3,7 +3,7 @@
 angular
   .module('fli.search')
   .controller('search.result.web.vk.ctrl',
-  function ($scope, vk) {
+  function ($scope, vk, lucky) {
 
     var vm = this;
 
@@ -14,10 +14,8 @@ angular
       vm.results = angular.copy(result).splice(1);
     }
 
-    if ($scope.fli.route.input) {
-      vk.pages($scope.fli.route.input)
-        .success(setResult);
-    }
+    vk.pages($scope.fli.route.input || lucky.word)
+      .success(setResult);
 
   });
 
