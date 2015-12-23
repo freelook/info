@@ -2,16 +2,16 @@ fli-setting {
   display: block;
 }
 
-#setting .title {
+fli-setting .title {
   padding: 7px;
   color: #999999;
 }
 
-#setting .border {
+fli-setting .border {
   border-bottom: 1px solid #cccccc;
 }
 
-#setting md-switch,
-#setting .md-icon-button {
+fli-setting md-switch,
+fli-setting .md-icon-button {
   margin: 0;
 }

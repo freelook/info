@@ -5,6 +5,6 @@ angular
     return {
       controller: 'user.setting.ctrl',
       controllerAs: 'user',
-      templateUrl: 'components/_index/setting/user/user.html'
+      templateUrl: 'components/views/setting/user/user.html'
     };
   });

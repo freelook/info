@@ -5,6 +5,6 @@ angular
     return {
       controller: 'login.setting.ctrl',
       controllerAs: 'login',
-      templateUrl: 'components/_index/setting/login/login.html'
+      templateUrl: 'components/views/setting/login/login.html'
     };
   });

@@ -2,7 +2,7 @@
 angular
   .module('fli.search')
   .controller('search.chips.type.ctrl',
-  function ($scope, $location, $translate, url, locale) {
+  function ($scope, $translate, url, locale) {
 
     var vm = this;
     vm.types = [

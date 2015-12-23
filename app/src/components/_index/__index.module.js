@@ -34,14 +34,11 @@
       $translateProvider.preferredLanguage('en');
 
       // Routes config
-      $routeProvider
-        .when('/', {
-          templateUrl: 'components/home/home.html',
-          controller: 'home.ctrl'
-        })
-        .otherwise({
-          redirectTo: '/'
-        });
+      $routeProvider.otherwise({
+        redirectTo: function () {
+          return '/' + window.location.search;
+        }
+      });
 
     })
     .run(function ($rootScope, platform, splash, analytics, scroll, io, Parse, CONFIG) {

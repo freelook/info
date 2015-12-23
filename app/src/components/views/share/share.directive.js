@@ -5,6 +5,6 @@ angular
     return {
       controller: 'share.ctrl',
       controllerAs: 'share',
-      templateUrl: 'components/_index/core/uix/share/share.html'
+      templateUrl: 'components/views/share/share.html'
     };
   });

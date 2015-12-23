@@ -7,7 +7,7 @@ angular
 
     function url(href) {
       _href = href;
-      $rootScope.fli.view = 'components/_index/core/uix/share/share.view.html';
+      $rootScope.fli.view = 'components/views/share/share.view.html';
     }
 
     function run() {

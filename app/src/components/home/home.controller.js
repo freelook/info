@@ -17,7 +17,7 @@ angular
       .replace();
 
     $translate.use(locale.getLng());
-    $rootScope.fli.icon = 'th-large';
+    $rootScope.fli.icon = 'eye-slash';
     index.init();
 
   });

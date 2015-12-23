@@ -16,21 +16,20 @@ angular
     function _route() {
       return {
         l: locale.getCode(),
-        input: $scope.fli.route.input || '',
+        input: $scope.fli.route.input,
         type: $scope.fli.route.type,
         sub: $scope.fli.route.sub
       };
     }
 
     vm.find = function () {
-      if ($scope.fli.route.input) {
-        $scope.go(url.href('?', _route(), false, '/'));
-      }
+      $scope.go(url.href('?', _route(), false, '/'));
     };
 
     vm.clear = function () {
-      $scope.fli.route.input = '';
+      $scope.fli.route.input = null;
       vm.blur();
+      vm.find();
     };
 
     vm.close = function () {
@@ -46,7 +45,7 @@ angular
     };
 
     vm.setting = function () {
-      $scope.fli.view = 'components/_index/setting/setting.view.html';
+      $scope.fli.view = 'components/views/setting/setting.view.html';
     };
 
     vm.filter = function () {

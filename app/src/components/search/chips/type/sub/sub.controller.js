@@ -2,10 +2,9 @@
 angular
   .module('fli.search')
   .controller('search.chips.type.sub.ctrl',
-  function ($scope, $location, url, content, locale) {
+  function ($scope, url, locale) {
 
-    var vm = this,
-      site = content.site($scope.fli.route.url);
+    var vm = this;
 
     vm.subs = {
       web: [
@@ -49,20 +48,6 @@ angular
           }
         });
       }
-
-      if ($scope.chips && $scope.fli.route.url) {
-        $scope.chips.items.push({
-          name: site.host,
-          key: 'url',
-          route: url.href('?', {
-            l: locale.getCode(),
-            input: $scope.fli.route.input,
-            type: $scope.fli.route.type,
-            sub: $scope.fli.route.sub
-          }, false, '/')
-        });
-      }
-
     }
 
     function _config(sub) {

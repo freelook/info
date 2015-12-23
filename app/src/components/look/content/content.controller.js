@@ -3,7 +3,7 @@
 angular
   .module('fli.look')
   .controller('look.content.ctrl',
-  function ($rootScope, $scope, $location, content, SUPPORTED_SITES, RICH_SKIP) {
+  function ($rootScope, $scope, $routeParams, $location, content, storage, LOOK_KEY, SUPPORTED_SITES, RICH_SKIP) {
 
     var vm = this;
 
@@ -14,6 +14,17 @@ angular
     vm.href = function () {
       return $location.absUrl();
     };
+
+    if ($routeParams.input && $routeParams.url && $routeParams.img) {
+      storage.arr.push(LOOK_KEY, {
+        input: $routeParams.input,
+        type: $routeParams.type,
+        sub: $routeParams.sub,
+        url: $routeParams.url,
+        img: $routeParams.img
+      }, 24);
+    }
+
 
   })
   .constant('SUPPORTED_SITES', ['youtube', 'vk', 'facebook', 'instagram', 'pinterest'])
