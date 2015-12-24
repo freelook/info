@@ -3,7 +3,7 @@
 angular
   .module('fli.look')
   .factory('full',
-  function ($location, $rootScope, $cacheFactory, locale, readability, url, parser) {
+  function ($location, $rootScope, $cacheFactory, locale, readability, item, url, parser) {
 
     var cache = $cacheFactory('full');
 
@@ -13,7 +13,7 @@ angular
     }
 
     function _fliUrl(_url, input) {
-      return url.href('look?', {l: locale.getCode(), input: input || null, type: 'web', url: _url});
+      return item.href({input: input, url: _url});
     }
 
     function _prepareHtml(html, title) {

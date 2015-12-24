@@ -1,6 +1,6 @@
-<md-chips flex ng-model="chips.items" layoyt-sm="column" readonly="1">
+<md-chips flex ng-model="::chips.items" layoyt-sm="column" readonly="1">
   <md-chip-template class="link" ng-click="chips.remove($chip)">
-    <span class="color-8" ng-bind="$chip.name"></span>
+    <span class="color-8" ng-bind="::$chip.name"></span>
     <i class="fa fa-close"></i>
   </md-chip-template>
 </md-chips>

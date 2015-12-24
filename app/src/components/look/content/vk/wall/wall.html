@@ -1,4 +1,4 @@
-<div ng-if="result.attachment || result.text" ng-repeat="result in vkWall.results">
+<div ng-if="::result.attachment || result.text" ng-repeat="result in ::vkWall.results">
   <fli-item ng-init="fliItem = {
           url:fli.route.url,
           img:result.attachment.photo.src_big || result.attachment.doc.thumb,

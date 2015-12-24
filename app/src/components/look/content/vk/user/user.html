@@ -14,7 +14,7 @@
           <p>Status:</p>
         </div>
         <div flex="66">
-          <p ng-bind="vk.user.status"></p>
+          <p ng-bind="::vk.user.status"></p>
         </div>
       </div>
       <div layout="row" ng-if="vk.user.home_town">
@@ -22,7 +22,7 @@
           <p>Hometown:</p>
         </div>
         <div flex="66">
-          <p ng-bind="vk.user.home_town"></p>
+          <p ng-bind="::vk.user.home_town"></p>
         </div>
       </div>
     </div>

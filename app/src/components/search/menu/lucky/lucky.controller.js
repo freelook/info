@@ -2,16 +2,14 @@
 angular
   .module('fli.search')
   .controller('search.lucky.ctrl',
-  function ($scope, lucky, item) {
+  function ($scope, lucky) {
 
     var vm = this;
 
-    vm.href = function () {
-      return item.href({input: vm.word});
+    vm.go = function () {
+      lucky.get().then(function (_lucky) {
+        $scope.go(_lucky.href);
+      });
     };
-
-    lucky.get().then(function (word) {
-      vm.word = word;
-    });
 
   });

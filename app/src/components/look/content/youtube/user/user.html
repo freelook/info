@@ -1,4 +1,4 @@
-<fli-item ng-repeat="result in ytbUser.results" ng-init="fliItem = {
+<fli-item ng-repeat="result in ::ytbUser.results" ng-init="fliItem = {
           url:decode(ytb.watchUrl(result.id.videoId)),
           img:result.snippet.thumbnails.medium.url,
           title:result.snippet.title,

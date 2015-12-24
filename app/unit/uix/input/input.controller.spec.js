@@ -42,9 +42,9 @@ describe('Input controller', function () {
   it('should change route on input change', function () {
     var ctrl = exequteController('xxx');
     scope.fli.route.input = 'xxx';
-    mockUrl.href.and.returnValue('search?input=xxx');
+    mockUrl.href.and.returnValue('?input=xxx');
     ctrl.find();
-    expect(scope.go).toHaveBeenCalledWith('search?input=xxx');
+    expect(scope.go).toHaveBeenCalledWith('?input=xxx');
   });
 
   it('should clear input', function () {

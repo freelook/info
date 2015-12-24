@@ -14,7 +14,7 @@
           <p>Category:</p>
         </div>
         <div flex="66">
-          <p ng-bind="fb.user.category"></p>
+          <p ng-bind="::fb.user.category"></p>
         </div>
       </div>
       <div layout="row" ng-if="fb.user.about">
@@ -22,7 +22,7 @@
           <p>About:</p>
         </div>
         <div flex="66">
-          <p ng-bind="fb.user.about"></p>
+          <p ng-bind="::fb.user.about"></p>
         </div>
       </div>
       <div layout="row" ng-if="fb.user.description">
@@ -30,12 +30,12 @@
           <p>Description:</p>
         </div>
         <div flex="66">
-          <p ng-bind="fb.user.description"></p>
+          <p ng-bind="::fb.user.description"></p>
         </div>
       </div>
       <div layout="row" ng-if="fb.user.link">
         <div class="link" ng-click="link(fb.user.link)">
-          <p ng-bind="fb.user.link"></p>
+          <p ng-bind="::fb.user.link"></p>
         </div>
       </div>
     </div>

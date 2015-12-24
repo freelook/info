@@ -1,25 +1,28 @@
-<md-card class="fli-item" ng-class="{small:fliItem.small,nofill:fliItem.nofill}" layout="column" ng-if="fliItem">
+<md-card class="fli-item" ng-class="::{small:fliItem.small,nofill:fliItem.nofill}" layout="column" ng-if="::fliItem">
   <md-card-content>
-    <a fli-href="{{fliItemCtrl.href(fliItem)}}" class="img">
-      <img class="md-card-image" ng-if="fliItem.img" ng-src="{{fliItemCtrl.fix(fliItem.img)}}" title="{{'index.core.uix.item.lookIt' | translate:{v:fliItem.title || 'FLI'} }}" alt="{{fliItem.title}}" fli-item-img fli-err>
-      <div class="md-card-image header" fli-item-icon="{{fliItem.title}}" ng-if="!fliItem.img" title="{{'index.core.uix.item.lookIt' | translate:{v:fliItem.title} }}"></div>
+    <a fli-href="{{::fliItemCtrl.href(fliItem)}}" class="img">
+      <img class="md-card-image" ng-if="::fliItem.img" ng-src="{{::fliItemCtrl.fix(fliItem.img)}}" translate translate-attr-title="index.core.uix.item.lookIt" translate-values="::{v:fliItem.title || 'FLI'}" ng-attr-alt="{{::fliItem.title}}" fli-item-img fli-err>
+      <div class="md-card-image header" fli-item-icon="{{::fliItem.title}}" ng-if="::!fliItem.img" translate translate-attr-title="index.core.uix.item.lookIt" translate-values="::{v:fliItem.title || 'FLI'}"></div>
     </a>
     <div class="block">
-      <a class="title" ng-if="fliItem.title" fli-href="{{fliItemCtrl.href(fliItem)}}" ng-bind-html="fliItem.title"></a>
-      <div class="clearfix" ng-if="fliItem.content" ng-bind-html="fliItem.content"></div>
+      <a class="title" ng-if="::fliItem.title" fli-href="{{::fliItemCtrl.href(fliItem)}}" ng-bind-html="::fliItem.title"></a>
+      <div class="clearfix" ng-if="::fliItem.content" ng-bind-html="::fliItem.content"></div>
     </div>
-    <ng-transclude ng-if="!fliItem.transclude"></ng-transclude>
+    <ng-transclude ng-if="::!fliItem.transclude"></ng-transclude>
   </md-card-content>
   <md-card-footer layout="row" layout-align="end center">
-    <ng-transclude ng-if="fliItem.transclude==='footer'"></ng-transclude>
-    <div class="link" ng-if="fliItemCtrl.search && fliItem.searchInput" title="{{'index.core.uix.item.search' | translate:{v:fliItem.searchInput} }}">
-      <span>#</span><a fli-href="{{fliItemCtrl.search(fliItem.searchInput)}}"><span ng-bind="fliItem.searchInput"></span></a>
+    <ng-transclude ng-if="::fliItem.transclude==='footer'"></ng-transclude>
+    <div class="link" ng-if="::fliItemCtrl.search && fliItem.searchInput">
+      <span>#</span>
+      <a fli-href="{{::fliItemCtrl.search(fliItem.searchInput)}}">
+        <span ng-bind="::fliItem.searchInput" translate translate-attr-title="index.core.uix.item.search" translate-values="::{v:fliItem.searchInput}"></span>
+      </a>
     </div>
-    <div class="link" ng-if="fliItemCtrl.share" ng-click="fliItemCtrl.share(fliItem)" title="{{'index.core.uix.item.share' | translate:{v:fliItem.title} }}">
-      <i class="fa fa-share-alt"></i>
+    <div class="link" ng-if="::fliItemCtrl.share" ng-click="fliItemCtrl.share(fliItem)">
+      <i class="fa fa-share-alt" translate translate-attr-title="index.core.uix.item.share" translate-values="::{v:fliItem.title}"></i>
     </div>
-    <div class="link" ng-if="fliItem.url" ng-click="link(fliItem.url)" title="{{'index.core.uix.item.goTo' | translate:{v:fliItem.title} }}">
-      <i class="fa fa-external-link"></i>
+    <div class="link" ng-if="fliItem.url" ng-click="link(fliItem.url)">
+      <i class="fa fa-external-link" translate translate-attr-title="index.core.uix.item.goTo" translate-values="::{v:fliItem.title}"></i>
     </div>
   </md-card-footer>
 </md-card>

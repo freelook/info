@@ -12,16 +12,16 @@
     <div class="block">
       <div layout="row" ng-if="instaUser.item.website">
         <div class="link" ng-click="link(instaUser.item.website)">
-          <p ng-bind="instaUser.item.website"></p>
+          <p ng-bind="::instaUser.item.website"></p>
         </div>
       </div>
     </div>
 
   </fli-item>
 
-  <fli-search-result-image-instagram class="fli-grid"
+  <fli-search-result-images-instagram class="fli-grid"
                                      ng-init="imgInsta.userId=instaUser.item.id;">
 
-  </fli-search-result-image-instagram>
+  </fli-search-result-images-instagram>
 
 </div>

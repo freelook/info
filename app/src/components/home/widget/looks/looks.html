@@ -1,4 +1,4 @@
-<div class="fli-grid">
+<div class="fli-grid" ng-if="looks.items.length">
   <fli-item ng-repeat="item in looks.items | filter:fli.route.input"
             ng-init="fliItem = {
           url:item.url,
@@ -13,9 +13,13 @@
           fliItemCtrl.href=widget.href;
           fliItemCtrl.search=widget.search;">
 
-    <div class="clear link" ng-click="looks.clearItem(item)" title="{{'index.core.uix.item.clearIt' | translate}}">
-      <i class="fa fa-close"></i>
+    <div class="clear link" ng-click="looks.clearItem(item)">
+      <i class="fa fa-close" translate translate-attr-title="index.core.uix.item.clearIt"></i>
     </div>
 
   </fli-item>
+</div>
+
+<div class="block color-8" layout="column" layout-align="center center" ng-if="!looks.items.length">
+  <div class="block" translate="index.description"></div>
 </div>

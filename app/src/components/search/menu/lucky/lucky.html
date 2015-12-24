@@ -1,6 +1,6 @@
-<div class="menu block" layout="row" ng-show="fli.focus" ng-if="lucky.word">
-  <a flex fli-href="{{lucky.href()}}">
+<div class="menu block" layout="row" ng-if="fli.focus">
+  <div flex ng-click="lucky.go()" class="link">
     <i class="fa">#</i>
     <span translate="search.menu.lucky"></span>
-  </a>
+  </div>
 </div>

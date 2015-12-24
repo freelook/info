@@ -5,8 +5,6 @@ angular
   function ($scope, item, google, suggest) {
 
     var vm = this;
-    vm.suggested = [];
-    vm.search = {};
 
     vm.href = function (suggest) {
       return item.href({input: suggest});
@@ -14,7 +12,7 @@ angular
 
     function showTrends() {
       suggest().then(function (trends) {
-        vm.suggested = trends || '';
+        vm.suggested = trends || [];
       });
     }
 

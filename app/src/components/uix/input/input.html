@@ -9,16 +9,16 @@
   </md-button>
 
   <md-button ng-if="fli.focus" class="md-icon-button link" aria-label="navigation" ng-click="input.find()">
-    <i class="fa fa-{{input.icon}}"></i>
+    <i class="fa fa-{{::input.icon}}"></i>
   </md-button>
 
   <form name="form" ng-submit="input.find()" flex>
     <md-input-container flex md-no-float>
-      <input flex id="input" ng-focus="input.focus()" autocomplete="off"
+      <input flex id="input" ng-focus="input.focus()" autocomplete="off" aria-label="input"
              ng-model="fli.route.input"
              ng-model-options="{updateOn:'blur'}"
-             placeholder="{{input.placeholder | translate}}"
-             type="{{input.type}}">
+             translate translate-attr-placeholder="{{::input.placeholder}}"
+             type="{{::input.type}}">
       <md-progress-linear id="progress" md-mode="indeterminate" ng-if="fli.progress && !fli.focus"></md-progress-linear>
     </md-input-container>
   </form>

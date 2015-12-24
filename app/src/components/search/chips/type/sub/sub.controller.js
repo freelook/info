@@ -2,50 +2,18 @@
 angular
   .module('fli.search')
   .controller('search.chips.type.sub.ctrl',
-  function ($scope, url, locale) {
+  function ($scope, url, chips, locale) {
 
     var vm = this;
 
-    vm.subs = {
-      web: [
-        {sub: 'google'},
-        {sub: 'facebook'},
-        {sub: 'vk'},
-        {sub: 'pinterest'}
-      ],
-      people: [
-        {sub: 'google'},
-        {sub: 'facebook'},
-        {sub: 'vk'},
-        {sub: 'twitter'}
-      ],
-      news: [],
-      actions: [
-        {sub: 'twitter'},
-        {sub: 'vk'}
-      ],
-      goods: [],
-      images: [
-        {sub: 'google'},
-        {sub: 'instagram'},
-        {sub: 'twitter'}
-      ],
-      audio: [],
-      video: [
-        {sub: 'youtube'},
-        {sub: 'vk'}
-      ],
-      promo: []
-    };
+    vm.subs = chips.subs;
 
     function _init() {
       if ($scope.chips && $scope.fli.route.sub) {
         $scope.chips.items.push({
           name: $scope.fli.route.sub,
           key: 'sub',
-          route: {
-            sub: null
-          }
+          route: url.href('?', _config(null), false, '/')
         });
       }
     }

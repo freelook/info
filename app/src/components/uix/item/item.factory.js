@@ -24,7 +24,7 @@ angular
     }
 
     function _search(input) {
-      return url.href('?', {l: locale.getCode(), input: input});
+      return _href({input: input});
     }
 
     return {

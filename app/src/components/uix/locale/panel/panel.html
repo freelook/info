@@ -1,4 +1,4 @@
 <div layout="row" layout-align="center center" layout-wrap>
-  <a ng-class="{active:locale.code===fli.route.l}" fli-href="{{localePanel.href(locale.code)}}" class="link md-icon-button md-button"
-     ng-repeat="locale in localePanel.locales" aria-label="locale" ng-bind="locale.code"></a>
+  <a ng-class="::{active:locale.code===fli.route.l}" fli-href="{{::localePanel.href(locale.code)}}" class="link md-icon-button md-button"
+     ng-repeat="locale in ::localePanel.locales" aria-label="locale" ng-bind="::locale.code"></a>
 </div>

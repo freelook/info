@@ -19,7 +19,7 @@ angular
         'app_id=' + APP_ID +
         '&display=page' +
         '&redirect_uri=' +
-        url.href('search?', {input: $rootScope.fli.route.input}, false, CONFIG.PRODUCTION) +
+        url.href('?', {input: $rootScope.fli.route.input}, false, CONFIG.PRODUCTION) +
         '&link=' + _href +
         '&name=' + _title +
         '&caption=FLI' +
