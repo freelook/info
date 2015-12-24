@@ -8,7 +8,7 @@
       <a class="title" ng-if="::fliItem.title" fli-href="{{::fliItemCtrl.href(fliItem)}}" ng-bind-html="::fliItem.title"></a>
       <div class="clearfix" ng-if="::fliItem.content" ng-bind-html="::fliItem.content"></div>
     </div>
-    <ng-transclude ng-if="::!fliItem.transclude"></ng-transclude>
+    <ng-transclude class="clearfix" ng-if="::!fliItem.transclude"></ng-transclude>
   </md-card-content>
   <md-card-footer layout="row" layout-align="end center">
     <ng-transclude ng-if="::fliItem.transclude==='footer'"></ng-transclude>
