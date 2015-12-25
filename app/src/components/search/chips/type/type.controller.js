@@ -30,7 +30,7 @@ angular
     };
 
     vm.go = function (type) {
-      $scope.go({type: type});
+      $scope.go(_config(type));
     };
 
     _init();

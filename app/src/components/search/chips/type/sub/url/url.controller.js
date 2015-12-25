@@ -2,14 +2,22 @@
 angular
   .module('fli.search')
   .controller('search.chips.type.sub.url.ctrl',
-  function ($scope, url, content, locale) {
+  function ($scope, url, content, index, locale) {
 
-    var site = content.site($scope.fli.route.url);
+    function _name() {
+      var site = content.site($scope.fli.route.url);
+      if (index.is(site.domain, $scope.fli.route.sub)) {
+        return url.extract('(/):id(\\.:temp)(/*)', site.pathname || '').id || site.host;
+      }
+
+      return site.host;
+    }
 
     function _init() {
+
       if ($scope.chips && $scope.fli.route.url) {
         $scope.chips.items.push({
-          name: site.host,
+          name: _name(),
           key: 'url',
           route: url.href('?', {
             l: locale.getCode(),

@@ -32,7 +32,7 @@ angular
     };
 
     vm.go = function (sub) {
-      $scope.go({sub: sub});
+      $scope.go(_config(sub));
     };
 
     _init();
