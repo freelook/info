@@ -5,6 +5,9 @@
   window.i18n.en.core = {};
 
   angular
-    .module('fli.core', ['ngAnimate', 'ngTouch', 'ngSanitize', 'ngCookies', 'ngRoute', 'ngMaterial', 'pascalprecht.translate', 'mediaPlayer']);
+    .module('fli.core', [
+      'ngAnimate', 'ngTouch', 'ngSanitize', 'ngCookies', 'ngRoute', 'ngMaterial',
+      'pascalprecht.translate', 'angular-cache', 'mediaPlayer'
+    ]);
 
 }());

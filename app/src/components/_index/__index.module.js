@@ -16,9 +16,7 @@
       $locationProvider.html5Mode({enabled: !platformProvider.isChromeApp(), requireBase: false});
       $locationProvider.hashPrefix('!');
 
-      // Set up cache
-      $httpProvider.defaults.cache = true;
-
+      // Set loader
       $httpProvider.interceptors.push('loaderInterceptor');
 
       // Setting theme
@@ -40,7 +38,17 @@
       });
 
     })
-    .run(function ($rootScope, platform, splash, analytics, scroll, io, Parse, CONFIG) {
+    .run(function ($http, $rootScope,
+                   platform, splash, analytics, scroll, io, CacheFactory, Parse, CONFIG) {
+
+      // Set up cache
+      $http.defaults.cache = CacheFactory('defaults', {
+        maxAge: 60 * 60 * 1000,
+        deleteOnExpire: 'aggressive',
+        storageMode: 'sessionStorage'
+      });
+
+      // Run app
       $rootScope.fli = {};
 
       splash.hide();
