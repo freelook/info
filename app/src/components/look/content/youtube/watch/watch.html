@@ -1,5 +1,5 @@
 <md-whiteframe class="md-whiteframe-z1" layout="column">
-  <iframe ng-if="fli.platform==='site'"
+  <iframe ng-if="fli.platform!=='chrome'"
           ng-src="{{watchCtrl.watch()}}"
           frameborder="0"
           allowfullscreen>
