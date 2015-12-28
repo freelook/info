@@ -101,7 +101,7 @@ gulp.task('clean', function (done) {
   $.del(['dist/', '.tmp/'], done);
 });
 
-gulp.task('zip', [], function () {
+gulp.task('pack', [], function () {
   var manifest = require('../src/manifest.json'),
     distFileName = manifest.name + '_' + manifest.version + '.zip';
 
