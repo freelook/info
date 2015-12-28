@@ -1,7 +1,7 @@
 {
   "name": "freelook.info",
   "description": "fli.api",
-  "version": "0.13.6",
+  "version": "0.13.7",
   "author": "Dima Kostrub",
   "engines": {
     "node": "0.12.x",
