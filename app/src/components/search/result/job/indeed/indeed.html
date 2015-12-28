@@ -1,0 +1,13 @@
+<fli-item ng-repeat="item in indeed.results"
+          ng-init="fliItem = {
+          small:1,
+          url:item.url,
+          img:item.img,
+          title:item.title,
+          content:item.content
+          };">
+  <div class="block color-8">
+    <div ng-bind="item.company"></div>
+  </div>
+
+</fli-item>

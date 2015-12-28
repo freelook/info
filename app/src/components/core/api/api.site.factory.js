@@ -13,7 +13,7 @@ angular
 
     function proxy(url, config) {
       var _cache = config && config.cache ? '/cache' : '';
-      return _point('proxy' + _cache + '?url=' + decodeURIComponent(url));
+      return _point('proxy' + _cache + '/' + decodeURIComponent(url));
     }
 
     function get(url) {

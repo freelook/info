@@ -22,6 +22,11 @@ fli-item {
 }
 
 .fli-item .header {
+  color: #fff;
+  text-align: center;
+  text-decoration: underline;
+  line-height: 2em;
+  font-size: 3em;
   min-height: 200px;
   max-height: 200px;
 }

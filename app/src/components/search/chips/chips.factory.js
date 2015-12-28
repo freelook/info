@@ -12,7 +12,8 @@ angular
         {type: 'images'},
         {type: 'audio'},
         {type: 'video'},
-        {type: 'promo'}
+        {type: 'promo'},
+        {type: 'job'}
       ],
       subs: {
         web: [
@@ -43,7 +44,8 @@ angular
           {sub: 'youtube'},
           {sub: 'vk'}
         ],
-        promo: []
+        promo: [],
+        job: []
       }
     };
 

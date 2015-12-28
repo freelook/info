@@ -8,7 +8,8 @@ window.i18n.ru.search = {
     images: 'картинки',
     audio: 'аудио',
     video: 'видео',
-    promo: 'промо'
+    promo: 'промо',
+    job: 'работа'
   },
   menu: {
     lucky: 'на удачу'

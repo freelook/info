@@ -66,10 +66,13 @@ server {
 	}
 
 	location /api/proxy {
+		if ($request_uri ~ ^/api/proxy/(.*)$) {
+		set $target $1;
+		}
 		resolver 8.8.8.8;
 		proxy_pass_request_headers off;
 		proxy_set_header User-Agent 'Chrome/45';
-		proxy_pass $arg_url;
+		proxy_pass $target;
 		proxy_intercept_errors on;
 		error_page 301 302 = @redirect;
 	}
@@ -80,13 +83,16 @@ server {
 	}
 
 	location /api/proxy/cache {
+		if ($request_uri ~ ^/api/proxy/cache/(.*)$) {
+		set $target $1;
+		}
 		resolver 8.8.8.8;
 		proxy_pass_request_headers off;
 		proxy_set_header User-Agent 'Chrome/45';
 		proxy_ignore_headers Cache-Control Expires Set-Cookie;
 		proxy_cache FLI;
 		proxy_cache_valid 60m;
-		proxy_pass $arg_url;
+		proxy_pass $target;
 	}
 
 	location /page {

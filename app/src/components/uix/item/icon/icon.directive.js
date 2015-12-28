@@ -21,8 +21,7 @@ angular
       link: function (scope, el, attr) {
         var letter = attr.fliItemIcon ? attr.fliItemIcon.charAt() : 'f',
           color = COLORS[letter.charCodeAt().toString().charAt()] || COLORS['1'];
-
-        $(el).css({background: color});
+        $(el).css({background: color}).append(letter);
       }
     };
   });

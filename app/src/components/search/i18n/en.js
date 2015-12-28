@@ -8,7 +8,8 @@ window.i18n.en.search = {
     images: 'images',
     audio: 'audio',
     video: 'video',
-    promo: 'promo'
+    promo: 'promo',
+    job: 'job'
   },
   menu: {
     lucky: 'get lucky'
