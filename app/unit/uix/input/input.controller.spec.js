@@ -1,15 +1,23 @@
 'use strict';
 
 describe('Input controller', function () {
-  var scope, defpleceholder, controller, mockUrl;
+  var scope, defpleceholder, mockLocale, mockNav, controller, mockUrl;
 
 
   beforeEach(function () {
 
-    module('freelook.info');
+    module('fli.uix');
 
     mockUrl = {
       href: jasmine.createSpy()
+    };
+
+    mockLocale = {
+      getCode: jasmine.createSpy()
+    };
+
+    mockNav = {
+      goHome: jasmine.createSpy()
     }
 
   });
@@ -18,7 +26,9 @@ describe('Input controller', function () {
     scope.fli = {route: {input: input}};
     return controller('input.ctrl', {
       $scope: scope,
-      url: mockUrl
+      url: mockUrl,
+      locale: mockLocale,
+      nav: mockNav
     });
   }
 

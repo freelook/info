@@ -67,6 +67,10 @@ a.active {
   text-align: center;
 }
 
+.border {
+  border-top: 1px solid #cccccc;
+}
+
 
 
 

@@ -1,10 +1,11 @@
 'use strict';
 
 describe('Web google controller', function () {
-  var scope, input, mockGoogle, mockYandex, rootScope, controller, _CONFIG;
+  var scope, input, mockGoogle, rootScope, controller, _CONFIG;
 
   beforeEach(function () {
     module('freelook.info');
+    module('fli.search');
 
     input = 'xxx';
 
@@ -13,12 +14,6 @@ describe('Web google controller', function () {
         success: jasmine.createSpy().and.returnValue({
           error: jasmine.createSpy()
         })
-      })
-    };
-
-    mockYandex = {
-      search: jasmine.createSpy().and.returnValue({
-        success: jasmine.createSpy()
       })
     };
 

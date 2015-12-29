@@ -7,7 +7,7 @@ angular
     var vm = this;
     vm.showLocalePanel = false;
 
-    vm.about = 'http://about.freelook.info/';
+    vm.about = 'http://about.freelook.info/?lang=' + locale.getLng();
     vm.localeCode = locale.getCode();
 
     vm.feedback = function () {

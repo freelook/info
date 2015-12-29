@@ -7,8 +7,8 @@ fli-setting .title {
   color: #999999;
 }
 
-fli-setting .border {
-  border-bottom: 1px solid #cccccc;
+fli-setting > .border {
+  padding-top: 25px;
 }
 
 fli-setting md-switch,

@@ -18,7 +18,6 @@ describe('Result controller', function () {
       CONFIG: _CONFIG,
       facebook: mockFaceBook
     });
-    rootScope.$apply();
   }
 
   beforeEach(inject(function ($rootScope, $controller, CONFIG) {

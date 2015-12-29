@@ -1,19 +1,18 @@
-<footer>
-
-  <fli-locale-panel class="block" ng-show="footer.showLocalePanel" flex></fli-locale-panel>
-
-  <div layout="row" class="block">
-    <div class="link" flex="25" layout="row" layout-align="center center" ng-click="footer.feedback()">
-      <i class="fa fa-comments-o block" translate translate-attr-title="index.footer.help"></i>
-      <span hide-sm class="color-8" translate="index.footer.feedback"></span>
-    </div>
-    <div flex layout="column" layout-align="center center">
-      <p><span translate="index.footer.with"></span> <i class="fa fa-heartbeat heart"></i> <a fli-href="{{::footer.about}}" ng-attr-title="{{fli.description}}">freelook.info</a></p>
-    </div>
-    <div class="link" flex="25" layout="row" layout-align="center center" ng-click="footer.toggleLocalePanel()">
-      <div hide-sm class="color-8" translate="index.footer.locale"></div>
-      <md-button class="md-icon-button link" aria-label="locale" ng-bind="::footer.localeCode"></md-button>
-    </div>
+<fli-locale-panel class="block border" ng-show="footer.showLocalePanel"></fli-locale-panel>
+<div layout="row" class="block border">
+  <div class="link" flex="25" layout="row" layout-align="center center" ng-click="footer.feedback()">
+    <div class="fa fa-comments-o block" translate translate-attr-title="index.footer.help"></div>
+    <div hide-sm class="color-8" translate="index.footer.feedback"></div>
   </div>
-
-</footer>
+  <div flex layout="column" layout-align="center center">
+    <p><span translate="index.footer.with"></span>
+      <i class="fa fa-heartbeat heart"></i>
+      <a fli-href="{{::footer.about}}" ng-attr-title="{{fli.description}}" target="_blank">freelook.info</a>
+    </p>
+  </div>
+  <div class="link" flex="25" layout="row" layout-align="center center" ng-click="footer.toggleLocalePanel()">
+    <div hide-sm class="color-8" translate="index.footer.locale"></div>
+    <md-button class="md-icon-button link" aria-label="locale" ng-bind="::footer.localeCode"></md-button>
+  </div>
+</div>
+<fli-apps class="block border"></fli-apps>

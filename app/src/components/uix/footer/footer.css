@@ -1,16 +1,9 @@
 fli-footer {
   display: block;
+  margin-top: 25px;
 }
 
-footer {
-  padding-top: 25px;
-}
-
-fli-footer div.block {
-  border-top: 1px solid #cccccc;
-}
-
-footer .heart {
+fli-footer .heart {
   color: brown;
 }
 

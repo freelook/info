@@ -1,37 +1,37 @@
 'use strict';
 
 describe('Lucky controller', function () {
-  var scope, mockGoogle, rootScope, controller, _CONFIG;
+  var $q, vm, scope, mockLucky, rootScope, controller, _CONFIG;
 
   beforeEach(function () {
     module('freelook.info');
 
-    mockGoogle = {
-      random: jasmine.createSpy().and.returnValue({
-        success: jasmine.createSpy()
-      })
+    beforeEach(inject(function ($rootScope, $controller, _$q_, CONFIG) {
+      rootScope = $rootScope;
+      $q = _$q_;
+      scope = $rootScope.$new();
+      scope.go = jasmine.createSpy();
+      controller = $controller;
+      _CONFIG = CONFIG;
+    }));
+
+    mockLucky = {
+      get: jasmine.createSpy().and.returnValue($q.when({href: 'href'}))
     };
 
   });
 
   function exequteController() {
-    return controller('search.lucky.ctrl', {
-      google: mockGoogle,
+    vm = controller('search.lucky.ctrl', {
+      lucky: mockLucky,
       $scope: scope
     });
   }
 
-  beforeEach(inject(function ($rootScope, $controller, CONFIG) {
-    rootScope = $rootScope;
-    scope = $rootScope.$new();
-    controller = $controller;
-    _CONFIG = CONFIG;
-  }));
-
   it('should call google service for random world', function () {
-    var vm = exequteController();
-    expect(vm.lucky).toBe('freelook');
-    expect(mockGoogle.random).toHaveBeenCalled();
+    exequteController();
+    vm.go();
+    expect(mockLucky.get).toHaveBeenCalled();
   });
 
 });

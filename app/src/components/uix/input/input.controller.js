@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-  .module('freelook.info')
+  .module('fli.uix')
   .controller('input.ctrl',
   function ($scope, url, locale, nav, PLACEHOLDER) {
 

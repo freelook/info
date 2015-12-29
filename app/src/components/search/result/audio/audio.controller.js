@@ -24,7 +24,7 @@ angular
     function setResult(audio) {
       var results = audio.response || [];
       vm.results = angular.copy(results).splice(1).map(function (song) {
-        song.src = CONFIG.API.URL + 'proxy?url=' + decodeURIComponent(song.url);
+        song.src = CONFIG.API.URL + 'proxy/' + decodeURIComponent(song.url);
         return song;
       });
     }

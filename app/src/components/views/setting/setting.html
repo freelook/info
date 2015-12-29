@@ -1,11 +1,6 @@
-<div class="block border">
+<div class="block">
   <fli-setting-user flex ng-if="fli.user"></fli-setting-user>
   <fli-setting-login flex ng-if="!fli.user"></fli-setting-login>
-</div>
-
-<div class="block border">
-  <div class="title"><span translate="index.core.uix.setting.locale"></span>:</div>
-  <fli-locale-panel></fli-locale-panel>
 </div>
 
 <div class="block border" layout="row" ng-if="fli.user">
@@ -13,8 +8,7 @@
   <div flex class="title" translate="index.core.uix.setting.notice"></div>
 </div>
 
-<div class="block" ng-if="fli.platform==='site'">
-  <fli-apps layout="row" layout-align="center center"></fli-apps>
-</div>
+<fli-footer></fli-footer>
+
 
 
