@@ -1,3 +1,7 @@
 fli-setting-user {
   display: block;
 }
+
+fli-setting-user .md-button.md-icon-button {
+  margin: 0;
+}

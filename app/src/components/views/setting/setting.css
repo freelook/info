@@ -15,3 +15,8 @@ fli-setting md-switch,
 fli-setting .md-icon-button {
   margin: 0;
 }
+
+fli-setting fli-setting-user.block {
+  margin-right: 0;
+  padding-right: 0;
+}

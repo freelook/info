@@ -11,10 +11,6 @@
   display: inline-block;
 }
 
-.fli-grid .fli-item .fa {
-  display: initial;
-}
-
 @media (min-width: 500px) {
   .fli-grid {
     -webkit-column-count: 2;
