@@ -1,0 +1,11 @@
+<fli-item ng-repeat="item in linkedin.posts"
+          ng-init="fliItem = {
+          url:item.url,
+          img:item.img,
+          title:item.title,
+          content:item.content
+          };
+          fliItemCtrl.href=linkedin.href;
+          fliItemCtrl.share=linkedin.share;">
+
+</fli-item>

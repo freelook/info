@@ -20,7 +20,8 @@ angular
           {sub: 'google'},
           {sub: 'facebook'},
           {sub: 'vk'},
-          {sub: 'pinterest'}
+          {sub: 'pinterest'},
+          {sub: 'linkedin'}
         ],
         people: [
           {sub: 'google'},

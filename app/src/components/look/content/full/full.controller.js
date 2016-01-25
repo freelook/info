@@ -3,7 +3,7 @@
 angular
   .module('fli.look')
   .controller('look.content.full.ctrl',
-  function ($scope, $sce, $compile, api, read, full, item) {
+  function ($scope, api, read, full, item) {
 
     var vm = this;
     vm.html = '';
