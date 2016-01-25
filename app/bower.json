@@ -39,5 +39,9 @@
         "./angular-csp.css"
       ]
     }
+  },
+  "resolutions": {
+    "jquery": "2.1.4",
+    "angular": "1.4.8"
   }
 }
