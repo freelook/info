@@ -3,7 +3,7 @@
 angular
   .module('fli.search')
   .controller('search.result.people.linkedin.ctrl',
-  function ($scope, linkedin, item, lucky) {
+  function ($scope, linkedin, lucky) {
 
     var vm = this;
 

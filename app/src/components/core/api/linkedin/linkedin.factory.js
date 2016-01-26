@@ -47,6 +47,25 @@ angular
       return people;
     }
 
+    function _htmlToJobs(_html) {
+      var jobs = [],
+        dom = parser.parseFromString(_html, 'text/html'),
+        $dom = $(dom);
+
+      $dom.find('ul.search-results > li').each(function (i, e) {
+        var element = $(e), link = element.find('.job-title-link');
+        jobs.push({
+          title: link.text(),
+          url: link.attr('href'),
+          img: element.find('img.company-logo').attr('data-delayed-url'),
+          content: element.find('.job-description').text(),
+          company: element.find('.company-name-text').text()
+        });
+      });
+
+      return jobs;
+    }
+
     function posts(q) {
       var defer = $q.defer();
       _point('topic/' + encodeURIComponent(decodeURIComponent(q)))
@@ -72,6 +91,18 @@ angular
       return defer.promise;
     }
 
+    function jobs(q) {
+      var defer = $q.defer();
+      _point('jobs/search?keywords=' + q)
+        .success(function (_html) {
+          defer.resolve(_htmlToJobs(_html));
+        })
+        .error(function (err) {
+          defer.reject(err);
+        });
+      return defer.promise;
+    }
+
     function link(_path) {
       return LINKEDIN_API.URL + _path;
     }
@@ -79,6 +110,7 @@ angular
     return {
       posts: posts,
       people: people,
+      jobs: jobs,
       link: link
     };
 

@@ -47,7 +47,10 @@ angular
           {sub: 'vk'}
         ],
         promo: [],
-        job: []
+        job: [
+          {sub: 'indeed'},
+          {sub: 'linkedin'}
+        ]
       }
     };
 
