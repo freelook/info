@@ -27,7 +27,8 @@ angular
           {sub: 'google'},
           {sub: 'facebook'},
           {sub: 'vk'},
-          {sub: 'twitter'}
+          {sub: 'twitter'},
+          {sub: 'linkedin'}
         ],
         news: [],
         actions: [

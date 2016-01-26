@@ -70,7 +70,7 @@ server {
 		proxy_set_header User-Agent 'Chrome/45';
 		proxy_pass $target;
 		proxy_intercept_errors on;
-		error_page 301 302 = @redirect;
+		error_page 301 302 307 = @redirect;
 	}
 
 	location @redirect {

@@ -7,6 +7,10 @@ angular
       return LINKEDIN_API.ENDPOINT + _end;
     }
 
+    function _point(point) {
+      return api.proxy(_enpoint(point));
+    }
+
     function _htmlToPosts(_html) {
       var posts = [],
         dom = parser.parseFromString(_html, 'text/html'),
@@ -25,15 +29,42 @@ angular
       return posts;
     }
 
-    function search(q) {
-      return api.proxy(_enpoint('topic/' + encodeURIComponent(decodeURIComponent(q))));
+    function _htmlToPeople(_html) {
+      var people = [],
+        dom = parser.parseFromString(_html, 'text/html'),
+        $dom = $(dom);
+
+      $dom.find('div.professionals > ul > li, #profile').each(function (i, e) {
+        var element = $(e), link = element.find('.content > h3 > a');
+        people.push({
+          title: link.text() || $dom.find('#name').text(),
+          url: link.attr('href') || $dom.find('link[rel="canonical"]').attr('href'),
+          img: element.find('.profile-img > img').attr('src') || element.find('.profile-picture img').attr('data-delayed-url'),
+          content: element.find('.content > .headline').text() || element.find('.headline.title').html()
+        });
+      });
+
+      return people;
     }
 
     function posts(q) {
       var defer = $q.defer();
-      search(q)
+      _point('topic/' + encodeURIComponent(decodeURIComponent(q)))
         .success(function (_html) {
           defer.resolve(_htmlToPosts(_html));
+        })
+        .error(function (err) {
+          defer.reject(err);
+        });
+      return defer.promise;
+    }
+
+    function people(q) {
+      var defer = $q.defer(), query = q || '', full = query.split(' '),
+        first = full[0] || '+', last = full[1] || '+';
+      _point('pub/dir/' + first + '/' + last)
+        .success(function (_html) {
+          defer.resolve(_htmlToPeople(_html));
         })
         .error(function (err) {
           defer.reject(err);
@@ -46,8 +77,8 @@ angular
     }
 
     return {
-      search: search,
       posts: posts,
+      people: people,
       link: link
     };
 
