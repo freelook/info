@@ -60,7 +60,7 @@ describe('Input controller', function () {
   it('should clear input', function () {
     var ctrl = exequteController('xxx');
     ctrl.clear();
-    expect(scope.fli.route.input).toBeNull();
+    expect(ctrl.input).toBeNull();
   });
 
 });
