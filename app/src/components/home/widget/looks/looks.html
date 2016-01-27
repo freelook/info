@@ -1,5 +1,5 @@
 <div class="fli-grid" ng-if="looks.items.length">
-  <fli-item ng-repeat="item in looks.items | filter:fli.route.input"
+  <fli-item ng-repeat="item in looks.items | filter:fli.route.input || ''"
             ng-init="fliItem = {
           url:item.url,
           img:item.img,
