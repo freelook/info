@@ -15,7 +15,8 @@
   <form name="form" ng-submit="input.find()" flex>
     <md-input-container flex md-no-float>
       <input flex id="input" ng-focus="input.focus()" autocomplete="off" aria-label="input"
-             ng-model="input.input"
+             ng-model="fli.route.input"
+             ng-model-options="{updateOn:'blur'}"
              translate translate-attr-placeholder="{{::input.placeholder}}"
              type="{{::input.type}}">
       <md-progress-linear id="progress" md-mode="indeterminate" ng-if="fli.progress"></md-progress-linear>

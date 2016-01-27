@@ -12,12 +12,11 @@ angular
     vm.type = _search_;
     vm.icon = _search_;
     vm.action = _search_;
-    vm.input = $scope.fli.route.input;
 
     function _route() {
       return {
         l: locale.getCode(),
-        input: vm.input,
+        input: $scope.fli.route.input,
         type: $scope.fli.route.type,
         sub: $scope.fli.route.sub
       };
@@ -28,7 +27,7 @@ angular
     };
 
     vm.clear = function () {
-      vm.input = null;
+      $scope.fli.route.input = null;
     };
 
     vm.close = function () {
