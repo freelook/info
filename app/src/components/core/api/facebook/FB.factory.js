@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('FB', function ($window, $timeout, $q, locale, Parse, CONFIG) {
+  .factory('FB', function ($window, $timeout, $q, locale, CONFIG) {
 
     function init() {
 
@@ -12,11 +12,7 @@ angular
       var defer = $q.defer();
 
       $window.fbAsyncInit = function () {
-        Parse.FacebookUtils.init({
-          appId: CONFIG.API.FB.ID,
-          version: CONFIG.API.FB.VERSION
-        });
-        return defer.resolve($window.FB);
+        defer.resolve($window.FB);
       };
 
       $timeout(function () {

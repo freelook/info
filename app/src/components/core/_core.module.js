@@ -7,7 +7,7 @@
   angular
     .module('fli.core', [
       'ngAnimate', 'ngTouch', 'ngSanitize', 'ngCookies', 'ngRoute', 'ngMaterial',
-      'pascalprecht.translate', 'angular-cache', 'mediaPlayer'
+      'pascalprecht.translate', 'angular-cache', 'mediaPlayer', 'firebase'
     ]);
 
 }());

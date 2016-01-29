@@ -39,7 +39,7 @@
 
     })
     .run(function ($http, $rootScope,
-                   platform, splash, analytics, scroll, io, CacheFactory, Parse, CONFIG) {
+                   platform, splash, analytics, scroll, io, CacheFactory) {
 
       // Set up cache
       $http.defaults.cache = CacheFactory('defaults', {
@@ -54,8 +54,6 @@
       splash.hide();
       platform.init();
       analytics.init();
-
-      Parse.initialize(CONFIG.API.PARSE.ID, CONFIG.API.PARSE.KEY);
 
       $rootScope.$on('$routeChangeStart', function () {
         scroll.top();

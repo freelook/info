@@ -13,9 +13,8 @@ var CONFIG = {
       ID: '846841298681206',
       VERSION: 'v2.5'
     },
-    PARSE: {
-      ID: 'Z06a4jL9cgIguqkgMV4rMXl9xnZmPAhmIa29QERn',
-      KEY: 'fzpDuSbfiiiK1tVgobdutlSozKJfW3CNgU7l6Lex'
+    FIREBASE: {
+      URL: 'https://freelook.firebaseio.com/'
     }
   },
   PRERENDER: {

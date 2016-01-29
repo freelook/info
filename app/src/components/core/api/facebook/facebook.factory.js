@@ -2,7 +2,7 @@
 angular
   .module('freelook.info')
   .factory('facebook',
-  function ($http, $rootScope, $window, $q, api, url, Parse, FB, CONFIG, FB_API) {
+  function ($http, $rootScope, $window, $q, api, url, FB, CONFIG, FB_API) {
 
     var APP_ID = CONFIG.API.FB.ID;
 
