@@ -14,7 +14,7 @@ angular
     return {
       ref: ref,
       authObj: authObj
-    }
+    };
 
   });
 
