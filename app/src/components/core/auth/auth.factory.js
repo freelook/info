@@ -5,11 +5,11 @@ angular
 
     var authObj = Firebase.authObj();
 
-    function _setUser() {
+    authObj.$onAuth(function () {
       $timeout(function () {
         $rootScope.fli.user = user.current();
       });
-    }
+    });
 
     function logIn(usr) {
       authObj.$createUser({
@@ -19,7 +19,7 @@ angular
         authObj.$authWithPassword({
           email: usr.email,
           password: usr.password
-        }).then(_setUser);
+        });
       });
     }
 

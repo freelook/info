@@ -7,13 +7,9 @@ angular
       var _usr = current();
       if (_usr) {
         $cookies.put('token', _usr.uid);
-        Firebase.ref('users/' + _usr.uid)
-          .once('value', function (userData) {
-            $timeout(function () {
-              $rootScope.fli.user = userData.val();
-              console.log(userData.val());
-            });
-          });
+        $timeout(function () {
+          $rootScope.fli.user = _usr;
+        });
       }
     }
 
