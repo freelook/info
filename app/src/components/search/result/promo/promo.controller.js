@@ -17,9 +17,6 @@ angular
     };
 
     SHOW.query()
-      .notEqualTo('users', user.current())
-      .limit(24)
-      .find()
       .then(function (results) {
         $timeout(function () {
           vm.results = results || [];

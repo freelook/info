@@ -3,21 +3,17 @@
 angular
   .module('fli.show')
   .factory('SHOW',
-  function (user, Parse) {
+  function (user, $firebaseArray, Firebase) {
 
-    var SHOW = Parse.Object.extend('SHOW'),
-      Show = new Parse.Query(SHOW);
+    var SHOWS = $firebaseArray(Firebase.ref('shows').limitToFirst(24));
 
     function query() {
-      return Show;
+      return SHOWS.$loaded();
     }
 
     function add(_show) {
-      var show = new SHOW();
-      show.set('user', user.current());
-      return show.save(_show);
+      return SHOWS.$add(_show);
     }
-
 
     return {
       query: query,

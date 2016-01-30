@@ -1,25 +1,33 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('user', function ($rootScope, $cookies, $timeout, Firebase) {
+  .factory('user', function ($rootScope, $cookies, $timeout, $q, $firebaseObject, Firebase) {
 
     function init() {
-      var _usr = current();
-      if (_usr) {
-        $cookies.put('token', _usr.uid);
+      current().then(function (_usr) {
+        $cookies.put('token', _usr ? _usr.uid : '');
         $timeout(function () {
           $rootScope.fli.user = _usr;
         });
-      }
+      });
     }
 
     function current() {
-      return Firebase.authObj().$getAuth();
+      var _authData = authData();
+      if (_authData.uid) {
+        return $firebaseObject(Firebase.ref('users').child(_authData.uid)).$loaded();
+      }
+      return $q.when();
+    }
+
+    function authData() {
+      return Firebase.authObj().$getAuth() || {};
     }
 
     return {
       init: init,
-      current: current
+      current: current,
+      authData: authData
     };
 
   });

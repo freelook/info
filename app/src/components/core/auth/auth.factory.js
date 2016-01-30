@@ -1,26 +1,34 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('auth', function ($rootScope, $timeout, toast, user, Firebase) {
+  .factory('auth', function (toast, user, Firebase) {
 
     var authObj = Firebase.authObj();
 
-    authObj.$onAuth(function () {
-      $timeout(function () {
-        $rootScope.fli.user = user.current();
-      });
-    });
+    authObj.$onAuth(user.init);
 
     function logIn(usr) {
       authObj.$createUser({
         email: usr.email,
         password: usr.password
-      }).finally(function () {
-        authObj.$authWithPassword({
-          email: usr.email,
-          password: usr.password
+      })
+        .then(function () {
+          authObj.isNewUser = true;
+        })
+        .finally(function () {
+          authObj.$authWithPassword({
+            email: usr.email,
+            password: usr.password
+          })
+            .then(function () {
+              if (authObj.isNewUser) {
+                var authData = user.authData();
+                Firebase.ref('users').child(authData.uid).set({
+                  email: authData.password.email
+                });
+              }
+            });
         });
-      });
     }
 
     function logOut() {
