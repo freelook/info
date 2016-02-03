@@ -114,7 +114,7 @@ server {
 			set $prerender 0;
 		}
 		if ($prerender = 1) {
-			rewrite .* $scheme://$host$request_uri? break;
+			rewrite .* /$scheme://$host$request_uri? break;
 			proxy_pass http://prerender.freelook.info;
 			error_page 500 501 502 503 504 = @reprerender;
 		}
@@ -126,7 +126,7 @@ server {
 	}
 
 	location @reprerender {
-		rewrite .* $scheme://freelook.info$request_uri? break;
+		rewrite .* /$scheme://freelook.info$request_uri? break;
 		proxy_pass http://localhost:3000;
 	}
 
