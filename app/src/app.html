@@ -34,11 +34,11 @@
   <link rel="stylesheet" href="components/home/widget/widget.css">
   <link rel="stylesheet" href="components/look/content/content.css">
   <link rel="stylesheet" href="components/look/suggest/suggest.css">
-  <link rel="stylesheet" href="components/show/item/item.css">
   <link rel="stylesheet" href="components/search/chips/chips.css">
+  <link rel="stylesheet" href="components/search/menu/menu.css">
   <link rel="stylesheet" href="components/search/result/result.css">
   <link rel="stylesheet" href="components/search/suggest/suggest.css">
-  <link rel="stylesheet" href="components/search/menu/menu.css">
+  <link rel="stylesheet" href="components/show/item/item.css">
   <link rel="stylesheet" href="components/uix/animation/animation.css">
   <link rel="stylesheet" href="components/uix/apps/apps.css">
   <link rel="stylesheet" href="components/uix/chips/chips.css">
@@ -63,9 +63,8 @@
   <link rel="stylesheet" href="components/look/content/pinterest/pinterest.css">
   <link rel="stylesheet" href="components/look/content/vk/vk.css">
   <link rel="stylesheet" href="components/look/content/youtube/youtube.css">
-  <link rel="stylesheet" href="components/show/item/form/form.css">
-  <link rel="stylesheet" href="components/show/item/link/link.css">
   <link rel="stylesheet" href="components/search/chips/type/type.css">
+  <link rel="stylesheet" href="components/search/menu/lucky/lucky.css">
   <link rel="stylesheet" href="components/search/result/actions/actions.css">
   <link rel="stylesheet" href="components/search/result/audio/audio.css">
   <link rel="stylesheet" href="components/search/result/goods/goods.css">
@@ -76,7 +75,8 @@
   <link rel="stylesheet" href="components/search/result/promo/promo.css">
   <link rel="stylesheet" href="components/search/result/video/video.css">
   <link rel="stylesheet" href="components/search/result/web/web.css">
-  <link rel="stylesheet" href="components/search/menu/lucky/lucky.css">
+  <link rel="stylesheet" href="components/show/item/form/form.css">
+  <link rel="stylesheet" href="components/show/item/link/link.css">
   <link rel="stylesheet" href="components/uix/input/menu/menu.css">
   <link rel="stylesheet" href="components/uix/item/edit/edit.css">
   <link rel="stylesheet" href="components/uix/locale/panel/panel.css">
@@ -171,10 +171,10 @@
 <script src="components/home/_home.module.js"></script>
 <script src="components/home/home.controller.js"></script>
 <script src="components/look/_look.module.js"></script>
+<script src="components/search/_search.module.js"></script>
 <script src="components/show/_show.module.js"></script>
 <script src="components/show/show.controller.js"></script>
 <script src="components/show/show.model.factory.js"></script>
-<script src="components/search/_search.module.js"></script>
 <script src="components/uix/_uix.module.js"></script>
 <script src="components/views/_views.module.js"></script>
 <script src="components/_index/i18n/en.js"></script>
@@ -212,27 +212,27 @@
 <script src="components/look/i18n/ru.js"></script>
 <script src="components/look/suggest/suggest.controller.js"></script>
 <script src="components/look/suggest/suggest.directive.js"></script>
+<script src="components/search/chips/chips.controller.js"></script>
+<script src="components/search/chips/chips.directive.js"></script>
+<script src="components/search/chips/chips.factory.js"></script>
+<script src="components/search/i18n/en.js"></script>
+<script src="components/search/i18n/ru.js"></script>
+<script src="components/search/menu/menu.directive.js"></script>
+<script src="components/search/result/result.controller.js"></script>
+<script src="components/search/result/result.directive.js"></script>
+<script src="components/search/suggest/suggest.controller.js"></script>
+<script src="components/search/suggest/suggest.directive.js"></script>
+<script src="components/search/suggest/suggest.factory.js"></script>
 <script src="components/show/i18n/en.js"></script>
 <script src="components/show/i18n/ru.js"></script>
 <script src="components/show/input/input.controller.js"></script>
 <script src="components/show/input/input.directive.js"></script>
 <script src="components/show/item/item.controller.js"></script>
 <script src="components/show/item/item.directive.js"></script>
-<script src="components/search/chips/chips.controller.js"></script>
-<script src="components/search/chips/chips.directive.js"></script>
-<script src="components/search/chips/chips.factory.js"></script>
-<script src="components/search/result/result.controller.js"></script>
-<script src="components/search/result/result.directive.js"></script>
-<script src="components/search/suggest/suggest.controller.js"></script>
-<script src="components/search/suggest/suggest.directive.js"></script>
-<script src="components/search/suggest/suggest.factory.js"></script>
-<script src="components/search/menu/menu.directive.js"></script>
 <script src="components/uix/apps/apps.controller.js"></script>
 <script src="components/uix/apps/apps.directive.js"></script>
 <script src="components/uix/donate/donate.controller.js"></script>
 <script src="components/uix/donate/donate.directive.js"></script>
-<script src="components/search/i18n/en.js"></script>
-<script src="components/search/i18n/ru.js"></script>
 <script src="components/uix/footer/footer.controller.js"></script>
 <script src="components/uix/footer/footer.directive.js"></script>
 <script src="components/uix/help/help.controller.js"></script>
@@ -286,12 +286,11 @@
 <script src="components/look/content/vk/vk.directive.js"></script>
 <script src="components/look/content/youtube/youtube.controller.js"></script>
 <script src="components/look/content/youtube/youtube.directive.js"></script>
-<script src="components/show/item/form/form.controller.js"></script>
-<script src="components/show/item/form/form.directive.js"></script>
-<script src="components/show/item/link/link.controller.js"></script>
-<script src="components/show/item/link/link.directive.js"></script>
 <script src="components/search/chips/type/type.controller.js"></script>
 <script src="components/search/chips/type/type.directive.js"></script>
+<script src="components/search/menu/lucky/lucky.controller.js"></script>
+<script src="components/search/menu/lucky/lucky.directive.js"></script>
+<script src="components/search/menu/lucky/lucky.factory.js"></script>
 <script src="components/search/result/actions/actions.controller.js"></script>
 <script src="components/search/result/actions/actions.directive.js"></script>
 <script src="components/search/result/audio/audio.controller.js"></script>
@@ -312,9 +311,10 @@
 <script src="components/search/result/video/video.directive.js"></script>
 <script src="components/search/result/web/web.controller.js"></script>
 <script src="components/search/result/web/web.directive.js"></script>
-<script src="components/search/menu/lucky/lucky.controller.js"></script>
-<script src="components/search/menu/lucky/lucky.directive.js"></script>
-<script src="components/search/menu/lucky/lucky.factory.js"></script>
+<script src="components/show/item/form/form.controller.js"></script>
+<script src="components/show/item/form/form.directive.js"></script>
+<script src="components/show/item/link/link.controller.js"></script>
+<script src="components/show/item/link/link.directive.js"></script>
 <script src="components/uix/input/menu/menu.controller.js"></script>
 <script src="components/uix/input/menu/menu.directive.js"></script>
 <script src="components/uix/item/edit/edit.controller.js"></script>

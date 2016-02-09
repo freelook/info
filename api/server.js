@@ -4,11 +4,13 @@
  */
 var init = require('./config/init')(),
     config = require('./config/config'),
-    Parse = require('parse').Parse;
+    Firebase = require('firebase');
 
 // Bootstrap db connection
-Parse.initialize(config.Parse.id, config.Parse.js, config.Parse.master);
-Parse.Cloud.useMasterKey();
+var ref = new Firebase(config.Firebase.ref);
+ref.authWithCustomToken(config.Firebase.id, function (error, authData) {
+    console.log(authData);
+});
 
 // Init the express application
 var api = require('express')();
