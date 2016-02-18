@@ -16,5 +16,11 @@ module.exports = {
     Firebase: {
         ref: 'https://freelook.firebaseio.com/',
         id: process.env.FIREBASE_ID
+    },
+    Red: {
+        httpAdminRoot: '/red',
+        httpNodeRoot: '/rapi',
+        userDir: './red',
+        functionGlobalContext: {}
     }
 };

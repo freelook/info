@@ -25,6 +25,7 @@
     "lodash": "~2.4.1",
     "method-override": "~1.0.0",
     "morgan": "~1.0.0",
+    "node-red": "^0.13.1",
     "parse": "^1.5.0",
     "phantom": "^0.7.2",
     "phantomjs": "^1.9.17",

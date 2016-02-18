@@ -122,13 +122,9 @@ function checkToken(_update) {
     var defer = $q.defer();
     API.child('facebook').once('value', function (_facebook) {
         var _date = (new Date()).getTime(), facebook = _facebook && _facebook.val();
-        if (facebook) {
-            if (!_update && facebook.token && +facebook.expire > +_date) {
-                fb_token = facebook.token;
-                return defer.resolve(facebook.token);
-            } else {
-                _handleToken(API, defer, _date);
-            }
+        if (!_update && facebook && facebook.token && +facebook.expire > +_date) {
+            fb_token = facebook.token;
+            return defer.resolve(facebook.token);
         } else {
             _handleToken(API, defer, _date);
         }
