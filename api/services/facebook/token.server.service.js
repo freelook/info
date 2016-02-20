@@ -5,7 +5,7 @@ var $http = require('request'),
     $q = require('q'),
     config = require('../../config/config'),
     Firebase = require('firebase'),
-    API = new Firebase(config.Firebase.ref + 'api/'),
+    API = new Firebase(config.Firebase.ref + 'api/facebook'),
     id = process.env.FB_ID,
     secret = process.env.FB_SECRET,
     pass = process.env.FB_PASS,
@@ -19,11 +19,9 @@ function _storeToken(api, token, dateCreation) {
         expire = (new Date(+dateCreation + expireIn * 1000)).getTime();
 
     fb_token = token;
-    api.set({
-        facebook: {
-            token: token,
-            expire: expire
-        }
+    api.update({
+        token: token,
+        expire: expire
     })
         .then(function () {
             return defer.resolve(token);
@@ -120,7 +118,7 @@ function checkToken(_update) {
     }
 
     var defer = $q.defer();
-    API.child('facebook').once('value', function (_facebook) {
+    API.once('value', function (_facebook) {
         var _date = (new Date()).getTime(), facebook = _facebook && _facebook.val();
         if (!_update && facebook && facebook.token && +facebook.expire > +_date) {
             fb_token = facebook.token;

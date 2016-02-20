@@ -5,7 +5,7 @@ var $http = require('request'),
     $q = require('q'),
     config = require('../../config/config'),
     Firebase = require('firebase'),
-    API = new Firebase(config.Firebase.ref + 'api/'),
+    API = new Firebase(config.Firebase.ref + 'api/instagram/'),
     id = process.env.INSTAGRAM_ID,
     pass = process.env.INSTAGRAM_PASS,
     instagram_token = '';
@@ -15,11 +15,9 @@ function _storeToken(api, token) {
     var defer = $q.defer();
 
     instagram_token = token;
-    api.set({
-        instagram: {
-            token: token,
-            expire: 0
-        }
+    api.update({
+        token: token,
+        expire: 0
     })
         .then(function () {
             return defer.resolve(token);
@@ -94,7 +92,7 @@ function checkToken(_update) {
     }
 
     var defer = $q.defer();
-    API.child('instagram').once('value', function (_instagram) {
+    API.once('value', function (_instagram) {
         var instagram = _instagram && _instagram.val();
         if (!_update && instagram && instagram.token) {
             instagram_token = instagram.token;
