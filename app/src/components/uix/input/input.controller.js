@@ -3,7 +3,7 @@
 angular
   .module('fli.uix')
   .controller('input.ctrl',
-  function ($scope, url, locale, nav, PLACEHOLDER) {
+  function ($scope, url, locale, nav, auth, PLACEHOLDER) {
 
     var vm = this, _search_ = 'search';
     $scope.fli.focus = 0;
@@ -43,7 +43,7 @@ angular
     };
 
     vm.setting = function () {
-      $scope.fli.view = 'components/views/setting/setting.view.html';
+      auth.logIn();
     };
 
     vm.filter = function () {
