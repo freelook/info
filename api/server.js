@@ -29,7 +29,7 @@ var io = require('socket.io')(server);
 
 require('./config/socket')(io);
 require('./config/express')(api);
-require('./services/user/user').init();
+require('./services/core').init();
 
 // Run api
 server.listen(config.port);

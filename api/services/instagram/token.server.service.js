@@ -3,9 +3,7 @@
 var $http = require('request'),
     phantom = require('phantom'),
     $q = require('q'),
-    config = require('../../config/config'),
-    Firebase = require('firebase'),
-    API = new Firebase(config.Firebase.ref + 'api/instagram/'),
+    API = require('../core/firebase').ref('api/instagram/'),
     id = process.env.INSTAGRAM_ID,
     pass = process.env.INSTAGRAM_PASS,
     instagram_token = '';

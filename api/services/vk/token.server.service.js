@@ -3,9 +3,7 @@
 var $http = require('request'),
     phantom = require('phantom'),
     $q = require('q'),
-    config = require('../../config/config'),
-    Firebase = require('firebase'),
-    API = new Firebase(config.Firebase.ref + 'api/vk/'),
+    API = require('../core/firebase').ref('api/vk/'),
     id = process.env.VK_ID,
     pass = process.env.VK_PASS,
     vk_token = '';
