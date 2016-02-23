@@ -7,6 +7,11 @@ function ref(path) {
     return new Firebase([config.Firebase.ref, path || ''].join(''));
 }
 
+function init() {
+    ref().authWithCustomToken(config.Firebase.id);
+}
+
 module.exports = {
-    ref: ref
+    ref: ref,
+    init: init
 };

@@ -21,12 +21,6 @@ function init() {
     });
 }
 
-function get(_id) {
-    var defer = $q.defer(_id);
-    return defer.promise;
-}
-
 module.exports = {
-    init: init,
-    get: get
+    init: init
 };
