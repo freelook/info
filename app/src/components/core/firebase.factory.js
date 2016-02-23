@@ -4,7 +4,7 @@ angular
   .factory('Firebase', function ($window, CONFIG) {
 
     function ref(path) {
-      return new $window.Firebase(CONFIG.API.FIREBASE.URL + path);
+      return new $window.Firebase([CONFIG.API.FIREBASE.URL, path || ''].join(''));
     }
 
     return {

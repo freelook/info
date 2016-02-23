@@ -6,19 +6,11 @@ angular
     function init() {
       var _authData = authData();
       if (_authData) {
-        $cookies.put('token', _authData.uid);
+        $cookies.put('token', _authData.token);
       }
       $timeout(function () {
         $rootScope.fli.user = _authData;
       });
-    }
-
-    function current() {
-      //var _authData = authData();
-      //if (_authData.uid) {
-      //  return $firebaseObject(Firebase.ref('users').child(_authData.uid)).$loaded();
-      //}
-      return $q.when(authData());
     }
 
     function authData() {
@@ -27,7 +19,6 @@ angular
 
     return {
       init: init,
-      current: current,
       authData: authData
     };
 

@@ -28,8 +28,8 @@ RED.start();
 var io = require('socket.io')(server);
 
 require('./config/socket')(io);
-require('./services/core/io')(io);
 require('./config/express')(api);
+require('./services/user/user').init();
 
 // Run api
 server.listen(config.port);
