@@ -5,15 +5,12 @@ angular
 
     var authObj = Firebase.ref();
 
-    authObj.onAuth(function (auth) {
-      user.init(auth);
+    authObj.onAuth(function () {
+      user.init();
     });
 
-    function _storeUser(authData) {
-      var userRef = Firebase.ref('users').child(authData.uid);
-      return userRef.once('value').then(function () {
-        return userRef.set(authData);
-      });
+    function _storeAuthData(authData) {
+      Firebase.ref('users').child(authData.uid).child('authData').set(authData);
     }
 
     function logOut() {
@@ -22,11 +19,11 @@ angular
     }
 
     function logIn() {
-      if (user.authData()) {
+      if (user.authData().uid) {
         setting.open();
       } else {
         authObj.authWithOAuthPopup('facebook').then(function (authData) {
-          _storeUser(authData);
+          _storeAuthData(authData);
           setting.open();
         });
       }

@@ -3,23 +3,39 @@ angular
   .module('freelook.info')
   .factory('user', function ($rootScope, $cookies, $timeout, $q, Firebase) {
 
-    function init() {
-      var _authData = authData();
-      if (_authData) {
-        $cookies.put('token', _authData.token);
-      }
+    function _setUser(user) {
       $timeout(function () {
-        $rootScope.fli.user = _authData;
+        $rootScope.fli.user = user;
       });
     }
 
+    function init() {
+      current()
+        .then(function (_user) {
+          $cookies.put('token', authData().token);
+          _setUser(_user.val());
+        })
+        .catch(function () {
+          _setUser();
+        });
+    }
+
     function authData() {
-      return Firebase.ref().getAuth();
+      return Firebase.ref().getAuth() || {};
+    }
+
+    function current() {
+      var uid = authData().uid;
+      if (uid) {
+        return Firebase.ref('users').child(uid).once('value');
+      }
+      return $q.reject();
     }
 
     return {
       init: init,
-      authData: authData
+      authData: authData,
+      current: current
     };
 
   });

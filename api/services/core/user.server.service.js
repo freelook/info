@@ -1,22 +1,12 @@
 'use strict';
 
 var $q = require('q'),
-    ref = require('../core/firebase').ref(),
-    users = ref.child('users');
+    users = require('../core/firebase').ref('users');
 
 function init() {
-
     users.on('child_added', function (userSnap) {
-        var user = userSnap.val();
-        if (user && user.uid) {
-            ref.child('looks').child(user.uid).set(100);
-        }
-    });
-
-    users.on('child_removed', function (userSnap) {
-        var user = userSnap.val();
-        if (user && user.uid) {
-            ref.child('looks').child(user.uid).remove();
+        if (userSnap) {
+            userSnap.ref().child('looks').set(100);
         }
     });
 }
