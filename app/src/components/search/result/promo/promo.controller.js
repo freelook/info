@@ -8,9 +8,9 @@ angular
     var vm = this;
     vm.results = [];
 
-    vm.click = function (_item) {
-      if (user.current()) {
-        promo.click(_item);
+    vm.click = function ($key) {
+      if (user.authData().uid) {
+        promo.click($key);
       } else {
         toast.needLogin();
       }
@@ -19,7 +19,7 @@ angular
     SHOW.query()
       .then(function (results) {
         $timeout(function () {
-          vm.results = results || [];
+          vm.results = results.val() || {};
         });
       });
 

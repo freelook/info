@@ -3,16 +3,16 @@
 angular
   .module('fli.show')
   .factory('SHOW',
-  function (user, $firebaseArray, Firebase) {
+  function (user, Firebase) {
 
-    var SHOWS = $firebaseArray(Firebase.ref('shows').limitToFirst(24));
+    var SHOWS = Firebase.ref('shows');
 
     function query() {
-      return SHOWS.$loaded();
+      return SHOWS.limitToFirst(24).once('value');
     }
 
     function add(_show) {
-      return SHOWS.$add(_show);
+      return SHOWS.push(_show);
     }
 
     return {

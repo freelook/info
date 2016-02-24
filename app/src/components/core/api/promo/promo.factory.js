@@ -17,9 +17,9 @@ angular
       });
     }
 
-    function click(_item) {
-      if (_item && _item.id) {
-        url.link(api.promo('click?id=' + _item.id));
+    function click($key) {
+      if ($key) {
+        url.link(api.promo('click?id=' + $key));
       }
     }
 

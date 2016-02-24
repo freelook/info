@@ -8,9 +8,9 @@ angular
     var vm = this;
 
     function _init() {
-      if (!$scope.fli.user) {
+      user.init().catch(function () {
         toast.needLogin();
-      }
+      });
     }
 
     vm.total = function () {
@@ -24,7 +24,7 @@ angular
         $scope.showItem.post.img &&
         $scope.showItem.post.title &&
         $scope.showItem.post.content &&
-        vm.total() <= $scope.fli.user.get('looks');
+        vm.total() <= +$scope.fli.user.looks;
     };
 
     vm.show = function () {

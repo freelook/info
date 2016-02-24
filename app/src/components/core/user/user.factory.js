@@ -10,13 +10,15 @@ angular
     }
 
     function init() {
-      current()
+      return current()
         .then(function (_user) {
           $cookies.put('token', authData().token);
           _setUser(_user.val());
+          return _user;
         })
-        .catch(function () {
+        .catch(function (err) {
           _setUser();
+          return $q.reject(err);
         });
     }
 
