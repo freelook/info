@@ -3,9 +3,9 @@
   "description": "fli.api",
   "version": "0.13.8",
   "author": "Dima Kostrub",
-  "engines": {
-    "node": "0.12.x",
-    "npm": "2.10.x"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/freelook/info"
   },
   "scripts": {
     "start": "gulp",
@@ -22,11 +22,10 @@
     "firebase": "2.4.0",
     "glob": "3.2.9",
     "helmet": "0.2.1",
-    "lodash": "2.4.1",
+    "lodash": "4.0.0",
     "method-override": "1.0.0",
     "morgan": "1.0.0",
     "node-red": "0.13.1",
-    "parse": "1.5.0",
     "phantom": "0.7.2",
     "phantomjs": "1.9.17",
     "q": "1.2.0",
@@ -46,6 +45,7 @@
     "supertest": "0.10.0"
   },
   "engines": {
-    "node": ">=0.12.2"
+    "node": "0.12.2",
+    "npm": "2.7.4"
   }
 }

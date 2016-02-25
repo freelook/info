@@ -6,7 +6,7 @@
 
   angular
     .module('fli.core', [
-      'ngAnimate', 'ngTouch', 'ngSanitize', 'ngCookies', 'ngRoute', 'ngMaterial',
+      'ngAnimate', 'ngSanitize', 'ngCookies', 'ngRoute', 'ngMaterial',
       'pascalprecht.translate', 'angular-cache', 'mediaPlayer'
     ]);
 
