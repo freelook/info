@@ -1,6 +1,6 @@
 'use strict';
 
-var promo = require('../services/promo/promo'),
+var promo = require('../services/core/promo'),
     io = require('../services/core/io');
 
 function click(req, res) {
@@ -11,8 +11,7 @@ function click(req, res) {
             token: req.cookies.token
         })
             .then(function (_url) {
-                var link = _url || '';
-                res.redirect(link);
+                res.redirect(_url);
                 io().to(req.cookies.socket).emit('API', 'update');
             })
             .catch(function () {
