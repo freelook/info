@@ -1,9 +1,13 @@
+<div layout="column" layout-align="center center" ng-if="::fli.user.authData.facebook.profileImageURL">
+  <img ng-if="fli.user" ng-src="{{::fli.user.authData.facebook.profileImageURL}}" class="circle">
+</div>
+
 <div layout="row" layout-align="end center">
 
-  <div flex>
+  <div flex ng-if="::fli.user">
     <div layout="row" layout-align="start center">
       <div><i class="fa fa-user link"></i></div>
-      <div class="block" ng-bind="fli.user.authData.facebook.displayName"></div>
+      <div class="block" ng-bind="::fli.user.authData.facebook.displayName"></div>
     </div>
     <div layout="row" layout-align="start center">
       <div><i class="fa fa-eye link"></i></div>

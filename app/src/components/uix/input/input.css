@@ -43,11 +43,6 @@ fli-input .md-button.md-icon-button i {
   outline: 0;
 }
 
-fli-input .md-button.md-icon-button img {
-  max-height: 35px;
-  margin-top: 5px;
-}
-
 fli-input #progress {
   bottom: -3px;
   position: absolute;
