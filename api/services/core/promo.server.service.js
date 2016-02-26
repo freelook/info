@@ -6,6 +6,14 @@ var $q = require('q'),
     shows = require('../core/firebase').ref('shows'),
     config = require('../../config/config');
 
+function init() {
+    shows.on('child_changed', function (showsSnap) {
+        if (+showsSnap.child('amount').val() <= 0) {
+            showsSnap.ref().remove();
+        }
+    });
+}
+
 function click(data) {
     var defer = $q.defer(),
         user = jwt.decode(data.token, config.Firebase.id);
@@ -21,14 +29,19 @@ function click(data) {
                     });
             })
             .then(function (data) {
-                return data.usr.ref().child('looks')
-                    .set(+data.usr.child('looks').val() + data.show.child('price').val())
+                var update = {
+                    amount: +data.show.child('amount').val() - 1,
+                    users: {}
+                };
+                update.users[data.usr.key()] = true;
+                return data.show.ref().update(update)
                     .then(function () {
                         return data;
                     });
             })
             .then(function (data) {
-                return data.show.ref().child('users').child(data.usr.key()).set(true)
+                return data.usr.ref().child('looks')
+                    .set(+data.usr.child('looks').val() + data.show.child('price').val())
                     .then(function () {
                         return data.show.child('url').val();
                     });
@@ -49,5 +62,6 @@ function click(data) {
 
 
 module.exports = {
+    init: init,
     click: click
 };

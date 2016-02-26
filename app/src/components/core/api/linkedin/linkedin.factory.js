@@ -17,12 +17,12 @@ angular
         $dom = $(dom);
 
       $dom.find('div.posts ul > li').each(function (i, e) {
-        var element = $(e), link = element.find('footer > h2 > a, .article-title > a');
+        var element = $(e), link = element.find('footer > div > h2 > a, .article-title > a');
         posts.push({
           title: link.text(),
           url: link.attr('href'),
           img: element.find('header img').attr('data-delayed-url') || element.find('.article-container img').attr('data-delayed-url'),
-          content: element.find('footer > .post-body').text() || element.find('.article-snippet').text()
+          content: element.find('footer > div > p').text() || element.find('.article-snippet').text()
         });
       });
 

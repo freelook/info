@@ -5,7 +5,7 @@ var $q = require('q'),
 
 function init() {
     users.on('child_added', function (userSnap) {
-        if (userSnap) {
+        if (userSnap && !userSnap.hasChild('looks')) {
             userSnap.ref().child('looks').set(100);
         }
     });
