@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('auth', function (setting, toast, user, Firebase) {
+  .factory('auth', function (toast, user, Firebase) {
 
     var authObj = Firebase.ref();
 
@@ -15,23 +15,18 @@ angular
 
     function logOut() {
       authObj.unauth();
-      setting.close();
     }
 
-    function logIn() {
-      if (user.authData().uid) {
-        setting.open();
-      } else {
-        authObj.authWithOAuthPopup('facebook').then(function (authData) {
-          _storeAuthData(authData);
-          setting.open();
-        });
-      }
+    function logIn(provider) {
+      authObj.authWithOAuthPopup(provider).then(function (authData) {
+        _storeAuthData(authData);
+      });
     }
 
     return {
       logIn: logIn,
-      logOut: logOut
+      logOut: logOut,
+      data: user.authData
     };
 
   });

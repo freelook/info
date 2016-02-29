@@ -49,6 +49,11 @@ angular
                 $rootScope.go('/' + path);
               });
             }
+
+            if (Firebase && Firebase.INTERNAL) {
+              Firebase.INTERNAL.forceWebSockets();
+            }
+
           });
         }
       }

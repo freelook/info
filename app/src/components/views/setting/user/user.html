@@ -1,22 +1,10 @@
-<div layout="column" layout-align="center center" ng-if="::fli.user.authData.facebook.profileImageURL">
-  <img ng-if="fli.user" ng-src="{{::fli.user.authData.facebook.profileImageURL}}" class="circle">
-</div>
-
-<div layout="row" layout-align="end center">
-
-  <div flex ng-if="::fli.user">
-    <div layout="row" layout-align="start center">
-      <div><i class="fa fa-user link"></i></div>
-      <div class="block" ng-bind="::fli.user.authData.facebook.displayName"></div>
-    </div>
-    <div layout="row" layout-align="start center">
-      <div><i class="fa fa-eye link"></i></div>
-      <div class="block" ng-bind="fli.user.looks"></div>
-    </div>
+<div layout="column" layout-align="center start" ng-if="fli.user">
+  <div layout="row" layout-align="start center">
+    <div><i class="fa fa-user link"></i></div>
+    <div class="block" ng-bind="::fli.user.authData[fli.user.authData.provider].displayName"></div>
   </div>
-
-  <md-button class="md-icon-button link" aria-label="fb-logout" ng-click="user.logOut()">
-    <i class="fa fa-sign-out fa-2x"></i>
-  </md-button>
-
+  <div layout="row" layout-align="start center">
+    <div><i class="fa fa-eye link"></i></div>
+    <div class="block" ng-bind="fli.user.looks"></div>
+  </div>
 </div>
