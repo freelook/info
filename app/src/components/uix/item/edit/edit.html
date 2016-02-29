@@ -1,7 +1,7 @@
 <md-card class="fli-item" ng-class="{small:!!fliItemCtrl.small}" layout="column" ng-if="fliItemCtrl">
   <md-card-content>
 
-    <div ng-if="!fliItemCtrl.imgEdit" class="link" ng-click="fliItemCtrl.imgToggle()">
+    <div ng-if="!fliItemCtrl.imgEdit" class="link" ng-click="fliItemCtrl.imgToggle()" layout="column" layout-align="center center">
       <img class="md-card-image" ng-if="fliItemCtrl.img" ng-src="{{fliItemCtrl.img}}" fli-item-img fli-err>
     </div>
 
@@ -11,12 +11,12 @@
         <input ng-model="fliItemCtrl.img" ng-blur="fliItemCtrl.imgToggle()" type="url" required>
       </md-input-container>
 
-      <md-input-container>
+      <md-input-container layout="column">
         <label translate="index.core.uix.item.edit.title"></label>
-        <input ng-model="fliItemCtrl.title" md-maxlength="100" required>
+        <textarea ng-model="fliItemCtrl.name" md-maxlength="100" required></textarea>
       </md-input-container>
 
-      <md-input-container>
+      <md-input-container layout="column">
         <label translate="index.core.uix.item.edit.content"></label>
         <textarea md-no-autogrow="true" ng-model="fliItemCtrl.content" md-maxlength="300" required></textarea>
       </md-input-container>

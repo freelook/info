@@ -50,8 +50,8 @@ angular
               });
             }
 
-            if (Firebase && Firebase.INTERNAL) {
-              Firebase.INTERNAL.forceWebSockets();
+            if ($window.Firebase && $window.Firebase.INTERNAL) {
+              $window.Firebase.INTERNAL.forceWebSockets();
             }
 
           });

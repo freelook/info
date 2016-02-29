@@ -1,6 +1,6 @@
-<div layout="column" layout-gt-sm="row" layout-align="start center" ng-if="site">
+<div layout="column" layout-gt-xs="row" layout-align="center center" ng-if="site">
   <fli-show-item-link class="animate"></fli-show-item-link>
-  <fli-show-item-form flex ng-if="showItem.post"></fli-show-item-form>
+  <fli-show-item-form ng-if="showItem.post"></fli-show-item-form>
 </div>
 
 <fli-welcome ng-if="!site"></fli-welcome>

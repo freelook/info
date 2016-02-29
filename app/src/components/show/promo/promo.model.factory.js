@@ -2,17 +2,17 @@
 
 angular
   .module('fli.show')
-  .factory('SHOW',
+  .factory('PROMO',
   function (user, Firebase) {
 
-    var SHOWS = Firebase.ref('shows');
+    var PROMOS = Firebase.ref('promos');
 
     function query() {
-      return SHOWS.limitToFirst(24).once('value');
+      return PROMOS.limitToFirst(24).once('value');
     }
 
-    function add(_show) {
-      return SHOWS.push(_show);
+    function add(_promo) {
+      return PROMOS.push(_promo);
     }
 
     return {

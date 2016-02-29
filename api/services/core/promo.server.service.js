@@ -3,13 +3,31 @@
 var $q = require('q'),
     jwt = require('jwt-simple'),
     users = require('../core/firebase').ref('users'),
-    shows = require('../core/firebase').ref('shows'),
+    promos = require('../core/firebase').ref('promos'),
     config = require('../../config/config');
 
 function init() {
-    shows.on('child_changed', function (showsSnap) {
-        if (+showsSnap.child('amount').val() <= 0) {
-            showsSnap.ref().remove();
+    promos.on('child_added', function (promoSnap) {
+        if (promoSnap.hasChild('user')) {
+            users.child(promoSnap.child('user').val()).child('looks').once('value')
+                .then(function (looksSnap) {
+                    var looks = +looksSnap.val() - promoSnap.child('amount').val() * promoSnap.child('price').val();
+                    if (looks >= 0) {
+                        return looksSnap.ref().set(looks);
+                    }
+                    return $q.reject();
+                })
+                .then(function () {
+                    return promoSnap.child('user').ref().remove();
+                })
+                .catch(function () {
+                    promoSnap.ref().remove();
+                });
+        }
+    });
+    promos.on('child_changed', function (promoSnap) {
+        if (+promoSnap.child('amount').val() <= 0) {
+            promoSnap.ref().remove();
         }
     });
 }
@@ -18,7 +36,7 @@ function click(data) {
     var defer = $q.defer(),
         user = jwt.decode(data.token, config.Firebase.id);
     if (user && user.d && user.d.uid) {
-        shows.child(data.id).once('value')
+        promos.child(data.id).once('value')
             .then(function (_show) {
                 return _show;
             })

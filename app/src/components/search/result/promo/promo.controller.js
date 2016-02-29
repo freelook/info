@@ -3,7 +3,7 @@
 angular
   .module('fli.search')
   .controller('search.result.promo.ctrl',
-  function ($timeout, promo, user, toast, SHOW) {
+  function ($timeout, promo, user, toast, PROMO) {
 
     var vm = this;
     vm.results = [];
@@ -16,7 +16,7 @@ angular
       }
     };
 
-    SHOW.query()
+    PROMO.query()
       .then(function (results) {
         $timeout(function () {
           vm.results = results.val() || {};

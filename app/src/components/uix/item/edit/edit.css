@@ -1,3 +1,7 @@
 fli-item-edit {
   display: block;
 }
+
+fli-item-edit md-input-container textarea {
+  min-height: 100px;
+}
