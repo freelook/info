@@ -6,7 +6,7 @@ angular
   function ($timeout, promo, user, toast, PROMO) {
 
     var vm = this;
-    vm.results = [];
+    vm.results = {};
 
     vm.click = function ($key) {
       if (user.authData().uid) {

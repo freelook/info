@@ -37,31 +37,34 @@ function click(data) {
         user = jwt.decode(data.token, config.Firebase.id);
     if (user && user.d && user.d.uid) {
         promos.child(data.id).once('value')
-            .then(function (_show) {
-                return _show;
+            .then(function (_promo) {
+                return _promo;
             })
-            .then(function (_show) {
+            .then(function (_promo) {
                 return users.child(user.d.uid).once('value')
                     .then(function (_usr) {
-                        return {usr: _usr, show: _show};
+                        return {usr: _usr, promo: _promo};
                     });
             })
             .then(function (data) {
+                if (data.promo.child('users').hasChild(data.usr.key())) {
+                    return $q.reject();
+                }
                 var update = {
-                    amount: +data.show.child('amount').val() - 1,
+                    amount: +data.promo.child('amount').val() - 1,
                     users: {}
                 };
                 update.users[data.usr.key()] = true;
-                return data.show.ref().update(update)
+                return data.promo.ref().update(update)
                     .then(function () {
                         return data;
                     });
             })
             .then(function (data) {
                 return data.usr.ref().child('looks')
-                    .set(+data.usr.child('looks').val() + data.show.child('price').val())
+                    .set(+data.usr.child('looks').val() + data.promo.child('price').val())
                     .then(function () {
-                        return data.show.child('url').val();
+                        return data.promo.child('url').val();
                     });
             })
             .then(function (_url) {

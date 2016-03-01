@@ -3,7 +3,7 @@
 angular
   .module('fli.show')
   .factory('PROMO',
-  function (user, Firebase) {
+  function (Firebase) {
 
     var PROMOS = Firebase.ref('promos');
 

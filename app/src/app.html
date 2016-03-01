@@ -30,8 +30,6 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="components/_index/index.css">
   <link rel="stylesheet" href="components/home/home.css">
-  <link rel="stylesheet" href="components/views/setting/setting.css">
-  <link rel="stylesheet" href="components/views/share/share.css">
   <link rel="stylesheet" href="components/feedback/comments/comments.css">
   <link rel="stylesheet" href="components/home/widget/widget.css">
   <link rel="stylesheet" href="components/look/content/content.css">
@@ -56,8 +54,8 @@
   <link rel="stylesheet" href="components/uix/rating/fli.rating.css">
   <link rel="stylesheet" href="components/uix/toast/toast.css">
   <link rel="stylesheet" href="components/uix/welcome/welcome.css">
-  <link rel="stylesheet" href="components/views/setting/auth/auth.css">
-  <link rel="stylesheet" href="components/views/setting/user/user.css">
+  <link rel="stylesheet" href="components/views/setting/setting.css">
+  <link rel="stylesheet" href="components/views/share/share.css">
   <link rel="stylesheet" href="components/home/widget/looks/looks.css">
   <link rel="stylesheet" href="components/look/content/facebook/facebook.css">
   <link rel="stylesheet" href="components/look/content/full/full.css">
@@ -82,9 +80,8 @@
   <link rel="stylesheet" href="components/uix/input/menu/menu.css">
   <link rel="stylesheet" href="components/uix/item/edit/edit.css">
   <link rel="stylesheet" href="components/uix/locale/panel/panel.css">
-  <link rel="stylesheet" href="components/look/content/youtube/channel/channel.css">
-  <link rel="stylesheet" href="components/look/content/youtube/user/user.css">
-  <link rel="stylesheet" href="components/look/content/youtube/watch/watch.css">
+  <link rel="stylesheet" href="components/views/setting/auth/auth.css">
+  <link rel="stylesheet" href="components/views/setting/user/user.css">
   <link rel="stylesheet" href="components/look/content/full/rich/rich.css">
   <link rel="stylesheet" href="components/look/content/instagram/media/media.css">
   <link rel="stylesheet" href="components/look/content/instagram/user/user.css">
@@ -94,6 +91,9 @@
   <link rel="stylesheet" href="components/look/content/vk/user/user.css">
   <link rel="stylesheet" href="components/look/content/vk/video/video.css">
   <link rel="stylesheet" href="components/look/content/vk/wall/wall.css">
+  <link rel="stylesheet" href="components/look/content/youtube/channel/channel.css">
+  <link rel="stylesheet" href="components/look/content/youtube/user/user.css">
+  <link rel="stylesheet" href="components/look/content/youtube/watch/watch.css">
   <link rel="stylesheet" href="components/search/chips/type/sub/sub.css">
   <link rel="stylesheet" href="components/search/result/actions/twitter/twitter.css">
   <link rel="stylesheet" href="components/search/result/actions/vk/vk.css">
@@ -152,7 +152,6 @@
 <!-- endbower -->
 
 <!-- inject:js -->
-<script src="components/views/_views.module.js"></script>
 <script src="components/_index/__index.module.js"></script>
 <script src="components/_index/index.controller.js"></script>
 <script src="components/_index/index.factory.js"></script>
@@ -176,12 +175,7 @@
 <script src="components/show/_show.module.js"></script>
 <script src="components/show/show.controller.js"></script>
 <script src="components/uix/_uix.module.js"></script>
-<script src="components/views/setting/setting.controller.js"></script>
-<script src="components/views/setting/setting.directive.js"></script>
-<script src="components/views/setting/setting.factory.js"></script>
-<script src="components/views/share/share.controller.js"></script>
-<script src="components/views/share/share.directive.js"></script>
-<script src="components/views/share/share.factory.js"></script>
+<script src="components/views/_views.module.js"></script>
 <script src="components/_index/i18n/en.js"></script>
 <script src="components/_index/i18n/ru.js"></script>
 <script src="components/core/api/api.app.factory.js"></script>
@@ -259,10 +253,12 @@
 <script src="components/uix/scroll/scroll.factory.js"></script>
 <script src="components/uix/toast/toast.factory.js"></script>
 <script src="components/uix/welcome/welcome.directive.js"></script>
-<script src="components/views/setting/auth/auth.controller.js"></script>
-<script src="components/views/setting/auth/auth.directive.js"></script>
-<script src="components/views/setting/user/user.controller.js"></script>
-<script src="components/views/setting/user/user.directive.js"></script>
+<script src="components/views/setting/setting.controller.js"></script>
+<script src="components/views/setting/setting.directive.js"></script>
+<script src="components/views/setting/setting.factory.js"></script>
+<script src="components/views/share/share.controller.js"></script>
+<script src="components/views/share/share.directive.js"></script>
+<script src="components/views/share/share.factory.js"></script>
 <script src="components/core/api/facebook/FB.factory.js"></script>
 <script src="components/core/api/facebook/facebook.factory.js"></script>
 <script src="components/core/api/google/_google.factory.js"></script>
@@ -270,8 +266,8 @@
 <script src="components/core/api/google/google.site.factory.js"></script>
 <script src="components/core/api/instagram/instagram.factory.js"></script>
 <script src="components/core/api/linkedin/linkedin.factory.js"></script>
-<script src="components/core/api/pinterest/pinterest.factory.js"></script>
 <script src="components/core/api/promo/promo.factory.js"></script>
+<script src="components/core/api/pinterest/pinterest.factory.js"></script>
 <script src="components/core/api/twitter/twitter.factory.js"></script>
 <script src="components/core/api/vk/vk.factory.js"></script>
 <script src="components/core/api/yandex/yandex.factory.js"></script>
@@ -327,14 +323,12 @@
 <script src="components/uix/item/icon/icon.directive.js"></script>
 <script src="components/uix/locale/panel/panel.controller.js"></script>
 <script src="components/uix/locale/panel/panel.directive.js"></script>
-<script src="components/look/content/youtube/channel/channel.controller.js"></script>
-<script src="components/look/content/youtube/channel/channel.directive.js"></script>
-<script src="components/look/content/youtube/user/user.controller.js"></script>
-<script src="components/look/content/youtube/user/user.directive.js"></script>
-<script src="components/look/content/youtube/watch/watch.controller.js"></script>
-<script src="components/look/content/youtube/watch/watch.directive.js"></script>
-<script src="components/core/api/google/url/google.url.factory.js"></script>
+<script src="components/views/setting/auth/auth.controller.js"></script>
+<script src="components/views/setting/auth/auth.directive.js"></script>
+<script src="components/views/setting/user/user.controller.js"></script>
+<script src="components/views/setting/user/user.directive.js"></script>
 <script src="components/core/api/google/plus/google.plus.factory.js"></script>
+<script src="components/core/api/google/url/google.url.factory.js"></script>
 <script src="components/look/content/full/read/read.factory.js"></script>
 <script src="components/look/content/full/rich/rich.controller.js"></script>
 <script src="components/look/content/full/rich/rich.directive.js"></script>
@@ -355,6 +349,12 @@
 <script src="components/look/content/vk/video/video.directive.js"></script>
 <script src="components/look/content/vk/wall/wall.controller.js"></script>
 <script src="components/look/content/vk/wall/wall.directive.js"></script>
+<script src="components/look/content/youtube/channel/channel.controller.js"></script>
+<script src="components/look/content/youtube/channel/channel.directive.js"></script>
+<script src="components/look/content/youtube/user/user.controller.js"></script>
+<script src="components/look/content/youtube/user/user.directive.js"></script>
+<script src="components/look/content/youtube/watch/watch.controller.js"></script>
+<script src="components/look/content/youtube/watch/watch.directive.js"></script>
 <script src="components/search/chips/type/sub/sub.controller.js"></script>
 <script src="components/search/chips/type/sub/sub.directive.js"></script>
 <script src="components/search/result/actions/twitter/twitter.controller.js"></script>
