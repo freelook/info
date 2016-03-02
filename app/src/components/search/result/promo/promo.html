@@ -1,5 +1,5 @@
 <div class="fli-grid">
-  <div ng-if="!item.users[fli.user.authData.uid]" ng-repeat="(key, item) in promo.results">
+  <div ng-repeat="(key, item) in promo.results">
     <fli-item ng-click="promo.click(key)" title="{{'index.core.uix.item.getIt' | translate}}" ng-init="fliItem = {
           transclude:'footer',
           img:item.img,

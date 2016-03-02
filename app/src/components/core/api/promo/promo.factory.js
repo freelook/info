@@ -1,11 +1,11 @@
 'use strict';
 angular
   .module('fli.search')
-  .factory('promo', function ($route, api, io, url) {
+  .factory('promo', function (index, api, io, url) {
 
     var handlers = {
       update: function () {
-        $route.reload();
+        index.reload();
       },
       noop: angular.noop
     };

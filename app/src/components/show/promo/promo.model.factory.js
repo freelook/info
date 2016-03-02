@@ -3,12 +3,16 @@
 angular
   .module('fli.show')
   .factory('PROMO',
-  function (Firebase) {
+  function (user, Firebase) {
 
     var PROMOS = Firebase.ref('promos');
 
     function query() {
-      return PROMOS.limitToFirst(24).once('value');
+      var _query = PROMOS;
+      if (user.authData().uid) {
+        _query = _query.orderByChild('users/' + user.authData().uid).equalTo(null);
+      }
+      return _query.limitToFirst(24).once('value');
     }
 
     function add(_promo) {

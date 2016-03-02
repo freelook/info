@@ -13,6 +13,10 @@ angular
       $rootScope.fli.focus = 0;
     }
 
+    function reload() {
+      $route.reload();
+    }
+
     function go(params) {
       if (params) {
         switch (typeof params) {
@@ -51,6 +55,7 @@ angular
 
     return {
       init: init,
+      reload: reload,
       go: go,
       is: is,
       href: href,
