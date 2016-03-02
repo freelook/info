@@ -1,0 +1,16 @@
+<div layout="row" layout-align="center center" ng-if="!fli.user">
+  <md-button class="md-fab md-primary link" aria-label="google" ng-click="auth.logIn('google')">
+    <i class="fa fa-google"></i>
+  </md-button>
+  <md-button class="md-fab md-primary link" aria-label="facebook" ng-click="auth.logIn('facebook')">
+    <i class="fa fa-facebook"></i>
+  </md-button>
+</div>
+<div layout="row" layout-align="end center" ng-if="fli.user">
+  <div flex layout="column" layout-align="center center">
+    <img ng-src="{{::fli.user.authData[fli.user.authData.provider].profileImageURL}}" fli-err class="circle">
+  </div>
+  <md-button class="md-icon-button link" aria-label="fb-logout" ng-click="auth.logOut()">
+    <i class="fa fa-sign-out fa-2x"></i>
+  </md-button>
+</div>

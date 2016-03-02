@@ -3,7 +3,7 @@
 angular
   .module('fli.uix')
   .controller('input.ctrl',
-  function ($scope, url, locale, nav, PLACEHOLDER) {
+  function ($scope, index, url, locale, nav, setting, PLACEHOLDER) {
 
     var vm = this, _search_ = 'search';
     $scope.fli.focus = 0;
@@ -32,6 +32,7 @@ angular
 
     vm.close = function () {
       $scope.fli.view = '';
+      index.reload();
     };
 
     vm.blur = function () {
@@ -43,7 +44,7 @@ angular
     };
 
     vm.setting = function () {
-      $scope.fli.view = 'components/views/setting/setting.view.html';
+      setting.open();
     };
 
     vm.filter = function () {

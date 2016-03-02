@@ -3,9 +3,7 @@
 var $http = require('request'),
     phantom = require('phantom'),
     $q = require('q'),
-    Parse = require('parse').Parse,
-    API = Parse.Object.extend('API'),
-    query = new Parse.Query(API),
+    API = require('../core/firebase').ref('api/vk/'),
     id = process.env.VK_ID,
     pass = process.env.VK_PASS,
     vk_token = '';
@@ -14,13 +12,11 @@ var $http = require('request'),
 function _storeToken(api, token) {
     var defer = $q.defer();
     vk_token = token;
-    api.set('name', 'token');
-    api.set('vk', {
+
+    api.update({
         token: token,
         expire: 0
-    });
-
-    api.save()
+    })
         .then(function () {
             return defer.resolve(token);
         }, function (err) {
@@ -94,22 +90,17 @@ function checkToken(_update) {
     }
 
     var defer = $q.defer();
-    query.first({name: 'token'})
-        .then(function (api) {
-            var vk = api && api.get('vk') || '';
-            if (api) {
-                if (!_update && vk && vk.token) {
-                    vk_token = vk.token;
-                    return defer.resolve(vk.token);
-                } else {
-                    _handleToken(api, defer);
-                }
-            } else {
-                _handleToken(new API(), defer);
-            }
-        }, function (err) {
-            return defer.reject(err);
-        });
+    API.once('value', function (_vk) {
+        var vk = _vk && _vk.val();
+        if (!_update && vk && vk.token) {
+            vk_token = vk.token;
+            return defer.resolve(vk.token);
+        } else {
+            _handleToken(API, defer);
+        }
+    }, function (err) {
+        return defer.reject(err);
+    });
 
     return defer.promise;
 }

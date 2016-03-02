@@ -4,24 +4,23 @@
   "version": "0.13.8",
   "author": "Dima Kostrub",
   "dependencies": {
-    "angular": "1.4.8",
-    "angular-animate": "1.4.8",
-    "angular-cache": "4.4.2",
-    "angular-cookies": "1.4.8",
-    "angular-material": "0.11.0",
+    "angular": "1.5.0",
+    "angular-animate": "1.5.0",
+    "angular-cache": "4.5.0",
+    "angular-cookies": "1.5.0",
+    "angular-material": "1.0.5",
     "angular-media-player": "0.5.8",
-    "angular-route": "1.4.8",
-    "angular-sanitize": "1.4.8",
-    "angular-touch": "1.4.8",
-    "angular-translate": "2.8.1",
-    "font-awesome": "4.4.0",
-    "jquery": "2.1.4",
-    "parse": "1.5.0",
-    "socket.io-client": "1.3.3",
-    "url-pattern": "0.10.2"
+    "angular-route": "1.5.0",
+    "angular-sanitize": "1.5.0",
+    "angular-translate": "2.9.2",
+    "firebase": "2.4.1",
+    "font-awesome": "4.5.0",
+    "jquery": "2.2.1",
+    "socket.io-client": "1.4.5",
+    "url-pattern": "1.0.1"
   },
   "devDependencies": {
-    "angular-mocks": "1.4.8"
+    "angular-mocks": "1.5.0"
   },
   "overrides": {
     "font-awesome": {
@@ -41,7 +40,7 @@
     }
   },
   "resolutions": {
-    "jquery": "2.1.4",
-    "angular": "1.4.8"
+    "jquery": "2.2.1",
+    "angular": "1.5.0"
   }
 }

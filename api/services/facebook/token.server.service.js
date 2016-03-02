@@ -3,9 +3,7 @@
 var $http = require('request'),
     phantom = require('phantom'),
     $q = require('q'),
-    Parse = require('parse').Parse,
-    API = Parse.Object.extend('API'),
-    query = new Parse.Query(API),
+    API = require('../core/firebase').ref('api/facebook/'),
     id = process.env.FB_ID,
     secret = process.env.FB_SECRET,
     pass = process.env.FB_PASS,
@@ -16,16 +14,13 @@ function _storeToken(api, token, dateCreation) {
 
     var defer = $q.defer(),
         expireIn = +token.split('&expires=')[1] || 0,
-        expire = new Date(dateCreation.getTime() + expireIn * 1000);
+        expire = (new Date(+dateCreation + expireIn * 1000)).getTime();
 
     fb_token = token;
-    api.set('name', 'token');
-    api.set('facebook', {
+    api.update({
         token: token,
         expire: expire
-    });
-
-    api.save()
+    })
         .then(function () {
             return defer.resolve(token);
         }, function (err) {
@@ -121,23 +116,17 @@ function checkToken(_update) {
     }
 
     var defer = $q.defer();
-    query.first({name: 'token'})
-        .then(function (api) {
-            var _date = new Date(),
-                facebook = api && api.get('facebook') || '';
-            if (api) {
-                if (!_update && facebook && facebook.token && facebook.expire > _date) {
-                    fb_token = facebook.token;
-                    return defer.resolve(facebook.token);
-                } else {
-                    _handleToken(api, defer, _date);
-                }
-            } else {
-                _handleToken(new API(), defer, _date);
-            }
-        }, function (err) {
-            return defer.reject(err);
-        });
+    API.once('value', function (_facebook) {
+        var _date = (new Date()).getTime(), facebook = _facebook && _facebook.val();
+        if (!_update && facebook && facebook.token && +facebook.expire > +_date) {
+            fb_token = facebook.token;
+            return defer.resolve(facebook.token);
+        } else {
+            _handleToken(API, defer, _date);
+        }
+    }, function (err) {
+        return defer.reject(err);
+    });
 
     return defer.promise;
 }

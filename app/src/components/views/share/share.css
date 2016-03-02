@@ -1,3 +1,7 @@
 fli-share {
   display: block;
 }
+
+fli-share .md-errors-spacer {
+  display: none;
+}

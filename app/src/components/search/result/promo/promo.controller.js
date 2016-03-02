@@ -3,26 +3,23 @@
 angular
   .module('fli.search')
   .controller('search.result.promo.ctrl',
-  function ($timeout, promo, user, toast, SHOW) {
+  function ($timeout, promo, user, toast, PROMO) {
 
     var vm = this;
-    vm.results = [];
+    vm.results = {};
 
-    vm.click = function (_item) {
-      if (user.current()) {
-        promo.click(_item);
+    vm.click = function ($key) {
+      if (user.authData().uid) {
+        promo.click($key);
       } else {
         toast.needLogin();
       }
     };
 
-    SHOW.query()
-      .notEqualTo('users', user.current())
-      .limit(24)
-      .find()
+    PROMO.query()
       .then(function (results) {
         $timeout(function () {
-          vm.results = results || [];
+          vm.results = results.val() || {};
         });
       });
 

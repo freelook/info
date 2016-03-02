@@ -1,18 +1,10 @@
-<div layout="row" layout-align="end center">
-
-  <div flex>
-    <div layout="row" layout-align="start center">
-      <div><i class="fa fa-user link"></i></div>
-      <div class="block" ng-bind="fli.user.get('username')"></div>
-    </div>
-    <div layout="row" layout-align="start center">
-      <div><i class="fa fa-eye link"></i></div>
-      <div class="block" ng-bind="fli.user.get('looks')"></div>
-    </div>
+<div layout="column" layout-align="center start" ng-if="fli.user">
+  <div layout="row" layout-align="start center">
+    <div><i class="fa fa-user link"></i></div>
+    <div class="block" ng-bind="::fli.user.authData[fli.user.authData.provider].displayName"></div>
   </div>
-
-  <md-button class="md-icon-button link" aria-label="fb-logout" ng-click="user.logOut()">
-    <i class="fa fa-sign-out fa-2x"></i>
-  </md-button>
-
+  <div layout="row" layout-align="start center">
+    <div><i class="fa fa-eye link"></i></div>
+    <div class="block" ng-bind="fli.user.looks"></div>
+  </div>
 </div>

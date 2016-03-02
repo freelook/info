@@ -7,4 +7,5 @@ module.exports = function (io) {
     config.getGlobbedFiles('./sockets/**/*.js').forEach(function (routePath) {
         require(path.resolve(routePath))(io);
     });
+    require('../services/core/io')(io);
 };

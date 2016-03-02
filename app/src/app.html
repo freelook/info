@@ -39,6 +39,8 @@
   <link rel="stylesheet" href="components/search/result/result.css">
   <link rel="stylesheet" href="components/search/suggest/suggest.css">
   <link rel="stylesheet" href="components/show/item/item.css">
+  <link rel="stylesheet" href="components/views/setting/setting.css">
+  <link rel="stylesheet" href="components/views/share/share.css">
   <link rel="stylesheet" href="components/uix/animation/animation.css">
   <link rel="stylesheet" href="components/uix/apps/apps.css">
   <link rel="stylesheet" href="components/uix/chips/chips.css">
@@ -54,8 +56,6 @@
   <link rel="stylesheet" href="components/uix/rating/fli.rating.css">
   <link rel="stylesheet" href="components/uix/toast/toast.css">
   <link rel="stylesheet" href="components/uix/welcome/welcome.css">
-  <link rel="stylesheet" href="components/views/setting/setting.css">
-  <link rel="stylesheet" href="components/views/share/share.css">
   <link rel="stylesheet" href="components/home/widget/looks/looks.css">
   <link rel="stylesheet" href="components/look/content/facebook/facebook.css">
   <link rel="stylesheet" href="components/look/content/full/full.css">
@@ -77,11 +77,11 @@
   <link rel="stylesheet" href="components/search/result/web/web.css">
   <link rel="stylesheet" href="components/show/item/form/form.css">
   <link rel="stylesheet" href="components/show/item/link/link.css">
+  <link rel="stylesheet" href="components/views/setting/auth/auth.css">
+  <link rel="stylesheet" href="components/views/setting/user/user.css">
   <link rel="stylesheet" href="components/uix/input/menu/menu.css">
   <link rel="stylesheet" href="components/uix/item/edit/edit.css">
   <link rel="stylesheet" href="components/uix/locale/panel/panel.css">
-  <link rel="stylesheet" href="components/views/setting/login/login.css">
-  <link rel="stylesheet" href="components/views/setting/user/user.css">
   <link rel="stylesheet" href="components/look/content/full/rich/rich.css">
   <link rel="stylesheet" href="components/look/content/instagram/media/media.css">
   <link rel="stylesheet" href="components/look/content/instagram/user/user.css">
@@ -91,8 +91,8 @@
   <link rel="stylesheet" href="components/look/content/vk/user/user.css">
   <link rel="stylesheet" href="components/look/content/vk/video/video.css">
   <link rel="stylesheet" href="components/look/content/vk/wall/wall.css">
-  <link rel="stylesheet" href="components/look/content/youtube/user/user.css">
   <link rel="stylesheet" href="components/look/content/youtube/channel/channel.css">
+  <link rel="stylesheet" href="components/look/content/youtube/user/user.css">
   <link rel="stylesheet" href="components/look/content/youtube/watch/watch.css">
   <link rel="stylesheet" href="components/search/chips/type/sub/sub.css">
   <link rel="stylesheet" href="components/search/result/actions/twitter/twitter.css">
@@ -127,8 +127,8 @@
 <body ng-controller="index.ctrl as index" fli-polyfill>
 
 <!-- View -->
-<ng-include src="fli.view" layout="column" layout-fill ng-if="fli.view"></ng-include>
-<ng-view id="view" layout="column" layout-fill ng-hide="fli.view"></ng-view>
+<ng-include src="fli.view" layout="column" ng-if="fli.view"></ng-include>
+<ng-view id="view" layout="column" ng-hide="fli.view"></ng-view>
 <webview id="prerender" ng-hide="true" width="0" height="0"></webview>
 
 <script src="cordova.js"></script>
@@ -140,13 +140,13 @@
 <script src="bower_components/angular-cache/dist/angular-cache.js"></script>
 <script src="bower_components/angular-cookies/angular-cookies.js"></script>
 <script src="bower_components/angular-aria/angular-aria.js"></script>
+<script src="bower_components/angular-messages/angular-messages.js"></script>
 <script src="bower_components/angular-material/angular-material.js"></script>
 <script src="bower_components/angular-media-player/dist/angular-media-player.min.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
 <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-<script src="bower_components/angular-touch/angular-touch.js"></script>
 <script src="bower_components/angular-translate/angular-translate.js"></script>
-<script src="bower_components/parse/parse.min.js"></script>
+<script src="bower_components/firebase/firebase.js"></script>
 <script src="bower_components/socket.io-client/socket.io.js"></script>
 <script src="bower_components/url-pattern/lib/url-pattern.js"></script>
 <!-- endbower -->
@@ -157,12 +157,12 @@
 <script src="components/_index/index.factory.js"></script>
 <script src="components/core/_core.module.js"></script>
 <script src="components/core/analytics.factory.js"></script>
+<script src="components/core/cache.factory.js"></script>
+<script src="components/core/firebase.factory.js"></script>
 <script src="components/core/io.factory.js"></script>
 <script src="components/core/loader.interseptor.js"></script>
 <script src="components/core/nav.factory.js"></script>
-<script src="components/core/parse.factory.js"></script>
 <script src="components/core/parser.html.factory.js"></script>
-<script src="components/core/platform.provider.js"></script>
 <script src="components/core/prerender.factory.js"></script>
 <script src="components/core/url.factory.js"></script>
 <script src="components/feedback/_feedback.module.js"></script>
@@ -173,18 +173,23 @@
 <script src="components/search/_search.module.js"></script>
 <script src="components/show/_show.module.js"></script>
 <script src="components/show/show.controller.js"></script>
-<script src="components/show/show.model.factory.js"></script>
-<script src="components/uix/_uix.module.js"></script>
+<script src="components/token/_token.module.js"></script>
+<script src="components/token/chrome.token.controller.js"></script>
+<script src="components/token/token.factory.js"></script>
 <script src="components/views/_views.module.js"></script>
+<script src="components/uix/_uix.module.js"></script>
 <script src="components/_index/i18n/en.js"></script>
 <script src="components/_index/i18n/ru.js"></script>
+<script src="components/core/auth/auth.factory.js"></script>
+<script src="components/core/auth/chrome.auth.factory.js"></script>
+<script src="components/core/auth/site.auth.factory.js"></script>
 <script src="components/core/api/api.app.factory.js"></script>
 <script src="components/core/api/api.factory.js"></script>
 <script src="components/core/api/api.site.factory.js"></script>
-<script src="components/core/auth/auth.factory.js"></script>
-<script src="components/core/config/config.production.js"></script>
+<script src="components/core/config/config.development.js"></script>
 <script src="components/core/cordova/inAppBrowser.factory.js"></script>
 <script src="components/core/cordova/splash.factory.js"></script>
+<script src="components/core/platform/platform.provider.js"></script>
 <script src="components/core/storage/chrome.storage.factory.js"></script>
 <script src="components/core/storage/custom.storage.factory.js"></script>
 <script src="components/core/storage/local.storage.factory.js"></script>
@@ -228,6 +233,13 @@
 <script src="components/show/input/input.directive.js"></script>
 <script src="components/show/item/item.controller.js"></script>
 <script src="components/show/item/item.directive.js"></script>
+<script src="components/show/promo/promo.model.factory.js"></script>
+<script src="components/views/setting/setting.controller.js"></script>
+<script src="components/views/setting/setting.directive.js"></script>
+<script src="components/views/setting/setting.factory.js"></script>
+<script src="components/views/share/share.controller.js"></script>
+<script src="components/views/share/share.directive.js"></script>
+<script src="components/views/share/share.factory.js"></script>
 <script src="components/uix/apps/apps.controller.js"></script>
 <script src="components/uix/apps/apps.directive.js"></script>
 <script src="components/uix/donate/donate.controller.js"></script>
@@ -252,16 +264,11 @@
 <script src="components/uix/scroll/scroll.factory.js"></script>
 <script src="components/uix/toast/toast.factory.js"></script>
 <script src="components/uix/welcome/welcome.directive.js"></script>
-<script src="components/views/setting/setting.controller.js"></script>
-<script src="components/views/setting/setting.directive.js"></script>
-<script src="components/views/share/share.controller.js"></script>
-<script src="components/views/share/share.directive.js"></script>
-<script src="components/views/share/share.factory.js"></script>
-<script src="components/core/api/facebook/FB.factory.js"></script>
-<script src="components/core/api/facebook/facebook.factory.js"></script>
 <script src="components/core/api/google/_google.factory.js"></script>
 <script src="components/core/api/google/google.chrome.factory.js"></script>
 <script src="components/core/api/google/google.site.factory.js"></script>
+<script src="components/core/api/facebook/FB.factory.js"></script>
+<script src="components/core/api/facebook/facebook.factory.js"></script>
 <script src="components/core/api/instagram/instagram.factory.js"></script>
 <script src="components/core/api/linkedin/linkedin.factory.js"></script>
 <script src="components/core/api/pinterest/pinterest.factory.js"></script>
@@ -314,6 +321,10 @@
 <script src="components/show/item/form/form.directive.js"></script>
 <script src="components/show/item/link/link.controller.js"></script>
 <script src="components/show/item/link/link.directive.js"></script>
+<script src="components/views/setting/auth/auth.controller.js"></script>
+<script src="components/views/setting/auth/auth.directive.js"></script>
+<script src="components/views/setting/user/user.controller.js"></script>
+<script src="components/views/setting/user/user.directive.js"></script>
 <script src="components/uix/input/menu/menu.controller.js"></script>
 <script src="components/uix/input/menu/menu.directive.js"></script>
 <script src="components/uix/item/edit/edit.controller.js"></script>
@@ -321,10 +332,6 @@
 <script src="components/uix/item/icon/icon.directive.js"></script>
 <script src="components/uix/locale/panel/panel.controller.js"></script>
 <script src="components/uix/locale/panel/panel.directive.js"></script>
-<script src="components/views/setting/login/login.controller.js"></script>
-<script src="components/views/setting/login/login.directive.js"></script>
-<script src="components/views/setting/user/user.controller.js"></script>
-<script src="components/views/setting/user/user.directive.js"></script>
 <script src="components/core/api/google/plus/google.plus.factory.js"></script>
 <script src="components/core/api/google/url/google.url.factory.js"></script>
 <script src="components/look/content/full/read/read.factory.js"></script>
@@ -347,10 +354,10 @@
 <script src="components/look/content/vk/video/video.directive.js"></script>
 <script src="components/look/content/vk/wall/wall.controller.js"></script>
 <script src="components/look/content/vk/wall/wall.directive.js"></script>
-<script src="components/look/content/youtube/user/user.controller.js"></script>
-<script src="components/look/content/youtube/user/user.directive.js"></script>
 <script src="components/look/content/youtube/channel/channel.controller.js"></script>
 <script src="components/look/content/youtube/channel/channel.directive.js"></script>
+<script src="components/look/content/youtube/user/user.controller.js"></script>
+<script src="components/look/content/youtube/user/user.directive.js"></script>
 <script src="components/look/content/youtube/watch/watch.controller.js"></script>
 <script src="components/look/content/youtube/watch/watch.directive.js"></script>
 <script src="components/search/chips/type/sub/sub.controller.js"></script>

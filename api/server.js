@@ -3,22 +3,26 @@
  * Module dependencies.
  */
 var init = require('./config/init')(),
-    config = require('./config/config'),
-    Parse = require('parse').Parse;
-
-// Bootstrap db connection
-Parse.initialize(config.Parse.id, config.Parse.js, config.Parse.master);
-Parse.Cloud.useMasterKey();
+    http = require('http'),
+    config = require('./config/config');
 
 // Init the express application
 var api = require('express')();
 
-// Init socket.io
-var io = require('socket.io')(api.listen(config.port));
+// Create a server
+var server = http.createServer(api);
 
-require('./config/socket')(io);
-require('./services/core/io')(io);
-require('./config/express')(api);
+// Create socket.io
+var io = require('socket.io')(server);
+
+// Init core
+require('./services/core').init(server, api, io);
+
+// Config api
+require('./config')(api, io);
+
+// Run api
+server.listen(config.port);
 
 // Logging initialization
 console.log('freelook.info api started on port ' + config.port);

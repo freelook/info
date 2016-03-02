@@ -8,7 +8,7 @@
 
   angular
     .module('freelook.info',
-    ['fli.core', 'fli.uix', 'fli.views', 'fli.home', 'fli.search', 'fli.look', 'fli.show', 'fli.feedback'])
+    ['fli.core', 'fli.uix', 'fli.views', 'fli.home', 'fli.search', 'fli.look', 'fli.show', 'fli.feedback', 'fli.token'])
     .config(function ($locationProvider, $httpProvider, $routeProvider, $mdThemingProvider, $translateProvider,
                       platformProvider) {
 
@@ -38,28 +38,17 @@
       });
 
     })
-    .run(function ($http, $rootScope,
-                   platform, splash, analytics, scroll, io, CacheFactory, Parse, CONFIG) {
-
-      // Set up cache
-      $http.defaults.cache = CacheFactory('defaults', {
-        maxAge: 60 * 60 * 1000,
-        deleteOnExpire: 'aggressive',
-        storageMode: 'sessionStorage'
-      });
+    .run(function ($rootScope, cache, platform, splash, analytics, scroll, io, user) {
 
       // Run app
       $rootScope.fli = {};
 
+      cache.init();
       splash.hide();
       platform.init();
       analytics.init();
-
-      Parse.initialize(CONFIG.API.PARSE.ID, CONFIG.API.PARSE.KEY);
-
-      $rootScope.$on('$routeChangeStart', function () {
-        scroll.top();
-      });
+      scroll.init();
+      user.init();
 
     });
 

@@ -3,14 +3,14 @@
 angular
   .module('fli.show')
   .controller('show.item.form.ctrl',
-  function ($scope, nav, user, toast, SHOW) {
+  function ($scope, nav, user, toast, PROMO) {
 
     var vm = this;
 
     function _init() {
-      if (!$scope.fli.user) {
+      user.init().catch(function () {
         toast.needLogin();
-      }
+      });
     }
 
     vm.total = function () {
@@ -24,14 +24,16 @@ angular
         $scope.showItem.post.img &&
         $scope.showItem.post.title &&
         $scope.showItem.post.content &&
-        vm.total() <= $scope.fli.user.get('looks');
+        vm.total() <= +$scope.fli.user.looks;
     };
 
     vm.show = function () {
-      SHOW.add($scope.showItem.post).then(function () {
-        nav.goHome();
-        toast.show('index.core.uix.toast.added');
-      });
+      var _promo = angular.extend($scope.showItem.post, {user: user.authData().uid});
+      PROMO.add(_promo)
+        .then(function () {
+          nav.goHome();
+          toast.show('index.core.uix.toast.added');
+        });
     };
 
     _init();

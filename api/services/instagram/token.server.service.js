@@ -3,9 +3,7 @@
 var $http = require('request'),
     phantom = require('phantom'),
     $q = require('q'),
-    Parse = require('parse').Parse,
-    API = Parse.Object.extend('API'),
-    query = new Parse.Query(API),
+    API = require('../core/firebase').ref('api/instagram/'),
     id = process.env.INSTAGRAM_ID,
     pass = process.env.INSTAGRAM_PASS,
     instagram_token = '';
@@ -13,14 +11,12 @@ var $http = require('request'),
 
 function _storeToken(api, token) {
     var defer = $q.defer();
+
     instagram_token = token;
-    api.set('name', 'token');
-    api.set('instagram', {
+    api.update({
         token: token,
         expire: 0
-    });
-
-    api.save()
+    })
         .then(function () {
             return defer.resolve(token);
         }, function (err) {
@@ -94,22 +90,17 @@ function checkToken(_update) {
     }
 
     var defer = $q.defer();
-    query.first({name: 'token'})
-        .then(function (api) {
-            var instagram = api && api.get('instagram') || '';
-            if (api) {
-                if (!_update && instagram && instagram.token) {
-                    instagram_token = instagram.token;
-                    return defer.resolve(instagram.token);
-                } else {
-                    _handleToken(api, defer);
-                }
-            } else {
-                _handleToken(new API(), defer);
-            }
-        }, function (err) {
-            return defer.reject(err);
-        });
+    API.once('value', function (_instagram) {
+        var instagram = _instagram && _instagram.val();
+        if (!_update && instagram && instagram.token) {
+            instagram_token = instagram.token;
+            return defer.resolve(instagram.token);
+        } else {
+            _handleToken(API, defer);
+        }
+    }, function (err) {
+        return defer.reject(err);
+    });
 
     return defer.promise;
 }

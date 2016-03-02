@@ -13,7 +13,7 @@ angular
         small: '=',
         url: '=',
         img: '=',
-        title: '=',
+        name: '=',
         content: '='
       }
     };

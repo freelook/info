@@ -2,21 +2,7 @@ fli-setting {
   display: block;
 }
 
-fli-setting .title {
-  padding: 7px;
-  color: #999999;
-}
-
-fli-setting > .border {
-  padding-top: 25px;
-}
-
-fli-setting md-switch,
-fli-setting .md-icon-button {
-  margin: 0;
-}
-
-fli-setting fli-setting-user.block {
+fli-setting fli-setting-auth.block {
   margin-right: 0;
   padding-right: 0;
 }

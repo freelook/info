@@ -2,8 +2,7 @@
 <div layout="row" class="block border">
   <div class="link" flex="20" layout="row" layout-align="center center" ng-click="footer.feedback()">
     <i class="fa fa-comments-o block" translate translate-attr-title="index.footer.help"></i>
-
-    <div hide-sm class="color-8" translate="index.footer.feedback"></div>
+    <div hide-xs class="color-8" translate="index.footer.feedback"></div>
   </div>
   <div flex layout="column" layout-align="center center" class="text-center">
     <p><span translate="index.footer.with"></span>
@@ -12,9 +11,8 @@
     </p>
   </div>
   <div class="link" flex="20" layout="row" layout-align="center center" ng-click="footer.toggleLocalePanel()">
-    <div hide-sm class="color-8" translate="index.footer.locale"></div>
+    <div hide-xs class="color-8" translate="index.footer.locale"></div>
     <md-button class="md-icon-button link" aria-label="locale" ng-bind="::footer.localeCode"></md-button>
   </div>
 </div>
 <fli-apps></fli-apps>
-

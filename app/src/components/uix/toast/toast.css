@@ -1,12 +1,11 @@
-md-toast,
-md-toast.md-default-theme {
+md-toast {
   width: 100%;
   min-width: 100%;
-  background: #3F51B5;
+  max-width: 100%;
+  bottom: initial;
+  background: transparent;
 }
 
-@media (max-width: 600px) {
-  md-toast.md-top {
-    top: 8px;
-  }
+md-toast.md-default-theme .md-toast-content {
+  background: #3F51B5;
 }

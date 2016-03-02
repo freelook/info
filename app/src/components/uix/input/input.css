@@ -3,21 +3,26 @@ fli-input {
 }
 
 fli-input form {
-  margin: 5px;
+  margin: 7px;
   padding: 0;
-}
-
-fli-input input {
-  height: 40px;
-  line-height: 40px;
-  font-size: 16px;
-  padding: 0;
-  outline: 0;
-  border-radius: 0;
 }
 
 fli-input md-input-container {
-  padding-bottom: 0;
+  margin: 0;
+  padding: 0;
+}
+
+fli-input .md-errors-spacer {
+  display: none;
+}
+
+fli-input input.md-input {
+  height: 40px;
+  line-height: 40px;
+  font-size: 16px;
+  border-radius: 0;
+  padding: 0;
+  outline: 0;
 }
 
 fli-input .md-button.md-icon-button {
@@ -34,13 +39,8 @@ fli-input .md-button.md-fab {
 
 fli-input .md-button.md-icon-button i {
   position: relative;
-  margin-top: 10px;
+  margin-top: 3px;
   outline: 0;
-}
-
-fli-input .md-button.md-icon-button img {
-  max-height: 35px;
-  margin-top: 5px;
 }
 
 fli-input #progress {

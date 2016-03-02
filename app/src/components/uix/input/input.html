@@ -13,8 +13,8 @@
   </md-button>
 
   <form name="form" ng-submit="input.find()" flex>
-    <md-input-container flex md-no-float>
-      <input flex id="input" ng-focus="input.focus()" autocomplete="off" aria-label="input"
+    <md-input-container layout="column" md-no-float>
+      <input id="input" ng-focus="input.focus()" autocomplete="off" aria-label="input"
              ng-model="fli.route.input"
              ng-model-options="{updateOn:'blur'}"
              translate translate-attr-placeholder="{{::input.placeholder}}"

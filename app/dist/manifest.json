@@ -27,14 +27,13 @@
   ],
   "externally_connectable": {
     "matches": [
-      "*://*.freelook.info/*",
-      "*://localhost/*"
+      "*://*.freelook.info/*"
     ]
   },
   "url_handlers": {
     "fli": {
       "matches": [
-        "*://freelook.info/*"
+        "*://freelook.info/chrome"
       ],
       "title": "FLI"
     }
