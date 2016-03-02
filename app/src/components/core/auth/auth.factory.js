@@ -5,14 +5,9 @@ angular
 
     var providers = {
       site: authSite,
-      chrome: authChrome,
-      noop: {
-        logIn: angular.noop,
-        logOut: angular.noop,
-        data: {}
-      }
+      chrome: authChrome
     };
 
-    return providers[platform.name()] || providers.noop;
+    return providers[platform.name()] || providers.site;
 
   });
