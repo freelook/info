@@ -59,7 +59,7 @@ gulp.task('html', ['jshint', 'inject', 'partials'], function () {
     .pipe($.revReplace())
     .pipe(gulp.dest('.tmp/'))
     .pipe(htmlFilter)
-    .pipe($.if(!process.env.debug, $.inlineSource()))
+    .pipe($.if(!process.env.debug, $.inlineSource({compress: false})))
     .pipe($.minifyHtml({
       empty: true,
       spare: true,
