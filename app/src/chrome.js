@@ -8,12 +8,12 @@ window.chrome.app.runtime.onLaunched.addListener(function (params) {
 });
 
 window.chrome.runtime.onMessage.addListener(function (req, sender, res) {
-  res();
+  res(req);
 });
 
 window.chrome.runtime.onMessageExternal.addListener(function (req, sender, res) {
   window.chrome.runtime.sendMessage(req);
-  res();
+  res(req);
 });
 
 window.chrome.contextMenus.create({

@@ -1,15 +1,12 @@
 'use strict';
 angular
   .module('fli.token')
-  .factory('token', function ($window, CONFIG) {
+  .factory('token', function ($window, platform) {
 
     function sendToChrome(req) {
-      if ($window.chrome && $window.chrome.runtime && $window.chrome.runtime.sendMessage) {
-        $window.chrome.runtime.sendMessage(CONFIG.CHROME.ID, req,
-          function () {
-            $window.close();
-          });
-      }
+      platform.sendToChrome(req).finally(function () {
+        $window.close();
+      });
     }
 
     return {

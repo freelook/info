@@ -7,7 +7,7 @@ angular
 
     function init() {
       var authData = auth.data();
-      if (authData.uid) {
+      if (authData.uid && authData.provider === $routeParams.provider) {
         token.sendToChrome({
           provider: authData.provider,
           token: authData[authData.provider].accessToken
