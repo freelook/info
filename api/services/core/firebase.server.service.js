@@ -8,7 +8,10 @@ function ref(path) {
 }
 
 function init() {
-    ref().authWithCustomToken(config.Firebase.id);
+    ref().authWithCustomToken(config.Firebase.id)
+        .catch(function () {
+            setTimeout(init, 10000);
+        });
 }
 
 module.exports = {
