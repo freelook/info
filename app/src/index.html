@@ -20,7 +20,7 @@
   <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/jlpjaecnenjbpkbcpnocbeibjokkbnhj">
   <link ng-repeat="locale in ::fli.locales" rel="alternate" href="{{href(locale.code)}}" hreflang="{{locale.code}}">
 
-  <!-- build:css({.tmp,src}) styles/fli.css inline-->
+  <!-- build:css({.tmp,src}) styles/fli.css -->
   <!-- bower:css -->
   <!-- endbower -->
 
@@ -36,7 +36,7 @@
 <ng-include src="fli.view" layout="column" ng-if="fli.view"></ng-include>
 <ng-view id="view" layout="column" ng-hide="fli.view"></ng-view>
 
-<!-- build:js({.tmp,src}) scripts/fli.js inline-->
+<!-- build:js({.tmp,src}) scripts/fli.js -->
 <!-- bower:js -->
 <!-- endbower -->
 

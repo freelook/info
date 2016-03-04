@@ -41,7 +41,7 @@ gulp.task('server', ['watch'], function () {
   ]);
 });
 
-gulp.task('server:dist', ['dist'], function () {
+gulp.task('server:dist', function () {
   browserSyncInit('dist');
 });
 
@@ -49,6 +49,6 @@ gulp.task('server:e2e', function () {
   browserSyncInit(['.tmp', 'src'], null, []);
 });
 
-gulp.task('server:e2e-dist', ['watch'], function () {
+gulp.task('server:e2e-dist', function () {
   browserSyncInit('dist', null, []);
 });
