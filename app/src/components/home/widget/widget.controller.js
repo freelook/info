@@ -6,6 +6,7 @@ angular
   function (url, item) {
 
     var vm = this;
+    vm.type = '';
     vm.search = item.search;
     vm.href = item.href;
 
