@@ -68,8 +68,6 @@ module.exports = function (app) {
 
     // Use helmet to secure Express headers
     app.use(helmet.xframe());
-    app.use(helmet.iexss());
-    app.use(helmet.contentTypeOptions());
     app.use(helmet.ienoopen());
     app.disable('x-powered-by');
 
