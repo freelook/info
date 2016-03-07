@@ -26,20 +26,6 @@ window.i18n.ru.index = {
   },
   core: {
     uix: {
-      item: {
-        lookIt: 'Смотреть {{v}}',
-        search: 'Искать {{v}}',
-        share: 'Расшарить {{v}}',
-        star:  'Отметить {{v}}',
-        goTo: 'Перейти {{v}}',
-        getIt: 'Получить',
-        clearIt: 'Очистить',
-        edit: {
-          image: 'Ссылка на картинку',
-          title: 'Заголовок',
-          content: 'Контент'
-        }
-      },
       setting: {
         locale: 'Локаль',
         notice: 'Извещение',
@@ -51,10 +37,6 @@ window.i18n.ru.index = {
           reset: 'Cброс пароля',
           resetToast: 'Пожалуйста, проверьте свою электронную почту для сброса пароля'
         }
-      },
-      toast: {
-        error: 'Что-то пошло не так',
-        added: 'Пост был добавлен'
       },
       share: {
         link: 'ссылка'

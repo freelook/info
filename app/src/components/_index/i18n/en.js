@@ -27,20 +27,6 @@ window.i18n.en.index = {
   },
   core: {
     uix: {
-      item: {
-        lookIt: 'Look it {{v}}',
-        search: 'Search {{v}}',
-        share: 'Share {{v}}',
-        star:  'Star {{v}}',
-        goTo: 'Go to {{v}}',
-        getIt: 'Get',
-        clearIt: 'Clear',
-        edit: {
-          image: 'Link to image',
-          title: 'Title',
-          content: 'Content'
-        }
-      },
       setting: {
         locale: 'Locale',
         notice: 'Notice',
@@ -52,10 +38,6 @@ window.i18n.en.index = {
           reset: 'Reset password',
           resetToast: 'Please check your email for reset password'
         }
-      },
-      toast: {
-        error: 'Something went wrong',
-        added: 'Item was added'
       },
       share: {
         link: 'link'

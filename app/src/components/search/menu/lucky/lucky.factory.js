@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('fli.search')
-  .factory('lucky', function ($q, $parse, google, chips, url, locale) {
+  .factory('lucky', function ($q, $parse, $rootScope, google, chips, url, locale) {
 
     var word = 'new';
 
@@ -10,6 +10,13 @@ angular
     }
 
     function get() {
+      var _routeInput = $rootScope.fli.route.input;
+      if (_routeInput) {
+        return $q.when({
+          word: _routeInput,
+          href: href(_routeInput)
+        });
+      }
       var defer = $q.defer();
       google.random()
         .success(function (lucky) {

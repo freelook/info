@@ -1,0 +1,10 @@
+<div class="fli-grid">
+  <div ng-repeat="(key, item) in feeds.results">
+    <fli-item ng-click="promo.click(key)" ng-init="fliItem = {
+          img:item.img,
+          title:item.title,
+          content: item.content
+          };">
+    </fli-item>
+  </div>
+</div>

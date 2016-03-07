@@ -5,14 +5,14 @@ angular
 
     var config = $mdToast.simple().position('top');
 
-    function show(text) {
-      config.content($translate.instant(text));
+    function show(key, params) {
+      config.content($translate.instant(key, params));
       scroll.top();
       $mdToast.show(config);
     }
 
     function error() {
-      show('index.core.uix.toast.error');
+      show('uix.toast.error');
     }
 
     function needLogin() {

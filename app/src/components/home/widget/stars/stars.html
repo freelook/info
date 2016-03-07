@@ -4,7 +4,8 @@
           url:item.url,
           star: 1,
           img:item.img,
-          title:item.input,
+          title:item.title,
+          content: item.content,
           input:item.input,
           searchInput:item.input,
           type:item.type,
@@ -15,7 +16,7 @@
           fliItemCtrl.search=widget.search;">
 
     <div class="clear link" ng-click="stars.clearItem(item)">
-      <i class="fa fa-close" translate translate-attr-title="index.core.uix.item.clearIt"></i>
+      <i class="fa fa-close" translate translate-attr-title="uix.item.clearIt"></i>
     </div>
 
   </fli-item>

@@ -1,13 +1,13 @@
 <div class="fli-grid">
   <div ng-repeat="(key, item) in promo.results">
-    <fli-item ng-click="promo.click(key)" title="{{'index.core.uix.item.getIt' | translate}}" ng-init="fliItem = {
+    <fli-item ng-click="promo.click(key)" ng-init="fliItem = {
           transclude:'footer',
           img:item.img,
           title:item.title,
           content: item.content
           };">
 
-      <div layout="row">
+      <div layout="row" title="{{'uix.item.getIt' | translate}}">
         <div class="fa fa-mouse-pointer link" ng-if="item.action === 'click'"></div>
         <div class="color-8 link">
           <span>+</span>

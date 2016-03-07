@@ -9,7 +9,8 @@ window.i18n.ru.search = {
     audio: 'аудио',
     video: 'видео',
     promo: 'промо',
-    job: 'работа'
+    job: 'работа',
+    feeds: 'лента'
   },
   menu: {
     lucky: 'на удачу'

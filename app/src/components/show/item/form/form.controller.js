@@ -32,7 +32,7 @@ angular
       PROMO.add(_promo)
         .then(function () {
           nav.goHome();
-          toast.show('index.core.uix.toast.added');
+          toast.show('uix.toast.added');
         });
     };
 

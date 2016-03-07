@@ -1,7 +1,9 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('item', function ($rootScope, url, share, locale, storage, STORAGE_KEYS, CONFIG) {
+  .factory('item',
+  function ($rootScope, url, share, locale, storage, toast,
+            FEEDS, STORAGE_KEYS, CONFIG) {
 
     function _config(data) {
       return {
@@ -28,7 +30,11 @@ angular
     }
 
     function _star(data) {
-      storage.arr.push(STORAGE_KEYS.STAR_KEY, _config(data));
+      var _data = angular.extend(data, _config(data));
+      console.log(_data);
+      storage.arr.push(STORAGE_KEYS.STAR_KEY, _data);
+      FEEDS.add(_data);
+      toast.show('uix.item.stared', {v: _data.title});
     }
 
     function _search(input) {

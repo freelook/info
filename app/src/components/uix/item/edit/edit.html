@@ -7,17 +7,17 @@
 
     <div class="block">
       <md-input-container ng-if="!fliItemCtrl.img || fliItemCtrl.imgEdit">
-        <label translate="index.core.uix.item.edit.image"></label>
+        <label translate="uix.item.edit.image"></label>
         <input ng-model="fliItemCtrl.img" ng-blur="fliItemCtrl.imgToggle()" type="url" required>
       </md-input-container>
 
       <md-input-container layout="column">
-        <label translate="index.core.uix.item.edit.title"></label>
+        <label translate="uix.item.edit.title"></label>
         <textarea ng-model="fliItemCtrl.name" md-maxlength="100" required></textarea>
       </md-input-container>
 
       <md-input-container layout="column">
-        <label translate="index.core.uix.item.edit.content"></label>
+        <label translate="uix.item.edit.content"></label>
         <textarea md-no-autogrow="true" ng-model="fliItemCtrl.content" md-maxlength="300" required></textarea>
       </md-input-container>
     </div>
