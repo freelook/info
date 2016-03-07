@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('authSite', function (user, Firebase) {
+  .factory('authSite', function (user, toast, Firebase) {
 
     var authObj = Firebase.ref();
 
@@ -14,9 +14,15 @@ angular
     }
 
     function logIn(provider) {
-      return authObj.authWithOAuthPopup(provider).then(function (authData) {
-        _storeAuthData(authData);
-      });
+      return authObj.authWithOAuthPopup(provider)
+        .then(function (authData) {
+          _storeAuthData(authData);
+        })
+        .catch(function (err) {
+          if (err && err.code === 'TRANSPORT_UNAVAILABLE') {
+            toast.show('core.auth.unavailable');
+          }
+        });
     }
 
     function logOut() {

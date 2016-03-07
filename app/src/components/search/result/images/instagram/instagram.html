@@ -2,6 +2,7 @@
           ng-init="fliItem = {
           url:item.link,
           img:item.images.standard_resolution.url,
+          title: item.tags[0],
           content:item.caption.text,
           searchInput: item.tags[0],
           transclude:'footer'

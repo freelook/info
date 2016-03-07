@@ -57,6 +57,7 @@
   <link rel="stylesheet" href="components/views/setting/setting.css">
   <link rel="stylesheet" href="components/views/share/share.css">
   <link rel="stylesheet" href="components/home/widget/looks/looks.css">
+  <link rel="stylesheet" href="components/home/widget/stars/stars.css">
   <link rel="stylesheet" href="components/look/content/facebook/facebook.css">
   <link rel="stylesheet" href="components/look/content/full/full.css">
   <link rel="stylesheet" href="components/look/content/instagram/instagram.css">
@@ -86,8 +87,8 @@
   <link rel="stylesheet" href="components/look/content/instagram/media/media.css">
   <link rel="stylesheet" href="components/look/content/instagram/user/user.css">
   <link rel="stylesheet" href="components/look/content/pinterest/board/board.css">
-  <link rel="stylesheet" href="components/look/content/vk/group/group.css">
   <link rel="stylesheet" href="components/look/content/pinterest/user/user.css">
+  <link rel="stylesheet" href="components/look/content/vk/group/group.css">
   <link rel="stylesheet" href="components/look/content/vk/user/user.css">
   <link rel="stylesheet" href="components/look/content/vk/video/video.css">
   <link rel="stylesheet" href="components/look/content/vk/wall/wall.css">
@@ -98,7 +99,6 @@
   <link rel="stylesheet" href="components/search/result/actions/twitter/twitter.css">
   <link rel="stylesheet" href="components/search/result/actions/vk/vk.css">
   <link rel="stylesheet" href="components/search/result/goods/amazon/amazon.css">
-  <link rel="stylesheet" href="components/search/result/goods/yandex/yandex.css">
   <link rel="stylesheet" href="components/search/result/images/google/google.css">
   <link rel="stylesheet" href="components/search/result/images/instagram/instagram.css">
   <link rel="stylesheet" href="components/search/result/images/twitter/twitter.css">
@@ -115,8 +115,8 @@
   <link rel="stylesheet" href="components/search/result/web/facebook/facebook.css">
   <link rel="stylesheet" href="components/search/result/web/google/google.css">
   <link rel="stylesheet" href="components/search/result/web/linkedin/linkedin.css">
-  <link rel="stylesheet" href="components/search/result/web/vk/vk.css">
   <link rel="stylesheet" href="components/search/result/web/pinterest/pinterest.css">
+  <link rel="stylesheet" href="components/search/result/web/vk/vk.css">
   <link rel="stylesheet" href="components/look/content/full/read/readability/readability.css">
   <link rel="stylesheet" href="components/search/result/web/google/trends/trends.css">
   <!-- endinject -->
@@ -146,7 +146,7 @@
 <script src="bower_components/angular-route/angular-route.js"></script>
 <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 <script src="bower_components/angular-translate/angular-translate.js"></script>
-<script src="bower_components/firebase/firebase-debug.js"></script>
+<script src="bower_components/firebase/firebase.js"></script>
 <script src="bower_components/socket.io-client/socket.io.js"></script>
 <script src="bower_components/url-pattern/lib/url-pattern.js"></script>
 <!-- endbower -->
@@ -186,9 +186,11 @@
 <script src="components/core/auth/auth.factory.js"></script>
 <script src="components/core/auth/chrome.auth.factory.js"></script>
 <script src="components/core/auth/site.auth.factory.js"></script>
-<script src="components/core/config/config.production.js"></script>
+<script src="components/core/config/config.development.js"></script>
 <script src="components/core/cordova/inAppBrowser.factory.js"></script>
 <script src="components/core/cordova/splash.factory.js"></script>
+<script src="components/core/i18n/en.js"></script>
+<script src="components/core/i18n/ru.js"></script>
 <script src="components/core/platform/platform.provider.js"></script>
 <script src="components/core/storage/chrome.storage.factory.js"></script>
 <script src="components/core/storage/custom.storage.factory.js"></script>
@@ -279,6 +281,9 @@
 <script src="components/core/api/youtube/youtube.factory.js"></script>
 <script src="components/home/widget/looks/looks.controller.js"></script>
 <script src="components/home/widget/looks/looks.directive.js"></script>
+<script src="components/home/widget/stars/stars.controller.js"></script>
+<script src="components/home/widget/stars/stars.directive.js"></script>
+<script src="components/home/widget/tabs/tabs.directive.js"></script>
 <script src="components/look/content/facebook/facebook.controller.js"></script>
 <script src="components/look/content/facebook/facebook.directive.js"></script>
 <script src="components/look/content/full/full.controller.js"></script>
@@ -344,10 +349,10 @@
 <script src="components/look/content/instagram/user/user.directive.js"></script>
 <script src="components/look/content/pinterest/board/board.controller.js"></script>
 <script src="components/look/content/pinterest/board/board.directive.js"></script>
-<script src="components/look/content/vk/group/group.controller.js"></script>
-<script src="components/look/content/vk/group/group.directive.js"></script>
 <script src="components/look/content/pinterest/user/user.controller.js"></script>
 <script src="components/look/content/pinterest/user/user.directive.js"></script>
+<script src="components/look/content/vk/group/group.controller.js"></script>
+<script src="components/look/content/vk/group/group.directive.js"></script>
 <script src="components/look/content/vk/user/user.controller.js"></script>
 <script src="components/look/content/vk/user/user.directive.js"></script>
 <script src="components/look/content/vk/video/video.controller.js"></script>
@@ -368,8 +373,6 @@
 <script src="components/search/result/actions/vk/vk.directive.js"></script>
 <script src="components/search/result/goods/amazon/amazon.controller.js"></script>
 <script src="components/search/result/goods/amazon/amazon.directive.js"></script>
-<script src="components/search/result/goods/yandex/yandex.controller.js"></script>
-<script src="components/search/result/goods/yandex/yandex.directive.js"></script>
 <script src="components/search/result/images/google/google.controller.js"></script>
 <script src="components/search/result/images/google/google.directive.js"></script>
 <script src="components/search/result/images/instagram/instagram.controller.js"></script>
@@ -403,10 +406,10 @@
 <script src="components/search/result/web/google/google.directive.js"></script>
 <script src="components/search/result/web/linkedin/linkedin.controller.js"></script>
 <script src="components/search/result/web/linkedin/linkedin.directive.js"></script>
-<script src="components/search/result/web/vk/vk.controller.js"></script>
-<script src="components/search/result/web/vk/vk.directive.js"></script>
 <script src="components/search/result/web/pinterest/pinterest.controller.js"></script>
 <script src="components/search/result/web/pinterest/pinterest.directive.js"></script>
+<script src="components/search/result/web/vk/vk.controller.js"></script>
+<script src="components/search/result/web/vk/vk.directive.js"></script>
 <script src="components/look/content/full/read/readability/readability.js"></script>
 <script src="components/search/chips/type/sub/url/url.controller.js"></script>
 <script src="components/search/chips/type/sub/url/url.directive.js"></script>

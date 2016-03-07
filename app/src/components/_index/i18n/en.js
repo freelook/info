@@ -28,12 +28,13 @@ window.i18n.en.index = {
   core: {
     uix: {
       item: {
-        lookIt: 'Look it - {{v}}',
-        search: 'Search - {{v}}',
-        share: 'Share - {{v}}',
-        goTo: 'Go to - {{v}}',
-        getIt: 'Get it',
-        clearIt: 'Clear it',
+        lookIt: 'Look it {{v}}',
+        search: 'Search {{v}}',
+        share: 'Share {{v}}',
+        star:  'Star {{v}}',
+        goTo: 'Go to {{v}}',
+        getIt: 'Get',
+        clearIt: 'Clear',
         edit: {
           image: 'Link to image',
           title: 'Title',

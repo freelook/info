@@ -27,12 +27,13 @@ window.i18n.ru.index = {
   core: {
     uix: {
       item: {
-        lookIt: 'Смотреть - {{v}}',
-        search: 'Искать - {{v}}',
-        share: 'Расшарить - {{v}}',
-        goTo: 'Перейти - {{v}}',
-        getIt: 'Получить это',
-        clearIt: 'Удалить это',
+        lookIt: 'Смотреть {{v}}',
+        search: 'Искать {{v}}',
+        share: 'Расшарить {{v}}',
+        star:  'Отметить {{v}}',
+        goTo: 'Перейти {{v}}',
+        getIt: 'Получить',
+        clearIt: 'Очистить',
         edit: {
           image: 'Ссылка на картинку',
           title: 'Заголовок',

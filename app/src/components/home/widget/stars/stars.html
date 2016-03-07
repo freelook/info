@@ -1,9 +1,10 @@
-<div class="fli-grid" ng-if="looks.items.length">
-  <fli-item ng-repeat="item in looks.items | filter:fli.route.input || ''"
+<div class="fli-grid" ng-if="stars.items.length">
+  <fli-item ng-repeat="item in stars.items | filter:fli.route.input || ''"
             ng-init="fliItem = {
           url:item.url,
+          star: 1,
           img:item.img,
-          title:item.input || item.type,
+          title:item.input,
           input:item.input,
           searchInput:item.input,
           type:item.type,
@@ -13,11 +14,12 @@
           fliItemCtrl.href=widget.href;
           fliItemCtrl.search=widget.search;">
 
-    <div class="clear link" ng-click="looks.clearItem(item)">
+    <div class="clear link" ng-click="stars.clearItem(item)">
       <i class="fa fa-close" translate translate-attr-title="index.core.uix.item.clearIt"></i>
     </div>
 
   </fli-item>
 </div>
 
-<fli-welcome ng-if="!looks.items.length"></fli-welcome>
+<fli-welcome ng-if="!stars.items.length"></fli-welcome>
+

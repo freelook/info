@@ -10,3 +10,7 @@ fli-setting-auth .circle {
   max-height: 100px;
   min-height: 100px;
 }
+
+fli-setting-auth .md-button .fa {
+  margin: 7px;
+}

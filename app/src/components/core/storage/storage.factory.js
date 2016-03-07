@@ -38,7 +38,7 @@ angular
           return angular.equals(item.url, el.url);
         })) {
         arr.unshift(item);
-        if (arr.length > max) {
+        if (max && arr.length > max) {
           arr.pop();
         }
         set(key, arr);
@@ -64,6 +64,10 @@ angular
       }
     };
 
+  })
+  .constant('STORAGE_KEYS', {
+    LOOK_KEY: 'FLI:LOOK',
+    STAR_KEY: 'FLI:STAR'
   });
 
 

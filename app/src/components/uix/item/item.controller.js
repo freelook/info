@@ -3,9 +3,10 @@
 angular
   .module('freelook.info')
   .controller('item.ctrl',
-  function ($rootScope) {
+  function (index, item) {
 
     var vm = this;
-    vm.fix = $rootScope.fli.fix;
+    vm.fix = index.fix;
+    vm.star = item.star;
 
   });
