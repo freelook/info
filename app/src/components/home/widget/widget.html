@@ -1,5 +1,5 @@
 <div ng-if="!fli.route.type">
   <fli-home-widget-tabs></fli-home-widget-tabs>
-  <fli-home-widget-looks ng-if="!widget.type"></fli-home-widget-looks>
-  <div ng-if="widget.type === 'stared'">STARED</div>
+  <fli-home-widget-looks class="animate" ng-if="widget.type==='looks'"></fli-home-widget-looks>
+  <fli-home-widget-stars class="animate" ng-if="widget.type==='stars'"></fli-home-widget-stars>
 </div>

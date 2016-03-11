@@ -5,14 +5,15 @@ angular
     return {
       types: [
         {type: 'web'},
-        {type: 'people'},
         {type: 'news'},
+        {type: 'people'},
+        {type: 'feeds'},
         {type: 'actions'},
-        {type: 'goods'},
         {type: 'images'},
         {type: 'audio'},
         {type: 'video'},
         {type: 'promo'},
+        {type: 'goods'},
         {type: 'job'}
       ],
       subs: {
@@ -23,6 +24,7 @@ angular
           {sub: 'pinterest'},
           {sub: 'linkedin'}
         ],
+        news: [],
         people: [
           {sub: 'google'},
           {sub: 'facebook'},
@@ -30,12 +32,11 @@ angular
           {sub: 'twitter'},
           {sub: 'linkedin'}
         ],
-        news: [],
+        feeds: [],
         actions: [
           {sub: 'twitter'},
           {sub: 'vk'}
         ],
-        goods: [],
         images: [
           {sub: 'google'},
           {sub: 'instagram'},
@@ -47,6 +48,7 @@ angular
           {sub: 'vk'}
         ],
         promo: [],
+        goods: [],
         job: [
           {sub: 'indeed'},
           {sub: 'linkedin'}

@@ -57,7 +57,7 @@
   <link rel="stylesheet" href="components/views/setting/setting.css">
   <link rel="stylesheet" href="components/views/share/share.css">
   <link rel="stylesheet" href="components/home/widget/looks/looks.css">
-  <link rel="stylesheet" href="components/home/widget/tabs/tabs.css">
+  <link rel="stylesheet" href="components/home/widget/stars/stars.css">
   <link rel="stylesheet" href="components/look/content/facebook/facebook.css">
   <link rel="stylesheet" href="components/look/content/full/full.css">
   <link rel="stylesheet" href="components/look/content/instagram/instagram.css">
@@ -68,6 +68,7 @@
   <link rel="stylesheet" href="components/search/menu/lucky/lucky.css">
   <link rel="stylesheet" href="components/search/result/actions/actions.css">
   <link rel="stylesheet" href="components/search/result/audio/audio.css">
+  <link rel="stylesheet" href="components/search/result/feeds/feeds.css">
   <link rel="stylesheet" href="components/search/result/goods/goods.css">
   <link rel="stylesheet" href="components/search/result/images/image.css">
   <link rel="stylesheet" href="components/search/result/job/job.css">
@@ -99,7 +100,6 @@
   <link rel="stylesheet" href="components/search/result/actions/twitter/twitter.css">
   <link rel="stylesheet" href="components/search/result/actions/vk/vk.css">
   <link rel="stylesheet" href="components/search/result/goods/amazon/amazon.css">
-  <link rel="stylesheet" href="components/search/result/goods/yandex/yandex.css">
   <link rel="stylesheet" href="components/search/result/images/google/google.css">
   <link rel="stylesheet" href="components/search/result/images/instagram/instagram.css">
   <link rel="stylesheet" href="components/search/result/images/twitter/twitter.css">
@@ -147,7 +147,7 @@
 <script src="bower_components/angular-route/angular-route.js"></script>
 <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 <script src="bower_components/angular-translate/angular-translate.js"></script>
-<script src="bower_components/firebase/firebase-debug.js"></script>
+<script src="bower_components/firebase/firebase.js"></script>
 <script src="bower_components/socket.io-client/socket.io.js"></script>
 <script src="bower_components/url-pattern/lib/url-pattern.js"></script>
 <!-- endbower -->
@@ -187,9 +187,11 @@
 <script src="components/core/auth/auth.factory.js"></script>
 <script src="components/core/auth/chrome.auth.factory.js"></script>
 <script src="components/core/auth/site.auth.factory.js"></script>
-<script src="components/core/config/config.development.js"></script>
+<script src="components/core/config/config.production.js"></script>
 <script src="components/core/cordova/inAppBrowser.factory.js"></script>
 <script src="components/core/cordova/splash.factory.js"></script>
+<script src="components/core/i18n/en.js"></script>
+<script src="components/core/i18n/ru.js"></script>
 <script src="components/core/platform/platform.provider.js"></script>
 <script src="components/core/storage/chrome.storage.factory.js"></script>
 <script src="components/core/storage/custom.storage.factory.js"></script>
@@ -280,6 +282,8 @@
 <script src="components/core/api/youtube/youtube.factory.js"></script>
 <script src="components/home/widget/looks/looks.controller.js"></script>
 <script src="components/home/widget/looks/looks.directive.js"></script>
+<script src="components/home/widget/stars/stars.controller.js"></script>
+<script src="components/home/widget/stars/stars.directive.js"></script>
 <script src="components/home/widget/tabs/tabs.directive.js"></script>
 <script src="components/look/content/facebook/facebook.controller.js"></script>
 <script src="components/look/content/facebook/facebook.directive.js"></script>
@@ -303,6 +307,9 @@
 <script src="components/search/result/actions/actions.directive.js"></script>
 <script src="components/search/result/audio/audio.controller.js"></script>
 <script src="components/search/result/audio/audio.directive.js"></script>
+<script src="components/search/result/feeds/feeds.controller.js"></script>
+<script src="components/search/result/feeds/feeds.directive.js"></script>
+<script src="components/search/result/feeds/feeds.model.factory.js"></script>
 <script src="components/search/result/goods/goods.controller.js"></script>
 <script src="components/search/result/goods/goods.directive.js"></script>
 <script src="components/search/result/images/image.controller.js"></script>
@@ -370,8 +377,6 @@
 <script src="components/search/result/actions/vk/vk.directive.js"></script>
 <script src="components/search/result/goods/amazon/amazon.controller.js"></script>
 <script src="components/search/result/goods/amazon/amazon.directive.js"></script>
-<script src="components/search/result/goods/yandex/yandex.controller.js"></script>
-<script src="components/search/result/goods/yandex/yandex.directive.js"></script>
 <script src="components/search/result/images/google/google.controller.js"></script>
 <script src="components/search/result/images/google/google.directive.js"></script>
 <script src="components/search/result/images/instagram/instagram.controller.js"></script>

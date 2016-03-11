@@ -1,29 +1,10 @@
-<md-card class="fli-item" layout="column" ng-repeat="item in amazon.search.Item">
-  <md-card-content>
-    <div class="img" ng-click="link(decode(item.DetailPageURL[0]))">
-      <img class="md-card-image" ng-if="!!item.MediumImage[0].URL[0]" ng-src="{{item.MediumImage[0].URL[0]}}" title="{{'Look it - '+ item.ItemAttributes[0].Title[0]}}" alt="{{item.ItemAttributes[0].Title[0]}}" fli-item-img fli-err>
-      <div class="md-card-image header" ng-if="!item.MediumImage[0].URL[0]" title="{{'Look it - '+ item.ItemAttributes[0].Title[0]}}"></div>
-    </div>
-    <div class="block">
-      <div ng-click="link(decode(item.DetailPageURL[0]))" class="link underline" ng-bind-html="item.ItemAttributes[0].Title[0]"></div>
-    </div>
-  </md-card-content>
-  <md-card-footer layout="row" layout-align="end center">
-    <div class="link"
-         ng-click="result.share(decode(item.DetailPageURL[0]), {
+<fli-item ng-repeat="item in amazon.search.Item"
+          ng-init="fliItem = {
           url:decode(item.DetailPageURL[0]),
           img:item.MediumImage[0].URL[0],
           title:item.ItemAttributes[0].Title[0]
-          })"
-         title="{{'Share - '+ item.ItemAttributes[0].Title[0]}}">
-      <i class="fa fa-share-alt"></i>
-    </div>
-    <div class="link" ng-click="link(decode(item.DetailPageURL[0]))" title="{{'Go to - '+ item.ItemAttributes[0].Title[0]}}">
-      <span ng-if="item.OfferSummary[0].LowestNewPrice[0].FormattedPrice[0]" ng-bind="item.OfferSummary[0].LowestNewPrice[0].FormattedPrice[0]"></span>
-      <i class="fa fa-cart-plus"></i>
-    </div>
-  </md-card-footer>
-</md-card>
+          };
+          fliItemCtrl.href=amazon.href;
+          fliItemCtrl.share=amazon.share;">
 
-
-
+</fli-item>

@@ -1,8 +1,8 @@
 window.i18n.ru.home = {
   widget: {
     tabs: {
-      recent: 'Недавние',
-      stared: 'Избранные'
+      looks: 'недавнее',
+      stars: 'избранное'
     }
   }
 };

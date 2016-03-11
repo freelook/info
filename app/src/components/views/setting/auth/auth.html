@@ -1,10 +1,15 @@
-<div layout="row" layout-align="center center" ng-if="!fli.user">
-  <md-button class="md-fab md-primary link" aria-label="google" ng-click="auth.logIn('google')">
-    <i class="fa fa-google"></i>
-  </md-button>
-  <md-button class="md-fab md-primary link" aria-label="facebook" ng-click="auth.logIn('facebook')">
-    <i class="fa fa-facebook"></i>
-  </md-button>
+<div ng-if="!fli.user">
+  <div layout="row" layout-align="center center">
+    <i class="fa fa-user-secret fa-5x color-8"></i>
+  </div>
+  <div layout="row" layout-align="center center">
+    <md-button class="md-primary" aria-label="google" ng-click="auth.logIn('google')">
+      <i class="fa fa-google" title="google"></i><span class="color-8" translate="google"></span>
+    </md-button>
+    <md-button class="md-primary" aria-label="facebook" ng-click="auth.logIn('facebook')">
+      <i class="fa fa-facebook" title="facebook"></i><span class="color-8" translate="facebook"></span>
+    </md-button>
+  </div>
 </div>
 <div layout="row" layout-align="end center" ng-if="fli.user">
   <div flex layout="column" layout-align="center center">

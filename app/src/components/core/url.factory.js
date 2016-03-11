@@ -53,10 +53,11 @@ angular
 
     function link(href, self) {
       if (href) {
+        var decodedHref = decode(href);
         if (platform.name() !== 'mobile') {
-          $window.open(href, !self ? '_blank' : '_self');
+          $window.open(decodedHref, !self ? '_blank' : '_self');
         } else {
-          inAppBrowser.open(href);
+          inAppBrowser.open(decodedHref);
         }
       }
     }
