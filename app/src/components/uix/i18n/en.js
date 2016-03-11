@@ -14,7 +14,7 @@ window.i18n.en.uix = {
     goTo: 'Go to {{v}}',
     getIt: 'Get',
     clearIt: 'Clear',
-    stared: '{{v}} added to stars',
+    stared: '{{v}} added to favorites',
     edit: {
       image: 'Link to image',
       title: 'Title',

@@ -10,7 +10,7 @@ window.i18n.ru.search = {
     video: 'видео',
     promo: 'промо',
     job: 'работа',
-    feeds: 'лента'
+    feeds: 'интересы'
   },
   menu: {
     lucky: 'на удачу'

@@ -6,8 +6,8 @@ angular
       types: [
         {type: 'web'},
         {type: 'news'},
-        {type: 'feeds'},
         {type: 'people'},
+        {type: 'feeds'},
         {type: 'actions'},
         {type: 'images'},
         {type: 'audio'},
@@ -25,7 +25,6 @@ angular
           {sub: 'linkedin'}
         ],
         news: [],
-        feeds: [],
         people: [
           {sub: 'google'},
           {sub: 'facebook'},
@@ -33,6 +32,7 @@ angular
           {sub: 'twitter'},
           {sub: 'linkedin'}
         ],
+        feeds: [],
         actions: [
           {sub: 'twitter'},
           {sub: 'vk'}

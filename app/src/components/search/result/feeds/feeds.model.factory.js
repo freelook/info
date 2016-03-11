@@ -7,9 +7,12 @@ angular
 
     var FEEDS = Firebase.ref('feeds');
 
-    function query() {
+    function query(input) {
       var _query = FEEDS;
-      return _query.limitToFirst(24).once('value');
+      if (input) {
+        _query = _query.orderByChild('input').startAt(input);
+      }
+      return _query.limitToFirst(36).once('value');
     }
 
     function add(_feed) {

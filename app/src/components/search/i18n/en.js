@@ -10,7 +10,7 @@ window.i18n.en.search = {
     video: 'video',
     promo: 'promo',
     job: 'job',
-    feeds: 'feeds'
+    feeds: 'interests'
   },
   menu: {
     lucky: 'get lucky'

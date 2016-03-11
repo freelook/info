@@ -31,7 +31,6 @@ angular
 
     function _star(data) {
       var _data = angular.extend(data, _config(data));
-      console.log(_data);
       storage.arr.push(STORAGE_KEYS.STAR_KEY, _data);
       FEEDS.add(_data);
       toast.show('uix.item.stared', {v: _data.title});
