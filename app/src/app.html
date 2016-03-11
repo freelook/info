@@ -39,11 +39,13 @@
   <link rel="stylesheet" href="components/search/result/result.css">
   <link rel="stylesheet" href="components/search/suggest/suggest.css">
   <link rel="stylesheet" href="components/show/item/item.css">
+  <link rel="stylesheet" href="components/views/setting/setting.css">
+  <link rel="stylesheet" href="components/views/share/share.css">
   <link rel="stylesheet" href="components/uix/animation/animation.css">
   <link rel="stylesheet" href="components/uix/apps/apps.css">
   <link rel="stylesheet" href="components/uix/chips/chips.css">
-  <link rel="stylesheet" href="components/uix/donate/donate.css">
   <link rel="stylesheet" href="components/uix/fa/fa.css">
+  <link rel="stylesheet" href="components/uix/donate/donate.css">
   <link rel="stylesheet" href="components/uix/footer/footer.css">
   <link rel="stylesheet" href="components/uix/grid/grid.css">
   <link rel="stylesheet" href="components/uix/help/help.css">
@@ -52,10 +54,8 @@
   <link rel="stylesheet" href="components/uix/logo/logo.css">
   <link rel="stylesheet" href="components/uix/polyfill/polyfill.css">
   <link rel="stylesheet" href="components/uix/rating/fli.rating.css">
-  <link rel="stylesheet" href="components/uix/toast/toast.css">
   <link rel="stylesheet" href="components/uix/welcome/welcome.css">
-  <link rel="stylesheet" href="components/views/setting/setting.css">
-  <link rel="stylesheet" href="components/views/share/share.css">
+  <link rel="stylesheet" href="components/uix/toast/toast.css">
   <link rel="stylesheet" href="components/home/widget/looks/looks.css">
   <link rel="stylesheet" href="components/home/widget/stars/stars.css">
   <link rel="stylesheet" href="components/look/content/facebook/facebook.css">
@@ -79,14 +79,14 @@
   <link rel="stylesheet" href="components/search/result/web/web.css">
   <link rel="stylesheet" href="components/show/item/form/form.css">
   <link rel="stylesheet" href="components/show/item/link/link.css">
+  <link rel="stylesheet" href="components/views/setting/auth/auth.css">
+  <link rel="stylesheet" href="components/views/setting/user/user.css">
   <link rel="stylesheet" href="components/uix/input/menu/menu.css">
   <link rel="stylesheet" href="components/uix/item/edit/edit.css">
   <link rel="stylesheet" href="components/uix/locale/panel/panel.css">
-  <link rel="stylesheet" href="components/views/setting/auth/auth.css">
-  <link rel="stylesheet" href="components/views/setting/user/user.css">
   <link rel="stylesheet" href="components/look/content/full/rich/rich.css">
-  <link rel="stylesheet" href="components/look/content/instagram/user/user.css">
   <link rel="stylesheet" href="components/look/content/instagram/media/media.css">
+  <link rel="stylesheet" href="components/look/content/instagram/user/user.css">
   <link rel="stylesheet" href="components/look/content/pinterest/board/board.css">
   <link rel="stylesheet" href="components/look/content/pinterest/user/user.css">
   <link rel="stylesheet" href="components/look/content/vk/group/group.css">
@@ -177,8 +177,8 @@
 <script src="components/token/_token.module.js"></script>
 <script src="components/token/chrome.token.controller.js"></script>
 <script src="components/token/token.factory.js"></script>
-<script src="components/uix/_uix.module.js"></script>
 <script src="components/views/_views.module.js"></script>
+<script src="components/uix/_uix.module.js"></script>
 <script src="components/_index/i18n/en.js"></script>
 <script src="components/_index/i18n/ru.js"></script>
 <script src="components/core/api/api.app.factory.js"></script>
@@ -237,6 +237,12 @@
 <script src="components/show/item/item.controller.js"></script>
 <script src="components/show/item/item.directive.js"></script>
 <script src="components/show/promo/promo.model.factory.js"></script>
+<script src="components/views/setting/setting.controller.js"></script>
+<script src="components/views/setting/setting.directive.js"></script>
+<script src="components/views/setting/setting.factory.js"></script>
+<script src="components/views/share/share.controller.js"></script>
+<script src="components/views/share/share.directive.js"></script>
+<script src="components/views/share/share.factory.js"></script>
 <script src="components/uix/apps/apps.controller.js"></script>
 <script src="components/uix/apps/apps.directive.js"></script>
 <script src="components/uix/donate/donate.controller.js"></script>
@@ -259,14 +265,8 @@
 <script src="components/uix/polyfill/polyfill.directive.js"></script>
 <script src="components/uix/rating/fli.rating.directive.js"></script>
 <script src="components/uix/scroll/scroll.factory.js"></script>
-<script src="components/uix/toast/toast.factory.js"></script>
 <script src="components/uix/welcome/welcome.directive.js"></script>
-<script src="components/views/setting/setting.controller.js"></script>
-<script src="components/views/setting/setting.directive.js"></script>
-<script src="components/views/setting/setting.factory.js"></script>
-<script src="components/views/share/share.controller.js"></script>
-<script src="components/views/share/share.directive.js"></script>
-<script src="components/views/share/share.factory.js"></script>
+<script src="components/uix/toast/toast.factory.js"></script>
 <script src="components/core/api/facebook/FB.factory.js"></script>
 <script src="components/core/api/facebook/facebook.factory.js"></script>
 <script src="components/core/api/google/_google.factory.js"></script>
@@ -330,6 +330,10 @@
 <script src="components/show/item/form/form.directive.js"></script>
 <script src="components/show/item/link/link.controller.js"></script>
 <script src="components/show/item/link/link.directive.js"></script>
+<script src="components/views/setting/auth/auth.controller.js"></script>
+<script src="components/views/setting/auth/auth.directive.js"></script>
+<script src="components/views/setting/user/user.controller.js"></script>
+<script src="components/views/setting/user/user.directive.js"></script>
 <script src="components/uix/input/menu/menu.controller.js"></script>
 <script src="components/uix/input/menu/menu.directive.js"></script>
 <script src="components/uix/item/edit/edit.controller.js"></script>
@@ -337,20 +341,16 @@
 <script src="components/uix/item/icon/icon.directive.js"></script>
 <script src="components/uix/locale/panel/panel.controller.js"></script>
 <script src="components/uix/locale/panel/panel.directive.js"></script>
-<script src="components/views/setting/auth/auth.controller.js"></script>
-<script src="components/views/setting/auth/auth.directive.js"></script>
-<script src="components/views/setting/user/user.controller.js"></script>
-<script src="components/views/setting/user/user.directive.js"></script>
 <script src="components/core/api/google/plus/google.plus.factory.js"></script>
 <script src="components/core/api/google/url/google.url.factory.js"></script>
 <script src="components/look/content/full/read/read.factory.js"></script>
 <script src="components/look/content/full/rich/rich.controller.js"></script>
 <script src="components/look/content/full/rich/rich.directive.js"></script>
 <script src="components/look/content/full/rich/rich.factory.js"></script>
-<script src="components/look/content/instagram/user/user.controller.js"></script>
-<script src="components/look/content/instagram/user/user.directive.js"></script>
 <script src="components/look/content/instagram/media/media.controller.js"></script>
 <script src="components/look/content/instagram/media/media.directive.js"></script>
+<script src="components/look/content/instagram/user/user.controller.js"></script>
+<script src="components/look/content/instagram/user/user.directive.js"></script>
 <script src="components/look/content/pinterest/board/board.controller.js"></script>
 <script src="components/look/content/pinterest/board/board.directive.js"></script>
 <script src="components/look/content/pinterest/user/user.controller.js"></script>
