@@ -12,7 +12,7 @@ angular
       if (user.authData().uid) {
         _query = _query.orderByChild('users/' + user.authData().uid).equalTo(null);
       }
-      return _query.limitToFirst(24).once('value');
+      return Firebase.loader(_query.limitToFirst(24).once('value'));
     }
 
     function add(_promo) {

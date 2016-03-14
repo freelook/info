@@ -2,7 +2,7 @@
 angular
   .module('fli.search')
   .factory('hotTrends',
-  function ($rootScope, $q, $cacheFactory, api, locale, parser, prerender, platform) {
+  function ($q, $cacheFactory, loaderInterceptor, api, locale, parser, prerender, platform) {
 
     var cache = $cacheFactory('hotTrends');
 
@@ -18,7 +18,7 @@ angular
             });
         },
         app: function (defer) {
-          $rootScope.fli.progress = true;
+          loaderInterceptor.toggleLoader(true);
           prerender.local(tapi)
             .then(function (html) {
               return defer.resolve(_htmlToTrends(html));
@@ -27,7 +27,7 @@ angular
               return defer.reject(trends);
             })
             .finally(function () {
-              $rootScope.fli.progress = false;
+              loaderInterceptor.toggleLoader(false);
             });
         }
       };

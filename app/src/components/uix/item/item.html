@@ -18,13 +18,13 @@
         <span ng-bind="::fliItem.searchInput" translate translate-attr-title="uix.item.search" translate-values="::{v:fliItem.searchInput}"></span>
       </a>
     </div>
-    <div class="link" ng-if="!fliItem.star" ng-click="fliItemCtrl.star(fliItem)">
+    <div class="link" ng-if="!fliItem.star" ng-click="fliItemCtrl.star(fliItem);fliItem.star=1;">
       <i class="fa fa-star-o" translate translate-attr-title="uix.item.star" translate-values="::{v:fliItem.title}"></i>
     </div>
     <div class="link" ng-if="::fliItemCtrl.share" ng-click="fliItemCtrl.share(fliItem)">
       <i class="fa fa-share-alt" translate translate-attr-title="uix.item.share" translate-values="::{v:fliItem.title}"></i>
     </div>
-    <div class="link" ng-if="fliItem.url" ng-click="link(fliItem.url)">
+    <div class="link" ng-if="::fliItem.url" ng-click="link(fliItem.url)">
       <i class="fa fa-external-link" translate translate-attr-title="uix.item.goTo" translate-values="::{v:fliItem.title}"></i>
     </div>
   </md-card-footer>
