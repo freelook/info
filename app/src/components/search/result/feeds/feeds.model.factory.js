@@ -12,7 +12,7 @@ angular
       if (input) {
         _query = _query.orderByChild('input').startAt(input);
       }
-      return _query.limitToFirst(36).once('value');
+      return Firebase.loader(_query.limitToFirst(36).once('value'));
     }
 
     function add(_feed) {

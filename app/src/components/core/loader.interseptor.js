@@ -20,6 +20,7 @@ angular
     });
 
     return {
+      toggleLoader: toggleLoader,
       request: function (config) {
         count++;
         toggleLoader(isLoading());
