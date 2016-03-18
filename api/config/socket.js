@@ -4,8 +4,8 @@ var config = require('./config'),
     path = require('path');
 
 module.exports = function (io) {
-    config.getGlobbedFiles('./sockets/**/*.js').forEach(function (routePath) {
+    config.getGlobbedFiles('./components/**/*.server.socket.js').forEach(function (routePath) {
         require(path.resolve(routePath))(io);
     });
-    require('../services/core/io')(io);
+    require('components/core/io')(io);
 };

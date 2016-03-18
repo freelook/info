@@ -75,7 +75,7 @@ module.exports = function (app) {
     //app.use(express.static(path.resolve('./public')));
 
     // Globbing routing files
-    config.getGlobbedFiles('./routes/**/*.js').forEach(function (routePath) {
+    config.getGlobbedFiles('./components/**/*.server.route.js').forEach(function (routePath) {
         require(path.resolve(routePath))(app);
     });
 
