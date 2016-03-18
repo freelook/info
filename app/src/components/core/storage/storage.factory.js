@@ -37,9 +37,9 @@ angular
       if (!arr.some(function (el) {
           return angular.equals(item.url, el.url);
         })) {
-        arr.unshift(item);
+        arr.push(item);
         if (max && arr.length > max) {
-          arr.pop();
+          arr.shift();
         }
         set(key, arr);
       }

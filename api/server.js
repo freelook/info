@@ -1,10 +1,12 @@
 'use strict';
-/**
- * Module dependencies.
- */
-var init = require('./config/init')(),
+
+// Set up path for modules
+require('app-module-path').addPath(__dirname);
+
+// Api dependencies
+var init = require('config/init')(),
     http = require('http'),
-    config = require('./config/config');
+    config = require('config/config');
 
 // Init the express application
 var api = require('express')();
@@ -16,10 +18,10 @@ var server = http.createServer(api);
 var io = require('socket.io')(server);
 
 // Init core
-require('./services/core').init(server, api, io);
+require('components/core/core.server.service').init(server, api, io);
 
 // Config api
-require('./config')(api, io);
+require('config/index')(api, io);
 
 // Run api
 server.listen(config.port);

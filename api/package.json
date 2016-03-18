@@ -8,11 +8,11 @@
     "url": "https://github.com/freelook/info"
   },
   "scripts": {
-    "start": "gulp",
-    "test": "gulp test"
+    "start": "gulp"
   },
   "dependencies": {
     "apac": "1.0.0",
+    "app-module-path": "^1.0.5",
     "body-parser": "1.0.1",
     "compression": "1.0.1",
     "connect-flash": "0.1.1",

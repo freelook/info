@@ -13,7 +13,7 @@ angular
         $scope.chips.items.push({
           name: $scope.fli.route.sub,
           key: 'sub',
-          route: url.href('?', _config(null), false, '/')
+          route: url.href(null, _config(null), false, '/')
         });
       }
     }
@@ -28,7 +28,7 @@ angular
     }
 
     vm.href = function (sub) {
-      return url.href('?', _config(sub));
+      return url.href(null, _config(sub));
     };
 
     vm.go = function (sub) {

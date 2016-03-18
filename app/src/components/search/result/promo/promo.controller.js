@@ -3,7 +3,7 @@
 angular
   .module('fli.search')
   .controller('search.result.promo.ctrl',
-  function ($timeout, promo, user, toast, PROMO) {
+  function ($timeout, promo, user, toast, nav, PROMO) {
 
     var vm = this;
     vm.results = {};
@@ -14,6 +14,10 @@ angular
       } else {
         toast.needLogin();
       }
+    };
+
+    vm.add = function () {
+      nav.go('show');
     };
 
     PROMO.query()

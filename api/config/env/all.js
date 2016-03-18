@@ -20,7 +20,7 @@ module.exports = {
     Red: {
         httpAdminRoot: '/red',
         httpNodeRoot: '/rapi',
-        userDir: './red',
+        userDir: './components/core/red',
         functionGlobalContext: {}
     }
 };

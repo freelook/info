@@ -6,6 +6,9 @@ angular
     return {
       controller: 'search.chips.ctrl',
       controllerAs: 'chips',
-      templateUrl: 'components/search/chips/chips.html'
+      templateUrl: 'components/search/chips/chips.html',
+      bindToController: {
+        typeonly: '='
+      }
     };
   });

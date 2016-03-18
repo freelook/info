@@ -12,9 +12,9 @@ angular
         {type: 'images'},
         {type: 'audio'},
         {type: 'video'},
-        {type: 'promo'},
         {type: 'goods'},
-        {type: 'job'}
+        {type: 'job'},
+        {type: 'promo'}
       ],
       subs: {
         web: [
@@ -47,12 +47,12 @@ angular
           {sub: 'youtube'},
           {sub: 'vk'}
         ],
-        promo: [],
         goods: [],
         job: [
           {sub: 'indeed'},
           {sub: 'linkedin'}
-        ]
+        ],
+        promo: []
       }
     };
 

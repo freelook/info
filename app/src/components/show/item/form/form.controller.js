@@ -28,7 +28,8 @@ angular
     };
 
     vm.show = function () {
-      var _promo = angular.extend($scope.showItem.post, {user: user.authData().uid});
+      var _promo = $scope.showItem.post;
+      _promo.user = user.authData().uid;
       PROMO.add(_promo)
         .then(function () {
           nav.goHome();
