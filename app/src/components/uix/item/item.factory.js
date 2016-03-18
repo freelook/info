@@ -30,7 +30,7 @@ angular
     }
 
     function _star(data) {
-      var _data = angular.extend(data, _config(data));
+      var _data = _extend(data);
       storage.arr.push(STORAGE_KEYS.STAR_KEY, _data);
       FEEDS.add(_data);
       toast.show('uix.item.stared', {v: _data.titleNoFormatting || _data.title});
@@ -40,12 +40,17 @@ angular
       return _href({input: input});
     }
 
+    function _extend(data) {
+      return angular.extend(data, _config(data));
+    }
+
     return {
       config: _config,
       href: _href,
       share: _share,
       star: _star,
-      search: _search
+      search: _search,
+      extend: _extend
     };
 
   });
