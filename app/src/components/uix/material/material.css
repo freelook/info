@@ -1,0 +1,11 @@
+.md-button.md-fab {
+  z-index: 0;
+  margin: 5px;
+  height: 40px;
+  width: 40px;
+  line-height: 20px;
+}
+
+.md-errors-spacer {
+  display: none;
+}

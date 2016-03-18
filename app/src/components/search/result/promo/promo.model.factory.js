@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-  .module('fli.show')
+  .module('fli.search')
   .factory('PROMO',
   function (user, Firebase) {
 
@@ -12,7 +12,7 @@ angular
       if (user.authData().uid) {
         _query = _query.orderByChild('users/' + user.authData().uid).equalTo(null);
       }
-      return Firebase.loader(_query.limitToFirst(24).once('value'));
+      return Firebase.loader(_query.limitToFirst(36).once('value'));
     }
 
     function add(_promo) {

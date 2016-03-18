@@ -14,14 +14,12 @@ angular
     function _route() {
       return {
         l: locale.getCode(),
-        input: $scope.fli.route.input ? encodeURIComponent(decodeURIComponent($scope.fli.route.input)) : ''
+        input: $scope.fli.route.input ? encodeURIComponent(decodeURIComponent($scope.fli.route.input)) : null
       };
     }
 
     vm.find = function () {
-      if ($scope.fli.route.input) {
-        $scope.go(url.href('show?', _route(), false, '/'));
-      }
+      $scope.go(url.href('show?', _route(), false, '/'));
     };
 
   });

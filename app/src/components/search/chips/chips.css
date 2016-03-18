@@ -1,3 +1,13 @@
 fli-search-chips {
   display: block;
 }
+
+fli-search-chips .md-chips .md-chip {
+  padding: 0;
+}
+
+fli-search-chips md-chip-template {
+  display: block;
+  outline: 0;
+  padding: 0 12px;
+}

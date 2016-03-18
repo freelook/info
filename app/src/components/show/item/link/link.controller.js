@@ -11,6 +11,8 @@ angular
 
     rich.get($scope.fli.route.input)
       .then(_setItem)
-      .catch(_setItem);
+      .catch(function () {
+        _setItem();
+      });
 
   });

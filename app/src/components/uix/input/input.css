@@ -12,10 +12,6 @@ fli-input md-input-container {
   padding: 0;
 }
 
-fli-input .md-errors-spacer {
-  display: none;
-}
-
 fli-input input.md-input {
   height: 40px;
   line-height: 40px;
@@ -27,14 +23,6 @@ fli-input input.md-input {
 
 fli-input .md-button.md-icon-button {
   margin: 0;
-}
-
-fli-input .md-button.md-fab {
-  z-index: 0;
-  margin: 5px;
-  height: 40px;
-  width: 40px;
-  line-height: 20px;
 }
 
 fli-input .md-button.md-icon-button i {

@@ -2,7 +2,7 @@
 angular
   .module('fli.search')
   .controller('search.chips.type.ctrl',
-  function ($scope, $translate, chips, url, locale) {
+  function ($scope, $translate, $location, chips, url, locale) {
 
     var vm = this;
     vm.types = chips.types;
@@ -12,7 +12,7 @@ angular
         $scope.chips.items.push({
           name: $translate.instant('search.tabs.' + $scope.fli.route.type),
           key: 'type',
-          route: url.href('?', _config(null), false, '/')
+          route: url.href(null, _config(null), false, '/')
         });
       }
     }
@@ -26,7 +26,7 @@ angular
     }
 
     vm.href = function (type) {
-      return url.href('?', _config(type));
+      return url.href(null, _config(type));
     };
 
     vm.go = function (type) {
