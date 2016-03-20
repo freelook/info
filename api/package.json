@@ -2,6 +2,7 @@
   "name": "freelook.info",
   "description": "fli.api",
   "version": "0.13.9",
+  "license": "MIT",
   "author": "Dima Kostrub",
   "repository": {
     "type": "git",

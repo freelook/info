@@ -1,7 +1,6 @@
 <div class="block color-8">
 
   <div class="block" layout="row">
-
     <md-input-container ng-init="showItem.post.price=1" class="input">
       <label>
         <span translate="show.item.form.price"></span>
@@ -20,11 +19,9 @@
         <md-option value="click" selected="selected"><span translate="show.item.form.click"></span></md-option>
       </md-select>
     </md-input-container>
-
   </div>
 
   <div class="block" layout="row">
-
     <md-input-container class="input" ng-init="showItem.post.amount=1">
       <label translate="show.item.form.amount"></label>
       <input ng-model="showItem.post.amount" min="1" type="number">
@@ -39,15 +36,12 @@
       </label>
       <input value="{{showItemForm.total()}}" max="{{fli.user.get('looks')}}" disabled>
     </md-input-container>
-
   </div>
 
-  <div class="block" layout="row" layout-align="end start">
-
+  <div class="block" layout="column" layout-align="center center">
     <md-button class="md-fab md-primary" aria-label="show" ng-disabled="!showItemForm.shareEnabled()" ng-click="showItemForm.show()">
       <i class="fa fa-share"></i>
     </md-button>
-
   </div>
 
 </div>
