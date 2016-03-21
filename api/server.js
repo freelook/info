@@ -3,10 +3,8 @@
 // Set up path for modules
 require('app-module-path').addPath(__dirname);
 
-// Api dependencies
-var init = require('config/init')(),
-    http = require('http'),
-    config = require('config/config');
+var http = require('http'),
+    config = require('components/core/config');
 
 // Init the express application
 var api = require('express')();
@@ -18,10 +16,7 @@ var server = http.createServer(api);
 var io = require('socket.io')(server);
 
 // Init core
-require('components/core/core.server.service').init(server, api, io);
-
-// Config api
-require('config/index')(api, io);
+require('components/core').init(api, io);
 
 // Run api
 server.listen(config.port);

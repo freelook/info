@@ -4,7 +4,7 @@ var $q = require('q'),
     jwt = require('jwt-simple'),
     users = require('components/core/firebase').ref('users'),
     promos = require('components/core/firebase').ref('promos'),
-    config = require('config/config');
+    config = require('components/core/config');
 
 function init() {
     promos.on('child_added', function (promoSnap) {

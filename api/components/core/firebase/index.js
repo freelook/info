@@ -1,6 +1,6 @@
 'use strict';
 
-var config = require('config/config'),
+var config = require('components/core/config'),
     Firebase = require('firebase');
 
 function ref(path) {

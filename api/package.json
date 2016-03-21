@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "apac": "1.0.0",
-    "app-module-path": "^1.0.5",
+    "app-module-path": "1.0.5",
     "body-parser": "1.0.1",
     "compression": "1.0.1",
     "connect-flash": "0.1.1",
@@ -27,11 +27,13 @@
     "lodash": "4.0.0",
     "method-override": "2.3.5",
     "morgan": "1.7.0",
+    "mysql": "2.10.2",
     "node-red": "0.13.1",
     "phantom": "0.7.2",
     "phantomjs": "1.9.17",
     "q": "1.4.1",
     "request": "2.69.0",
+    "sequelize": "^3.19.3",
     "socket.io": "1.4.5",
     "swig": "1.4.2"
   },
