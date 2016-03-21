@@ -8,11 +8,6 @@ module.exports = {
     },
     port: process.env.PORT || 4000,
     templateEngine: 'swig',
-    Parse: {
-        id: process.env.PARSE_ID,
-        js: process.env.PARSE_JS,
-        master: process.env.PARSE_MASTER
-    },
     Firebase: {
         ref: 'https://freelook.firebaseio.com/',
         id: process.env.FIREBASE_ID
@@ -22,5 +17,8 @@ module.exports = {
         httpNodeRoot: '/rapi',
         userDir: './components/core/red',
         functionGlobalContext: {}
+    },
+    mysql: {
+        url: process.env.MYSQL_URL
     }
 };

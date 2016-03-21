@@ -3,7 +3,7 @@
 angular
   .module('fli.home')
   .controller('home.widget.looks.ctrl',
-  function (storage, url, STORAGE_KEYS) {
+  function (storage, STORAGE_KEYS) {
 
     var vm = this;
     vm.items = storage.get(STORAGE_KEYS.LOOK_KEY, []);

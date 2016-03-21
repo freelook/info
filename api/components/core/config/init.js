@@ -13,7 +13,7 @@ module.exports = function () {
      * Before we begin, lets set the environment variable
      * We'll Look for a valid NODE_ENV variable and if one cannot be found load the development NODE_ENV
      */
-    glob('./config/env/' + process.env.NODE_ENV + '.js', {
+    glob('components/core/config/env/' + process.env.NODE_ENV + '.js', {
         sync: true
     }, function (err, environmentFiles) {
         console.log();
@@ -34,6 +34,7 @@ module.exports = function () {
     /**
      * Add our server node extensions
      */
+
     require.extensions['.server.controller.js'] = require.extensions['.js'];
     require.extensions['.server.model.js'] = require.extensions['.js'];
     require.extensions['.server.routes.js'] = require.extensions['.js'];

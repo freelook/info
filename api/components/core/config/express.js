@@ -10,7 +10,7 @@ var morgan = require('morgan'),
     methodOverride = require('method-override'),
     helmet = require('helmet'),
     flash = require('connect-flash'),
-    config = require('./config'),
+    config = require('../config'),
     consolidate = require('consolidate'),
     path = require('path');
 
@@ -75,7 +75,7 @@ module.exports = function (app) {
     //app.use(express.static(path.resolve('./public')));
 
     // Globbing routing files
-    config.getGlobbedFiles('./components/**/*.server.route.js').forEach(function (routePath) {
+    config.getGlobbedFiles('components/**/*.server.route.js').forEach(function (routePath) {
         require(path.resolve(routePath))(app);
     });
 

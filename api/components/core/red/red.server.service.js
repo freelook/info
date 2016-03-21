@@ -1,6 +1,6 @@
 'use strict';
 
-var config = require('config/config'),
+var config = require('components/core/config'),
     RED = require('node-red');
 
 function init(server, api) {
