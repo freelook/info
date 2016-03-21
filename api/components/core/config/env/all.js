@@ -18,7 +18,7 @@ module.exports = {
         userDir: './components/core/red',
         functionGlobalContext: {}
     },
-    MYSQL: {
-        URI: process.env.MYSQL_URI
+    mysql: {
+        url: process.env.MYSQL_URL
     }
 };

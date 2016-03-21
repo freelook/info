@@ -6,13 +6,12 @@ angular
   function ($timeout, $scope, FEEDS) {
 
     var vm = this;
-    vm.results = {};
+    vm.results = [];
 
     FEEDS.query($scope.fli.route.input)
-      .then(function (results) {
-        $timeout(function () {
-          vm.results = results.val() || {};
-        });
+      .success(function (results) {
+        console.log(results);
+        vm.results = results || [];
       });
 
   });

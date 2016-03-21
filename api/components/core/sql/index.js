@@ -2,7 +2,6 @@
 
 var config = require('components/core/config'),
     sequelize = require('sequelize'),
-    sql = new sequelize(config.MYSQL.URI);
-
+    sql = new sequelize(config.mysql.url);
 
 module.exports = sql;

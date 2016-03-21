@@ -3,20 +3,18 @@
 angular
   .module('fli.search')
   .factory('FEEDS',
-  function (user, Firebase) {
-
-    var FEEDS = Firebase.ref('feeds');
+  function ($http, CONFIG) {
 
     function query(input) {
-      var _query = FEEDS;
-      if (input) {
-        _query = _query.orderByChild('input').startAt(input);
-      }
-      return Firebase.loader(_query.limitToFirst(36).once('value'));
+      return $http.get([CONFIG.API.URL, 'feeds/all'].join(''), {
+        params: {
+          input: input
+        }
+      });
     }
 
     function add(_feed) {
-      return FEEDS.push(_feed);
+      return $http.post([CONFIG.API.URL, 'feeds/create'].join(''), _feed);
     }
 
     return {

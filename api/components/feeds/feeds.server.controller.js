@@ -1,13 +1,13 @@
 'use strict';
 
-var users = require('./users.server.service');
+var feeds = require('./feeds.server.service');
 
 function all(req, res) {
-    users.all(req, res);
+    feeds.all(req, res);
 }
 
 function create(req, res) {
-    users.create(req, res);
+    feeds.create(req, res);
 }
 
 module.exports = {
