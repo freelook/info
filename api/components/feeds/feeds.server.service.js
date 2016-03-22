@@ -6,11 +6,15 @@ var LIMIT = 24,
 function all(query) {
     var operators = {
         limit: LIMIT,
-        offset: LIMIT * query.page || 0
+        offset: LIMIT * query.page || 0,
+        order: 'createdAt DESC',
+        where: {
+            l: query.l || 'us'
+        }
     };
 
     if (query.input) {
-        operators.where = [
+        operators.where.input = [
             'LOWER(input) REGEXP ?',
             decodeURIComponent(query.input).trim().replace(/\s/g, '|').toLowerCase()
         ];

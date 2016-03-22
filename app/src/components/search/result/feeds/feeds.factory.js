@@ -5,9 +5,10 @@ angular
   .factory('feeds',
   function (FEEDS) {
 
-    function query(input, page) {
+    function query(route, page) {
       return FEEDS.get({
-        input: input,
+        input: route.input,
+        l: route.l,
         page: page
       });
     }

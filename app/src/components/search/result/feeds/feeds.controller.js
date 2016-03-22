@@ -15,7 +15,7 @@ angular
     };
 
     function load() {
-      feeds.query($scope.fli.route.input, vm.page)
+      feeds.query($scope.fli.route, vm.page)
         .success(function (results) {
           vm.results = vm.results.concat(results);
         })
