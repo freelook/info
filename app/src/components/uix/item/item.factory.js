@@ -2,8 +2,7 @@
 angular
   .module('freelook.info')
   .factory('item',
-  function ($rootScope, url, share, locale, storage, toast,
-            FEEDS, STORAGE_KEYS, CONFIG) {
+  function ($rootScope, url, share, locale, storage, toast, feeds, STORAGE_KEYS, CONFIG) {
 
     function _config(data) {
       return {
@@ -32,7 +31,7 @@ angular
     function _star(data) {
       var _data = _extend(data);
       storage.arr.push(STORAGE_KEYS.STAR_KEY, _data);
-      FEEDS.add(_data);
+      feeds.add(_data);
       toast.show('uix.item.stared', {v: _data.titleNoFormatting || _data.title});
     }
 
