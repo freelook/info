@@ -48,6 +48,7 @@ angular
     }
 
     return {
+      enpoint: _enpoint,
       get: get,
       proxy: proxy,
       goods: goods,

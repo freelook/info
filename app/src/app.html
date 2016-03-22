@@ -39,6 +39,8 @@
   <link rel="stylesheet" href="components/search/result/result.css">
   <link rel="stylesheet" href="components/search/suggest/suggest.css">
   <link rel="stylesheet" href="components/show/item/item.css">
+  <link rel="stylesheet" href="components/views/setting/setting.css">
+  <link rel="stylesheet" href="components/views/share/share.css">
   <link rel="stylesheet" href="components/uix/animation/animation.css">
   <link rel="stylesheet" href="components/uix/apps/apps.css">
   <link rel="stylesheet" href="components/uix/chips/chips.css">
@@ -55,8 +57,6 @@
   <link rel="stylesheet" href="components/uix/rating/fli.rating.css">
   <link rel="stylesheet" href="components/uix/toast/toast.css">
   <link rel="stylesheet" href="components/uix/welcome/welcome.css">
-  <link rel="stylesheet" href="components/views/setting/setting.css">
-  <link rel="stylesheet" href="components/views/share/share.css">
   <link rel="stylesheet" href="components/home/widget/looks/looks.css">
   <link rel="stylesheet" href="components/home/widget/stars/stars.css">
   <link rel="stylesheet" href="components/home/widget/tabs/tabs.css">
@@ -81,11 +81,11 @@
   <link rel="stylesheet" href="components/search/result/web/web.css">
   <link rel="stylesheet" href="components/show/item/form/form.css">
   <link rel="stylesheet" href="components/show/item/link/link.css">
+  <link rel="stylesheet" href="components/views/setting/auth/auth.css">
+  <link rel="stylesheet" href="components/views/setting/user/user.css">
   <link rel="stylesheet" href="components/uix/input/menu/menu.css">
   <link rel="stylesheet" href="components/uix/item/edit/edit.css">
   <link rel="stylesheet" href="components/uix/locale/panel/panel.css">
-  <link rel="stylesheet" href="components/views/setting/auth/auth.css">
-  <link rel="stylesheet" href="components/views/setting/user/user.css">
   <link rel="stylesheet" href="components/look/content/full/rich/rich.css">
   <link rel="stylesheet" href="components/look/content/instagram/media/media.css">
   <link rel="stylesheet" href="components/look/content/instagram/user/user.css">
@@ -94,9 +94,9 @@
   <link rel="stylesheet" href="components/look/content/vk/group/group.css">
   <link rel="stylesheet" href="components/look/content/vk/user/user.css">
   <link rel="stylesheet" href="components/look/content/vk/video/video.css">
+  <link rel="stylesheet" href="components/look/content/vk/wall/wall.css">
   <link rel="stylesheet" href="components/look/content/youtube/channel/channel.css">
   <link rel="stylesheet" href="components/look/content/youtube/user/user.css">
-  <link rel="stylesheet" href="components/look/content/vk/wall/wall.css">
   <link rel="stylesheet" href="components/look/content/youtube/watch/watch.css">
   <link rel="stylesheet" href="components/search/chips/type/sub/sub.css">
   <link rel="stylesheet" href="components/search/result/actions/twitter/twitter.css">
@@ -158,6 +158,12 @@
 <script src="components/_index/__index.module.js"></script>
 <script src="components/_index/index.controller.js"></script>
 <script src="components/_index/index.factory.js"></script>
+<script src="components/feedback/_feedback.module.js"></script>
+<script src="components/feedback/feedback.controller.js"></script>
+<script src="components/home/_home.module.js"></script>
+<script src="components/home/home.controller.js"></script>
+<script src="components/look/_look.module.js"></script>
+<script src="components/look/look.factory.js"></script>
 <script src="components/core/_core.module.js"></script>
 <script src="components/core/analytics.factory.js"></script>
 <script src="components/core/cache.factory.js"></script>
@@ -168,22 +174,31 @@
 <script src="components/core/parser.html.factory.js"></script>
 <script src="components/core/prerender.factory.js"></script>
 <script src="components/core/url.factory.js"></script>
-<script src="components/feedback/_feedback.module.js"></script>
-<script src="components/feedback/feedback.controller.js"></script>
-<script src="components/home/_home.module.js"></script>
-<script src="components/home/home.controller.js"></script>
-<script src="components/look/_look.module.js"></script>
-<script src="components/look/look.factory.js"></script>
 <script src="components/search/_search.module.js"></script>
 <script src="components/show/_show.module.js"></script>
 <script src="components/show/show.controller.js"></script>
 <script src="components/token/_token.module.js"></script>
 <script src="components/token/chrome.token.controller.js"></script>
 <script src="components/token/token.factory.js"></script>
-<script src="components/uix/_uix.module.js"></script>
 <script src="components/views/_views.module.js"></script>
+<script src="components/uix/_uix.module.js"></script>
 <script src="components/_index/i18n/en.js"></script>
 <script src="components/_index/i18n/ru.js"></script>
+<script src="components/feedback/comments/comments.controller.js"></script>
+<script src="components/feedback/comments/comments.directive.js"></script>
+<script src="components/feedback/i18n/en.js"></script>
+<script src="components/feedback/i18n/ru.js"></script>
+<script src="components/home/i18n/en.js"></script>
+<script src="components/home/i18n/ru.js"></script>
+<script src="components/home/widget/widget.controller.js"></script>
+<script src="components/home/widget/widget.directive.js"></script>
+<script src="components/look/content/content.controller.js"></script>
+<script src="components/look/content/content.directive.js"></script>
+<script src="components/look/content/content.factory.js"></script>
+<script src="components/look/i18n/en.js"></script>
+<script src="components/look/i18n/ru.js"></script>
+<script src="components/look/suggest/suggest.controller.js"></script>
+<script src="components/look/suggest/suggest.directive.js"></script>
 <script src="components/core/api/api.app.factory.js"></script>
 <script src="components/core/api/api.factory.js"></script>
 <script src="components/core/api/api.site.factory.js"></script>
@@ -207,21 +222,6 @@
 <script src="components/core/utils/fli.error.js"></script>
 <script src="components/core/utils/fli.href.js"></script>
 <script src="components/core/utils/hide-on-scroll.directive.js"></script>
-<script src="components/feedback/comments/comments.controller.js"></script>
-<script src="components/feedback/comments/comments.directive.js"></script>
-<script src="components/feedback/i18n/en.js"></script>
-<script src="components/feedback/i18n/ru.js"></script>
-<script src="components/home/i18n/en.js"></script>
-<script src="components/home/i18n/ru.js"></script>
-<script src="components/home/widget/widget.controller.js"></script>
-<script src="components/home/widget/widget.directive.js"></script>
-<script src="components/look/content/content.controller.js"></script>
-<script src="components/look/content/content.directive.js"></script>
-<script src="components/look/content/content.factory.js"></script>
-<script src="components/look/i18n/en.js"></script>
-<script src="components/look/i18n/ru.js"></script>
-<script src="components/look/suggest/suggest.controller.js"></script>
-<script src="components/look/suggest/suggest.directive.js"></script>
 <script src="components/search/chips/chips.controller.js"></script>
 <script src="components/search/chips/chips.directive.js"></script>
 <script src="components/search/chips/chips.factory.js"></script>
@@ -239,6 +239,12 @@
 <script src="components/show/input/input.directive.js"></script>
 <script src="components/show/item/item.controller.js"></script>
 <script src="components/show/item/item.directive.js"></script>
+<script src="components/views/setting/setting.controller.js"></script>
+<script src="components/views/setting/setting.directive.js"></script>
+<script src="components/views/setting/setting.factory.js"></script>
+<script src="components/views/share/share.controller.js"></script>
+<script src="components/views/share/share.directive.js"></script>
+<script src="components/views/share/share.factory.js"></script>
 <script src="components/uix/apps/apps.controller.js"></script>
 <script src="components/uix/apps/apps.directive.js"></script>
 <script src="components/uix/donate/donate.controller.js"></script>
@@ -263,25 +269,6 @@
 <script src="components/uix/scroll/scroll.factory.js"></script>
 <script src="components/uix/toast/toast.factory.js"></script>
 <script src="components/uix/welcome/welcome.directive.js"></script>
-<script src="components/views/setting/setting.controller.js"></script>
-<script src="components/views/setting/setting.directive.js"></script>
-<script src="components/views/setting/setting.factory.js"></script>
-<script src="components/views/share/share.controller.js"></script>
-<script src="components/views/share/share.directive.js"></script>
-<script src="components/views/share/share.factory.js"></script>
-<script src="components/core/api/facebook/FB.factory.js"></script>
-<script src="components/core/api/facebook/facebook.factory.js"></script>
-<script src="components/core/api/google/_google.factory.js"></script>
-<script src="components/core/api/google/google.chrome.factory.js"></script>
-<script src="components/core/api/google/google.site.factory.js"></script>
-<script src="components/core/api/instagram/instagram.factory.js"></script>
-<script src="components/core/api/linkedin/linkedin.factory.js"></script>
-<script src="components/core/api/pinterest/pinterest.factory.js"></script>
-<script src="components/core/api/promo/promo.factory.js"></script>
-<script src="components/core/api/twitter/twitter.factory.js"></script>
-<script src="components/core/api/vk/vk.factory.js"></script>
-<script src="components/core/api/yandex/yandex.factory.js"></script>
-<script src="components/core/api/youtube/youtube.factory.js"></script>
 <script src="components/home/widget/looks/looks.controller.js"></script>
 <script src="components/home/widget/looks/looks.directive.js"></script>
 <script src="components/home/widget/stars/stars.controller.js"></script>
@@ -300,6 +287,19 @@
 <script src="components/look/content/vk/vk.directive.js"></script>
 <script src="components/look/content/youtube/youtube.controller.js"></script>
 <script src="components/look/content/youtube/youtube.directive.js"></script>
+<script src="components/core/api/google/_google.factory.js"></script>
+<script src="components/core/api/google/google.chrome.factory.js"></script>
+<script src="components/core/api/google/google.site.factory.js"></script>
+<script src="components/core/api/facebook/FB.factory.js"></script>
+<script src="components/core/api/facebook/facebook.factory.js"></script>
+<script src="components/core/api/instagram/instagram.factory.js"></script>
+<script src="components/core/api/linkedin/linkedin.factory.js"></script>
+<script src="components/core/api/pinterest/pinterest.factory.js"></script>
+<script src="components/core/api/promo/promo.factory.js"></script>
+<script src="components/core/api/twitter/twitter.factory.js"></script>
+<script src="components/core/api/vk/vk.factory.js"></script>
+<script src="components/core/api/yandex/yandex.factory.js"></script>
+<script src="components/core/api/youtube/youtube.factory.js"></script>
 <script src="components/search/chips/type/type.controller.js"></script>
 <script src="components/search/chips/type/type.directive.js"></script>
 <script src="components/search/menu/lucky/lucky.controller.js"></script>
@@ -311,6 +311,7 @@
 <script src="components/search/result/audio/audio.directive.js"></script>
 <script src="components/search/result/feeds/feeds.controller.js"></script>
 <script src="components/search/result/feeds/feeds.directive.js"></script>
+<script src="components/search/result/feeds/feeds.factory.js"></script>
 <script src="components/search/result/feeds/feeds.model.factory.js"></script>
 <script src="components/search/result/goods/goods.controller.js"></script>
 <script src="components/search/result/goods/goods.directive.js"></script>
@@ -333,6 +334,10 @@
 <script src="components/show/item/form/form.directive.js"></script>
 <script src="components/show/item/link/link.controller.js"></script>
 <script src="components/show/item/link/link.directive.js"></script>
+<script src="components/views/setting/auth/auth.controller.js"></script>
+<script src="components/views/setting/auth/auth.directive.js"></script>
+<script src="components/views/setting/user/user.controller.js"></script>
+<script src="components/views/setting/user/user.directive.js"></script>
 <script src="components/uix/input/menu/menu.controller.js"></script>
 <script src="components/uix/input/menu/menu.directive.js"></script>
 <script src="components/uix/item/edit/edit.controller.js"></script>
@@ -340,12 +345,6 @@
 <script src="components/uix/item/icon/icon.directive.js"></script>
 <script src="components/uix/locale/panel/panel.controller.js"></script>
 <script src="components/uix/locale/panel/panel.directive.js"></script>
-<script src="components/views/setting/auth/auth.controller.js"></script>
-<script src="components/views/setting/auth/auth.directive.js"></script>
-<script src="components/views/setting/user/user.controller.js"></script>
-<script src="components/views/setting/user/user.directive.js"></script>
-<script src="components/core/api/google/plus/google.plus.factory.js"></script>
-<script src="components/core/api/google/url/google.url.factory.js"></script>
 <script src="components/look/content/full/read/read.factory.js"></script>
 <script src="components/look/content/full/rich/rich.controller.js"></script>
 <script src="components/look/content/full/rich/rich.directive.js"></script>
@@ -364,14 +363,16 @@
 <script src="components/look/content/vk/user/user.directive.js"></script>
 <script src="components/look/content/vk/video/video.controller.js"></script>
 <script src="components/look/content/vk/video/video.directive.js"></script>
+<script src="components/look/content/vk/wall/wall.controller.js"></script>
+<script src="components/look/content/vk/wall/wall.directive.js"></script>
 <script src="components/look/content/youtube/channel/channel.controller.js"></script>
 <script src="components/look/content/youtube/channel/channel.directive.js"></script>
 <script src="components/look/content/youtube/user/user.controller.js"></script>
 <script src="components/look/content/youtube/user/user.directive.js"></script>
-<script src="components/look/content/vk/wall/wall.controller.js"></script>
-<script src="components/look/content/vk/wall/wall.directive.js"></script>
 <script src="components/look/content/youtube/watch/watch.controller.js"></script>
 <script src="components/look/content/youtube/watch/watch.directive.js"></script>
+<script src="components/core/api/google/plus/google.plus.factory.js"></script>
+<script src="components/core/api/google/url/google.url.factory.js"></script>
 <script src="components/search/chips/type/sub/sub.controller.js"></script>
 <script src="components/search/chips/type/sub/sub.directive.js"></script>
 <script src="components/search/result/actions/twitter/twitter.controller.js"></script>

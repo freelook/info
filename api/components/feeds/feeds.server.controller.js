@@ -1,11 +1,15 @@
 'use strict';
 
-var feeds = require('./feeds.server.service');
+var $q = require('q'),
+    feeds = require('./feeds.server.service');
 
 function all(req, res) {
     feeds.all(req.query)
         .then(function (data) {
-            res.send(data);
+            if (data && data.length) {
+                return res.send(data);
+            }
+            return $q.reject();
         })
         .catch(function () {
             res.status(404).end();

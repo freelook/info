@@ -3,23 +3,21 @@
 angular
   .module('fli.search')
   .factory('FEEDS',
-  function ($http, CONFIG) {
+  function ($http, api) {
 
-    function query(input) {
-      return $http.get([CONFIG.API.URL, 'feeds/all'].join(''), {
-        params: {
-          input: input
-        }
+    function get(params) {
+      return $http.get(api.enpoint('feeds/all'), {
+        params: params
       });
     }
 
-    function add(_feed) {
-      return $http.post([CONFIG.API.URL, 'feeds/create'].join(''), _feed);
+    function post(data) {
+      return $http.post(api.enpoint('feeds/create'), data);
     }
 
     return {
-      query: query,
-      add: add
+      get: get,
+      post: post
     };
 
   });

@@ -1,11 +1,12 @@
 'use strict';
 
-var feeds = require('./feeds.server.model');
+var LIMIT = 24,
+    feeds = require('./feeds.server.model');
 
 function all(query) {
     var operators = {
-        limit: query.limit || 36,
-        offset: query.offset || 0
+        limit: LIMIT,
+        offset: LIMIT * query.page || 0
     };
 
     if (query.input) {

@@ -11,5 +11,11 @@
           fliItemCtrl.share=result.share;
           fliItemCtrl.search=result.search;">
     </fli-item>
+
+    <div ng-if="$last" class="more">
+      <md-button ng-if="feeds.page !=='$last'" class="md-fab md-primary" aria-label="more" ng-click="feeds.more()">
+        <i class="fa fa-angle-double-down"></i>
+      </md-button>
+    </div>
   </div>
 </div>
