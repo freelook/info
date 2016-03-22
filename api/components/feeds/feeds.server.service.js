@@ -2,36 +2,24 @@
 
 var feeds = require('./feeds.server.model');
 
-function all(req, res) {
+function all(query) {
     var operators = {
-        limit: req.query.limit || 36,
-        offset: req.query.offset || 0
+        limit: query.limit || 36,
+        offset: query.offset || 0
     };
 
-    if (req.query.input) {
+    if (query.input) {
         operators.where = [
             'LOWER(input) REGEXP ?',
-            decodeURIComponent(req.query.input).replace(/\s/g, '|').toLowerCase()
+            decodeURIComponent(query.input).trim().replace(/\s/g, '|').toLowerCase()
         ];
     }
 
-    return feeds.all(operators)
-        .then(function (data) {
-            res.send(data);
-        })
-        .catch(function (err) {
-            res.status(404).end(err);
-        });
+    return feeds.all(operators);
 }
 
-function create(req, res) {
-    return feeds.create(req.body)
-        .then(function (data) {
-            res.send(data);
-        })
-        .catch(function () {
-            res.status(404).end();
-        });
+function create(body) {
+    return feeds.create(body);
 }
 
 module.exports = {

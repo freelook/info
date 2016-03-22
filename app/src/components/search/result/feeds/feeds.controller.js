@@ -10,7 +10,6 @@ angular
 
     FEEDS.query($scope.fli.route.input)
       .success(function (results) {
-        console.log(results);
         vm.results = results || [];
       });
 

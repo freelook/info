@@ -12,26 +12,14 @@ function init() {
     });
 }
 
-function all(req, res) {
+function all(query) {
     return users_sql.all({
-        where: req.query
-    })
-        .then(function (data) {
-            res.send(data);
-        })
-        .catch(function () {
-            res.status(404).end();
-        });
+        where: query
+    });
 }
 
-function create(req, res) {
-    return users_sql.create(req.boby)
-        .then(function (data) {
-            res.send(data);
-        })
-        .catch(function () {
-            res.status(404).end();
-        });
+function create(body) {
+    return users_sql.create(body);
 }
 
 module.exports = {
