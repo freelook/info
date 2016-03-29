@@ -6,10 +6,7 @@ var $q = require('q'),
 function all(req, res) {
     feeds.all(req.query)
         .then(function (data) {
-            if (data && data.length) {
-                return res.send(data);
-            }
-            return $q.reject();
+            res.send(data);
         })
         .catch(function () {
             res.status(404).end();

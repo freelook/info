@@ -14,14 +14,19 @@ angular
       load();
     };
 
+    function setLastPage() {
+      vm.page = '$last';
+    }
+
     function load() {
       feeds.query($scope.fli.route, vm.page)
         .success(function (results) {
-          vm.results = vm.results.concat(results);
+          vm.results = vm.results.concat(results.rows);
+          if (results.count <= vm.results.length) {
+            setLastPage();
+          }
         })
-        .error(function () {
-          vm.page = '$last';
-        });
+        .error(setLastPage);
     }
 
     load();

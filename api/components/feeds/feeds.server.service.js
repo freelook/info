@@ -21,7 +21,7 @@ function all(query) {
         };
     }
 
-    return feeds.all(operators);
+    return feeds.findAndCountAll(operators);
 }
 
 function create(body) {
