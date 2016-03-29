@@ -7,11 +7,11 @@ angular
 
     $location.search({
       l: locale.init($routeParams.l),
-      input: $routeParams.input,
-      type: $routeParams.type,
-      sub: $routeParams.sub,
-      url: $routeParams.url,
-      img: $routeParams.img
+      input: $routeParams.input || null,
+      type: $routeParams.type || null,
+      sub: $routeParams.sub || null,
+      url: $routeParams.url || null,
+      img: $routeParams.img || null
     })
       .hash('')
       .replace();

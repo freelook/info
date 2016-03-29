@@ -7,7 +7,7 @@ angular
 
     $location.search({
       l: locale.init($routeParams.l),
-      input: $routeParams.input
+      input: $routeParams.input || null
     })
       .hash('')
       .replace();

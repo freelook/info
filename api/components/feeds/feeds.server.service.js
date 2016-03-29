@@ -14,10 +14,11 @@ function all(query) {
     };
 
     if (query.input) {
-        operators.where.input = [
-            'LOWER(input) REGEXP ?',
-            decodeURIComponent(query.input).trim().replace(/\s/g, '|').toLowerCase()
-        ];
+        operators.where.input = {
+            $like: ['%',
+                decodeURIComponent(query.input).trim().replace(/\s/g, '%'),
+                '%'].join('')
+        };
     }
 
     return feeds.all(operators);

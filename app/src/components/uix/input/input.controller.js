@@ -16,9 +16,9 @@ angular
     function _route() {
       return {
         l: locale.getCode(),
-        input: $scope.fli.route.input,
-        type: $scope.fli.route.type,
-        sub: $scope.fli.route.sub
+        input: $scope.fli.route.input || null,
+        type: $scope.fli.route.type || null,
+        sub: $scope.fli.route.sub || null
       };
     }
 
