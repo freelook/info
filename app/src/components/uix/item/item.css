@@ -4,6 +4,7 @@ fli-item {
 
 .fli-item {
   outline: 0;
+  width: 95%;
   max-width: 100%;
   box-shadow: none;
   border: 1px solid #cccccc;
@@ -11,7 +12,7 @@ fli-item {
 
 .fli-item md-card-content {
   max-width: 100%;
-  min-width: 200px;
+  min-width: 100%;
 }
 
 .fli-item .md-card-image,
@@ -65,6 +66,16 @@ fli-item {
   border: none;
   background: transparent;
 }
+
+.fli-item .url-block {
+  padding: 10px 3px;
+}
+
+.fli-item .url {
+  border-radius: 16px;
+  background: #f7f7f7;
+}
+
 
 
 

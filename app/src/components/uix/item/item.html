@@ -6,6 +6,9 @@
     </a>
     <div class="block">
       <a class="title" ng-if="::fliItem.title" fli-href="{{::fliItemCtrl.href(fliItem)}}" ng-bind-html="::fliItem.title"></a>
+      <div class="url-block">
+        <span class="url color-8" ng-if="::fliItem.url" ng-bind="::fliItemCtrl.url(fliItem.url)"></span>
+      </div>
       <div class="clearfix" ng-if="::fliItem.content" ng-bind-html="::fliItem.content"></div>
     </div>
     <ng-transclude class="clearfix" ng-if="::!fliItem.transclude"></ng-transclude>
