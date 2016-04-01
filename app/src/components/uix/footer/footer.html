@@ -10,7 +10,7 @@
       <a fli-href="{{::footer.about}}" ng-attr-title="{{fli.description}}" target="_blank">freelook.info</a>
     </p>
   </div>
-  <div class="link" flex="20" layout="row" layout-align="center center" ng-click="footer.toggleLocalePanel()">
+  <div class="link" ng-class="{active:footer.showLocalePanel}" flex="20" layout="row" layout-align="center center" ng-click="footer.toggleLocalePanel()">
     <div hide-xs class="color-8" translate="index.footer.locale"></div>
     <md-button class="md-icon-button link" aria-label="locale" ng-bind="::footer.localeCode"></md-button>
   </div>

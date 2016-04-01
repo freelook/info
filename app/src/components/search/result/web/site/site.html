@@ -1,0 +1,13 @@
+<fli-item ng-repeat="item in site.search.results"
+          ng-init="fliItem = {
+          url:item.url,
+          img:item.richSnippet.cseImage.src,
+          title:item.title,
+          titleNoFormatting:item.titleNoFormatting,
+          content: item.content,
+          contentNoFormatting: item.contentNoFormatting
+          };
+          fliItemCtrl.href=result.href;
+          fliItemCtrl.share=result.share;">
+
+</fli-item>

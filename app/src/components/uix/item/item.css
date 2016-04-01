@@ -72,8 +72,10 @@ fli-item {
 }
 
 .fli-item .url {
+  padding: 3px;
   border-radius: 16px;
-  background: #f7f7f7;
+  background: #e0e0e0;
+  text-decoration: none;
 }
 
 

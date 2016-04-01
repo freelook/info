@@ -7,7 +7,7 @@ body {
 }
 
 ng-view, ng-include, ng-transclude, md-whiteframe, md-card, md-card-content, md-card-footer,
-md-tabs, md-tab, md-content, md-button, md-progress-linear, noindex, header, footer {
+md-tabs, md-tab, md-content, md-button, md-progress-linear, ng-switch, noindex, header, footer {
   display: block;
 }
 

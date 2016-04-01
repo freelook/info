@@ -6,7 +6,7 @@ angular
 
     function _name() {
       var site = content.site($scope.fli.route.url);
-      if (index.is(site.domain, $scope.fli.route.sub)) {
+      if (index.is(site.host, $scope.fli.route.sub)) {
         return url.extract('(/):id(\\.:temp)(/*)', site.pathname || '').id || site.host;
       }
 

@@ -8,9 +8,10 @@ angular
     vm.types = chips.types;
 
     function _init() {
-      if ($scope.chips && $scope.fli.route.type) {
+      var type = $scope.fli.route.type;
+      if ($scope.chips && type) {
         $scope.chips.items.push({
-          name: $translate.instant('search.tabs.' + $scope.fli.route.type),
+          name: $translate.instant(!!chips.subs[type] ? ['search.tabs', type].join('.') : type),
           key: 'type',
           route: url.href(null, _config(null), false, '/')
         });

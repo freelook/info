@@ -1,5 +1,8 @@
-<fli-search-result-web-google class="fli-grid" ng-if="fli.route.sub === 'google'"></fli-search-result-web-google>
-<fli-search-result-web-facebook class="fli-grid" ng-if="fli.route.sub === 'facebook'"></fli-search-result-web-facebook>
-<fli-search-result-web-vk class="fli-grid" ng-if="fli.route.sub === 'vk'"></fli-search-result-web-vk>
-<fli-search-result-web-pinterest class="fli-grid" ng-if="fli.route.sub === 'pinterest'"></fli-search-result-web-pinterest>
-<fli-search-result-web-linkedin class="fli-grid" ng-if="fli.route.sub === 'linkedin'"></fli-search-result-web-linkedin>
+<div ng-if="fli.route.sub" ng-switch="fli.route.sub">
+<fli-search-result-web-google class="fli-grid" ng-switch-when="google"></fli-search-result-web-google>
+<fli-search-result-web-facebook class="fli-grid" ng-switch-when="facebook"></fli-search-result-web-facebook>
+<fli-search-result-web-vk class="fli-grid" ng-switch-when="vk"></fli-search-result-web-vk>
+<fli-search-result-web-pinterest class="fli-grid" ng-switch-when="pinterest"></fli-search-result-web-pinterest>
+<fli-search-result-web-linkedin class="fli-grid" ng-switch-when="linkedin"></fli-search-result-web-linkedin>
+<fli-search-result-web-site class="fli-grid" ng-switch-default></fli-search-result-web-site>
+</div>

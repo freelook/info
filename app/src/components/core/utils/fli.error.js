@@ -1,15 +1,13 @@
 'use strict';
 angular
   .module('freelook.info')
-  .directive('fliErr', function ($http, $window) {
+  .directive('fliErr', function ($compile, $http, $window) {
     return function (scope, el, attr) {
 
       var blobSrc = '';
 
       function showEmpty() {
-        $(el)
-          .after('<div class="md-card-image header"></div>')
-          .remove();
+        $(el).replaceWith($compile('<div class="md-card-image header" fli-item-icon="f"></div>')(scope));
       }
 
       $(el).on('error', function () {

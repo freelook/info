@@ -1,4 +1,4 @@
-<div ng-if="!fli.route.url">
+<div ng-if="fli.route.type && !fli.route.url">
   <fli-search-result-web ng-if="fli.route.type === 'web'"></fli-search-result-web>
   <fli-search-result-news ng-if="fli.route.type === 'news'"></fli-search-result-news>
   <fli-search-result-feeds ng-if="fli.route.type === 'feeds'"></fli-search-result-feeds>

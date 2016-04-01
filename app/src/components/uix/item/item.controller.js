@@ -8,9 +8,11 @@ angular
     var vm = this;
     vm.fix = index.fix;
     vm.star = item.star;
-    vm.url = function (_url) {
-      return content.site(_url).host;
+    vm.site = function (_item) {
+      return item.href({type: 'web', sub: vm.host(_item)});
     };
-
+    vm.host = function (_item) {
+      return content.site(_item.url).host;
+    };
 
   });
