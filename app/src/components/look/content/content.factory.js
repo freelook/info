@@ -11,7 +11,7 @@ angular
     }
 
     function name(host) {
-      return url.extract('(:subdomain.):domain.:tld(/*)', host);
+      return url.extract('(*.)(:subdomain.):domain.:tld(/*)', host);
     }
 
     return {
