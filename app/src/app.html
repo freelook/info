@@ -30,10 +30,10 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="components/_index/index.css">
   <link rel="stylesheet" href="components/home/home.css">
+  <link rel="stylesheet" href="components/feedback/comments/comments.css">
   <link rel="stylesheet" href="components/home/widget/widget.css">
   <link rel="stylesheet" href="components/look/content/content.css">
   <link rel="stylesheet" href="components/look/suggest/suggest.css">
-  <link rel="stylesheet" href="components/feedback/comments/comments.css">
   <link rel="stylesheet" href="components/search/chips/chips.css">
   <link rel="stylesheet" href="components/search/menu/menu.css">
   <link rel="stylesheet" href="components/search/result/result.css">
@@ -42,8 +42,8 @@
   <link rel="stylesheet" href="components/uix/animation/animation.css">
   <link rel="stylesheet" href="components/uix/apps/apps.css">
   <link rel="stylesheet" href="components/uix/chips/chips.css">
-  <link rel="stylesheet" href="components/uix/fa/fa.css">
   <link rel="stylesheet" href="components/uix/donate/donate.css">
+  <link rel="stylesheet" href="components/uix/fa/fa.css">
   <link rel="stylesheet" href="components/uix/footer/footer.css">
   <link rel="stylesheet" href="components/uix/grid/grid.css">
   <link rel="stylesheet" href="components/uix/help/help.css">
@@ -100,8 +100,8 @@
   <link rel="stylesheet" href="components/look/content/youtube/user/user.css">
   <link rel="stylesheet" href="components/look/content/youtube/watch/watch.css">
   <link rel="stylesheet" href="components/search/chips/type/sub/sub.css">
-  <link rel="stylesheet" href="components/search/result/actions/twitter/twitter.css">
   <link rel="stylesheet" href="components/search/result/actions/vk/vk.css">
+  <link rel="stylesheet" href="components/search/result/actions/twitter/twitter.css">
   <link rel="stylesheet" href="components/search/result/goods/amazon/amazon.css">
   <link rel="stylesheet" href="components/search/result/images/google/google.css">
   <link rel="stylesheet" href="components/search/result/images/instagram/instagram.css">
@@ -118,8 +118,8 @@
   <link rel="stylesheet" href="components/search/result/video/vk/vk.css">
   <link rel="stylesheet" href="components/search/result/web/facebook/facebook.css">
   <link rel="stylesheet" href="components/search/result/web/google/google.css">
-  <link rel="stylesheet" href="components/search/result/web/linkedin/linkedin.css">
   <link rel="stylesheet" href="components/search/result/web/pinterest/pinterest.css">
+  <link rel="stylesheet" href="components/search/result/web/linkedin/linkedin.css">
   <link rel="stylesheet" href="components/search/result/web/site/site.css">
   <link rel="stylesheet" href="components/search/result/web/vk/vk.css">
   <link rel="stylesheet" href="components/look/content/full/read/readability/readability.css">
@@ -170,12 +170,12 @@
 <script src="components/core/parser.html.factory.js"></script>
 <script src="components/core/prerender.factory.js"></script>
 <script src="components/core/url.factory.js"></script>
+<script src="components/feedback/_feedback.module.js"></script>
+<script src="components/feedback/feedback.controller.js"></script>
 <script src="components/home/_home.module.js"></script>
 <script src="components/home/home.controller.js"></script>
 <script src="components/look/_look.module.js"></script>
 <script src="components/look/look.factory.js"></script>
-<script src="components/feedback/_feedback.module.js"></script>
-<script src="components/feedback/feedback.controller.js"></script>
 <script src="components/search/_search.module.js"></script>
 <script src="components/show/_show.module.js"></script>
 <script src="components/show/show.controller.js"></script>
@@ -192,7 +192,7 @@
 <script src="components/core/auth/auth.factory.js"></script>
 <script src="components/core/auth/chrome.auth.factory.js"></script>
 <script src="components/core/auth/site.auth.factory.js"></script>
-<script src="components/core/config/config.development.js"></script>
+<script src="components/core/config/config.production.js"></script>
 <script src="components/core/cordova/inAppBrowser.factory.js"></script>
 <script src="components/core/cordova/splash.factory.js"></script>
 <script src="components/core/i18n/en.js"></script>
@@ -209,6 +209,10 @@
 <script src="components/core/utils/fli.error.js"></script>
 <script src="components/core/utils/fli.href.js"></script>
 <script src="components/core/utils/hide-on-scroll.directive.js"></script>
+<script src="components/feedback/comments/comments.controller.js"></script>
+<script src="components/feedback/comments/comments.directive.js"></script>
+<script src="components/feedback/i18n/en.js"></script>
+<script src="components/feedback/i18n/ru.js"></script>
 <script src="components/home/i18n/en.js"></script>
 <script src="components/home/i18n/ru.js"></script>
 <script src="components/home/widget/widget.controller.js"></script>
@@ -220,10 +224,6 @@
 <script src="components/look/i18n/ru.js"></script>
 <script src="components/look/suggest/suggest.controller.js"></script>
 <script src="components/look/suggest/suggest.directive.js"></script>
-<script src="components/feedback/comments/comments.controller.js"></script>
-<script src="components/feedback/comments/comments.directive.js"></script>
-<script src="components/feedback/i18n/en.js"></script>
-<script src="components/feedback/i18n/ru.js"></script>
 <script src="components/search/chips/chips.controller.js"></script>
 <script src="components/search/chips/chips.directive.js"></script>
 <script src="components/search/chips/chips.factory.js"></script>
@@ -378,10 +378,10 @@
 <script src="components/look/content/youtube/watch/watch.directive.js"></script>
 <script src="components/search/chips/type/sub/sub.controller.js"></script>
 <script src="components/search/chips/type/sub/sub.directive.js"></script>
-<script src="components/search/result/actions/twitter/twitter.controller.js"></script>
-<script src="components/search/result/actions/twitter/twitter.directive.js"></script>
 <script src="components/search/result/actions/vk/vk.controller.js"></script>
 <script src="components/search/result/actions/vk/vk.directive.js"></script>
+<script src="components/search/result/actions/twitter/twitter.controller.js"></script>
+<script src="components/search/result/actions/twitter/twitter.directive.js"></script>
 <script src="components/search/result/goods/amazon/amazon.controller.js"></script>
 <script src="components/search/result/goods/amazon/amazon.directive.js"></script>
 <script src="components/search/result/images/google/google.controller.js"></script>
@@ -415,10 +415,10 @@
 <script src="components/search/result/web/facebook/facebook.directive.js"></script>
 <script src="components/search/result/web/google/google.controller.js"></script>
 <script src="components/search/result/web/google/google.directive.js"></script>
-<script src="components/search/result/web/linkedin/linkedin.controller.js"></script>
-<script src="components/search/result/web/linkedin/linkedin.directive.js"></script>
 <script src="components/search/result/web/pinterest/pinterest.controller.js"></script>
 <script src="components/search/result/web/pinterest/pinterest.directive.js"></script>
+<script src="components/search/result/web/linkedin/linkedin.controller.js"></script>
+<script src="components/search/result/web/linkedin/linkedin.directive.js"></script>
 <script src="components/search/result/web/site/site.controller.js"></script>
 <script src="components/search/result/web/site/site.directive.js"></script>
 <script src="components/search/result/web/vk/vk.controller.js"></script>
