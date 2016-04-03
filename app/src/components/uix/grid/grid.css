@@ -9,6 +9,7 @@
   -moz-column-break-inside: avoid;
   column-break-inside: avoid;
   display: inline-block;
+  width: 95%;
 }
 
 @media (min-width: 500px) {
