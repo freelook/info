@@ -6,6 +6,7 @@ fli-item {
   outline: 0;
   max-width: 100%;
   box-shadow: none;
+  border-radius: 16px;
   border: 1px solid #cccccc;
 }
 
@@ -67,11 +68,11 @@ fli-item {
 }
 
 .fli-item .url-block {
-  padding: 10px 3px;
+  padding: 15px 0;
 }
 
 .fli-item .url {
-  padding: 3px;
+  padding: 7px;
   border-radius: 16px;
   background: #e0e0e0;
   text-decoration: none;
