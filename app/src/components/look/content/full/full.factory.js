@@ -15,7 +15,10 @@ angular
       _fixLink($dom);
       _fixImg($dom, _url);
 
-      var article = readability.parse(_url, dom);
+      var article = angular.extend({
+        rss: _getRSS($dom, _url)
+      }, readability.parse(_url, dom));
+
       _storeData(article);
       return article;
     }
@@ -25,8 +28,26 @@ angular
       return link.protocol + '//' + link.host;
     }
 
+    function _fixHref(_href, origin) {
+      if (_href && origin) {
+        switch (_href.substr(0, 2)) {
+          case 'ht':
+          case '//':
+            return _href;
+          case 'ma':
+            return _href;
+          default:
+            return _href.charAt(0) === '/' ? [origin, _href].join('') : [origin, _href].join('/');
+        }
+      }
+    }
+
     function _fixTags($dom) {
       $dom.find('script,style').remove();
+    }
+
+    function _fixLink($dom) {
+      $dom.find('a').contents().unwrap();
     }
 
     function _fixImg($dom, _url) {
@@ -34,22 +55,17 @@ angular
       $dom.find('img').each(function (i, e) {
         $(e)
           .attr('src', function (i, src) {
-            if (src) {
-              switch (src.substr(0, 2)) {
-                case 'ht':
-                case '//':
-                  return src;
-                default:
-                  return src.charAt(0) === '/' ? origin + src : origin + '/' + src;
-              }
-            }
+            _fixHref(src, origin);
           })
           .attr('fli-err', '');
       });
     }
 
-    function _fixLink($dom) {
-      $dom.find('a').contents().unwrap();
+    function _getRSS($dom, _url) {
+      var origin = _originLink(_url),
+        href = $dom.find('link[type="application/rss+xml"]', 'link[type="application/atom+xml"]').attr('href');
+
+      return _fixHref(href, origin);
     }
 
     function _storeData(data) {
@@ -61,7 +77,9 @@ angular
     }
 
     return {
-      get: get
+      get: get,
+      fixHref: _fixHref,
+      getRSS: _getRSS
     };
 
   });

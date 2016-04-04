@@ -27,7 +27,7 @@ angular
     }
 
     function feeds(point) {
-      return $http.get(GAPI.feeds + encodeURIComponent(point));
+      return $http.get(GAPI.feeds + encodeURIComponent(decodeURIComponent(point)));
     }
 
     function trends() {
@@ -39,7 +39,7 @@ angular
     }
 
     function video(q) {
-      return $http.get(GAPI.video + encodeURIComponent(q));
+      return $http.get(GAPI.video + encodeURIComponent(decodeURIComponent(q)));
     }
 
     return {
@@ -50,6 +50,7 @@ angular
       trends: trends,
       news: news,
       video: video,
+      feeds: feeds,
       url: googleUrl,
       plus: googlePlus
     };

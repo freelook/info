@@ -1,0 +1,12 @@
+<div class="fli-grid">
+  <fli-item ng-repeat="item in rss.entries"
+            ng-init="fliItem = {
+          small: 1,
+          url:item.link,
+          title:item.title,
+          content: item.contentSnippet,
+          };
+          fliItemCtrl.href=result.href;">
+
+  </fli-item>
+</div>

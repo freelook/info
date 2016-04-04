@@ -2,7 +2,8 @@ window.i18n.ru.home = {
   widget: {
     tabs: {
       looks: 'недавнее',
-      stars: 'избранное'
+      stars: 'избранное',
+      subscription: 'подписка'
     }
   }
 };

@@ -27,7 +27,7 @@ angular
     }
 
     function feeds(point) {
-      return $http.jsonp(GAPI.feeds + encodeURIComponent(point) + '&callback=JSON_CALLBACK');
+      return $http.jsonp(GAPI.feeds + encodeURIComponent(decodeURIComponent(point)) + '&callback=JSON_CALLBACK');
     }
 
     function trends() {
@@ -39,7 +39,7 @@ angular
     }
 
     function video(q) {
-      return $http.jsonp(GAPI.video + encodeURIComponent(q) + '&callback=JSON_CALLBACK');
+      return $http.jsonp(GAPI.video + encodeURIComponent(decodeURIComponent(q)) + '&callback=JSON_CALLBACK');
     }
 
     return {
@@ -50,6 +50,7 @@ angular
       trends: trends,
       news: news,
       video: video,
+      feeds: feeds,
       url: googleUrl,
       plus: googlePlus
     };

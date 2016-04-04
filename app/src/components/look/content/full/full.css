@@ -11,8 +11,16 @@ fli-look-content-full .full.fli-item .clearfix {
   clear: none;
 }
 
-fli-look-content-full .full img {
-  display: block;
-  margin: 13px auto;
+fli-look-content-full .full img,
+fli-look-content-full .full iframe {
   max-width: 100%;
+}
+
+fli-look-content-full .full h1 {
+  font-size: 1.2em;
+}
+
+fli-look-content-full .full button {
+  background: none;
+  border: none;
 }

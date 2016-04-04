@@ -67,7 +67,8 @@ angular
   })
   .constant('STORAGE_KEYS', {
     LOOK_KEY: 'FLI:LOOK',
-    STAR_KEY: 'FLI:STAR'
+    STAR_KEY: 'FLI:STAR',
+    SUB_KEY: 'FLI:SUB'
   });
 
 

@@ -5,8 +5,10 @@ angular
   function ($scope, url, content, index, locale) {
 
     function _name() {
-      var site = content.site($scope.fli.route.url);
-      if (index.is(site.host, $scope.fli.route.sub)) {
+      var site = content.site($scope.fli.route.url),
+        sub = $scope.fli.route.sub;
+
+      if (index.is(site.host, sub) || index.is(sub, site.host)) {
         return url.extract('(/):id(\\.:temp)(/*)', site.pathname || '').id || site.host;
       }
 

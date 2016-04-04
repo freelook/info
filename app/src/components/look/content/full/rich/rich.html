@@ -1,5 +1,6 @@
-<div ng-if="richCtrl.item && richCtrl.item.title">
-  <fli-item ng-init="fliItem = {
+<div ng-if="richCtrl.item">
+  <div ng-if="richCtrl.item.title">
+    <fli-item ng-init="fliItem = {
           small:1,
           nofill:1,
           url:richCtrl.item.url,
@@ -8,5 +9,13 @@
           content:richCtrl.item.content
           };">
 
-  </fli-item>
+    </fli-item>
+  </div>
+
+  <div ng-if="fli.route.type !== 'rss' && richCtrl.item.rss" layout="column" layout-align="center center">
+    <md-button aria-label="subscribe" class="md-primary link" ng-click="richCtrl.subscribe(richCtrl.item)">
+      <i class="fa fa-rss fa-2x"></i>
+      <span translate="look.subscribe"></span>
+    </md-button>
+  </div>
 </div>
