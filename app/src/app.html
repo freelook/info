@@ -122,7 +122,6 @@
   <link rel="stylesheet" href="components/search/result/web/pinterest/pinterest.css">
   <link rel="stylesheet" href="components/search/result/web/site/site.css">
   <link rel="stylesheet" href="components/search/result/web/vk/vk.css">
-  <link rel="stylesheet" href="components/look/content/full/read/readability/readability.css">
   <link rel="stylesheet" href="components/search/result/web/google/trends/trends.css">
   <!-- endinject -->
   <!-- endbuild -->
@@ -154,6 +153,7 @@
 <script src="bower_components/firebase/firebase.js"></script>
 <script src="bower_components/socket.io-client/socket.io.js"></script>
 <script src="bower_components/url-pattern/lib/url-pattern.js"></script>
+<script src="bower_components/readability/Readability.js"></script>
 <!-- endbower -->
 
 <!-- inject:js -->
@@ -177,11 +177,11 @@
 <script src="components/look/_look.module.js"></script>
 <script src="components/look/look.factory.js"></script>
 <script src="components/search/_search.module.js"></script>
+<script src="components/show/_show.module.js"></script>
+<script src="components/show/show.controller.js"></script>
 <script src="components/token/_token.module.js"></script>
 <script src="components/token/chrome.token.controller.js"></script>
 <script src="components/token/token.factory.js"></script>
-<script src="components/show/_show.module.js"></script>
-<script src="components/show/show.controller.js"></script>
 <script src="components/uix/_uix.module.js"></script>
 <script src="components/views/_views.module.js"></script>
 <script src="components/_index/i18n/en.js"></script>
@@ -192,7 +192,7 @@
 <script src="components/core/auth/auth.factory.js"></script>
 <script src="components/core/auth/chrome.auth.factory.js"></script>
 <script src="components/core/auth/site.auth.factory.js"></script>
-<script src="components/core/config/config.production.js"></script>
+<script src="components/core/config/config.development.js"></script>
 <script src="components/core/cordova/inAppBrowser.factory.js"></script>
 <script src="components/core/cordova/splash.factory.js"></script>
 <script src="components/core/i18n/en.js"></script>
@@ -350,10 +350,10 @@
 <script src="components/views/setting/user/user.directive.js"></script>
 <script src="components/core/api/google/plus/google.plus.factory.js"></script>
 <script src="components/core/api/google/url/google.url.factory.js"></script>
+<script src="components/look/content/full/readability/readability.factory.js"></script>
 <script src="components/look/content/full/rich/rich.controller.js"></script>
 <script src="components/look/content/full/rich/rich.directive.js"></script>
 <script src="components/look/content/full/rich/rich.factory.js"></script>
-<script src="components/look/content/full/read/read.factory.js"></script>
 <script src="components/look/content/instagram/media/media.controller.js"></script>
 <script src="components/look/content/instagram/media/media.directive.js"></script>
 <script src="components/look/content/instagram/user/user.controller.js"></script>
@@ -423,7 +423,6 @@
 <script src="components/search/result/web/site/site.directive.js"></script>
 <script src="components/search/result/web/vk/vk.controller.js"></script>
 <script src="components/search/result/web/vk/vk.directive.js"></script>
-<script src="components/look/content/full/read/readability/readability.js"></script>
 <script src="components/search/chips/type/sub/url/url.controller.js"></script>
 <script src="components/search/chips/type/sub/url/url.directive.js"></script>
 <script src="components/search/result/web/google/trends/trends.controller.js"></script>

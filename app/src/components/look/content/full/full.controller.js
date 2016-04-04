@@ -3,27 +3,26 @@
 angular
   .module('fli.look')
   .controller('look.content.full.ctrl',
-  function ($scope, api, read, full, item) {
+  function ($scope, api, readability, full, item) {
 
     var vm = this;
-    vm.html = '';
+    vm.article = null;
 
     vm.share = item.share;
 
-    function setContent(_content) {
-      var content = _content || {};
-      if (typeof content === 'string') {
-        vm.html = full.get(content) || '';
-      } else if (content.content) {
-        vm.html = full.get(content.content, content.title) || '';
+    function setData(data) {
+      if (typeof data === 'string') {
+        vm.article = full.get($scope.fli.route.url, data);
+      } else if (data.content) {
+        vm.article = full.get($scope.fli.route.url, data.content);
       }
     }
 
     api.get($scope.fli.route.url)
-      .success(setContent)
+      .success(setData)
       .error(function () {
-        read.call($scope.fli.route.url)
-          .success(setContent);
+        readability.read($scope.fli.route.url)
+          .success(setData);
       });
 
   });

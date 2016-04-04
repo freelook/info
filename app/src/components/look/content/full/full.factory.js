@@ -3,40 +3,34 @@
 angular
   .module('fli.look')
   .factory('full',
-  function ($location, $rootScope, $cacheFactory, locale, readability, item, url, parser) {
+  function ($location, $cacheFactory, url, parser, readability) {
 
     var cache = $cacheFactory('full');
 
-    function _originLink() {
-      var link = url.parse(decodeURIComponent($rootScope.fli.route.url));
+    function _prepareHtml(_url, _html) {
+      var dom = parser.parseFromString(_html, 'text/html'),
+        $dom = $(dom);
+
+      _fixTags($dom);
+      _fixLink($dom);
+      _fixImg($dom, _url);
+
+      var article = readability.parse(_url, dom);
+      _storeData(article);
+      return article;
+    }
+
+    function _originLink(_url) {
+      var link = url.parse(decodeURIComponent(_url));
       return link.protocol + '//' + link.host;
     }
 
-    function _fliUrl(_url, input) {
-      return item.href({input: input, url: _url});
+    function _fixTags($dom) {
+      $dom.find('script,style').remove();
     }
 
-    function _prepareHtml(html, title) {
-      var dom = parser.parseFromString(html, 'text/html'),
-        $dom = $(dom);
-
-      readability.init(dom, title);
-      _fixLink($dom);
-      _fixImg($dom);
-
-      var content = dom.documentElement.innerHTML;
-
-      _storeData(content);
-
-      return content;
-    }
-
-    function _storeData(data) {
-      cache.put($location.url(), data);
-    }
-
-    function _fixImg($dom) {
-      var origin = _originLink();
+    function _fixImg($dom, _url) {
+      var origin = _originLink(_url);
       $dom.find('img').each(function (i, e) {
         $(e)
           .attr('src', function (i, src) {
@@ -55,28 +49,15 @@ angular
     }
 
     function _fixLink($dom) {
-      var origin = _originLink();
-      $dom.find('a').each(function (i, e) {
-        var input = $(e).text() || '';
-        $(e).attr('target', '_self');
-        $(e).attr('href', function (i, href) {
-          if (href) {
-            switch (href.substr(0, 2)) {
-              case 'ht':
-              case '//':
-                return _fliUrl(href, input);
-              case 'ma':
-                return href;
-              default:
-                return href.charAt(0) === '/' ? _fliUrl(origin + href, input) : _fliUrl(origin + '/' + href, input);
-            }
-          }
-        });
-      });
+      $dom.find('a').contents().unwrap();
     }
 
-    function get(html, title) {
-      return cache.get($location.url()) || _prepareHtml(html, title);
+    function _storeData(data) {
+      cache.put($location.url(), data);
+    }
+
+    function get(_url, _html) {
+      return cache.get($location.url()) || _prepareHtml(_url, _html);
     }
 
     return {

@@ -1,19 +1,17 @@
 <fli-look-content-rich></fli-look-content-rich>
 
-<div ng-if="fullCtrl.html">
+<div ng-if="fullCtrl.article">
   <fli-item class="full" ng-init="fliItem = {
           small: 1,
           url: fli.route.url,
           img:fli.route.img,
-          title:fli.route.input,
-          titleNoFormatting: fli.title,
-          contentNoFormatting: fli.description
+          title: fullCtrl.article.title || fli.route.input
           };
           fliItemCtrl.href=content.href;
           fliItemCtrl.share=fullCtrl.share;">
 
     <div class="block">
-      <div class="clearfix" fli-bind-compile="fullCtrl.html"></div>
+      <div class="clearfix" fli-bind-compile="fullCtrl.article.content"></div>
     </div>
 
   </fli-item>

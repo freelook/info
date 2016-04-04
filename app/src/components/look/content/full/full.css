@@ -10,3 +10,9 @@ fli-look-content-full .full.fli-item .title {
 fli-look-content-full .full.fli-item .clearfix {
   clear: none;
 }
+
+fli-look-content-full .full img {
+  display: block;
+  margin: 13px auto;
+  max-width: 100%;
+}
