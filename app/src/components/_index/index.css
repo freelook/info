@@ -71,6 +71,9 @@ a.active {
   border-top: 1px solid #cccccc;
 }
 
+.bold {
+  font-weight: 800;
+}
 
 
 

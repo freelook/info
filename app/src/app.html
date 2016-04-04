@@ -32,7 +32,6 @@
   <link rel="stylesheet" href="components/home/home.css">
   <link rel="stylesheet" href="components/feedback/comments/comments.css">
   <link rel="stylesheet" href="components/home/widget/widget.css">
-  <link rel="stylesheet" href="components/look/content/content.css">
   <link rel="stylesheet" href="components/look/suggest/suggest.css">
   <link rel="stylesheet" href="components/search/chips/chips.css">
   <link rel="stylesheet" href="components/search/menu/menu.css">
@@ -58,16 +57,11 @@
   <link rel="stylesheet" href="components/uix/welcome/welcome.css">
   <link rel="stylesheet" href="components/views/setting/setting.css">
   <link rel="stylesheet" href="components/views/share/share.css">
+  <link rel="stylesheet" href="components/look/content/content.css">
   <link rel="stylesheet" href="components/home/widget/looks/looks.css">
   <link rel="stylesheet" href="components/home/widget/stars/stars.css">
   <link rel="stylesheet" href="components/home/widget/subscription/subscription.css">
   <link rel="stylesheet" href="components/home/widget/tabs/tabs.css">
-  <link rel="stylesheet" href="components/look/content/facebook/facebook.css">
-  <link rel="stylesheet" href="components/look/content/full/full.css">
-  <link rel="stylesheet" href="components/look/content/instagram/instagram.css">
-  <link rel="stylesheet" href="components/look/content/pinterest/pinterest.css">
-  <link rel="stylesheet" href="components/look/content/vk/vk.css">
-  <link rel="stylesheet" href="components/look/content/youtube/youtube.css">
   <link rel="stylesheet" href="components/search/chips/type/type.css">
   <link rel="stylesheet" href="components/search/menu/lucky/lucky.css">
   <link rel="stylesheet" href="components/search/result/actions/actions.css">
@@ -89,18 +83,12 @@
   <link rel="stylesheet" href="components/uix/locale/panel/panel.css">
   <link rel="stylesheet" href="components/views/setting/auth/auth.css">
   <link rel="stylesheet" href="components/views/setting/user/user.css">
-  <link rel="stylesheet" href="components/look/content/full/rich/rich.css">
-  <link rel="stylesheet" href="components/look/content/instagram/media/media.css">
-  <link rel="stylesheet" href="components/look/content/instagram/user/user.css">
-  <link rel="stylesheet" href="components/look/content/pinterest/board/board.css">
-  <link rel="stylesheet" href="components/look/content/pinterest/user/user.css">
-  <link rel="stylesheet" href="components/look/content/vk/group/group.css">
-  <link rel="stylesheet" href="components/look/content/vk/user/user.css">
-  <link rel="stylesheet" href="components/look/content/vk/video/video.css">
-  <link rel="stylesheet" href="components/look/content/vk/wall/wall.css">
-  <link rel="stylesheet" href="components/look/content/youtube/channel/channel.css">
-  <link rel="stylesheet" href="components/look/content/youtube/user/user.css">
-  <link rel="stylesheet" href="components/look/content/youtube/watch/watch.css">
+  <link rel="stylesheet" href="components/look/content/facebook/facebook.css">
+  <link rel="stylesheet" href="components/look/content/full/full.css">
+  <link rel="stylesheet" href="components/look/content/instagram/instagram.css">
+  <link rel="stylesheet" href="components/look/content/pinterest/pinterest.css">
+  <link rel="stylesheet" href="components/look/content/vk/vk.css">
+  <link rel="stylesheet" href="components/look/content/youtube/youtube.css">
   <link rel="stylesheet" href="components/search/chips/type/sub/sub.css">
   <link rel="stylesheet" href="components/search/result/actions/twitter/twitter.css">
   <link rel="stylesheet" href="components/search/result/actions/vk/vk.css">
@@ -124,6 +112,18 @@
   <link rel="stylesheet" href="components/search/result/web/pinterest/pinterest.css">
   <link rel="stylesheet" href="components/search/result/web/site/site.css">
   <link rel="stylesheet" href="components/search/result/web/vk/vk.css">
+  <link rel="stylesheet" href="components/look/content/full/rich/rich.css">
+  <link rel="stylesheet" href="components/look/content/instagram/media/media.css">
+  <link rel="stylesheet" href="components/look/content/instagram/user/user.css">
+  <link rel="stylesheet" href="components/look/content/pinterest/board/board.css">
+  <link rel="stylesheet" href="components/look/content/pinterest/user/user.css">
+  <link rel="stylesheet" href="components/look/content/vk/group/group.css">
+  <link rel="stylesheet" href="components/look/content/vk/user/user.css">
+  <link rel="stylesheet" href="components/look/content/vk/video/video.css">
+  <link rel="stylesheet" href="components/look/content/vk/wall/wall.css">
+  <link rel="stylesheet" href="components/look/content/youtube/channel/channel.css">
+  <link rel="stylesheet" href="components/look/content/youtube/user/user.css">
+  <link rel="stylesheet" href="components/look/content/youtube/watch/watch.css">
   <link rel="stylesheet" href="components/search/result/web/google/trends/trends.css">
   <!-- endinject -->
   <!-- endbuild -->
@@ -219,9 +219,6 @@
 <script src="components/home/i18n/ru.js"></script>
 <script src="components/home/widget/widget.controller.js"></script>
 <script src="components/home/widget/widget.directive.js"></script>
-<script src="components/look/content/content.controller.js"></script>
-<script src="components/look/content/content.directive.js"></script>
-<script src="components/look/content/content.factory.js"></script>
 <script src="components/look/i18n/en.js"></script>
 <script src="components/look/i18n/ru.js"></script>
 <script src="components/look/suggest/suggest.controller.js"></script>
@@ -274,6 +271,9 @@
 <script src="components/views/share/share.controller.js"></script>
 <script src="components/views/share/share.directive.js"></script>
 <script src="components/views/share/share.factory.js"></script>
+<script src="components/look/content/content.controller.js"></script>
+<script src="components/look/content/content.directive.js"></script>
+<script src="components/look/content/content.factory.js"></script>
 <script src="components/core/api/facebook/FB.factory.js"></script>
 <script src="components/core/api/facebook/facebook.factory.js"></script>
 <script src="components/core/api/google/_google.factory.js"></script>
@@ -294,19 +294,6 @@
 <script src="components/home/widget/subscription/subscription.controller.js"></script>
 <script src="components/home/widget/subscription/subscription.directive.js"></script>
 <script src="components/home/widget/tabs/tabs.directive.js"></script>
-<script src="components/look/content/facebook/facebook.controller.js"></script>
-<script src="components/look/content/facebook/facebook.directive.js"></script>
-<script src="components/look/content/full/full.controller.js"></script>
-<script src="components/look/content/full/full.directive.js"></script>
-<script src="components/look/content/full/full.factory.js"></script>
-<script src="components/look/content/instagram/instagram.controller.js"></script>
-<script src="components/look/content/instagram/instagram.directive.js"></script>
-<script src="components/look/content/pinterest/pinterest.controller.js"></script>
-<script src="components/look/content/pinterest/pinterest.directive.js"></script>
-<script src="components/look/content/vk/vk.controller.js"></script>
-<script src="components/look/content/vk/vk.directive.js"></script>
-<script src="components/look/content/youtube/youtube.controller.js"></script>
-<script src="components/look/content/youtube/youtube.directive.js"></script>
 <script src="components/search/chips/type/type.controller.js"></script>
 <script src="components/search/chips/type/type.directive.js"></script>
 <script src="components/search/menu/lucky/lucky.controller.js"></script>
@@ -354,34 +341,21 @@
 <script src="components/views/setting/auth/auth.directive.js"></script>
 <script src="components/views/setting/user/user.controller.js"></script>
 <script src="components/views/setting/user/user.directive.js"></script>
+<script src="components/look/content/facebook/facebook.controller.js"></script>
+<script src="components/look/content/facebook/facebook.directive.js"></script>
+<script src="components/look/content/full/full.controller.js"></script>
+<script src="components/look/content/full/full.directive.js"></script>
+<script src="components/look/content/full/full.factory.js"></script>
+<script src="components/look/content/instagram/instagram.controller.js"></script>
+<script src="components/look/content/instagram/instagram.directive.js"></script>
+<script src="components/look/content/pinterest/pinterest.controller.js"></script>
+<script src="components/look/content/pinterest/pinterest.directive.js"></script>
+<script src="components/look/content/vk/vk.controller.js"></script>
+<script src="components/look/content/vk/vk.directive.js"></script>
+<script src="components/look/content/youtube/youtube.controller.js"></script>
+<script src="components/look/content/youtube/youtube.directive.js"></script>
 <script src="components/core/api/google/plus/google.plus.factory.js"></script>
 <script src="components/core/api/google/url/google.url.factory.js"></script>
-<script src="components/look/content/full/readability/readability.factory.js"></script>
-<script src="components/look/content/full/rich/rich.controller.js"></script>
-<script src="components/look/content/full/rich/rich.directive.js"></script>
-<script src="components/look/content/full/rich/rich.factory.js"></script>
-<script src="components/look/content/instagram/media/media.controller.js"></script>
-<script src="components/look/content/instagram/media/media.directive.js"></script>
-<script src="components/look/content/instagram/user/user.controller.js"></script>
-<script src="components/look/content/instagram/user/user.directive.js"></script>
-<script src="components/look/content/pinterest/board/board.controller.js"></script>
-<script src="components/look/content/pinterest/board/board.directive.js"></script>
-<script src="components/look/content/pinterest/user/user.controller.js"></script>
-<script src="components/look/content/pinterest/user/user.directive.js"></script>
-<script src="components/look/content/vk/group/group.controller.js"></script>
-<script src="components/look/content/vk/group/group.directive.js"></script>
-<script src="components/look/content/vk/user/user.controller.js"></script>
-<script src="components/look/content/vk/user/user.directive.js"></script>
-<script src="components/look/content/vk/video/video.controller.js"></script>
-<script src="components/look/content/vk/video/video.directive.js"></script>
-<script src="components/look/content/vk/wall/wall.controller.js"></script>
-<script src="components/look/content/vk/wall/wall.directive.js"></script>
-<script src="components/look/content/youtube/channel/channel.controller.js"></script>
-<script src="components/look/content/youtube/channel/channel.directive.js"></script>
-<script src="components/look/content/youtube/user/user.controller.js"></script>
-<script src="components/look/content/youtube/user/user.directive.js"></script>
-<script src="components/look/content/youtube/watch/watch.controller.js"></script>
-<script src="components/look/content/youtube/watch/watch.directive.js"></script>
 <script src="components/search/chips/type/sub/sub.controller.js"></script>
 <script src="components/search/chips/type/sub/sub.directive.js"></script>
 <script src="components/search/result/actions/twitter/twitter.controller.js"></script>
@@ -429,6 +403,32 @@
 <script src="components/search/result/web/site/site.directive.js"></script>
 <script src="components/search/result/web/vk/vk.controller.js"></script>
 <script src="components/search/result/web/vk/vk.directive.js"></script>
+<script src="components/look/content/full/readability/readability.factory.js"></script>
+<script src="components/look/content/full/rich/rich.controller.js"></script>
+<script src="components/look/content/full/rich/rich.directive.js"></script>
+<script src="components/look/content/full/rich/rich.factory.js"></script>
+<script src="components/look/content/instagram/media/media.controller.js"></script>
+<script src="components/look/content/instagram/media/media.directive.js"></script>
+<script src="components/look/content/instagram/user/user.controller.js"></script>
+<script src="components/look/content/instagram/user/user.directive.js"></script>
+<script src="components/look/content/pinterest/board/board.controller.js"></script>
+<script src="components/look/content/pinterest/board/board.directive.js"></script>
+<script src="components/look/content/pinterest/user/user.controller.js"></script>
+<script src="components/look/content/pinterest/user/user.directive.js"></script>
+<script src="components/look/content/vk/group/group.controller.js"></script>
+<script src="components/look/content/vk/group/group.directive.js"></script>
+<script src="components/look/content/vk/user/user.controller.js"></script>
+<script src="components/look/content/vk/user/user.directive.js"></script>
+<script src="components/look/content/vk/video/video.controller.js"></script>
+<script src="components/look/content/vk/video/video.directive.js"></script>
+<script src="components/look/content/vk/wall/wall.controller.js"></script>
+<script src="components/look/content/vk/wall/wall.directive.js"></script>
+<script src="components/look/content/youtube/channel/channel.controller.js"></script>
+<script src="components/look/content/youtube/channel/channel.directive.js"></script>
+<script src="components/look/content/youtube/user/user.controller.js"></script>
+<script src="components/look/content/youtube/user/user.directive.js"></script>
+<script src="components/look/content/youtube/watch/watch.controller.js"></script>
+<script src="components/look/content/youtube/watch/watch.directive.js"></script>
 <script src="components/search/chips/type/sub/url/url.controller.js"></script>
 <script src="components/search/chips/type/sub/url/url.directive.js"></script>
 <script src="components/search/result/web/google/trends/trends.controller.js"></script>
