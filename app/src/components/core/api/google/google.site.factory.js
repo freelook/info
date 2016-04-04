@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('googleSite', function ($http, googleUrl, googlePlus, locale, GAPI) {
+  .factory('googleSite', function ($http, url, googleUrl, googlePlus, locale, GAPI) {
 
     function _search(q, _type) {
       if (q) {
@@ -27,7 +27,7 @@ angular
     }
 
     function feeds(point) {
-      return $http.jsonp(GAPI.feeds + encodeURIComponent(decodeURIComponent(point)) + '&callback=JSON_CALLBACK');
+      return $http.jsonp(GAPI.feeds + url.encode(point) + '&callback=JSON_CALLBACK');
     }
 
     function trends() {
@@ -39,7 +39,7 @@ angular
     }
 
     function video(q) {
-      return $http.jsonp(GAPI.video + encodeURIComponent(decodeURIComponent(q)) + '&callback=JSON_CALLBACK');
+      return $http.jsonp(GAPI.video + url.encode(q) + '&callback=JSON_CALLBACK');
     }
 
     return {

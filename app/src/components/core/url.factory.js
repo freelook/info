@@ -72,6 +72,10 @@ angular
       return !!_url ? decodeURIComponent(_url) : '';
     }
 
+    function encode(_url) {
+      return encodeURIComponent(decode(_url));
+    }
+
     return {
       parse: parse,
       href: href,
@@ -80,7 +84,8 @@ angular
       qByName: qByName,
       link: link,
       location: platform.name() !== 'chrome' ? location : link,
-      decode: decode
+      decode: decode,
+      encode: encode
     };
 
   });
