@@ -20,7 +20,8 @@ angular
     return {
       link: function (scope, el, attr) {
         var letter = attr.fliItemIcon ? attr.fliItemIcon.charAt() : 'f',
-          color = COLORS[letter.charCodeAt().toString().charAt()] || COLORS['1'];
+          code = letter.charCodeAt().toString(),
+          color = COLORS[code.charAt(code.length - 1)] || COLORS['1'];
         $(el).css({background: color}).append(letter);
       }
     };

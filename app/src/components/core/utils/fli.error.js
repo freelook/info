@@ -7,7 +7,9 @@ angular
       var blobSrc = '';
 
       function showEmpty() {
-        $(el).replaceWith($compile('<div class="md-card-image header" fli-item-icon="f"></div>')(scope));
+        var $el = $(el);
+        $el.closest('md-card.fli-item').addClass('small');
+        $el.replaceWith($compile('<div class="md-card-image header" fli-item-icon="f"></div>')(scope));
       }
 
       $(el).on('error', function () {

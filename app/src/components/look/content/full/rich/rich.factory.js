@@ -8,7 +8,7 @@ angular
         $dom = $(dom), site = content.site(_url);
 
       _item.url = _url;
-      _item.img = $dom.find('meta[name="twitter:image"]').attr('content') || $dom.find('meta[name="og:image"]').attr('content') || site.origin + '/favicon.ico';
+      _item.img = full.fixHref($dom.find('meta[name="twitter:image"]').attr('content') || $dom.find('meta[name="og:image"]').attr('content'), site.origin) || site.origin + '/favicon.ico';
       _item.title = $dom.find('title').text() || $dom.find('meta[name="twitter:title"]').attr('content') || $dom.find('meta[name="og:title"]').attr('content');
       _item.content = $dom.find('meta[name="description"]').attr('content') || $dom.find('meta[name="twitter:description"]').attr('content') || $dom.find('meta[name="og:description"]').attr('content');
       _item.rss = full.getRSS($dom, _url);

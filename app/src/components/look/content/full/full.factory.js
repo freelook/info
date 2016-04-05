@@ -63,8 +63,7 @@ angular
 
     function _getRSS($dom, _url) {
       var origin = _originLink(_url),
-        href = $dom.find('link[type="application/rss+xml"]', 'link[type="application/atom+xml"]').attr('href');
-
+        href = $dom.find('*[type="application/rss+xml"]').attr('href') || $dom.find('*[type="application/atom+xml"]').attr('href');
       return _fixHref(href, origin);
     }
 
