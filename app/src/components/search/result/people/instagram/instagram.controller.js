@@ -3,7 +3,7 @@
 angular
   .module('fli.search')
   .controller('search.result.people.instagram.ctrl',
-  function ($scope, instagram) {
+  function ($scope, instagram, lucky) {
 
     var vm = this;
 
@@ -13,7 +13,7 @@ angular
       vm.people = response ? response.data : [];
     }
 
-    instagram.people($scope.fli.route.input || '')
+    instagram.people($scope.fli.route.input || lucky.word)
       .success(setResult);
 
   });
