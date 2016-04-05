@@ -3,21 +3,21 @@
 var $http = require('request'),
     phantom = require('phantom'),
     $q = require('q'),
-    API = require('components/core/firebase').ref('api/facebook/'),
     id = process.env.FB_ID,
     secret = process.env.FB_SECRET,
     pass = process.env.FB_PASS,
+    tokenModel = require('components/token/token.server.model'),
     fb_token = '';
 
 
-function _storeToken(api, token, dateCreation) {
+function _storeToken(tokenModel, token, dateCreation) {
 
     var defer = $q.defer(),
         expireIn = +token.split('&expires=')[1] || 0,
         expire = (new Date(+dateCreation + expireIn * 1000)).getTime();
 
     fb_token = token;
-    api.update({
+    tokenModel.update({
         token: token,
         expire: expire
     })
@@ -35,7 +35,7 @@ function _getToken() {
 
     phantom.create(function (ph) {
         ph.createPage(function (page) {
-            var url = 'https://www.facebook.com/login.php?skip_api_login=1&api_key=' + id +
+            var url = 'https://www.facebook.com/login.php?skip_api_login=1&api_id=' + id +
                 '&signed_next=1&next=https%3A%2F%2Fwww.facebook.com%2Fv2.1%2Fdialog%2Foauth%3Fredirect_uri%3Dhttps%253A%252F%252Fwww.facebook.com%252Fconnect%252Flogin_success.html%26display%3Dpopup%26scope%3Dread_stream%26response_type%3Dtoken%26client_id%3D846841298681206%26ret%3Dlogin&cancel_url=https%3A%2F%2Fwww.facebook.com%2Fconnect%2Flogin_success.html%3Ferror%3Daccess_denied%26error_code%3D200%26error_description%3DPermissions%2Berror%26error_reason%3Duser_denied%23_%3D_&display=popup';
 
             page.set('onUrlChanged', function (targetUrl) {
@@ -88,12 +88,12 @@ function _exchangeToken(_token) {
     return defer.promise;
 }
 
-function _handleToken(api, defer, dateCreation) {
+function _handleToken(tokenModel, defer, dateCreation) {
     _getToken()
         .then(function (token) {
             _exchangeToken(token)
                 .then(function (longToken) {
-                    _storeToken(api, longToken, dateCreation)
+                    _storeToken(tokenModel, longToken, dateCreation)
                         .then(function (_longToken) {
                             return defer.resolve(_longToken);
                         })
@@ -116,17 +116,19 @@ function checkToken(_update) {
     }
 
     var defer = $q.defer();
-    API.once('value', function (_facebook) {
-        var _date = (new Date()).getTime(), facebook = _facebook && _facebook.val();
-        if (!_update && facebook && facebook.token && +facebook.expire > +_date) {
-            fb_token = facebook.token;
-            return defer.resolve(facebook.token);
-        } else {
-            _handleToken(API, defer, _date);
-        }
-    }, function (err) {
-        return defer.reject(err);
-    });
+    tokenModel.findOne({where: {type: 'facebook'}})
+        .then(function (_facebook) {
+            var _date = (new Date()).getTime();
+            if (!_update && _facebook && _facebook.token && +_facebook.expire > +_date) {
+                fb_token = _facebook.token;
+                return defer.resolve(_facebook.token);
+            } else {
+                _handleToken(_facebook, defer, _date);
+            }
+        })
+        .catch(function (err) {
+            return defer.reject(err);
+        });
 
     return defer.promise;
 }

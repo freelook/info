@@ -3,17 +3,17 @@
 var $http = require('request'),
     phantom = require('phantom'),
     $q = require('q'),
-    API = require('components/core/firebase').ref('api/vk/'),
     id = process.env.VK_ID,
     pass = process.env.VK_PASS,
+    tokenModel = require('components/token/token.server.model'),
     vk_token = '';
 
 
-function _storeToken(api, token) {
+function _storeToken(tokenModel, token) {
     var defer = $q.defer();
     vk_token = token;
 
-    api.update({
+    tokenModel.update({
         token: token,
         expire: 0
     })
@@ -68,10 +68,10 @@ function _getToken() {
     return defer.promise;
 }
 
-function _handleToken(api, defer) {
+function _handleToken(tokenModel, defer) {
     _getToken()
         .then(function (token) {
-            _storeToken(api, token)
+            _storeToken(tokenModel, token)
                 .then(function (token) {
                     return defer.resolve(token);
                 })
@@ -90,17 +90,18 @@ function checkToken(_update) {
     }
 
     var defer = $q.defer();
-    API.once('value', function (_vk) {
-        var vk = _vk && _vk.val();
-        if (!_update && vk && vk.token) {
-            vk_token = vk.token;
-            return defer.resolve(vk.token);
-        } else {
-            _handleToken(API, defer);
-        }
-    }, function (err) {
-        return defer.reject(err);
-    });
+    tokenModel.findOne({where: {type: 'vk'}})
+        .then(function (_vk) {
+            if (!_update && _vk && _vk.token) {
+                vk_token = _vk.token;
+                return defer.resolve(_vk.token);
+            } else {
+                _handleToken(_vk, defer);
+            }
+        })
+        .catch(function (err) {
+            return defer.reject(err);
+        });
 
     return defer.promise;
 }

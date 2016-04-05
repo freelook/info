@@ -3,17 +3,17 @@
 var $http = require('request'),
     phantom = require('phantom'),
     $q = require('q'),
-    API = require('components/core/firebase').ref('api/instagram/'),
     id = process.env.INSTAGRAM_ID,
     pass = process.env.INSTAGRAM_PASS,
+    tokenModel = require('components/token/token.server.model'),
     instagram_token = '';
 
 
-function _storeToken(api, token) {
+function _storeToken(tokenModel, token) {
     var defer = $q.defer();
 
     instagram_token = token;
-    api.update({
+    tokenModel.update({
         token: token,
         expire: 0
     })
@@ -68,10 +68,10 @@ function _getToken() {
     return defer.promise;
 }
 
-function _handleToken(api, defer) {
+function _handleToken(tokenModel, defer) {
     _getToken()
         .then(function (token) {
-            _storeToken(api, token)
+            _storeToken(tokenModel, token)
                 .then(function (token) {
                     return defer.resolve(token);
                 })
@@ -90,17 +90,18 @@ function checkToken(_update) {
     }
 
     var defer = $q.defer();
-    API.once('value', function (_instagram) {
-        var instagram = _instagram && _instagram.val();
-        if (!_update && instagram && instagram.token) {
-            instagram_token = instagram.token;
-            return defer.resolve(instagram.token);
-        } else {
-            _handleToken(API, defer);
-        }
-    }, function (err) {
-        return defer.reject(err);
-    });
+    tokenModel.findOne({where: {type: 'instagram'}})
+        .then(function (_instagram) {
+            if (!_update && _instagram && _instagram.token) {
+                instagram_token = _instagram.token;
+                return defer.resolve(_instagram.token);
+            } else {
+                _handleToken(_instagram, defer);
+            }
+        })
+        .catch(function (err) {
+            return defer.reject(err);
+        });
 
     return defer.promise;
 }
