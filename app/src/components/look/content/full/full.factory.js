@@ -43,7 +43,7 @@ angular
     }
 
     function _fixTags($dom) {
-      $dom.find('script,style').remove();
+      $dom.find('script, style, button, select, form, input').remove();
     }
 
     function _fixLink($dom) {
@@ -57,6 +57,7 @@ angular
           .attr('src', function (i, src) {
             _fixHref(src, origin);
           })
+          .removeAttr('width height style')
           .attr('fli-err', '');
       });
     }
