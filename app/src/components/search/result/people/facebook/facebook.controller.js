@@ -11,7 +11,7 @@ angular
     vm.link = facebook.link;
 
     function setResult(fb) {
-      vm.people = fb.data || [];
+      vm.people = fb ? fb.data : [];
     }
 
     facebook.people($scope.fli.route.input || lucky.word)

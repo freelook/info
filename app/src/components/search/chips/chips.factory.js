@@ -30,7 +30,8 @@ angular
           {sub: 'facebook'},
           {sub: 'vk'},
           {sub: 'twitter'},
-          {sub: 'linkedin'}
+          {sub: 'linkedin'},
+          {sub: 'instagram'}
         ],
         feeds: [],
         actions: [

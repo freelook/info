@@ -61,13 +61,18 @@ angular
     }
 
     function people(q) {
-      var point = encodeURIComponent('search?q=' + q + '&type=user&limit=24&fields=id,name,about,gender');
+      var point = encodeURIComponent('search?q=' + q + '&type=user&limit=24&fields=id,name,about,gender,link');
       return api.facebook(point);
     }
 
-    function _getId(url) {
+    function _getId(_url) {
+      var _id = url.extract('*/app_scoped_user_id/:id(/)', _url).id;
+      if (_id) {
+        return $q.when(_id);
+      }
+
       var defer = $q.defer();
-      api.proxy(url)
+      api.proxy(_url)
         .success(function (html) {
           var _html = html || '',
             match = _html.match(/profile_id=(.+?)&/i) || [],

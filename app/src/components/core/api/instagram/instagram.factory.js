@@ -75,11 +75,23 @@ angular
       return defer.promise;
     }
 
+    function people(q) {
+      var point = encodeURIComponent('users/search?q=' + q);
+      return api.instagram(point);
+    }
+
+    function link(_id) {
+      var id = _id || '';
+      return 'https://www.instagram.com/' + id;
+    }
+
     return {
       imageByTag: imageByTag,
       imageByUserId: imageByUserId,
       mediaByCode: mediaByCode,
-      user: user
+      user: user,
+      people: people,
+      link: link
     };
 
   });

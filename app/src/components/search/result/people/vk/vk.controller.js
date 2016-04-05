@@ -3,7 +3,7 @@
 angular
   .module('fli.search')
   .controller('search.result.people.vk.ctrl',
-  function ($scope, $sce, url, vk) {
+  function ($scope, vk) {
 
     var vm = this;
 

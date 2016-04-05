@@ -1,0 +1,10 @@
+<fli-item ng-repeat="item in instagram.people"
+          ng-init="fliItem = {
+          url:instagram.link(item.username),
+          img:item.profile_picture,
+          title:item.first_name + ' ' + item.last_name,
+          content: item.username
+          };
+          fliItemCtrl.href=people.href;">
+
+</fli-item>
