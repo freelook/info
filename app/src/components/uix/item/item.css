@@ -78,6 +78,12 @@ fli-item {
   text-decoration: none;
 }
 
+.fli-item .crop {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 250px;
+}
+
 
 
 

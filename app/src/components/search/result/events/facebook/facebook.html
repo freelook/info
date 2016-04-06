@@ -1,0 +1,20 @@
+<fli-item ng-repeat="item in fb.results"
+          ng-init="fliItem = {
+          url:fb.link(item.id),
+          img:fb.img(item.id, 'large'),
+          title:item.name,
+          content: item.description
+          };">
+
+  <div layout="column" class="block">
+    <div ng-if="item.start_time">
+      <i class="fa fa-clock-o link"></i>
+      <span ng-bind="item.start_time | date:'medium'"></span>
+    </div>
+    <div ng-if="item.location || item.timezone">
+      <i class="fa fa-crosshairs link"></i>
+      <span ng-bind="item.location + ' ' + item.timezone"></span>
+    </div>
+  </div>
+
+</fli-item>

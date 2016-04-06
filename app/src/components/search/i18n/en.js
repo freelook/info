@@ -3,6 +3,7 @@ window.i18n.en.search = {
     web: 'web',
     people: 'people',
     news: 'news',
+    events: 'events',
     actions: 'actions',
     goods: 'goods',
     images: 'images',

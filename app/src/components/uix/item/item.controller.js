@@ -6,11 +6,15 @@ angular
   function (index, item, content) {
 
     var vm = this;
+
+    vm.limitTo = 300;
     vm.fix = index.fix;
     vm.star = item.star;
+
     vm.site = function (_item) {
       return item.href({type: 'web', sub: vm.host(_item)});
     };
+
     vm.host = function (_item) {
       return content.site(_item.url).host;
     };

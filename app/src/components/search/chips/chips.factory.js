@@ -6,6 +6,7 @@ angular
       types: [
         {type: 'web'},
         {type: 'news'},
+        {type: 'events'},
         {type: 'people'},
         {type: 'feeds'},
         {type: 'actions'},
@@ -25,6 +26,7 @@ angular
           {sub: 'linkedin'}
         ],
         news: [],
+        events: [],
         people: [
           {sub: 'google'},
           {sub: 'facebook'},

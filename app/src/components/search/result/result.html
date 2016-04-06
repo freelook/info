@@ -1,6 +1,7 @@
 <div ng-if="fli.route.type && !fli.route.url">
   <fli-search-result-web ng-if="fli.route.type === 'web'"></fli-search-result-web>
   <fli-search-result-news ng-if="fli.route.type === 'news'"></fli-search-result-news>
+  <fli-search-result-events ng-if="fli.route.type === 'events'"></fli-search-result-events>
   <fli-search-result-feeds ng-if="fli.route.type === 'feeds'"></fli-search-result-feeds>
   <fli-search-result-people ng-if="fli.route.type === 'people'"></fli-search-result-people>
   <fli-search-result-actions ng-if="fli.route.type === 'actions'"></fli-search-result-actions>
