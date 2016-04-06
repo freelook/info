@@ -36,8 +36,10 @@ angular
 
     function getNavigatorLocaleCode() {
       var navigatorLocale = $window.navigator.userLanguage || $window.navigator.language || '',
-        navigatorLocaleCode = navigatorLocale.split('-')[0].toLowerCase();
-      return !!locales[navigatorLocaleCode] ? navigatorLocaleCode : locales.us.code;
+        navigatorLocales = navigatorLocale.split('-'),
+        navigatorLocaleFirstCode = (navigatorLocales[0] || '').toLowerCase(),
+        navigatorLocaleSecondCode = (navigatorLocales[1] || '').toLowerCase();
+      return !!locales[navigatorLocaleFirstCode] ? navigatorLocaleFirstCode : !!locales[navigatorLocaleSecondCode] ? navigatorLocaleSecondCode : locales.us.code;
     }
 
     return {
