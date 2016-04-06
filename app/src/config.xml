@@ -2,7 +2,7 @@
 <widget xmlns="http://www.w3.org/ns/widgets"
         xmlns:gap="http://phonegap.com/ns/1.0"
         id="info.freelook"
-        version="0.13.9">
+        version="0.14.0">
 
   <name>FLI</name>
 
