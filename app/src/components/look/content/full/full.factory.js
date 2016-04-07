@@ -55,10 +55,10 @@ angular
       $dom.find('img').each(function (i, e) {
         $(e)
           .attr('src', function (i, src) {
-            _fixHref(src, origin);
+            return _fixHref(src, origin);
           })
           .removeAttr('width height style')
-          .attr('fli-err', '');
+          .attr('fli-err', 'remove');
       });
     }
 
