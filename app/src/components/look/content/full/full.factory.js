@@ -57,7 +57,7 @@ angular
           .attr('src', function (i, src) {
             return _fixHref(src, origin);
           })
-          .removeAttr('width height style')
+          .removeAttr('width height class style')
           .attr('fli-err', 'remove');
       });
     }
