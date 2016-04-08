@@ -90,8 +90,8 @@ function checkToken(_update) {
     }
 
     var defer = $q.defer();
-    tokenModel.findOne({where: {type: 'vk'}})
-        .then(function (_vk) {
+    tokenModel.findOrCreate({where: {type: 'vk'}, defaults: {type: 'vk', token: ''}})
+        .spread(function (_vk) {
             if (!_update && _vk && _vk.token) {
                 vk_token = _vk.token;
                 return defer.resolve(_vk.token);
