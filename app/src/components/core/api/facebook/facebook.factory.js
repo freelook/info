@@ -8,7 +8,7 @@ angular
 
     function logIn() {
       var redirectUri = CONFIG.SITE.ORIGIN + 'token?platform=' + platform.name();
-      return url.link('https://www.facebook.com/dialog/oauth?client_id=' + APP_ID + '&redirect_uri=' + redirectUri + '&response_type=token&display=popup');
+      return url.link('https://www.facebook.com/dialog/oauth?client_id=' + APP_ID + '&redirect_uri=' + redirectUri + '&scope=user_posts&response_type=token&display=popup');
     }
 
     function share(_href, item) {
@@ -103,7 +103,10 @@ angular
     }
 
     function data(point, token) {
-      return $http.get(FB_API + point + '?access_token=' + token);
+      if (point && token) {
+        return $http.get(FB_API + point + '?access_token=' + token);
+      }
+      return $q.reject();
     }
 
     function me(token) {
