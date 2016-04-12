@@ -3,7 +3,7 @@ angular
   .module('freelook.info')
   .factory('url', function ($window, $rootScope, $location, platform, inAppBrowser) {
 
-    var platformOrigin = platform.getOrigin();
+    var platformOrigin = platform.origin();
 
     function parse(_url) {
       var url = $window.document.createElement('a');

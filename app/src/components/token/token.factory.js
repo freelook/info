@@ -3,14 +3,14 @@ angular
   .module('fli.token')
   .factory('token', function ($window, platform) {
 
-    function sendToChrome(req) {
-      platform.sendToChrome(req).finally(function () {
+    function send(req, _platform) {
+      platform.send(req, _platform).finally(function () {
         $window.close();
       });
     }
 
     return {
-      sendToChrome: sendToChrome
+      send: send
     };
 
   });

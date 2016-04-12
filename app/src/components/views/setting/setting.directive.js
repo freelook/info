@@ -1,6 +1,6 @@
 'use strict';
 angular
-  .module('freelook.info')
+  .module('fli.views')
   .directive('fliSetting', function () {
     return {
       controller: 'setting.ctrl',

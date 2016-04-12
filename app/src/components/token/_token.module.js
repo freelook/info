@@ -5,9 +5,9 @@ angular
   .config(function ($routeProvider) {
     // Routes config
     $routeProvider
-      .when('/token/chrome', {
+      .when('/token', {
         template: '<fli-logo></fli-logo>',
-        controller: 'chrome.token.ctrl'
+        controller: 'token.ctrl'
       });
   });
 

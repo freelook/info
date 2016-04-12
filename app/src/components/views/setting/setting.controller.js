@@ -1,8 +1,12 @@
 'use strict';
 
 angular
-  .module('freelook.info')
+  .module('fli.views')
   .controller('setting.ctrl',
   function () {
+    var vm = this;
+
+    vm.provider = '';
+
   });
 

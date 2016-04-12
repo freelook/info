@@ -1,8 +1,3 @@
 fli-setting {
   display: block;
 }
-
-fli-setting fli-setting-auth.block {
-  margin-right: 0;
-  padding-right: 0;
-}

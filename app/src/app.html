@@ -88,8 +88,7 @@
   <link rel="stylesheet" href="components/uix/input/menu/menu.css">
   <link rel="stylesheet" href="components/uix/item/edit/edit.css">
   <link rel="stylesheet" href="components/uix/locale/panel/panel.css">
-  <link rel="stylesheet" href="components/views/setting/auth/auth.css">
-  <link rel="stylesheet" href="components/views/setting/user/user.css">
+  <link rel="stylesheet" href="components/views/setting/tabs/tabs.css">
   <link rel="stylesheet" href="components/look/content/full/rich/rich.css">
   <link rel="stylesheet" href="components/look/content/instagram/media/media.css">
   <link rel="stylesheet" href="components/look/content/instagram/user/user.css">
@@ -100,8 +99,8 @@
   <link rel="stylesheet" href="components/look/content/vk/video/video.css">
   <link rel="stylesheet" href="components/look/content/vk/wall/wall.css">
   <link rel="stylesheet" href="components/look/content/youtube/channel/channel.css">
-  <link rel="stylesheet" href="components/look/content/youtube/user/user.css">
   <link rel="stylesheet" href="components/look/content/youtube/watch/watch.css">
+  <link rel="stylesheet" href="components/look/content/youtube/user/user.css">
   <link rel="stylesheet" href="components/search/chips/type/sub/sub.css">
   <link rel="stylesheet" href="components/search/result/actions/twitter/twitter.css">
   <link rel="stylesheet" href="components/search/result/actions/vk/vk.css">
@@ -185,7 +184,7 @@
 <script src="components/show/_show.module.js"></script>
 <script src="components/show/show.controller.js"></script>
 <script src="components/token/_token.module.js"></script>
-<script src="components/token/chrome.token.controller.js"></script>
+<script src="components/token/token.controller.js"></script>
 <script src="components/token/token.factory.js"></script>
 <script src="components/uix/_uix.module.js"></script>
 <script src="components/views/_views.module.js"></script>
@@ -197,17 +196,20 @@
 <script src="components/core/auth/auth.factory.js"></script>
 <script src="components/core/auth/chrome.auth.factory.js"></script>
 <script src="components/core/auth/site.auth.factory.js"></script>
-<script src="components/core/config/config.production.js"></script>
+<script src="components/core/config/config.development.js"></script>
 <script src="components/core/cordova/inAppBrowser.factory.js"></script>
 <script src="components/core/cordova/splash.factory.js"></script>
 <script src="components/core/i18n/en.js"></script>
 <script src="components/core/i18n/ru.js"></script>
+<script src="components/core/platform/init.platform.factory.js"></script>
 <script src="components/core/platform/platform.provider.js"></script>
+<script src="components/core/platform/send.platform.factory.js"></script>
 <script src="components/core/storage/chrome.storage.factory.js"></script>
 <script src="components/core/storage/custom.storage.factory.js"></script>
 <script src="components/core/storage/local.storage.factory.js"></script>
 <script src="components/core/storage/storage.factory.js"></script>
 <script src="components/core/user/user.factory.js"></script>
+<script src="components/core/user/user.storage.factory.js"></script>
 <script src="components/core/utils/domparser.util.js"></script>
 <script src="components/core/utils/duration.filter.js"></script>
 <script src="components/core/utils/fli.bind.compile.js"></script>
@@ -271,17 +273,19 @@
 <script src="components/uix/scroll/scroll.factory.js"></script>
 <script src="components/uix/toast/toast.factory.js"></script>
 <script src="components/uix/welcome/welcome.directive.js"></script>
+<script src="components/views/i18n/en.js"></script>
+<script src="components/views/i18n/ru.js"></script>
 <script src="components/views/setting/setting.controller.js"></script>
 <script src="components/views/setting/setting.directive.js"></script>
 <script src="components/views/setting/setting.factory.js"></script>
 <script src="components/views/share/share.controller.js"></script>
 <script src="components/views/share/share.directive.js"></script>
 <script src="components/views/share/share.factory.js"></script>
-<script src="components/core/api/facebook/FB.factory.js"></script>
-<script src="components/core/api/facebook/facebook.factory.js"></script>
 <script src="components/core/api/google/_google.factory.js"></script>
 <script src="components/core/api/google/google.chrome.factory.js"></script>
 <script src="components/core/api/google/google.site.factory.js"></script>
+<script src="components/core/api/facebook/FB.factory.js"></script>
+<script src="components/core/api/facebook/facebook.factory.js"></script>
 <script src="components/core/api/instagram/instagram.factory.js"></script>
 <script src="components/core/api/linkedin/linkedin.factory.js"></script>
 <script src="components/core/api/pinterest/pinterest.factory.js"></script>
@@ -355,10 +359,8 @@
 <script src="components/uix/item/icon/icon.directive.js"></script>
 <script src="components/uix/locale/panel/panel.controller.js"></script>
 <script src="components/uix/locale/panel/panel.directive.js"></script>
-<script src="components/views/setting/auth/auth.controller.js"></script>
-<script src="components/views/setting/auth/auth.directive.js"></script>
-<script src="components/views/setting/user/user.controller.js"></script>
-<script src="components/views/setting/user/user.directive.js"></script>
+<script src="components/views/setting/tabs/tabs.controller.js"></script>
+<script src="components/views/setting/tabs/tabs.directive.js"></script>
 <script src="components/core/api/google/plus/google.plus.factory.js"></script>
 <script src="components/core/api/google/url/google.url.factory.js"></script>
 <script src="components/look/content/full/readability/readability.factory.js"></script>
@@ -383,10 +385,10 @@
 <script src="components/look/content/vk/wall/wall.directive.js"></script>
 <script src="components/look/content/youtube/channel/channel.controller.js"></script>
 <script src="components/look/content/youtube/channel/channel.directive.js"></script>
-<script src="components/look/content/youtube/user/user.controller.js"></script>
-<script src="components/look/content/youtube/user/user.directive.js"></script>
 <script src="components/look/content/youtube/watch/watch.controller.js"></script>
 <script src="components/look/content/youtube/watch/watch.directive.js"></script>
+<script src="components/look/content/youtube/user/user.controller.js"></script>
+<script src="components/look/content/youtube/user/user.directive.js"></script>
 <script src="components/search/chips/type/sub/sub.controller.js"></script>
 <script src="components/search/chips/type/sub/sub.directive.js"></script>
 <script src="components/search/result/actions/twitter/twitter.controller.js"></script>

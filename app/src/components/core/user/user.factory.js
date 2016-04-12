@@ -1,43 +1,56 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('user', function ($rootScope, $cookies, $timeout, $q, Firebase) {
+  .factory('user', function ($q, $rootScope, $cookies, $timeout, userStorage, auth) {
 
-    function _setUser(user) {
+
+    function init() {
+      _getUser().then(function (user) {
+        _showUser(user);
+        return user;
+      });
+    }
+
+    function _showUser(user) {
       $timeout(function () {
         $rootScope.fli.user = user;
       });
     }
 
-    function init() {
-      return current()
-        .then(function (_user) {
-          $cookies.put('token', authData().token);
-          _setUser(_user.val());
-          return _user;
+    function _getUser() {
+      return $q.when(userStorage.get('user') || {});
+    }
+
+    function _requestUser(provider, token) {
+      return auth.providers[provider].me(token);
+    }
+
+    function _setUser(provider, res) {
+      var user = userStorage.get('user') || {};
+      user[provider] = res ? res.data : null;
+      userStorage.put('user', user);
+    }
+
+    function logIn(provider) {
+      auth.logIn(provider)
+        .then(function (token) {
+          return _requestUser(provider, token);
         })
-        .catch(function (err) {
-          _setUser();
-          return $q.reject(err);
+        .then(function (data) {
+          _setUser(provider, data);
+          init();
         });
     }
 
-    function authData() {
-      return Firebase.ref().getAuth() || {};
-    }
-
-    function current() {
-      var uid = authData().uid;
-      if (uid) {
-        return Firebase.ref('users').child(uid).once('value');
-      }
-      return $q.reject();
+    function logOut(provider) {
+      _setUser(provider, null);
+      init();
     }
 
     return {
       init: init,
-      authData: authData,
-      current: current
+      logIn: logIn,
+      logOut: logOut
     };
 
   });

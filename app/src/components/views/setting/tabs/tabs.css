@@ -1,0 +1,8 @@
+fli-setting-tabs {
+  display: block;
+}
+
+fli-setting-tabs .circle {
+  max-height: 100px;
+  min-height: 100px;
+}

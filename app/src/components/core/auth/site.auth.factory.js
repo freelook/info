@@ -1,38 +1,30 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('authSite', function (user, toast, Firebase) {
+  .factory('authSite', function ($q, $window, facebook) {
 
-    var authObj = Firebase.ref();
-
-    authObj.onAuth(function () {
-      user.init();
-    });
-
-    function _storeAuthData(authData) {
-      Firebase.ref('users').child(authData.uid).child('authData').set(authData);
-    }
+    var authProviders = {
+      facebook: facebook
+    };
 
     function logIn(provider) {
-      return authObj.authWithOAuthPopup(provider)
-        .then(function (authData) {
-          _storeAuthData(authData);
-        })
-        .catch(function (err) {
-          if (err && err.code === 'TRANSPORT_UNAVAILABLE') {
-            toast.show('core.auth.unavailable');
+      return $q(function (resolve, reject) {
+        var eventName = 'message', bubble = false;
+        $window.addEventListener(eventName, function receiveMessage(res) {
+          $window.removeEventListener(eventName, receiveMessage, bubble);
+          $window.focus();
+          if (res && res.data) {
+            return resolve(res.data);
           }
-        });
-    }
-
-    function logOut() {
-      return authObj.unauth();
+          return reject();
+        }, bubble);
+        authProviders[provider].logIn();
+      });
     }
 
     return {
       logIn: logIn,
-      logOut: logOut,
-      data: user.authData
+      providers: authProviders
     };
 
   });
