@@ -12,9 +12,6 @@ var CONFIG = {
     FB: {
       ID: '846841298681206',
       VERSION: 'v2.5'
-    },
-    FIREBASE: {
-      URL: 'https://freelook.firebaseio.com/'
     }
   },
   PRERENDER: {

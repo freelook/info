@@ -54,8 +54,7 @@ angular
         job: [
           {sub: 'indeed'},
           {sub: 'linkedin'}
-        ],
-        promo: []
+        ]
       }
     };
 

@@ -12,9 +12,6 @@ angular
             $rootScope.go('/' + path);
           });
         }
-        if ($window.Firebase && $window.Firebase.INTERNAL) {
-          $window.Firebase.INTERNAL.forceWebSockets();
-        }
       });
     }
 
