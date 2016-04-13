@@ -92,9 +92,10 @@ angular
       return api.facebook(point);
     }
 
-    function img(id, type) {
-      var _type = type || 'normal';
-      return FB_API + id + '/picture?type=' + _type;
+    function img(user, type) {
+      var _id = user.id || user,
+        _type = type || 'normal';
+      return FB_API + _id + '/picture?type=' + _type;
     }
 
     function link(_id) {

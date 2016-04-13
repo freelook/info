@@ -67,6 +67,10 @@ a.active {
   text-align: center;
 }
 
+.text-upper {
+  text-transform: uppercase;
+}
+
 .border {
   border-top: 1px solid #cccccc;
 }

@@ -4,6 +4,7 @@ var CONFIG = {
     SOCKET: 'http://local.freelook.info:4000',
     URL: 'http://local.freelook.info/api/',
     GOOGLE: {
+      ID: '76317551711-dmmn2t0c6up8blo2qhg0i4ekv53drvji.apps.googleusercontent.com',
       KEY: 'AIzaSyApeXU8AqzpzVPhXgUQqBJS2A7u1WqCNvU'
     },
     VK: {

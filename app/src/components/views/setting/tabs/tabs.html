@@ -1,14 +1,14 @@
-<md-tabs md-dynamic-height>
+<md-tabs md-dynamic-height md-swipe-content>
   <md-tab ng-repeat="provider in tabs.providers" md-on-select="setting.provider=provider" label="{{::provider}}">
-    <div layout="column" layout-align="center center">
+    <div layout="column" layout-align="center center" class="block">
 
       <div ng-if="!fli.user[provider]" ng-click="tabs.logIn(provider)" class="circle link text-center">
         <i class="fa fa-user-secret fa-5x color-8"></i>
-        <div translate="views.setting.logIn"></div>
+        <div class="text-upper" translate="views.setting.logIn"></div>
       </div>
 
       <div ng-if="fli.user[provider]">
-        <img ng-src="{{tabs.img(fli.user[provider].id, provider)}}" fli-err class="circle">
+        <img ng-src="{{::tabs.img(fli.user[provider], provider)}}" fli-err class="circle">
         <md-button class="md-icon-button link" aria-label="logout" ng-click="tabs.logOut(provider)">
           <i class="fa fa-sign-out fa-2x"></i>
         </md-button>

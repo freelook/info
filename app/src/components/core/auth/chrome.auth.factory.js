@@ -1,10 +1,11 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('authChrome', function ($q, $window, facebook) {
+  .factory('authChrome', function ($q, $window, facebook, google) {
 
     var authProviders = {
-      facebook: facebook
+      facebook: facebook,
+      google: google
     };
 
     function logIn(provider) {

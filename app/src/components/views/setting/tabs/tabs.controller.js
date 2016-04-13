@@ -10,8 +10,8 @@ angular
     vm.logOut = user.logOut;
     vm.logIn = user.logIn;
 
-    vm.img = function (id, provider) {
-      return auth.providers[provider].img(id);
+    vm.img = function (user, provider) {
+      return auth.providers[provider].img(user);
     };
 
     vm.providers = Object.keys(auth.providers);
