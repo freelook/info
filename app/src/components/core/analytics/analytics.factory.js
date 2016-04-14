@@ -2,7 +2,7 @@
 
 angular
   .module('fli.core')
-  .factory('analytics', function ($window, $rootScope, $location) {
+  .factory('analytics', function ($window, $rootScope, $location, metrica) {
 
     function init() {
 
@@ -25,6 +25,7 @@ angular
         if ($window.ga) {
           $window.ga('send', 'pageview', {page: decodeURIComponent($location.url())});
         }
+        metrica.init();
       });
     }
 
