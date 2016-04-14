@@ -2,15 +2,14 @@
 
 var sql = require('components/core/sql'),
     users = sql.define('users', {
-        token: {
+        facebook: {
             type: sql.constructor.STRING,
-            unique: true,
-            allowNull: false
+            unique: true
         },
         looks: sql.constructor.INTEGER
     }, {
         indexes: [{
-            fields: ['token']
+            fields: ['facebook']
         }]
     });
 

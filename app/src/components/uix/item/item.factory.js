@@ -32,7 +32,7 @@ angular
       var _data = _extend(data);
       storage.arr.push(STORAGE_KEYS.STAR_KEY, _data);
       feeds.add(_data);
-      toast.show('uix.item.stared', {v: _data.titleNoFormatting || _data.title});
+      toast.show('uix.item.stared', {v: _data.title});
     }
 
     function _search(input) {

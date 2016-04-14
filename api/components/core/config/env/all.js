@@ -8,10 +8,6 @@ module.exports = {
     },
     port: process.env.PORT || 4000,
     templateEngine: 'swig',
-    Firebase: {
-        ref: 'https://freelook.firebaseio.com/',
-        id: process.env.FIREBASE_ID
-    },
     Red: {
         httpAdminRoot: '/red',
         httpNodeRoot: '/rapi',

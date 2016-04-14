@@ -1,43 +1,70 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('user', function ($rootScope, $cookies, $timeout, $q, Firebase) {
+  .factory('user', function ($q, $rootScope, $cookies, $timeout, userStorage, auth) {
 
-    function _setUser(user) {
+
+    function init() {
+      _getUser().then(function (user) {
+        _showUser(user);
+        return user;
+      });
+    }
+
+    function data(provider) {
+      var userData = userStorage.get('user') || {};
+      return provider ? userData[provider] : userData;
+    }
+
+    function _showUser(user) {
       $timeout(function () {
         $rootScope.fli.user = user;
       });
     }
 
-    function init() {
-      return current()
-        .then(function (_user) {
-          $cookies.put('token', authData().token);
-          _setUser(_user.val());
-          return _user;
-        })
-        .catch(function (err) {
-          _setUser();
-          return $q.reject(err);
+    function _getUser() {
+      return $q.when(data());
+    }
+
+    function _requestUser(provider, token) {
+      return auth.providers[provider]
+        .me(token)
+        .then(function (res) {
+          res.data.token = token;
+          return res.data;
         });
     }
 
-    function authData() {
-      return Firebase.ref().getAuth() || {};
+    function _setUser(provider, data) {
+      var user = userStorage.get('user') || {};
+      user[provider] = data;
+      userStorage.put('user', user);
     }
 
-    function current() {
-      var uid = authData().uid;
-      if (uid) {
-        return Firebase.ref('users').child(uid).once('value');
-      }
-      return $q.reject();
+    function logIn(provider) {
+      auth.logIn(provider)
+        .then(function (token) {
+          return _requestUser(provider, token);
+        })
+        .then(function (data) {
+          _setUser(provider, data);
+          init();
+        })
+        .catch(function () {
+          logOut(provider);
+        });
+    }
+
+    function logOut(provider) {
+      _setUser(provider, null);
+      init();
     }
 
     return {
       init: init,
-      authData: authData,
-      current: current
+      data: data,
+      logIn: logIn,
+      logOut: logOut
     };
 
   });

@@ -2,25 +2,20 @@
 angular
   .module('freelook.info')
   .factory('facebook',
-  function ($http, $rootScope, $window, $q, api, url, FB, CONFIG, FB_API) {
+  function ($http, $rootScope, $q, api, url, platform, CONFIG, FB_API) {
 
     var APP_ID = CONFIG.API.FB.ID;
 
-    function init() {
-      FB.init();
-    }
-
-    function logIn(_config) {
-      var config = _config || {},
-        redirectUri = config.redirectUri || CONFIG.SITE.ORIGIN + 'token';
-      return url.location('https://www.facebook.com/dialog/oauth?client_id=' + APP_ID + '&redirect_uri=' + redirectUri + '&response_type=token&display=popup');
+    function logIn() {
+      var redirectUri = CONFIG.SITE.ORIGIN + 'token?platform=' + platform.name();
+      return url.link('https://www.facebook.com/dialog/oauth?client_id=' + APP_ID + '&redirect_uri=' + redirectUri + '&scope=user_posts&response_type=token&display=popup');
     }
 
     function share(_href, item) {
       var _item = item || {},
         _img = item.img || '',
-        _title = _item.titleNoFormatting || _item.title || '',
-        _description = _item.contentNoFormatting || _item.content || '';
+        _title = _item.title || '',
+        _description = _item.content || '';
       return 'https://www.facebook.com/dialog/feed?' +
         'app_id=' + APP_ID +
         '&display=page' +
@@ -97,9 +92,10 @@ angular
       return api.facebook(point);
     }
 
-    function img(id, type) {
-      var _type = type || 'normal';
-      return FB_API + id + '/picture?type=' + _type;
+    function img(user, type) {
+      var _id = user.id || user,
+        _type = type || 'normal';
+      return FB_API + _id + '/picture?type=' + _type;
     }
 
     function link(_id) {
@@ -107,8 +103,18 @@ angular
       return 'https://www.facebook.com/' + id;
     }
 
+    function data(point, token) {
+      if (point && token) {
+        return $http.get(FB_API + point + '?access_token=' + token);
+      }
+      return $q.reject();
+    }
+
+    function me(token) {
+      return data('me', token);
+    }
+
     return {
-      init: init,
       logIn: logIn,
       share: share,
       user: user,
@@ -116,7 +122,9 @@ angular
       people: people,
       events: events,
       img: img,
-      link: link
+      link: link,
+      data: data,
+      me: me
     };
 
   })

@@ -11,29 +11,11 @@ angular
       return !!window._cordovaNative;
     }
 
-    function $get($window, $parse, $rootScope, $timeout, $q, CONFIG) {
-      var platformName = '',
-        initPlatforms = {
-          chrome: function () {
-            $window.chrome.runtime.getBackgroundPage(function (page) {
-              var url = $parse('params.url')(page) || '',
-                path = url.split(CONFIG.PRODUCTION).splice(1)[0];
-              if (path) {
-                $timeout(function () {
-                  $rootScope.go('/' + path);
-                });
-              }
-              if ($window.Firebase && $window.Firebase.INTERNAL) {
-                $window.Firebase.INTERNAL.forceWebSockets();
-              }
-            });
-          },
-          site: angular.noop,
-          mobile: angular.noop
-        };
+    function $get(initPlatform, sendPlatform, CONFIG) {
+      var platformName = '';
 
       function init() {
-        initPlatforms[name()]();
+        initPlatform[name()]();
       }
 
       function name() {
@@ -52,31 +34,20 @@ angular
         return platformName;
       }
 
-      function getOrigin() {
+      function origin() {
         var _platformName = name().toUpperCase();
         return CONFIG[_platformName].ORIGIN;
       }
 
-      function sendToChrome(req) {
-        if ($parse('chrome.runtime.sendMessage')($window)) {
-          return $q(function (resolve, reject) {
-            $window.chrome.runtime.sendMessage(CONFIG.CHROME.ID, req, function (res) {
-              if (res) {
-                return resolve(res);
-              }
-              return reject(res);
-            });
-          });
-        }
-        return $q.reject();
+      function send(req, platform) {
+        return sendPlatform[platform](req);
       }
-
 
       return {
         init: init,
         name: name,
-        getOrigin: getOrigin,
-        sendToChrome: sendToChrome
+        origin: origin,
+        send: send
       };
     }
 

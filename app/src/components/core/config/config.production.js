@@ -4,6 +4,7 @@ var CONFIG = {
     SOCKET: 'http://freelook.info:4000',
     URL: 'http://freelook.info/api/',
     GOOGLE: {
+      ID: '76317551711-dmmn2t0c6up8blo2qhg0i4ekv53drvji.apps.googleusercontent.com',
       KEY: 'AIzaSyApeXU8AqzpzVPhXgUQqBJS2A7u1WqCNvU'
     },
     VK: {
@@ -12,9 +13,6 @@ var CONFIG = {
     FB: {
       ID: '846841298681206',
       VERSION: 'v2.5'
-    },
-    FIREBASE: {
-      URL: 'https://freelook.firebaseio.com/'
     }
   },
   PRERENDER: {

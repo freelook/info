@@ -38,17 +38,18 @@
       });
 
     })
-    .run(function ($rootScope, cache, platform, splash, analytics, scroll, io, user) {
+    .run(function ($injector, $rootScope, cache, platform, splash, analytics, scroll) {
 
       // Run app
       $rootScope.fli = {};
 
-      cache.init();
       splash.hide();
+      cache.init();
       platform.init();
       analytics.init();
       scroll.init();
-      user.init();
+
+      $injector.get('io');
 
     });
 

@@ -90,8 +90,8 @@ function checkToken(_update) {
     }
 
     var defer = $q.defer();
-    tokenModel.findOne({where: {type: 'instagram'}})
-        .then(function (_instagram) {
+    tokenModel.findOrCreate({where: {type: 'instagram'}, defaults: {type: 'instagram', token: ''}})
+        .spread(function (_instagram) {
             if (!_update && _instagram && _instagram.token) {
                 instagram_token = _instagram.token;
                 return defer.resolve(_instagram.token);

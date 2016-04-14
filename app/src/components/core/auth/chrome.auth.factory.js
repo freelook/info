@@ -1,36 +1,32 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('authChrome', function (user, url, Firebase, CONFIG) {
+  .factory('authChrome', function ($q, $window, facebook, google) {
 
-    var authObj = Firebase.ref();
-
-    authObj.onAuth(function () {
-      user.init();
-    });
-
-    function _storeAuthData(authData) {
-      Firebase.ref('users').child(authData.uid).child('authData').set(authData);
-    }
+    var authProviders = {
+      facebook: facebook,
+      google: google
+    };
 
     function logIn(provider) {
-      window.chrome.runtime.onMessage.addListener(function (req) {
-        authObj.authWithOAuthToken(req.provider, req.token).then(function (authData) {
-          _storeAuthData(authData);
+      return $q(function (resolve, reject) {
+        $window.chrome.runtime.onMessage.addListener(function receiveMessage(res) {
+          $window.chrome.runtime.onMessage.removeListener(receiveMessage);
+          $window.chrome.app.window.current().focus();
+          if (res) {
+            return resolve(res);
+          }
+          return reject();
         });
+        authProviders[provider].logIn();
       });
-
-      url.link(CONFIG.SITE.ORIGIN + 'token/chrome?provider=' + provider);
-    }
-
-    function logOut() {
-      return authObj.unauth();
     }
 
     return {
       logIn: logIn,
-      logOut: logOut,
-      data: user.authData
+      providers: authProviders
     };
 
   });
+
+

@@ -5,9 +5,10 @@ angular
 
     var providers = {
       site: authSite,
+      mobile: authSite,
       chrome: authChrome
     };
 
-    return providers[platform.name()] || providers.site;
+    return providers[platform.name()];
 
   });

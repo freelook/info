@@ -1,2 +1,6 @@
-<fli-setting-auth class="block"></fli-setting-auth>
-<fli-setting-user class="block"></fli-setting-user>
+<fli-setting-tabs class="block"></fli-setting-tabs>
+
+<div ng-switch="setting.provider">
+  <fli-setting-facebook ng-switch-when="facebook" ng-if="fli.user.facebook" class="fli-grid"></fli-setting-facebook>
+  <fli-setting-google ng-switch-when="google" ng-if="fli.user.google" class="fli-grid"></fli-setting-google>
+</div>

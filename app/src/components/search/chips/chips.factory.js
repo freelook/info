@@ -14,8 +14,7 @@ angular
         {type: 'audio'},
         {type: 'video'},
         {type: 'goods'},
-        {type: 'job'},
-        {type: 'promo'}
+        {type: 'job'}
       ],
       subs: {
         web: [
@@ -54,8 +53,7 @@ angular
         job: [
           {sub: 'indeed'},
           {sub: 'linkedin'}
-        ],
-        promo: []
+        ]
       }
     };
 

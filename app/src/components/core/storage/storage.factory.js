@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('storage', function ($window, localStorage, customStorage) {
+  .factory('storage', function ($window, localStorage, customStorage, STORAGE_KEYS) {
 
     var storage;
 
@@ -58,6 +58,7 @@ angular
     return {
       get: get,
       set: set,
+      keys: STORAGE_KEYS,
       arr: {
         push: push,
         clearItem: clearItem
@@ -68,7 +69,8 @@ angular
   .constant('STORAGE_KEYS', {
     LOOK_KEY: 'FLI:LOOK',
     STAR_KEY: 'FLI:STAR',
-    SUB_KEY: 'FLI:SUB'
+    SUB_KEY: 'FLI:SUB',
+    USR_KEY: 'FLI:USR'
   });
 
 
