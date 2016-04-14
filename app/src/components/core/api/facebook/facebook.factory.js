@@ -14,8 +14,8 @@ angular
     function share(_href, item) {
       var _item = item || {},
         _img = item.img || '',
-        _title = _item.titleNoFormatting || _item.title || '',
-        _description = _item.contentNoFormatting || _item.content || '';
+        _title = _item.title || '',
+        _description = _item.content || '';
       return 'https://www.facebook.com/dialog/feed?' +
         'app_id=' + APP_ID +
         '&display=page' +
