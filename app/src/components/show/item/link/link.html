@@ -1,12 +1,9 @@
-<div class="block">
+<div class="block" ng-if="showItem.item">
+  <fli-item-edit url="showItem.item.url"
+                 img="showItem.item.img"
+                 name="showItem.item.title"
+                 content="showItem.item.content">
 
-  <div ng-if="showItem.post">
-    <fli-item-edit url="showItem.post.url"
-                   img="showItem.post.img"
-                   name="showItem.post.title"
-                   content="showItem.post.content">
-
-    </fli-item-edit>
-  </div>
-
+  </fli-item-edit>
 </div>
+

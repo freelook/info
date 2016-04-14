@@ -6,7 +6,7 @@ angular
   function ($scope, rich) {
 
     function _setItem(_item) {
-      $scope.showItem.post = _item || {};
+      $scope.showItem.item = _item || {};
     }
 
     rich.get($scope.fli.route.input)
