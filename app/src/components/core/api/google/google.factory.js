@@ -1,21 +1,9 @@
 'use strict';
 angular
-  .module('freelook.info')
-  .factory('google', function ($http, url, googleUrl, googlePlus, locale, platform, GAPI, CONFIG) {
+  .module('fli.core')
+  .factory('google', function ($http, $parse, httpAdapter, url, googleUrl, googlePlus, locale, platform, GAPI, CONFIG) {
 
-    var APP_ID = CONFIG.API.GOOGLE.ID,
-      httpAdapter = ({
-        site: function (q, config) {
-          return $http.jsonp(q + '&callback=JSON_CALLBACK', config);
-        },
-        mobile: function (q, config) {
-          return $http.get(q, config);
-        },
-        chrome: function (q, config) {
-          return $http.get(q, config);
-        }
-      })[platform.name()];
-
+    var APP_ID = CONFIG.API.GOOGLE.ID;
 
     function _search(q, _type) {
       if (q) {
@@ -58,15 +46,22 @@ angular
 
     function logIn() {
       var redirectUri = CONFIG.SITE.ORIGIN + 'token?platform=' + platform.name();
-      return url.link('https://accounts.google.com/o/oauth2/auth?client_id=' + APP_ID + '&response_type=token&redirect_uri=' + redirectUri + '&scope=profile');
-    }
-
-    function me(token) {
-      return $http.get(GAPI.plus + 'people/me' + '?access_token=' + token);
+      return url.link('https://accounts.google.com/o/oauth2/auth?client_id=' + APP_ID +
+        '&response_type=token&redirect_uri=' + redirectUri +
+        '&scope=https://www.googleapis.com/auth/plus.login');
     }
 
     function img(user) {
-      return user.image.url;
+      var image = $parse('image.url')(user) || '';
+      return image.replace('sz=50', 'sz=100');
+    }
+
+    function data(point, token) {
+      return googlePlus.data(point, token);
+    }
+
+    function me(token) {
+      return data('people/me' + '?access_token=' + token);
     }
 
     return {
@@ -81,6 +76,7 @@ angular
       url: googleUrl,
       plus: googlePlus,
       logIn: logIn,
+      data: data,
       me: me,
       img: img
     };

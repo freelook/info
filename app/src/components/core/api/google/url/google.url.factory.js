@@ -1,6 +1,6 @@
 'use strict';
 angular
-  .module('freelook.info')
+  .module('fli.core')
   .factory('googleUrl', function ($http, CONFIG, GAPI) {
 
     var API_ENDPOINT = GAPI.url + CONFIG.API.GOOGLE.KEY;

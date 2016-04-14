@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-  .module('freelook.info')
+  .module('fli.core')
   .factory('analytics', function ($window, $rootScope, $location) {
 
     function init() {

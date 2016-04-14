@@ -1,2 +1,6 @@
 <fli-setting-tabs class="block"></fli-setting-tabs>
-<fli-setting-facebook ng-if="setting.provider==='facebook' && fli.user.facebook" class="fli-grid"></fli-setting-facebook>
+
+<div ng-switch="setting.provider">
+  <fli-setting-facebook ng-switch-when="facebook" ng-if="fli.user.facebook" class="fli-grid"></fli-setting-facebook>
+  <fli-setting-google ng-switch-when="google" ng-if="fli.user.google" class="fli-grid"></fli-setting-google>
+</div>
