@@ -4,8 +4,8 @@ angular
   .factory('authSite', function ($q, $window, facebook, google) {
 
     var authProviders = {
-      facebook: facebook,
-      google: google
+      google: google,
+      facebook: facebook
     };
 
     function logIn(provider) {
