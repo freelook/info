@@ -1,5 +1,5 @@
 'use strict';
-angular.module('freelook.info')
+angular.module('fli.uix')
   .directive('fliFooter', function () {
     return {
       templateUrl: 'components/uix/footer/footer.html',

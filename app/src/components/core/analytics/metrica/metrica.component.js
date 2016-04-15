@@ -2,10 +2,10 @@
 
 angular
   .module('fli.core')
-  .factory('metrica', function ($http) {
+  .factory('metrica', function () {
     return {
       init: function () {
-        $http.get('https://mc.yandex.ru/watch/36744405', {cache: false});
+        $.get('https://mc.yandex.ru/watch/36744405');
       }
     };
   })

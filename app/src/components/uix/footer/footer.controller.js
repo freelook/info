@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-  .module('freelook.info')
+  .module('fli.uix')
   .controller('footer.ctrl', function (nav, url, locale, ABOUT_URL) {
 
     var vm = this;
