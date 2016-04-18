@@ -35,7 +35,7 @@
     "sequelize": "^3.19.3",
     "socket.io": "1.4.5",
     "swig": "1.4.2",
-    "prerender": "4.0.4"
+    "prerender": "4.0.7"
   },
   "devDependencies": {
     "gulp": "3.9.1",
