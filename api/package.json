@@ -34,7 +34,8 @@
     "request": "2.69.0",
     "sequelize": "^3.19.3",
     "socket.io": "1.4.5",
-    "swig": "1.4.2"
+    "swig": "1.4.2",
+    "prerender": "4.0.4"
   },
   "devDependencies": {
     "gulp": "3.9.1",

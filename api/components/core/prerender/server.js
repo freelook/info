@@ -1,11 +1,10 @@
 #!/usr/bin/env node
-var prerender = require('./lib');
+var prerender = require('prerender');
 
 var server = prerender({
     workers: process.env.PRERENDER_NUM_WORKERS,
     iterations: process.env.PRERENDER_NUM_ITERATIONS
 });
-
 
 //server.use(prerender.sendPrerenderHeader());
 // server.use(prerender.basicAuth());

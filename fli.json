@@ -14,7 +14,7 @@
     {
       "name": "fli.prerender",
       "script": "server.js",
-      "cwd": "prerender",
+      "cwd": "api/components/core/prerender",
       "watch": true,
       "ignore_watch": ["node_modules"],
       "autorestart": true,
