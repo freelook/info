@@ -8,7 +8,7 @@ angular
     }
 
     function isMobileApp() {
-      return !!window._cordovaNative;
+      return !!window._cofrdovaNative;
     }
 
     function $get(initPlatform, sendPlatform, CONFIG) {
