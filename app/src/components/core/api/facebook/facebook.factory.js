@@ -8,7 +8,7 @@ angular
 
     function logIn() {
       var redirectUri = CONFIG.SITE.ORIGIN + 'token?platform=' + platform.name();
-      return url.link('https://www.facebook.com/dialog/oauth?client_id=' + APP_ID + '&redirect_uri=' + redirectUri + '&scope=user_posts&response_type=token&display=popup');
+      return url.link('https://www.facebook.com/dialog/oauth?client_id=' + APP_ID + '&redirect_uri=' + redirectUri + '&scope=user_posts&response_type=token');
     }
 
     function share(_href, item) {
