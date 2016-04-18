@@ -1,3 +1,7 @@
 'use strict';
 
-module.exports = {};
+module.exports = {
+    mysql: {
+        url: process.env.MYSQL_DEV_URL
+    }
+};
