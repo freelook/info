@@ -13,6 +13,7 @@ angular
         {type: 'images'},
         {type: 'audio'},
         {type: 'video'},
+        {type: 'places'},
         {type: 'goods'},
         {type: 'job'}
       ],
@@ -49,6 +50,7 @@ angular
           {sub: 'youtube'},
           {sub: 'vk'}
         ],
+        places: [],
         goods: [],
         job: [
           {sub: 'indeed'},

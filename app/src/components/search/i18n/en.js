@@ -9,9 +9,10 @@ window.i18n.en.search = {
     images: 'images',
     audio: 'audio',
     video: 'video',
-    promo: 'promo',
+    places: 'places',
     job: 'job',
-    feeds: 'interests'
+    feeds: 'interests',
+    promo: 'promo'
   },
   menu: {
     lucky: 'get lucky'

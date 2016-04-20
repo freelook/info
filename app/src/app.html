@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="components/look/suggest/suggest.css">
   <link rel="stylesheet" href="components/search/chips/chips.css">
   <link rel="stylesheet" href="components/search/menu/menu.css">
-  <link rel="stylesheet" href="components/search/result/result.css">
   <link rel="stylesheet" href="components/search/suggest/suggest.css">
+  <link rel="stylesheet" href="components/search/result/result.css">
   <link rel="stylesheet" href="components/show/item/item.css">
   <link rel="stylesheet" href="components/uix/animation/animation.css">
   <link rel="stylesheet" href="components/uix/chips/chips.css">
@@ -79,6 +79,7 @@
   <link rel="stylesheet" href="components/search/result/job/job.css">
   <link rel="stylesheet" href="components/search/result/news/news.css">
   <link rel="stylesheet" href="components/search/result/people/people.css">
+  <link rel="stylesheet" href="components/search/result/places/places.css">
   <link rel="stylesheet" href="components/search/result/rss/rss.css">
   <link rel="stylesheet" href="components/search/result/video/video.css">
   <link rel="stylesheet" href="components/search/result/web/web.css">
@@ -115,12 +116,13 @@
   <link rel="stylesheet" href="components/search/result/job/indeed/indeed.css">
   <link rel="stylesheet" href="components/search/result/job/linkedin/linkedin.css">
   <link rel="stylesheet" href="components/search/result/news/google/google.css">
-  <link rel="stylesheet" href="components/search/result/people/google/google.css">
   <link rel="stylesheet" href="components/search/result/people/facebook/facebook.css">
+  <link rel="stylesheet" href="components/search/result/people/google/google.css">
   <link rel="stylesheet" href="components/search/result/people/instagram/instagram.css">
   <link rel="stylesheet" href="components/search/result/people/linkedin/linkedin.css">
   <link rel="stylesheet" href="components/search/result/people/twitter/twitter.css">
   <link rel="stylesheet" href="components/search/result/people/vk/vk.css">
+  <link rel="stylesheet" href="components/search/result/places/google/google.css">
   <link rel="stylesheet" href="components/search/result/video/google/google.css">
   <link rel="stylesheet" href="components/search/result/video/vk/vk.css">
   <link rel="stylesheet" href="components/search/result/web/facebook/facebook.css">
@@ -157,6 +159,9 @@
 <script src="bower_components/angular-route/angular-route.js"></script>
 <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 <script src="bower_components/angular-translate/angular-translate.js"></script>
+<script src="bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
+<script src="bower_components/lodash/lodash.js"></script>
+<script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
 <script src="bower_components/socket.io-client/socket.io.js"></script>
 <script src="bower_components/url-pattern/lib/url-pattern.js"></script>
 <script src="bower_components/readability/Readability.js"></script>
@@ -239,11 +244,11 @@
 <script src="components/search/i18n/en.js"></script>
 <script src="components/search/i18n/ru.js"></script>
 <script src="components/search/menu/menu.directive.js"></script>
-<script src="components/search/result/result.controller.js"></script>
-<script src="components/search/result/result.directive.js"></script>
 <script src="components/search/suggest/suggest.controller.js"></script>
 <script src="components/search/suggest/suggest.directive.js"></script>
 <script src="components/search/suggest/suggest.factory.js"></script>
+<script src="components/search/result/result.controller.js"></script>
+<script src="components/search/result/result.directive.js"></script>
 <script src="components/show/i18n/en.js"></script>
 <script src="components/show/i18n/ru.js"></script>
 <script src="components/show/input/input.controller.js"></script>
@@ -338,6 +343,8 @@
 <script src="components/search/result/news/news.directive.js"></script>
 <script src="components/search/result/people/people.controller.js"></script>
 <script src="components/search/result/people/people.directive.js"></script>
+<script src="components/search/result/places/places.controller.js"></script>
+<script src="components/search/result/places/places.directive.js"></script>
 <script src="components/search/result/promo/promo.factory.js"></script>
 <script src="components/search/result/rss/rss.controller.js"></script>
 <script src="components/search/result/rss/rss.directive.js"></script>
@@ -417,10 +424,10 @@
 <script src="components/search/result/job/linkedin/linkedin.directive.js"></script>
 <script src="components/search/result/news/google/google.controller.js"></script>
 <script src="components/search/result/news/google/google.directive.js"></script>
-<script src="components/search/result/people/google/google.controller.js"></script>
-<script src="components/search/result/people/google/google.directive.js"></script>
 <script src="components/search/result/people/facebook/facebook.controller.js"></script>
 <script src="components/search/result/people/facebook/facebook.directive.js"></script>
+<script src="components/search/result/people/google/google.controller.js"></script>
+<script src="components/search/result/people/google/google.directive.js"></script>
 <script src="components/search/result/people/instagram/instagram.controller.js"></script>
 <script src="components/search/result/people/instagram/instagram.directive.js"></script>
 <script src="components/search/result/people/linkedin/linkedin.controller.js"></script>
@@ -429,6 +436,8 @@
 <script src="components/search/result/people/twitter/twitter.directive.js"></script>
 <script src="components/search/result/people/vk/vk.controller.js"></script>
 <script src="components/search/result/people/vk/vk.directive.js"></script>
+<script src="components/search/result/places/google/google.controller.js"></script>
+<script src="components/search/result/places/google/google.directive.js"></script>
 <script src="components/search/result/video/google/google.controller.js"></script>
 <script src="components/search/result/video/google/google.directive.js"></script>
 <script src="components/search/result/video/vk/vk.controller.js"></script>

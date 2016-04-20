@@ -9,9 +9,10 @@ window.i18n.ru.search = {
     images: 'картинки',
     audio: 'аудио',
     video: 'видео',
-    promo: 'промо',
+    places: 'места',
     job: 'работа',
-    feeds: 'интересы'
+    feeds: 'интересы',
+    promo: 'промо'
   },
   menu: {
     lucky: 'на удачу'

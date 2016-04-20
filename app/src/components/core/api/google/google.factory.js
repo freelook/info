@@ -1,9 +1,7 @@
 'use strict';
 angular
   .module('fli.core')
-  .factory('google', function ($http, $parse, httpAdapter, url, googleUrl, googlePlus, locale, platform, GAPI, CONFIG) {
-
-    var APP_ID = CONFIG.API.GOOGLE.ID;
+  .factory('google', function ($parse, api, httpAdapter, url, googleUrl, googlePlus, locale, platform, GAPI, CONFIG) {
 
     function _search(q, _type) {
       if (q) {
@@ -44,9 +42,13 @@ angular
       return httpAdapter(GAPI.video + url.encode(q));
     }
 
+    function places(q) {
+      return api.proxy(GAPI.maps + 'api/place/textsearch/json?key=' + CONFIG.API.GOOGLE.KEY + '&query=' + q);
+    }
+
     function logIn() {
       var redirectUri = CONFIG.SITE.ORIGIN + 'token?platform=' + platform.name();
-      return url.link('https://accounts.google.com/o/oauth2/auth?client_id=' + APP_ID +
+      return url.link('https://accounts.google.com/o/oauth2/auth?client_id=' + CONFIG.API.GOOGLE.ID +
         '&response_type=token&redirect_uri=' + redirectUri +
         '&scope=https://www.googleapis.com/auth/plus.login');
     }
@@ -73,6 +75,7 @@ angular
       news: news,
       video: video,
       feeds: feeds,
+      places: places,
       url: googleUrl,
       plus: googlePlus,
       logIn: logIn,
@@ -92,5 +95,6 @@ angular
     news: 'http://news.google.com/news?output=rss&q=',
     video: 'https://ajax.googleapis.com/ajax/services/search/video?&v=1.0&rsz=8&q=',
     url: 'https://www.googleapis.com/urlshortener/v1/url?key=',
-    plus: 'https://www.googleapis.com/plus/v1/'
+    plus: 'https://www.googleapis.com/plus/v1/',
+    maps: 'https://maps.googleapis.com/maps/'
   });
