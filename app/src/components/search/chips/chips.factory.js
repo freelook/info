@@ -50,7 +50,10 @@ angular
           {sub: 'youtube'},
           {sub: 'vk'}
         ],
-        places: [],
+        places: [
+          {sub: 'google'},
+          {sub: 'foursquare'}
+        ],
         goods: [],
         job: [
           {sub: 'indeed'},

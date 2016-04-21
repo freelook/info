@@ -43,6 +43,10 @@ angular
       return _point('twitter?q=' + point);
     }
 
+    function foursquare(point) {
+      return _point('foursquare?q=' + point);
+    }
+
     function promo(point) {
       return _enpoint('promo/' + point);
     }
@@ -57,6 +61,7 @@ angular
       yandex: yandex,
       instagram: instagram,
       twitter: twitter,
+      foursquare: foursquare,
       promo: promo
     };
 
