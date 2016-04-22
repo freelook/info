@@ -1,3 +1,8 @@
 fli-search-result-places-google {
   display: block;
 }
+
+fli-search-result-places-google .window img {
+  display: block;
+  margin: auto;
+}

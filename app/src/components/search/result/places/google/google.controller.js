@@ -14,14 +14,19 @@ angular
       zoom: 3
     };
     vm.markers = [];
+    vm.window = {
+      template: 'components/search/result/places/google/map/window.html'
+    };
+
+    vm.click = function (marker, event, place) {
+      vm.window.place = place;
+    };
 
     function setPlaces(res) {
       vm.markers = (res.results || []).map(function (marker) {
-        return {
-          id: marker.id,
-          latitude: marker.geometry.location.lat,
-          longitude: marker.geometry.location.lng
-        };
+        marker.latitude = marker.geometry.location.lat;
+        marker.longitude = marker.geometry.location.lng;
+        return marker;
       });
     }
 
