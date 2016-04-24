@@ -1,0 +1,14 @@
+<div class="fli-grid" ng-if="google.markers.length">
+  <fli-item ng-repeat="marker in google.markers"
+            ng-init="fliItem = {
+          small:1,
+          star:1,
+          img:marker.icon,
+          title:marker.name,
+          content:marker.formatted_address
+          };">
+
+  </fli-item>
+</div>
+
+<fli-welcome ng-if="!google.markers.length"></fli-welcome>

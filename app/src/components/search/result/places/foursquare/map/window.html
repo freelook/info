@@ -1,0 +1,9 @@
+<div class="map-window">
+  <img class="circle" ng-src="{{parameter.categories[0].icon.prefix + 'bg_100.png'}}" fli-err="remove">
+  <div class="bold" ng-bind="parameter.name"></div>
+  <div ng-bind="parameter.location.address"></div>
+  <div ng-if="parameter.contact.phone">
+    <i class="fa fa-phone link"></i>
+    <span ng-bind="parameter.contact.phone"></span>
+  </div>
+</div>

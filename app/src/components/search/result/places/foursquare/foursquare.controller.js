@@ -6,22 +6,14 @@ angular
   function ($routeParams, foursquare) {
 
     var vm = this;
-    vm.map = {
-      center: {
-        latitude: 40.1451,
-        longitude: -99.6680
-      },
-      zoom: 3
-    };
+
     vm.markers = [];
 
     function setPlaces(res) {
       vm.markers = (res.response.venues || []).map(function (marker) {
-        return {
-          id: marker.id,
-          latitude: marker.location.lat,
-          longitude: marker.location.lng
-        };
+        marker.latitude = marker.location.lat;
+        marker.longitude = marker.location.lng;
+        return marker;
       });
     }
 

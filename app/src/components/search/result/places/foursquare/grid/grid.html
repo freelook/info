@@ -1,0 +1,23 @@
+<div class="fli-grid" ng-if="foursquare.markers.length">
+  <fli-item ng-repeat="marker in foursquare.markers"
+            ng-init="fliItem = {
+          small:1,
+          star:1,
+          url:marker.url,
+          img:marker.categories[0].icon.prefix + 'bg_100.png',
+          title:marker.name,
+          content:marker.location.address
+          };
+          fliItemCtrl.href=result.href;">
+
+    <div layout="column" class="block">
+      <div ng-if="marker.contact.phone">
+        <i class="fa fa-phone link"></i>
+        <span ng-bind="marker.contact.phone"></span>
+      </div>
+    </div>
+
+  </fli-item>
+</div>
+
+<fli-welcome ng-if="!foursquare.markers.length"></fli-welcome>

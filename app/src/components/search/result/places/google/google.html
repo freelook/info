@@ -1,6 +1,2 @@
-<ui-gmap-google-map class="block" center="google.map.center" zoom="google.map.zoom">
-  <ui-gmap-markers models="google.markers" coords="'self'" fit="true" click="google.click">
-    <ui-gmap-window coords="google.window.place" show="google.window.place" templateUrl="google.window.template"
-                    templateParameter="google.window.place"></ui-gmap-window>
-  </ui-gmap-markers>
-</ui-gmap-google-map>
+<fli-search-result-places-google-grid ng-if="places.type==='grid'"></fli-search-result-places-google-grid>
+<fli-search-result-places-google-map ng-if="places.type==='map'"></fli-search-result-places-google-map>

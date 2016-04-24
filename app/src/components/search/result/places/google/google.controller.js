@@ -6,21 +6,8 @@ angular
   function ($routeParams, google) {
 
     var vm = this;
-    vm.map = {
-      center: {
-        latitude: 40.1451,
-        longitude: -99.6680
-      },
-      zoom: 3
-    };
-    vm.markers = [];
-    vm.window = {
-      template: 'components/search/result/places/google/map/window.html'
-    };
 
-    vm.click = function (marker, event, place) {
-      vm.window.place = place;
-    };
+    vm.markers = [];
 
     function setPlaces(res) {
       vm.markers = (res.results || []).map(function (marker) {

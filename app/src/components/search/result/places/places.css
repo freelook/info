@@ -6,3 +6,8 @@ fli-search-result-places .angular-google-map-container {
   height: 75vmin;
   min-height: 200px;
 }
+
+fli-search-result-places .map-window img {
+  display: block;
+  margin: auto;
+}

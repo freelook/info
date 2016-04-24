@@ -1,5 +1,2 @@
-<ui-gmap-google-map class="block" center="foursquare.map.center" zoom="foursquare.map.zoom">
-
-  <ui-gmap-markers models="foursquare.markers" coords="'self'" fit="true"></ui-gmap-markers>
-
-</ui-gmap-google-map>
+<fli-search-result-places-foursquare-grid ng-if="places.type==='grid'"></fli-search-result-places-foursquare-grid>
+<fli-search-result-places-foursquare-map ng-if="places.type==='map'"></fli-search-result-places-foursquare-map>

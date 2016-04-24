@@ -5,5 +5,8 @@ angular
   .controller('search.result.places.ctrl',
   function () {
 
+    var vm = this;
+    vm.type = 'grid';
+
   });
 

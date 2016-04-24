@@ -1,0 +1,14 @@
+<div layout="row" layout-align="center center">
+  <md-button aria-label="grid" class="md-primary link" ng-click="places.type='grid'"
+             ng-class="{active:places.type==='grid'}"
+             ng-disabled="places.type==='grid'">
+    <i class="fa fa-th-large fa-2x"></i>
+    <span hide-xs translate="search.places.grid"></span>
+  </md-button>
+  <md-button aria-label="map" class="md-primary link" ng-click="places.type='map'"
+             ng-class="{active:places.type==='map'}"
+             ng-disabled="places.type==='map'">
+    <i class="fa fa-map-marker fa-2x"></i>
+    <span hide-xs translate="search.places.map"></span>
+  </md-button>
+</div>

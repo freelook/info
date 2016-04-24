@@ -19,5 +19,9 @@ window.i18n.ru.search = {
   },
   pinterest: {
     board: 'Доска'
+  },
+  places: {
+    grid: 'плитка',
+    map: 'карта'
   }
 };

@@ -19,5 +19,9 @@ window.i18n.en.search = {
   },
   pinterest: {
     board: 'Board'
+  },
+  places: {
+    grid: 'grid',
+    map: 'map'
   }
 };
