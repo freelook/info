@@ -1,11 +1,11 @@
 <md-card class="fli-item" ng-class="::{small:fliItem.small || !fliItem.img,nofill:fliItem.nofill}" layout="column" ng-if="::fliItem">
   <md-card-content>
-    <a fli-href="{{::fliItemCtrl.href(fliItem)}}" class="img">
+    <a fli-href="{{::fliItemCtrl.href(fliItem)}}" ng-attr-target="{{fliItemCtrl.target}}" class="img">
       <img class="md-card-image" ng-if="::fliItem.img" ng-src="{{::fliItemCtrl.fix(fliItem.img)}}" translate translate-attr-title="uix.item.lookIt" translate-values="::{v:fliItem.title}" ng-attr-alt="{{::fliItem.title || fliItemCtrl.host(fliItem)}}" fli-item-img fli-err>
       <div class="md-card-image header" fli-item-icon="{{::fliItem.title}}" ng-if="::!fliItem.img" translate translate-attr-title="uix.item.lookIt" translate-values="::{v:fliItem.title}" ng-attr-alt="{{::fliItem.title || fliItemCtrl.host(fliItem)}}"></div>
     </a>
     <div class="block">
-      <a class="title" ng-if="::fliItem.title" fli-href="{{::fliItemCtrl.href(fliItem)}}" ng-bind-html="::fliItem.title"></a>
+      <a class="title" ng-if="::fliItem.title" fli-href="{{::fliItemCtrl.href(fliItem)}}" ng-attr-target="{{fliItemCtrl.target}}" ng-bind-html="::fliItem.title"></a>
       <div class="url-block" ng-if="::fliItem.url">
         <a class="url link" fli-href="{{::fliItemCtrl.site(fliItem)}}" ng-bind="::fliItemCtrl.host(fliItem)"></a>
       </div>

@@ -7,8 +7,8 @@ angular
 
     var vm = this;
     vm.search = {};
-    vm.href = function () {
-      return '#';
+    vm.href = function (_item) {
+      return _item.url;
     };
     vm.share = function (_item) {
       return share.url(_item.url);
