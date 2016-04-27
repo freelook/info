@@ -1,3 +1,4 @@
 <div ng-if="fli.route.type">
-  <fli-promo-facebook></fli-promo-facebook>
+  <fli-promo-facebook ng-if="fli.media('xs')"></fli-promo-facebook>
+  <fli-promo-amazon ng-if="fli.media('gt-xs')"></fli-promo-amazon>
 </div>

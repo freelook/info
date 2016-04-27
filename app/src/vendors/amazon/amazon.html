@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Amazon</title>
+  <style>
+    .amzn-native-header,
+    .amzn-native-brand {
+      display: none !important;
+    }
+    .amzn-native-product {
+      border-radius: 16px;
+    }
+    .amzn-native-container {
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+<script type="text/javascript">
+  var query = window.location.search.split('?query=')[1],
+    amzn_assoc_search_bar = 'false',
+    amzn_assoc_tracking_id = 'flai01-20',
+    amzn_assoc_ad_mode = 'search',
+    amzn_assoc_ad_type = 'smart',
+    amzn_assoc_default_search_phrase = query || 'Apple',
+    amzn_assoc_default_category = 'All',
+    amzn_assoc_rows = '1';
+</script>
+<script src="//z-na.amazon-adsystem.com/widgets/onejs"></script>
+</body>
+</html>
