@@ -2,8 +2,15 @@ fli-promo-amazon {
   display: block;
 }
 
-fli-promo-amazon {
+fli-promo-amazon .amazon {
+  margin: 13px 7px 0 7px;
+}
+
+fli-promo-amazon .iframe {
+  outline: 0;
   border: none;
-  max-width: 100%;
-  max-height: 250px;
+  padding: 7px 0;
+  max-height: 260px;
+  border-top: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
 }

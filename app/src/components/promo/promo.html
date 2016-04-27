@@ -1,4 +1,4 @@
 <div ng-if="fli.route.type">
-  <fli-promo-facebook ng-if="fli.media('xs')"></fli-promo-facebook>
-  <fli-promo-amazon ng-if="fli.media('gt-xs')"></fli-promo-amazon>
+  <fli-promo-facebook ng-if="fli.media('(max-width: 750px)')"></fli-promo-facebook>
+  <fli-promo-amazon ng-if="fli.media('(min-width: 750px)')"></fli-promo-amazon>
 </div>

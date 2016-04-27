@@ -8,11 +8,17 @@
     .amzn-native-brand {
       display: none !important;
     }
+
     .amzn-native-product {
       border-radius: 16px;
     }
+
     .amzn-native-container {
       margin: auto;
+    }
+
+    div#amzn-native-ad-0 {
+      max-width: 100% !important;
     }
   </style>
 </head>
@@ -26,7 +32,14 @@
     amzn_assoc_default_search_phrase = query || 'Apple',
     amzn_assoc_default_category = 'All',
     amzn_assoc_rows = '1';
+
+  function show() {
+    if (window.parent) {
+      window.parent.postMessage('amazon', '*');
+    }
+  }
+
 </script>
-<script src="//z-na.amazon-adsystem.com/widgets/onejs"></script>
+<script src="//z-na.amazon-adsystem.com/widgets/onejs" onload="show()"></script>
 </body>
 </html>
