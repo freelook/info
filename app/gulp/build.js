@@ -62,7 +62,12 @@ gulp.task('html', ['jshint', 'inject', 'partials'], function () {
     .pipe(htmlFilter)
     .pipe($.minifyHtml({empty: true, spare: true, quotes: true}))
     .pipe(indexFilter)
-    .pipe($.assetpaths({newDomain: 'http://freelook.info', oldDomain: '_._', docRoot: '/', filetypes: ['png', 'js', 'css', 'ico']}))
+    .pipe($.assetpaths({
+      newDomain: 'http://freelook.info',
+      oldDomain: '_._',
+      docRoot: '/',
+      filetypes: ['png', 'js', 'css', 'ico']
+    }))
     .pipe(indexFilter.restore())
     .pipe(gulp.dest('dist/'))
     .pipe(htmlFilter.restore())
@@ -92,7 +97,7 @@ gulp.task('misc', function () {
 });
 
 gulp.task('vendors', function () {
-  return gulp.src(['src/vendors/**/*.js'])
+  return gulp.src(['src/vendors/**/*.js', 'src/vendors/**/*.html'])
     .pipe(gulp.dest('dist/vendors'));
 });
 
