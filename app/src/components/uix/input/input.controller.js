@@ -5,13 +5,13 @@ angular
   .controller('input.ctrl',
   function ($scope, index, url, locale, nav, setting, PLACEHOLDER) {
 
-    var vm = this, _search_ = 'search';
+    var vm = this, _filter_ = 'filter';
     $scope.fli.focus = 0;
 
     vm.placeholder = PLACEHOLDER;
-    vm.type = _search_;
-    vm.icon = _search_;
-    vm.action = _search_;
+    vm.type = _filter_;
+    vm.icon = _filter_;
+    vm.action = _filter_;
 
     function _route() {
       return {

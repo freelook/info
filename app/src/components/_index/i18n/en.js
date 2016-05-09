@@ -12,7 +12,7 @@ window.i18n.en.index = {
       forward: 'forward',
       home: 'home',
       add: 'add',
-      search: 'search'
+      filter: 'filter'
     },
     note: {
       needLogin: 'Need login'

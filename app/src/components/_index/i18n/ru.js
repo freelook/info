@@ -11,7 +11,7 @@ window.i18n.ru.index = {
       forward: 'вперед',
       home: 'главная',
       add: 'добавить',
-      search: 'поиск'
+      filter: 'фильтр'
     },
     note: {
       needLogin: 'Необходим логин'

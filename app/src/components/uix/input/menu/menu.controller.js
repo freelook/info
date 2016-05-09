@@ -9,10 +9,10 @@ angular
 
     vm.items = [
       {
-        name: 'index.input.menu.search',
-        icon: 'search',
+        name: 'index.input.menu.filter',
+        icon: 'filter',
         href: url.href('?', {l: locale.getCode()}),
-        action: 'search'
+        action: 'filter'
       },
       {
         name: 'index.input.menu.add',
