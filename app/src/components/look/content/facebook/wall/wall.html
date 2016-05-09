@@ -1,0 +1,10 @@
+<div class="fli-grid" ng-repeat="data in ::fbWall.data">
+  <fli-item ng-init="fliItem = {
+          url:data.link,
+          img:data.picture || data.icon,
+          title:data.name || data.caption || data.type,
+          content:data.message || data.description
+          };">
+
+  </fli-item>
+</div>

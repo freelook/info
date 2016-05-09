@@ -1,0 +1,48 @@
+<div ng-if="fbUser.data">
+  <fli-item ng-init="fliItem = {
+          small:1,
+          nofill:1,
+          url:fbUser.data.link,
+          img:fbUser.img(fbUser.data),
+          title:fbUser.data.name
+          };
+          fliItemCtrl.href=content.href;">
+
+    <div class="block">
+      <div layout="row" ng-if="fbUser.data.category">
+        <div flex="33">
+          <p translate="look.fb.user.category"></p>
+        </div>
+        <div flex="66">
+          <p ng-bind="::fbUser.data.category"></p>
+        </div>
+      </div>
+      <div layout="row" ng-if="fbUser.data.about">
+        <div flex="33">
+          <p translate="look.fb.user.about"></p>
+        </div>
+        <div flex="66">
+          <p ng-bind="::fbUser.data.about"></p>
+        </div>
+      </div>
+      <div layout="row" ng-if="fbUser.data.description">
+        <div flex="33">
+          <p translate="look.fb.user.description"></p>
+        </div>
+        <div flex="66">
+          <p ng-bind="::fbUser.data.description"></p>
+        </div>
+      </div>
+      <div layout="row" ng-if="fbUser.data.link">
+        <div flex="33">
+          <p translate="look.fb.user.id"></p>
+        </div>
+        <div flex="66" class="link" ng-click="link(fbUser.data.link)">
+          <p ng-bind="::fbUser.data.id"></p>
+        </div>
+      </div>
+    </div>
+
+  </fli-item>
+</div>
+

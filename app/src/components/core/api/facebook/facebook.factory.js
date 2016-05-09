@@ -28,52 +28,13 @@ angular
         '&picture=' + _img;
     }
 
-    function user(url) {
-      var defer = $q.defer();
-
-      _getId(url)
-        .then(function (_id) {
-          if (_id) {
-            return userById(_id)
-              .success(function (usr) {
-                return defer.resolve(usr);
-              })
-              .error(function (err) {
-                return defer.reject(err);
-              });
-          }
-          return defer.reject();
-        })
-        .catch(function (err) {
-          return defer.reject(err);
-        });
-
-      return defer.promise;
-    }
-
-    function _getId(_url) {
-      var _id = url.extract('*/app_scoped_user_id/:id(/)', _url).id;
-      if (_id) {
-        return $q.when(_id);
-      }
-
-      var defer = $q.defer();
-      api.proxy(_url)
-        .success(function (html) {
-          var _html = html || '',
-            match = _html.match(/profile_id=(.+?)&/i) || [],
-            id = match[1] || '';
-          return defer.resolve(id);
-        })
-        .error(function (err) {
-          return defer.reject(err);
-        });
-
-      return defer.promise;
-    }
-
-    function userById(_id) {
+    function user(_id) {
       var point = encodeURIComponent(_id + '?fli=1');
+      return api.facebook(point);
+    }
+
+    function wall(_id) {
+      var point = encodeURIComponent(_id + '/feed?fli=1');
       return api.facebook(point);
     }
 
@@ -118,6 +79,7 @@ angular
       logIn: logIn,
       share: share,
       user: user,
+      wall: wall,
       pages: pages,
       people: people,
       events: events,
