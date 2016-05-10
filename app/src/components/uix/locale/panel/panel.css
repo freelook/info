@@ -1,3 +1,7 @@
 fli-locale-panel {
   display: block;
 }
+
+fli-locale-panel div[dir="ltr"] {
+  margin: auto !important;
+}

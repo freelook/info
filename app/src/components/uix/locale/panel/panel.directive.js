@@ -5,6 +5,10 @@ angular
     return {
       controller: 'locale.panel.ctrl',
       controllerAs: 'localePanel',
-      templateUrl: 'components/uix/locale/panel/panel.html'
+      templateUrl: 'components/uix/locale/panel/panel.html',
+      scope: {
+        map: '='
+      },
+      bindToController: true
     };
   });
