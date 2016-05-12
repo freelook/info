@@ -50,7 +50,7 @@ angular
     function clearItem(key, item) {
       var arr = get(key, []),
         filtered = arr.filter(function (el) {
-          return !angular.equals(item, el);
+          return !angular.equals(item.url, el.url);
         });
       set(key, filtered);
       return filtered;
