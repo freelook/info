@@ -6,13 +6,13 @@ angular
   function ($http, api) {
 
     function get(params) {
-      return $http.get(api.enpoint('feeds/all'), {
+      return $http.get(api.enpoint('feeds'), {
         params: params
       });
     }
 
     function post(data) {
-      return $http.post(api.enpoint('feeds/create'), data);
+      return $http.post(api.enpoint('feeds'), data);
     }
 
     return {

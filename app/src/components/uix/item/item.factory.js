@@ -30,8 +30,9 @@ angular
 
     function _star(data) {
       var _data = _extend(data);
-      storage.arr.push(STORAGE_KEYS.STAR_KEY, _data);
-      feeds.add(_data);
+      if (storage.arr.push(STORAGE_KEYS.STAR_KEY, _data)) {
+        feeds.add(_data);
+      }
       toast.show('uix.item.stared', {v: _data.title});
     }
 

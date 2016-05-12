@@ -2,6 +2,6 @@
 
 module.exports = function (app) {
     var feeds = require('./feeds.server.controller');
-    app.route('/feeds/all').get(feeds.all);
-    app.route('/feeds/create').post(feeds.create);
+    app.route('/feeds').get(feeds.all);
+    app.route('/feeds').post(feeds.create);
 };

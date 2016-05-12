@@ -42,8 +42,9 @@ angular
           arr.shift();
         }
         set(key, arr);
+        return true;
       }
-      return arr;
+      return false;
     }
 
     function clearItem(key, item) {

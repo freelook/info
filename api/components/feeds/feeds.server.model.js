@@ -16,7 +16,8 @@ var sql = require('components/core/sql'),
             type: sql.constructor.STRING,
             unique: true,
             allowNull: false
-        }
+        },
+        count: sql.constructor.INTEGER
     }, {
         indexes: [{
             fields: ['input']

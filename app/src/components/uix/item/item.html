@@ -25,7 +25,7 @@
       </a>
     </div>
     <div class="link" ng-if="!fliItem.star" ng-click="fliItemCtrl.star(fliItem);fliItem.star=1;">
-      <i class="fa fa-star-o" translate translate-attr-title="uix.item.star" translate-values="::{v:fliItem.title}"></i>
+      <span ng-if="item.count > 1" ng-bind="item.count"></span> <i class="fa fa-star-o" translate translate-attr-title="uix.item.star" translate-values="::{v:fliItem.title}"></i>
     </div>
     <div class="link" ng-if="::fliItemCtrl.share" ng-click="fliItemCtrl.share(fliItem)">
       <i class="fa fa-share-alt" translate translate-attr-title="uix.item.share" translate-values="::{v:fliItem.title}"></i>

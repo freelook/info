@@ -1,6 +1,7 @@
 'use strict';
 
 var LIMIT = 24,
+    $q = require('q'),
     feeds = require('./feeds.server.model');
 
 function all(query) {
@@ -25,7 +26,20 @@ function all(query) {
 }
 
 function create(body) {
-    return feeds.create(body);
+    var defer = $q.defer();
+    feeds.findOrCreate({where: {url: body.url}, defaults: body})
+        .spread(function (feed, created) {
+            if (!created) {
+                return feed.update({
+                    count: ++feed.count
+                })
+                    .then(defer.resolve)
+                    .catch(defer.reject);
+            }
+            return defer.resolve(feed);
+        })
+        .catch(defer.reject);
+    return defer.promise;
 }
 
 module.exports = {
