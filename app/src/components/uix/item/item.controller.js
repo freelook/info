@@ -16,13 +16,12 @@ angular
     };
 
     vm.host = function (_item) {
-      var host = $routeParams.sub || $routeParams.type;
+      var host = $routeParams.sub || '';
       if (_item.url) {
         var urlHost = content.site(_item.url).host;
         if (!index.is(CONFIG.PRODUCTION, urlHost)) {
           host = urlHost;
-        }
-        if (_item.img) {
+        } else if (_item.img) {
           var imgHost = content.site(_item.img).host;
           if (!index.is(CONFIG.PRODUCTION, imgHost)) {
             host = imgHost;
