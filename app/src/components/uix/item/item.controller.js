@@ -3,7 +3,7 @@
 angular
   .module('freelook.info')
   .controller('item.ctrl',
-  function (index, item, content) {
+  function ($routeParams, index, item, content, CONFIG) {
 
     var vm = this;
 
@@ -16,7 +16,20 @@ angular
     };
 
     vm.host = function (_item) {
-      return content.site(_item.url).host;
+      var host = $routeParams.sub || $routeParams.type;
+      if (_item.url) {
+        var urlHost = content.site(_item.url).host;
+        if (!index.is(CONFIG.PRODUCTION, urlHost)) {
+          host = urlHost;
+        }
+        if (_item.img) {
+          var imgHost = content.site(_item.img).host;
+          if (!index.is(CONFIG.PRODUCTION, imgHost)) {
+            host = imgHost;
+          }
+        }
+      }
+      return host;
     };
 
   });
