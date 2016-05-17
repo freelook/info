@@ -9,6 +9,7 @@ angular
     vm.type = 'looks';
     vm.search = item.search;
     vm.href = item.href;
+    vm.share = item.share;
 
   });
 

@@ -15,6 +15,10 @@ angular
       return item.href({type: 'rss', sub: _item.rss});
     };
 
+    vm.share = function (_item) {
+      return item.share(vm.href(_item));
+    };
+
     vm.more = function () {
       vm.limitTo += SUB_COUNT;
     };
