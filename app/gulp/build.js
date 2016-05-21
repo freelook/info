@@ -92,7 +92,7 @@ gulp.task('fonts', function () {
 });
 
 gulp.task('misc', function () {
-  return gulp.src(['src/**/*.ico', 'src/**/*.xml', 'src/.gitignore', 'src/*.json', 'src/*.js'])
+  return gulp.src(['src/**/*.ico', 'src/**/*.xml', 'src/.gitignore', 'src/*.json', 'src/*.js', 'src/*.txt'])
     .pipe(gulp.dest('dist/'));
 });
 
