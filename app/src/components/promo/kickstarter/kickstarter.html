@@ -1,0 +1,18 @@
+<div ng-if="kickstarterCtrl.isVisible">
+  <div layout="row" layout-align="end center">
+    <md-button class="md-icon-button md-primary" aria-label="close" ng-click="kickstarterCtrl.toggle(0)">
+      <i class="fa fa-close"></i>
+    </md-button>
+  </div>
+
+  <iframe class="middle" ng-if="fli.media('(max-width: 550px)')" width="250" height="400" frameborder="0" scrolling="no"
+          src="https://www.kickstarter.com/projects/128048977/fli-free-look-at-information/widget/card.html?v=2"></iframe>
+  <iframe class="middle" ng-if="!fli.media('(max-width: 550px)')" width="500" height="250" frameborder="0"
+          scrolling="no"
+          src="https://www.kickstarter.com/projects/128048977/fli-free-look-at-information/widget/video.html"></iframe>
+</div>
+
+<div class="link underline text-upper text-center" ng-click="kickstarterCtrl.toggle(1);link('http://kck.st/1TxfZ1I');">
+  <i class="fa fa-external-link"></i>
+  <span translate="promo.kickstarter"></span>
+</div>

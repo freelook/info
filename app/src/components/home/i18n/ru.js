@@ -4,6 +4,9 @@ window.i18n.ru.home = {
       looks: 'недавнее',
       stars: 'избранное',
       subscription: 'подписка'
+    },
+    user: {
+      nickname: 'никнейм'
     }
   }
 };

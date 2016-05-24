@@ -4,6 +4,9 @@ window.i18n.en.home = {
       looks: 'recent',
       stars: 'favorites',
       subscription: 'subscription'
+    },
+    user: {
+      nickname: 'nickname'
     }
   }
 };

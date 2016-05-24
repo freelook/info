@@ -1,0 +1,12 @@
+fli-promo-kickstarter {
+  display: block;
+}
+
+fli-promo-kickstarter .middle {
+  display: block;
+  margin: auto;
+}
+
+fli-promo-kickstarter .link {
+  margin: 10px 0 30px;
+}

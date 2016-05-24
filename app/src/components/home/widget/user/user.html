@@ -1,0 +1,12 @@
+<div layout="column" class="block">
+  <md-input-container class="md-icon-float md-block">
+    <label translate="home.widget.user.nickname"></label>
+    <md-icon>
+      <i class="fa fa-user link"></i>
+    </md-icon>
+    <input ng-model="userCtrl.nickname"
+           ng-model-options="{updateOn:'blur'}"
+           ng-change="userCtrl.setName()"
+           type="text">
+  </md-input-container>
+</div>
