@@ -2,3 +2,10 @@ fli-home-widget-user {
   display: block;
 }
 
+fli-home-widget-user .md-button.md-icon-button {
+  margin: 10px 0;
+}
+
+fli-home-widget-user md-input-container {
+  margin: 17px 5px 17px 17px;
+}

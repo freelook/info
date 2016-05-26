@@ -1,5 +1,6 @@
-<div layout="column" class="block">
-  <md-input-container class="md-icon-float md-block">
+<div layout="row">
+
+  <md-input-container class="md-icon-float md-block" flex>
     <label translate="home.widget.user.nickname"></label>
     <md-icon>
       <i class="fa fa-user link"></i>
@@ -9,4 +10,9 @@
            ng-change="userCtrl.setName()"
            type="text">
   </md-input-container>
+
+  <md-button ng-if="userCtrl.nickname" class="md-icon-button link" aria-label="setting" ng-click="userCtrl.setting()">
+    <i class="fa fa-sign-in fa-2x"></i>
+  </md-button>
+
 </div>

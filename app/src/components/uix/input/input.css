@@ -22,7 +22,7 @@ fli-input input.md-input {
 }
 
 fli-input .md-button.md-icon-button {
-  margin: 0;
+  margin: 10px 0;
 }
 
 fli-input .md-button.md-icon-button i {
