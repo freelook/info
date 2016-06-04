@@ -6,7 +6,8 @@ window.i18n.en.home = {
       subscription: 'subscription'
     },
     user: {
-      nickname: 'nickname'
+      nickname: 'nickname',
+      bind: 'bind your social account for login and sync data'
     }
   }
 };

@@ -1,18 +1,23 @@
 <div layout="row">
-
-  <md-input-container class="md-icon-float md-block" flex>
-    <label translate="home.widget.user.nickname"></label>
-    <md-icon>
-      <i class="fa fa-user link"></i>
-    </md-icon>
-    <input ng-model="userCtrl.nickname"
-           ng-model-options="{updateOn:'blur'}"
-           ng-change="userCtrl.setName()"
-           type="text">
-  </md-input-container>
+  <form name="nickname" flex>
+    <md-input-container class="md-icon-float md-block" flex>
+      <label translate="home.widget.user.nickname"></label>
+      <md-icon>
+        <i class="fa fa-user link"></i>
+      </md-icon>
+      <input ng-model="userCtrl.nickname"
+             ng-model-options="{updateOn:'blur'}"
+             ng-change="userCtrl.setName()"
+             autocomplete="off" aria-label="nickname"
+             type="text">
+    </md-input-container>
+  </form>
 
   <md-button ng-if="userCtrl.nickname" class="md-icon-button link" aria-label="setting" ng-click="userCtrl.setting()">
     <i class="fa fa-sign-in fa-2x"></i>
   </md-button>
+</div>
 
+<div layout="row" layout-align="end center" class="msg" ng-if="userCtrl.nickname">
+  <span class="link color-8" translate="home.widget.user.bind" ng-click="userCtrl.setting()"></span>
 </div>

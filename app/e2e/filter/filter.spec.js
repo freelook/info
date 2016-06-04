@@ -1,6 +1,6 @@
 'use strict';
 
-describe('The search view', function () {
+describe('The filter view', function () {
   var page = require('./filter.page');
 
   beforeEach(function () {

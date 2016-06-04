@@ -31,7 +31,7 @@ function _getToken() {
 
     phantom.create(function (ph) {
         ph.createPage(function (page) {
-            var url = 'https://instagram.com/oauth/authorize/?client_id=' + id + '&redirect_uri=http://freelook.info&response_type=token';
+            var url = 'https://instagram.com/oauth/authorize/?client_id=' + id + '&redirect_uri=http://freelook.info&response_type=token&scope=public_content';
 
             page.set('onUrlChanged', function (targetUrl) {
                 if (/#access_token=/.test(targetUrl)) {

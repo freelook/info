@@ -13,7 +13,7 @@ angular
         $scope.chips.items.push({
           name: $translate.instant(!!chips.subs[type] ? ['search.tabs', type].join('.') : type),
           key: 'type',
-          route: url.href(null, _config(null), false, '/')
+          route: url.href('?', _config(null), false, '/')
         });
       }
     }
@@ -27,11 +27,11 @@ angular
     }
 
     vm.href = function (type) {
-      return url.href(null, _config(type));
+      return url.href('?', _config(type), false, '/');
     };
 
     vm.go = function (type) {
-      $scope.go(_config(type));
+      $scope.go(vm.href(type));
     };
 
     _init();

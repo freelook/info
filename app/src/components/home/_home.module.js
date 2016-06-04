@@ -15,6 +15,12 @@
           controller: 'home.ctrl'
         });
 
+      $routeProvider
+        .when('/~/:nickname?', {
+          templateUrl: 'components/home/home.html',
+          controller: 'home.ctrl'
+        });
+
     });
 
 }());

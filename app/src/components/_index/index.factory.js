@@ -2,7 +2,7 @@
 angular
   .module('freelook.info')
   .factory('index',
-  function ($rootScope, $sce, $route, $routeParams, $timeout, $mdMedia, $translate, $location, url, I18N) {
+  function ($rootScope, $sce, $routeParams, $mdMedia, $translate, url, nav, I18N) {
 
     function init() {
       $rootScope.fli.title = !$routeParams.input ? $translate.instant(I18N.DEFAULT_TITLE) : decodeURIComponent($routeParams.input) + $translate.instant(I18N.FLI_POSTFIX);
@@ -14,23 +14,11 @@ angular
     }
 
     function reload() {
-      $route.reload();
+      return nav.reload();
     }
 
     function go(params) {
-      if (params) {
-        switch (typeof params) {
-          case 'string':
-            if (params.substr(0, 4) === 'http') {
-              return url.location(params);
-            }
-            return $timeout(function () {
-              $location.url(params);
-            });
-          case 'object':
-            return $route.updateParams(params);
-        }
-      }
+      return nav.go(params);
     }
 
     function is(site, type) {

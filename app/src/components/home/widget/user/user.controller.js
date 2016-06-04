@@ -3,18 +3,28 @@
 angular
   .module('fli.home')
   .controller('home.widget.user.ctrl',
-  function (storage, setting) {
+  function ($location, userLocalStorage, setting, nav) {
 
     var vm = this;
 
-    vm.nickname = (storage.get(storage.keys.USR_KEY, {}) || {}).nickname || '';
+    vm.nickname = userLocalStorage.getNickName() || '';
 
     vm.setName = function () {
-      storage.set(storage.keys.USR_KEY, {nickname: vm.nickname});
+      vm.nickname = (vm.nickname || '').toLowerCase();
+      userLocalStorage.setNickName(vm.nickname);
+      nav.goHome();
     };
 
     vm.setting = function () {
       setting.open();
     };
+
+    function _init() {
+      if ('~/' + vm.nickname !== $location.path()) {
+        nav.goHome();
+      }
+    }
+
+    _init();
 
   });

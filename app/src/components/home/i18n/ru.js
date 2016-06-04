@@ -6,7 +6,8 @@ window.i18n.ru.home = {
       subscription: 'подписка'
     },
     user: {
-      nickname: 'никнейм'
+      nickname: 'никнейм',
+      bind: 'связать свою соц. сеть для входа и синхронизации данных'
     }
   }
 };

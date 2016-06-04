@@ -1,7 +1,7 @@
 'use strict';
 angular
-  .module('freelook.info')
-  .factory('user', function ($q, $rootScope, $cookies, $timeout, userStorage, auth) {
+  .module('fli.core')
+  .factory('user', function ($q, $rootScope, $cookies, $timeout, userSessionStorage, auth) {
 
 
     function init() {
@@ -12,7 +12,7 @@ angular
     }
 
     function data(provider) {
-      var userData = userStorage.get('user') || {};
+      var userData = userSessionStorage.get('user') || {};
       return provider ? userData[provider] : userData;
     }
 
@@ -36,9 +36,9 @@ angular
     }
 
     function _setUser(provider, data) {
-      var user = userStorage.get('user') || {};
+      var user = userSessionStorage.get('user') || {};
       user[provider] = data;
-      userStorage.put('user', user);
+      userSessionStorage.put('user', user);
     }
 
     function logIn(provider) {
