@@ -3,15 +3,15 @@
 angular
   .module('fli.home')
   .controller('home.widget.user.ctrl',
-  function ($location, userLocalStorage, setting, nav) {
+  function ($location, user, setting, nav) {
 
     var vm = this;
 
-    vm.nickname = userLocalStorage.getNickName() || '';
+    vm.logIn = user.logIn;
+    vm.nickname = user.storage.local.getNickName() || '';
 
-    vm.setName = function () {
-      vm.nickname = (vm.nickname || '').toLowerCase();
-      userLocalStorage.setNickName(vm.nickname);
+    vm.logOut = function () {
+      user.storage.local.set(null);
       nav.goHome();
     };
 

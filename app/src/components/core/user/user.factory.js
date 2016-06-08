@@ -1,8 +1,9 @@
 'use strict';
 angular
   .module('fli.core')
-  .factory('user', function ($q, $rootScope, $cookies, $timeout, userSessionStorage, auth) {
+  .factory('user', function ($q, $rootScope, $cookies, $timeout, userStorage, auth) {
 
+    var BIND_PROVIDER = 'facebook';
 
     function init() {
       _getUser().then(function (user) {
@@ -12,7 +13,7 @@ angular
     }
 
     function data(provider) {
-      var userData = userSessionStorage.get('user') || {};
+      var userData = userStorage.session.get('user') || {};
       return provider ? userData[provider] : userData;
     }
 
@@ -36,22 +37,22 @@ angular
     }
 
     function _setUser(provider, data) {
-      var user = userSessionStorage.get('user') || {};
+      var user = userStorage.session.get('user') || {};
       user[provider] = data;
-      userSessionStorage.put('user', user);
+      userStorage.session.put('user', user);
     }
 
     function logIn(provider) {
-      auth.logIn(provider)
+      return auth.logIn(provider)
         .then(function (token) {
           return _requestUser(provider, token);
         })
         .then(function (data) {
           _setUser(provider, data);
-          init();
+          return init();
         })
         .catch(function () {
-          logOut(provider);
+          return logOut(provider);
         });
     }
 
@@ -60,11 +61,22 @@ angular
       init();
     }
 
+    function bind() {
+      return logIn(BIND_PROVIDER)
+        .then(function () {
+          var usr = data(BIND_PROVIDER) || {},
+            nickname = [usr.first_name || '', usr.last_name || ''].join('.').toLowerCase();
+          userStorage.local.setNickName(nickname);
+        });
+    }
+
     return {
       init: init,
       data: data,
+      bind: bind,
       logIn: logIn,
-      logOut: logOut
+      logOut: logOut,
+      storage: userStorage
     };
 
   });
