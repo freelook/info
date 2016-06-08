@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('fli.core')
-  .factory('user', function ($q, $rootScope, $cookies, $timeout, userStorage, auth) {
+  .factory('user', function ($q, $rootScope, $cookies, $timeout, $http, userStorage, auth, USERS) {
 
     var BIND_PROVIDER = 'facebook';
 
@@ -64,9 +64,13 @@ angular
     function bind() {
       return logIn(BIND_PROVIDER)
         .then(function () {
-          var usr = data(BIND_PROVIDER) || {},
-            nickname = [usr.first_name || '', usr.last_name || ''].join('.').toLowerCase();
-          userStorage.local.setNickName(nickname);
+          var usr = data(BIND_PROVIDER);
+          if (usr) {
+            return USERS.post(usr).then(function (res) {
+              userStorage.local.setNickName(res.data.nickname);
+            });
+          }
+          return $q.reject();
         });
     }
 

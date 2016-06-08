@@ -43,6 +43,10 @@ angular
       $scope.fli.focus = 1;
     };
 
+    vm.isSetting = function () {
+      return $scope.fli.view === 'components/views/setting/setting.view.html';
+    };
+
     vm.setting = function () {
       setting.open();
     };

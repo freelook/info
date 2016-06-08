@@ -20,7 +20,7 @@ angular
     };
 
     function _init() {
-      if ('~/' + vm.nickname !== $location.path()) {
+      if (!~$location.path().indexOf('~/')) {
         nav.goHome();
       }
     }

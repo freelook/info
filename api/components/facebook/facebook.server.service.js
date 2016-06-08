@@ -3,12 +3,13 @@
 var $http = require('request'),
     phantom = require('phantom'),
     $q = require('q'),
+    GRAPH_API_ENPOINT = 'https://graph.facebook.com/',
     id = process.env.FB_ID,
     secret = process.env.FB_SECRET,
+    appToken = [id, secret].join('|'),
     pass = process.env.FB_PASS,
     tokenModel = require('components/token/token.server.model'),
     fb_token = '';
-
 
 function _storeToken(tokenModel, token, dateCreation) {
 
@@ -76,7 +77,7 @@ function _exchangeToken(_token) {
     var defer = $q.defer(),
         token = _token.split('access_token=').splice(1)[0] || '';
 
-    $http('https://graph.facebook.com/oauth/access_token?grant_type=fb_exchange_token&client_id=' + id + '&client_secret=' + secret + '&fb_exchange_token=' + token,
+    $http(GRAPH_API_ENPOINT + 'oauth/access_token?grant_type=fb_exchange_token&client_id=' + id + '&client_secret=' + secret + '&fb_exchange_token=' + token,
         function (err, res, body) {
             if (!err && body && !body.error) {
                 return defer.resolve(body);
@@ -136,8 +137,21 @@ function refreshToken() {
     return checkToken(true);
 }
 
+function debug(_token) {
+    var defer = $q.defer();
+    $http(GRAPH_API_ENPOINT + 'debug_token?access_token=' + appToken + '&input_token=' + _token,
+        function (err, res, body) {
+            if (!err && body && !body.error) {
+                var res = JSON.parse(body);
+                return defer.resolve(res.data);
+            }
+            return defer.reject(err);
+        });
+    return defer.promise;
+}
 
 module.exports = {
     check: checkToken,
-    refresh: refreshToken
+    refresh: refreshToken,
+    debug: debug
 };
