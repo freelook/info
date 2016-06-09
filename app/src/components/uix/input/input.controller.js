@@ -3,7 +3,7 @@
 angular
   .module('fli.uix')
   .controller('input.ctrl',
-  function ($scope, index, url, locale, nav, setting, PLACEHOLDER) {
+  function ($routeParams, $scope, index, url, locale, nav, setting, user, PLACEHOLDER) {
 
     var vm = this, _filter_ = 'filter';
     $scope.fli.focus = 0;
@@ -21,6 +21,8 @@ angular
         sub: $scope.fli.route.sub || null
       };
     }
+
+    vm.img = user.img;
 
     vm.find = function () {
       $scope.go(url.href('?', _route(), false, '/'));

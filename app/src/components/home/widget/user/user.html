@@ -4,16 +4,16 @@
     <md-icon>
       <i class="fa fa-user link"></i>
     </md-icon>
-    <input ng-model="userCtrl.nickname"
+    <input ng-model="::userCtrl.nickname"
            ng-disabled="true"
            autocomplete="off" aria-label="nickname"
            type="text">
   </md-input-container>
-  <md-button ng-if="userCtrl.nickname" class="md-icon-button link" aria-label="logout" ng-click="userCtrl.logOut()">
+  <md-button ng-if="::userCtrl.localname && userCtrl.localname===userCtrl.nickname" class="md-icon-button link" aria-label="logout" ng-click="userCtrl.logOut()">
     <i class="fa fa-close"></i>
   </md-button>
 </div>
 
-<div layout="row" layout-align="end center" class="msg" ng-if="!userCtrl.nickname">
+<div layout="row" layout-align="end center" class="msg" ng-if="::!(userCtrl.localname || userCtrl.nickname)">
   <span class="link color-8" translate="home.widget.user.bind" ng-click="userCtrl.setting()"></span>
 </div>

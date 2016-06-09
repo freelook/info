@@ -11,10 +11,11 @@ angular
       storage = customStorage;
     }
 
-    function get(key, defaultValue) {
-      var storageValue = storage.getItem(key) || null;
+    function get(key, defaultValue, _options) {
+      var storageValue = storage.getItem(key) || null,
+        options = _options || {};
       try {
-        if (storageValue) {
+        if (storageValue && !options.noParse) {
           storageValue = $window.JSON.parse(storageValue);
         }
       } catch (e) {

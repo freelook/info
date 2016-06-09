@@ -31,6 +31,10 @@ fli-input .md-button.md-icon-button i {
   outline: 0;
 }
 
+fli-input .md-button.md-fab .user {
+  height: 40px;
+}
+
 fli-input #progress {
   bottom: -3px;
   position: absolute;

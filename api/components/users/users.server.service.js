@@ -2,10 +2,19 @@
 
 var $q = require('q'),
     fb_token = require('components/facebook/facebook.server.service'),
-    users_sql = require('./users.server.model');
+    users_sql = require('./users.server.model'),
+    users_feeds_sql = require('./feeds/users.feeds.server.model'),
+    users_data_sql = require('./data/users.data.server.model');
+
 
 function all(query) {
     return users_sql.all({
+        where: query
+    });
+}
+
+function one(query) {
+    return users_sql.findOne({
         where: query
     });
 }
@@ -32,7 +41,19 @@ function create(body) {
     return $q.reject();
 }
 
+function syncData(query, data) {
+    if (query && data) {
+        return one(query).then(function (user) {
+            data.userId = user.id;
+            return users_data_sql.upsert(data);
+        });
+    }
+    return $q.reject();
+}
+
 module.exports = {
     all: all,
-    create: create
+    one: one,
+    create: create,
+    syncData: syncData
 };

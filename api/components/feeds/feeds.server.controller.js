@@ -4,7 +4,7 @@ var $q = require('q'),
     feeds = require('./feeds.server.service');
 
 function all(req, res) {
-    feeds.all(req.query)
+    feeds.findAndCountAll(req.query)
         .then(function (data) {
             res.send(data);
         })

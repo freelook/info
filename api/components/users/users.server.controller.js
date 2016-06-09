@@ -14,6 +14,16 @@ function all(req, res) {
         });
 }
 
+function one(req, res) {
+    users.one(req.params, req.query)
+        .then(function (data) {
+            res.send(data);
+        })
+        .catch(function () {
+            res.status(404).end();
+        });
+}
+
 function create(req, res) {
     users.create(req.body)
         .then(function (data) {
@@ -25,7 +35,22 @@ function create(req, res) {
         });
 }
 
+function syncData(req, res) {
+    users.syncData({
+        id: jwt.decode(req.cookies.user, secret),
+        nickname: req.params.nickname
+    }, req.body)
+        .then(function (data) {
+            res.send(data);
+        })
+        .catch(function (err) {
+            res.status(404).json(err);
+        });
+}
+
 module.exports = {
     all: all,
-    create: create
+    one: one,
+    create: create,
+    syncData: syncData
 };

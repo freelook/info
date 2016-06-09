@@ -3,12 +3,13 @@
 angular
   .module('fli.home')
   .controller('home.widget.user.ctrl',
-  function ($location, user, setting, nav) {
+  function ($routeParams, $location, user, setting, nav) {
 
     var vm = this;
 
     vm.logIn = user.logIn;
-    vm.nickname = user.storage.local.getNickName() || '';
+    vm.nickname = $routeParams.nickname;
+    vm.localname = user.storage.local.getNickName();
 
     vm.logOut = function () {
       user.storage.local.set(null);
@@ -20,9 +21,10 @@ angular
     };
 
     function _init() {
-      if (!~$location.path().indexOf('~/')) {
-        nav.goHome();
+      if (!($routeParams.nickname && ~$location.path().indexOf('~/'))) {
+        return nav.goHome();
       }
+      return user.init();
     }
 
     _init();

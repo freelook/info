@@ -2,9 +2,15 @@
 
 var LIMIT = 24,
     $q = require('q'),
-    feeds = require('./feeds.server.model');
+    feeds_sql = require('./feeds.server.model');
 
 function all(query) {
+    return feeds_sql.all({
+        where: query
+    });
+}
+
+function findAndCountAll(query) {
     var operators = {
         limit: LIMIT,
         offset: LIMIT * query.page || 0,
@@ -22,12 +28,12 @@ function all(query) {
         };
     }
 
-    return feeds.findAndCountAll(operators);
+    return feeds_sql.findAndCountAll(operators);
 }
 
 function create(body) {
     var defer = $q.defer();
-    feeds.findOrCreate({where: {url: body.url}, defaults: body})
+    feeds_sql.findOrCreate({where: {url: body.url}, defaults: body})
         .spread(function (feed, created) {
             if (!created) {
                 return feed.update({
@@ -42,7 +48,13 @@ function create(body) {
     return defer.promise;
 }
 
+function bulk(feeds) {
+    return feeds_sql.bulkCreate(feeds);
+}
+
 module.exports = {
     all: all,
-    create: create
+    findAndCountAll: findAndCountAll,
+    create: create,
+    bulk: bulk
 };

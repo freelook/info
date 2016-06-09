@@ -5,19 +5,33 @@ angular
   .factory('USERS',
   function ($http, api) {
 
-    function get(params) {
-      return $http.get(api.enpoint('users'), {
+    var USERS_ENDPOINT = api.enpoint('users');
+
+    function all(params) {
+      return $http.get(USERS_ENDPOINT, {
         params: params
       });
     }
 
-    function post(data) {
-      return $http.post(api.enpoint('users'), data);
+    function one(nickname, params) {
+      return $http.get([USERS_ENDPOINT, nickname].join('/'), {
+        params: params
+      });
+    }
+
+    function create(data, params) {
+      return $http.post(USERS_ENDPOINT, data, params);
+    }
+
+    function syncData(nickname, data, params) {
+      return $http.post([USERS_ENDPOINT, nickname, 'data'].join('/'), data, {params: params});
     }
 
     return {
-      get: get,
-      post: post
+      all: all,
+      one: one,
+      create: create,
+      syncData: syncData
     };
 
   });
