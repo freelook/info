@@ -8,6 +8,7 @@ angular
     var vm = this;
 
     vm.logIn = user.logIn;
+    vm.isLocal = user.isLocal;
     vm.nickname = $routeParams.nickname;
     vm.localname = user.storage.local.getNickName();
 
@@ -20,11 +21,14 @@ angular
       setting.open();
     };
 
+    vm.isSetting = function () {
+      return !(vm.localname || vm.nickname);
+    };
+
     function _init() {
       if (!($routeParams.nickname && ~$location.path().indexOf('~/'))) {
         return nav.goHome();
       }
-      return user.init();
     }
 
     _init();

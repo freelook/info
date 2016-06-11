@@ -3,10 +3,10 @@
           url:item.link,
           img:item.images.standard_resolution.url,
           title: item.tags[0],
-          content:item.caption.text,
-          searchInput: item.tags[0],
-          transclude:'footer'
+          content:item.caption.text
           };
+          fliItemCtrl.transclude='footer';
+          fliItemCtrl.searchInput=item.tags[0];
           fliItemCtrl.href=imgInsta.href;
           fliItemCtrl.share=imgInsta.share;
           fliItemCtrl.search=imgInsta.search;">

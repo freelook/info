@@ -3,9 +3,9 @@
           url:twitter.link(item.user.screen_name),
           img:item.user.profile_image_url,
           title:item.user.name|| item.user.screen_name,
-          content: item.text,
-          searchInput: item.entities.hashtags[0].text
+          content:item.text
           };
+          fliItemCtrl.searchInput=item.entities.hashtags[0].text;
           fliItemCtrl.href=result.href;
           fliItemCtrl.search=result.search;">
 

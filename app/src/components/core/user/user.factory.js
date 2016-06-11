@@ -7,13 +7,19 @@ angular
     var BIND_PROVIDER = 'facebook';
 
     function init() {
-      if ($routeParams.nickname) {
-        USERS.one($routeParams.nickname).then(function (res) {
-          var user = data();
-          user['data'] = res.data;
-          console.log(res.data);
-          _showUser(user);
-        });
+      var nickname = $routeParams.nickname || userStorage.local.getNickName(),
+        user = data();
+      user.data = null;
+      if (nickname) {
+        USERS.one(nickname)
+          .then(function (res) {
+            user.data = res.data;
+          })
+          .finally(function () {
+            _showUser(user);
+          });
+      } else {
+        _showUser(user);
       }
     }
 
@@ -92,6 +98,15 @@ angular
         });
     }
 
+    function isLocal() {
+      var localname = userStorage.local.getNickName();
+      return localname && localname === $routeParams.nickname;
+    }
+
+    function isAnonymous() {
+      return !userStorage.local.getNickName();
+    }
+
     return {
       init: init,
       img: img,
@@ -100,6 +115,8 @@ angular
       logOut: logOut,
       bind: bind,
       sync: sync,
+      isLocal: isLocal,
+      isAnonymous: isAnonymous,
       model: USERS,
       storage: userStorage
     };

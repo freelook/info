@@ -46,7 +46,7 @@ angular
     };
 
     vm.isSetting = function () {
-      return $scope.fli.view === 'components/views/setting/setting.view.html';
+      return !setting.isOpen() && (user.isLocal() || user.isAnonymous());
     };
 
     vm.setting = function () {

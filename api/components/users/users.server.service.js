@@ -51,9 +51,33 @@ function syncData(query, data) {
     return $q.reject();
 }
 
+function syncFeeds(params, body) {
+    if (params && body && query) {
+        return one({nickname: params.nickname})
+            .then(function (user) {
+                var defer = $q.defer();
+                feeds.bulk(body, {ignoreDuplicates: true}).finally(function () {
+                    return feeds.all({$or: body})
+                        .then(function (feeds) {
+                            return defer.resolve({user: user, feeds: feeds});
+                        })
+                        .catch(function (err) {
+                            return defer.reject(err);
+                        });
+                });
+                return defer.promise;
+            })
+            .then(function (relations) {
+                return relations.user.addFeeds(relations.feeds, {type: query.type});
+            });
+    }
+    return $q.reject();
+}
+
 module.exports = {
     all: all,
     one: one,
     create: create,
-    syncData: syncData
+    syncData: syncData,
+    syncFeeds: syncFeeds
 };

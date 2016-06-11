@@ -14,14 +14,14 @@
         <div class="bold link" ng-if="fliItemCtrl.limitTo && fliItem.content.length > fliItemCtrl.limitTo" ng-click="fliItemCtrl.limitTo=''">...</div>
       </div>
     </div>
-    <ng-transclude class="clearfix" ng-if="::!fliItem.transclude"></ng-transclude>
+    <ng-transclude class="clearfix" ng-if="::!fliItemCtrl.transclude"></ng-transclude>
   </md-card-content>
   <md-card-footer layout="row" layout-align="end center">
-    <ng-transclude ng-if="::fliItem.transclude==='footer'"></ng-transclude>
-    <div class="link" ng-if="::fliItemCtrl.search && fliItem.searchInput">
+    <ng-transclude ng-if="::fliItemCtrl.transclude==='footer'"></ng-transclude>
+    <div class="link" ng-if="::fliItemCtrl.search && fliItemCtrl.searchInput">
       <span>#</span>
-      <a fli-href="{{::fliItemCtrl.search(fliItem.searchInput)}}">
-        <span ng-bind="::fliItem.searchInput" translate translate-attr-title="uix.item.search" translate-values="::{v:fliItem.searchInput}"></span>
+      <a fli-href="{{::fliItemCtrl.search(fliItemCtrl.searchInput)}}">
+        <span ng-bind="::fliItemCtrl.searchInput" translate translate-attr-title="uix.item.search" translate-values="::{v:fliItemCtrl.searchInput}"></span>
       </a>
     </div>
     <div class="link" ng-if="!fliItem.star" ng-click="fliItemCtrl.star(fliItem);fliItem.star=1;">

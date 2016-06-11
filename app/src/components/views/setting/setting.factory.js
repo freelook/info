@@ -3,8 +3,10 @@ angular
   .module('fli.views')
   .factory('setting', function ($rootScope, user) {
 
+    var SETTING_VIEW_URL = 'components/views/setting/setting.view.html';
+
     function _setting() {
-      $rootScope.fli.view = 'components/views/setting/setting.view.html';
+      $rootScope.fli.view = SETTING_VIEW_URL;
     }
 
     function open() {
@@ -18,9 +20,14 @@ angular
       $rootScope.fli.view = '';
     }
 
+    function isOpen() {
+      return $rootScope.fli.view === SETTING_VIEW_URL;
+    }
+
     return {
       open: open,
-      close: close
+      close: close,
+      isOpen: isOpen
     };
 
   });

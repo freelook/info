@@ -2,7 +2,7 @@
 angular
   .module('freelook.info')
   .factory('index',
-  function ($rootScope, $sce, $routeParams, $mdMedia, $translate, url, nav, I18N) {
+  function ($rootScope, $sce, $routeParams, $mdMedia, $translate, url, nav, user, I18N) {
 
     function init() {
       $rootScope.fli.title = !$routeParams.input ? $translate.instant(I18N.DEFAULT_TITLE) : decodeURIComponent($routeParams.input) + $translate.instant(I18N.FLI_POSTFIX);
@@ -11,6 +11,7 @@ angular
       $rootScope.fli.media = $mdMedia;
       $rootScope.fli.view = '';
       $rootScope.fli.focus = 0;
+      user.init();
     }
 
     function reload() {

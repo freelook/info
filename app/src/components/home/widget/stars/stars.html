@@ -7,11 +7,11 @@
           title:item.title,
           content: item.content,
           input:item.input,
-          searchInput:item.input,
           type:item.type,
-          sub:item.sub,
-          transclude:'footer'
+          sub:item.sub
           };
+          fliItemCtrl.transclude='footer';
+          fliItemCtrl.searchInput=item.input;
           fliItemCtrl.href=widget.href;
           fliItemCtrl.search=widget.search;
           fliItemCtrl.share=widget.share;">

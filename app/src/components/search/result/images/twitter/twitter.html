@@ -3,10 +3,10 @@
           url:twitter.link(item.user.screen_name),
           img:item.entities.media[0].media_url,
           title:item.user.name|| item.user.screen_name,
-          content: item.text,
-          searchInput: item.entities.hashtags[0].text,
-          transclude:'footer'
+          content: item.text
           };
+          fliItemCtrl.transclude='footer';
+          fliItemCtrl.searchInput=item.entities.hashtags[0].text;
           fliItemCtrl.href=result.href;
           fliItemCtrl.share=result.share;
           fliItemCtrl.search=result.search;">

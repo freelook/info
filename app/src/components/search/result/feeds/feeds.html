@@ -3,10 +3,10 @@
     <fli-item ng-init="fliItem = {
           url: item.url,
           img:item.img,
-          searchInput: item.input,
           title:item.title,
           content: item.content
           };
+          fliItemCtrl.searchInput=item.input;
           fliItemCtrl.href=result.href;
           fliItemCtrl.share=result.share;
           fliItemCtrl.search=result.search;">

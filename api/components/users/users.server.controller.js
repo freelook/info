@@ -48,9 +48,23 @@ function syncData(req, res) {
         });
 }
 
+function syncFeeds(req, res) {
+    users.syncFeeds({
+        id: jwt.decode(req.cookies.user, secret),
+        nickname: req.params.nickname
+    }, req.body)
+        .then(function (data) {
+            res.send(data);
+        })
+        .catch(function (err) {
+            res.status(404).json(err);
+        });
+}
+
 module.exports = {
     all: all,
     one: one,
     create: create,
-    syncData: syncData
+    syncData: syncData,
+    syncFeeds: syncFeeds
 };
