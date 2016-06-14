@@ -56,5 +56,6 @@ module.exports = {
     all: all,
     findAndCountAll: findAndCountAll,
     create: create,
-    bulk: bulk
+    bulk: bulk,
+    model: feeds_sql
 };

@@ -27,11 +27,26 @@ angular
       return $http.post([USERS_ENDPOINT, nickname, 'data'].join('/'), data, {params: params});
     }
 
+    function syncFeeds(nickname, feeds, params) {
+      return $http.post([USERS_ENDPOINT, nickname, 'feeds'].join('/'), feeds, {params: params});
+    }
+
+    function getFeeds(nickname, params) {
+      return $http.get([USERS_ENDPOINT, nickname, 'feeds'].join('/'), {params: params});
+    }
+
+    function delFeeds(nickname, data, params) {
+      return $http.delete([USERS_ENDPOINT, nickname, 'feeds'].join('/'), data, {params: params});
+    }
+
     return {
       all: all,
       one: one,
       create: create,
-      syncData: syncData
+      syncData: syncData,
+      syncFeeds: syncFeeds,
+      getFeeds: getFeeds,
+      delFeeds: delFeeds
     };
 
   });

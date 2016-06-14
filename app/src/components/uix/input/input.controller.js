@@ -46,7 +46,7 @@ angular
     };
 
     vm.isSetting = function () {
-      return !setting.isOpen() && (user.isLocal() || user.isAnonymous());
+      return !setting.isOpen() && (user.params.isLocal() || user.params.isAnonymous());
     };
 
     vm.setting = function () {

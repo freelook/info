@@ -20,8 +20,11 @@ angular
     }
 
     function path(_path) {
-      return $location.path(_path)
-        .search({l: locale.getCode()});
+      if (_path) {
+        return $location.path(_path)
+          .search({l: locale.getCode()});
+      }
+      return $location.path();
     }
 
     function reload() {

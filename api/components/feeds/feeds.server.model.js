@@ -4,10 +4,7 @@ var sql = require('components/core/sql'),
     feeds = sql.define('feeds', {
         content: sql.constructor.STRING,
         img: sql.constructor.STRING,
-        input: {
-            type: sql.constructor.STRING,
-            allowNull: false
-        },
+        input: sql.constructor.STRING,
         l: sql.constructor.STRING,
         sub: sql.constructor.STRING,
         title: sql.constructor.STRING,

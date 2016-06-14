@@ -52,7 +52,32 @@ function syncFeeds(req, res) {
     users.syncFeeds({
         id: jwt.decode(req.cookies.user, secret),
         nickname: req.params.nickname
-    }, req.body)
+    }, req.body, req.query)
+        .then(function (data) {
+            res.send(data);
+        })
+        .catch(function (err) {
+            res.status(404).json(err);
+        });
+}
+
+function getFeeds(req, res) {
+    users.getFeeds({
+        nickname: req.params.nickname
+    }, req.query)
+        .then(function (data) {
+            res.send(data);
+        })
+        .catch(function (err) {
+            res.status(404).json(err);
+        });
+}
+
+function delFeeds(req, res) {
+    users.delFeeds({
+        id: jwt.decode(req.cookies.user, secret),
+        nickname: req.params.nickname
+    }, req.body, req.query)
         .then(function (data) {
             res.send(data);
         })
@@ -66,5 +91,7 @@ module.exports = {
     one: one,
     create: create,
     syncData: syncData,
-    syncFeeds: syncFeeds
+    syncFeeds: syncFeeds,
+    getFeeds: getFeeds,
+    delFeeds: delFeeds
 };

@@ -7,4 +7,6 @@ module.exports = function (app) {
     app.route('/users').post(users.create);
     app.route('/users/:nickname/data').post(users.syncData);
     app.route('/users/:nickname/feeds').post(users.syncFeeds);
+    app.route('/users/:nickname/feeds').get(users.getFeeds);
+    app.route('/users/:nickname/feeds').delete(users.delFeeds);
 };

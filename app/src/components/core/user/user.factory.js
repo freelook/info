@@ -1,13 +1,13 @@
 'use strict';
 angular
   .module('fli.core')
-  .factory('user', function ($q, $rootScope, $routeParams, $cookies, $timeout, $http,
-                             storage, userStorage, auth, USERS) {
+  .factory('user', function ($q, $rootScope, $cookies, $timeout,
+                             auth, userStorage, userFeeds, userParams, USERS) {
 
     var BIND_PROVIDER = 'facebook';
 
     function init() {
-      var nickname = $routeParams.nickname || userStorage.local.getNickName(),
+      var nickname = userParams.routeNickName() || userParams.localNickName(),
         user = data();
       user.data = null;
       if (nickname) {
@@ -80,31 +80,11 @@ angular
             return USERS.create(usr).then(function (res) {
               var nickname = res.data.nickname;
               userStorage.local.setNickName(nickname);
-              sync(nickname);
+              userFeeds.sync(nickname);
             });
           }
           return $q.reject();
         });
-    }
-
-    function sync(nickname) {
-      return USERS.syncData(nickname, {
-        looks: storage.get(storage.keys.LOOK_KEY, '', {noParse: true}),
-        stars: storage.get(storage.keys.STAR_KEY, '', {noParse: true}),
-        subscription: storage.get(storage.keys.SUB_KEY, '', {noParse: true})
-      })
-        .then(function () {
-          console.log('synced');
-        });
-    }
-
-    function isLocal() {
-      var localname = userStorage.local.getNickName();
-      return localname && localname === $routeParams.nickname;
-    }
-
-    function isAnonymous() {
-      return !userStorage.local.getNickName();
     }
 
     return {
@@ -114,11 +94,11 @@ angular
       logIn: logIn,
       logOut: logOut,
       bind: bind,
-      sync: sync,
-      isLocal: isLocal,
-      isAnonymous: isAnonymous,
+
       model: USERS,
-      storage: userStorage
+      feeds: userFeeds,
+      storage: userStorage,
+      params: userParams
     };
 
   });

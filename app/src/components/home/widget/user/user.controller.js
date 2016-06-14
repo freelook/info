@@ -3,14 +3,14 @@
 angular
   .module('fli.home')
   .controller('home.widget.user.ctrl',
-  function ($routeParams, $location, user, setting, nav) {
+  function (user, setting, nav) {
 
     var vm = this;
 
     vm.logIn = user.logIn;
-    vm.isLocal = user.isLocal;
-    vm.nickname = $routeParams.nickname;
-    vm.localname = user.storage.local.getNickName();
+    vm.isLocal = user.params.isLocal;
+    vm.routename = user.params.routeNickName();
+    vm.localname = user.params.localNickName();
 
     vm.logOut = function () {
       user.storage.local.set(null);
@@ -22,11 +22,11 @@ angular
     };
 
     vm.isSetting = function () {
-      return !(vm.localname || vm.nickname);
+      return !(vm.localname || vm.routename);
     };
 
     function _init() {
-      if (!($routeParams.nickname && ~$location.path().indexOf('~/'))) {
+      if (!(vm.routename && ~nav.path().indexOf('~/'))) {
         return nav.goHome();
       }
     }
