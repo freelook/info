@@ -86,6 +86,7 @@ function getFeeds(params, query) {
     if (params && query) {
         return one(params).then(function (user) {
             return feeds.model.findAll({
+                limit: 100,
                 include: [{
                     model: users_feeds_sql,
                     attributes: [],
@@ -97,18 +98,12 @@ function getFeeds(params, query) {
     return $q.reject();
 }
 
-function delFeeds(params, data, query) {
-    if (params && data && Array.isArray(data) && query) {
+function delFeed(params, feedId, query) {
+    if (params && feedId) {
         return one(params).then(function (user) {
-            var defer = $q.defer();
-            $q.all(data.map(function (item) {
-                return users_feeds_sql.destroy({
-                    where: {userId: user.id, feedId: item.type, type: query.type}
-                });
-            })).finally(function () {
-                return defer.resolve();
+            return users_feeds_sql.destroy({
+                where: {userId: user.id, feedId: feedId}
             });
-            return defer.promise;
         })
             .then(function () {
                 return getFeeds(params, query);
@@ -124,5 +119,5 @@ module.exports = {
     syncData: syncData,
     syncFeeds: syncFeeds,
     getFeeds: getFeeds,
-    delFeeds: delFeeds
+    delFeed: delFeed
 };

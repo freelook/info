@@ -73,11 +73,11 @@ function getFeeds(req, res) {
         });
 }
 
-function delFeeds(req, res) {
-    users.delFeeds({
+function delFeed(req, res) {
+    users.delFeed({
         id: jwt.decode(req.cookies.user, secret),
         nickname: req.params.nickname
-    }, req.body, req.query)
+    }, req.params.feedId, req.query)
         .then(function (data) {
             res.send(data);
         })
@@ -93,5 +93,5 @@ module.exports = {
     syncData: syncData,
     syncFeeds: syncFeeds,
     getFeeds: getFeeds,
-    delFeeds: delFeeds
+    delFeed: delFeed
 };

@@ -8,5 +8,5 @@ module.exports = function (app) {
     app.route('/users/:nickname/data').post(users.syncData);
     app.route('/users/:nickname/feeds').post(users.syncFeeds);
     app.route('/users/:nickname/feeds').get(users.getFeeds);
-    app.route('/users/:nickname/feeds').delete(users.delFeeds);
+    app.route('/users/:nickname/feed/:feedId').delete(users.delFeed);
 };

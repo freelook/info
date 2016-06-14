@@ -9,18 +9,31 @@ angular
       subscription: 'SUB_KEY'
     };
 
+    function setTimeStamp() {
+      storage.set(storage.keys.FEEDS_TIMESTAMP_KEY, (new Date()).getTime());
+    }
+
+    function getTimeStamp() {
+      return storage.get(storage.keys.FEEDS_TIMESTAMP_KEY, '');
+    }
+
     function _syncFeeds(nickname, feeds, params) {
+      setTimeStamp();
       return USERS.syncFeeds(nickname, feeds, params);
     }
 
+    function _keyByType(type) {
+      return storage.keys[FEEDS_STORAGE_TYPES[type]];
+    }
+
     function local(type) {
-      return storage.get(storage.keys[FEEDS_STORAGE_TYPES[type]], []);
+      return storage.get(_keyByType(type), []);
     }
 
     function get(type) {
       var nickname = userParams.routeNickName();
       if (nickname && type) {
-        return USERS.getFeeds(nickname, {type: type});
+        return USERS.getFeeds(nickname, {type: type, timestamp: getTimeStamp()});
       }
       return $q.when({data: local(type)});
     }
@@ -32,7 +45,7 @@ angular
     }
 
     function addItem(type, item) {
-      if (storage.arr.push(FEEDS_STORAGE_TYPES[type], item)) {
+      if (storage.arr.push(_keyByType(type), item)) {
         if (userParams.isAnonymous()) {
           feeds.add(item);
         } else {
@@ -43,14 +56,17 @@ angular
     }
 
     function clearItem(type, item) {
-      var data = storage.arr.clearItem(storage.keys[FEEDS_STORAGE_TYPES[type]], item);
-      if (userParams.isLocal()) {
-        return USERS.delFeeds(userParams.localNickName(), [item], {type: type});
+      var data = storage.arr.clearItem(_keyByType(type), item);
+      if (userParams.isLocal() && item && item.id) {
+        setTimeStamp();
+        return USERS.delFeed(userParams.localNickName(), item.id, {type: type});
       }
       return $q.when({data: data});
     }
 
     return {
+      setTimeStamp: setTimeStamp,
+      getTimeStamp: getTimeStamp,
       local: local,
       get: get,
       sync: sync,

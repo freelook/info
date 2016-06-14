@@ -35,8 +35,9 @@ angular
       return $http.get([USERS_ENDPOINT, nickname, 'feeds'].join('/'), {params: params});
     }
 
-    function delFeeds(nickname, data, params) {
-      return $http.delete([USERS_ENDPOINT, nickname, 'feeds'].join('/'), data, {params: params});
+    function delFeed(nickname, feedId, params) {
+      //todo DELETE without body use timpstime for sesion changes
+      return $http.delete([USERS_ENDPOINT, nickname, 'feed', feedId].join('/'), {params: params});
     }
 
     return {
@@ -46,7 +47,7 @@ angular
       syncData: syncData,
       syncFeeds: syncFeeds,
       getFeeds: getFeeds,
-      delFeeds: delFeeds
+      delFeed: delFeed
     };
 
   });
