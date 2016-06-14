@@ -2,7 +2,9 @@
 
 var LIMIT = 24,
     $q = require('q'),
-    feeds_sql = require('./feeds.server.model');
+    feeds_sql = require('./feeds.server.model'),
+    users_sql = require('components/users/users.server.model'),
+    users_feeds_sql = require('components/users/feeds/users.feeds.server.model');
 
 function all(query) {
     return feeds_sql.all({
@@ -17,7 +19,15 @@ function findAndCountAll(query) {
         order: 'createdAt DESC',
         where: {
             l: query.l || 'us'
-        }
+        },
+        include: [{
+            model: users_feeds_sql,
+            attributes: ['userId'],
+            include: [{
+                model: users_sql,
+                attributes: ['nickname', 'facebook']
+            }]
+        }]
     };
 
     if (query.input) {

@@ -5,8 +5,8 @@ angular
   .controller('home.widget.stars.ctrl',
   function (user) {
 
-    var STARS_COUNT = 24,
-      vm = this;
+    var vm = this,
+      STARS_COUNT = 24;
 
     vm.type = 'stars';
     vm.limitTo = STARS_COUNT;

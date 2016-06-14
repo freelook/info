@@ -23,5 +23,8 @@ window.i18n.en.search = {
   places: {
     grid: 'grid',
     map: 'map'
+  },
+  feeds: {
+    user: 'user'
   }
 };

@@ -5,9 +5,11 @@ angular
   .controller('home.widget.looks.ctrl',
   function (user) {
 
-    var vm = this;
+    var vm = this,
+      LOOKS_COUNT = 24;
 
     vm.type = 'looks';
+    vm.limitTo = LOOKS_COUNT;
     vm.isLocal = user.params.isLocal;
 
     function _setItems(items) {
@@ -24,6 +26,10 @@ angular
       user.feeds.clearItem(vm.type, item).then(function (res) {
         _setItems(res.data);
       });
+    };
+
+    vm.more = function () {
+      vm.limitTo += LOOKS_COUNT;
     };
 
     init();

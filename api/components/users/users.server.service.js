@@ -86,7 +86,7 @@ function getFeeds(params, query) {
     if (params && query) {
         return one(params).then(function (user) {
             return feeds.model.findAll({
-                limit: 100,
+                limit: 123,
                 include: [{
                     model: users_feeds_sql,
                     attributes: [],

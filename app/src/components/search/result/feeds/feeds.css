@@ -7,3 +7,15 @@ fli-search-result-feeds .more {
   display: inline-block;
   text-align: center;
 }
+
+fli-search-result-feeds .user img {
+  margin-right: 7px;
+  max-width: 50px;
+  max-height: 50px;
+}
+
+fli-search-result-feeds .user {
+  text-decoration: none;
+  border-top: 1px #cccccc dashed;
+  border-bottom: 1px #cccccc dashed;
+}

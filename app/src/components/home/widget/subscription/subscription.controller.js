@@ -5,8 +5,8 @@ angular
   .controller('home.widget.subscription.ctrl',
   function (user, item) {
 
-    var SUB_COUNT = 24,
-      vm = this;
+    var vm = this,
+      SUB_COUNT = 24;
 
     vm.type = 'subscription';
     vm.limitTo = SUB_COUNT;

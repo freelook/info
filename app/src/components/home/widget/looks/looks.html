@@ -1,6 +1,6 @@
 <div class="fli-grid" ng-if="looks.items.length">
-  <fli-item ng-repeat="item in looks.items | filter:fli.route.input || ''"
-            ng-init="fliItem = {
+  <div ng-repeat="item in looks.items | limitTo:looks.limitTo | filter:fli.route.input || ''">
+    <fli-item ng-init="fliItem = {
           url:item.url,
           img:item.img,
           title:item.input,
@@ -14,11 +14,15 @@
           fliItemCtrl.search=widget.search;
           fliItemCtrl.share=widget.share;">
 
-    <div class="clear link" ng-if="::looks.isLocal()" ng-click="looks.clearItem(item)">
-      <i class="fa fa-close" translate translate-attr-title="uix.item.clearIt"></i>
-    </div>
+      <div class="clear link" ng-if="::looks.isLocal()" ng-click="looks.clearItem(item)">
+        <i class="fa fa-close" translate translate-attr-title="uix.item.clearIt"></i>
+      </div>
 
-  </fli-item>
+    </fli-item>
+
+    <fli-more ng-if="$last && looks.limitTo < looks.items.length" more="looks.more()"></fli-more>
+
+  </div>
 </div>
 
 <fli-welcome ng-if="!looks.items.length"></fli-welcome>

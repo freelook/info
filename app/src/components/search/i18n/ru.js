@@ -23,5 +23,8 @@ window.i18n.ru.search = {
   places: {
     grid: 'плитка',
     map: 'карта'
+  },
+  feeds: {
+    user: 'юзер'
   }
 };

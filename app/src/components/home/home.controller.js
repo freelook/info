@@ -25,4 +25,16 @@ angular
       return !($routeParams.type || $routeParams.sub || $routeParams.url);
     };
 
+    vm.isSearch = function () {
+      return $routeParams.type && !$routeParams.url;
+    };
+
+    vm.isLook = function () {
+      return $routeParams.url;
+    };
+
+    vm.hasType = function () {
+      return $routeParams.type;
+    };
+
   });

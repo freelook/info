@@ -1,5 +1,5 @@
-<div class="fli-grid">
-  <div ng-repeat="item in feeds.results">
+<div ng-if="feeds.results.length">
+  <div class="fli-grid" ng-repeat="item in feeds.results">
     <fli-item ng-init="fliItem = {
           url: item.url,
           img:item.img,
@@ -10,9 +10,26 @@
           fliItemCtrl.href=result.href;
           fliItemCtrl.share=result.share;
           fliItemCtrl.search=result.search;">
+
+      <a ng-if="::item.users_feeds[0].user" class="user block link" layout="row"
+         ng-click="feeds.goHome(item.users_feeds[0].user.nickname)">
+        <img ng-src="{{::feeds.img(item.users_feeds[0].user.facebook)}}">
+
+        <div>
+          <div ng-bind="::item.users_feeds[0].user.nickname"></div>
+          <div class="color-8" translate="search.feeds.user"></div>
+        </div>
+      </a>
+
     </fli-item>
-
-    <fli-more ng-if="$last && feeds.page !=='$last'" more="feeds.more()"></fli-more>
-
   </div>
+
+  <fli-more type="page"
+            back="feeds.back()"
+            more="feeds.more()"
+            page="feeds.page"
+            count="feeds.count">
+  </fli-more>
 </div>
+
+<fli-welcome ng-if="!feeds.results.length"></fli-welcome>

@@ -22,13 +22,13 @@ angular
     function path(_path) {
       if (_path) {
         return $location.path(_path)
-          .search({l: locale.getCode()});
+          .search({l: locale.getCode()}).hash('');
       }
       return $location.path();
     }
 
     function hash(_hash) {
-      if (_hash) {
+      if (_hash || _hash === '') {
         return $location.hash(_hash);
       }
       return $location.hash();
@@ -38,8 +38,8 @@ angular
       return $route.reload();
     }
 
-    function goHome() {
-      var nickname = userLocalStorage.getNickName();
+    function goHome(_nickname) {
+      var nickname = _nickname || userLocalStorage.getNickName();
       path(!!nickname ? '~/' + nickname : LINKS.HOME);
     }
 

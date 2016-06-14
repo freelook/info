@@ -4,11 +4,11 @@ angular
   .factory('chips', function () {
     return {
       types: [
+        {type: 'feeds'},
         {type: 'web'},
         {type: 'news'},
         {type: 'events'},
         {type: 'people'},
-        {type: 'feeds'},
         {type: 'actions'},
         {type: 'images'},
         {type: 'audio'},
@@ -18,6 +18,7 @@ angular
         {type: 'job'}
       ],
       subs: {
+        feeds: [],
         web: [
           {sub: 'google'},
           {sub: 'facebook'},
@@ -35,7 +36,6 @@ angular
           {sub: 'linkedin'},
           {sub: 'instagram'}
         ],
-        feeds: [],
         actions: [
           {sub: 'twitter'},
           {sub: 'vk'}
