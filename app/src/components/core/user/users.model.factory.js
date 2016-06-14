@@ -36,7 +36,6 @@ angular
     }
 
     function delFeed(nickname, feedId, params) {
-      //todo DELETE without body use timpstime for sesion changes
       return $http.delete([USERS_ENDPOINT, nickname, 'feed', feedId].join('/'), {params: params});
     }
 

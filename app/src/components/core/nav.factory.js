@@ -27,6 +27,13 @@ angular
       return $location.path();
     }
 
+    function hash(_hash) {
+      if (_hash) {
+        return $location.hash(_hash);
+      }
+      return $location.hash();
+    }
+
     function reload() {
       return $route.reload();
     }
@@ -39,6 +46,7 @@ angular
     return {
       go: go,
       path: path,
+      hash: hash,
       reload: reload,
       goHome: goHome
     };

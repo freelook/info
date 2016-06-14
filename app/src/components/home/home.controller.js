@@ -13,11 +13,16 @@ angular
       url: $routeParams.url || null,
       img: $routeParams.img || null
     })
-      .hash('')
       .replace();
 
     $translate.use(locale.getLng());
     $rootScope.fli.icon = 'eye-slash';
     index.init();
+
+    var vm = this;
+
+    vm.isHome = function () {
+      return !($routeParams.type || $routeParams.sub || $routeParams.url);
+    };
 
   });

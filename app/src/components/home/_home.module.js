@@ -12,13 +12,15 @@
       $routeProvider
         .when('/', {
           templateUrl: 'components/home/home.html',
-          controller: 'home.ctrl'
+          controller: 'home.ctrl',
+          controllerAs: 'homeCtrl'
         });
 
       $routeProvider
         .when('/~/:nickname?', {
           templateUrl: 'components/home/home.html',
-          controller: 'home.ctrl'
+          controller: 'home.ctrl',
+          controllerAs: 'homeCtrl'
         });
 
     });
