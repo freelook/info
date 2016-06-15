@@ -19,10 +19,10 @@ angular
       }
     }
 
-    function path(_path) {
+    function path(_path, _hash) {
       if (_path) {
         return $location.path(_path)
-          .search({l: locale.getCode()}).hash('');
+          .search({l: locale.getCode()}).hash(_hash || '');
       }
       return $location.path();
     }
@@ -38,9 +38,9 @@ angular
       return $route.reload();
     }
 
-    function goHome(_nickname) {
+    function goHome(_nickname, _hash) {
       var nickname = _nickname || userLocalStorage.getNickName();
-      path(!!nickname ? '~/' + nickname : LINKS.HOME);
+      path(!!nickname ? '~/' + nickname : LINKS.HOME, _hash);
     }
 
     return {

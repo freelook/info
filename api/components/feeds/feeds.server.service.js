@@ -16,7 +16,6 @@ function findAndCountAll(query) {
     var operators = {
         limit: LIMIT,
         offset: LIMIT * query.page || 0,
-        order: 'createdAt ASC',
         where: {
             l: query.l || 'us'
         },
@@ -27,7 +26,10 @@ function findAndCountAll(query) {
                 model: users_sql,
                 attributes: ['nickname', 'facebook']
             }]
-        }]
+        }],
+        order: [
+            ['createdAt', 'DESC']
+        ]
     };
 
     if (query.input) {

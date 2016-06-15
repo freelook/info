@@ -27,7 +27,7 @@ angular
 
     function _init() {
       if (!(vm.routename && ~nav.path().indexOf('~/'))) {
-        return nav.goHome();
+        return nav.goHome(null, nav.hash());
       }
     }
 
