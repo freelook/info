@@ -1,12 +1,12 @@
 <md-button ng-if="!type" class="md-icon-button md-primary" aria-label="more" ng-click="more()">
-  <i class="fa fa-angle-double-down"></i>
+  <i class="fa fa-2x fa-angle-double-down"></i>
 </md-button>
 <div ng-if="type==='page' && count>0" layout="row" layout-align="center center">
   <md-button ng-if="+page>0" class="md-icon-button md-primary" aria-label="back" ng-click="back()">
-    <i class="fa fa-angle-double-left"></i>
+    <i class="fa fa-2x fa-angle-double-left"></i>
   </md-button>
-  <div class="color-8" ng-bind="page"></div>
+  <div ng-if="+page>0" class="color-8" ng-bind="page"></div>
   <md-button ng-if="+page<count" class="md-icon-button md-primary" aria-label="next" ng-click="more()">
-    <i class="fa fa-angle-double-right"></i>
+    <i class="fa fa-2x fa-angle-double-right"></i>
   </md-button>
 </div>
