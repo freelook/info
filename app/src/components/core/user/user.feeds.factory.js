@@ -45,7 +45,7 @@ angular
     }
 
     function addItem(type, item) {
-      if (storage.arr.push(_keyByType(type), item)) {
+      if (storage.arr.push(_keyByType(type), item, 123)) {
         if (userParams.isAnonymous()) {
           feeds.add(item);
         } else {

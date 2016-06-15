@@ -3,19 +3,19 @@
 angular
   .module('fli.show')
   .controller('show.item.form.ctrl',
-  function ($scope, nav, toast, storage) {
+  function (show, item, nav) {
 
     var vm = this;
 
-    vm.enable = function (item) {
-      return item && item.url && item.title;
+    vm.enable = function (_item) {
+      return _item && _item.url && _item.title;
     };
 
-    vm.star = function (item) {
-      if (vm.enable(item)) {
-        storage.arr.push(storage.keys.STAR_KEY, item);
+    vm.star = function (_item) {
+      if (vm.enable(_item)) {
+        show.clearInput();
+        item.star(_item);
         nav.goHome();
-        toast.show('uix.item.stared', {v: item.title});
       }
     };
 
