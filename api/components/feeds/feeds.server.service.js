@@ -16,7 +16,7 @@ function findAndCountAll(query) {
     var operators = {
         limit: LIMIT,
         offset: LIMIT * query.page || 0,
-        order: 'createdAt DESC',
+        order: 'createdAt ASC',
         where: {
             l: query.l || 'us'
         },
