@@ -65,7 +65,7 @@ angular
     function clearItem(type, item) {
       var data = storage.arr.clearItem(_keyByType(type), item);
       if (userParams.isLocal() && item && item.id) {
-        setTimeStamp();
+        setTimeStamp(type);
         return USERS.delFeed(userParams.localNickName(), item.id, {type: type});
       }
       return $q.when({data: data});
