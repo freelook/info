@@ -4,7 +4,7 @@ angular.module('fli.look')
     return {
       controller: 'look.content.rich.ctrl',
       controllerAs: 'richCtrl',
-      templateUrl: 'components/look/content/full/rich/rich.html'
+      templateUrl: 'components/look/content/rich/rich.html'
     };
 
   });

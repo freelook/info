@@ -3,7 +3,8 @@
     <fli-item ng-init="fliItem = {
           url:item.url,
           img:item.img,
-          title:item.input,
+          title:item.title,
+          content: item.content,
           input:item.input,
           type:item.type,
           sub:item.sub
@@ -14,7 +15,7 @@
           fliItemCtrl.search=widget.search;
           fliItemCtrl.share=widget.share;">
 
-      <div class="clear link" ng-if="::looks.isLocal()" ng-click="looks.clearItem(item)">
+      <div class="clear link" ng-if="::looks.canEdit()" ng-click="looks.clearItem(item)">
         <i class="fa fa-close" translate translate-attr-title="uix.item.clearIt"></i>
       </div>
 

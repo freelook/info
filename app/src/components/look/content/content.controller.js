@@ -3,7 +3,7 @@
 angular
   .module('fli.look')
   .controller('look.content.ctrl',
-  function ($rootScope, $scope, $routeParams, $location, content, look, SUPPORTED_SITES) {
+  function ($rootScope, $scope, $routeParams, $location, content, SUPPORTED_SITES) {
 
     var vm = this;
 
@@ -13,8 +13,6 @@ angular
     vm.href = function () {
       return $location.absUrl();
     };
-
-    look.add($routeParams);
 
   })
   .constant('SUPPORTED_SITES', ['freelook', 'youtube', 'vk', 'facebook', 'instagram', 'pinterest']);

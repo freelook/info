@@ -3,12 +3,13 @@
 angular
   .module('freelook.info')
   .controller('item.ctrl',
-  function ($routeParams, index, item, content, CONFIG) {
+  function ($routeParams, index, url, item, content, CONFIG) {
 
     var vm = this;
 
     vm.limitTo = 300;
     vm.fix = index.fix;
+    vm.decode = url.decode;
     vm.star = item.star;
 
     vm.site = function (_item) {

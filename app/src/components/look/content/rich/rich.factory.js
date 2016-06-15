@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('fli.look')
-  .factory('rich', function ($q, api, parser, content, full, storage, toast, STORAGE_KEYS) {
+  .factory('rich', function ($q, api, parser, content, full, toast, user) {
 
     function _htmlToItem(_html, _url) {
       var _item = {}, dom = parser.parseFromString(_html, 'text/html'),
@@ -41,8 +41,8 @@ angular
     }
 
     function subscribe(_item) {
-      if (_item && _item.rss) {
-        storage.arr.push(STORAGE_KEYS.SUB_KEY, _item);
+      if (_item && _item.url && _item.rss) {
+        user.feeds.addItem('subscription', _item);
         toast.show('look.subscribed', {v: _item.title || ''});
       }
     }

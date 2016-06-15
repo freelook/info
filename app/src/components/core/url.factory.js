@@ -69,7 +69,13 @@ angular
     }
 
     function decode(_url) {
-      return !!_url ? decodeURIComponent(_url) : '';
+      var decodedUrl;
+      try {
+        decodedUrl = !!_url ? decodeURIComponent(_url) : '';
+      } catch (e) {
+        decodedUrl = '';
+      }
+      return decodedUrl;
     }
 
     function encode(_url) {

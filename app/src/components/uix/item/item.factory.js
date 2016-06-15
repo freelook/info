@@ -2,7 +2,7 @@
 angular
   .module('freelook.info')
   .factory('item',
-  function ($rootScope, url, share, locale, user, CONFIG) {
+  function ($rootScope, url, share, locale, user, toast, CONFIG) {
 
     function _config(data) {
       return {
@@ -29,8 +29,11 @@ angular
     }
 
     function _star(data) {
-      var _data = _extend(data);
-      user.feeds.addItem('stars', _data);
+      if (data && data.url) {
+        var _data = _extend(data);
+        user.feeds.addItem('stars', _data);
+        toast.show('uix.item.stared', {v: data.title});
+      }
     }
 
     function _search(input) {

@@ -13,6 +13,10 @@ angular
       return !userStorage.local.getNickName();
     }
 
+    function isEmpty() {
+      return isAnonymous() && !routeNickName();
+    }
+
     function routeNickName() {
       return $routeParams.nickname;
     }
@@ -24,6 +28,7 @@ angular
     return {
       isLocal: isLocal,
       isAnonymous: isAnonymous,
+      isEmpty: isEmpty,
       routeNickName: routeNickName,
       localNickName: localNickName
     };

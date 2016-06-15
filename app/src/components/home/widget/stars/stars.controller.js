@@ -10,7 +10,6 @@ angular
 
     vm.type = 'stars';
     vm.limitTo = STARS_COUNT;
-    vm.isLocal = user.params.isLocal;
 
     function _setItems(items) {
       vm.items = items || [];
@@ -26,6 +25,10 @@ angular
       user.feeds.clearItem(vm.type, item).then(function (res) {
         _setItems(res.data);
       });
+    };
+
+    vm.canEdit = function () {
+      return user.params.isLocal() || user.params.isEmpty();
     };
 
     vm.more = function () {

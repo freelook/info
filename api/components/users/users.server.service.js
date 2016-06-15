@@ -1,6 +1,7 @@
 'use strict';
 
 var $q = require('q'),
+    _ = require('lodash'),
     fb_token = require('components/facebook/facebook.server.service'),
     users_sql = require('./users.server.model'),
     feeds = require('components/feeds/feeds.server.service'),
@@ -15,9 +16,21 @@ function all(query) {
 }
 
 function one(query) {
-    return users_sql.findOne({
-        where: query
-    });
+    if (query) {
+        var defer = $q.defer();
+        users_sql.findOne({where: query})
+            .then(function (user) {
+                if (_.isEmpty(user)) {
+                    return defer.reject();
+                }
+                return defer.resolve(user);
+            })
+            .catch(function (err) {
+                return defer.reject(err);
+            });
+        return defer.promise;
+    }
+    return $q.reject();
 }
 
 function create(body) {
@@ -60,7 +73,7 @@ function syncFeeds(params, data, query) {
                     keys = [],
                     promises = data.map(function (item) {
                         keys.push({url: item.url});
-                        return feeds.create(item);
+                        return feeds.create(item, {noCount: true});
                     });
                 $q.all(promises).finally(function () {
                     return feeds.all({

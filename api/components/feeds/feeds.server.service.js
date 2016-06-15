@@ -33,31 +33,32 @@ function findAndCountAll(query) {
     };
 
     if (query.input) {
-        operators.where.input = {
-            $like: ['%',
-                decodeURIComponent(query.input).trim().replace(/\s/g, '%'),
-                '%'].join('')
-        };
+        var like = {$like: ['%', decodeURIComponent(query.input).trim().replace(/\s/g, '%'), '%'].join('')};
+        operators.where.$or = [{input: like}, {title: like}, {content: like}];
     }
 
     return feeds_sql.findAndCountAll(operators);
 }
 
-function create(body) {
-    var defer = $q.defer();
-    feeds_sql.findOrCreate({where: {url: body.url}, defaults: body})
-        .spread(function (feed, created) {
-            if (!created) {
-                return feed.update({
-                    count: ++feed.count
-                })
-                    .then(defer.resolve)
-                    .catch(defer.reject);
-            }
-            return defer.resolve(feed);
-        })
-        .catch(defer.reject);
-    return defer.promise;
+function create(body, params) {
+    if (body && body.url) {
+        var defer = $q.defer();
+        feeds_sql.findOrCreate({where: {url: body.url}, defaults: body})
+            .spread(function (feed, created) {
+                var _params = params || {};
+                if (!(created || _params.noCount)) {
+                    return feed.update({
+                        count: ++feed.count
+                    })
+                        .then(defer.resolve)
+                        .catch(defer.reject);
+                }
+                return defer.resolve(feed);
+            })
+            .catch(defer.reject);
+        return defer.promise;
+    }
+    return $q.reject();
 }
 
 function bulk(feeds) {

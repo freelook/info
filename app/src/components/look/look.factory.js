@@ -2,11 +2,13 @@
 
 angular
   .module('fli.look')
-  .factory('look', function (item, storage, STORAGE_KEYS) {
+  .factory('look', function ($routeParams, item, user) {
 
     function add(_item) {
       if (_item && _item.url && _item.img) {
-        storage.arr.push(STORAGE_KEYS.LOOK_KEY, item.config(_item), 24);
+        var _data = angular.copy(_item);
+        _data.img = $routeParams.img || _data.img;
+        user.feeds.addItem('looks', item.extend(_data));
       }
     }
 

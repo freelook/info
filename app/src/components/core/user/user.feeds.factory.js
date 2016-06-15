@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('fli.core')
-  .factory('userFeeds', function ($q, storage, userParams, feeds, toast, USERS) {
+  .factory('userFeeds', function ($q, storage, userParams, feeds, USERS) {
 
     var FEEDS_STORAGE_TYPES = {
       looks: 'LOOK_KEY',
@@ -52,7 +52,6 @@ angular
           _syncFeeds(userParams.localNickName(), [item], {type: type});
         }
       }
-      toast.show('uix.item.stared', {v: item.title});
     }
 
     function clearItem(type, item) {

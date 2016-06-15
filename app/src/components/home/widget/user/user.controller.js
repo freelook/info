@@ -11,11 +11,7 @@ angular
     vm.isLocal = user.params.isLocal;
     vm.routename = user.params.routeNickName();
     vm.localname = user.params.localNickName();
-
-    vm.logOut = function () {
-      user.storage.local.set(null);
-      nav.goHome();
-    };
+    vm.clear = user.clear;
 
     vm.setting = function () {
       setting.open();

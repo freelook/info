@@ -36,6 +36,10 @@ angular
       });
     };
 
+    vm.canEdit = function () {
+      return user.params.isLocal() || user.params.isEmpty();
+    };
+
     vm.more = function () {
       vm.limitTo += SUB_COUNT;
     };

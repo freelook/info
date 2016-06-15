@@ -67,6 +67,10 @@ a.active {
   text-align: center;
 }
 
+.text-end {
+  text-align: end;
+}
+
 .text-upper {
   text-transform: uppercase;
 }

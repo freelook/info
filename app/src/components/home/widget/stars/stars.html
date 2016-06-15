@@ -16,7 +16,7 @@
           fliItemCtrl.search=widget.search;
           fliItemCtrl.share=widget.share;">
 
-      <div class="clear link" ng-if="::stars.isLocal()" ng-click="stars.clearItem(item)">
+      <div class="clear link" ng-if="::stars.canEdit()" ng-click="stars.clearItem(item)">
         <i class="fa fa-close" translate translate-attr-title="uix.item.clearIt"></i>
       </div>
 

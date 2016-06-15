@@ -9,11 +9,11 @@
            autocomplete="off" aria-label="nickname"
            type="text">
   </md-input-container>
-  <md-button ng-if="::userCtrl.isLocal()" class="md-icon-button link" aria-label="logout" ng-click="userCtrl.logOut()">
+  <md-button ng-if="::userCtrl.isLocal()" class="md-icon-button link" aria-label="logout" ng-click="userCtrl.clear()">
     <i class="fa fa-close"></i>
   </md-button>
 </div>
 
 <div layout="row" layout-align="end center" class="msg" ng-if="::userCtrl.isSetting()">
-  <span class="link color-8" translate="home.widget.user.bind" ng-click="userCtrl.setting()"></span>
+  <span class="link text-end" translate="home.widget.user.bind" ng-click="userCtrl.setting()"></span>
 </div>
