@@ -9,17 +9,25 @@ angular
       subscription: 'SUB_KEY'
     };
 
-    function setTimeStamp() {
-      storage.set(storage.keys.FEEDS_TIMESTAMP_KEY, (new Date()).getTime());
+    function setTimeStamp(type) {
+      var timestamp = getTimeStamp();
+      timestamp = typeof timestamp === 'object' ? timestamp : {};
+      timestamp[type] = (new Date()).getTime();
+      storage.set(storage.keys.FEEDS_TIMESTAMP_KEY, timestamp);
     }
 
-    function getTimeStamp() {
-      return storage.get(storage.keys.FEEDS_TIMESTAMP_KEY, '');
+    function getTimeStamp(type) {
+      var timestamp = storage.get(storage.keys.FEEDS_TIMESTAMP_KEY, {});
+      if (type) {
+        return timestamp[type];
+      }
+      return timestamp;
     }
 
     function _syncFeeds(nickname, feeds, params) {
-      setTimeStamp();
-      return USERS.syncFeeds(nickname, feeds, params);
+      var _params = params || {};
+      setTimeStamp(_params.type);
+      return USERS.syncFeeds(nickname, feeds, _params);
     }
 
     function _keyByType(type) {
@@ -33,7 +41,7 @@ angular
     function get(type) {
       var nickname = userParams.routeNickName();
       if (nickname && type) {
-        return USERS.getFeeds(nickname, {type: type, timestamp: getTimeStamp()});
+        return USERS.getFeeds(nickname, {type: type, timestamp: getTimeStamp(type)});
       }
       return $q.when({data: local(type)});
     }
