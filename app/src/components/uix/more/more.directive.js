@@ -9,6 +9,7 @@ angular
         type: '@',
         more: '&',
         back: '&',
+        href: '=',
         page: '=',
         count: '='
       }

@@ -47,7 +47,7 @@ angular
     }
 
     function sync(nickname) {
-      return $q.all(['looks', 'stars', 'subscription'].map(function (type) {
+      return $q.all(feeds.types.map(function (type) {
         return _syncFeeds(nickname, local(type), {type: type});
       }));
     }

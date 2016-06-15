@@ -11,10 +11,8 @@
           fliItemCtrl.share=result.share;
           fliItemCtrl.search=result.search;">
 
-      <a ng-if="::item.users_feeds[0].user" class="user block link" layout="row"
-         ng-click="feeds.goHome(item.users_feeds[0].user.nickname)">
+      <a ng-if="::item.users_feeds[0].user" class="user block link" layout="row" fli-href="{{::feeds.href(item.users_feeds[0].user.nickname)}}">
         <img ng-src="{{::feeds.img(item.users_feeds[0].user.facebook)}}">
-
         <div>
           <div ng-bind="::item.users_feeds[0].user.nickname"></div>
           <div class="color-8" translate="search.feeds.user"></div>
@@ -27,6 +25,7 @@
   <fli-more type="page"
             back="feeds.back()"
             more="feeds.more()"
+            href="feeds.pageHref"
             page="feeds.page"
             count="feeds.count">
   </fli-more>

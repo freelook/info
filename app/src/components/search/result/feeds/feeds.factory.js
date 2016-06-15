@@ -3,7 +3,7 @@
 angular
   .module('fli.search')
   .factory('feeds',
-  function (FEEDS) {
+  function (FEEDS, FEEDS_TYPES, FEEDS_ICONS) {
 
     function query(route, page) {
       return FEEDS.get({
@@ -18,8 +18,17 @@ angular
     }
 
     return {
+      types: FEEDS_TYPES,
+      icons: FEEDS_ICONS,
+
       query: query,
       add: add
     };
 
+  })
+  .constant('FEEDS_TYPES', ['looks', 'stars', 'subscription'])
+  .constant('FEEDS_ICONS', {
+    looks: 'clock-o',
+    stars: 'star-o',
+    subscription: 'rss'
   });

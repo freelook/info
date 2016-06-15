@@ -9,9 +9,13 @@ angular
       LIMIT = 24;
 
     vm.img = user.img;
-    vm.goHome = nav.goHome;
+    vm.href = user.href;
 
     vm.page = +nav.hash() || 0;
+
+    vm.pageHref = function (page) {
+      return nav.hashChange(page);
+    };
 
     vm.more = function () {
       nav.hash(++vm.page);

@@ -1,9 +1,12 @@
 'use strict';
 angular
   .module('fli.core')
-  .factory('user', function (userAuth, userStorage, userFeeds, userParams, USERS) {
+  .factory('user', function (userUrl, userAuth, userStorage, userFeeds, userParams, USERS) {
+
 
     return {
+      href: userUrl.href,
+
       data: userAuth.data,
       img: userAuth.img,
       logIn: userAuth.logIn,

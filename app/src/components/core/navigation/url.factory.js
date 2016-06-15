@@ -1,7 +1,7 @@
 'use strict';
 angular
-  .module('freelook.info')
-  .factory('url', function ($window, $rootScope, $location, platform, inAppBrowser) {
+  .module('fli.core')
+  .factory('url', function ($window, $rootScope, nav, platform, inAppBrowser) {
 
     var platformOrigin = platform.origin();
 
@@ -32,7 +32,7 @@ angular
 
     function href(path, params, replace, origin) {
       var route = $rootScope.fli.route,
-        currentPath = $location.path().slice(1),
+        currentPath = nav.path().slice(1),
         _path = path || currentPath + '?',
         _params = params || {},
         _origin = origin || platformOrigin,
@@ -62,12 +62,6 @@ angular
       }
     }
 
-    function location(href) {
-      if (href) {
-        $window.location.href = href;
-      }
-    }
-
     function decode(_url) {
       var decodedUrl;
       try {
@@ -89,7 +83,7 @@ angular
       qToObj: qToObj,
       qByName: qByName,
       link: link,
-      location: platform.name() !== 'chrome' ? location : link,
+      location: platform.name() !== 'chrome' ? nav.location : link,
       decode: decode,
       encode: encode
     };
