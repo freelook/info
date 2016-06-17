@@ -4,7 +4,7 @@ angular
   .factory('locale', function ($window, storage, locales) {
 
     function init(value) {
-      return get(value).code || getNavigatorLocaleCode();
+      return get(value).code;
     }
 
     function validate(localeCode) {
@@ -12,11 +12,11 @@ angular
     }
 
     function get(localeCode) {
-      return validate(localeCode) || validate(getCode()) || locales.us;
+      return validate(localeCode) || validate(getCode()) || getNavigatorLocale();
     }
 
     function getCode() {
-      return storage.get('locale', locales.us.code);
+      return storage.get('locale');
     }
 
     function setCode(localeCode) {
@@ -35,12 +35,12 @@ angular
       return get().ned || locales.us.ned;
     }
 
-    function getNavigatorLocaleCode() {
+    function getNavigatorLocale() {
       var navigatorLocale = $window.navigator.userLanguage || $window.navigator.language || '',
         navigatorLocales = navigatorLocale.split('-'),
         navigatorLocaleFirstCode = (navigatorLocales[0] || '').toLowerCase(),
         navigatorLocaleSecondCode = (navigatorLocales[1] || '').toLowerCase();
-      return !!locales[navigatorLocaleFirstCode] ? navigatorLocaleFirstCode : !!locales[navigatorLocaleSecondCode] ? navigatorLocaleSecondCode : locales.us.code;
+      return validate(navigatorLocaleFirstCode) || validate(navigatorLocaleSecondCode) || locales.us;
     }
 
     return {
