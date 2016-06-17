@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('fli.core')
-  .factory('url', function ($window, $rootScope, nav, platform, inAppBrowser) {
+  .factory('url', function ($window, nav, platform, inAppBrowser) {
 
     var platformOrigin = platform.origin();
 
@@ -31,7 +31,7 @@ angular
     }
 
     function href(path, params, replace, origin) {
-      var route = $rootScope.fli.route,
+      var route = nav.search(),
         currentPath = nav.path().slice(1),
         _path = path || currentPath + '?',
         _params = params || {},

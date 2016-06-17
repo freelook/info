@@ -104,7 +104,10 @@ function getFeeds(params, query) {
                     model: users_feeds_sql,
                     attributes: [],
                     where: {type: query.type, userId: user.id}
-                }]
+                }],
+                order: [
+                    ['createdAt', 'DESC']
+                ]
             });
         });
     }

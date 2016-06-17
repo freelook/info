@@ -22,8 +22,13 @@ angular
       return url.href('', {l: localeCode}, true);
     };
 
+    vm.setCode = function (localeCode) {
+      locale.setCode(localeCode);
+      index.go({l: localeCode});
+    };
+
     vm.select = function (selectedItem) {
-      index.go({l: (_chartLocales[selectedItem.row + 1][0] || '').toLowerCase()});
+      vm.setCode((_chartLocales[selectedItem.row + 1][0] || '').toLowerCase());
     };
 
     vm.chart = {

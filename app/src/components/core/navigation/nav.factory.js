@@ -35,6 +35,13 @@ angular
       return $location.url();
     }
 
+    function search(_search) {
+      if (_search) {
+        return $location.search(_search);
+      }
+      return $location.search();
+    }
+
     function hash(_hash) {
       if (_hash || _hash === '') {
         return $location.hash(_hash);
@@ -66,6 +73,7 @@ angular
       go: go,
       path: path,
       url: url,
+      search: search,
       hash: hash,
       hashChange: hashChange,
       reload: reload,

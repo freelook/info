@@ -4,22 +4,23 @@ angular
   .factory('locale', function ($window, storage, locales) {
 
     function init(value) {
-      var storedLocaleCode = getCode(),
-        navigatorLocaleCode = getNavigatorLocaleCode(),
-        locale = locales[value] || {},
-        localeCode = locale.code || storedLocaleCode || navigatorLocaleCode;
-      if (localeCode !== storedLocaleCode) {
-        storage.set('locale', localeCode);
-      }
-      return localeCode;
+      return get(value).code || getNavigatorLocaleCode();
     }
 
-    function get() {
-      return locales[getCode()] || {};
+    function validate(localeCode) {
+      return localeCode && locales[localeCode];
+    }
+
+    function get(localeCode) {
+      return validate(localeCode) || validate(getCode()) || locales.us;
     }
 
     function getCode() {
-      return storage.get('locale');
+      return storage.get('locale', locales.us.code);
+    }
+
+    function setCode(localeCode) {
+      storage.set('locale', get(localeCode).code);
     }
 
     function getLng() {
@@ -44,8 +45,10 @@ angular
 
     return {
       init: init,
+      validate: validate,
       get: get,
       getCode: getCode,
+      setCode: setCode,
       getLng: getLng,
       getPnCode: getPnCode,
       getNedCodes: getNedCodes,
