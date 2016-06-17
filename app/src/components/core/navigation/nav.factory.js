@@ -28,6 +28,13 @@ angular
       return $location.path();
     }
 
+    function absUrl(_absUrl) {
+      if (_absUrl) {
+        return $location.absUrl(_absUrl);
+      }
+      return $location.absUrl();
+    }
+
     function url(_url) {
       if (_url) {
         return $location.url(_url);
@@ -73,6 +80,7 @@ angular
       go: go,
       path: path,
       url: url,
+      absUrl: absUrl,
       search: search,
       hash: hash,
       hashChange: hashChange,

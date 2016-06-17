@@ -5,13 +5,21 @@ angular
   function ($rootScope, $sce, $routeParams, $mdMedia, $translate, url, nav, user, I18N) {
 
     function init() {
-      $rootScope.fli.title = !$routeParams.input ? $translate.instant(I18N.DEFAULT_TITLE) : decodeURIComponent($routeParams.input) + $translate.instant(I18N.FLI_POSTFIX);
-      $rootScope.fli.description = !$routeParams.input ? $translate.instant(I18N.DEFAULT_DESCRIPTION) : $translate.instant(I18N.CUSTOM_DESCRIPTION) + decodeURIComponent($routeParams.input);
+      $rootScope.fli.title = _buildTitle();
+      $rootScope.fli.description = _buildDescription();
       $rootScope.fli.route = $routeParams || {};
       $rootScope.fli.media = $mdMedia;
       $rootScope.fli.view = '';
       $rootScope.fli.focus = 0;
       user.init();
+    }
+
+    function _buildTitle() {
+      return !$routeParams.input ? $translate.instant(I18N.DEFAULT_TITLE) : decodeURIComponent($routeParams.input) + $translate.instant(I18N.FLI_POSTFIX);
+    }
+
+    function _buildDescription() {
+      return !$routeParams.input ? $translate.instant(I18N.DEFAULT_DESCRIPTION) : $translate.instant(I18N.CUSTOM_DESCRIPTION) + decodeURIComponent($routeParams.input);
     }
 
     function reload() {
