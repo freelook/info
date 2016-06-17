@@ -4,21 +4,21 @@
   <title ng-bind="fli.title"></title>
   <meta charset="utf-8">
   <meta name="fragment" content="!">
-  <meta name="description" content="{{fli.description}}">
-  <meta ng-if="fli.route.input" name="keywords" content="{{fli.route.input}}">
-  <meta ng-if="fli.title" property="og:title" content="{{fli.title}}">
-  <meta ng-if="fli.route.img" property="og:image" content="{{fli.fix(fli.route.img)}}">
-  <link ng-if="fli.route.img" rel="image_src" href="{{fli.fix(fli.route.img)}}"/>
-  <meta ng-if="fli.description" property="og:description" content="{{fli.description}}">
+  <meta name="description" ng-attr-content="{{fli.description}}">
+  <meta ng-if="fli.route.input" name="keywords" ng-attr-content="{{fli.route.input}}">
+  <meta ng-if="fli.title" property="og:title" ng-attr-content="{{fli.title}}">
+  <meta ng-if="fli.route.img" property="og:image" ng-attr-content="{{fli.fix(fli.route.img)}}">
+  <link ng-if="fli.route.img" rel="image_src" ng-attr-href="{{fli.fix(fli.route.img)}}"/>
+  <meta ng-if="fli.description" property="og:description" ng-attr-content="{{fli.description}}">
   <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
-  <meta property="fb:app_id" content="{{::fli.config.API.FB.ID}}"/>
-  <meta property="vk:app_id" content="{{::fli.config.API.VK.ID}}"/>
+  <meta property="fb:app_id" ng-attr-content="{{::fli.config.API.FB.ID}}"/>
+  <meta property="vk:app_id" ng-attr-content="{{::fli.config.API.VK.ID}}"/>
   <meta http-equiv="Content-Security-Policy">
 
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="apple-touch-icon" type="image/png" href="/assets/images/icon.png">
   <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/jlpjaecnenjbpkbcpnocbeibjokkbnhj">
-  <link ng-repeat="locale in ::fli.locales" rel="alternate" href="{{href(locale.code)}}" hreflang="{{locale.code}}">
+  <link ng-repeat="locale in ::fli.locales" rel="alternate" ng-attr-href="{{href(locale.code)}}" ng-attr-hreflang="{{locale.code}}">
 
   <!-- build:css({.tmp,src}) styles/fli.css-->
   <!-- bower:css -->
