@@ -2,7 +2,7 @@
 angular
   .module('freelook.info')
   .factory('item',
-  function ($rootScope, url, share, locale, user, toast, CONFIG) {
+  function ($rootScope, index, url, share, locale, user, toast, CONFIG) {
 
     function _config(data) {
       return {
@@ -10,12 +10,16 @@ angular
         input: data.input || $rootScope.fli.route.input || null,
         type: data.type || $rootScope.fli.route.type || null,
         sub: data.sub || $rootScope.fli.route.sub || null,
-        url: !!data.url ? encodeURIComponent(decodeURIComponent(data.url)) : null,
-        img: !!data.img ? encodeURIComponent(decodeURIComponent(data.img)) : null
+        url: !!data.url ? url.encode(data.url) : null,
+        img: !!data.img ? url.encode(data.img) : null
       };
     }
 
     function _href(data, origin) {
+      var _url = url.decode(data.url || '');
+      if (_url && index.is(_url, CONFIG.PRODUCTION)) {
+        return _url;
+      }
       return url.href('?', _config(data), false, origin);
     }
 
