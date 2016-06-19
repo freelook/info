@@ -1,8 +1,8 @@
 'use strict';
 
 var users = require('./users.server.service'),
-    jwt = require('jwt-simple'),
-    secret = process.env.FB_SECRET;
+    token = require('./users.token.server.service');
+
 
 function all(req, res) {
     users.all(req.query)
@@ -17,7 +17,7 @@ function all(req, res) {
 function one(req, res) {
     users.one(req.params, req.query)
         .then(function (data) {
-            res.send(data);
+            return res.send(data);
         })
         .catch(function () {
             res.status(404).end();
@@ -27,7 +27,7 @@ function one(req, res) {
 function create(req, res) {
     users.create(req.body)
         .then(function (data) {
-            res.cookie('user', jwt.encode(data.id, secret), {httpOnly: true, expires: new Date(11235813213455)});
+            res.cookie('user', token.encode(data.id), {httpOnly: true, expires: new Date(11235813213455)});
             res.send(data);
         })
         .catch(function (err) {
@@ -37,7 +37,7 @@ function create(req, res) {
 
 function syncData(req, res) {
     users.syncData({
-        id: jwt.decode(req.cookies.user, secret),
+        id: token.decode(req.cookies.user),
         nickname: req.params.nickname
     }, req.body)
         .then(function (data) {
@@ -50,7 +50,7 @@ function syncData(req, res) {
 
 function syncFeeds(req, res) {
     users.syncFeeds({
-        id: jwt.decode(req.cookies.user, secret),
+        id: token.decode(req.cookies.user),
         nickname: req.params.nickname
     }, req.body, req.query)
         .then(function (data) {
@@ -75,7 +75,7 @@ function getFeeds(req, res) {
 
 function delFeed(req, res) {
     users.delFeed({
-        id: jwt.decode(req.cookies.user, secret),
+        id: token.decode(req.cookies.user),
         nickname: req.params.nickname
     }, req.params.feedId, req.query)
         .then(function (data) {
