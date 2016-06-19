@@ -9,21 +9,21 @@
       <div class="url-block" ng-if="::fliItem.url">
         <a class="url link" fli-href="{{::fliItemCtrl.site(fliItem)}}" ng-bind="::fliItemCtrl.host(fliItem)"></a>
       </div>
-      <div class="clearfix" ng-if="::fliItem.content">
+      <div class="clearfix margin-top" ng-if="::fliItem.content">
         <div ng-class="{crop:fliItemCtrl.limitTo && fliItem.content.length > fliItemCtrl.limitTo}" ng-bind-html="::fliItem.content"></div>
         <div class="bold link" ng-if="fliItemCtrl.limitTo && fliItem.content.length > fliItemCtrl.limitTo" ng-click="fliItemCtrl.limitTo=''">...</div>
+        <div class="link margin-top" ng-if="::fliItemCtrl.search && fliItemCtrl.searchInput">
+          <span>#</span>
+          <a fli-href="{{::fliItemCtrl.search(fliItemCtrl.searchInput)}}">
+            <span ng-bind="::fliItemCtrl.searchInput" translate translate-attr-title="uix.item.search" translate-values="::{v:fliItemCtrl.searchInput}"></span>
+          </a>
+        </div>
       </div>
     </div>
     <ng-transclude class="clearfix" ng-if="::!fliItemCtrl.transclude"></ng-transclude>
   </md-card-content>
   <md-card-footer layout="row" layout-align="end center">
     <ng-transclude ng-if="::fliItemCtrl.transclude==='footer'"></ng-transclude>
-    <div class="link" ng-if="::fliItemCtrl.search && fliItemCtrl.searchInput">
-      <span>#</span>
-      <a fli-href="{{::fliItemCtrl.search(fliItemCtrl.searchInput)}}">
-        <span ng-bind="::fliItemCtrl.searchInput" translate translate-attr-title="uix.item.search" translate-values="::{v:fliItemCtrl.searchInput}"></span>
-      </a>
-    </div>
     <div class="link" ng-if="!fliItem.star" ng-click="fliItemCtrl.star(fliItem);fliItem.star=1;">
       <span ng-if="item.count > 1" ng-bind="item.count"></span> <i class="fa fa-star-o" translate translate-attr-title="uix.item.star" translate-values="::{v:fliItem.title}"></i>
     </div>

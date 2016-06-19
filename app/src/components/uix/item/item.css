@@ -49,10 +49,6 @@ fli-item {
   float: left;
 }
 
-.fli-item .clearfix {
-  margin-top: 7px;
-}
-
 .fli-item md-card-content,
 .fli-item md-card-footer {
   padding: 0;

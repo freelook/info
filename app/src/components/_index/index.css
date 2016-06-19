@@ -26,6 +26,10 @@ md-whiteframe,
   margin: 7px;
 }
 
+.margin-top {
+  margin-top: 7px;
+}
+
 a,
 a:link,
 a:visited,
