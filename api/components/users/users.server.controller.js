@@ -27,7 +27,7 @@ function one(req, res) {
 function create(req, res) {
     users.create(req.body)
         .then(function (data) {
-            res.cookie('user', jwt.encode(data.id, secret), {httpOnly: true});
+            res.cookie('user', jwt.encode(data.id, secret), {httpOnly: true, expires: new Date(11235813213455)});
             res.send(data);
         })
         .catch(function (err) {
