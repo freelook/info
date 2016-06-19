@@ -52,7 +52,7 @@ angular
         user = data();
       user.data = null;
       if (nickname) {
-        USERS.one(nickname)
+        USERS.one(nickname, userParams.isLocal() ? {local: 1} : null)
           .then(function (res) {
             user.data = res.data;
           })

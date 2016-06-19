@@ -15,7 +15,11 @@ function all(req, res) {
 }
 
 function one(req, res) {
-    users.one(req.params, req.query)
+    var params = !req.query.local ? req.params : {
+        id: token.decode(req.cookies.user),
+        nickname: req.params.nickname
+    };
+    users.one(params)
         .then(function (data) {
             return res.send(data);
         })
