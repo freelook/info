@@ -12,15 +12,19 @@ angular
     }
 
     function get(localeCode) {
-      return validate(localeCode) || validate(getCode()) || getNavigatorLocale();
+      return validate(localeCode) || validate(getStoredCode()) || getNavigatorLocale();
     }
 
     function getCode() {
-      return storage.get('locale');
+      return init();
     }
 
     function setCode(localeCode) {
-      storage.set('locale', get(localeCode).code);
+      storage.set('locale', init(localeCode));
+    }
+
+    function getStoredCode() {
+      return storage.get('locale');
     }
 
     function getLng() {
@@ -49,6 +53,7 @@ angular
       get: get,
       getCode: getCode,
       setCode: setCode,
+      getStoredCode: getStoredCode,
       getLng: getLng,
       getPnCode: getPnCode,
       getNedCodes: getNedCodes,
