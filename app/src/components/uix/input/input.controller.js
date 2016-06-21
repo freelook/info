@@ -25,7 +25,7 @@ angular
     vm.img = user.img;
 
     vm.find = function () {
-      $scope.go(url.href('?', _route(), false, '/'));
+      $scope.go(url.href(null, _route(), false, '/'));
     };
 
     vm.clear = function () {
