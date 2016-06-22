@@ -27,7 +27,7 @@ server {
 	#listen 80 is default
 	server_name workshop.freelook.info;
 	location / {
-		proxy_pass https://freelook.github.io/workshop;
+		proxy_pass https://freelook.github.io/workshop/;
 	}
 }
 
