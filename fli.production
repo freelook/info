@@ -22,6 +22,15 @@ server {
 	return 301 $scheme://freelook.info$request_uri;
 }
 
+# Server workshop.freelook.info
+server {
+	#listen 80 is default
+	server_name workshop.freelook.info;
+	location / {
+		proxy_pass https://freelook.github.io/workshop;
+	}
+}
+
 server {
 	listen 80 default_server;
 	listen [::]:80 default_server;
