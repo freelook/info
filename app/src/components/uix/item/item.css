@@ -10,19 +10,24 @@ fli-item {
   border: 1px solid #cccccc;
 }
 
-.fli-item md-card-content {
+.fli-item.nofill {
+  border: none;
+  background: transparent;
+}
+
+.fli-item > md-card-content {
   max-width: 100%;
   min-width: 100%;
 }
 
-.fli-item .md-card-image,
-.fli-item .img {
+.fli-item > md-card-content .md-card-image,
+.fli-item > md-card-content .fli-img {
   width: 100%;
   min-width: 100%;
   max-width: 100%;
 }
 
-.fli-item .header {
+.fli-item > md-card-content .header {
   color: #fff;
   text-align: center;
   text-decoration: underline;
@@ -32,54 +37,44 @@ fli-item {
   max-height: 200px;
 }
 
-.fli-item.small .md-card-image,
-.fli-item.small .img {
+.fli-item.small > md-card-content .md-card-image,
+.fli-item.small > md-card-content .fli-img {
   min-width: 100px;
   max-width: 100px;
+  min-height: 100px;
+  max-height: 100px;
   border-radius: 50%;
 }
 
-.fli-item.small .header {
-  min-height: 100px;
-  max-height: 100px;
-}
-
-.fli-item.small .img {
+.fli-item.small > md-card-content .fli-img {
   margin: 5px;
   float: left;
 }
 
-.fli-item md-card-content,
-.fli-item md-card-footer {
+.fli-item > md-card-content,
+.fli-item > md-card-footer {
   padding: 0;
 }
 
-.fli-item md-card-footer .link {
+.fli-item > md-card-footer .link {
   margin: 5px 10px 5px 10px;
 }
 
-.fli-item.nofill {
-  border: none;
-  background: transparent;
-}
-
-.fli-item .url-block {
+.fli-item > md-card-content .url-block {
   padding: 15px 0;
 }
 
-.fli-item .url {
+.fli-item > md-card-content .url {
   padding: 5px;
   border-radius: 16px;
   background: #e0e0e0;
   text-decoration: none;
 }
 
-.fli-item .crop {
+.fli-item > md-card-content .crop {
   overflow: hidden;
   text-overflow: ellipsis;
   max-height: 250px;
 }
-
-
 
 

@@ -1,6 +1,6 @@
 <md-card class="fli-item" ng-class="::{small:fliItem.small || !fliItem.img,nofill:fliItem.nofill}" layout="column" ng-if="::fliItem && fliItemCtrl.decode(fliItem.url)">
   <md-card-content>
-    <a fli-href="{{::fliItemCtrl.href(fliItem)}}" ng-attr-target="{{fliItemCtrl.target}}" class="img">
+    <a fli-href="{{::fliItemCtrl.href(fliItem)}}" ng-attr-target="{{fliItemCtrl.target}}" class="fli-img">
       <img class="md-card-image" ng-if="::fliItem.img" ng-src="{{::fliItemCtrl.fix(fliItem.img)}}" translate translate-attr-title="uix.item.lookIt" translate-values="::{v:fliItem.title}" ng-attr-alt="{{::fliItem.title || fliItemCtrl.host(fliItem)}}" fli-item-img fli-err>
       <div class="md-card-image header" fli-item-icon="{{::fliItem.title}}" ng-if="::!fliItem.img" translate translate-attr-title="uix.item.lookIt" translate-values="::{v:fliItem.title}" ng-attr-alt="{{::fliItem.title || fliItemCtrl.host(fliItem)}}"></div>
     </a>

@@ -13,6 +13,7 @@ fli-look-content-full .full.fli-item .clearfix {
 fli-look-content-full .full img,
 fli-look-content-full .full iframe {
   max-width: 100%;
+  clear: both;
   display: block;
 }
 
@@ -24,4 +25,15 @@ fli-look-content-full .full h3 {
 
 fli-look-content-full .full ul {
   list-style: none;
+}
+
+fli-look-content-full .full img.fli-item-img-small {
+  float: left;
+  clear: both;
+  margin: 3px;
+}
+
+fli-look-content-full .full .active {
+  color: inherit;
+  text-shadow: none;
 }

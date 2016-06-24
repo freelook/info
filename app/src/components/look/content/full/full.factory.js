@@ -58,6 +58,7 @@ angular
             return _fixHref(src, origin);
           })
           .removeAttr('width height class style')
+          .attr('fli-item-img', 'self')
           .attr('fli-err', 'remove');
       });
     }
