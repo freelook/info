@@ -1,14 +1,32 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('instagram', function ($q, api) {
+  .factory('instagram', function ($q, $parse, api, INSTAGRAM_API) {
 
     function imageByTag(q) {
-      return _image(encodeURIComponent('tags/' + q + '/media/recent?fli=1'));
+      var defer = $q.defer();
+      _point(['/explore/tags', q, '?__a=1'].join('/'))
+        .success(function (res) {
+          var top = $parse('tag.top_posts.nodes')(res) || [],
+            media = $parse('tag.media.nodes')(res) || [];
+          defer.resolve(top.concat(media));
+        })
+        .error(function (err) {
+          defer.reject(err);
+        });
+      return defer.promise;
     }
 
     function imageByUserId(id) {
       return _image(encodeURIComponent('users/' + id + '/media/recent?fli=1'));
+    }
+
+    function mediaByCode(code) {
+      return _point(['/p', code, '?__a=1'].join('/'));
+    }
+
+    function _point(end) {
+      return api.proxy(INSTAGRAM_API.URL + end);
     }
 
     function _image(point) {
@@ -26,14 +44,8 @@ angular
       return defer.promise;
     }
 
-    function mediaByCode(code) {
-      var point = encodeURIComponent('media/shortcode/' + code + '?fli=1');
-      return api.instagram(point);
-    }
-
     function user(url) {
       var defer = $q.defer();
-
       _getId(url)
         .then(function (_id) {
           if (_id) {
@@ -82,7 +94,7 @@ angular
 
     function link(_id) {
       var id = _id || '';
-      return 'https://www.instagram.com/' + id;
+      return [INSTAGRAM_API.URL, id].join('/');
     }
 
     return {
@@ -94,4 +106,8 @@ angular
       link: link
     };
 
+  })
+  .constant('INSTAGRAM_API', {
+    URL: 'https://www.instagram.com'
   });
+

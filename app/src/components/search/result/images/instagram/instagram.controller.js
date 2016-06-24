@@ -12,6 +12,10 @@ angular
     vm.search = item.search;
     vm.userId = $parse('instaUser.item.id')($scope) || '';
 
+    vm.link = function (code) {
+      return instagram.link(['p', code].join('/'));
+    };
+
     function setResult(items) {
       vm.items = items || [];
     }

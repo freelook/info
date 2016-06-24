@@ -1,17 +1,14 @@
 <fli-item ng-repeat="item in imgInsta.items"
           ng-init="fliItem = {
-          url:item.link,
-          img:item.images.standard_resolution.url,
-          title: item.tags[0],
-          content:item.caption.text
+          url:imgInsta.link(item.code),
+          img:item.display_src,
+          content: item.caption
           };
           fliItemCtrl.transclude='footer';
-          fliItemCtrl.searchInput=item.tags[0];
           fliItemCtrl.href=imgInsta.href;
-          fliItemCtrl.share=imgInsta.share;
-          fliItemCtrl.search=imgInsta.search;">
+          fliItemCtrl.share=imgInsta.share;">
 
-  <div class="link" ng-click="link(item.images.standard_resolution.url)">
+  <div class="link" ng-click="link(item.display_src)">
     <i class="fa fa-file-image-o" translate translate-attr-title="uix.item.getIt"></i>
   </div>
 
