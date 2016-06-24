@@ -1,6 +1,6 @@
 'use strict';
 
-fdescribe('Projectrs lookup', function () {
+xdescribe('Projectrs lookup', function () {
   var page = require('./kickstarter.page'),
     wait = 3000;
 
