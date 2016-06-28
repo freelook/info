@@ -35,7 +35,7 @@ server {
 			error_page 500 501 502 503 504 = @reprerender;
 		}
 		if ($prerender = 0) {
-			rewrite .* /$scheme://workshop.freelook.info/workshop$is_args$args? break;
+			rewrite ^ /workhop$1;
 			proxy_pass https://freelook.github.io;
 		}
 	}
