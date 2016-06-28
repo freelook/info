@@ -21,10 +21,6 @@ server {
 	#listen 80 is default
 	server_name workshop.freelook.info;
 	location / {
-		@prerender;
-	}
-
-	location @prerender {
 		proxy_intercept_errors on;
 		set $prerender 0;
 		if ($args ~ "_escaped_fragment_") {
@@ -39,7 +35,8 @@ server {
 			error_page 500 501 502 503 504 = @reprerender;
 		}
 		if ($prerender = 0) {
-			proxy_pass https://freelook.github.io/workshop/;
+			rewrite .* /$scheme://workshop.freelook.info/workshop/$is_args$args? break;
+			proxy_pass https://freelook.github.io;
 		}
 	}
 
