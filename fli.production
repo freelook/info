@@ -21,7 +21,31 @@ server {
 	#listen 80 is default
 	server_name workshop.freelook.info;
 	location / {
-		proxy_pass https://freelook.github.io/workshop/;
+		@prerender;
+	}
+
+	location @prerender {
+		proxy_intercept_errors on;
+		set $prerender 0;
+		if ($args ~ "_escaped_fragment_") {
+			set $prerender 1;
+		}
+		if ($http_user_agent ~ "Prerender") {
+			set $prerender 0;
+		}
+		if ($prerender = 1) {
+			rewrite .* /$scheme://workshop.freelook.info$request_uri? break;
+			proxy_pass http://prerender.freelook.info;
+			error_page 500 501 502 503 504 = @reprerender;
+		}
+		if ($prerender = 0) {
+			proxy_pass https://freelook.github.io/workshop/;
+		}
+	}
+
+	location @reprerender {
+		rewrite .* /$scheme://workshop.freelook.info$request_uri? break;
+		proxy_pass http://localhost:3000;
 	}
 }
 
