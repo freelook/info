@@ -8,13 +8,20 @@ angular
     var vm = this;
 
     $scope.site = content.site($routeParams.url) || {};
-    vm.supportedSites = SUPPORTED_SITES.join('|');
+    vm.supportedSites = SUPPORTED_SITES;
 
     vm.href = function () {
       return nav.absUrl();
     };
 
   })
-  .constant('SUPPORTED_SITES', ['freelook', 'youtube', 'vk', 'facebook', 'instagram', 'pinterest']);
+  .constant('SUPPORTED_SITES', [
+    'freelook',
+    'youtube',
+    'vk',
+    'facebook',
+    'instagram',
+    'pinterest'
+  ].join('|'));
 
 

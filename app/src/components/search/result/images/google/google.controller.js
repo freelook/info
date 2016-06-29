@@ -3,10 +3,10 @@
 angular
   .module('fli.search')
   .controller('search.result.images.google.ctrl',
-  function ($scope, google, lucky) {
+  function ($scope, google, lucky, BLACK_LIST) {
 
     var vm = this;
-    vm.search = {};
+    vm.blackList = BLACK_LIST;
 
     function setResult(search) {
       vm.search = search || {};

@@ -8,6 +8,9 @@
     .module('fli.search', [])
     .run(function (promo) {
       promo.init();
-    });
+    })
+    .constant('BLACK_LIST', [
+      'www.starstatements.com'
+    ].join('|'));
 
 }());

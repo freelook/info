@@ -1,4 +1,4 @@
-<fli-item ng-repeat="item in imgGoogle.search.results"
+<fli-item ng-repeat="item in imgGoogle.search.results" ng-hide="::is(item.url,imgGoogle.blackList)"
           ng-init="fliItem = {
           url:item.originalContextUrl,
           img:item.url,
