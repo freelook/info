@@ -100,7 +100,7 @@ server {
 		}
 		resolver 8.8.8.8;
 		proxy_pass_request_headers off;
-		proxy_set_header User-Agent 'Chrome/47';
+		proxy_set_header User-Agent 'Chrome/47 Googlebot';
 		proxy_set_header Cookie '';
 		proxy_set_header Set-Cookie '';
 		proxy_ignore_headers Cache-Control Expires Set-Cookie;
@@ -120,7 +120,7 @@ server {
 		}
 		resolver 8.8.8.8;
 		proxy_pass_request_headers off;
-		proxy_set_header User-Agent 'Chrome/47';
+		proxy_set_header User-Agent 'Chrome/47 Googlebot';
 		proxy_ignore_headers Cache-Control Expires Set-Cookie;
 		proxy_cache FLI;
 		proxy_cache_valid 60m;
