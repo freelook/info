@@ -37,7 +37,7 @@
         }
       });
 
-      if (/^\?l%3D/.test(window.location.search)) {
+      if (/^(\?|%3F)l%3D/i.test(window.location.search)) {
         window.location.href = [
           window.location.origin,
           window.location.pathname,
