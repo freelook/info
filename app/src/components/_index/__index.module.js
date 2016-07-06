@@ -37,6 +37,14 @@
         }
       });
 
+      if (/^\?l%3D/.test(window.location.search)) {
+        window.location.href = [
+          window.location.origin,
+          window.location.pathname,
+          decodeURIComponent(window.location.search || '')
+        ].join('');
+      }
+
     })
     .run(function ($injector, $rootScope, cache, platform, splash, analytics, scroll) {
 
