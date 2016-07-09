@@ -26,6 +26,8 @@ angular
       return nav.hashChange(type);
     };
 
+    vm.isProfile = nav.isProfile();
+
     _init();
 
   });

@@ -3,7 +3,7 @@
 angular
   .module('fli.home')
   .controller('home.widget.user.ctrl',
-  function (user, setting, nav) {
+  function (user, setting) {
 
     var vm = this;
 
@@ -20,13 +20,5 @@ angular
     vm.isSetting = function () {
       return !(vm.localname || vm.routename);
     };
-
-    function _init() {
-      if (!(vm.routename && ~nav.path().indexOf('~/'))) {
-        return nav.goHome(null, nav.search(), nav.hash());
-      }
-    }
-
-    _init();
 
   });

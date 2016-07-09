@@ -24,12 +24,17 @@ angular
 
     vm.img = user.img;
 
+    vm.active = function () {
+      return $scope.fli.focus || $scope.fli.view;
+    };
+
     vm.find = function () {
       $scope.go(url.href(null, _route(), false, '/'));
     };
 
     vm.clear = function () {
       $scope.fli.route.input = null;
+      vm.blur();
     };
 
     vm.close = function () {
@@ -46,15 +51,11 @@ angular
     };
 
     vm.isSetting = function () {
-      return !setting.isOpen() && (user.params.isLocal() || user.params.isAnonymous());
+      return !setting.isOpen() && nav.isProfile() && user.params.isLocal();
     };
 
     vm.setting = function () {
       setting.open();
-    };
-
-    vm.filter = function () {
-      $scope.fli.filter = 1;
     };
 
     vm.home = function () {

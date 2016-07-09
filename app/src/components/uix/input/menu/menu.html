@@ -1,9 +1,9 @@
 <div layout="column" flex>
-  <div flex class="menu block" layout="row" ng-repeat="item in menuCtrl.items"
+  <div flex class="menu block" layout="row" ng-repeat="item in ::menuCtrl.items"
        ng-if="input.action !== item.action">
-    <a flex fli-href="{{item.href}}">
-      <i class="fa fa-{{item.icon}}"></i>
-      <span ng-bind="item.name | translate"></span>
+    <a flex ng-click="item.go()">
+      <i class="fa fa-{{::item.icon}}"></i>
+      <span ng-bind="::item.name | translate"></span>
     </a>
   </div>
 </div>

@@ -16,13 +16,6 @@
           controllerAs: 'homeCtrl'
         });
 
-      $routeProvider
-        .when('/~/:nickname?', {
-          templateUrl: 'components/home/home.html',
-          controller: 'home.ctrl',
-          controllerAs: 'homeCtrl'
-        });
-
     });
 
 }());

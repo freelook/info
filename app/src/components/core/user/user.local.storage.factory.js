@@ -13,7 +13,7 @@ angular
 
     function getNickName() {
       var usr = get();
-      return usr.nickname;
+      return usr.nickname || '';
     }
 
     function setNickName(nickname) {

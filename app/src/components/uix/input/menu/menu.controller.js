@@ -3,7 +3,7 @@
 angular
   .module('freelook.info')
   .controller('input.menu.ctrl',
-  function (locale, url) {
+  function (nav) {
 
     var vm = this;
 
@@ -11,13 +11,19 @@ angular
       {
         name: 'index.input.menu.filter',
         icon: 'filter',
-        href: url.href('?', {l: locale.getCode()}),
+        go: nav.goHome,
         action: 'filter'
+      },
+      {
+        name: 'index.input.menu.user',
+        icon: 'user',
+        go: nav.goProfile,
+        action: 'user'
       },
       {
         name: 'index.input.menu.add',
         icon: 'plus',
-        href: url.href('show?', {l: locale.getCode()}),
+        go: nav.goAdd,
         action: 'add'
       }
     ];

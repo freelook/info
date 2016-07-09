@@ -5,8 +5,7 @@ angular
 
 
     function isLocal() {
-      var localname = userStorage.local.getNickName();
-      return localname && localname === routeNickName();
+      return localNickName() === routeNickName();
     }
 
     function isAnonymous() {
@@ -18,7 +17,7 @@ angular
     }
 
     function routeNickName() {
-      return $routeParams.nickname;
+      return $routeParams.nickname || '';
     }
 
     function localNickName() {

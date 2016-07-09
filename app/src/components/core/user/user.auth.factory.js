@@ -44,6 +44,9 @@ angular
 
     function logOut(provider) {
       put(provider, null);
+      if (provider === BIND_PROVIDER) {
+        clear();
+      }
       init();
     }
 

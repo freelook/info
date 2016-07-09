@@ -1,22 +1,19 @@
 <div layout="row">
 
-  <md-button class="md-fab md-primary link" ng-class="{'md-accent':fli.focus || fli.view}" aria-label="home" ng-click="input.home()">
+  <md-button class="md-fab md-primary link" ng-class="{'md-accent':input.active()}" aria-label="home" ng-click="input.home()">
     <i ng-if="!fli.user.data.facebook" class="fa fa-eye-slash"></i>
-    <img ng-if="fli.user.data.facebook" ng-src="{{input.img(fli.user.data.facebook)}}" class="user circle" fli-err>
+    <img ng-if="fli.user.data.facebook" ng-src="{{::input.img(fli.user.data.facebook)}}" class="user circle" fli-err>
   </md-button>
 
-  <md-button ng-if="!fli.focus" class="md-icon-button link" aria-label="filter" ng-click="input.filter()">
-      <i class="fa fa-filter" ng-class="{active:fli.filter}"></i>
-  </md-button>
-
-  <md-button ng-if="fli.focus" class="md-icon-button link" aria-label="navigation" ng-click="input.find()">
+  <md-button ng-disabled="!fli.focus" class="md-icon-button link" aria-label="navigation" ng-click="input.find()">
     <i class="fa fa-{{::input.icon}}"></i>
   </md-button>
 
   <form name="form" ng-submit="input.find()" flex>
-    <md-input-container layout="column" md-no-float>
+    <md-input-container layout="column">
       <input id="input" ng-focus="input.focus()" autocomplete="off" aria-label="input"
              ng-model="fli.route.input"
+             ng-disabled="input.disabled"
              ng-model-options="{updateOn:'blur'}"
              translate translate-attr-placeholder="{{::input.placeholder}}"
              type="{{::input.type}}">

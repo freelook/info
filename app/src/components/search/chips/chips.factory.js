@@ -4,7 +4,6 @@ angular
   .factory('chips', function () {
     return {
       types: [
-        {type: 'feeds'},
         {type: 'web'},
         {type: 'news'},
         {type: 'events'},
@@ -18,7 +17,6 @@ angular
         {type: 'job'}
       ],
       subs: {
-        feeds: [],
         web: [
           {sub: 'google'},
           {sub: 'facebook'},

@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('fli.views')
-  .factory('setting', function ($rootScope, user) {
+  .factory('setting', function ($rootScope, nav, user) {
 
     var SETTING_VIEW_URL = 'components/views/setting/setting.view.html';
 
@@ -13,7 +13,10 @@ angular
       if (user.storage.local.getNickName()) {
         return _setting();
       }
-      return user.bind().then(_setting);
+      return user.bind().then(function () {
+        _setting();
+        nav.goProfile();
+      });
     }
 
     function close() {

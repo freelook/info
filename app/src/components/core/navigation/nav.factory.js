@@ -71,12 +71,26 @@ angular
       }
     }
 
-    function goHome(_nickname, _search, _hash) {
+    function goHome() {
+      path(LINKS.HOME);
+    }
+
+    function goAdd() {
+      path(LINKS.ADD);
+    }
+
+    function goProfile(_nickname, _search, _hash) {
       var nickname = _nickname || userLocalStorage.getNickName();
-      path(!!nickname ? '~/' + nickname : LINKS.HOME, _search, _hash);
+      path([LINKS.PROFILE, nickname].join(''), _search, _hash);
+    }
+
+    function isProfile() {
+      return ~path().indexOf(LINKS.PROFILE);
     }
 
     return {
+      LINKS: LINKS,
+
       go: go,
       path: path,
       url: url,
@@ -86,10 +100,15 @@ angular
       hashChange: hashChange,
       reload: reload,
       location: location,
-      goHome: goHome
+      goHome: goHome,
+      goAdd: goAdd,
+      goProfile: goProfile,
+      isProfile: isProfile
     };
 
   })
   .constant('LINKS', {
-    HOME: '/'
+    HOME: '/',
+    ADD: '/show',
+    PROFILE: '/~/'
   });
