@@ -128,7 +128,7 @@ server {
 
 	location @reprerender {
 		rewrite .* /$scheme://freelook.info$request_uri? break;
-		proxy_pass http://localhost:3000;
+		proxy_pass http://service.prerender.io;
 	}
 
 	# pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
