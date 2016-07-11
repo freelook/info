@@ -39,6 +39,11 @@ function create(req, res) {
         });
 }
 
+function clear(req, res) {
+    res.clearCookie('user');
+    res.status(200).end();
+}
+
 function syncData(req, res) {
     users.syncData({
         id: token.decode(req.cookies.user),
@@ -94,6 +99,7 @@ module.exports = {
     all: all,
     one: one,
     create: create,
+    clear: clear,
     syncData: syncData,
     syncFeeds: syncFeeds,
     getFeeds: getFeeds,

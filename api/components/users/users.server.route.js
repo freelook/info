@@ -5,6 +5,7 @@ module.exports = function (app) {
     app.route('/users').get(users.all);
     app.route('/users/:nickname').get(users.one);
     app.route('/users').post(users.create);
+    app.route('/users/:nickname/clear').get(users.clear);
     app.route('/users/:nickname/data').post(users.syncData);
     app.route('/users/:nickname/feeds').post(users.syncFeeds);
     app.route('/users/:nickname/feeds').get(users.getFeeds);

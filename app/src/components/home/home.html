@@ -4,8 +4,6 @@
 <fli-search-result-feeds ng-if="::homeCtrl.isHome()"></fli-search-result-feeds>
 <fli-search-result class="animate" ng-if="::homeCtrl.isSearch()"></fli-search-result>
 <fli-look-content class="animate" ng-if="::homeCtrl.isLook()"></fli-look-content>
-<div ng-if="::homeCtrl.hasType()">
-  <fli-promo></fli-promo>
-  <fli-search-suggest></fli-search-suggest>
-</div>
+<fli-promo ng-if="::homeCtrl.hasType()"></fli-promo>
+<fli-search-suggest></fli-search-suggest>
 <fli-footer></fli-footer>

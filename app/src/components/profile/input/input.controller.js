@@ -8,7 +8,6 @@ angular
     var vm = this;
     vm.placeholder = $routeParams.nickname || 'home.widget.user.bind';
     vm.label = 'home.widget.user.nickname';
-    vm.disabled = true;
     vm.icon = 'user';
     vm.action = 'user';
 

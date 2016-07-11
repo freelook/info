@@ -88,6 +88,7 @@ angular
     }
 
     function clear() {
+      USERS.clear(userParams.localNickName());
       userStorage.local.set(null);
       nav.goHome();
     }

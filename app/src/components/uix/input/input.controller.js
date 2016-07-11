@@ -29,7 +29,7 @@ angular
     };
 
     vm.find = function () {
-      $scope.go(url.href(null, _route(), false, '/'));
+      $scope.go(url.href('?', _route(), false, '/'));
     };
 
     vm.clear = function () {
@@ -51,7 +51,7 @@ angular
     };
 
     vm.isSetting = function () {
-      return !setting.isOpen() && nav.isProfile() && user.params.isLocal();
+      return !setting.isOpen() && user.params.isLocal();
     };
 
     vm.setting = function () {

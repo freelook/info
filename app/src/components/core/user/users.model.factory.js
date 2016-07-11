@@ -23,6 +23,10 @@ angular
       return $http.post(USERS_ENDPOINT, data, params);
     }
 
+    function clear(nickname) {
+      return $http.get([USERS_ENDPOINT, nickname, 'clear'].join('/'));
+    }
+
     function syncData(nickname, data, params) {
       return $http.post([USERS_ENDPOINT, nickname, 'data'].join('/'), data, {params: params});
     }
@@ -43,6 +47,7 @@ angular
       all: all,
       one: one,
       create: create,
+      clear: clear,
       syncData: syncData,
       syncFeeds: syncFeeds,
       getFeeds: getFeeds,
