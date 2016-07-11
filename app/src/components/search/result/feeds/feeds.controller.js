@@ -3,13 +3,16 @@
 angular
   .module('fli.search')
   .controller('search.result.feeds.ctrl',
-  function ($timeout, $scope, feeds, nav, user) {
+  function ($timeout, $scope, item, feeds, nav, user) {
 
     var vm = this,
       LIMIT = 24;
 
     vm.img = user.img;
-    vm.href = user.href;
+    vm.userHref = user.href;
+    vm.href = item.href;
+    vm.share = item.share;
+    vm.search = item.search;
 
     vm.page = +nav.hash() || 0;
 

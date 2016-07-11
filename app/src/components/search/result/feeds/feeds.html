@@ -7,11 +7,11 @@
           content: item.content
           };
           fliItemCtrl.searchInput=item.input;
-          fliItemCtrl.href=result.href;
-          fliItemCtrl.share=result.share;
-          fliItemCtrl.search=result.search;">
+          fliItemCtrl.href=feeds.href;
+          fliItemCtrl.share=feeds.share;
+          fliItemCtrl.search=feeds.search;">
 
-      <a ng-if="::item.users_feeds[0].user" class="user block link" layout="row" fli-href="{{::feeds.href(item.users_feeds[0].user.nickname)}}">
+      <a ng-if="::item.users_feeds[0].user" class="user block link" layout="row" fli-href="{{::feeds.userHref(item.users_feeds[0].user.nickname)}}">
         <img ng-src="{{::feeds.img(item.users_feeds[0].user.facebook)}}">
         <div>
           <div ng-bind="::item.users_feeds[0].user.nickname"></div>
