@@ -2,7 +2,7 @@
 
   <md-button class="md-fab md-primary link" ng-class="{'md-accent':input.active()}" aria-label="home" ng-click="input.home()">
     <i ng-if="!fli.user.data.facebook" class="fa fa-eye-slash"></i>
-    <img ng-if="fli.user.data.facebook" ng-src="{{::input.img(fli.user.data.facebook)}}" class="user circle" fli-err>
+    <img ng-if="fli.user.data.facebook" ng-src="{{input.img(fli.user.data.facebook)}}" class="user circle" fli-err>
   </md-button>
 
   <md-button ng-disabled="!fli.focus" class="md-icon-button link" aria-label="navigation" ng-click="input.find()">
