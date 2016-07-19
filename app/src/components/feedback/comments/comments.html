@@ -1,7 +1,10 @@
 <div class="block" layout="column" layout-align="start center" flex>
   <div class="block color-8" translate="feedback.ideas"></div>
-  <div class="block link">
-    <a ng-href="{{::comments.href}}" ng-bind="::comments.mail"></a>
+  <div class="contacts">
+    <a class="fa fa-2x fa-instagram link no-decoration" href="https://www.instagram.com/freelook.info/" target="_blank"></a>
+    <a class="fa fa-2x fa-facebook link no-decoration" href="https://www.facebook.com/freelook.info/" target="_blank"></a>
+    <a class="fa fa-2x fa-youtube link no-decoration" href="https://www.youtube.com/c/freelookinfo/" target="_blank"></a>
+    <a class="fa fa-2x fa-envelope-o link no-decoration" ng-href="{{::comments.href}}"></a>
   </div>
   <div class="fb-comments" data-href="{{comments.fbHref}}" data-numposts="{{comments.fbCount}}"></div>
 </div>
