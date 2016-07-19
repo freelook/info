@@ -1,7 +1,8 @@
-<md-chips ng-hide="fli.route.type" ng-model="::typeCtrl.types" readonly="1">
+<md-chips ng-hide="::fli.route.type || fli.route.url" ng-model="::typeCtrl.types" readonly="1">
   <md-chip-template ng-click="typeCtrl.go($chip.type)">
-    <a fli-href="{{typeCtrl.href($chip.type)}}" translate="search.tabs.{{::$chip.type}}"></a>
+    <a fli-href="{{::typeCtrl.href($chip.type)}}" translate="search.tabs.{{::$chip.type}}"></a>
   </md-chip-template>
 </md-chips>
 
-<fli-search-chips-type-sub ng-if="fli.route.type && !chips.typeonly"></fli-search-chips-type-sub>
+<fli-search-chips-type-sub ng-if="::fli.route.type && !chips.typeonly"></fli-search-chips-type-sub>
+<fli-search-chips-type-sub-url ng-if="::!fli.route.type && fli.route.url"></fli-search-chips-type-sub-url>
