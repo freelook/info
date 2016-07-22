@@ -132,6 +132,12 @@ server {
 		proxy_pass http://goo.gl/$arg_id;
 	}
 
+	location /api/feeds/all/ {
+		proxy_cache FLI;
+		proxy_cache_valid 60m;
+		proxy_pass http://localhost:4000/feeds/all/;
+	}
+
 	location @prerender {
 		proxy_intercept_errors on;
 		set $prerender 0;

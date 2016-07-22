@@ -3,17 +3,17 @@
 angular
   .module('fli.feedback')
   .controller('feedback.ctrl',
-  function ($rootScope, $routeParams, $location, $scope, $translate, index, locale) {
+    function ($rootScope, $routeParams, $location, $translate, index, locale) {
 
-    $location.search({
-      l: locale.init($routeParams.l),
-      type: $routeParams.type
-    })
-      .hash('')
-      .replace();
+      $location.search({
+          l: locale.init($routeParams.l),
+          type: $routeParams.type
+        })
+        .hash('')
+        .replace();
 
-    $translate.use(locale.getLng());
-    $rootScope.fli.icon = 'comments-o';
-    index.init();
+      $translate.use(locale.getLng());
+      $rootScope.fli.icon = 'comments-o';
+      index.init();
 
-  });
+    });

@@ -1,8 +1,9 @@
 'use strict';
 
-var $http = require('request');
+var $http = require('request'),
+    atob = require('atob');
 
-module.exports = function (req, res) {
+function _get(req, res) {
     if (req.query && req.query.url) {
         var _req = $http
             .get({
@@ -30,4 +31,14 @@ module.exports = function (req, res) {
             _req.destroy();
         }
     });
+}
+
+function _atob(req, res) {
+    req.query.url = atob(req.query.url);
+    _get(req, res)
+}
+
+module.exports = {
+    get: _get,
+    atob: _atob
 };

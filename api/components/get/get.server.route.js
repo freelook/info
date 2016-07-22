@@ -2,6 +2,7 @@
 
 module.exports = function (app) {
     // Api routing
-    var getController = require('./get.server.controller');
-    app.route('/get').get(getController);
+    var controller = require('./get.server.controller');
+    app.route('/get').get(controller.get);
+    app.route('/get/atob').get(controller.atob);
 };
