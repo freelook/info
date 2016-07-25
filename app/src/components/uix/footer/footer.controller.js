@@ -8,7 +8,7 @@ angular
     vm.showLocalePanel = false;
 
     vm.about = ABOUT_URL + '?lang=' + locale.getLng();
-    vm.localeCode = locale.init();
+    vm.locale = locale.get();
 
     vm.feedback = function () {
       nav.go('feedback');

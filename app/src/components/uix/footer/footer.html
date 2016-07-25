@@ -1,20 +1,22 @@
 <fli-locale-panel ng-show="footer.showLocalePanel" map="footer.showLocalePanel"></fli-locale-panel>
 
-<div layout="row" class="block border">
-  <div class="link" flex="20" layout="row" layout-align="center center" ng-click="footer.feedback()">
-    <i class="fa fa-comments-o block" translate translate-attr-title="index.footer.help"></i>
-    <div hide-xs translate="index.footer.feedback"></div>
-  </div>
-  <div flex layout="column" layout-align="center center" class="text-center">
+<div layout="row" layout-xs="column" class="block border">
+  <md-button class="link" aria-label="feedback" ng-click="footer.feedback()">
+    <i class="fa fa-commenting-o" translate translate-attr-title="index.footer.help"></i>
+    <span translate="index.footer.feedback"></span>
+  </md-button>
+
+  <div flex layout="column" layout-align="center center" class="blog text-center">
     <p><span translate="index.footer.with"></span>
       <i class="fa fa-heartbeat heart"></i>
       <a fli-href="{{::footer.about}}" ng-attr-title="{{fli.description}}" target="_blank">freelook.info</a>
     </p>
   </div>
-  <div class="link" ng-class="{active:footer.showLocalePanel}" flex="20" layout="row" layout-align="center center" ng-click="footer.toggleLocalePanel()">
-    <div hide-xs translate="index.footer.locale"></div>
-    <md-button class="md-icon-button link bold" aria-label="locale" ng-bind="::footer.localeCode"></md-button>
-  </div>
+
+  <md-button class="link" aria-label="locale" ng-class="{active:footer.showLocalePanel}" ng-click="footer.toggleLocalePanel()">
+    <i class="fa fa-crosshairs"></i>
+    <span ng-bind="::footer.locale.name"></span>
+  </md-button>
 </div>
 
 <div layout="row" layout-align="space-between center" class="block border">

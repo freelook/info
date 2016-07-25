@@ -7,3 +7,10 @@ fli-footer .heart {
   color: brown;
 }
 
+@media (max-width: 599px) {
+  fli-footer .blog {
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+  }
+}
+

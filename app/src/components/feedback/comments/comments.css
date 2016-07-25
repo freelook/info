@@ -5,6 +5,7 @@ fli-feedback-comments {
 fli-feedback-comments .fb-comments {
   width: 100%;
   text-align: center;
+  min-height: 200px;
 }
 
 fli-feedback-comments .contacts .fa {
