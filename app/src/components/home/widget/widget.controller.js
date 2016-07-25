@@ -3,32 +3,31 @@
 angular
   .module('fli.home')
   .controller('home.widget.ctrl',
-  function (url, item, nav, feeds) {
+    function ($routeParams, url, item, nav, feeds) {
 
-    var vm = this,
-      DEFAULT_WIDGET_TYPE = 'looks';
+      var vm = this;
 
-    vm.search = item.search;
-    vm.href = item.href;
-    vm.share = item.share;
-    vm.types = feeds.types;
-    vm.icons = feeds.icons;
+      vm.search = item.search;
+      vm.href = item.href;
+      vm.share = item.share;
+      vm.types = feeds.types;
+      vm.icons = feeds.icons;
 
-    function _init() {
-      vm.type = nav.hash() || DEFAULT_WIDGET_TYPE;
-    }
+      function _init() {
+        vm.type = $routeParams.type;
+      }
 
-    vm.setType = function (type) {
-      nav.hash(type);
-    };
+      vm.setType = function (type) {
+        nav.go({type: type});
+      };
 
-    vm.typeHref = function (type) {
-      return nav.hashChange(type);
-    };
+      vm.typeHref = function (type) {
+        return url.href(null, {l: $routeParams.l, type: type}, false, '/');
+      };
 
-    vm.isProfile = nav.isProfile();
+      vm.isProfile = nav.isProfile();
 
-    _init();
+      _init();
 
-  });
+    });
 

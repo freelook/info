@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('apiApp', function ($q, $http, CONFIG) {
+  .factory('apiApp', function ($http, CONFIG) {
 
     function _enpoint(_end) {
       return CONFIG.API.URL + _end;

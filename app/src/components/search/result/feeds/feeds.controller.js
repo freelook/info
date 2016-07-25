@@ -3,41 +3,40 @@
 angular
   .module('fli.search')
   .controller('search.result.feeds.ctrl',
-  function ($timeout, $scope, item, feeds, nav, user) {
+    function ($timeout, $routeParams, item, feeds, nav, url, locale, user) {
 
-    var vm = this,
-      LIMIT = 24;
+      var vm = this,
+        LIMIT = 24;
 
-    vm.img = user.img;
-    vm.userHref = user.href;
-    vm.href = item.href;
-    vm.share = item.share;
-    vm.search = item.search;
+      vm.img = user.img;
+      vm.userHref = user.href;
+      vm.href = item.href;
+      vm.share = item.share;
+      vm.search = item.search;
 
-    vm.page = +nav.hash() || 0;
+      vm.page = +$routeParams.p || null;
 
-    vm.pageHref = function (page) {
-      return nav.hashChange(page);
-    };
+      vm.pageHref = function (page) {
+        return url.href(null, {l: $routeParams.l, p: page}, false, '/');
+      };
 
-    vm.more = function () {
-      nav.hash(++vm.page);
-    };
+      vm.more = function () {
+        nav.go({p: ++vm.page});
+      };
 
-    vm.back = function () {
-      var backPage = +vm.page > 2 ? vm.page - 1 : '0';
-      nav.hash(backPage);
-    };
+      vm.back = function () {
+        nav.go({p: --vm.page || null});
+      };
 
-    function load() {
-      feeds.query($scope.fli.route, vm.page)
-        .success(function (results) {
-          vm.results = results.rows;
-          vm.count = Math.ceil(results.count / LIMIT) - 1;
-        });
-    }
+      function load() {
+        feeds.query($routeParams, vm.page)
+          .success(function (results) {
+            vm.results = results.rows;
+            vm.count = Math.ceil(results.count / LIMIT) - 1;
+          });
+      }
 
-    load();
+      load();
 
-  });
+    });
 

@@ -25,6 +25,11 @@ fli-item {
   width: 100%;
   min-width: 100%;
   max-width: 100%;
+  min-height: 100px;
+}
+
+.fli-item > md-card-content .md-card-image {
+  background: #e0e0e0;
 }
 
 .fli-item > md-card-content .header {

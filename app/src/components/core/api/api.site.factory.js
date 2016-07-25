@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('apiSite', function ($q, $http, CONFIG) {
+  .factory('apiSite', function ($http, promise, url, CONFIG) {
 
     function _enpoint(_end) {
       return CONFIG.API.URL + _end;
@@ -11,13 +11,30 @@ angular
       return $http.get(_enpoint(_end));
     }
 
-    function proxy(url, config) {
-      var _cache = config && config.cache ? '/cache' : '';
-      return _point('proxy' + _cache + '/' + decodeURIComponent(url));
+    function proxy(_url, config) {
+      var _cache = config && config.cache ? '/cache' : '',
+        decodedUrl = url.decode(_url),
+        defer = promise.defer();
+
+      _point('proxy' + _cache + '/' + decodedUrl)
+        .success(function (res) {
+          defer.resolve(res);
+        })
+        .error(function () {
+          $http.get('https://webcache.googleusercontent.com/search?q=cache:' + decodedUrl)
+            .success(function (res) {
+              defer.resolve(res);
+            })
+            .error(function (err) {
+              defer.reject(err);
+            });
+        });
+
+      return defer.promise;
     }
 
-    function get(url) {
-      return proxy(url);
+    function get(_url) {
+      return proxy(_url);
     }
 
     function goods(q) {
