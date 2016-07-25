@@ -19,7 +19,7 @@ window.i18n.ru.index = {
     }
   },
   footer: {
-    feedback: 'связь',
+    feedback: 'контакты',
     donate: 'донат',
     locale: 'локаль',
     help: 'Помогите нам стать лучше',
