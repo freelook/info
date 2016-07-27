@@ -39,10 +39,10 @@ fli-look-content-full .full .active {
 }
 
 fli-look-content-full .types {
-  margin: 0 7px;
+  margin: 5px 7px;
 }
 
-fli-look-content-full .types a.link {
+fli-look-content-full .types .link {
   margin: 0 5px;
   padding: 8px;
   border-radius: 16px;
