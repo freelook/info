@@ -1,6 +1,8 @@
 <div layout="row" class="types">
-  <a class="link" ng-class="{active:fullCtrl.type==='related'}" ng-click="fullCtrl.type='related'">related</a>
-  <a class="link" ng-class="{active:fullCtrl.type==='preview'}" ng-click="fullCtrl.type='preview'">preview</a>
+  <a class="link" ng-class="{active:fullCtrl.type==='related'}" ng-click="fullCtrl.type='related'"
+     translate="look.related"></a>
+  <a class="link" ng-class="{active:fullCtrl.type==='preview'}" ng-click="fullCtrl.type='preview'"
+     translate="look.preview"></a>
 </div>
 
 <div ng-if="fullCtrl.type==='preview' && fullCtrl.article">
