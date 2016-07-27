@@ -2,7 +2,6 @@
   <div ng-repeat="item in subscription.items | limitTo:subscription.limitTo | filter:fli.route.input || ''">
     <fli-item ng-init="fliItem = {
           url:item.url,
-          star: 1,
           img:item.img,
           rss:item.rss,
           title:item.title,
