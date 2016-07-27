@@ -37,3 +37,14 @@ fli-look-content-full .full .active {
   color: inherit;
   text-shadow: none;
 }
+
+fli-look-content-full .types {
+  margin: 0 7px;
+}
+
+fli-look-content-full .types a.link {
+  margin: 0 5px;
+  padding: 8px;
+  border-radius: 16px;
+  background: rgb(224, 224, 224);
+}

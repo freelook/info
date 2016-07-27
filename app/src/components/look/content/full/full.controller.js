@@ -7,6 +7,7 @@ angular
 
     var vm = this;
     vm.article = null;
+    vm.type = 'related';
 
     vm.share = item.share;
 
