@@ -1,5 +1,12 @@
 <div ng-if="feeds.results.length">
-  <div class="fli-grid" ng-repeat="item in feeds.results">
+  <div class="order" layout="row" layout-align="end space-between">
+    <a class="link" ng-class="::{active:!feeds.order}" ng-href="{{::feeds.orderHref()}}"
+       translate="search.feeds.newest"></a>
+    <a class="link" ng-class="::{active:feeds.order==='popular'}" ng-href="{{::feeds.orderHref('popular')}}"
+       translate="search.feeds.popular"></a>
+  </div>
+
+  <div class="fli-grid" ng-repeat="item in ::feeds.results | orderBy:feeds.orderBy">
     <fli-item ng-init="fliItem = {
           url: item.url,
           img:item.img,
@@ -11,8 +18,10 @@
           fliItemCtrl.share=feeds.share;
           fliItemCtrl.search=feeds.search;">
 
-      <a ng-if="::item.users_feeds[0].user" class="user block link" layout="row" fli-href="{{::feeds.userHref(item.users_feeds[0].user.nickname)}}">
+      <a ng-if="::item.users_feeds[0].user" class="user block link" layout="row"
+         fli-href="{{::feeds.userHref(item.users_feeds[0].user.nickname)}}">
         <img ng-src="{{::feeds.img(item.users_feeds[0].user.facebook)}}">
+
         <div>
           <div ng-bind="::item.users_feeds[0].user.nickname"></div>
           <div class="color-8" translate="search.feeds.user"></div>

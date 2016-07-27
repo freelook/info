@@ -28,7 +28,7 @@ describe('Google', function () {
       var q = 'xxx';
       var expectedRequest = 'https://www.googleapis.com/customsearch/v1element?key=AIzaSyCVAXiUzRYsML1Pv6RwSG1gunmMikTzQqY&cx=007077922014062052604:wiiu7xrm8yk&num=12&q=' + q + '&callback=JSON_CALLBACK';
       sut.web(q);
-      expect(mockHTTP).toHaveBeenCalledWith(expectedRequest);
+      expect(mockHTTP).toHaveBeenCalledWith(expectedRequest, undefined);
     });
 
     it('it should not call http for web search if no request text', function () {
@@ -41,7 +41,7 @@ describe('Google', function () {
       var q = 'xxx';
       var expectedRequest = 'http://suggestqueries.google.com/complete/search?client=chrome&q=' + q + '&callback=JSON_CALLBACK';
       sut.autocomplete(q);
-      expect(mockHTTP).toHaveBeenCalledWith(expectedRequest);
+      expect(mockHTTP).toHaveBeenCalledWith(expectedRequest, undefined);
     });
 
     it('it should not call http for autocomplete if no request text', function () {

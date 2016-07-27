@@ -25,6 +25,8 @@ window.i18n.ru.search = {
     map: 'карта'
   },
   feeds: {
-    user: 'юзер'
+    user: 'юзер',
+    newest: 'новое',
+    popular: 'популярное'
   }
 };

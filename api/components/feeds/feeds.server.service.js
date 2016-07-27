@@ -1,6 +1,10 @@
 'use strict';
 
 var LIMIT = 24,
+    ORDERS = {
+        popular: 'count',
+        newest: 'createdAt'
+    },
     $q = require('q'),
     feeds_sql = require('./feeds.server.model'),
     users_sql = require('components/users/users.server.model'),
@@ -28,7 +32,7 @@ function findAndCountAll(query) {
             }]
         }],
         order: [
-            ['createdAt', 'DESC']
+            [ORDERS[query.order] || ORDERS.newest, 'DESC']
         ]
     };
 

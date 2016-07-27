@@ -19,3 +19,11 @@ fli-search-result-feeds .user {
   border-top: 1px #cccccc dashed;
   border-bottom: 1px #cccccc dashed;
 }
+
+fli-search-result-feeds .order {
+  margin-right: 7px;
+}
+
+fli-search-result-feeds .order a.link {
+  margin: 0 5px;
+}

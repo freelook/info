@@ -10,8 +10,9 @@ var $q = require('q'),
 
 
 function all(query) {
-    return users_sql.all({
-        where: query
+    return users_sql.findAndCountAll({
+        where: query,
+        attributes: ['nickname']
     });
 }
 
@@ -40,9 +41,9 @@ function create(body) {
             .then(function (debug_token) {
                 var nickname = [body.first_name || 'x', body.last_name || 'x'].join('.').toLowerCase();
                 return users_sql.findOrCreate({
-                    where: {$and: [{facebook: debug_token.user_id}, {nickname: nickname}]},
-                    defaults: {facebook: debug_token.user_id, nickname: nickname, looks: 5}
-                })
+                        where: {$and: [{facebook: debug_token.user_id}, {nickname: nickname}]},
+                        defaults: {facebook: debug_token.user_id, nickname: nickname, looks: 5}
+                    })
                     .spread(function (user) {
                         return defer.resolve(user);
                     });
@@ -77,8 +78,8 @@ function syncFeeds(params, data, query) {
                     });
                 $q.all(promises).finally(function () {
                     return feeds.all({
-                        $or: keys
-                    })
+                            $or: keys
+                        })
                         .then(function (_data) {
                             return defer.resolve({user: user, feeds: _data});
                         })
@@ -117,10 +118,10 @@ function getFeeds(params, query) {
 function delFeed(params, feedId, query) {
     if (params && feedId) {
         return one(params).then(function (user) {
-            return users_feeds_sql.destroy({
-                where: {userId: user.id, feedId: feedId}
-            });
-        })
+                return users_feeds_sql.destroy({
+                    where: {userId: user.id, feedId: feedId}
+                });
+            })
             .then(function () {
                 return getFeeds(params, query);
             });

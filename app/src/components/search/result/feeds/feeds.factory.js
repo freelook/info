@@ -3,29 +3,30 @@
 angular
   .module('fli.search')
   .factory('feeds',
-    function (FEEDS, FEEDS_TYPES, FEEDS_ICONS) {
+  function (FEEDS, FEEDS_TYPES, FEEDS_ICONS) {
 
-      function query(route, page) {
-        return FEEDS.get({
-          input: route.input,
-          l: route.l,
-          page: page
-        });
-      }
+    function query(route, page, order) {
+      return FEEDS.get({
+        input: route.input,
+        l: route.l,
+        page: page,
+        order: order
+      });
+    }
 
-      function add(_feed) {
-        return FEEDS.post(_feed);
-      }
+    function add(_feed) {
+      return FEEDS.post(_feed);
+    }
 
-      return {
-        types: FEEDS_TYPES,
-        icons: FEEDS_ICONS,
+    return {
+      types: FEEDS_TYPES,
+      icons: FEEDS_ICONS,
 
-        query: query,
-        add: add
-      };
+      query: query,
+      add: add
+    };
 
-    })
+  })
   .constant('FEEDS_TYPES', [
     {
       name: 'looks',

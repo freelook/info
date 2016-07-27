@@ -25,6 +25,8 @@ window.i18n.en.search = {
     map: 'map'
   },
   feeds: {
-    user: 'user'
+    user: 'user',
+    newest: 'newest',
+    popular: 'popular'
   }
 };
