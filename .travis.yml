@@ -10,7 +10,7 @@ before_install:
   - sh -e /etc/init.d/xvfb start
 
 before_script:
-  - npm i -g gulp@3.8.11 bower
+  - npm i -g gulp@3.9.1 bower
   - cd app && npm i && bower i
 
 script:
