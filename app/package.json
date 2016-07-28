@@ -52,7 +52,8 @@
     "protractor": "1.6.0",
     "require-dir": "0.1.0",
     "uglify-save-license": "0.4.1",
-    "wiredep": "2.2.0"
+    "wiredep": "2.2.0",
+    "karma": "0.13.21"
   },
   "engines": {
     "node": "4.3.2",
