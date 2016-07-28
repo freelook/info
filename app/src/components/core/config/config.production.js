@@ -1,6 +1,6 @@
 var CONFIG = {
   PRODUCTION: 'http://freelook.info/',
-  VERSION: '1.16.9',
+  VERSION: '1.17.0',
   API: {
     SOCKET: 'http://freelook.info:4000',
     URL: 'http://freelook.info/api/',

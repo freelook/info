@@ -13,7 +13,7 @@ angular
         .replace();
 
       $translate.use(locale.getLng());
-      $rootScope.fli.icon = 'comments-o';
+      $rootScope.fli.icon = 'bullhorn';
       index.init();
 
     });
