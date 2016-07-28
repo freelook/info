@@ -1,30 +1,29 @@
 <div layout="row" class="types">
-  <div class="link" ng-class="{active:fullCtrl.type==='related'}" ng-click="fullCtrl.type='related'"
-       translate="look.related"></div>
-  <div class="link" ng-class="{active:fullCtrl.type==='preview'}" ng-click="fullCtrl.type='preview'"
-       translate="look.preview"></div>
+  <a class="link" ng-class="{active:!fullCtrl.type}" ng-href="{{::fullCtrl.hashChange()}}"
+     translate="look.related"></a>
+  <a class="link" ng-class="{active:fullCtrl.type==='preview'}" ng-href="{{::fullCtrl.hashChange('preview')}}"
+     translate="look.preview"></a>
 </div>
 
-<div ng-if="fullCtrl.type==='related'">
-  <fli-look-suggest ng-if="site.host" class="fli-grid"></fli-look-suggest>
+<div ng-if="!fullCtrl.type && site.host">
+  <fli-look-suggest class="fli-grid"></fli-look-suggest>
 </div>
 
-<div ng-if="fullCtrl.type==='preview'">
-  <div ng-if="fullCtrl.article">
-    <fli-item class="full" ng-init="fliItem = {
-          small: 1,
-          url: fli.route.url,
+<div ng-if="fullCtrl.type==='preview' && fullCtrl.article">
+  <fli-item class="full" ng-init="fliItem = {
+          small:1,
+          url:fli.route.url,
           img:fli.route.img,
-          title: fullCtrl.article.title || fli.route.input
+          title:fullCtrl.article.title || fli.route.input
           };
           fliItemCtrl.href=content.href;
           fliItemCtrl.share=fullCtrl.share;">
 
-      <div class="block">
-        <div class="clearfix" fli-bind-compile="fullCtrl.article.content"></div>
-      </div>
+    <div class="block">
+      <div class="clearfix" fli-bind-compile="fullCtrl.article.content"></div>
+    </div>
 
-    </fli-item>
-  </div>
+  </fli-item>
+</div>
 
 </div>

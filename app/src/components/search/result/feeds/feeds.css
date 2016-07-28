@@ -21,9 +21,9 @@ fli-search-result-feeds .user {
 }
 
 fli-search-result-feeds .order {
-  margin-right: 7px;
+  margin: 5px 7px;
 }
 
-fli-search-result-feeds .order a.link {
+fli-search-result-feeds .order .link {
   margin: 0 5px;
 }

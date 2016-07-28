@@ -58,7 +58,7 @@ angular
 
     function hashChange(_hash) {
       var location = $window.location;
-      return [location.pathname, location.search, '#', _hash || ''].join('');
+      return [location.pathname, location.search, _hash ? '#' + _hash : ''].join('');
     }
 
     function reload() {
