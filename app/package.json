@@ -21,7 +21,7 @@
     "gulp-assetpaths": "0.1.1",
     "gulp-autoprefixer": "2.0.0",
     "gulp-cache": "0.2.4",
-    "gulp-csso": "0.2.9",
+    "gulp-csso": "2.0.0",
     "gulp-exec": "2.1.1",
     "gulp-filter": "1.0.2",
     "gulp-flatten": "0.0.4",

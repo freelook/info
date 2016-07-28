@@ -1,4 +1,9 @@
-<fli-locale-panel ng-show="footer.showLocalePanel" map="footer.showLocalePanel"></fli-locale-panel>
+<div ng-show="footer.showLocalePanel">
+  <div class="link block" layout="row" layout-align="end center" ng-click="footer.toggleLocalePanel()">
+    <i class="fa fa-close"></i>
+  </div>
+  <fli-locale-panel map="footer.showLocalePanel"></fli-locale-panel>
+</div>
 
 <div layout="row" layout-xs="column" class="block border">
   <md-button class="link" aria-label="feedback" ng-click="footer.feedback()">
@@ -13,7 +18,8 @@
     </p>
   </div>
 
-  <md-button class="link" aria-label="locale" ng-class="{active:footer.showLocalePanel}" ng-click="footer.toggleLocalePanel()">
+  <md-button class="link" aria-label="locale" ng-class="{active:footer.showLocalePanel}"
+             ng-click="footer.toggleLocalePanel()">
     <i class="fa fa-crosshairs"></i>
     <span ng-bind="::footer.locale.name"></span>
   </md-button>
