@@ -1,6 +1,9 @@
-<div ng-if="localePanel.map" google-chart chart="::localePanel.chart" agc-on-select="localePanel.select(selectedItem)"></div>
-
 <div layout="row" layout-align="center center" layout-wrap class="block border">
-  <a ng-click="localePanel.setCode(locale.code)" ng-class="::{active:locale.code===fli.route.l}" fli-href="{{::localePanel.href(locale.code)}}" class="link md-button"
+  <a ng-click="localePanel.setCode(locale.code)" ng-class="::{active:locale.code===fli.route.l}"
+     fli-href="{{::localePanel.href(locale.code)}}" class="link md-button"
      ng-repeat="locale in ::localePanel.locales" aria-label="locale" ng-bind="::locale.name"></a>
 </div>
+
+<div ng-if="localePanel.map" google-chart chart="::localePanel.chart"
+     agc-on-select="localePanel.select(selectedItem)"></div>
+
