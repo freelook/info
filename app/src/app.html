@@ -4,19 +4,21 @@
   <title ng-bind="fli.title"></title>
   <meta charset="utf-8">
   <meta name="fragment" content="!">
+  <meta name="robots" content="index,follow">
   <meta name="description" ng-attr-content="{{fli.description}}">
   <meta ng-if="fli.route.input" name="keywords" ng-attr-content="{{fli.route.input}}">
   <meta ng-if="fli.title" property="og:title" ng-attr-content="{{fli.title}}">
   <meta ng-if="fli.route.img" property="og:image" ng-attr-content="{{fli.fix(fli.route.img)}}">
-  <link ng-if="fli.route.img" rel="image_src" ng-attr-href="{{fli.fix(fli.route.img)}}"/>
   <meta ng-if="fli.description" property="og:description" ng-attr-content="{{fli.description}}">
   <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
-  <meta property="fb:app_id" ng-attr-content="{{::fli.config.API.FB.ID}}"/>
-  <meta property="vk:app_id" ng-attr-content="{{::fli.config.API.VK.ID}}"/>
+  <meta property="fb:app_id" ng-attr-content="{{::fli.config.API.FB.ID}}">
+  <meta property="vk:app_id" ng-attr-content="{{::fli.config.API.VK.ID}}">
   <meta http-equiv="Content-Security-Policy">
 
+  <link rel="canonical" ng-attr-href="{{fli.location}}">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="apple-touch-icon" type="image/png" href="/assets/images/icon.png">
+  <link ng-if="fli.route.img" rel="image_src" ng-attr-href="{{fli.fix(fli.route.img)}}">
   <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/jlpjaecnenjbpkbcpnocbeibjokkbnhj">
   <link ng-repeat="locale in ::fli.locales" rel="alternate" ng-attr-href="{{href(locale.code)}}" ng-attr-hreflang="{{locale.code}}">
 
@@ -84,8 +86,8 @@
   <link rel="stylesheet" href="components/search/result/goods/goods.css">
   <link rel="stylesheet" href="components/search/result/images/image.css">
   <link rel="stylesheet" href="components/search/result/job/job.css">
-  <link rel="stylesheet" href="components/search/result/news/news.css">
   <link rel="stylesheet" href="components/search/result/people/people.css">
+  <link rel="stylesheet" href="components/search/result/news/news.css">
   <link rel="stylesheet" href="components/search/result/places/places.css">
   <link rel="stylesheet" href="components/search/result/rss/rss.css">
   <link rel="stylesheet" href="components/search/result/video/video.css">
@@ -123,13 +125,13 @@
   <link rel="stylesheet" href="components/search/result/images/twitter/twitter.css">
   <link rel="stylesheet" href="components/search/result/job/indeed/indeed.css">
   <link rel="stylesheet" href="components/search/result/job/linkedin/linkedin.css">
-  <link rel="stylesheet" href="components/search/result/news/google/google.css">
   <link rel="stylesheet" href="components/search/result/people/facebook/facebook.css">
   <link rel="stylesheet" href="components/search/result/people/google/google.css">
   <link rel="stylesheet" href="components/search/result/people/instagram/instagram.css">
   <link rel="stylesheet" href="components/search/result/people/linkedin/linkedin.css">
   <link rel="stylesheet" href="components/search/result/people/twitter/twitter.css">
   <link rel="stylesheet" href="components/search/result/people/vk/vk.css">
+  <link rel="stylesheet" href="components/search/result/news/google/google.css">
   <link rel="stylesheet" href="components/search/result/places/foursquare/foursquare.css">
   <link rel="stylesheet" href="components/search/result/places/google/google.css">
   <link rel="stylesheet" href="components/search/result/places/tabs/tabs.css">
@@ -223,9 +225,9 @@
 <script src="components/core/auth/auth.factory.js"></script>
 <script src="components/core/auth/chrome.auth.factory.js"></script>
 <script src="components/core/auth/site.auth.factory.js"></script>
+<script src="components/core/config/config.development.js"></script>
 <script src="components/core/cordova/inAppBrowser.factory.js"></script>
 <script src="components/core/cordova/splash.factory.js"></script>
-<script src="components/core/config/config.production.js"></script>
 <script src="components/core/http/http.adapter.js"></script>
 <script src="components/core/http/http.factory.js"></script>
 <script src="components/core/http/promise.factory.js"></script>
@@ -389,10 +391,10 @@
 <script src="components/search/result/images/image.directive.js"></script>
 <script src="components/search/result/job/job.controller.js"></script>
 <script src="components/search/result/job/job.directive.js"></script>
-<script src="components/search/result/news/news.controller.js"></script>
-<script src="components/search/result/news/news.directive.js"></script>
 <script src="components/search/result/people/people.controller.js"></script>
 <script src="components/search/result/people/people.directive.js"></script>
+<script src="components/search/result/news/news.controller.js"></script>
+<script src="components/search/result/news/news.directive.js"></script>
 <script src="components/search/result/places/places.controller.js"></script>
 <script src="components/search/result/places/places.directive.js"></script>
 <script src="components/search/result/rss/rss.controller.js"></script>
@@ -472,8 +474,6 @@
 <script src="components/search/result/job/indeed/indeed.factory.js"></script>
 <script src="components/search/result/job/linkedin/linkedin.controller.js"></script>
 <script src="components/search/result/job/linkedin/linkedin.directive.js"></script>
-<script src="components/search/result/news/google/google.controller.js"></script>
-<script src="components/search/result/news/google/google.directive.js"></script>
 <script src="components/search/result/people/facebook/facebook.controller.js"></script>
 <script src="components/search/result/people/facebook/facebook.directive.js"></script>
 <script src="components/search/result/people/google/google.controller.js"></script>
@@ -486,6 +486,8 @@
 <script src="components/search/result/people/twitter/twitter.directive.js"></script>
 <script src="components/search/result/people/vk/vk.controller.js"></script>
 <script src="components/search/result/people/vk/vk.directive.js"></script>
+<script src="components/search/result/news/google/google.controller.js"></script>
+<script src="components/search/result/news/google/google.directive.js"></script>
 <script src="components/search/result/places/foursquare/foursquare.controller.js"></script>
 <script src="components/search/result/places/foursquare/foursquare.directive.js"></script>
 <script src="components/search/result/places/google/google.controller.js"></script>

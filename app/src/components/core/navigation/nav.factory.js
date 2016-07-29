@@ -68,6 +68,8 @@ angular
     function location(href) {
       if (href) {
         $window.location.href = href;
+      } else {
+        return $window.location.href;
       }
     }
 

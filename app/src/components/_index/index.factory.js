@@ -7,6 +7,7 @@ angular
     function init() {
       $rootScope.fli.title = _buildTitle();
       $rootScope.fli.description = _buildDescription();
+      $rootScope.fli.location = nav.location();
       $rootScope.fli.route = $routeParams || {};
       $rootScope.fli.media = $mdMedia;
       $rootScope.fli.view = '';

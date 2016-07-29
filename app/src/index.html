@@ -5,19 +5,21 @@
   <title ng-bind="fli.title"></title>
   <meta charset="utf-8">
   <meta name="fragment" content="!">
+  <meta name="robots" content="index,follow">
   <meta name="description" ng-attr-content="{{fli.description}}">
   <meta ng-if="fli.route.input" name="keywords" ng-attr-content="{{fli.route.input}}">
   <meta ng-if="fli.title" property="og:title" ng-attr-content="{{fli.title}}">
   <meta ng-if="fli.route.img" property="og:image" ng-attr-content="{{fli.fix(fli.route.img)}}">
-  <link ng-if="fli.route.img" rel="image_src" ng-attr-href="{{fli.fix(fli.route.img)}}"/>
   <meta ng-if="fli.description" property="og:description" ng-attr-content="{{fli.description}}">
   <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
-  <meta property="fb:app_id" ng-attr-content="{{::fli.config.API.FB.ID}}"/>
-  <meta property="vk:app_id" ng-attr-content="{{::fli.config.API.VK.ID}}"/>
+  <meta property="fb:app_id" ng-attr-content="{{::fli.config.API.FB.ID}}">
+  <meta property="vk:app_id" ng-attr-content="{{::fli.config.API.VK.ID}}">
 
+  <link rel="canonical" ng-attr-href="{{fli.location}}">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="manifest" href="/manifest.json">
   <link rel="apple-touch-icon" type="image/png" href="/assets/images/icon.png">
+  <link ng-if="fli.route.img" rel="image_src" ng-attr-href="{{fli.fix(fli.route.img)}}">
   <link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/jlpjaecnenjbpkbcpnocbeibjokkbnhj">
   <link ng-repeat="locale in ::fli.locales" rel="alternate" ng-attr-href="{{href(locale.code)}}" ng-attr-hreflang="{{locale.code}}">
 

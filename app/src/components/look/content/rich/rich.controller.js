@@ -3,7 +3,7 @@
 angular
   .module('fli.look')
   .controller('look.content.rich.ctrl',
-  function ($routeParams, rich, look) {
+  function ($scope, $routeParams, rich, look) {
 
     var vm = this;
 
@@ -13,6 +13,9 @@ angular
       .then(function (_item) {
         vm.item = _item;
         look.add(_item);
+      })
+      .finally(function () {
+        $scope.content.ready = true;
       });
 
   });
