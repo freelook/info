@@ -6,6 +6,9 @@ window.i18n.en.uix = {
     error: 'Something went wrong',
     added: 'Item was added'
   },
+  apps: {
+    use: 'Looks like this feature not available on site. Please use application for speed up work and access to all functionality'
+  },
   item: {
     lookIt: 'Look {{v}}',
     search: 'Search {{v}}',

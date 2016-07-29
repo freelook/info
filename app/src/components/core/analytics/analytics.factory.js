@@ -2,7 +2,7 @@
 
 angular
   .module('fli.core')
-  .factory('analytics', function ($window, $rootScope, $location, metrica) {
+  .factory('analytics', function ($window, $location, metrica) {
 
     function init() {
 
@@ -21,16 +21,18 @@ angular
 
       $window.ga('create', 'UA-57893328-1', 'auto');
 
-      $rootScope.$on('$routeChangeSuccess', function () {
-        if ($window.ga) {
-          $window.ga('send', 'pageview', {page: decodeURIComponent($location.url())});
-        }
-        metrica.init();
-      });
+    }
+
+    function routeChangeSuccess() {
+      if ($window.ga) {
+        $window.ga('send', 'pageview', {page: decodeURIComponent($location.url())});
+      }
+      metrica.init();
     }
 
     return {
-      init: init
+      init: init,
+      routeChangeSuccess: routeChangeSuccess
     };
 
   });

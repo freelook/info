@@ -91,6 +91,10 @@ a.active {
   font-weight: bold;
 }
 
+.float-right {
+  float: right;
+}
+
 
 
 

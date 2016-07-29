@@ -18,8 +18,8 @@
 
     angular
       .module('freelook.info',
-        ['fli.core', 'fli.uix', 'fli.views', 'fli.home', 'fli.search', 'fli.look', 'fli.show',
-          'fli.feedback', 'fli.token', 'fli.promo', 'fli.profile', 'fli.wizard'])
+      ['fli.core', 'fli.uix', 'fli.views', 'fli.home', 'fli.search', 'fli.look', 'fli.show',
+        'fli.feedback', 'fli.token', 'fli.promo', 'fli.profile', 'fli.wizard'])
       .config(function ($locationProvider, $httpProvider, $routeProvider, $mdThemingProvider, $translateProvider,
                         platformProvider) {
 
@@ -49,7 +49,7 @@
         });
 
       })
-      .run(function ($injector, $rootScope, cache, platform, splash, analytics, scroll) {
+      .run(function ($injector, $rootScope, cache, platform, splash, analytics, scroll, toast) {
 
         // Run app
         $rootScope.fli = {};
@@ -58,9 +58,15 @@
         cache.init();
         platform.init();
         analytics.init();
-        scroll.init();
 
         $injector.get('io');
+
+        // Route change handlers
+        $rootScope.$on('$routeChangeStart', function () {
+          toast.routeChangeSuccess();
+          scroll.routeChangeSuccess();
+          analytics.routeChangeSuccess();
+        });
 
       });
 

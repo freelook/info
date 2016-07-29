@@ -4,14 +4,14 @@
   "version": "1.15.0",
   "author": "Dima Kostrub",
   "dependencies": {
-    "angular": "1.5.0",
-    "angular-animate": "1.5.0",
+    "angular": "1.5.7",
+    "angular-animate": "1.5.7",
     "angular-cache": "4.5.0",
-    "angular-cookies": "1.5.0",
-    "angular-material": "1.0.5",
+    "angular-cookies": "1.5.7",
+    "angular-material": "1.0.9",
     "angular-media-player": "0.5.8",
-    "angular-route": "1.5.0",
-    "angular-sanitize": "1.5.0",
+    "angular-route": "1.5.7",
+    "angular-sanitize": "1.5.7",
     "angular-translate": "2.9.2",
     "angular-google-maps": "2.3.2",
     "font-awesome": "4.5.0",
@@ -22,7 +22,7 @@
     "angular-google-chart": "0.1.0"
   },
   "devDependencies": {
-    "angular-mocks": "1.5.0"
+    "angular-mocks": "1.5.7"
   },
   "overrides": {
     "font-awesome": {

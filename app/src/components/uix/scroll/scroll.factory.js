@@ -1,21 +1,19 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('scroll', function ($rootScope) {
+  .factory('scroll', function () {
 
     function top() {
       $(document).scrollTop(0);
     }
 
-    function init() {
-      $rootScope.$on('$routeChangeStart', function () {
-        top();
-      });
+    function routeChangeSuccess() {
+      top();
     }
 
     return {
-      init: init,
-      top: top
+      top: top,
+      routeChangeSuccess: routeChangeSuccess
     };
 
   });

@@ -3,7 +3,6 @@ window.i18n.en.views = {
     locale: 'Locale',
     notice: 'Notice',
     logIn: 'Log in',
-    app: 'Use all features and speed up the work with application',
     login: {
       email: 'Email',
       password: 'Password',

@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('apiSite', function ($http, promise, url, CONFIG) {
+  .factory('apiSite', function ($http, promise, url, toast, CONFIG) {
 
     function _enpoint(_end) {
       return CONFIG.API.URL + _end;
@@ -26,6 +26,7 @@ angular
               defer.resolve(res);
             })
             .error(function (err) {
+              toast.useApps();
               defer.reject(err);
             });
         });
