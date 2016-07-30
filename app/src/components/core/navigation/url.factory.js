@@ -48,7 +48,11 @@ angular
           }
         });
       }
-      return _href.charAt(_href.length - 1) === '&' ? _href.slice(0, -1) : _href;
+      return decode(_href.charAt(_href.length - 1) === '&' ? _href.slice(0, -1) : _href);
+    }
+
+    function hash(_hash) {
+      return [href((nav.path() || '').slice(1), nav.search(), false), _hash ? '#' + _hash : ''].join('');
     }
 
     function link(href, self) {
@@ -79,6 +83,7 @@ angular
     return {
       parse: parse,
       href: href,
+      hash: hash,
       extract: extract,
       qToObj: qToObj,
       qByName: qByName,

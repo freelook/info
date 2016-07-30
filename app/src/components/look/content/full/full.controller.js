@@ -3,14 +3,14 @@
 angular
   .module('fli.look')
   .controller('look.content.full.ctrl',
-  function ($scope, api, readability, full, item, nav) {
+  function ($scope, api, readability, full, item, nav, url) {
 
     var vm = this;
     vm.article = null;
     vm.type = nav.hash();
 
     vm.share = item.share;
-    vm.hashChange = nav.hashChange;
+    vm.hashChange = url.hash;
 
     function setData(data) {
       if (typeof data === 'string') {

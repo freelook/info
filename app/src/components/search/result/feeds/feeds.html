@@ -1,8 +1,8 @@
 <div ng-if="feeds.results.length">
   <div class="order" layout="row" layout-align="end space-between">
-    <a class="link" ng-class="::{active:!feeds.order}" ng-href="{{::feeds.orderHref()}}"
+    <a class="link" ng-class="::{active:!feeds.order}" fli-href="{{::feeds.orderHref()}}"
        translate="search.feeds.newest"></a>
-    <a class="link" ng-class="::{active:feeds.order==='popular'}" ng-href="{{::feeds.orderHref('popular')}}"
+    <a class="link" ng-class="::{active:feeds.order==='popular'}" fli-href="{{::feeds.orderHref('popular')}}"
        translate="search.feeds.popular"></a>
   </div>
 

@@ -1,7 +1,7 @@
 {
   "name": "freelook.info",
   "description": "fli.app",
-  "version": "1.15.0",
+  "version": "1.17.1",
   "author": "Dima Kostrub",
   "dependencies": {
     "angular": "1.5.7",

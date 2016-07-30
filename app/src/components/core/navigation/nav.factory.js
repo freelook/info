@@ -56,11 +56,6 @@ angular
       return $location.hash();
     }
 
-    function hashChange(_hash) {
-      var location = $window.location;
-      return [location.pathname, location.search, _hash ? '#' + _hash : ''].join('');
-    }
-
     function reload() {
       return $route.reload();
     }
@@ -99,7 +94,6 @@ angular
       absUrl: absUrl,
       search: search,
       hash: hash,
-      hashChange: hashChange,
       reload: reload,
       location: location,
       goHome: goHome,
