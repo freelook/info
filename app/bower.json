@@ -46,6 +46,6 @@
   },
   "resolutions": {
     "jquery": "2.2.1",
-    "angular": "1.5.0"
+    "angular": "1.5.7"
   }
 }
