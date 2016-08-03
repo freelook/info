@@ -24,7 +24,6 @@ angular
       return queryObj;
     }
 
-
     function qByName(name, search) {
       var match = (new RegExp('[?&]' + name + '=([^&]*)')).exec(search);
       return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
@@ -32,10 +31,10 @@ angular
 
     function href(path, params, replace, origin) {
       var route = nav.search(),
-        currentPath = nav.path().slice(1),
+        currentPath = (nav.path() || '').slice(1),
         _path = path || currentPath + '?',
         _params = params || {},
-        _origin = origin || platformOrigin,
+        _origin = origin || '',
         _href = _origin + _path;
       if (!!replace && !!~_path.indexOf(currentPath) && !angular.equals(route, {})) {
         angular.forEach(route, function (v, k) {
@@ -52,7 +51,7 @@ angular
     }
 
     function hash(_hash) {
-      return [href((nav.path() || '').slice(1), nav.search(), false), _hash ? '#' + _hash : ''].join('');
+      return [href(null, nav.search()), _hash ? '#' + _hash : ''].join('');
     }
 
     function link(href, self) {
@@ -81,6 +80,8 @@ angular
     }
 
     return {
+      platformOrigin: platformOrigin,
+
       parse: parse,
       href: href,
       hash: hash,
