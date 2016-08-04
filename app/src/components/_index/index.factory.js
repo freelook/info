@@ -2,17 +2,28 @@
 angular
   .module('freelook.info')
   .factory('index',
-  function ($rootScope, $sce, $routeParams, $mdMedia, $translate, url, nav, user, I18N) {
+  function ($rootScope, $sce, $routeParams, $mdMedia, $translate, url, nav, user, amp, I18N) {
 
-    function init() {
+    function init(_config) {
+      var config = _config || {},
+        location = nav.location() || '';
+
       $rootScope.fli.title = _buildTitle();
       $rootScope.fli.description = _buildDescription();
-      $rootScope.fli.location = nav.location();
       $rootScope.fli.route = $routeParams || {};
       $rootScope.fli.media = $mdMedia;
       $rootScope.fli.view = '';
       $rootScope.fli.focus = 0;
-      user.init();
+      $rootScope.fli.amp = config.amp;
+
+      if ($routeParams.amp) {
+        $rootScope.fli.location = location.replace(amp.QUERY_STRING, '');
+        amp.init();
+      } else {
+        $rootScope.fli.location = location;
+        $rootScope.fli.amphtml = location + amp.QUERY_STRING;
+      }
+
     }
 
     function _buildTitle() {

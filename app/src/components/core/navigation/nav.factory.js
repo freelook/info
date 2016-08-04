@@ -64,7 +64,7 @@ angular
       if (href) {
         $window.location.href = href;
       } else {
-        return $window.location.href;
+        return decodeURIComponent($window.location.href);
       }
     }
 

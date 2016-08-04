@@ -66,8 +66,8 @@
   <link rel="stylesheet" href="components/views/setting/setting.css">
   <link rel="stylesheet" href="components/views/share/share.css">
   <link rel="stylesheet" href="components/core/analytics/metrica/metrica.css">
-  <link rel="stylesheet" href="components/home/widget/stars/stars.css">
   <link rel="stylesheet" href="components/home/widget/looks/looks.css">
+  <link rel="stylesheet" href="components/home/widget/stars/stars.css">
   <link rel="stylesheet" href="components/home/widget/subscription/subscription.css">
   <link rel="stylesheet" href="components/home/widget/tabs/tabs.css">
   <link rel="stylesheet" href="components/look/content/facebook/facebook.css">
@@ -79,8 +79,8 @@
   <link rel="stylesheet" href="components/look/content/youtube/youtube.css">
   <link rel="stylesheet" href="components/search/chips/type/type.css">
   <link rel="stylesheet" href="components/search/menu/lucky/lucky.css">
-  <link rel="stylesheet" href="components/search/result/audio/audio.css">
   <link rel="stylesheet" href="components/search/result/actions/actions.css">
+  <link rel="stylesheet" href="components/search/result/audio/audio.css">
   <link rel="stylesheet" href="components/search/result/events/events.css">
   <link rel="stylesheet" href="components/search/result/feeds/feeds.css">
   <link rel="stylesheet" href="components/search/result/goods/goods.css">
@@ -113,8 +113,8 @@
   <link rel="stylesheet" href="components/look/content/vk/video/video.css">
   <link rel="stylesheet" href="components/look/content/vk/wall/wall.css">
   <link rel="stylesheet" href="components/look/content/youtube/channel/channel.css">
-  <link rel="stylesheet" href="components/look/content/youtube/user/user.css">
   <link rel="stylesheet" href="components/look/content/youtube/watch/watch.css">
+  <link rel="stylesheet" href="components/look/content/youtube/user/user.css">
   <link rel="stylesheet" href="components/search/chips/type/sub/sub.css">
   <link rel="stylesheet" href="components/search/result/actions/twitter/twitter.css">
   <link rel="stylesheet" href="components/search/result/actions/vk/vk.css">
@@ -219,6 +219,7 @@
 <script src="components/wizard/wizard.controller.js"></script>
 <script src="components/_index/i18n/en.js"></script>
 <script src="components/_index/i18n/ru.js"></script>
+<script src="components/core/amp/amp.factory.js"></script>
 <script src="components/core/analytics/analytics.factory.js"></script>
 <script src="components/core/api/api.app.factory.js"></script>
 <script src="components/core/api/api.factory.js"></script>
@@ -226,7 +227,7 @@
 <script src="components/core/auth/auth.factory.js"></script>
 <script src="components/core/auth/chrome.auth.factory.js"></script>
 <script src="components/core/auth/site.auth.factory.js"></script>
-<script src="components/core/config/config.production.js"></script>
+<script src="components/core/config/config.development.js"></script>
 <script src="components/core/cordova/inAppBrowser.factory.js"></script>
 <script src="components/core/cordova/splash.factory.js"></script>
 <script src="components/core/http/http.adapter.js"></script>
@@ -258,6 +259,7 @@
 <script src="components/core/utils/fli.bind.compile.js"></script>
 <script src="components/core/utils/fli.error.js"></script>
 <script src="components/core/utils/fli.href.js"></script>
+<script src="components/core/utils/fli.img.js"></script>
 <script src="components/core/utils/hide-on-scroll.directive.js"></script>
 <script src="components/feedback/comments/comments.controller.js"></script>
 <script src="components/feedback/comments/comments.directive.js"></script>
@@ -348,10 +350,10 @@
 <script src="components/core/api/vk/vk.factory.js"></script>
 <script src="components/core/api/yandex/yandex.factory.js"></script>
 <script src="components/core/api/youtube/youtube.factory.js"></script>
-<script src="components/home/widget/stars/stars.controller.js"></script>
-<script src="components/home/widget/stars/stars.directive.js"></script>
 <script src="components/home/widget/looks/looks.controller.js"></script>
 <script src="components/home/widget/looks/looks.directive.js"></script>
+<script src="components/home/widget/stars/stars.controller.js"></script>
+<script src="components/home/widget/stars/stars.directive.js"></script>
 <script src="components/home/widget/subscription/subscription.controller.js"></script>
 <script src="components/home/widget/subscription/subscription.directive.js"></script>
 <script src="components/home/widget/tabs/tabs.directive.js"></script>
@@ -376,10 +378,10 @@
 <script src="components/search/menu/lucky/lucky.controller.js"></script>
 <script src="components/search/menu/lucky/lucky.directive.js"></script>
 <script src="components/search/menu/lucky/lucky.factory.js"></script>
-<script src="components/search/result/audio/audio.controller.js"></script>
-<script src="components/search/result/audio/audio.directive.js"></script>
 <script src="components/search/result/actions/actions.controller.js"></script>
 <script src="components/search/result/actions/actions.directive.js"></script>
+<script src="components/search/result/audio/audio.controller.js"></script>
+<script src="components/search/result/audio/audio.directive.js"></script>
 <script src="components/search/result/events/events.controller.js"></script>
 <script src="components/search/result/events/events.directive.js"></script>
 <script src="components/search/result/feeds/feeds.controller.js"></script>
@@ -450,10 +452,10 @@
 <script src="components/look/content/vk/wall/wall.directive.js"></script>
 <script src="components/look/content/youtube/channel/channel.controller.js"></script>
 <script src="components/look/content/youtube/channel/channel.directive.js"></script>
-<script src="components/look/content/youtube/user/user.controller.js"></script>
-<script src="components/look/content/youtube/user/user.directive.js"></script>
 <script src="components/look/content/youtube/watch/watch.controller.js"></script>
 <script src="components/look/content/youtube/watch/watch.directive.js"></script>
+<script src="components/look/content/youtube/user/user.controller.js"></script>
+<script src="components/look/content/youtube/user/user.directive.js"></script>
 <script src="components/search/chips/type/sub/sub.controller.js"></script>
 <script src="components/search/chips/type/sub/sub.directive.js"></script>
 <script src="components/search/result/actions/twitter/twitter.controller.js"></script>

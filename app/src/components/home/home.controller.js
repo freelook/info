@@ -13,13 +13,14 @@ angular
       p: $routeParams.p || null,
       sub: $routeParams.sub || null,
       url: $routeParams.url || null,
-      img: $routeParams.img || null
+      img: $routeParams.img || null,
+      amp: $routeParams.amp || null
     })
       .replace();
 
     $translate.use(locale.getLng());
     $rootScope.fli.icon = 'eye-slash';
-    index.init();
+    index.init({amp: true});
 
     var vm = this;
 
