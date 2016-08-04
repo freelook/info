@@ -18,6 +18,7 @@ angular
 
       if ($routeParams.amp) {
         $rootScope.fli.location = location.replace(amp.QUERY_STRING, '');
+        $rootScope.fli.amphtml = location;
         amp.init();
       } else {
         $rootScope.fli.location = location;
