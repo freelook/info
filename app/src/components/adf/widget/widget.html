@@ -1,0 +1,7 @@
+<md-card adf-id="{{definition.wid}}" adf-widget-type="{{definition.type}}" ng-class="widgetClasses(widget, definition)"
+         class="md-whiteframe-1dp">
+  <md-toolbar ng-include src="definition.titleTemplateUrl"></md-toolbar>
+  <md-content uib-collapse="widgetState.isCollapsed">
+    <adf-widget-content model="definition" content="widget"/>
+  </md-content>
+</md-card>

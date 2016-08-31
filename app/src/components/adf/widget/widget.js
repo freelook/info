@@ -18,14 +18,14 @@ angular.module('adf')
           }
 
           if (!definition.titleTemplateUrl) {
-            definition.titleTemplateUrl = adfTemplatePath + 'widget-title.html';
+            definition.titleTemplateUrl = adfTemplatePath + 'widget/widget-title.html';
             if (w.titleTemplateUrl) {
               definition.titleTemplateUrl = w.titleTemplateUrl;
             }
           }
 
           if (!definition.editTemplateUrl) {
-            definition.editTemplateUrl = adfTemplatePath + 'widget-edit.html';
+            definition.editTemplateUrl = adfTemplatePath + 'widget/widget-edit.html';
             if (w.editTemplateUrl) {
               definition.editTemplateUrl = w.editTemplateUrl;
             }
@@ -96,7 +96,7 @@ angular.module('adf')
             var deleteScope = $scope.$new();
             deleteScope.translate = dashboard.translate;
 
-            var deleteTemplateUrl = adfTemplatePath + 'widget-delete.html';
+            var deleteTemplateUrl = adfTemplatePath + 'widget/widget-delete.html';
             if (definition.deleteTemplateUrl) {
               deleteTemplateUrl = definition.deleteTemplateUrl;
             }
@@ -131,21 +131,20 @@ angular.module('adf')
           editScope.translate = dashboard.translate;
           editScope.definition = angular.copy(definition);
 
-          var adfEditTemplatePath = adfTemplatePath + 'widget-edit.html';
+          var adfEditTemplatePath = adfTemplatePath + 'widget/widget-edit.html';
           if (definition.editTemplateUrl) {
             adfEditTemplatePath = definition.editTemplateUrl;
           }
 
           var opts = {
             scope: editScope,
-            templateUrl: adfEditTemplatePath,
-            backdrop: 'static'
+            templateUrl: adfEditTemplatePath
           };
 
-          var instance = $mdDialog.open(opts);
+          $mdDialog.show(opts);
 
           editScope.closeDialog = function () {
-            instance.close();
+            $mdDialog.cancel();
             editScope.$destroy();
           };
 
@@ -221,7 +220,7 @@ angular.module('adf')
       replace: true,
       restrict: 'EA',
       transclude: false,
-      templateUrl: dashboard.customWidgetTemplatePath ? dashboard.customWidgetTemplatePath : adfTemplatePath + 'widget.html',
+      templateUrl: dashboard.customWidgetTemplatePath ? dashboard.customWidgetTemplatePath : adfTemplatePath + 'widget/widget.html',
       scope: {
         definition: '=',
         col: '=column',
@@ -256,13 +255,11 @@ angular.module('adf')
           var fullScreenScope = $scope.$new();
           var opts = {
             scope: fullScreenScope,
-            templateUrl: adfTemplatePath + 'widget-fullscreen.html',
-            size: definition.modalSize || 'lg', // 'sm', 'lg'
-            backdrop: 'static',
-            windowClass: (definition.fullScreen) ? 'dashboard-modal widget-fullscreen' : 'dashboard-modal'
+            templateUrl: adfTemplatePath + 'widget/widget-fullscreen.html',
+            fullScreen: definition.fullScreen
           };
 
-          var instance = $mdDialog.open(opts);
+          var instance = $mdDialog.show(opts);
           fullScreenScope.closeDialog = function () {
             instance.close();
             fullScreenScope.$destroy();

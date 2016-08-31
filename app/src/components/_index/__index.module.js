@@ -31,7 +31,29 @@
         $httpProvider.interceptors.push('loaderInterceptor');
 
         // Setting theme
-        $mdThemingProvider.theme('default').primaryPalette('indigo');
+        $mdThemingProvider.definePalette('fli', {
+          '50': 'ebebeb',
+          '100': 'ebebeb',
+          '200': 'ebebeb',
+          '300': 'ebebeb',
+          '400': 'ebebeb',
+          '500': 'ebebeb',
+          '600': 'ebebeb',
+          '700': 'ebebeb',
+          '800': 'ebebeb',
+          '900': 'ebebeb',
+          'A100': 'ebebeb',
+          'A200': 'ebebeb',
+          'A400': 'ebebeb',
+          'A700': 'ebebeb',
+          'contrastDefaultColor': 'dark'
+        });
+
+        $mdThemingProvider.theme('default')
+          .primaryPalette('fli')
+          .accentPalette('deep-purple')
+          .warnPalette('pink')
+          .backgroundPalette('fli');
 
         // Translates
         $translateProvider.useSanitizeValueStrategy('escapeParameters');

@@ -1,36 +1,12 @@
-/*
- * The MIT License
- *
- * Copyright (c) 2015, Sebastian Sdorra
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- */
-
 'use strict';
 
 angular.module('adf')
-  .directive('adfWidgetContent', function($log, $q, widgetService,
-          $compile, $controller, $injector, dashboard) {
+  .directive('adfWidgetContent', function ($log, $q, widgetService,
+                                           $compile, $controller, $injector, dashboard) {
 
-    function renderError($element, msg){
-        $log.warn(msg);
-        $element.html(dashboard.messageTemplate.replace(/{}/g, msg));
+    function renderError($element, msg) {
+      $log.warn(msg);
+      $element.html(dashboard.messageTemplate.replace(/{}/g, msg));
     }
 
     function compileWidget($scope, $element, currentScope) {
@@ -38,9 +14,9 @@ angular.module('adf')
       var content = $scope.content;
 
       var newScope = currentScope;
-      if (!model){
-        renderError($element, 'model is undefined')
-      } else if (!content){
+      if (!model) {
+        renderError($element, 'model is undefined');
+      } else if (!content) {
         var msg = 'widget content is undefined, please have a look at your browser log';
         renderError($element, msg);
       } else {
@@ -74,7 +50,7 @@ angular.module('adf')
       var resolvers = {};
       resolvers.$tpl = widgetService.getTemplate(content);
       if (content.resolve) {
-        angular.forEach(content.resolve, function(promise, key) {
+        angular.forEach(content.resolve, function (promise, key) {
           if (angular.isString(promise)) {
             resolvers[key] = $injector.get(promise);
           } else {
@@ -84,11 +60,11 @@ angular.module('adf')
       }
 
       // resolve all resolvers
-      $q.all(resolvers).then(function(locals) {
+      $q.all(resolvers).then(function (locals) {
         angular.extend(locals, base);
 
         // pass resolve map to template scope as defined in resolveAs
-        if (content.resolveAs){
+        if (content.resolveAs) {
           templateScope[content.resolveAs] = locals;
         }
 
@@ -103,7 +79,7 @@ angular.module('adf')
           $element.children().data('$ngControllerController', templateCtrl);
         }
         $compile($element.contents())(templateScope);
-      }, function(reason) {
+      }, function (reason) {
         // handle promise rejection
         var msg = 'Could not resolve all promises';
         if (reason) {
@@ -128,12 +104,12 @@ angular.module('adf')
         model: '=',
         content: '='
       },
-      link: function($scope, $element) {
+      link: function ($scope, $element) {
         var currentScope = compileWidget($scope, $element, null);
-        $scope.$on('widgetConfigChanged', function() {
+        $scope.$on('widgetConfigChanged', function () {
           currentScope = compileWidget($scope, $element, currentScope);
         });
-        $scope.$on('widgetReload', function() {
+        $scope.$on('widgetReload', function () {
           currentScope = compileWidget($scope, $element, currentScope);
         });
       }

@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('adf')
-  .directive('adfDashboard', function ($rootScope, $log, $timeout, $mdDialog, dashboard, adfTemplatePath) {
-    'use strict';
+  .directive('adfDashboard',
+  function ($rootScope, $log, $timeout, $mdDialog, dashboard, adfTemplatePath) {
 
     function stringToBoolean(string) {
       switch (angular.isDefined(string) ? string.toLowerCase() : null) {
@@ -278,7 +278,7 @@ angular.module('adf')
                 model.title = 'Dashboard';
               }
               if (!model.titleTemplateUrl) {
-                model.titleTemplateUrl = adfTemplatePath + 'dashboard-title.html';
+                model.titleTemplateUrl = adfTemplatePath + 'dashboard/title.html';
               }
               $scope.model = model;
             } else {
@@ -346,7 +346,7 @@ angular.module('adf')
           // pass split function to scope, to be able to display structures in multiple columns
           editDashboardScope.split = split;
 
-          var adfEditTemplatePath = adfTemplatePath + 'dashboard-edit.html';
+          var adfEditTemplatePath = adfTemplatePath + 'dashboard/edit.html';
           if (model.editTemplateUrl) {
             adfEditTemplatePath = model.editTemplateUrl;
           }
@@ -368,7 +368,6 @@ angular.module('adf')
             model.title = editDashboardScope.copy.title;
             // close modal and destroy the scope
             $mdDialog.cancel();
-            editDashboardScope.$destroy();
           };
         };
 
@@ -397,18 +396,17 @@ angular.module('adf')
             $scope.createCategories = createCategories;
           }
 
-          var adfAddTemplatePath = adfTemplatePath + 'widget-add.html';
+          var adfAddTemplatePath = adfTemplatePath + 'dashboard/widget-add.html';
           if (model.addTemplateUrl) {
             adfAddTemplatePath = model.addTemplateUrl;
           }
 
           var opts = {
             scope: addScope,
-            templateUrl: adfAddTemplatePath,
-            backdrop: 'static'
+            templateUrl: adfAddTemplatePath
           };
 
-          var instance = $mdDialog.show(opts);
+          $mdDialog.show(opts);
           addScope.addWidget = function (widget) {
             var w = {
               type: widget,
@@ -416,8 +414,7 @@ angular.module('adf')
             };
             addNewWidgetToModel(model, w, name);
             // close and destroy
-            instance.close();
-            addScope.$destroy();
+            $mdDialog.cancel();
 
             // check for open edit mode immediately
             if (isEditModeImmediate(widget)) {
@@ -426,8 +423,7 @@ angular.module('adf')
           };
           addScope.closeDialog = function () {
             // close and destroy
-            instance.close();
-            addScope.$destroy();
+            $mdDialog.cancel();
           };
         };
 
@@ -448,6 +444,6 @@ angular.module('adf')
         }
         $scope.options = options;
       },
-      templateUrl: adfTemplatePath + 'dashboard.html'
+      templateUrl: adfTemplatePath + 'dashboard/dashboard.html'
     };
   });

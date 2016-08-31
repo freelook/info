@@ -1,0 +1,59 @@
+<div class="md-toolbar-tools" layout="row" layout-align="center center">
+  <h3 ng-bind="definition.title" flex></h3>
+
+  <div>
+    <md-button class="md-icon-button md-accent"
+               title="{{ translate('ADF_WIDGET_TOOLTIP_REFRESH') }}"
+               ng-if="widget.reload"
+               ng-click="reload()">
+      <md-icon>cached</md-icon>
+    </md-button>
+
+    <!-- change widget location -->
+    <md-button class="md-icon-button md-accent adf-move"
+               title="{{ translate('ADF_WIDGET_TOOLTIP_MOVE') }}"
+               ng-if="editMode">
+      <md-icon>open_with</md-icon>
+    </md-button>
+
+    <!-- collapse -->
+    <md-button class="md-icon-button md-accent"
+               title="{{ translate('ADF_WIDGET_TOOLTIP_COLLAPSE') }}"
+               ng-show="options.collapsible && !widgetState.isCollapsed"
+               ng-click="widgetState.isCollapsed = !widgetState.isCollapsed">
+      <md-icon>remove</md-icon>
+    </md-button>
+
+    <!-- expand -->
+    <md-button class="md-icon-button md-accent"
+               title="{{ translate('ADF_WIDGET_TOOLTIP_EXPAND') }}"
+               ng-show="options.collapsible && widgetState.isCollapsed"
+               ng-click="widgetState.isCollapsed = !widgetState.isCollapsed">
+      <md-icon>add</md-icon>
+    </md-button>
+
+    <!-- open edit mode -->
+    <md-button class="md-icon-button md-accent"
+               title="{{ translate('ADF_WIDGET_TOOLTIP_EDIT') }}"
+               ng-click="edit()"
+               ng-if="editMode">
+      <md-icon>build</md-icon>
+    </md-button>
+
+    <md-button class="md-icon-button md-accent"
+               title="{{ translate('ADF_WIDGET_TOOLTIP_FULLSCREEN') }}"
+               ng-click="openFullScreen()"
+               ng-show="options.maximizable">
+      <md-icon>zoom_in</md-icon>
+    </md-button>
+
+    <!-- remove widget -->
+    <md-button class="md-icon-button md-accent"
+               title="{{ translate('ADF_WIDGET_TOOLTIP_REMOVE') }}"
+               ng-click="remove()"
+               ng-if="editMode">
+      <md-icon>close</md-icon>
+    </md-button>
+
+  </div>
+</div>

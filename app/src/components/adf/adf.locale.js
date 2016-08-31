@@ -24,4 +24,4 @@
 
 'use strict';
 
-angular.module('adf.locale', [])
+angular.module('adf.locale', []);

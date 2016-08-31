@@ -11,21 +11,6 @@ md-tabs, md-tab, md-content, md-button, md-progress-linear, ng-switch, noindex, 
   display: block;
 }
 
-md-tabs, md-card, md-card-content, md-whiteframe {
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-md-whiteframe {
-  background: #ffffff;
-}
-
-md-whiteframe,
-.block {
-  padding: 7px;
-  margin: 7px;
-}
-
 .margin-top {
   margin-top: 7px;
 }

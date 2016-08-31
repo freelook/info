@@ -3,7 +3,6 @@
 /* global angular */
 angular.module('adf')
   .directive('adfDashboardColumn', function ($log, $compile, $rootScope, adfTemplatePath, rowTemplate, dashboard) {
-    'use strict';
 
     /**
      * moves a widget in between a column
@@ -111,7 +110,7 @@ angular.module('adf')
     function applySortable($scope, $element, model, column) {
       // enable drag and drop
       var el = $element[0];
-      var sortable = Sortable.create(el, {
+      var sortable = window.Sortable.create(el, {
         group: 'widgets',
         handle: '.adf-move',
         ghostClass: 'placeholder',
@@ -147,7 +146,7 @@ angular.module('adf')
         adfModel: '=',
         options: '='
       },
-      templateUrl: adfTemplatePath + 'dashboard-column.html',
+      templateUrl: adfTemplatePath + 'column/column.html',
       link: function ($scope, $element) {
         // set id
         var col = $scope.column;
