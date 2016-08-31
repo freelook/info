@@ -4,6 +4,8 @@
   "version": "1.17.2",
   "author": "Dima Kostrub",
   "dependencies": {
+    "jquery": "2.2.1",
+    "lodash": "4.15.0",
     "angular": "1.5.7",
     "angular-animate": "1.5.7",
     "angular-cache": "4.5.0",
@@ -14,34 +16,30 @@
     "angular-sanitize": "1.5.7",
     "angular-translate": "2.9.2",
     "angular-google-maps": "2.3.2",
-    "font-awesome": "4.5.0",
-    "jquery": "2.2.1",
+    "angular-google-chart": "0.1.0",
     "socket.io-client": "1.4.5",
     "url-pattern": "1.0.1",
-    "readability": "https://github.com/mozilla/readability.git",
-    "angular-google-chart": "0.1.0"
+    "Sortable": "1.4.2",
+    "readability": "https://github.com/mozilla/readability.git"
   },
   "devDependencies": {
     "angular-mocks": "1.5.7"
   },
   "overrides": {
-    "font-awesome": {
-      "main": [
-        "./css/font-awesome.css",
-        "./fonts/*"
-      ]
-    },
-    "socket.io-client": {
-      "main": "./socket.io.js"
-    },
     "angular": {
       "main": [
         "./angular.js",
         "./angular-csp.css"
       ]
     },
+    "socket.io-client": {
+      "main": "./socket.io.js"
+    },
     "readability": {
       "main": "./Readability.js"
+    },
+    "Sortable": {
+      "main": "Sortable.js"
     }
   },
   "resolutions": {

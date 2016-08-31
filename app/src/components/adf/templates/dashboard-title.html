@@ -1,0 +1,26 @@
+<div layout="row" layout-align="center center">
+  <h1 ng-bind="model.title"></h1>
+
+  <div ng-if="editMode">
+    <md-icon class="link color-8" title="{{ translate('ADF_DASHBOARD_TITLE_TOOLTIP_ADD') }}"
+             ng-click="addWidgetDialog()" ng-bind="::'add'">
+    </md-icon>
+
+    <md-icon class="link color-8" title="{{ translate('ADF_COMMON_EDIT_DASHBOARD') }}"
+             ng-click="editDashboardDialog()" ng-bind="::'build'">
+    </md-icon>
+
+    <md-icon class="link color-8" title="{{ translate('ADF_DASHBOARD_TITLE_TOOLTIP_UNDO') }}"
+             ng-click="cancelEditMode()" ng-bind="::'redo'">
+    </md-icon>
+  </div>
+
+  <div ng-if="options.editable">
+    <md-icon class="link color-8"
+             title="{{editMode ? translate('ADF_DASHBOARD_TITLE_TOOLTIP_SAVE') : translate('ADF_DASHBOARD_TITLE_TOOLTIP_EDIT_MODE') }}"
+             ng-click="toggleEditMode()" ng-bind="!editMode ? 'edit': 'save'"></md-icon>
+  </div>
+
+</div>
+
+
