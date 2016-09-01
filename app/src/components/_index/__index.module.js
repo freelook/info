@@ -31,21 +31,22 @@
         $httpProvider.interceptors.push('loaderInterceptor');
 
         // Setting theme
+        var ebebeb = 'ebebeb', dedede = 'dedede';
         $mdThemingProvider.definePalette('fli', {
-          '50': 'ebebeb',
-          '100': 'ebebeb',
-          '200': 'ebebeb',
-          '300': 'ebebeb',
-          '400': 'ebebeb',
-          '500': 'ebebeb',
-          '600': 'ebebeb',
-          '700': 'ebebeb',
-          '800': 'ebebeb',
-          '900': 'ebebeb',
-          'A100': 'ebebeb',
-          'A200': 'ebebeb',
-          'A400': 'ebebeb',
-          'A700': 'ebebeb',
+          '50': ebebeb,
+          '100': ebebeb,
+          '200': ebebeb,
+          '300': ebebeb,
+          '400': ebebeb,
+          '500': dedede,
+          '600': dedede,
+          '700': dedede,
+          '800': dedede,
+          '900': dedede,
+          'A100': ebebeb,
+          'A200': ebebeb,
+          'A400': dedede,
+          'A700': dedede,
           'contrastDefaultColor': 'dark'
         });
 

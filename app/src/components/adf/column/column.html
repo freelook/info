@@ -1,9 +1,11 @@
-<div adf-id="{{column.cid}}" flex="column.flex" ng-class="column.class" ng-style="column.style" ng-model="column.widgets">
+<div adf-id="{{column.cid}}" flex="{{column.flex}}" ng-class="column.class" ng-style="column.style">
   <adf-widget ng-repeat="definition in column.widgets"
               definition="definition"
               column="column"
               edit-mode="editMode"
               options="options"
-              widget-state="widgetState"/>
+              widget-state="widgetState">
+
+  </adf-widget>
   <!-- If present, a new row will be injected here -->
 </div>

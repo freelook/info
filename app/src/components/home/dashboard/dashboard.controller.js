@@ -10,7 +10,6 @@ angular
     vm.model = {
       title: 'My dashboard',
       debug: true,
-      structure: '50-50',
       rows: [{
         columns: [{
           flex: '50',
@@ -30,7 +29,6 @@ angular
       }]
 
     };
-
 
   });
 

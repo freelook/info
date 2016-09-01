@@ -12,7 +12,7 @@
     <!-- change widget location -->
     <md-button class="md-icon-button md-accent adf-move"
                title="{{ translate('ADF_WIDGET_TOOLTIP_MOVE') }}"
-               ng-if="editMode">
+               ng-if="editMode && editWidget">
       <md-icon>open_with</md-icon>
     </md-button>
 
@@ -36,8 +36,8 @@
     <md-button class="md-icon-button md-accent"
                title="{{ translate('ADF_WIDGET_TOOLTIP_EDIT') }}"
                ng-click="edit()"
-               ng-if="editMode">
-      <md-icon>build</md-icon>
+               ng-if="editMode && editWidget">
+      <md-icon>settings</md-icon>
     </md-button>
 
     <md-button class="md-icon-button md-accent"
@@ -51,9 +51,17 @@
     <md-button class="md-icon-button md-accent"
                title="{{ translate('ADF_WIDGET_TOOLTIP_REMOVE') }}"
                ng-click="remove()"
-               ng-if="editMode">
+               ng-if="editMode && editWidget">
       <md-icon>close</md-icon>
     </md-button>
-
   </div>
+
+  <md-button class="md-icon-button md-accent" aria-label="edit"
+             title="{{editMode ? translate('ADF_DASHBOARD_TITLE_TOOLTIP_SAVE') : translate('ADF_DASHBOARD_TITLE_TOOLTIP_EDIT_MODE') }}"
+             ng-click="toggleEditWidget()"
+             ng-if="editMode">
+    <md-icon ng-bind="!editWidget ? 'edit': 'save'"></md-icon>
+  </md-button>
+
+</div>
 </div>

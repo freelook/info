@@ -8,6 +8,10 @@ angular.module('adf')
 
       //passs translate function from dashboard so we can translate labels inside html templates
       $scope.translate = dashboard.translate;
+      $scope.editWidget = false;
+      $scope.toggleEditWidget = function () {
+        $scope.editWidget = !$scope.editWidget;
+      };
 
       if (definition) {
         var w = dashboard.widgets[definition.type];

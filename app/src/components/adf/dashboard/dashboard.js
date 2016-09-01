@@ -20,83 +20,6 @@ angular.module('adf')
       }
     }
 
-    function copyWidgets(source, target) {
-      if (source.widgets && source.widgets.length > 0) {
-        var w = source.widgets.shift();
-        while (w) {
-          target.widgets.push(w);
-          w = source.widgets.shift();
-        }
-      }
-    }
-
-    /**
-     * Copy widget from old columns to the new model
-     * @param object root the model
-     * @param array of columns
-     * @param counter
-     */
-    function fillStructure(root, columns, counter) {
-      counter = counter || 0;
-
-      if (angular.isDefined(root.rows)) {
-        angular.forEach(root.rows, function (row) {
-          angular.forEach(row.columns, function (column) {
-            // if the widgets prop doesn't exist, create a new array for it.
-            // this allows ui.sortable to do it's thing without error
-            if (!column.widgets) {
-              column.widgets = [];
-            }
-
-            // if a column exist at the counter index, copy over the column
-            if (angular.isDefined(columns[counter])) {
-              // do not add widgets to a column, which uses nested rows
-              if (angular.isUndefined(column.rows)) {
-                copyWidgets(columns[counter], column);
-                counter++;
-              }
-            }
-
-            // run fillStructure again for any sub rows/columns
-            counter = fillStructure(column, columns, counter);
-          });
-        });
-      }
-      return counter;
-    }
-
-    /**
-     * Read Columns: recursively searches an object for the 'columns' property
-     * @param object model
-     * @param array  an array of existing columns; used when recursion happens
-     */
-    function readColumns(root, columns) {
-      columns = columns || [];
-
-      if (angular.isDefined(root.rows)) {
-        angular.forEach(root.rows, function (row) {
-          angular.forEach(row.columns, function (col) {
-            columns.push(col);
-            // keep reading columns until we can't any more
-            readColumns(col, columns);
-          });
-        });
-      }
-
-      return columns;
-    }
-
-    function changeStructure(model, structure) {
-      var columns = readColumns(model);
-      var counter = 0;
-
-      model.rows = angular.copy(structure.rows);
-
-      while (counter < columns.length) {
-        counter = fillStructure(model, columns, counter);
-      }
-    }
-
     function createConfiguration(type) {
       var cfg = {};
       var config = dashboard.widgets[type].config;
@@ -182,27 +105,6 @@ angular.module('adf')
       $timeout(function () {
         $scope.$broadcast('adfWidgetEnterEditMode', widget);
       }, 200);
-    }
-
-    /**
-     * Splits an object into an array multiple objects inside.
-     *
-     * @param object source object
-     * @param size size of array
-     *
-     * @return array of splitted objects
-     */
-    function split(object, size) {
-      var arr = [];
-      var i = 0;
-      angular.forEach(object, function (value, key) {
-        var index = i++ % size;
-        if (!arr[index]) {
-          arr[index] = {};
-        }
-        arr[index][key] = value;
-      });
-      return arr;
     }
 
     /**
@@ -325,6 +227,7 @@ angular.module('adf')
 
         $scope.cancelEditMode = function () {
           $scope.editMode = false;
+          $scope.model = $scope.modelCopy;
           if (!$scope.continuousEditMode) {
             $scope.modelCopy = angular.copy($scope.modelCopy, $scope.adfModel);
           }
@@ -333,20 +236,8 @@ angular.module('adf')
 
         // edit dashboard settings
         $scope.editDashboardDialog = function () {
-          var editDashboardScope = getNewModalScope();
-          // create a copy of the title, to avoid changing the title to
-          // "dashboard" if the field is empty
-          editDashboardScope.copy = {
-            title: model.title
-          };
-
-          // pass dashboard structure to scope
-          editDashboardScope.structures = dashboard.structures;
-
-          // pass split function to scope, to be able to display structures in multiple columns
-          editDashboardScope.split = split;
-
-          var adfEditTemplatePath = adfTemplatePath + 'dashboard/edit.html';
+          var editDashboardScope = getNewModalScope(),
+            adfEditTemplatePath = adfTemplatePath + 'dashboard/edit.html';
           if (model.editTemplateUrl) {
             adfEditTemplatePath = model.editTemplateUrl;
           }
@@ -356,19 +247,7 @@ angular.module('adf')
             clickOutsideToClose: true,
             fullscreen: true
           });
-          editDashboardScope.changeStructure = function (name, structure) {
-            $log.info('change structure to ' + name);
-            changeStructure(model, structure);
-            if (model.structure !== name) {
-              model.structure = name;
-            }
-          };
-          editDashboardScope.closeDialog = function () {
-            // copy the new title back to the model
-            model.title = editDashboardScope.copy.title;
-            // close modal and destroy the scope
-            $mdDialog.cancel();
-          };
+          editDashboardScope.closeDialog = $mdDialog.cancel;
         };
 
         // add widget dialog
