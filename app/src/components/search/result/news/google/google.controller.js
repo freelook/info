@@ -3,7 +3,7 @@
 angular
   .module('fli.search')
   .controller('search.result.news.google.ctrl',
-  function ($scope, $parse, url, item, google) {
+  function ($routeParams, $parse, url, item, google) {
 
     var vm = this;
     vm.href = item.href;
@@ -42,7 +42,7 @@ angular
       vm.items = extract(entries) || [];
     }
 
-    google.news($scope.fli.route.input || '')
+    google.news($routeParams.input || '')
       .success(setResult);
 
   });

@@ -1,8 +1,4 @@
-html, header, body, footer {
-  background: #ebebeb;
-}
-
-body {
+html, body {
   overflow-y: visible;
 }
 

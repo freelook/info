@@ -2,19 +2,19 @@
   <h3 ng-bind="model.title" flex></h3>
 
   <div ng-if="editMode">
-    <md-button class="md-icon-button md-accent"
+    <md-button class="md-icon-button"
                title="{{ translate('ADF_DASHBOARD_TITLE_TOOLTIP_ADD') }}"
                ng-click="addWidgetDialog()">
       <md-icon>add</md-icon>
     </md-button>
 
-    <md-button class="md-icon-button md-accent"
+    <md-button class="md-icon-button"
                title="{{ translate('ADF_COMMON_EDIT_DASHBOARD') }}"
                ng-click="editDashboardDialog()">
       <md-icon>settings</md-icon>
     </md-button>
 
-    <md-button class="md-icon-button md-accent"
+    <md-button class="md-icon-button"
                title="{{ translate('ADF_DASHBOARD_TITLE_TOOLTIP_UNDO') }}"
                ng-click="cancelEditMode()">
       <md-icon>redo</md-icon>
@@ -22,7 +22,7 @@
   </div>
 
   <div ng-if="options.editable">
-    <md-button class="md-icon-button md-accent" aria-label="edit"
+    <md-button class="md-icon-button" aria-label="edit"
                title="{{editMode ? translate('ADF_DASHBOARD_TITLE_TOOLTIP_SAVE') : translate('ADF_DASHBOARD_TITLE_TOOLTIP_EDIT_MODE') }}"
                ng-click="toggleEditMode()">
       <md-icon ng-bind="!editMode ? 'edit': 'save'"></md-icon>

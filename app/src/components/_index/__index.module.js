@@ -31,30 +31,11 @@
         $httpProvider.interceptors.push('loaderInterceptor');
 
         // Setting theme
-        var ebebeb = 'ebebeb', dedede = 'dedede';
-        $mdThemingProvider.definePalette('fli', {
-          '50': ebebeb,
-          '100': ebebeb,
-          '200': ebebeb,
-          '300': ebebeb,
-          '400': ebebeb,
-          '500': dedede,
-          '600': dedede,
-          '700': dedede,
-          '800': dedede,
-          '900': dedede,
-          'A100': ebebeb,
-          'A200': ebebeb,
-          'A400': dedede,
-          'A700': dedede,
-          'contrastDefaultColor': 'dark'
-        });
-
         $mdThemingProvider.theme('default')
-          .primaryPalette('fli')
-          .accentPalette('deep-purple')
+          .primaryPalette('deep-purple')
+          .accentPalette('indigo')
           .warnPalette('pink')
-          .backgroundPalette('fli');
+          .backgroundPalette('grey');
 
         // Translates
         $translateProvider.useSanitizeValueStrategy('escapeParameters');

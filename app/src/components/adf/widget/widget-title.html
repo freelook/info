@@ -2,7 +2,7 @@
   <h3 ng-bind="definition.title" flex></h3>
 
   <div>
-    <md-button class="md-icon-button md-accent"
+    <md-button class="md-icon-button"
                title="{{ translate('ADF_WIDGET_TOOLTIP_REFRESH') }}"
                ng-if="widget.reload"
                ng-click="reload()">
@@ -10,14 +10,14 @@
     </md-button>
 
     <!-- change widget location -->
-    <md-button class="md-icon-button md-accent adf-move"
+    <md-button class="md-icon-button adf-move"
                title="{{ translate('ADF_WIDGET_TOOLTIP_MOVE') }}"
                ng-if="editMode && editWidget">
       <md-icon>open_with</md-icon>
     </md-button>
 
     <!-- collapse -->
-    <md-button class="md-icon-button md-accent"
+    <md-button class="md-icon-button"
                title="{{ translate('ADF_WIDGET_TOOLTIP_COLLAPSE') }}"
                ng-show="options.collapsible && !widgetState.isCollapsed"
                ng-click="widgetState.isCollapsed = !widgetState.isCollapsed">
@@ -25,7 +25,7 @@
     </md-button>
 
     <!-- expand -->
-    <md-button class="md-icon-button md-accent"
+    <md-button class="md-icon-button"
                title="{{ translate('ADF_WIDGET_TOOLTIP_EXPAND') }}"
                ng-show="options.collapsible && widgetState.isCollapsed"
                ng-click="widgetState.isCollapsed = !widgetState.isCollapsed">
@@ -33,14 +33,14 @@
     </md-button>
 
     <!-- open edit mode -->
-    <md-button class="md-icon-button md-accent"
+    <md-button class="md-icon-button"
                title="{{ translate('ADF_WIDGET_TOOLTIP_EDIT') }}"
                ng-click="edit()"
                ng-if="editMode && editWidget">
       <md-icon>settings</md-icon>
     </md-button>
 
-    <md-button class="md-icon-button md-accent"
+    <md-button class="md-icon-button"
                title="{{ translate('ADF_WIDGET_TOOLTIP_FULLSCREEN') }}"
                ng-click="openFullScreen()"
                ng-show="options.maximizable">
@@ -48,7 +48,7 @@
     </md-button>
 
     <!-- remove widget -->
-    <md-button class="md-icon-button md-accent"
+    <md-button class="md-icon-button"
                title="{{ translate('ADF_WIDGET_TOOLTIP_REMOVE') }}"
                ng-click="remove()"
                ng-if="editMode && editWidget">
@@ -56,7 +56,7 @@
     </md-button>
   </div>
 
-  <md-button class="md-icon-button md-accent" aria-label="edit"
+  <md-button class="md-icon-button" aria-label="edit"
              title="{{editMode ? translate('ADF_DASHBOARD_TITLE_TOOLTIP_SAVE') : translate('ADF_DASHBOARD_TITLE_TOOLTIP_EDIT_MODE') }}"
              ng-click="toggleEditWidget()"
              ng-if="editMode">
