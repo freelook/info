@@ -1,4 +1,4 @@
-<fli-item ng-repeat="item in newsGoogle.items"
+<fli-item ng-repeat="item in newsGoogle.items | limitTo:3"
           ng-init="fliItem = {
           small:1,
           url:item.url,

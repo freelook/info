@@ -33,7 +33,7 @@
         // Setting theme
         $mdThemingProvider.theme('default')
           .primaryPalette('deep-purple')
-          .accentPalette('indigo')
+          .accentPalette('purple')
           .warnPalette('pink')
           .backgroundPalette('grey');
 

@@ -16,7 +16,7 @@
 
       <h5 ng-bind="translate('ADF_EDIT_DASHBOARD_STRUCTURE_LABEL')"></h5>
       <div layout="row">
-        <md-input-container flex="{{column.flex}}" class="md-accent" ng-repeat="column in model.rows[0].columns">
+        <md-input-container flex="{{column.flex}}" class="md-accent" ng-repeat="column in model.columns">
           <label ng-bind="::++$index"></label>
           <input type="text" ng-model="column.flex">
         </md-input-container>

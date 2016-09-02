@@ -174,10 +174,9 @@ angular.module('adf.provider', ['adf.locale'])
      *
      *   Object properties:
      *
-     *   - `rows` - `{Array.<Object>}` - Rows of the dashboard structure.
-     *     - `styleClass` - `{string}` - CSS Class of the row.
-     *     - `columns` - `{Array.<Object>}` - Columns of the row.
-     *       - `styleClass` - `{string}` - CSS Class of the column.
+     *   - `columns` - `{Array.<Object>}` - columns of the dashboard structure.
+     *     - `class` - `{string}` - CSS class of the column.
+     *     - `style` - `{string}` - CSS style of the column.
      *
      * @returns {Object} self
      */

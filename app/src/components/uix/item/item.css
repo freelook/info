@@ -6,6 +6,7 @@ fli-item {
   outline: 0;
   max-width: 100%;
   box-shadow: none;
+  border-bottom: 1px solid #cccccc;
 }
 
 .fli-item.nofill {

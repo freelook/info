@@ -9,22 +9,19 @@ angular
 
     vm.model = {
       title: 'My dashboard',
-      debug: true,
-      rows: [{
-        columns: [{
-          flex: '50',
-          widgets: [{
-            type: 'linklist',
-            title: 'linklist',
-            config: {}
-          }]
-        }, {
-          flex: '50',
-          widgets: [{
-            type: 'linklist',
-            title: 'linklist',
-            config: {}
-          }]
+      columns: [{
+        flex: '25',
+        widgets: [{
+          type: 'linklist',
+          title: 'linklist',
+          config: {}
+        }]
+      }, {
+        flex: '75',
+        widgets: [{
+          type: 'linklist',
+          title: 'linklist',
+          config: {}
         }]
       }]
 

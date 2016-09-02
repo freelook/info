@@ -1,12 +1,13 @@
 <div layout="row">
 
-  <md-button class="md-fab md-primary link" ng-class="{'md-accent':input.active()}" aria-label="home" ng-click="input.home()">
-    <i ng-if="!fli.user.data.facebook" class="fa fa-eye-slash"></i>
+  <md-button class="md-fab md-primary link" ng-class="{'md-accent':input.active()}" aria-label="home"
+             ng-click="input.home()">
+    <md-icon ng-if="!fli.user.data.facebook">face</md-icon>
     <img ng-if="fli.user.data.facebook" ng-src="{{input.img(fli.user.data.facebook)}}" class="user circle" fli-err>
   </md-button>
 
   <md-button ng-disabled="!fli.focus" class="md-icon-button link" aria-label="navigation" ng-click="input.find()">
-    <i class="fa fa-{{::input.icon}}"></i>
+    <md-icon ng-bind="{{::input.icon}}"></md-icon>
   </md-button>
 
   <form name="form" ng-submit="input.find()" flex>
@@ -22,11 +23,12 @@
   </form>
 
   <md-button ng-if="fli.focus" class="md-icon-button link" aria-label="clear" ng-click="input.clear()">
-    <i class="fa fa-close"></i>
+    <md-icon>close</md-icon>
   </md-button>
 
-  <md-button ng-if="!fli.focus && input.isSetting()" class="md-icon-button link" aria-label="setting" ng-click="input.setting()">
-    <i class="fa fa-sign-in fa-2x"></i>
+  <md-button ng-if="!fli.focus && input.isSetting()" class="md-icon-button link" aria-label="setting"
+             ng-click="input.setting()">
+    <md-icon>sign_in</md-icon>
   </md-button>
 
 </div>

@@ -244,16 +244,6 @@ angular.module('adf')
           }
         });
 
-        $scope.widgetClasses = function (w, definition) {
-          var classes = definition.styleClass || '';
-          // w is undefined, if the type of the widget is unknown
-          // see issue #216
-          if (!w || !w.frameless || $scope.editMode) {
-            classes += ' panel panel-default';
-          }
-          return classes;
-        };
-
         $scope.openFullScreen = function () {
           var definition = $scope.definition;
           var fullScreenScope = $scope.$new();

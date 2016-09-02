@@ -35,27 +35,7 @@ angular.module('adf')
      * @param dashboard model
      */
     function findFirstWidgetColumn(model) {
-      var column = null;
-      if (!angular.isArray(model.rows)) {
-        $log.error('model does not have any rows');
-        return null;
-      }
-      for (var i = 0; i < model.rows.length; i++) {
-        var row = model.rows[i];
-        if (angular.isArray(row.columns)) {
-          for (var j = 0; j < row.columns.length; j++) {
-            var col = row.columns[j];
-            if (!col.rows) {
-              column = col;
-              break;
-            }
-          }
-        }
-        if (column) {
-          break;
-        }
-      }
-      return column;
+      return model.columns[0];
     }
 
     /**
@@ -160,12 +140,12 @@ angular.module('adf')
           if (newVal !== null || (oldVal === null && newVal === null)) {
             model = $scope.adfModel;
             widgetFilter = $scope.adfWidgetFilter;
-            if (!model || !model.rows) {
+            if (!model || !model.columns) {
               structureName = $scope.structure;
               structure = dashboard.structures[structureName];
               if (structure) {
                 if (model) {
-                  model.rows = angular.copy(structure).rows;
+                  model.columns = angular.copy(structure).columns;
                 } else {
                   model = angular.copy(structure);
                 }
