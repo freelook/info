@@ -1,7 +1,7 @@
 <section>
 
   <md-toolbar ng-include src="model.titleTemplateUrl"></md-toolbar>
-  <md-content ng-class="{'edit' : editMode}">
+  <div ng-class="{'edit' : editMode}">
     <adf-dashboard-row row="row"
                        adf-model="model"
                        options="options"
@@ -10,7 +10,7 @@
                        continuous-edit-mode="continuousEditMode">
 
     </adf-dashboard-row>
-  </md-content>
+  </div>
 
   <pre ng-if="model.debug">{{model | json}}</pre>
 
