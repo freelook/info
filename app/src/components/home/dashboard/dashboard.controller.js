@@ -8,7 +8,7 @@ angular
     var vm = this;
 
     vm.model = {
-      title: 'My dashboard',
+      title: 'My infoboard',
       columns: [{
         flex: '25',
         widgets: [{

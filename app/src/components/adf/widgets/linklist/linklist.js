@@ -8,10 +8,22 @@ angular
         title: 'Links',
         description: 'Displays a list of links',
         view: {
-          templateUrl: 'components/adf/filters/linklist/view.html'
+          name: "test",
+          style: "body { background:#ccc;}",
+          template: "<h3>{{total}}</h3><button ng-click=\"update()\">Update</button>",
+          factory: function () {
+            return {log: console.log};
+          },
+          controller: function ($scope, factory) {
+            $scope.total = 0;
+            $scope.update = function () {
+              $scope.total += 1;
+              factory.log($scope.total);
+            };
+          }
         },
         edit: {
-          templateUrl: 'components/adf/filters/linklist/edit.html',
+          templateUrl: 'components/adf/widgets/linklist/edit.html',
           controller: function ($scope) {
 
             function getLinks() {

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>{{name}}</title>
+    <style>
+        [ng\:cloak], [ng-cloak], .ng-cloak {
+            display: none !important;
+        }
+    </style>
+    <style>
+        {{style}}
+    </style>
+</head>
+<body ng-app="{{name}}" ng-controller="controller" ng-cloak>
+
+{{template}}
+
+<script src="https://code.angularjs.org/1.5.7/angular.min.js"></script>
+<script>
+    angular.module('{{name}}', [])
+            .factory('factory', {{factory}})
+            .controller('controller', {{controller}});
+</script>
+
+</body>
+</html>
