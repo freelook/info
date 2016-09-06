@@ -1,12 +1,12 @@
 'use strict';
 
-angular.module('adf')
-  .directive('adfWidgetContent', function ($log, $q, widgetService,
-                                           $compile, $controller, $injector, dashboard) {
+angular.module('fli.board')
+  .directive('fliWidgetContent', function ($log, $q, widgetService,
+                                           $compile, $controller, $injector, board) {
 
     function renderError($element, msg) {
       $log.warn(msg);
-      $element.html(dashboard.messageTemplate.replace(/{}/g, msg));
+      $element.html(board.messageTemplate.replace(/{}/g, msg));
     }
 
     function compileWidget($scope, $element, currentScope) {

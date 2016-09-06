@@ -2,12 +2,12 @@
 
 angular
   .module('fli.home')
-  .controller('home.dashboard.ctrl',
+  .controller('home.infoboard.ctrl',
   function () {
 
-    var vm = this;
+    var ctrl = this;
 
-    vm.model = {
+    ctrl.model = {
       title: 'My infoboard',
       columns: [{
         flex: '25',

@@ -1,9 +1,9 @@
 'use strict';
 
-/* global angular */
-angular.module('adf')
-  .directive('adfDashboardColumn',
-  function ($log, $compile, $rootScope, adfTemplatePath, dashboard) {
+angular
+  .module('fli.board')
+  .directive('fliBoardColumn',
+  function($log, $compile, $rootScope, board) {
 
     /**
      * moves a widget in between a column
@@ -11,7 +11,7 @@ angular.module('adf')
     function moveWidgetInColumn($scope, column, evt) {
       var widgets = column.widgets;
       // move widget and apply to scope
-      $scope.$apply(function () {
+      $scope.$apply(function() {
         widgets.splice(evt.newIndex, 0, widgets.splice(evt.oldIndex, 1)[0]);
         $rootScope.$broadcast('adfWidgetMovedInColumn');
       });
@@ -24,7 +24,7 @@ angular.module('adf')
       var widget = null;
       for (var i = 0; i < column.widgets.length; i++) {
         var w = column.widgets[i];
-        if (dashboard.idEquals(w.wid, index)) {
+        if (board.idEquals(w.wid, index)) {
           widget = w;
           break;
         }
@@ -39,7 +39,7 @@ angular.module('adf')
       var column = null;
       for (var j = 0; j < model.columns.length; j++) {
         var c = model.columns[j];
-        if (dashboard.idEquals(c.cid, index)) {
+        if (board.idEquals(c.cid, index)) {
           column = c;
           break;
         }
@@ -51,7 +51,7 @@ angular.module('adf')
      * get the adf id from an html element
      */
     function getId(el) {
-      var id = el.getAttribute('adf-id');
+      var id = el.getAttribute('fli-id');
       return id ? id : '-1';
     }
 
@@ -70,7 +70,7 @@ angular.module('adf')
 
         if (widget) {
           // add new item and apply to scope
-          $scope.$apply(function () {
+          $scope.$apply(function() {
             if (!targetColumn.widgets) {
               targetColumn.widgets = [];
             }
@@ -91,7 +91,7 @@ angular.module('adf')
      */
     function removeWidgetFromColumn($scope, column, evt) {
       // remove old item and apply to scope
-      $scope.$apply(function () {
+      $scope.$apply(function() {
         column.widgets.splice(evt.oldIndex, 1);
         $rootScope.$broadcast('adfWidgetRemovedFromColumn');
       });
@@ -105,22 +105,22 @@ angular.module('adf')
       var el = $element[0];
       var sortable = window.Sortable.create(el, {
         group: 'widgets',
-        handle: '.adf-move',
+        handle: '.fli-move',
         ghostClass: 'placeholder',
         animation: 150,
-        onAdd: function (evt) {
+        onAdd: function(evt) {
           addWidgetToColumn($scope, model, column, evt);
         },
-        onRemove: function (evt) {
+        onRemove: function(evt) {
           removeWidgetFromColumn($scope, column, evt);
         },
-        onUpdate: function (evt) {
+        onUpdate: function(evt) {
           moveWidgetInColumn($scope, column, evt);
         }
       });
 
       // destroy sortable on column destroy event
-      $element.on('$destroy', function () {
+      $element.on('$destroy', function() {
         // check sortable element, before calling destroy
         // see https://github.com/sdorra/angular-dashboard-framework/issues/118
         if (sortable.el) {
@@ -130,25 +130,22 @@ angular.module('adf')
     }
 
     return {
-      restrict: 'E',
-      replace: true,
+      templateUrl: 'components/board/column/column.html',
       scope: {
         column: '=',
-        editMode: '=',
-        continuousEditMode: '=',
-        adfModel: '=',
-        options: '='
+        model: '=',
+        options: '=',
+        editMode: '='
       },
-      templateUrl: adfTemplatePath + 'column/column.html',
-      link: function ($scope, $element) {
+      link: function($scope, $element) {
         // set id
         var col = $scope.column;
         if (!col.cid) {
-          col.cid = dashboard.id();
+          col.cid = board.id();
         }
 
         // enable drag and drop for widget only columns
-        applySortable($scope, $element, $scope.adfModel, col);
+        applySortable($scope, $element, $scope.model, col);
       }
     };
   });

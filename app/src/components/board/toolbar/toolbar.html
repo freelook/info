@@ -1,0 +1,27 @@
+<md-toolbar>
+  <div class="md-toolbar-tools" layout="row" layout-align="center center">
+    <h3 ng-bind="toolbarCtrl.model.title" flex></h3>
+
+    <div ng-if="toolbarCtrl.edit">
+      <md-button class="md-icon-button"
+                 ng-click="toolbarCtrl.editDialog(toolbarCtrl.model)">
+        <md-icon>settings</md-icon>
+      </md-button>
+
+      <md-button class="md-icon-button"
+                 ng-click="toolbarCtrl.editRedo()">
+        <md-icon>redo</md-icon>
+      </md-button>
+    </div>
+
+    <div>
+      <md-button class="md-icon-button" aria-label="edit"
+                 ng-click="toolbarCtrl.toggleEdit()">
+        <md-icon ng-bind="!toolbarCtrl.edit ? 'edit': 'save'"></md-icon>
+      </md-button>
+    </div>
+
+  </div>
+</md-toolbar>
+
+

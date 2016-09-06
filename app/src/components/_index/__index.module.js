@@ -1,4 +1,4 @@
-(function () {
+(function() {
   'use strict';
 
   if (/(\?|%3F)l%3D/i.test(window.location.href)) {
@@ -18,10 +18,10 @@
 
     angular
       .module('freelook.info',
-      ['fli.core', 'fli.uix', 'fli.views', 'fli.home', 'fli.search', 'fli.look', 'fli.show',
+      ['fli.core', 'fli.uix', 'fli.board', 'fli.views', 'fli.home', 'fli.search', 'fli.look', 'fli.show',
         'fli.feedback', 'fli.token', 'fli.promo', 'fli.profile'])
-      .config(function ($locationProvider, $httpProvider, $routeProvider, $mdThemingProvider, $translateProvider,
-                        platformProvider) {
+      .config(function($locationProvider, $httpProvider, $routeProvider, $mdThemingProvider, $translateProvider,
+                       platformProvider) {
 
         // Setting hash prefix
         $locationProvider.html5Mode({enabled: !platformProvider.isChromeApp(), requireBase: false});
@@ -47,13 +47,13 @@
 
         // Routes config
         $routeProvider.otherwise({
-          redirectTo: function () {
+          redirectTo: function() {
             return '/' + window.location.search;
           }
         });
 
       })
-      .run(function ($injector, $rootScope, cache, platform, splash, analytics, scroll, toast) {
+      .run(function($injector, $rootScope, cache, platform, splash, analytics, scroll, toast) {
 
         // Run app
         $rootScope.fli = {};
@@ -66,7 +66,7 @@
         $injector.get('io');
 
         // Route change handlers
-        $rootScope.$on('$routeChangeStart', function () {
+        $rootScope.$on('$routeChangeStart', function() {
           toast.routeChangeSuccess();
           scroll.routeChangeSuccess();
           analytics.routeChangeSuccess();

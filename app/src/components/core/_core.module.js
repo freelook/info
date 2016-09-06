@@ -1,4 +1,4 @@
-(function () {
+(function() {
   'use strict';
 
   window.i18n.ru.core = {};
@@ -7,7 +7,7 @@
   angular
     .module('fli.core', [
       'ngAnimate', 'ngSanitize', 'ngCookies', 'ngRoute', 'ngMaterial',
-      'adf', 'pascalprecht.translate', 'angular-cache', 'mediaPlayer', 'uiGmapgoogle-maps', 'googlechart'
+      'pascalprecht.translate', 'angular-cache', 'mediaPlayer', 'uiGmapgoogle-maps', 'googlechart'
     ]);
 
 }());
