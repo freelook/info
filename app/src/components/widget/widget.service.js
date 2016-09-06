@@ -1,7 +1,7 @@
 /**
  * The widget service provide helper functions to render widgets and their content.
  */
-angular.module('fli.board')
+angular.module('fli.widget')
   .service('widgetService', function($q) {
     'use strict';
 

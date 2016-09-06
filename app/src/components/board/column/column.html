@@ -1,10 +1,9 @@
 <div fli-id="{{column.cid}}" flex="{{column.flex}}" ng-class="column.class" ng-style="column.style">
-  <adf-widget ng-repeat="definition in column.widgets"
-              definition="definition"
+  <fli-widget ng-repeat="widget in column.widgets"
+              widget="widget"
               column="column"
-              edit-mode="editMode"
-              options="options"
-              widget-state="widgetState">
+              edit="edit"
+              options="options">
 
-  </adf-widget>
+  </fli-widget>
 </div>

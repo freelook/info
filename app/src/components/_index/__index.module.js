@@ -18,7 +18,10 @@
 
     angular
       .module('freelook.info',
-      ['fli.core', 'fli.uix', 'fli.board', 'fli.views', 'fli.home', 'fli.search', 'fli.look', 'fli.show',
+      ['fli.core',  'fli.board', 'fli.widget',
+
+        // deprecated modules
+        'fli.uix', 'fli.views', 'fli.home', 'fli.search', 'fli.look', 'fli.show',
         'fli.feedback', 'fli.token', 'fli.promo', 'fli.profile'])
       .config(function($locationProvider, $httpProvider, $routeProvider, $mdThemingProvider, $translateProvider,
                        platformProvider) {

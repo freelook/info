@@ -10,17 +10,17 @@ angular
     ctrl.model = {
       title: 'My infoboard',
       columns: [{
-        flex: '25',
+        flex: '40',
         widgets: [{
-          type: 'linklist',
-          title: 'linklist',
+          name: 'linklist',
+          title: 'Linklist',
           config: {}
         }]
       }, {
-        flex: '75',
+        flex: '60',
         widgets: [{
-          type: 'linklist',
-          title: 'linklist',
+          name: 'linklist',
+          title: 'Linklist',
           config: {}
         }]
       }]
