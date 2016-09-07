@@ -48,7 +48,7 @@ angular
     }
 
     /**
-     * get the adf id from an html element
+     * get the fli id from an html element
      */
     function getId(el) {
       var id = el.getAttribute('fli-id');
@@ -105,9 +105,8 @@ angular
       var el = $element[0];
       var sortable = window.Sortable.create(el, {
         group: 'widgets',
-        handle: '.fli-move',
-        ghostClass: 'placeholder',
-        animation: 150,
+        handle: '.fli-drag',
+        ghostClass: 'fli-drop',
         onAdd: function(evt) {
           addWidgetToColumn($scope, model, column, evt);
         },
@@ -130,6 +129,7 @@ angular
     }
 
     return {
+      replace: true,
       templateUrl: 'components/board/column/column.html',
       scope: {
         column: '=',
@@ -139,13 +139,13 @@ angular
       },
       link: function($scope, $element) {
         // set id
-        var col = $scope.column;
-        if (!col.cid) {
-          col.cid = board.id();
+        var column = $scope.column;
+        if (!column.cid) {
+          column.cid = board.id();
         }
 
         // enable drag and drop for widget only columns
-        applySortable($scope, $element, $scope.model, col);
+        applySortable($scope, $element, $scope.model, column);
       }
     };
   });

@@ -1,6 +1,8 @@
-<md-card nf-if="widgetCtrl.model" fli-id="{{widgetCtrl.model.wid}}" adf-widget-type="{{widgetCtrl.model.type}}" ng-class="widgetCtrl.model.class">
-  <fli-widget-toolbar edit="widgetCtrl.edit"></fli-widget-toolbar>
-  <md-content uib-collapse="widgetState.isCollapsed">
-    <fli-widget-content model="widgetCtrl.model.view"></fli-widget-content>
-  </md-content>
-</md-card>
+<div fli-id="{{widgetCtrl.model.wid}}" ng-class="widgetCtrl.model.class" class="widget">
+  <md-card>
+    <fli-widget-toolbar edit="widgetCtrl.edit"></fli-widget-toolbar>
+    <md-content uib-collapse="widgetState.isCollapsed">
+      <fli-widget-content layout="column" model="widgetCtrl.model.view"></fli-widget-content>
+    </md-content>
+  </md-card>
+</div>
