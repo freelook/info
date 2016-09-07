@@ -4,15 +4,15 @@ angular
   .module('fli.board')
   .controller('board.toolbar.ctrl', function(boardEditService) {
 
-    var ctrl = this,
-      savedModel = angular.copy(ctrl.model);
+    var ctrl = this;
 
-    ctrl.editDialog = boardEditService.dialog;
-    ctrl.editRedo = function() {
-      ctrl.model = savedModel;
+    ctrl.dialog = boardEditService.dialog;
+    ctrl.redo = function() {
+      ctrl.model = ctrl.savedModel;
     };
     ctrl.toggleEdit = function() {
       ctrl.edit = !ctrl.edit;
+      ctrl.savedModel = angular.copy(ctrl.model);
     };
 
   });

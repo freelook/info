@@ -22,8 +22,27 @@ angular
       $mdDialog.cancel();
     }
 
+    function remove(model, widgets) {
+      if (model && widgets) {
+        var index = widgets.indexOf(model);
+        if (!!~index) {
+          widgets.splice(index, 1);
+        }
+      }
+    }
+
+    function save(model) {
+      $('#' + model.wid + '-edit').get(0).contentWindow.postMessage('push', '*');
+      window.addEventListener('message', pull, false);
+      function pull(event) {
+        console.log('get msg', event);
+      }
+    }
+
     return {
       dialog: dialog,
-      cancel: cancel
+      cancel: cancel,
+      remove: remove,
+      save: save
     };
   });

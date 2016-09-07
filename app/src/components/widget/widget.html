@@ -1,8 +1,8 @@
 <div fli-id="{{widgetCtrl.model.wid}}" ng-class="widgetCtrl.model.class" class="widget">
   <md-card>
-    <fli-widget-toolbar edit="widgetCtrl.edit"></fli-widget-toolbar>
-    <md-content uib-collapse="widgetState.isCollapsed">
-      <fli-widget-content layout="column" model="widgetCtrl.model.view"></fli-widget-content>
+    <fli-widget-toolbar model="widgetCtrl.model" column="widgetCtrl.column" edit="widgetCtrl.edit"></fli-widget-toolbar>
+    <md-content>
+      <fli-widget-content layout="column" model="widgetCtrl.model" type="view"></fli-widget-content>
     </md-content>
   </md-card>
 </div>

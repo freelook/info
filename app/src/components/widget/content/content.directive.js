@@ -5,12 +5,16 @@ angular.module('fli.widget')
 
     return {
       scope: {
-        model: '='
+        model: '=',
+        type: '@'
       },
       link: function($scope, $element) {
-        widgetService.render($scope.model)
+        widgetService.render($scope.model, $scope.type)
           .then(function(srcdoc) {
-            $element.html($('<iframe/>').attr({srcdoc: srcdoc}));
+            $element.html($('<iframe/>').attr({
+              id: $scope.model.wid + '-' + $scope.type,
+              srcdoc: srcdoc
+            }));
           });
       }
     };

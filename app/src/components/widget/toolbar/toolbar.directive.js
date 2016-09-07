@@ -9,6 +9,7 @@ angular
       controllerAs: 'toolbarCtrl',
       bindToController: {
         model: '=',
+        column: '=',
         edit: '='
       }
     };

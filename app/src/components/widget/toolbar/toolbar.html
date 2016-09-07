@@ -1,59 +1,29 @@
 <div class="md-toolbar-tools" layout="row" layout-align="center center">
-  <h3 ng-bind="definition.title" flex></h3>
+  <h3 ng-bind="toolbarCtrl.model.title" flex></h3>
 
-  <div>
-    <md-button class="md-icon-button"
-               ng-if="widget.reload"
-               ng-click="reload()">
-      <md-icon>cached</md-icon>
-    </md-button>
+  <div ng-if="toolbarCtrl.edit" layout="row">
+    <div ng-if="toolbarCtrl.editWidget">
+      <md-button class="md-icon-button fli-drag">
+        <md-icon>open_with</md-icon>
+      </md-button>
 
-    <!-- change widget location -->
-    <md-button class="md-icon-button fli-drag"
-               ng-if="toolbarCtrl.edit && toolbarCtrl.editWidget">
-      <md-icon>open_with</md-icon>
-    </md-button>
+      <md-button class="md-icon-button"
+                 ng-click="toolbarCtrl.dialog(toolbarCtrl.model)">
+        <md-icon>settings</md-icon>
+      </md-button>
 
-    <!-- collapse -->
-    <md-button class="md-icon-button"
-               ng-show="options.collapsible && !widgetState.isCollapsed"
-               ng-click="widgetState.isCollapsed = !widgetState.isCollapsed">
-      <md-icon>remove</md-icon>
-    </md-button>
+      <md-button class="md-icon-button"
+                 ng-click="toolbarCtrl.remove(toolbarCtrl.model, toolbarCtrl.column.widgets)">
+        <md-icon>close</md-icon>
+      </md-button>
+    </div>
 
-    <!-- expand -->
-    <md-button class="md-icon-button"
-               ng-show="options.collapsible && widgetState.isCollapsed"
-               ng-click="widgetState.isCollapsed = !widgetState.isCollapsed">
-      <md-icon>add</md-icon>
-    </md-button>
-
-    <!-- open edit mode -->
-    <md-button class="md-icon-button"
-               ng-click="edit()"
-               ng-if="editMode && editWidget">
-      <md-icon>settings</md-icon>
-    </md-button>
-
-    <md-button class="md-icon-button"
-               ng-click="openFullScreen()"
-               ng-show="options.maximizable">
-      <md-icon>zoom_in</md-icon>
-    </md-button>
-
-    <!-- remove widget -->
-    <md-button class="md-icon-button"
-               ng-click="remove()"
-               ng-if="editMode && editWidget">
-      <md-icon>close</md-icon>
+    <md-button class="md-icon-button" aria-label="edit"
+               ng-click="toolbarCtrl.editWidget=!toolbarCtrl.editWidget;"
+               ng-if="toolbarCtrl.edit">
+      <md-icon ng-bind="!toolbarCtrl.editWidget ? 'edit': 'save'"></md-icon>
     </md-button>
   </div>
-
-  <md-button class="md-icon-button" aria-label="edit"
-             ng-click="toolbarCtrl.editWidget=!toolbarCtrl.editWidget;"
-             ng-if="toolbarCtrl.edit">
-    <md-icon ng-bind="!editWidget ? 'edit': 'save'"></md-icon>
-  </md-button>
 
 </div>
 

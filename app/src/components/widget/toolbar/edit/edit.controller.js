@@ -6,5 +6,6 @@ angular
     var ctrl = this;
 
     ctrl.cancel = widgetEditService.cancel;
+    ctrl.save = widgetEditService.save;
 
   });

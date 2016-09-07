@@ -3,7 +3,7 @@
 angular
   .module('fli.home')
   .controller('home.infoboard.ctrl',
-  function () {
+  function() {
 
     var ctrl = this;
 
@@ -14,14 +14,18 @@ angular
         widgets: [{
           name: 'linklist',
           title: 'Linklist',
-          config: {}
+          config: {
+            initValue: 1
+          }
         }]
       }, {
         flex: '60',
         widgets: [{
           name: 'linklist',
           title: 'Linklist',
-          config: {}
+          config: {
+            initValue: 2
+          }
         }]
       }]
 

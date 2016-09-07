@@ -4,13 +4,10 @@ angular
   .module('fli.widget')
   .controller('widget.toolbar.ctrl', function(widgetEditService) {
 
-    var ctrl = this,
-      savedModel = angular.copy(ctrl.model);
+    var ctrl = this;
 
-    ctrl.editDialog = widgetEditService.dialog;
-    ctrl.editRedo = function() {
-      ctrl.model = savedModel;
-    };
+    ctrl.dialog = widgetEditService.dialog;
+    ctrl.remove = widgetEditService.remove;
     ctrl.toggleEdit = function() {
       ctrl.edit = !ctrl.edit;
     };

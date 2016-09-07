@@ -5,18 +5,18 @@ angular
   .config(function(boardProvider) {
     boardProvider
       .widget('linklist', {
+        name: 'links',
         title: 'Links',
         description: 'Displays a list of links',
         view: {
-          name: 'test',
           style: 'body{ background:#ccc;}',
           template: '<h3 ng-bind="ctrl.total"></h3><button ng-click="ctrl.update()">Update</button>',
           service: function() {
             return {log: console.log};
           },
-          controller: function(service) {
+          controller: function(service, config) {
             var ctrl = this;
-            ctrl.total = 0;
+            ctrl.total = config.initValue;
             ctrl.update = function() {
               ctrl.total += 1;
               service.log(ctrl.total);
@@ -24,23 +24,16 @@ angular
           }
         },
         edit: {
-          templateUrl: 'components/adf/widgets/linklist/edit.html',
-          controller: function($scope) {
-
-            function getLinks() {
-              if (!$scope.config.links) {
-                $scope.config.links = [];
-              }
-              return $scope.config.links;
+          template: '<span>Init value:</span><input ng-model="ctrl.initValue">',
+          controller: function(config) {
+            var ctrl = this;
+            ctrl.initValue = config.initValue;
+            window.addEventListener('message', push, false);
+            function push(event) {
+              console.log('sent msg');
+              config.initValue = ctrl.initValue;
+              event.source.postMessage(config, '*');
             }
-
-            $scope.addLink = function() {
-              getLinks().push({});
-            };
-
-            $scope.removeLink = function(index) {
-              getLinks().splice(index, 1);
-            };
           }
         }
       });

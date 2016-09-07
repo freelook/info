@@ -1,16 +1,17 @@
-<md-dialog>
+<md-dialog aria-label="edit">
   <md-toolbar>
     <div class="md-toolbar-tools">
-      <h4 flex ng-bind="editCtrl.model.title"></h4>
+      <h3 flex ng-bind="editCtrl.model.title"></h3>
       <md-button class="md-icon-button" ng-click="editCtrl.cancel()">
         <md-icon>close</md-icon>
       </md-button>
     </div>
   </md-toolbar>
   <md-dialog-content flex layout-padding>
-    <fli-widget-content model="widgetCtrl.model.edit"></fli-widget-content>
+    <fli-widget-content layout="column" model="editCtrl.model" type="edit"></fli-widget-content>
   </md-dialog-content>
   <md-dialog-actions>
+    <md-button class="md-button" ng-click="editCtrl.save(editCtrl.model)">Save</md-button>
     <md-button class="md-button" ng-click="editCtrl.cancel()">Close</md-button>
   </md-dialog-actions>
 </md-dialog>
