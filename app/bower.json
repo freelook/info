@@ -15,6 +15,7 @@
     "angular-route": "1.5.7",
     "angular-sanitize": "1.5.7",
     "angular-translate": "2.9.2",
+    "angular-ui-ace": "0.2.3",
     "angular-google-maps": "2.3.2",
     "angular-google-chart": "0.1.0",
     "socket.io-client": "1.4.5",
@@ -32,14 +33,20 @@
         "./angular-csp.css"
       ]
     },
+    "angular-ui-ace": {
+      "main": [
+        "../ace-builds/src/ace.js",
+        "./ui-ace.js"
+      ]
+    },
     "socket.io-client": {
       "main": "./socket.io.js"
     },
-    "readability": {
-      "main": "./Readability.js"
-    },
     "Sortable": {
       "main": "Sortable.js"
+    },
+    "readability": {
+      "main": "./Readability.js"
     }
   },
   "resolutions": {

@@ -1,39 +1,25 @@
-<div class="modal-header">
-  <button type="button" class="close" ng-click="closeDialog()" aria-hidden="true">&times;</button>
-  <h4 class="modal-title" ng-bind="translate('ADF_WIDGET_ADD_HEADER')">Add new widget</h4>
-</div>
-<div class="modal-body">
-  <!-- dashboard categories enabled -->
-  <div ng-if="createCategories">
-    <uib-accordion ng-init="categorized = createCategories(widgets)">
-      <uib-accordion-group heading="{{category.name}}" ng-repeat="category in categorized | adfOrderByObjectKey: 'name'">
-        <dl class="dl-horizontal">
-          <dt ng-repeat-start="widget in category.widgets | adfOrderByObjectKey: 'key'">
-            <a href="" ng-click="addWidget(widget.key)">
-              {{widget.title}}
-            </a>
-          </dt>
-          <dd ng-repeat-end ng-if="widget.description">
-            {{widget.description}}
-          </dd>
-        </dl>
-      </uib-accordion-group>
-    </uib-accordion>
-  </div>
-  <!-- dashboard categories disabled -->
-  <div style="display: inline-block;" ng-if="!createCategories">
-    <dl class="dl-horizontal">
-      <dt ng-repeat-start="widget in widgets | adfOrderByObjectKey: 'key'">
-        <a href="" ng-click="addWidget(widget.key)">
-          {{widget.title}}
-        </a>
-      </dt>
-      <dd ng-repeat-end ng-if="widget.description">
-        {{widget.description}}
-      </dd>
-    </dl>
-  </div>
-</div>
-<div class="modal-footer">
-  <button type="button" class="btn btn-primary" ng-click="closeDialog()" ng-bind="translate('ADF_COMMON_CLOSE')">Close</button>
-</div>
+<md-dialog id="board-toolbar-add" aria-label="edit">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h3 flex>Add</h3>
+      <md-button class="md-icon-button" ng-click="addCtrl.cancel()">
+        <md-icon>close</md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content flex layout-padding>
+
+    <md-list ng-init="widgets=[{title:'TAG', description: 'description'}, {title:'SITE', description: 'description'}]">
+      <md-list-item class="md-whiteframe-z1" ng-repeat="widget in widgets">
+        <h3 ng-bind="widget.title" ng-click="open=!open"></h3>
+
+        <div ng-if="open" ng-bind="widget.description"></div>
+      </md-list-item>
+    </md-list>
+
+    <div class="editor" ui-ace="{mode:'javascript'}" ng-model="addCtrl.code"></div>
+  </md-dialog-content>
+  <md-dialog-actions>
+    <md-button class="md-button" ng-click="addCtrl.cancel()">Close</md-button>
+  </md-dialog-actions>
+</md-dialog>

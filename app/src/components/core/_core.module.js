@@ -7,7 +7,8 @@
   angular
     .module('fli.core', [
       'ngAnimate', 'ngSanitize', 'ngCookies', 'ngRoute', 'ngMaterial',
-      'pascalprecht.translate', 'angular-cache', 'mediaPlayer', 'uiGmapgoogle-maps', 'googlechart'
+      'pascalprecht.translate', 'angular-cache', 'ui.ace',
+      'mediaPlayer', 'uiGmapgoogle-maps', 'googlechart'
     ]);
 
 }());

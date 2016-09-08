@@ -4,7 +4,12 @@
 
     <div ng-if="toolbarCtrl.edit">
       <md-button class="md-icon-button"
-                 ng-click="toolbarCtrl.dialog(toolbarCtrl.model)">
+                 ng-click="toolbarCtrl.addDialog(toolbarCtrl.model)">
+        <md-icon>add</md-icon>
+      </md-button>
+
+      <md-button class="md-icon-button"
+                 ng-click="toolbarCtrl.editDialog(toolbarCtrl.model)">
         <md-icon>settings</md-icon>
       </md-button>
 
