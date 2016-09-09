@@ -2,14 +2,15 @@
 
 angular
   .module('fli.widget')
-  .controller('widget.ctrl', function(board) {
-    var ctrl = this,
-      model = angular.extend(ctrl.widget, board.widgets[ctrl.widget.name]);
+  .controller('widget.ctrl', function(board, widget) {
+    var ctrl = this;
 
-    if (!model.wid) {
-      model.wid = board.id();
-    }
-
-    ctrl.model = model;
+    widget.load().then(function(widgets) {
+      var model = angular.extend(ctrl.widget, widgets[0]);
+      if (!model.wid) {
+        model.wid = board.id();
+      }
+      ctrl.model = model;
+    });
 
   });

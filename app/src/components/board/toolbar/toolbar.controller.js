@@ -2,7 +2,7 @@
 
 angular
   .module('fli.board')
-  .controller('board.toolbar.ctrl', function(boardEditService, boardAddService) {
+  .controller('board.toolbar.ctrl', function(board, boardEditService, boardAddService) {
 
     var ctrl = this;
 
@@ -13,7 +13,11 @@ angular
     };
     ctrl.toggleEdit = function() {
       ctrl.edit = !ctrl.edit;
-      ctrl.savedModel = angular.copy(ctrl.model);
+      if (!ctrl.edit) {
+        board.save(ctrl.model);
+      } else {
+        ctrl.savedModel = angular.copy(ctrl.model);
+      }
     };
 
   });

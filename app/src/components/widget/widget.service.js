@@ -3,7 +3,7 @@
  */
 angular
   .module('fli.widget')
-  .service('widgetService', function($q) {
+  .service('widget', function($q, WIDGETS) {
     'use strict';
 
     var widgetTemplate = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>{{name}}</title><style>{{style}}</style></head><body ng-app="{{name}}" ng-controller="controller as ctrl">{{template}}<script src="https://code.angularjs.org/1.5.7/angular.min.js"></script><script>angular.module(\'{{name}}\', []).service(\'service\', {{service}}).controller(\'controller\', {{controller}}).value(\'config\', {{config}});</script></body></html>';
@@ -23,8 +23,13 @@ angular
       return defer.promise;
     }
 
+    function load() {
+      return WIDGETS.get();
+    }
+
     return {
-      render: render
+      render: render,
+      load: load
     };
 
   });

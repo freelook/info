@@ -24,10 +24,11 @@ angular
 
     function remove(model, widgets) {
       if (model && widgets) {
-        var index = widgets.indexOf(model);
-        if (!!~index) {
-          widgets.splice(index, 1);
-        }
+        widgets.map(function(el, index) {
+          if (el.wid === model.wid) {
+            widgets.splice(index, 1);
+          }
+        });
       }
     }
 

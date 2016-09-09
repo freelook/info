@@ -25,9 +25,9 @@ angular
       return storageValue !== null ? storageValue : defaultValue || '';
     }
 
-    function set(key, value) {
+    function set(key, value, parser) {
       try {
-        storage.setItem(key, JSON.stringify(value));
+        storage.setItem(key, JSON.stringify(value, parser));
       } catch (e) {
         console.log('Couldn\'t store ' + key + ' with value ' + value);
       }

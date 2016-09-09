@@ -1,4 +1,4 @@
-<md-dialog id="board-toolbar-add" aria-label="edit">
+<md-dialog id="board-toolbar-add" aria-label="add">
   <md-toolbar>
     <div class="md-toolbar-tools">
       <h3 flex>Add</h3>
@@ -9,15 +9,25 @@
   </md-toolbar>
   <md-dialog-content flex layout-padding>
 
-    <md-list ng-init="widgets=[{title:'TAG', description: 'description'}, {title:'SITE', description: 'description'}]">
-      <md-list-item class="md-whiteframe-z1" ng-repeat="widget in widgets">
-        <h3 ng-bind="widget.title" ng-click="open=!open"></h3>
+    <md-list>
+      <md-list-item class="md-whiteframe-z1" ng-repeat="widget in addCtrl.widgets track by $index">
+        <div layout="column" flex layout-padding>
+          <h3 ng-bind="::widget.title"></h3>
 
-        <div ng-if="open" ng-bind="widget.description"></div>
+          <div ng-bind="::widget.description"></div>
+        </div>
+        <md-button class="md-fab md-mini md-primary" ng-click="addCtrl.add(widget, addCtrl.model)">
+          <md-icon>add</md-icon>
+        </md-button>
       </md-list-item>
     </md-list>
 
-    <div class="editor" ui-ace="{mode:'javascript'}" ng-model="addCtrl.code"></div>
+    <div layout="row" layout-align="center center">
+      <md-button class="md-fab md-mini md-primary" ng-click="addCtrl.build()">
+        <md-icon>build</md-icon>
+      </md-button>
+    </div>
+
   </md-dialog-content>
   <md-dialog-actions>
     <md-button class="md-button" ng-click="addCtrl.cancel()">Close</md-button>

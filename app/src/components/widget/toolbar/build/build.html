@@ -1,0 +1,19 @@
+<md-dialog aria-label="build">
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h3 flex>Build</h3>
+      <md-button class="md-icon-button" ng-click="buildCtrl.cancel()">
+        <md-icon>close</md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content flex layout-padding>
+
+    <div class="editor" ui-ace="{mode:'javascript'}" ng-model="addCtrl.code"></div>
+
+  </md-dialog-content>
+  <md-dialog-actions>
+    <md-button class="md-button" ng-click="buildCtrl.save()">Save</md-button>
+    <md-button class="md-button" ng-click="buildCtrl.cancel()">Close</md-button>
+  </md-dialog-actions>
+</md-dialog>

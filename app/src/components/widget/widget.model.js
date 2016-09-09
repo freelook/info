@@ -1,10 +1,12 @@
 'use strict';
 
 angular
-  .module('fli.board')
-  .config(function(boardProvider) {
-    boardProvider
-      .widget('linklist', {
+  .module('fli.widget')
+  .factory('WIDGETS',
+  function($q) {
+
+    var mockWidgets = [
+      {
         name: 'links',
         title: 'Links',
         description: 'Displays a list of links',
@@ -36,5 +38,15 @@ angular
             }
           }
         }
-      });
+      }
+    ];
+
+    function get() {
+      return $q.when(mockWidgets);
+    }
+
+    return {
+      get: get
+    };
+
   });

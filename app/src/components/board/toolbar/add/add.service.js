@@ -22,8 +22,14 @@ angular
       $mdDialog.cancel();
     }
 
+    function add(widget, model) {
+      model.columns[0].widgets.push(widget);
+      cancel();
+    }
+
     return {
       dialog: dialog,
-      cancel: cancel
+      cancel: cancel,
+      add: add
     };
   });

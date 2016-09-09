@@ -23,7 +23,7 @@ angular.module('fli.board')
       return this;
     };
 
-    this.$get = function() {
+    this.$get = function(BOARDS) {
       var cid = 0;
       return {
         widgets: widgets,
@@ -34,6 +34,12 @@ angular.module('fli.board')
         },
         idEquals: function(id, other) {
           return ((id) && (other)) && (id.toString() === other.toString());
+        },
+        load: function(user) {
+          return BOARDS.get(user);
+        },
+        save: function(board) {
+          return BOARDS.post(board);
         }
       };
     };

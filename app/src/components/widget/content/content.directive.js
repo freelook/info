@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fli.widget')
-  .directive('fliWidgetContent', function(widgetService) {
+  .directive('fliWidgetContent', function(widget) {
 
     return {
       scope: {
@@ -9,7 +9,7 @@ angular.module('fli.widget')
         type: '@'
       },
       link: function($scope, $element) {
-        widgetService.render($scope.model, $scope.type)
+        widget.render($scope.model, $scope.type)
           .then(function(srcdoc) {
             $element.html($('<iframe/>').attr({
               id: $scope.model.wid + '-' + $scope.type,

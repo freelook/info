@@ -3,33 +3,14 @@
 angular
   .module('fli.home')
   .controller('home.infoboard.ctrl',
-  function() {
+  function(board) {
 
-    var ctrl = this;
+    var ctrl = this,
+      user = 'dima.kostrub';
 
-    ctrl.model = {
-      title: 'My infoboard',
-      columns: [{
-        flex: '40',
-        widgets: [{
-          name: 'linklist',
-          title: 'Linklist',
-          config: {
-            initValue: 1
-          }
-        }]
-      }, {
-        flex: '60',
-        widgets: [{
-          name: 'linklist',
-          title: 'Linklist',
-          config: {
-            initValue: 2
-          }
-        }]
-      }]
-
-    };
+    board.load(user).then(function(model) {
+      ctrl.model = model;
+    });
 
   });
 
