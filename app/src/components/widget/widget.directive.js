@@ -11,7 +11,6 @@ angular.module('fli.widget')
       bindToController: {
         widget: '=',
         column: '=',
-        edit: '=',
         options: '='
       }
     };

@@ -1,13 +1,12 @@
-<fli-board-toolbar model="boardCtrl.model" edit="boardCtrl.edit"></fli-board-toolbar>
-<div layout="row" layout-xs="column">
+<fli-board-toolbar model="boardCtrl.model" options="boardCtrl.options"></fli-board-toolbar>
+<div layout="row" layout-xs="column" layout-wrap>
   <fli-board-column column="column"
                     model="boardCtrl.model"
                     options="boardCtrl.options"
-                    edit="boardCtrl.edit"
                     ng-repeat="column in boardCtrl.model.columns">
 
   </fli-board-column>
 </div>
-<pre ng-if="options.debug">{{boardCtrl.model | json}}</pre>
+<pre ng-if="boardCtrl.options.debug">{{boardCtrl.model | json}}</pre>
 
 

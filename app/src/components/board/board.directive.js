@@ -8,7 +8,8 @@ angular
       controller: 'board.ctrl',
       controllerAs: 'boardCtrl',
       bindToController: {
-        model: '='
+        model: '=',
+        options: '='
       }
     };
   });

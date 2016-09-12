@@ -1,14 +1,15 @@
 <div class="md-toolbar-tools" layout="row" layout-align="center center">
-  <h3 ng-bind="toolbarCtrl.model.title" flex></h3>
-
-  <div ng-if="toolbarCtrl.edit" layout="row">
-    <div ng-if="toolbarCtrl.editWidget">
+  <div flex>
+    <h3 ng-if="!toolbarCtrl.edit" ng-bind="toolbarCtrl.model.title" ></h3>
+  </div>
+  <div ng-init="toolbarCtrl.edit=false;" ng-if="toolbarCtrl.options.edit" layout="row">
+    <div ng-if="toolbarCtrl.edit">
       <md-button class="md-icon-button fli-drag">
         <md-icon>open_with</md-icon>
       </md-button>
 
       <md-button class="md-icon-button"
-                 ng-click="toolbarCtrl.dialog(toolbarCtrl.model)">
+                 ng-click="toolbarCtrl.dialog(toolbarCtrl.model, toolbarCtrl.options)">
         <md-icon>settings</md-icon>
       </md-button>
 
@@ -19,9 +20,8 @@
     </div>
 
     <md-button class="md-icon-button" aria-label="edit"
-               ng-click="toolbarCtrl.editWidget=!toolbarCtrl.editWidget;"
-               ng-if="toolbarCtrl.edit">
-      <md-icon ng-bind="!toolbarCtrl.editWidget ? 'edit': 'save'"></md-icon>
+               ng-click="toolbarCtrl.toggleEdit()">
+      <md-icon ng-bind="!toolbarCtrl.edit ? 'edit': 'save'"></md-icon>
     </md-button>
   </div>
 

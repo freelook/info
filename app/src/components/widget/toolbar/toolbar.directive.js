@@ -10,7 +10,7 @@ angular
       bindToController: {
         model: '=',
         column: '=',
-        edit: '='
+        options: '='
       }
     };
   });

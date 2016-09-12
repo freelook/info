@@ -10,32 +10,24 @@ angular
         name: 'links',
         title: 'Links',
         description: 'Displays a list of links',
-        view: {
-          style: 'body{ background:#ccc;}',
-          template: '<h3 ng-bind="ctrl.total"></h3><button ng-click="ctrl.update()">Update</button>',
-          service: function() {
-            return {log: console.log};
-          },
-          controller: function(service, config) {
-            var ctrl = this;
-            ctrl.total = config.initValue;
-            ctrl.update = function() {
-              ctrl.total += 1;
-              service.log(ctrl.total);
-            };
-          }
+        style: 'body{ background:#ccc;}',
+        template: '<h3 ng-bind="ctrl.total"></h3><button ng-click="ctrl.update()">Update</button>',
+        service: function() {
+          return {log: console.log};
         },
-        edit: {
-          template: '<span>Init value:</span><input ng-model="ctrl.initValue">',
-          controller: function(config) {
-            var ctrl = this;
-            ctrl.initValue = config.initValue;
-            window.addEventListener('message', push, false);
-            function push(event) {
-              console.log('sent msg');
-              config.initValue = ctrl.initValue;
-              event.source.postMessage(config, '*');
-            }
+        controller: function(service, config) {
+          var ctrl = this;
+          ctrl.total = config.init.value;
+          ctrl.update = function() {
+            ctrl.total += 1;
+            service.log(ctrl.total);
+          };
+        },
+        config: {
+          init: {
+            title: 'Init value',
+            type: 'number',
+            value: 1
           }
         }
       }
@@ -45,8 +37,13 @@ angular
       return $q.when(mockWidgets);
     }
 
+    function one() {
+      return $q.when(mockWidgets[0]);
+    }
+
     return {
-      get: get
+      get: get,
+      one: one
     };
 
   });

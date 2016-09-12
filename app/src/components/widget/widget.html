@@ -1,8 +1,12 @@
-<div fli-id="{{widgetCtrl.model.wid}}" ng-class="widgetCtrl.model.class" class="widget">
-  <md-card>
-    <fli-widget-toolbar model="widgetCtrl.model" column="widgetCtrl.column" edit="widgetCtrl.edit"></fli-widget-toolbar>
-    <md-content>
-      <fli-widget-content ng-if="widgetCtrl.model" layout="column" model="widgetCtrl.model" type="view"></fli-widget-content>
+<div fli-id="{{widgetCtrl.model.wid}}" ng-class="widgetCtrl.model.class">
+  <md-card ng-if="widgetCtrl.model">
+    <fli-widget-toolbar model="widgetCtrl.model"
+                        column="widgetCtrl.column"
+                        options="widgetCtrl.options">
+
+    </fli-widget-toolbar>
+    <md-content ng-if="!widgetCtrl.options.dialog">
+      <fli-widget-content layout="column" model="widgetCtrl.model"></fli-widget-content>
     </md-content>
   </md-card>
 </div>

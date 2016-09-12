@@ -4,22 +4,25 @@ angular
   .module('fli.widget')
   .service('widgetEditService', function($mdDialog) {
 
-    function dialog(model) {
+    function dialog(model, options) {
       $mdDialog.show({
         templateUrl: 'components/widget/toolbar/edit/edit.html',
         controller: 'widget.toolbar.edit.ctrl',
         controllerAs: 'editCtrl',
         locals: {
-          model: model
+          model: model,
+          options: options
         },
         bindToController: true,
         clickOutsideToClose: true,
         fullscreen: true
       });
+      options.dialog = true;
     }
 
-    function cancel() {
-      $mdDialog.cancel();
+    function cancel(model, options) {
+      options.dialog = false;
+      $mdDialog.cancel(model);
     }
 
     function remove(model, widgets) {
@@ -32,18 +35,9 @@ angular
       }
     }
 
-    function save(model) {
-      $('#' + model.wid + '-edit').get(0).contentWindow.postMessage('push', '*');
-      window.addEventListener('message', pull, false);
-      function pull(event) {
-        console.log('get msg', event);
-      }
-    }
-
     return {
       dialog: dialog,
       cancel: cancel,
-      remove: remove,
-      save: save
+      remove: remove
     };
   });

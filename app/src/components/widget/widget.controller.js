@@ -5,8 +5,8 @@ angular
   .controller('widget.ctrl', function(board, widget) {
     var ctrl = this;
 
-    widget.load().then(function(widgets) {
-      var model = angular.extend(ctrl.widget, widgets[0]);
+    widget.loadOne(ctrl.widget.name).then(function(widget) {
+      var model = angular.extend(widget, ctrl.widget);
       if (!model.wid) {
         model.wid = board.id();
       }

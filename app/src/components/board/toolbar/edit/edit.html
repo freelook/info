@@ -14,13 +14,15 @@
         <input type="text" ng-model="editCtrl.model.title">
       </md-input-container>
 
-      <h5>Structure</h5>
+      <div layout="column">
 
-      <div layout="row">
-        <md-input-container flex="{{column.flex}}" ng-repeat="column in editCtrl.model.columns">
-          <label ng-bind="::++$index"></label>
-          <input type="text" ng-model="column.flex">
-        </md-input-container>
+        <h5>Column width</h5>
+
+        <md-slider-container ng-repeat="column in ::editCtrl.model.columns">
+          <span class="md-body-1" ng-bind="::$index + 1"></span>
+          <md-slider flex md-discrete step="5" min="30" max="100" ng-model="column.flex" aria-label="flex"></md-slider>
+        </md-slider-container>
+
       </div>
     </form>
   </md-dialog-content>

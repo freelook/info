@@ -9,10 +9,10 @@ angular
       user: 'dima.kostrub',
       title: 'My infoboard',
       columns: [{
-        flex: '40',
+        flex: 40,
         widgets: []
       }, {
-        flex: '60',
+        flex: 60,
         widgets: []
       }]
     };

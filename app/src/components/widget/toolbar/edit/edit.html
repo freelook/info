@@ -2,7 +2,7 @@
   <md-toolbar>
     <div class="md-toolbar-tools">
       <h3 flex>Edit</h3>
-      <md-button class="md-icon-button" ng-click="editCtrl.cancel()">
+      <md-button class="md-icon-button" ng-click="editCtrl.cancel(editCtrl.model, editCtrl.options)">
         <md-icon>close</md-icon>
       </md-button>
     </div>
@@ -13,11 +13,13 @@
         <label>Title</label>
         <input type="text" ng-model="editCtrl.model.title">
       </md-input-container>
-      <fli-widget-content layout="column" model="editCtrl.model" type="edit"></fli-widget-content>
+      <md-input-container ng-repeat="input in ::editCtrl.model.config">
+        <label ng-bind="::input.title"></label>
+        <input type="{{::input.type}}" ng-model="input.value">
+      </md-input-container>
     </form>
   </md-dialog-content>
   <md-dialog-actions>
-    <md-button class="md-button" ng-click="editCtrl.save(editCtrl.model)">Save</md-button>
-    <md-button class="md-button" ng-click="editCtrl.cancel()">Close</md-button>
+    <md-button class="md-button" ng-click="editCtrl.cancel(editCtrl.model, editCtrl.options)">Close</md-button>
   </md-dialog-actions>
 </md-dialog>

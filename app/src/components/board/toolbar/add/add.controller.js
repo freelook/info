@@ -11,7 +11,7 @@ angular
       ctrl.cancel();
       widgetBuildService.dialog();
     };
-    widget.load().then(function(widgets) {
+    widget.loadAll().then(function(widgets) {
       ctrl.widgets = widgets;
     });
 

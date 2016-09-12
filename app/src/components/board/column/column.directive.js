@@ -134,8 +134,7 @@ angular
       scope: {
         column: '=',
         model: '=',
-        options: '=',
-        edit: '='
+        options: '='
       },
       link: function($scope, $element) {
         // set id

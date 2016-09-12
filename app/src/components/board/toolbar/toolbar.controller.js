@@ -12,8 +12,8 @@ angular
       ctrl.model = ctrl.savedModel;
     };
     ctrl.toggleEdit = function() {
-      ctrl.edit = !ctrl.edit;
-      if (!ctrl.edit) {
+      ctrl.options.edit = !ctrl.options.edit;
+      if (!ctrl.options.edit) {
         board.save(ctrl.model);
       } else {
         ctrl.savedModel = angular.copy(ctrl.model);

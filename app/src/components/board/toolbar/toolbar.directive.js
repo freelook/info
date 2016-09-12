@@ -9,7 +9,7 @@ angular
       controllerAs: 'toolbarCtrl',
       bindToController: {
         model: '=',
-        edit: '='
+        options: '='
       }
     };
   });

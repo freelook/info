@@ -2,7 +2,7 @@
   <div class="md-toolbar-tools" layout="row" layout-align="center center">
     <h3 ng-bind="toolbarCtrl.model.title" flex></h3>
 
-    <div ng-if="toolbarCtrl.edit">
+    <div ng-if="toolbarCtrl.options.edit">
       <md-button class="md-icon-button"
                  ng-click="toolbarCtrl.addDialog(toolbarCtrl.model)">
         <md-icon>add</md-icon>
@@ -22,7 +22,7 @@
     <div>
       <md-button class="md-icon-button" aria-label="edit"
                  ng-click="toolbarCtrl.toggleEdit()">
-        <md-icon ng-bind="!toolbarCtrl.edit ? 'edit': 'save'"></md-icon>
+        <md-icon ng-bind="!toolbarCtrl.options.edit ? 'edit': 'save'"></md-icon>
       </md-button>
     </div>
 
