@@ -1,5 +1,5 @@
 <div flex="{{column.flex}}" fli-id="{{column.cid}}" ng-class="column.class" ng-style="column.style">
-  <fli-widget ng-repeat="widget in column.widgets track by $index"
+  <fli-widget fli-id="{{widget.wid}}" ng-repeat="widget in column.widgets track by $index"
               widget="widget"
               column="column"
               options="options">

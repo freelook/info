@@ -16,11 +16,18 @@
 
       <div layout="column">
 
-        <h5>Column width</h5>
+        <h5 md-colors="::{color: 'primary'}">Column width</h5>
 
         <md-slider-container ng-repeat="column in ::editCtrl.model.columns">
           <span class="md-body-1" ng-bind="::$index + 1"></span>
-          <md-slider flex md-discrete step="5" min="30" max="100" ng-model="column.flex" aria-label="flex"></md-slider>
+          <md-slider class="md-primary"
+                     flex md-discrete
+                     step="5" min="30" max="100"
+                     ng-model="column.flex"
+                     aria-label="flex" id="flex-slider"></md-slider>
+          <md-input-container>
+            <input flex type="number" ng-model="column.flex" aria-label="flex" aria-controls="flex-slider">
+          </md-input-container>
         </md-slider-container>
 
       </div>

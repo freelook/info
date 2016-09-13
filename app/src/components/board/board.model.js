@@ -18,7 +18,7 @@ angular
     };
 
     function get(user) {
-      return $q.when(storage.get(user, mockModel));
+      return $q.when(storage.get(user, angular.copy(mockModel)));
     }
 
     function post(board) {

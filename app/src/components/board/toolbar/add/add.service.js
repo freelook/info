@@ -2,7 +2,7 @@
 
 angular
   .module('fli.board')
-  .service('boardAddService', function($mdDialog) {
+  .service('boardAddService', function($mdDialog, board) {
 
     function dialog(model) {
       $mdDialog.show({
@@ -23,6 +23,9 @@ angular
     }
 
     function add(widget, model) {
+      if (!widget.wid) {
+        widget.wid = board.id();
+      }
       model.columns[0].widgets.push(widget);
       cancel();
     }

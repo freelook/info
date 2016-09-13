@@ -34,11 +34,11 @@ angular
     ];
 
     function get() {
-      return $q.when(mockWidgets);
+      return $q.when(angular.copy(mockWidgets));
     }
 
     function one() {
-      return $q.when(mockWidgets[0]);
+      return $q.when(angular.copy(mockWidgets[0]));
     }
 
     return {
