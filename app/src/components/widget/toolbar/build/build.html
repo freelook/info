@@ -1,4 +1,4 @@
-<md-dialog aria-label="build">
+<md-dialog id="widget-toolbar-build" aria-label="build">
   <md-toolbar>
     <div class="md-toolbar-tools">
       <h3 flex>Build</h3>
@@ -7,10 +7,37 @@
       </md-button>
     </div>
   </md-toolbar>
-  <md-dialog-content flex layout-padding>
-
-    <div class="editor" ui-ace="{mode:'javascript'}" ng-model="addCtrl.code"></div>
-
+  <md-dialog-content flex>
+    <div layout="column">
+      <div>
+        <div layout="row">
+          <md-button flex class="md-primary" ng-click="buildCtrl.widgetConfiguration=!buildCtrl.widgetConfiguration">
+            Widget configuration
+          </md-button>
+        </div>
+        <div ng-show="buildCtrl.widgetConfiguration">
+          {{buildCtrl.model | json}}
+        </div>
+      </div>
+      <div>
+        <div layout="row">
+          <md-button flex class="md-primary" ng-click="buildCtrl.widgetComponent=!buildCtrl.widgetComponent">
+            Widget component
+          </md-button>
+        </div>
+        <div ng-show="buildCtrl.widgetComponent">
+          <md-tabs class="md-primary" md-dynamic-height>
+            <md-tab ng-repeat="model in buildCtrl.models" label="{{model.key}}">
+              <div class="editor"
+                   ui-ace="{mode:model.mode}"
+                   ng-model="buildCtrl.model[model.key]">
+              </div>
+              <div>{{buildCtrl.model[model.key] | json}}</div>
+            </md-tab>
+          </md-tabs>
+        </div>
+      </div>
+    </div>
   </md-dialog-content>
   <md-dialog-actions>
     <md-button class="md-button" ng-click="buildCtrl.save()">Save</md-button>

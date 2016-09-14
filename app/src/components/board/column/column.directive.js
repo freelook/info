@@ -3,7 +3,7 @@
 angular
   .module('fli.board')
   .directive('fliBoardColumn',
-  function($log, $compile, $rootScope, board) {
+  function($log, board) {
 
     /**
      * moves a widget in between a column
@@ -11,10 +11,7 @@ angular
     function moveWidgetInColumn($scope, column, evt) {
       var widgets = column.widgets;
       // move widget and apply to scope
-      $scope.$apply(function() {
-        widgets.splice(evt.newIndex, 0, widgets.splice(evt.oldIndex, 1)[0]);
-        $rootScope.$broadcast('adfWidgetMovedInColumn');
-      });
+      widgets.splice(evt.newIndex, 0, widgets.splice(evt.oldIndex, 1)[0]);
     }
 
     /**
@@ -70,14 +67,10 @@ angular
 
         if (widget) {
           // add new item and apply to scope
-          $scope.$apply(function() {
-            if (!targetColumn.widgets) {
-              targetColumn.widgets = [];
-            }
-            targetColumn.widgets.splice(evt.newIndex, 0, widget);
-
-            $rootScope.$broadcast('adfWidgetAddedToColumn');
-          });
+          if (!targetColumn.widgets) {
+            targetColumn.widgets = [];
+          }
+          targetColumn.widgets.splice(evt.newIndex, 0, widget);
         } else {
           $log.warn('could not find widget with id ' + wid);
         }
@@ -91,10 +84,7 @@ angular
      */
     function removeWidgetFromColumn($scope, column, evt) {
       // remove old item and apply to scope
-      $scope.$apply(function() {
-        column.widgets.splice(evt.oldIndex, 1);
-        $rootScope.$broadcast('adfWidgetRemovedFromColumn');
-      });
+      column.widgets.splice(evt.oldIndex, 1);
     }
 
     /**
@@ -120,8 +110,6 @@ angular
 
       // destroy sortable on column destroy event
       $element.on('$destroy', function() {
-        // check sortable element, before calling destroy
-        // see https://github.com/sdorra/angular-dashboard-framework/issues/118
         if (sortable.el) {
           sortable.destroy();
         }

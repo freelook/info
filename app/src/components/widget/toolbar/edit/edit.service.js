@@ -2,7 +2,7 @@
 
 angular
   .module('fli.widget')
-  .service('widgetEditService', function($mdDialog) {
+  .service('widgetEditService', function($mdDialog, board) {
 
     function dialog(model, options) {
       $mdDialog.show({
@@ -28,7 +28,7 @@ angular
     function remove(model, widgets) {
       if (model && widgets) {
         widgets.map(function(el, index) {
-          if (el.wid === model.wid) {
+          if (board.idEquals(el.wid, model.wid)) {
             widgets.splice(index, 1);
           }
         });
