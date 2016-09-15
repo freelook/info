@@ -1,5 +1,6 @@
 .svn
 .git
+.env
 .DS_Store
 .nodemonignore
 npm-debug.log

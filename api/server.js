@@ -1,5 +1,8 @@
 'use strict';
 
+// Set env
+require('dotenv').config();
+
 // Set up path for modules
 require('app-module-path').addPath(__dirname);
 
