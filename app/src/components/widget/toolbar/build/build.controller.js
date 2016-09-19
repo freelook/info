@@ -4,9 +4,6 @@ angular
   .module('fli.board')
   .controller('widget.toolbar.build.ctrl', function(widget, widgetBuildService) {
     var ctrl = this;
-
-    ctrl.widgetConfiguration = true;
-    ctrl.widgetComponent = false;
     ctrl.models = [
       {
         key: 'template',
@@ -28,9 +25,9 @@ angular
     ctrl.model = {};
 
     ctrl.cancel = widgetBuildService.cancel;
-    ctrl.save = widgetBuildService.save;
+    ctrl.save = widget.save;
 
-    widget.loadOne().then(function(widget) {
+    widget.loadOne('demo').then(function(widget) {
       ctrl.models.map(function(model) {
         ctrl.model[model.key] = '' + widget[model.key];
       });

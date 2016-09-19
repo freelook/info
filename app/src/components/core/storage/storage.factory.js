@@ -1,7 +1,7 @@
 'use strict';
 angular
   .module('freelook.info')
-  .factory('storage', function ($window, localStorage, customStorage, STORAGE_KEYS) {
+  .factory('storage', function($window, localStorage, customStorage, STORAGE_KEYS) {
 
     var storage;
 
@@ -33,16 +33,16 @@ angular
       }
     }
 
-    function push(key, item, max) {
+    function push(key, item, max, parser) {
       var arr = get(key, []);
-      if (!arr.some(function (el) {
+      if (!arr.some(function(el) {
           return angular.equals(item.url, el.url);
         })) {
         arr.push(item);
         if (max && arr.length > max) {
           arr.shift();
         }
-        set(key, arr);
+        set(key, arr, parser);
         return true;
       }
       return false;
@@ -50,7 +50,7 @@ angular
 
     function clearItem(key, item) {
       var arr = get(key, []),
-        filtered = arr.filter(function (el) {
+        filtered = arr.filter(function(el) {
           return !angular.equals(item.url, el.url);
         });
       set(key, filtered);
@@ -64,6 +64,11 @@ angular
       arr: {
         push: push,
         clearItem: clearItem
+      },
+      parser: {
+        func: function(key, val) {
+          return typeof val === 'function' ? '' + val : val;
+        }
       }
     };
 
@@ -74,6 +79,7 @@ angular
     SUB_KEY: 'FLI:SUB',
     USR_KEY: 'FLI:USR',
     FEEDS_TIMESTAMP_KEY: 'FLI:FEEDS_TIMESTAMP_KEY',
+
     KICKSTARTER_PROMO_VISIBILITY_KEY: 'KICKSTARTER_PROMO_VISIBILITY_KEY'
   });
 

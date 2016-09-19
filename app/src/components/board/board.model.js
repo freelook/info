@@ -22,9 +22,7 @@ angular
     }
 
     function post(board) {
-      storage.set(board.user, board, function(key, val) {
-        return typeof val === 'function' ? '' + val : val;
-      });
+      storage.set(board.user, board, storage.parser.func);
       return $q.when(board);
     }
 

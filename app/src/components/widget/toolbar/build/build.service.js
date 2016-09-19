@@ -19,11 +19,8 @@ angular
       $mdDialog.cancel();
     }
 
-    function save() {}
-
     return {
       dialog: dialog,
-      cancel: cancel,
-      save: save
+      cancel: cancel
     };
   });

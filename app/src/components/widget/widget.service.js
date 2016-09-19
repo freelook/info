@@ -26,14 +26,19 @@ angular
       return WIDGETS.get();
     }
 
-    function loadOne() {
-      return WIDGETS.one();
+    function loadOne(name) {
+      return WIDGETS.one(name);
+    }
+
+    function save(model) {
+      WIDGETS.post(model);
     }
 
     return {
       render: render,
       loadAll: loadAll,
-      loadOne: loadOne
+      loadOne: loadOne,
+      save: save
     };
 
   });
